@@ -1,0 +1,27 @@
+@use '../../styles/vars';
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.scrollbar {
+  &__container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 0;
+    opacity: 100;
+    background: linear-gradient(#ba99e6, rgb(121, 72, 189));
+  }
+
+  &__click {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 100%;
+    background: rgba(170, 170, 170, 0.3);
+  }
+}
