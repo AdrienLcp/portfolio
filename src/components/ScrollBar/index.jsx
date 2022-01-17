@@ -12,15 +12,14 @@ const ScrollBar = () => {
   window.addEventListener('scroll', () => {
     let progress = (document.documentElement.scrollTop / totalHeight) * 100;
     scrollBarContainer.current.style.height = progress + '%';
-    scrollBarContainer.current.style.opacity = `100%`;
   });
 
   const scroll = (event) => {
-    let newPageScroll = event.clientY / scrollBarClick.current.offsetHeight * totalHeight;
+    let newPageScroll = (event.clientY / scrollBarClick.current.offsetHeight) * totalHeight;
     window.scrollTo({
       top: newPageScroll,
       behavior: 'smooth'
-    })
+    });
   };
 
   return (

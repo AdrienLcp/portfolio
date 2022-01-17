@@ -12,8 +12,7 @@
     right: 0;
     width: 15px;
     height: 0;
-    opacity: 100;
-    background: linear-gradient(#ba99e6, rgb(121, 72, 189));
+    background: linear-gradient(#ba99e6, vars.$mainColor);
   }
 
   &__click {

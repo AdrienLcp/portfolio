@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Import components
-import Navigation from './components/Navigation';
+import Cursor from './components/Cursor';
 import ScrollBar from './components/ScrollBar';
+import Navigation from './components/Navigation';
 
 // Import pages
 import Home from './pages/Home';
@@ -16,58 +17,58 @@ import NotFound from './pages/NotFound';
 import './styles/index.scss';
 
 const App = () => {
-
   return (
     <BrowserRouter>
 
-      <ScrollBar />
-      <Navigation />
+        <Cursor />
+        <ScrollBar />
+        <Navigation />
 
-      <Routes>
+        <Routes>
 
-        <Route
-          exact path="/"
-          element={
-            <Home />
-          }
-        />
+          <Route
+            exact path="/"
+            element={
+              <Home />
+            }
+          />
 
-        <Route
-          exact path="/a_propos"
-          element={
-            <About />
-          }
-        />
+          <Route
+            exact path="/a_propos"
+            element={
+              <About />
+            }
+          />
 
-        <Route
-          exact path="/contact"
-          element={
-            <Contact />
-          }
-        />
+          <Route
+            exact path="/contact"
+            element={
+              <Contact />
+            }
+          />
 
-        <Route
-          exact path="/competences"
-          element={
-            <Knowledges />
-          }
-        />
+          <Route
+            exact path="/competences"
+            element={
+              <Knowledges />
+            }
+          />
 
-        <Route
-          exact path="/portfolio"
-          element={
-            <Portfolio />
-          }
-        />
+          <Route
+            exact path="/portfolio"
+            element={
+              <Portfolio />
+            }
+          />
 
-        <Route
-          path="/"
-          element={
-            <NotFound />
-          }
-        />
+          <Route
+            path="/"
+            element={
+              <NotFound />
+            }
+          />
 
-      </Routes>
+        </Routes>
     </BrowserRouter>
   );
 };

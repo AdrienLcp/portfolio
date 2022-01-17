@@ -1,1 +1,14 @@
 @use '../../styles/vars';
+
+.cursor {
+  z-index: 999;
+  transform: rotate(45deg);
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  position: fixed;
+  background: vars.$white;
+  border: 1px solid vars.$black;
+}
