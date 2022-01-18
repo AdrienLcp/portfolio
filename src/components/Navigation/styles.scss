@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 99;
 
   &__list {
     display: flex;
@@ -52,6 +53,14 @@
       }
     }
   }
+}  
+
+.active {
+  .nav__list__button__item__icon {
+    border: 2px solid vars.$white;
+    height: 61px;
+    padding: 1.2em;
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -76,18 +85,17 @@
   }
 }
 
-
 @media screen and (max-width: 500px) {
   .nav__list__button__item__icon {
     height: 50px;
     padding: 1em;
   }
 
-.active {
-  .nav__list__button__item__icon {
-    border: 2px solid vars.$white;
-    height: 51px;
-    padding: 0.9em;
+  .active {
+    .nav__list__button__item__icon {
+      border: 2px solid vars.$white;
+      height: 51px;
+      padding: 0.9em;
+    }
   }
-}
 }
