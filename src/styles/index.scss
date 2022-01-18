@@ -8,4 +8,9 @@ body {
   width: 100vw;
   height: 100vh;
   cursor: none;
+
+  ::selection {
+    background-color: vars.$mainColor;
+    color: vars.$white;
+  }
 }
