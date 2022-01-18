@@ -6,7 +6,7 @@ const Knowledges = () => {
 
   return (
     <div className='knowledges'>
-      
+      <p>Incoming soon...</p>
     </div>
   );
 };

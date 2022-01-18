@@ -5,8 +5,8 @@ import './styles.scss';
 const NotFound = () => {
 
   return (
-    <div className='not_found'>
-      
+    <div className='not-found'>
+      <p>Incoming soon...</p>
     </div>
   );
 };
