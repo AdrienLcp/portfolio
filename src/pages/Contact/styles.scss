@@ -8,6 +8,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  animation: from_left .5s ease-out;
 
   &__form {
     display: flex;
@@ -136,5 +137,15 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes from_left {
+  0% {
+    transform: translateX(-100vw);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }
