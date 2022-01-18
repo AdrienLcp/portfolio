@@ -53,7 +53,7 @@ const App = () => {
           />
 
           <Route
-            exact path="/portfolio"
+            exact path="/projets"
             element={
               <Portfolio />
             }

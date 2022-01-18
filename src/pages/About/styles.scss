@@ -1,23 +1,23 @@
 @use '../../styles/vars';
 
 .social_0 {
-  --i: 0;
+  --i: 0.25;
 }
 
 .social_1 {
-  --i: 1;
+  --i: 1.25;
 }
 
 .social_2 {
-  --i: 2;
+  --i: 2.25;
 }
 
 .social_3 {
-  --i: 3;
+  --i: 3.25;
 }
 
 .social_4 {
-  --i: 4;
+  --i: 4.25;
 }
 
 .about {
@@ -59,7 +59,14 @@
       transform: translateY(20px) translateX(80px);
 
       &__img {
-        height: 140px;
+        max-height: 140px;
+      }
+
+      &:hover {
+        .about__socials__toggle__img {
+          border-radius: 50%;
+          border: 2px solid vars.$mainColor;
+        }
       }
 
       &__label {
@@ -95,6 +102,11 @@
         height: 60px;
         padding: 1em;
         transform: rotate(calc(360deg / -5 * var(--i)));
+        transition: 0.3s;
+
+        &:active {
+          transform: scale(0.8) rotate(calc(360deg / -5 * var(--i)));
+        }
 
         &:hover {
           .about__socials__links__label {
@@ -139,7 +151,7 @@
 
       &_violet {
         color: vars.$mainColor;
-        margin-left: 0.5em;
+        margin-left: 0.3em;
         font-weight: bold;
       }
     }

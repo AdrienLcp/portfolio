@@ -1,0 +1,27 @@
+@use '../../styles/vars';
+
+.projects {
+  width: 50em;
+
+  &__title {
+    color: vars.$white;
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 1rem;
+
+    &_violet {
+      color: vars.$mainColor;
+    }
+  }
+
+  &__text {
+    color: vars.$grey;
+    margin-bottom: 4em;
+
+    &_violet {
+      color: vars.$mainColor;
+      font-weight: bold;
+      margin-left: 0.3em;
+    }
+  }
+}
