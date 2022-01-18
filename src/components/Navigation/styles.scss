@@ -21,6 +21,7 @@
       &__item {
         display: flex;
         align-items: center;
+        transition: .2s;
 
         &__label {
           transform: translateX(-2em);
@@ -40,6 +41,10 @@
             transform: translateX(1em);
             opacity: 1;
           }
+        }
+
+        &:active {
+          transform: scale(0.9) translateX(-0.5em);
         }
 
         &__icon {

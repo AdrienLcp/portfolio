@@ -7,7 +7,7 @@ import link from '../../../media/icons/link.svg';
 import github from '../../../media/social/github.svg';
 import quit from '../../../media/icons/quit.svg';
 
-const Poupets = ({ setShowPortfolio, setShowPresentation }) => {
+const Poupets = ({ setShowPoupets, setShowPresentation }) => {
 
   const poupetsRef = useRef(null);
 
@@ -15,7 +15,7 @@ const Poupets = ({ setShowPortfolio, setShowPresentation }) => {
     poupetsRef.current.style.opacity = '0';
     
     setTimeout(() => {
-      setShowPortfolio(false);
+      setShowPoupets(false);
       setShowPresentation(true);
     }, 300);
   };
@@ -32,7 +32,7 @@ const Poupets = ({ setShowPortfolio, setShowPresentation }) => {
         />
 
         <h3 className='poupets__header__title'>
-          Mon Portfolio
+          Les Poupets
         </h3>
 
         <button
@@ -60,7 +60,7 @@ const Poupets = ({ setShowPortfolio, setShowPresentation }) => {
               Technologies
             </h4>
             <p className='poupets__infos__list__item__role'>
-              React, SASS.
+              HTML, SCSS, un peu de JS et de React.
             </p>
           </li>
 
@@ -69,7 +69,7 @@ const Poupets = ({ setShowPortfolio, setShowPresentation }) => {
               Rôle
             </h4>
             <p className='poupets__infos__list__item__role'>
-              Lead Dev Front, Product Owner, Scrum Master, Git Master, Grand seigneur suprême
+              Lead Dev Front, Product Owner, Scrum Master, Git Master
             </p>
           </li>
 
@@ -78,7 +78,7 @@ const Poupets = ({ setShowPortfolio, setShowPresentation }) => {
               Description
             </h4>
             <p className='poupets__infos__list__item__role'>
-              Vous êtes dessus. C'est mon site personnel, que j'avais fait à la va-vite au début pour m'entraîner, pendant ma formation. Je l'ai refait de zéro après la fin de cette formation pour l'améliorer et le mettre un petit peu au goût du jour.
+              Un petit site, qui n'a demandé que quelques heures. Juste de quoi m'entraîner pendant la formation. J'ai ajouté une pointe de React après la fin de ma formation, pour trier entre les chats à voir, ainsi que quelques animations rapides.
             </p>
           </li>
         </ul>
@@ -98,7 +98,7 @@ const Poupets = ({ setShowPortfolio, setShowPresentation }) => {
                 className='poupets__infos__buttons__item__link__icon'
               />
               <p className='poupets__infos__buttons__item__link__label'>
-                Lien vers le site
+                Visiter le site
               </p>
             </a>
           </li>

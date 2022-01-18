@@ -11,6 +11,10 @@ import github from '../../media/social/github.svg';
 import adrien from '../../media/social/adrien.png';
 import poupette from '../../media/img/poupette.jpg';
 import poupineau from '../../media/img/poupineau.jpg';
+import snippet from '../../media/icons/snippet_white.svg';
+import book from '../../media/icons/book.svg';
+import warehouse from '../../media/icons/warehouse.svg';
+import truck from '../../media/icons/truck.svg';
 
 const About = () => {
 
@@ -161,7 +165,7 @@ const About = () => {
           J'habite à côté de Nantes, et suis mobile dans tout le département (44).
           <br />
           <br />
-          J'ai toujours été passionné par le monde de l'informatique, et des nouvelles technologies.
+          J'ai toujours été passionné par le monde de l'informatique, et des nouvelles technologies. Je recherche actuellement un poste de développeur front, idéalement<span className='about__history__text_violet'>React</span>.
         </p>
       </section>
 
@@ -171,7 +175,7 @@ const About = () => {
         </h3>
 
         <p className='about__history__text'>
-          À la fin de mes études, j'ai travaillé 4 années en intérim, dans des dizaines d'entreprises différentes. Fort de diverses expériences variées, de travail en équipe comme en autonomie, j'ai appris la ponctualité, l'assiduité ainsi que le travail minutieux et acharné.
+          À la fin de mes études, j'ai travaillé 4 années en remplacements, petits CDD et intérim, dans des dizaines d'entreprises différentes. Fort de diverses expériences variées, de travail en équipe comme en autonomie, j'ai appris la ponctualité, l'assiduité ainsi que le travail minutieux et acharné.
           <br />
           <br />
           J'ai ensuite été embauché chez un grossiste de pièces pour 2 roues, en tant que magasinier : Proconcept 2 Roues (P2R), à Couëron. J'y suis resté plus de 4 ans. L'ambiance y était bonne, l'équipe était comme une seconde famille pour moi. Mais...
@@ -192,13 +196,105 @@ const About = () => {
           >
             mes compétences
           </NavLink>
-          ) Les deux derniers mois de cette formation étaient encore plus passionnants. Un mois de spécialisation sur React (que j'ai choisi, car toujours été plus attiré par le front), puis un mois de projet avec trois autres camarades.
-          <br />
-          <br />
-          Nous avons créé un site de Blind Test participatif, où chaque utilisateur peut créer des playlists, grâce à l'API Deezer, et son SDK. Chaque visiteur peut alors jouer à ces playlists, et aura 30 secondes pour deviner le titre et l'artiste.
+          ) Les deux derniers mois de cette formation étaient encore plus passionnants. Un mois de spécialisation sur React (que j'ai choisi, car toujours été plus attiré par le front), puis un mois de projet avec trois autres camarades. Nous avons créé un site de blind test participatif.
           <br />
           <br />
           Depuis la fin de la formation, je crée de petits projets pour m'entraîner. J'ai cependant dû trouver un travail alimentaire pour continuer de payer mon loyer, en attendant de trouver un poste de développeur.
+        </p>
+      </section>
+      <section className='about__knowledge'>
+        <h3 className='about__knowledge__title'>
+          Mes expériences
+        </h3>
+
+        <p className='about__knowledge__text'>
+          <img 
+            className='about__knowledge__text__icon'
+            alt='Icône expérience'
+            src={snippet}
+          />
+          2022 - <span className='about__knowledge__text_bold'>Lead Dev Front</span> -<span className='about__knowledge__text_violet'>Mon propre portfolio</span>
+        </p>
+
+        <p className='about__knowledge__text'>
+          <img 
+            className='about__knowledge__text__icon'
+            alt='Icône expérience'
+            src={snippet}
+          />
+          2021 - <span className='about__knowledge__text_bold'>Lead Dev Front</span> -<span className='about__knowledge__text_violet'>Les Poupets</span>
+        </p>
+
+        <p className='about__knowledge__text'>
+          <img 
+            className='about__knowledge__text__icon'
+            alt='Icône expérience'
+            src={snippet}
+          />
+          2021 - <span className='about__knowledge__text_bold'>Lead Dev Front</span> -<span className='about__knowledge__text_violet'>MAJA</span>
+        </p>
+
+        <p className='about__knowledge__text'>
+          <img 
+            className='about__knowledge__text__icon'
+            alt='Icône expérience'
+            src={book}
+          />
+          2021 - <span className='about__knowledge__text_bold'>Formation Développeur Web JavaScript</span> -<span className='about__knowledge__text_violet'>O'Clock</span>
+        </p>
+
+        <p className='about__knowledge__text'>
+          <img 
+            className='about__knowledge__text__icon'
+            alt='Icône expérience'
+            src={warehouse}
+          />
+          2016 à 2021 - <span className='about__knowledge__text_bold'>Magasinier polyvalent</span> -<span className='about__knowledge__text_violet'>P2R - Proconcept 2 Roues</span>
+        </p>
+
+        <p className='about__knowledge__text'>
+          <img 
+            className='about__knowledge__text__icon'
+            alt='Icône expérience'
+            src={warehouse}
+          />
+          2015 à 2016 - <span className='about__knowledge__text_bold'>Missions intérim diverses</span> -<span className='about__knowledge__text_violet'>Absolis, Samsic, Adwork's, ...</span>
+        </p>
+
+        <p className='about__knowledge__text'>
+          <img 
+            className='about__knowledge__text__icon'
+            alt='Icône expérience'
+            src={warehouse}
+          />
+          2014 à 2015 - <span className='about__knowledge__text_bold'>Remplacements polyvalents</span> -<span className='about__knowledge__text_violet'>Mairie de Vertou, piscine de Vertou, ...</span>
+        </p>
+
+        <p className='about__knowledge__text'>
+          <img 
+            className='about__knowledge__text__icon'
+            alt='Icône expérience'
+            src={truck}
+          />
+          2014 - <span className='about__knowledge__text_bold'>Conducteur de navette</span> -<span className='about__knowledge__text_violet'>Leclerc Pôle Sud</span>
+        </p>
+
+        <p className='about__knowledge__text'>
+          <img 
+            className='about__knowledge__text__icon'
+            alt='Icône expérience'
+            src={warehouse}
+          />
+          2012 à 2013 - <span className='about__knowledge__text_bold'>Agent de maintenance</span> -<span className='about__knowledge__text_violet'>Maison de retraite Saint-André</span>
+        </p>
+
+        <p className='about__knowledge__text last'>
+          <img 
+            className='about__knowledge__text__icon'
+            alt='Icône expérience'
+            src={book}
+          />
+          2012 - <span className='about__knowledge__text_bold'>CAP Maintenance des Bâtiments</span> -<span className='about__knowledge__text_violet'>La Baugerie</span>
         </p>
       </section>
 

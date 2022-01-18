@@ -98,7 +98,9 @@ const Adrien = ({ setShowPortfolio, setShowPresentation }) => {
                 className='adrien__infos__buttons__item__link__icon'
               />
               <p className='adrien__infos__buttons__item__link__label'>
-                Lien vers le site (ça sert à rien de cliquer, vous êtes déjà dessus)
+                Visiter le site
+                <br />
+                (ça sert à rien de cliquer, vous êtes déjà dessus)
               </p>
             </a>
           </li>

@@ -43,6 +43,7 @@
 
     &.opened &__toggle__label {
       opacity: 0;
+      transform: translateY(-10em);
     }
 
     &__toggle {
@@ -56,7 +57,7 @@
       z-index: 30;
       border-radius: 50%;
       cursor: pointer;
-      transform: translateY(20px) translateX(80px);
+      transform: translateY(10px) translateX(80px);
 
       &__img {
         max-height: 140px;
@@ -74,9 +75,7 @@
         top: 1em;
         font-size: 0.8em;
         text-align: center;
-        color: vars.$white;
-        background-color: vars.$mainColor;
-        padding: 1em;
+        color: vars.$mainColor;
         width: 15em;
         border-radius: 20px;
         transition: .3s;
@@ -136,13 +135,13 @@
   &__history {
     margin-left: 10em;
     width: 70em;
-    margin-bottom: 3em;
+    margin-bottom: 4em;
 
     &__title {
       font-size: 3em;
       font-weight: bold;
       color: vars.$white;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     &__text {
@@ -152,6 +151,10 @@
       &_violet {
         color: vars.$mainColor;
         margin-left: 0.3em;
+        font-weight: bold;
+      }
+      
+      &_bold {
         font-weight: bold;
       }
     }
@@ -174,6 +177,52 @@
       }
     }
   }
+
+  &__knowledge {
+    margin-left: 10em;
+    width: 70em;
+    margin-bottom: 4em;
+
+    &__title {
+      font-size: 3em;
+      font-weight: bold;
+      color: vars.$white;
+      margin-bottom: 2rem;
+    }
+
+    &__text {
+      color: vars.$grey;
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      border-left: 2px solid vars.$white;
+      margin-left: 1em;
+      padding-bottom: 3em;
+
+      &__icon {
+        border-radius: 50%;
+        height: 30px;
+        background-color: vars.$mainColor;
+        padding: 0.3em;
+        transform: translateX(-0.9em);
+      }
+
+      &_violet {
+        color: vars.$mainColor;
+        margin-left: 0.3em;
+      }
+      
+      &_bold {
+        font-weight: bold;
+        margin-right: 0.5em;
+        margin-left: 0.5em;
+      }
+    }
+  }
+}
+
+.last {
+  border-left: none;
 }
 
 @keyframes from_bottom {

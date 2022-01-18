@@ -98,7 +98,7 @@ const Maja = ({ setShowMaja, setShowPresentation }) => {
                 className='maja__infos__buttons__item__link__icon'
               />
               <p className='maja__infos__buttons__item__link__label'>
-                Lien vers le site
+                Visiter le site
               </p>
             </a>
           </li>
