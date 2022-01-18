@@ -24,3 +24,9 @@
     background: rgba(170, 170, 170, 0.3);
   }
 }
+
+@media screen and (max-width: 850px) {
+  .scrollbar {
+    display: none;
+  }
+}

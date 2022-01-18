@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Import components
 import Cursor from './components/Cursor';
-import ScrollBar from './components/ScrollBar';
 import Navigation from './components/Navigation';
 
 // Import pages
@@ -21,7 +20,6 @@ const App = () => {
     <BrowserRouter>
 
         <Cursor />
-        <ScrollBar />
         <Navigation />
 
         <Routes>

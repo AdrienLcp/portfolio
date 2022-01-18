@@ -20,7 +20,6 @@
       &__item {
         display: flex;
         align-items: center;
-        // opacity: 0.7;
 
         &__label {
           transform: translateX(-2em);
@@ -55,8 +54,40 @@
   }
 }
 
+@media screen and (max-width: 850px) {
+  .nav {
+    bottom: 0;
+    height: auto;
+    width: 100vw;
+    margin-bottom: 1em;
+
+    &__list {
+      flex-direction: row;
+      margin-left: 0;
+
+      &__button {
+        margin: 0;
+
+        &__item__label {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .nav__list__button__item__icon {
+    height: 50px;
+    padding: 1em;
+  }
+
 .active {
   .nav__list__button__item__icon {
     border: 2px solid vars.$white;
+    height: 51px;
+    padding: 0.9em;
   }
+}
 }
