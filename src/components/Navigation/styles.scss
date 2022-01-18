@@ -1,1 +1,62 @@
 @use '../../styles/vars';
+
+.nav {
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 5em;
+
+    &__button {
+      margin: 1em;
+
+      &__item {
+        display: flex;
+        align-items: center;
+        // opacity: 0.7;
+
+        &__label {
+          transform: translateX(-2em);
+          color: vars.$white;
+          transition: .3s;
+          opacity: 0;
+          z-index: 1
+        }
+
+        &:hover {
+          .nav__list__button__item__icon {
+            opacity: 1;
+          }
+
+          .nav__list__button__item__label {
+            transition: .3s;
+            transform: translateX(1em);
+            opacity: 1;
+          }
+        }
+
+        &__icon {
+          height: 60px;
+          padding: 1.3em;
+          background-color: rgb(121, 72, 189);
+          border-radius: 50%;
+          z-index: 2;
+        }
+
+      }
+    }
+  }
+}
+
+.active {
+  .nav__list__button__item__icon {
+    border: 2px solid vars.$white;
+  }
+}

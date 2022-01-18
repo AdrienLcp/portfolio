@@ -6,11 +6,6 @@ const Home = () => {
 
   return (
     <div className='home'>
-      <button
-        className="button"
-      >
-        clic
-      </button>
     </div>
   );
 };
