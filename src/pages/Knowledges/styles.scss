@@ -25,6 +25,7 @@
     justify-content: center;
     text-align: center;
     animation: from_bottom .5s ease-out;
+    z-index: 30;
     transition: .3s;
 
     &__icon {
@@ -63,9 +64,12 @@
   }
 
   &__skills {
-    width: 50em;
+    width: 60em;
     margin-top: 4em;
     margin-bottom: 4em;
+    border-radius: 20px;
+    background-color: rgb(37, 40, 41);
+    padding: 4em;
 
     &__title {
       font-size: 2em;
@@ -113,6 +117,34 @@
             opacity: 1;
             transform: translateY(3.5em);
           }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1920px) {
+  .right {
+    transform: translateX(2em);
+  }
+  
+  .left {
+    transform: translateX(-2em);
+  }
+
+  .knowledges {
+    &__CV {
+      right: 3em;
+      bottom: 3em;
+
+      &__icon {
+        height: 80px;
+      }
+
+      &:hover {
+        
+        .knowledges__CV__label {
+          transform: translateY(4.5em);
         }
       }
     }

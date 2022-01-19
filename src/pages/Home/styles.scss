@@ -59,7 +59,6 @@
     z-index: 1;
     height: 60px;
     padding: 1em;
-    cursor: pointer;
   }
 
   &__icon2 {
@@ -70,7 +69,6 @@
     z-index: 1;
     height: 65px;
     padding: 1em;
-    cursor: pointer;
   }
 
   &__icon3 {
@@ -81,7 +79,6 @@
     z-index: 1;
     height: 70px;
     padding: 1em;
-    cursor: pointer;
   }
 
   &__icon4 {
@@ -92,7 +89,6 @@
     z-index: 1;
     height: 60px;
     padding: 1em;
-    cursor: pointer;
   }
 
   &__icon5 {
@@ -103,13 +99,18 @@
     z-index: 1;
     height: 55px;
     padding: 1em;
-    cursor: pointer;
   }
 }
 
 @media screen and (max-width: 1000px) {
   .home__header {
-    margin-left: 20em;
+    &__title {
+      font-size: 2em;
+    }
+
+    &__subtitle {
+      font-size: 1em;
+    }
   }
 }
 

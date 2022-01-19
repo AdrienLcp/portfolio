@@ -4,7 +4,7 @@
 
 
 * {
-  cursor: none !important;
+  cursor: none;
 }
 
 body {
@@ -35,5 +35,11 @@ body {
 
   100% {
     transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 850px) {
+  * {
+    cursor: auto;
   }
 }
