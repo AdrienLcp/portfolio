@@ -1,5 +1,13 @@
 @use '../../styles/vars';
 
+.left {
+  transform: translateX(-10em);
+}
+
+.right {
+  transform: translateX(10em);
+}
+
 .knowledges {
   display: flex;
   flex-direction: column;

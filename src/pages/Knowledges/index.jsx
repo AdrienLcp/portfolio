@@ -33,7 +33,7 @@ const Knowledges = () => {
             Télécharger le CV
           </p>
         </a>
-      <section className='knowledges__skills'>
+      <section className='knowledges__skills left'>
         <h4 className='knowledges__skills__title'>
           Compétences
         </h4>
@@ -65,9 +65,9 @@ const Knowledges = () => {
         </ul>
       </section>
 
-      <section className='knowledges__skills'>
+      <section className='knowledges__skills right'>
         <h4 className='knowledges__skills__title'>
-          Logiciels / Systèmes / Normes
+          Outils
         </h4>
         <p className='knowledges__skills__subtitle'>
           Vous pourrez aussi remarquer dans mon github que je maitrise les normes d'indentation et les conventions de nommages pour HTML, CSS et JavaScript.
@@ -97,7 +97,7 @@ const Knowledges = () => {
         </ul>
       </section>
 
-      <section className='knowledges__skills'>
+      <section className='knowledges__skills left'>
         <h4 className='knowledges__skills__title'>
           À venir
         </h4>
@@ -129,7 +129,7 @@ const Knowledges = () => {
         </ul>
       </section>
 
-      <section className='knowledges__skills'>
+      <section className='knowledges__skills right'>
         <h4 className='knowledges__skills__title'>
           Les détails
         </h4>

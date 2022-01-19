@@ -1,11 +1,11 @@
 @use '../../styles/vars';
 
 .contact {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   overflow: hidden;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   animation: from_nothing .5s ease-out;
 
@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     height: 500px;
-    margin-left: 30em;
+    margin: 10em;
 
     &__input {
       border: none;
