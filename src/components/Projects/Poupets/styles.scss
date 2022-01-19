@@ -3,7 +3,7 @@
 .poupets {
   width: 50em;
   transition: .3s;
-  animation: from_nothing .3s ease-out;
+  animation: from_nothing .5s ease-out;
 
   &__quit {
     border: none;
@@ -73,6 +73,7 @@
         &__role {
           margin-top: 0.5em;
           margin-bottom: 3em;
+          color: vars.$grey;
         }
       }
     }

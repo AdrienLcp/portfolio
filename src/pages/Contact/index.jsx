@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 
 import './styles.scss';
@@ -12,6 +12,10 @@ import localisation from '../../media/icons/localisation.svg';
 const Contact = () => {
 
   const [state, handleSubmit] = useForm('mknkynke');
+
+  useEffect(() => {
+    document.title = "Adrien Lacourpaille - Contact";
+  }, []);
 
   if (state.succeeded) {
     return (

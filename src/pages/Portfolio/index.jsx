@@ -23,6 +23,10 @@ const Portfolio = () => {
   const [showPortfolio, setShowPortfolio] = useState(false);
 
   useEffect(() => {
+    document.title = "Adrien Lacourpaille - Projets";
+  }, []);
+
+  useEffect(() => {
     if (showMaja === true) {
       majaRef.current.classList.add('project_selected');
     } else {

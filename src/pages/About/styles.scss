@@ -25,7 +25,7 @@
   flex-direction: column;
   align-items: center;
   padding-top: 10em;
-  animation: from_bottom .5s ease-out;
+  animation: from_nothing .5s ease-out;
 
   &__socials {
     position: relative;
@@ -78,6 +78,7 @@
         color: vars.$mainColor;
         width: 15em;
         border-radius: 20px;
+        z-index: 1;
         transition: .3s;
       }
     }
@@ -88,7 +89,7 @@
       list-style: none;
       transform-origin: 180px;
       transition: 0.5s;
-      transition-delay: calc(0.1s * var(--i));
+      // transition-delay: calc(0.1s * var(--i));
       transform: rotate(0deg) translateX(160px);
       background-color: vars.$mainColor;
       border-radius: 50%;
@@ -100,6 +101,7 @@
         width: 60px;
         height: 60px;
         padding: 1em;
+        z-index: 5;
         transform: rotate(calc(360deg / -5 * var(--i)));
         transition: 0.3s;
 
@@ -121,7 +123,7 @@
 
       &__label {
         position: absolute;
-        bottom: -1.8em;
+        bottom: -2em;
         font-size: 0.8em;
         color: vars.$white;
         z-index: 1;
@@ -223,14 +225,4 @@
 
 .last {
   border-left: none;
-}
-
-@keyframes from_bottom {
-  0% {
-    transform: translateY(100vh);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
 }

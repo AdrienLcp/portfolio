@@ -82,13 +82,3 @@
   border-color: vars.$grey;
   background-color: vars.$mainColor;
 }
-
-@keyframes from_nothing {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}

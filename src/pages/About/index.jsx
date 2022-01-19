@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import './styles.scss';
@@ -19,6 +19,10 @@ import truck from '../../media/icons/truck.svg';
 const About = () => {
 
   const menu = useRef(null);
+
+  useEffect(() => {
+    document.title = "Adrien Lacourpaille - À propos";
+  }, []);
 
   const toggleMenu = () => {
     menu.current.classList.toggle('opened');
