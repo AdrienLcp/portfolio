@@ -24,47 +24,17 @@ const App = () => {
 
         <Routes>
 
-          <Route
-            exact path="/"
-            element={
-              <Home />
-            }
-          />
+          <Route path="/" element={ <Home /> } />
 
-          <Route
-            exact path="/a_propos"
-            element={
-              <About />
-            }
-          />
+          <Route path="/a_propos" element={ <About /> } />
 
-          <Route
-            exact path="/contact"
-            element={
-              <Contact />
-            }
-          />
+          <Route path="/contact" element={ <Contact /> } />
 
-          <Route
-            exact path="/competences"
-            element={
-              <Knowledges />
-            }
-          />
+          <Route path="/competences" element={ <Knowledges /> } />
 
-          <Route
-            exact path="/projets"
-            element={
-              <Portfolio />
-            }
-          />
+          <Route path="/projets" element={ <Portfolio /> } />
 
-          <Route
-            path="/"
-            element={
-              <NotFound />
-            }
-          />
+          <Route path="/*" element={ <NotFound /> } />
 
         </Routes>
     </BrowserRouter>

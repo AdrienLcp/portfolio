@@ -20,9 +20,8 @@ const Navigation = () => {
           className='nav__list__button'
         >
           <NavLink
-            exact to='/'
-            className='nav__list__button__item'
-            activeClassName='active'
+            to='/'
+            className={(navData) => navData.isActive ? 'nav__list__button__item selected' : 'nav__list__button__item'}
           >
             <img
               className='nav__list__button__item__icon'
@@ -40,9 +39,8 @@ const Navigation = () => {
           className='nav__list__button'
         >
           <NavLink 
-            exact to='/competences'
-            className='nav__list__button__item'
-            activeClassName='active'
+            to='/competences'
+            className={(navData) => navData.isActive ? 'nav__list__button__item selected' : 'nav__list__button__item'}
           >
             <img
               className='nav__list__button__item__icon'
@@ -60,9 +58,8 @@ const Navigation = () => {
           className='nav__list__button'
         >
           <NavLink 
-            exact to='/projets'
-            className='nav__list__button__item'
-            activeClassName='active'
+            to='/projets'
+            className={(navData) => navData.isActive ? 'nav__list__button__item selected' : 'nav__list__button__item'}
           >
             <img
               className='nav__list__button__item__icon'
@@ -80,9 +77,8 @@ const Navigation = () => {
           className='nav__list__button'
         >
           <NavLink 
-            exact to='/a_propos'
-            className='nav__list__button__item'
-            activeClassName='active'
+            to='/a_propos'
+            className={(navData) => navData.isActive ? 'nav__list__button__item selected' : 'nav__list__button__item'}
           >
             <img
               className='nav__list__button__item__icon'
@@ -100,9 +96,8 @@ const Navigation = () => {
           className='nav__list__button'
         >
           <NavLink
-            exact to='/contact'
-            className='nav__list__button__item'
-            activeClassName='active'
+            to='/contact'
+            className={(navData) => navData.isActive ? 'nav__list__button__item selected' : 'nav__list__button__item'}
           >
             <img
               className='nav__list__button__item__icon'

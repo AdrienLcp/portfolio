@@ -195,7 +195,7 @@ const About = () => {
           <br />
           Ma formation, qui a duré 6 mois, s'est donc déroulée de février à août 2021. J'y ai appris les bases de HTML, du CSS, de JavaScript, de Node, de SQL, ... (voir
           <NavLink
-            exact to='/competences'
+            to='/competences'
             className='about__history__text_violet'
           >
             mes compétences
@@ -319,7 +319,7 @@ const About = () => {
           <br />
           J'ai cependant deux chats, Poupette, et son fils, Poupineau, que j'aime beaucoup et qui me donnent beaucoup d'amour. Je leur ai d'ailleurs fait un petit site (voir
           <NavLink
-            exact to='/portfolio'
+            to='/portfolio'
             className='about__history__text_violet'
           >
             mon portfolio

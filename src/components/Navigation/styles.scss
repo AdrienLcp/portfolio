@@ -54,13 +54,12 @@
           border-radius: 50%;
           z-index: 2;
         }
-
       }
     }
   }
 }  
 
-.active {
+.selected {
   .nav__list__button__item__icon {
     border: 2px solid vars.$white;
     height: 61px;
