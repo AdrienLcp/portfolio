@@ -28,10 +28,12 @@
           color: vars.$white;
           transition: .3s;
           opacity: 0;
-          z-index: 1
+          z-index: 1;
         }
 
         &:hover {
+          cursor:none;
+
           .nav__list__button__item__icon {
             opacity: 1;
           }

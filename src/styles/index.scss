@@ -2,11 +2,15 @@
 @use 'vars';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+
+* {
+  cursor: none !important;
+}
+
 body {
   font-family: 'Poppins';
   background: vars.$black;
   line-height: 140%;
-  cursor: none;
 
   ::selection {
     background-color: vars.$mainColor;
