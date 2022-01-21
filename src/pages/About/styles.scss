@@ -62,8 +62,18 @@
       }
     }
 
-    &__images__item {
-      height: 50px;
+    &__images {
+      margin-top: 3em;
+      margin-bottom: 10em;
+      display: flex;
+      justify-content: space-evenly;
+      width: 90vw;
+      max-width: 500px;
+
+      &__item {
+        height: 50px;
+        border-radius: 50%;
+      }
     }
   }
 
@@ -247,15 +257,15 @@
         margin-bottom: 10em;
         display: flex;
         justify-content: space-evenly;
-        width: 50em;
+        width: 30em;
+        max-width: 30em;
 
         &__item {
-          height: 100px;
-          border-radius: 50%;
+          height: 75px;
           transition: .3s;
 
           &:hover {
-            transform: scale(5);
+            transform: scale(3);
           }
         }
       }
@@ -312,6 +322,19 @@
 
       &__text {
         font-size: 1.1em;
+      }
+
+      &__images {
+        width: 50em;
+        max-width: 50em;
+        
+        &__item {
+          height: 100px;
+
+          &:hover {
+            transform: scale(5);
+          }
+        }
       }
     }
 

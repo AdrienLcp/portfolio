@@ -30,6 +30,7 @@
       font-weight: bold;
       animation: title 1000ms ease-out;
       transition: .3s;
+      z-index: 2;
 
       &:hover {
         transform: scale(0.8);
@@ -44,6 +45,7 @@
       margin: 1.5em;
       animation: subtitle 1000ms ease-out;
       transition: .3s;
+      z-index: 2;
 
       &:hover {
         transform: scale(0.8);
