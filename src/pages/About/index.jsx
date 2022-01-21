@@ -30,6 +30,11 @@ const About = () => {
 
   return (
     <div className='about'>
+        <img
+          src={adrien}
+          alt='Adrien'
+          className='about__img'
+        />
       <ul
         className='about__socials'
         ref={menu}
@@ -216,7 +221,7 @@ const About = () => {
             alt='Icône expérience'
             src={snippet}
           />
-          2022 - <span className='about__knowledge__text_bold'>Lead Dev Front</span> -<span className='about__knowledge__text_violet'>Mon propre portfolio</span>
+          2022 - <span className='about__knowledge__text_bold'>Lead Dev Front</span> -<span className='about__knowledge__text_violet'>Portfolio</span>
         </p>
 
         <p className='about__knowledge__text'>
@@ -243,7 +248,7 @@ const About = () => {
             alt='Icône expérience'
             src={book}
           />
-          2021 - <span className='about__knowledge__text_bold'>Formation Développeur Web JavaScript</span> -<span className='about__knowledge__text_violet'>O'Clock</span>
+          2021 - <span className='about__knowledge__text_bold'>Formation Développeur Web</span> -<span className='about__knowledge__text_violet'>O'Clock</span>
         </p>
 
         <p className='about__knowledge__text'>
