@@ -11,6 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: from_nothing .5s ease-out;
 
   &__container {
     background: vars.$black;

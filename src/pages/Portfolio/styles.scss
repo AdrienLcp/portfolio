@@ -1,7 +1,7 @@
 @use '../../styles/vars';
 
 .portfolio {
-  animation: from_bottom .3s ease-out;
+  animation: from_nothing .5s ease-out;
 
   &__menu {
     margin-top: 1em;
@@ -51,7 +51,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: from_nothing .3s ease-out;
 
     &__menu {
       position: fixed;

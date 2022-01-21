@@ -4,7 +4,7 @@
   margin-top: 2em;
   width: 100vw;
   transition: .3s;
-  animation: from_bottom .5s ease-out;
+  animation: from_nothing .5s ease-out;
 
   &__header {
     display: flex;
@@ -106,7 +106,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: from_nothing .5s ease-out;
 
     &__header {
       width: 40em;

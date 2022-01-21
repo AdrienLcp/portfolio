@@ -34,6 +34,16 @@ body {
   }
 }
 
+@keyframes from_top {
+  0% {
+    transform: translateY(-100vh);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
 @media screen and (min-width: 850px) {
   body {
     line-height: 140%;
