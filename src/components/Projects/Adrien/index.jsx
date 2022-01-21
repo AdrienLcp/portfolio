@@ -36,17 +36,17 @@ const Adrien = ({ setShowPortfolio, setShowPresentation }) => {
         </h3>
 
         <button
-          className='adrien__quit'
+          className='adrien__header__quit'
           onClick={() => {
             close();
           }}
         >
           <img
             src={quit}
-            className='adrien__quit__icon'
+            className='adrien__header__quit__icon'
             alt='Fermer ce projet'
           />
-          <p className='adrien__quit__label'>
+          <p className='adrien__header__quit__label'>
             Fermer
           </p>
         </button>
@@ -59,7 +59,7 @@ const Adrien = ({ setShowPortfolio, setShowPresentation }) => {
             <h4 className='adrien__infos__list__item__title'>
               Technologies
             </h4>
-            <p className='adrien__infos__list__item__role'>
+            <p className='adrien__infos__list__item__text'>
               React, SASS.
             </p>
           </li>
@@ -68,7 +68,7 @@ const Adrien = ({ setShowPortfolio, setShowPresentation }) => {
             <h4 className='adrien__infos__list__item__title'>
               Rôle
             </h4>
-            <p className='adrien__infos__list__item__role'>
+            <p className='adrien__infos__list__item__text'>
               Lead Dev Front, Product Owner, Scrum Master, Git Master, Grand seigneur suprême
             </p>
           </li>
@@ -77,7 +77,7 @@ const Adrien = ({ setShowPortfolio, setShowPresentation }) => {
             <h4 className='adrien__infos__list__item__title'>
               Description
             </h4>
-            <p className='adrien__infos__list__item__role'>
+            <p className='adrien__infos__list__item__text'>
               Vous êtes dessus. C'est mon site personnel, que j'avais fait à la va-vite au début pour m'entraîner, pendant ma formation. Je l'ai refait de zéro après la fin de cette formation pour l'améliorer et le mettre un petit peu au goût du jour.
             </p>
           </li>

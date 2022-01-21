@@ -36,17 +36,17 @@ const Poupets = ({ setShowPoupets, setShowPresentation }) => {
         </h3>
 
         <button
-          className='poupets__quit'
+          className='poupets__header__quit'
           onClick={() => {
             close();
           }}
         >
           <img
             src={quit}
-            className='poupets__quit__icon'
+            className='poupets__header__quit__icon'
             alt='Fermer ce projet'
           />
-          <p className='poupets__quit__label'>
+          <p className='poupets__header__quit__label'>
             Fermer
           </p>
         </button>
@@ -59,7 +59,7 @@ const Poupets = ({ setShowPoupets, setShowPresentation }) => {
             <h4 className='poupets__infos__list__item__title'>
               Technologies
             </h4>
-            <p className='poupets__infos__list__item__role'>
+            <p className='poupets__infos__list__item__text'>
               HTML, SCSS, un peu de JS et de React.
             </p>
           </li>
@@ -68,7 +68,7 @@ const Poupets = ({ setShowPoupets, setShowPresentation }) => {
             <h4 className='poupets__infos__list__item__title'>
               Rôle
             </h4>
-            <p className='poupets__infos__list__item__role'>
+            <p className='poupets__infos__list__item__text'>
               Lead Dev Front, Product Owner, Scrum Master, Git Master
             </p>
           </li>
@@ -77,7 +77,7 @@ const Poupets = ({ setShowPoupets, setShowPresentation }) => {
             <h4 className='poupets__infos__list__item__title'>
               Description
             </h4>
-            <p className='poupets__infos__list__item__role'>
+            <p className='poupets__infos__list__item__text'>
               Un petit site, qui n'a demandé que quelques heures. Juste de quoi m'entraîner pendant la formation. J'ai ajouté une pointe de React après la fin de ma formation, pour trier entre les chats à voir, ainsi que quelques animations rapides.
             </p>
           </li>

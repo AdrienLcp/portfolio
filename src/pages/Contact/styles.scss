@@ -1,139 +1,359 @@
 @use '../../styles/vars';
 
+// Success in 1440px AND in 850px
+
 .contact {
-  min-height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  animation: from_nothing .5s ease-out;
+  justify-content: center;
+  margin-bottom: 10em;
+  animation: from_bottom .5s ease-out;
 
   &__form {
+    margin-top: 4em;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    height: 500px;
-    margin: 10em;
+    align-items: center;
+    width: 90vw;
 
     &__input {
-      border: none;
+      border-color: transparent;
       padding: 1em;
-      padding-left: 2em;
+      font-size: 0.7em;
+      text-align: center;
       background-color: vars.$white;
-      border-radius: 20px;
-      width: 30em;
+      border-radius: 50px;
       color: vars.$black;
+      width: 80vw;
+      max-width: 250px;
 
       &:focus {
         outline: none !important;
-        border: 2px solid vars.$mainColor;
+        // border-color: vars.$mainColor;
+        border: 3px solid vars.$mainColor;
       }
     }
-    
+
     &__area {
-      border: none;
+      margin-top: 2em;
+      border-color: transparent;
       padding: 2em;
-      height: 20em;
-      background-color: vars.$white;
+      height: 15em;
       border-radius: 20px;
+      font-size: 0.7em;
+      width: 80vw;
+      max-width: 250px;
       color: vars.$black;
-      width: 30em;
 
       &:focus {
         outline: none !important;
-        border: 2px solid vars.$mainColor;
+        // border-color: vars.$mainColor;
+        border: 3px solid vars.$mainColor;
       }
     }
 
     &__submit {
+      margin-top: 1em;
       border: none;
       display: flex;
+      align-items: center;
       background: transparent;
+      background-color: vars.$mainColor;
+      border-radius: 20px;
+      padding: 0.7em;
+      transition: .2s;
 
       &__icon {
-        height: 50px;
-        background-color: vars.$mainColor;
-        border-radius: 50%;
-        padding: 1em;
-        z-index: 2;
+        height: 20px;
       }
-      
+
       &__label {
         color: vars.$white;
-        opacity: 0;
-        transform: translateX(-3em);
-        opacity: 0;
-        z-index: 1;
-        transition: .3s;
-        background-color: vars.$mainColor;
-        padding: 1.3em 2.5em;
-        height: 50px;
-        border-top-right-radius: 30px;
-        border-bottom-right-radius: 30px;
+        margin: 0 1em;
+        font-size: 0.8em;
       }
 
-      &:hover {
-        .contact__form__submit__label {
-          opacity: 1;
-          transform: translateX(-2em);
-        }
+      &:active {
+        transform: scale(0.9);
       }
-    }
-  }
-
-  &__success {
-    padding: 2em;
-    background-color: vars.$white;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    animation: success .3s linear;
-
-    &__icon {
-      height: 30px;
-      margin-right: 1em;
-    }
-
-    &__message {
-      color: vars.$mainColor;
-      font-weight: bold;
     }
   }
 
   &__infos {
+    margin-top: 3em;
+
     &__list {
       display: flex;
       flex-direction: column;
-      justify-content: space-evenly;
 
       &__item {
+        margin-top: 2em;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        margin: 1em;
 
         &__icon {
           background-color: vars.$mainColor;
-          padding: 1em;
+          padding: 0.7em;
           border-radius: 50%;
+          height: 40px;
         }
 
         &__label {
-          color: vars.$white;
-          margin-left: 1em;
+          color: vars.$grey;
+          margin-top: 1em;
+          font-size: 0.7em;
         }
       }
     }
   }
 }
 
-@keyframes success {
-  0% {
-    opacity: 0;
+@media screen and (min-width: 850px) {
+  .contact {
+    flex-direction: row;
+    animation: from_nothing .5s ease-out;
+    width: auto;
+    margin-bottom: 0;
+    margin-left: 20em;
+
+    &__form {
+      margin-top: 0;
+      width: auto;
+      align-items: flex-start;
+
+      &__input {
+        width: 20em;
+        max-width: 20em;
+        text-align: start;
+        font-size: 0.8em;
+        padding-left: 2em;
+      }
+      
+      &__area {
+        width: 25em;
+        max-width: 25em;
+        height: 15em;
+        font-size: 0.8em;
+        padding-left: 2em;
+      }
+
+      &__submit {
+        margin-top: 2em;
+        background-color: transparent;
+        border-radius: none;
+        padding: 0;
+
+        &__icon {
+          height: 50px;
+          background-color: vars.$mainColor;
+          border-radius: 50%;
+          padding: 1em;
+          z-index: 2;
+        }
+        
+        &__label {
+          opacity: 0;
+          transform: translateX(-3em);
+          opacity: 0;
+          z-index: 1;
+          transition: .3s;
+          margin: 0;
+          font-size: 1em;
+          background-color: vars.$mainColor;
+          padding: 1.3em 2.5em;
+          height: 50px;
+          border-top-right-radius: 30px;
+          border-bottom-right-radius: 30px;
+        }
+
+        &:hover {
+          .contact__form__submit__label {
+            opacity: 1;
+            transform: translateX(-2em);
+          }
+        }
+      }
+    }
+
+    // &__success {
+    //   padding: 2em;
+    //   background-color: vars.$white;
+    //   border-radius: 50px;
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: space-evenly;
+    //   animation: success .3s linear;
+
+    //   &__icon {
+    //     height: 30px;
+    //     margin-right: 1em;
+    //   }
+
+    //   &__message {
+    //     color: vars.$mainColor;
+    //     font-weight: bold;
+    //   }
+    // }
+
+    &__infos {
+      margin-top: 0;
+      margin-left: 5em;
+
+      &__list {
+        justify-content: space-evenly;
+
+        &__item {
+          flex-direction: row;
+          margin: 1em;
+
+          &__icon {
+            height: 50px;
+          }
+
+          &__label {
+            color: vars.$white;
+            margin-top: 0;
+            margin-left: 1em;
+            font-size: 0.8em;
+          }
+        }
+      }
+    }
   }
 
-  100% {
-    opacity: 1;
+  @keyframes success {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}
+@media screen and (min-width: 1440px) {
+  .contact {
+    flex-direction: row;
+    animation: from_nothing .5s ease-out;
+    width: auto;
+    margin-bottom: 0;
+
+    &__form {
+      margin-top: 0;
+      width: auto;
+      align-items: flex-start;
+
+      &__input {
+        width: 30em;
+        text-align: start;
+        font-size: 1em;
+        padding-left: 2em;
+      }
+      
+      &__area {
+        width: 37em;
+        max-width: 37em;
+        min-width: 25em;
+        height: 20em;
+        font-size: 1em;
+        padding-left: 2em;
+      }
+
+      &__submit {
+        margin-top: 2em;
+        background-color: transparent;
+        border-radius: none;
+        padding: 0;
+
+        &__icon {
+          height: 50px;
+          background-color: vars.$mainColor;
+          border-radius: 50%;
+          padding: 1em;
+          z-index: 2;
+        }
+        
+        &__label {
+          opacity: 0;
+          transform: translateX(-3em);
+          opacity: 0;
+          z-index: 1;
+          transition: .3s;
+          margin: 0;
+          font-size: 1em;
+          background-color: vars.$mainColor;
+          padding: 1.3em 2.5em;
+          height: 50px;
+          border-top-right-radius: 30px;
+          border-bottom-right-radius: 30px;
+        }
+
+        &:hover {
+          .contact__form__submit__label {
+            opacity: 1;
+            transform: translateX(-2em);
+          }
+        }
+      }
+    }
+
+    // &__success {
+    //   padding: 2em;
+    //   background-color: vars.$white;
+    //   border-radius: 50px;
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: space-evenly;
+    //   animation: success .3s linear;
+
+    //   &__icon {
+    //     height: 30px;
+    //     margin-right: 1em;
+    //   }
+
+    //   &__message {
+    //     color: vars.$mainColor;
+    //     font-weight: bold;
+    //   }
+    // }
+
+    &__infos {
+      margin-top: 0;
+      margin-left: 10em;
+
+      &__list {
+        justify-content: space-evenly;
+
+        &__item {
+          flex-direction: row;
+          margin: 1em;
+
+          &__icon {
+            height: 60px;
+          }
+
+          &__label {
+            color: vars.$white;
+            margin-top: 0;
+            margin-left: 1em;
+            font-size: 1em;
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes success {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 }

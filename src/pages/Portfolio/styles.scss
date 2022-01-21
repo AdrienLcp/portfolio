@@ -1,77 +1,41 @@
 @use '../../styles/vars';
 
 .portfolio {
-  height: 90vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: from_nothing .3s ease-out;
+  animation: from_bottom .3s ease-out;
 
   &__menu {
-    position: fixed;
-    bottom: 5em;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
+    margin-top: 1em;
+    width: 100%;
+
     &__list {
-      width: 50em;
+      width: 100vw;
       display: flex;
-      position: relative;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
 
       &__item {
-        width: 33%;
+        width: 90%;
+        max-width: 300px;
+        background-color: vars.$darkGrey;
+        border-radius: 20px;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
-        transition: .3s;
-        border: 1px solid vars.$grey;
-        flex-grow: 1;
-        transition: width .3s ease;
-        border-radius: 5px;
-        height: 10em;
-        margin: 1em;
-        cursor: pointer;
+        margin: 0.5em;
 
-        &:hover {
-          width: 60%;
-          border-color: vars.$mainColor;
+        &__img {
+          height: 70px;
+          padding: 1em;
+        }
 
-          .portfolio__menu__list__item__img {
-            transform: translateY(-1em);
-            height: 80px;
-          }
-
-          .portfolio__menu__list__item__title {
-            opacity: 1;
-            transform: translateY(2em);
-          }
+        &__title {
+          font-size: 0.8em;
+          color: vars.$white;
         }
 
         &:active {
           transition: .2s;
           transform: scale(0.9);
-        }
-
-        &__img {
-          height: 100px;
-          border-radius: 50%;
-          padding: 1em;
-          z-index: 3;
-          transition: .3s;
-        }
-
-        &__title {
-          position: absolute;
-          color: vars.$white;
-          opacity: 0;
-          z-index: 2;
-          transform: translateY(1em);
-          transition: .3s;
         }
       }
     }
@@ -79,6 +43,99 @@
 }
 
 .project_selected {
-  border-color: vars.$grey;
   background-color: vars.$mainColor;
+}
+
+@media screen and (min-width: 850px) {
+  .portfolio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: from_nothing .3s ease-out;
+
+    &__menu {
+      position: fixed;
+      bottom: 0vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      width: 100vw;
+      height: 10em;
+      padding: 5em;
+      background: linear-gradient(rgba(vars.$black, 0) 0%, rgba(rgba(vars.$black, 1), 100) 30%);
+      margin-left: 10em;
+      z-index: 5;
+      
+      &__list {
+        width: 30vw;
+        flex-direction: row;
+
+        &__item {
+          width: 33%;
+          flex-direction: column;
+          justify-content: center;
+          border: 2px solid vars.$grey;
+          transition: width .3s ease;
+          border-radius: 5px;
+          height: 5em;
+          margin: 1em;
+          transition: .3s;
+
+          &:hover {
+            width: 60%;
+            border-color: vars.$mainColor;
+
+            .portfolio__menu__list__item__img {
+              transform: translateY(-1em);
+              height: 80px;
+            }
+
+            .portfolio__menu__list__item__title {
+              opacity: 1;
+              transform: translateY(2em);
+            }
+          }
+
+          &__img {
+            height: 80px;
+            padding: 1em;
+            z-index: 3;
+            transition: .3s;
+          }
+
+          &__title {
+            position: absolute;
+            color: vars.$white;
+            font-size: 1em;
+            opacity: 0;
+            z-index: 2;
+            transform: translateY(1em);
+            transition: .3s;
+          }
+        }
+      }
+    }
+  }
+
+  .project_selected {
+    border-color: vars.$grey;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .portfolio {
+
+    &__menu {
+      height: 20em;
+
+      &__list {
+
+        &__item {
+          height: 10em;
+        }
+      }
+    }
+  }
+
 }

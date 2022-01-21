@@ -36,17 +36,17 @@ const Maja = ({ setShowMaja, setShowPresentation }) => {
         </h3>
 
         <button
-          className='maja__quit'
+          className='maja__header__quit'
           onClick={() => {
             close();
           }}
         >
           <img
             src={quit}
-            className='maja__quit__icon'
+            className='maja__header__quit__icon'
             alt='Fermer ce projet'
           />
-          <p className='maja__quit__label'>
+          <p className='maja__header__quit__label'>
             Fermer
           </p>
         </button>
@@ -59,7 +59,7 @@ const Maja = ({ setShowMaja, setShowPresentation }) => {
             <h4 className='maja__infos__list__item__title'>
               Technologies
             </h4>
-            <p className='maja__infos__list__item__role'>
+            <p className='maja__infos__list__item__text'>
               React, PostgreSQL, JWT, API Deezer, SDK Deezer.
             </p>
           </li>
@@ -68,7 +68,7 @@ const Maja = ({ setShowMaja, setShowPresentation }) => {
             <h4 className='maja__infos__list__item__title'>
               Rôle
             </h4>
-            <p className='maja__infos__list__item__role'>
+            <p className='maja__infos__list__item__text'>
               Lead Dev Front
             </p>
           </li>
@@ -77,7 +77,7 @@ const Maja = ({ setShowMaja, setShowPresentation }) => {
             <h4 className='maja__infos__list__item__title'>
               Description
             </h4>
-            <p className='maja__infos__list__item__role'>
+            <p className='maja__infos__list__item__text'>
               Mon projet le plus abouti. Le seul où il y a un serveur et une base de données. C'est un site de blind test participatif. Après s'être créé un compte, les utilisateurs peuvent créer une playlist grâce à l'API Deezer. Celle-ci sera visible sur la page d'accueil et jouable par tous les visiteurs, inscrits ou non. Les joueurs entendent la musique sur le navigateur grâce au SDK de Deezer, et ont droit à 30 secondes pour essayer d'entrer le nom de l'artiste et le titre de la musique dans l'input. S'il a bon, il gagne des points. Les membres peuvent également noter les playlists, les notes étant visibles sur la page d'accueil, pour chaque playlist.
             </p>
           </li>

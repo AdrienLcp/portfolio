@@ -11,7 +11,7 @@ const Projects = () => {
       </h4>
 
       <p className='projects__text'>
-        Depuis la fin de ma formation chez, j'ai créé, pour l'instant, 3 sites.
+        Depuis la fin de ma formation chez O'Clock, j'ai créé, pour l'instant, 3 sites.
         <br />
         <br />
         Ils sont tous en ligne, et les codes sont visibles sur 
@@ -53,7 +53,7 @@ const Projects = () => {
         N'hésitez pas à me contactez !
         <br />
         <br />
-        Cliquez sur un projet ci-dessous pour le voir. <span className='projects__text_violet'>Bonne visite !</span>
+        Cliquez sur un projet pour le voir. <span className='projects__text_violet'>Bonne visite !</span>
       </p>
     </section>
   );

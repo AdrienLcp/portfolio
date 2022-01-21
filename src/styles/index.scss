@@ -3,14 +3,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 
-* {
-  cursor: none;
-}
 
 body {
   font-family: 'Poppins';
   background: vars.$black;
-  line-height: 140%;
 
   ::selection {
     background-color: vars.$mainColor;
@@ -38,8 +34,12 @@ body {
   }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (min-width: 850px) {
+  body {
+    line-height: 140%;
+  }
+
   * {
-    cursor: auto;
+    cursor: none;
   }
 }

@@ -185,8 +185,7 @@ const About = () => {
           J'ai ensuite été embauché chez un grossiste de pièces pour 2 roues, en tant que magasinier : Proconcept 2 Roues (P2R), à Couëron. J'y suis resté plus de 4 ans. L'ambiance y était bonne, l'équipe était comme une seconde famille pour moi. Mais...
           <br />
           <br />
-          J'ai alors fait une découverte, dont je n'avais jamais entendu parler, donc je ne soupçonnais même pas l'existence :
-          L'État français offre des aides pour les reconversions. Je n'en avais jamais eu les moyens, et, bien que je n'ai jamais su quoi faire de mes études (ou après mes études), j'ai toujours été attiré par le code. J'avais été initié, dans mes jeunes années, au HTML et au CSS par le Site du Zéro.
+          J'ai appris qu'il existait des aides pour les reconversions. Je n'en avais jamais eu les moyens, et, bien que je n'ai jamais su quoi faire de mes études (ou après mes études), j'ai toujours été attiré par le code. J'avais été initié, dans mes jeunes années, au HTML et au CSS par le Site du Zéro.
           <br />
           <br />
 

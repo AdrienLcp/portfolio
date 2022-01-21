@@ -44,7 +44,7 @@ const Navigation = () => {
           >
             <img
               className='nav__list__button__item__icon'
-              alt="Icône pour aller au CV"
+              alt="Icône pour aller aux compétences"
               src={knowledges}
             />
             <p className='nav__list__button__item__label'>
@@ -67,7 +67,7 @@ const Navigation = () => {
               src={projects}
             />
             <p className='nav__list__button__item__label'>
-              Mes projets
+              Projets
             </p>
           </NavLink>
         </li>
@@ -105,7 +105,7 @@ const Navigation = () => {
               src={contact}
             />
             <p className='nav__list__button__item__label'>
-              Contactez-moi
+              Contact
             </p>
           </NavLink>
         </li>

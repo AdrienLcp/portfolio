@@ -52,32 +52,6 @@ const Portfolio = () => {
 
   return (
     <div className='portfolio'>
-
-      {showPresentation && (
-        <Projects />
-      )}
-
-      {showMaja && (
-        <Maja
-          setShowMaja={setShowMaja}
-          setShowPresentation={setShowPresentation}
-        />
-      )}
-
-      {showPoupets && (
-        <Poupets
-          setShowPoupets={setShowPoupets}
-          setShowPresentation={setShowPresentation}
-        />
-      )}
-
-      {showPortfolio && (
-        <Adrien
-          setShowPortfolio={setShowPortfolio}
-          setShowPresentation={setShowPresentation}
-        />
-      )}
-
       <nav className='portfolio__menu'>
         <ul className='portfolio__menu__list'>
 
@@ -146,6 +120,31 @@ const Portfolio = () => {
 
         </ul>
       </nav>
+      
+      {showPresentation && (
+        <Projects />
+      )}
+
+      {showMaja && (
+        <Maja
+          setShowMaja={setShowMaja}
+          setShowPresentation={setShowPresentation}
+        />
+      )}
+
+      {showPoupets && (
+        <Poupets
+          setShowPoupets={setShowPoupets}
+          setShowPresentation={setShowPresentation}
+        />
+      )}
+
+      {showPortfolio && (
+        <Adrien
+          setShowPortfolio={setShowPortfolio}
+          setShowPresentation={setShowPresentation}
+        />
+      )}
     </div>
   );
 };

@@ -38,7 +38,7 @@ const Knowledges = () => {
           Compétences
         </h4>
         <p className='knowledges__skills__subtitle'>
-          Une petite liste non exhaustive des langages front que je maitrise assez pour réussir les tests techniques ainsi que créer des sites webs designs, intéractifs et communiquant avec un serveur et une base de données. Je continue de me former et m'entraîner dessus en autodidacte.
+          Une petite liste non exhaustive des langages front que je maitrise assez pour réussir les tests techniques ainsi que créer des sites webs designs, intéractifs. Je continue de me former et m'entraîner dessus en autodidacte.
         </p>
         <ul className='knowledges__skills__list'>
 
@@ -70,7 +70,7 @@ const Knowledges = () => {
           Outils
         </h4>
         <p className='knowledges__skills__subtitle'>
-          Vous pourrez aussi remarquer dans mon github que je maitrise les normes d'indentation et les conventions de nommages pour HTML, CSS et JavaScript.
+          Vous pourrez aussi remarquer dans mon github que je maitrise les normes d'indentation et les conventions de nommages pour HTML, CSS, JavaScript et React.
         </p>
         <ul className='knowledges__skills__list'>
 
