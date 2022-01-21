@@ -62,6 +62,35 @@
     }
   }
 }
+
+@media screen and (max-width: 850px) {
+  .easter-egg {
+    &__container {
+      max-width: 80vw;
+      font-size: 0.6em;
+
+      &__button {
+        &__icon {
+          height: 40px;
+        }
+
+        &__label {
+          transform: none;
+          opacity: 1;
+          margin-top: 1em;
+        }
+
+        &:hover {
+          .easter-egg__container__button__label {
+            transform: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+
 // Copy pasta from the web
 
 $particles: 50;
