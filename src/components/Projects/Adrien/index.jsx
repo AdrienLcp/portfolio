@@ -99,8 +99,6 @@ const Adrien = ({ setShowPortfolio, setShowPresentation }) => {
               />
               <p className='adrien__infos__buttons__item__link__label'>
                 Visiter le site
-                <br />
-                (ça sert à rien de cliquer, vous êtes déjà dessus)
               </p>
             </a>
           </li>
