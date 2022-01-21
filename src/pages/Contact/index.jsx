@@ -30,6 +30,54 @@ const Contact = () => {
             Message envoyé !
           </p>
         </section>
+
+        <section className='contact__infos'>
+          <ul className='contact__infos__list'>
+
+            <li
+              key={1}
+              className='contact__infos__list__item'
+            >
+              <img
+                src={localisation}
+                alt='Icône de la géolocalisation'
+                className='contact__infos__list__item__icon'
+              />
+              <p className='contact__infos__list__item__label'>
+                Couëron ~ 5 minutes de Nantes
+              </p>
+            </li>
+
+            <li
+              key={2}
+              className='contact__infos__list__item'
+            >
+              <img
+                src={mail}
+                alt='Icône du mail'
+                className='contact__infos__list__item__icon'
+              />
+              <p className='contact__infos__list__item__label'>
+                adrienlcp@gmail.com
+              </p>
+            </li>
+            
+            <li
+              key={3}
+              className='contact__infos__list__item'
+            >
+              <img
+                src={phone}
+                alt='Icône du mail'
+                className='contact__infos__list__item__icon'
+              />
+              <p className='contact__infos__list__item__label'>
+                06.50.23.40.20
+              </p>
+            </li>
+
+          </ul>
+        </section>
       </div>
     );
   };

@@ -1,7 +1,5 @@
 @use '../../styles/vars';
 
-// Success in 1440px AND in 850px
-
 .contact {
   width: 100vw;
   min-height: 100vh;
@@ -32,7 +30,6 @@
 
       &:focus {
         outline: none !important;
-        // border-color: vars.$mainColor;
         border: 3px solid vars.$mainColor;
       }
     }
@@ -50,7 +47,6 @@
 
       &:focus {
         outline: none !important;
-        // border-color: vars.$mainColor;
         border: 3px solid vars.$mainColor;
       }
     }
@@ -79,6 +75,25 @@
       &:active {
         transform: scale(0.9);
       }
+    }
+  }
+
+  &__success {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    animation: from_nothing .5s ease-out;
+
+    &__icon {
+      height: 30px;
+      margin-bottom: 1em;
+    }
+
+    &__message {
+      color: vars.$white;
+      font-weight: bold;
     }
   }
 
@@ -179,25 +194,17 @@
       }
     }
 
-    // &__success {
-    //   padding: 2em;
-    //   background-color: vars.$white;
-    //   border-radius: 50px;
-    //   display: flex;
-    //   align-items: center;
-    //   justify-content: space-evenly;
-    //   animation: success .3s linear;
+    &__success {
+      padding: 2em;
+      border-radius: 50px;
+      border: 2px solid vars.$mainColor;
+      flex-direction: row;
 
-    //   &__icon {
-    //     height: 30px;
-    //     margin-right: 1em;
-    //   }
-
-    //   &__message {
-    //     color: vars.$mainColor;
-    //     font-weight: bold;
-    //   }
-    // }
+      &__icon {
+        margin-right: 1em;
+        margin-bottom: 0;
+      }
+    }
 
     &__infos {
       margin-top: 0;
@@ -301,26 +308,6 @@
       }
     }
 
-    // &__success {
-    //   padding: 2em;
-    //   background-color: vars.$white;
-    //   border-radius: 50px;
-    //   display: flex;
-    //   align-items: center;
-    //   justify-content: space-evenly;
-    //   animation: success .3s linear;
-
-    //   &__icon {
-    //     height: 30px;
-    //     margin-right: 1em;
-    //   }
-
-    //   &__message {
-    //     color: vars.$mainColor;
-    //     font-weight: bold;
-    //   }
-    // }
-
     &__infos {
       margin-top: 0;
       margin-left: 10em;
@@ -344,16 +331,6 @@
           }
         }
       }
-    }
-  }
-
-  @keyframes success {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
     }
   }
 }
