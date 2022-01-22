@@ -27,6 +27,9 @@ const Projects = () => {
         <br />
         <br />
         Ayant dû trouver un travail en attendant d'être embauché en développement, je n'ai plus beaucoup de temps de libre pour coder des projets personnels. J'y passe une dizaine d'heures par semaine au minimum.
+        <br />
+        <br />
+        Cliquez sur un projet pour le voir. <span className='projects__text_violet'>Bonne visite !</span>
       </p>
 
       <h4 className='projects__title'>
@@ -51,9 +54,6 @@ const Projects = () => {
         Je suis ouvert à toute proposition pour un projet en duo ou en équipe pour étoffer mon portfolio.
         <br />
         N'hésitez pas à me contactez !
-        <br />
-        <br />
-        Cliquez sur un projet pour le voir. <span className='projects__text_violet'>Bonne visite !</span>
       </p>
     </section>
   );

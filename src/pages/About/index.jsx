@@ -323,7 +323,7 @@ const About = () => {
           <br />
           J'ai cependant deux chats, Poupette, et son fils, Poupineau, que j'aime beaucoup et qui me donnent beaucoup d'amour. Je leur ai d'ailleurs fait un petit site (voir
           <NavLink
-            to='/portfolio'
+            to='/projets'
             className='about__history__text_violet'
           >
             mon portfolio

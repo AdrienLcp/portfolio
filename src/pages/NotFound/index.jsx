@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -20,7 +21,10 @@ const NotFound = () => {
       />
       <p className='not-found__title'>404</p>
       <p className='not-found__text'>La page que vous cherchez n'existe pas</p>
-      <button className='not-found__button'>
+      <NavLink
+        to='/'
+        className='not-found__button'  
+      >
         <img
           src={home}
           alt="Retourner à l'accueil"
@@ -29,7 +33,7 @@ const NotFound = () => {
         <p className='not-found__button__label'>
           Retourner à l'accueil
         </p>
-      </button>
+      </NavLink>
     </div>
   );
 };
