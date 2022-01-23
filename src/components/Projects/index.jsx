@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -40,7 +41,7 @@ const Projects = () => {
         En ce moment, je travaille sur l'adaptation de MAJA sur mobile, en React Native. Je suis dans l'attente de réponse des développeurs de Deezer qui n'ont pas encore rempli la doc au sujet de leur SDK, qui n'est pour l'instant utilisable qu'avec du HTML.
         <br />
         <br />
-        Je réfléchis aussi, avec un collaborateur, sur un site de Quizz participatif. À l'image de <span className='projects__text_violet'>MAJA</span>, les utilisateurs pourront créer leur propres quizz, choisir ou créer un thème, une difficulté et des questions / réponses. Les visiteurs pourront, quant à eux, y jouer, répondre aux questions, et donner une note au quiz pour mieux le référencer. Il y aura aussi un système d'authentification.
+        Je réfléchis aussi, avec un collaborateur, sur un site de Quizz participatif. À l'image de <span className='projects__text_bold'>MAJA</span>, les utilisateurs pourront créer leur propres quizz, choisir ou créer un thème, une difficulté et des questions / réponses. Les visiteurs pourront, quant à eux, y jouer, répondre aux questions, et donner une note au quiz pour mieux le référencer. Il y aura aussi un système d'authentification.
         <br />
         <br />
         Les projets déjà présents et "terminés" sont également toujours en cours d'amélioration, par ci par là, quand j'ai une nouvelle idée.
@@ -53,7 +54,13 @@ const Projects = () => {
       <p className='projects__text'>
         Je suis ouvert à toute proposition pour un projet en duo ou en équipe pour étoffer mon portfolio.
         <br />
-        N'hésitez pas à me contactez !
+        N'hésitez pas à 
+          <NavLink
+            to='/contact'
+            className='projects__text_violet'
+          >
+            me contacter
+          </NavLink> !
       </p>
     </section>
   );

@@ -57,50 +57,50 @@
     position: fixed;
     top: -5vh;
     right: 5vw;
-    animation: icon1 23s infinite;
     z-index: 1;
     height: 60px;
     padding: 1em;
+    animation: to_bottom 23s linear infinite;
   }
 
   &__icon2 {
     position: fixed;
-    top: -5vh;
+    top: -10vh;
     right: 30vw;
-    animation: icon2 27s infinite;
     z-index: 1;
     height: 65px;
     padding: 1em;
+    animation: to_bottom 27s linear infinite;
   }
 
   &__icon3 {
     position: fixed;
     top: -5vh;
     right: 55vw;
-    animation: icon3 20s infinite;
     z-index: 1;
     height: 70px;
     padding: 1em;
+    animation: to_bottom 20s linear infinite;
   }
 
   &__icon4 {
     position: fixed;
-    top: -5vh;
+    top: -15vh;
     right: 70vw;
-    animation: icon4 30s infinite;
     z-index: 1;
     height: 60px;
     padding: 1em;
+    animation: to_bottom 30s linear infinite;
   }
 
   &__icon5 {
     position: fixed;
     top: -5vh;
     right: 85vw;
-    animation: icon5 18s infinite;
     z-index: 1;
     height: 55px;
     padding: 1em;
+    animation: to_bottom 18s linear infinite;
   }
 }
 
@@ -166,51 +166,7 @@
   }
 }
 
-@keyframes icon1 {
-  0% {
-    transform: translateY(-2vh);
-  }
-
-  100% {
-    transform: translateY(120vh);
-  }
-}
-
-@keyframes icon2 {
-  0% {
-    transform: translateY(-2vh);
-  }
-
-  100% {
-    transform: translateY(120vh);
-  }
-}
-
-@keyframes icon3 {
-  0% {
-    transform: translateY(-2vh);
-  }
-
-  100% {
-    transform: translateY(120vh);
-  }
-}
-
-@keyframes icon4 {
-  0% {
-    transform: translateY(-2vh);
-  }
-
-  100% {
-    transform: translateY(120vh);
-  }
-}
-
-@keyframes icon5 {
-  0% {
-    transform: translateY(-2vh);
-  }
-
+@keyframes to_bottom {
   100% {
     transform: translateY(120vh);
   }
