@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // Import components
 import Cursor from './components/Cursor';
 import Navigation from './components/Navigation';
+import ScrollBar from './components/ScrollBar';
 
 // Import pages
 import Home from './pages/Home';
@@ -19,6 +20,7 @@ const App = () => {
   return (
     <BrowserRouter>
 
+        <ScrollBar />
         <Cursor />
         <Navigation />
 

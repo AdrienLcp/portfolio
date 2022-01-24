@@ -30,11 +30,11 @@ const About = () => {
 
   return (
     <div className='about'>
-        <img
-          src={adrien}
-          alt='Adrien'
-          className='about__img'
-        />
+      <img
+        src={adrien}
+        alt='Adrien'
+        className='about__img'
+      />
       <ul
         className='about__socials'
         ref={menu}

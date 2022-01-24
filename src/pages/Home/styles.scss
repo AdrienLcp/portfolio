@@ -15,6 +15,96 @@
   align-items: center;
   overflow: hidden;
   animation: from_nothing .5s ease-out;
+  
+  &__socials {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 1.25s;
+    margin-bottom: 8em;
+
+    &.opened li {
+      transform: rotate(calc(360deg / 5 * var(--i)));
+    }
+
+    &__toggle {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 30;
+      border-radius: 50%;
+      cursor: pointer;
+      transform: translateX(80px);
+
+      &__img {
+        max-height: 140px;
+      }
+
+      &:hover {
+        .home__socials__toggle__img {
+          border-radius: 50%;
+          border: 3px solid vars.$mainColor;
+        }
+      }
+    }
+
+    &__links {
+      position: absolute;
+      left: 0;
+      list-style: none;
+      transform-origin: 180px;
+      transition: 0.5s;
+      transition-delay: calc(0.1s * var(--i));
+      transform: rotate(0deg) translateX(160px);
+
+      & a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        padding: 1em;
+        z-index: 5;
+        transform: rotate(calc(360deg / -5 * var(--i)));
+        transition: 0.3s;
+        background-color: vars.$mainColor;
+        border-radius: 50%;
+
+        &:active {
+          transform: scale(0.8) rotate(calc(360deg / -5 * var(--i)));
+        }
+
+        &:hover {
+          .home__socials__links__label {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      }
+
+      &__img {
+        z-index: 2;
+      }
+
+      &__label {
+        position: absolute;
+        bottom: -2em;
+        font-size: 0.8em;
+        color: vars.$white;
+        z-index: 1;
+        opacity: 0;
+        transform: translateY(-2em);
+        transition: 0.3s;
+      }
+    }
+  }
 
   &__header {
     margin-left: 10em;
@@ -105,19 +195,26 @@
 }
 
 @media screen and (max-width: 1000px) {
-  .home__header {
-    &__title {
-      font-size: 2em;
-    }
+  .home {
+    &__header {
+      &__title {
+        font-size: 2em;
+      }
 
-    &__subtitle {
-      font-size: 1em;
+      &__subtitle {
+        font-size: 1em;
+      }
     }
   }
 }
 
 @media screen and (max-width: 850px) {
   .home {
+
+    &__socials {
+      display: none;
+    }
+    
     &__header {
       position: fixed;
       bottom: 30vh;

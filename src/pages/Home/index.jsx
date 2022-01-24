@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import EasterEgg from '../../components/EasterEgg';
 
@@ -7,13 +7,21 @@ import './styles.scss';
 import blackSnippet from '../../media/icons/snippet_black.svg';
 import whiteSnippet from '../../media/icons/snippet_white.svg';
 
-const Home = () => {
+import linkedin from '../../media/social/linkedin.svg';
+import facebook from '../../media/social/facebook.svg';
+import twitter from '../../media/social/twitter.svg';
+import instagram from '../../media/social/instagram.svg';
+import github from '../../media/social/github.svg';
+import adrien from '../../media/social/adrien.png';
 
-  const [toggleSnippet1, setToggleSnippet1] = useState(true);
-  const [toggleSnippet2, setToggleSnippet2] = useState(true);
-  const [toggleSnippet3, setToggleSnippet3] = useState(true);
-  const [toggleSnippet4, setToggleSnippet4] = useState(true);
-  const [toggleSnippet5, setToggleSnippet5] = useState(true);
+const Home = () => {
+  const menu = useRef(null);
+
+  const [toggleSnippet1, setToggleSnippet1] = useState(false);
+  const [toggleSnippet2, setToggleSnippet2] = useState(false);
+  const [toggleSnippet3, setToggleSnippet3] = useState(false);
+  const [toggleSnippet4, setToggleSnippet4] = useState(false);
+  const [toggleSnippet5, setToggleSnippet5] = useState(false);
   const [showEasterEgg, setShowEasterEgg] = useState(false);
 
   useEffect(() => {
@@ -22,18 +30,145 @@ const Home = () => {
 
   useEffect(() => {
     if (
-      toggleSnippet1 === false &&
-      toggleSnippet2 === false &&
-      toggleSnippet3 === false &&
-      toggleSnippet4 === false &&
-      toggleSnippet5 === false
+      toggleSnippet1 === true &&
+      toggleSnippet2 === true &&
+      toggleSnippet3 === true &&
+      toggleSnippet4 === true &&
+      toggleSnippet5 === true
     ) {
       setShowEasterEgg(true);
     };
   }, [toggleSnippet1, toggleSnippet2, toggleSnippet3, toggleSnippet4, toggleSnippet5]);
 
+  const toggleMenu = () => {
+    menu.current.classList.toggle('opened');
+  };
+
   return (
     <div className='home'>
+      <ul
+        className='home__socials'
+        ref={menu}
+      >
+        <div 
+          className='home__socials__toggle'
+          onClick={() => {
+            toggleMenu();
+          }}
+        >
+          <img
+            src={adrien}
+            alt='Adrien'
+            className='home__socials__toggle__img'
+          />
+        </div>
+
+        <li
+          key={1}
+          className='home__socials__links social_0'
+        >
+          <a 
+            href='https://www.linkedin.com/in/adrien-lacourpaille/'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <img
+              src={linkedin}
+              alt='Lien vers mon LinkedIn'
+              className='home__socials__links__item'
+            />
+
+            <p className='home__socials__links__label'>
+              Linkedin
+            </p>
+          </a>
+        </li>
+
+        <li
+          key={2}
+          className='home__socials__links social_1'
+        >
+          <a 
+            href='https://github.com/AdrienLcp'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <img
+              src={github}
+              alt='Lien vers mon Github'
+              className='home__socials__links__item'
+            />
+
+            <p className='home__socials__links__label'>
+              Github
+            </p>
+          </a>
+        </li>
+
+        <li
+          key={3}
+          className='home__socials__links social_2'
+        >
+          <a 
+            href='https://www.instagram.com/adrien.lcp/'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <img
+              src={instagram}
+              alt='Lien vers mon Instagram'
+              className='home__socials__links__item'
+            />
+
+            <p className='home__socials__links__label'>
+              Instagram
+            </p>
+          </a>
+        </li>
+
+        <li
+          key={4}
+          className='home__socials__links social_3'
+        >
+          <a 
+            href='https://twitter.com/Adrien_Lcp'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <img
+              src={twitter}
+              alt='Lien vers mon Twitter'
+              className='home__socials__links__item'
+            />
+
+            <p className='home__socials__links__label'>
+              Twitter
+            </p>
+          </a>
+        </li>
+
+        <li
+          key={5}
+          className='home__socials__links social_4'
+        >
+          <a 
+            href='https://www.facebook.com/profile.php?id=100008182473616'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <img
+              src={facebook}
+              alt='Lien vers mon Facebook'
+              className='home__socials__links__item'
+            />
+
+            <p className='home__socials__links__label'>
+              Facebook
+            </p>
+          </a>
+        </li>
+
+      </ul>
       <header className='home__header'>
         <h1 className='home__header__title'>
           Adrien Lacourpaille
@@ -45,7 +180,7 @@ const Home = () => {
       </header>
 
       <img
-        src={toggleSnippet1 ? blackSnippet : whiteSnippet}
+        src={toggleSnippet1 ? whiteSnippet : blackSnippet}
         alt="Snippets de code"
         className="home__icon1"
         onClick={() => {
@@ -53,7 +188,7 @@ const Home = () => {
         }}
       />
       <img
-        src={toggleSnippet2 ? blackSnippet : whiteSnippet}
+        src={toggleSnippet2 ? whiteSnippet : blackSnippet}
         alt="Snippets de code"
         className="home__icon2"
         onClick={() => {
@@ -61,7 +196,7 @@ const Home = () => {
         }}
       />
       <img
-        src={toggleSnippet3 ? blackSnippet : whiteSnippet}
+        src={toggleSnippet3 ? whiteSnippet : blackSnippet}
         alt="Snippets de code"
         className="home__icon3"
         onClick={() => {
@@ -69,7 +204,7 @@ const Home = () => {
         }}
       />
       <img
-        src={toggleSnippet4 ? blackSnippet : whiteSnippet}
+        src={toggleSnippet4 ? whiteSnippet : blackSnippet}
         alt="Snippets de code"
         className="home__icon4"
         onClick={() => {
@@ -77,7 +212,7 @@ const Home = () => {
         }}
       />
       <img
-        src={toggleSnippet5 ? blackSnippet : whiteSnippet}
+        src={toggleSnippet5 ? whiteSnippet : blackSnippet}
         alt="Snippets de code"
         className="home__icon5"
         onClick={() => {
