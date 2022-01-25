@@ -187,24 +187,17 @@ const About = () => {
           À la fin de mes études, j'ai travaillé 4 années en remplacements, petits CDD et intérim, dans des dizaines d'entreprises différentes. Fort de diverses expériences variées, de travail en équipe comme en autonomie, j'ai appris la ponctualité, l'assiduité ainsi que le travail minutieux et acharné.
           <br />
           <br />
-          J'ai ensuite été embauché chez un grossiste de pièces pour 2 roues, en tant que magasinier : Proconcept 2 Roues (P2R), à Couëron. J'y suis resté plus de 4 ans. L'ambiance y était bonne, l'équipe était comme une seconde famille pour moi. Mais...
+          J'ai ensuite été embauché chez un grossiste de pièces pour 2 roues, en tant que magasinier : Proconcept 2 Roues (P2R), à Couëron. J'y suis resté plus de 4 ans.
           <br />
           <br />
-          J'ai appris qu'il existait des aides pour les reconversions. Je n'en avais jamais eu les moyens, et, bien que je n'ai jamais su quoi faire de mes études (ou après mes études), j'ai toujours été attiré par le code. J'avais été initié, dans mes jeunes années, au HTML et au CSS par le Site du Zéro.
-          <br />
-          <br />
-
-          J'ai alors rempli un dossier et fait une demande pour suivre une formation chez O'Clock, et devenir développeur web, qui a été accepté.
-          <br />
-          <br />
-          Ma formation, qui a duré 6 mois, s'est donc déroulée de février à août 2021. J'y ai appris les bases de HTML, du CSS, de JavaScript, de Node, de SQL, ... (voir
+          J'ai ensuite suivi une formation en téléprésentiel chez O'Clock. Celle-ci s'est achevée en août 2021. J'y ai appris les bases de HTML, du CSS, de JavaScript, de Node, de SQL, ... (voir
           <NavLink
             to='/competences'
             className='about__history__text_violet'
           >
             mes compétences
           </NavLink>
-          ) Les deux derniers mois de cette formation étaient encore plus passionnants. Un mois de spécialisation sur React (que j'ai choisi, car toujours été plus attiré par le front), puis un mois de projet avec trois autres camarades. Nous avons créé un site de blind test participatif.
+          ) Les deux derniers mois de cette formation étaient encore plus passionnants. Un mois de spécialisation sur React, puis un mois de projet avec trois autres camarades. Nous avons créé MAJA, un site de blind test participatif.
           <br />
           <br />
           Depuis la fin de la formation, je crée de petits projets pour m'entraîner. J'ai cependant dû trouver un travail alimentaire pour continuer de payer mon loyer, en attendant de trouver un poste de développeur.
@@ -312,7 +305,7 @@ const About = () => {
         </h3>
 
         <p className='about__history__text'>
-          Quand j'étais plus jeune, j'ai fait de la natation, du judo et du tennis de table, ainsi que du solfège et du piano.
+          Plus jeune, j'ai fait de la natation, du judo et du tennis de table, ainsi que du solfège et du piano.
           <br />
           <br />
           J'ai passé beaucoup (trop) du temps de mon adolescence devant des jeux vidéos, des films et des séries.
@@ -321,7 +314,7 @@ const About = () => {
           Aujourd'hui, j'écoute pas mal de musiques de films pendant que je code. Outre le développement, je passe mon temps libre ... devant des jeux vidéos, des films et des séries. Je m'intéresse aussi au poker, et de plus en plus à la cuisine.
           <br />
           <br />
-          J'ai cependant deux chats, Poupette, et son fils, Poupineau, que j'aime beaucoup et qui me donnent beaucoup d'amour. Je leur ai d'ailleurs fait un petit site (voir
+          J'ai deux chats, Poupette, et son fils, Poupineau, que j'aime beaucoup et qui me donnent beaucoup d'amour. Je leur ai d'ailleurs fait un petit site (voir
           <NavLink
             to='/projets'
             className='about__history__text_violet'

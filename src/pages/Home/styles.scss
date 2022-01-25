@@ -30,6 +30,10 @@
       transform: rotate(calc(360deg / 5 * var(--i)));
     }
 
+    &.opened span {
+      display: none;
+    }
+
     &__toggle {
       position: absolute;
       width: 60px;
@@ -47,11 +51,27 @@
         max-height: 140px;
         border: 3px solid transparent;
         border-radius: 50%;
+        z-index: 2;
+      }
+
+      &__label {
+        color: vars.$grey;
+        width: 20em;
+        opacity: 0;
+        position: absolute;
+        transition: .3s;
+        z-index: 1;
+        transform: translateY(3.5em);
       }
 
       &:hover {
         .home__socials__toggle__img {
           border-color: vars.$mainColor;
+        }
+
+        .home__socials__toggle__label {
+          transform: translateY(5.5em);
+          opacity: 1;
         }
       }
     }
@@ -64,6 +84,21 @@
       transition: 0.5s;
       transition-delay: calc(0.1s * var(--i));
       transform: rotate(0deg) translateX(160px);
+
+      &__item {
+        z-index: 10;
+      }
+
+      &__label {
+        position: absolute;
+        bottom: -2em;
+        font-size: 0.8em;
+        color: vars.$white;
+        z-index: 8;
+        opacity: 0;
+        transform: translateY(-2em);
+        transition: 0.3s;
+      }
 
       & a {
         display: flex;
@@ -88,21 +123,6 @@
             transform: translateY(0);
           }
         }
-      }
-
-      &__img {
-        z-index: 2;
-      }
-
-      &__label {
-        position: absolute;
-        bottom: -2em;
-        font-size: 0.8em;
-        color: vars.$white;
-        z-index: 1;
-        opacity: 0;
-        transform: translateY(-2em);
-        transition: 0.3s;
       }
     }
   }

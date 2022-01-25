@@ -63,6 +63,10 @@ const Home = () => {
             alt='Adrien'
             className='home__socials__toggle__img'
           />
+
+          <span className='home__socials__toggle__label'>
+            Voir les réseaux
+          </span>
         </div>
 
         <li

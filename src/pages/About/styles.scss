@@ -164,12 +164,13 @@
   
         &__img {
           max-height: 140px;
+          border-radius: 50%;
+          border: 3px solid transparent;
         }
   
         &:hover {
           .about__socials__toggle__img {
-            border-radius: 50%;
-            border: 2px solid vars.$mainColor;
+            border-color: vars.$mainColor;
           }
         }
   
