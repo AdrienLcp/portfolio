@@ -16,6 +16,7 @@ import adrien from '../../media/social/adrien.png';
 
 const Home = () => {
   const menu = useRef(null);
+  const header = useRef(null);
 
   const [toggleSnippet1, setToggleSnippet1] = useState(false);
   const [toggleSnippet2, setToggleSnippet2] = useState(false);
@@ -42,6 +43,7 @@ const Home = () => {
 
   const toggleMenu = () => {
     menu.current.classList.toggle('opened');
+    header.current.classList.toggle('translate');
   };
 
   return (
@@ -169,7 +171,7 @@ const Home = () => {
         </li>
 
       </ul>
-      <header className='home__header'>
+      <header className='home__header' ref={header}>
         <h1 className='home__header__title'>
           Adrien Lacourpaille
         </h1>

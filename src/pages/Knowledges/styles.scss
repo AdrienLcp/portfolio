@@ -87,9 +87,7 @@
 }
 
 @media screen and (min-width: 850px) {
-
   .knowledges {
-    
     &__CV {
       margin: 0;
       position: fixed;
@@ -165,7 +163,7 @@
       bottom: 5em;
 
       &__icon {
-        height: 100px;
+        height: 80px;
         padding: 1em;
       }
 
@@ -176,7 +174,7 @@
         opacity: 0;
         z-index: 1;
         width: 10em;
-        transform: translateY(2.5em);
+        transform: translateY(2em);
         transition: .3s;
       }
 
@@ -187,7 +185,7 @@
 
         .knowledges__CV__label {
           opacity: 1;
-          transform: translateY(5em);
+          transform: translateY(4em);
         }
       }
     }

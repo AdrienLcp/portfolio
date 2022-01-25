@@ -9,6 +9,13 @@ const EasterEgg = ({ setShowEasterEgg }) => {
   return (
     <section className='easter-egg'>
 
+      <div
+        className='behind'
+        onClick={() => {
+          setShowEasterEgg(false);
+        }}
+      ></div>
+
       <div class='pyro'>
         <div class='before'></div>
         <div class='after'></div>

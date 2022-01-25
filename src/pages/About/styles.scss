@@ -139,7 +139,6 @@
       justify-content: center;
       align-items: center;
       transition: transform 1.25s;
-      margin-bottom: 8em;
   
       &.opened li {
         transform: rotate(calc(360deg / 5 * var(--i)));

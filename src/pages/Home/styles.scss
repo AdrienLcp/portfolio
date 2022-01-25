@@ -113,6 +113,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transform: translateY(-5em);
+    transition: .3s;
+    transition-delay: .5s;
+    
+    &.translate {
+      transform: translateY(0);
+    }
 
     &__title {
       color: vars.$white;
