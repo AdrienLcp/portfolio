@@ -33,9 +33,10 @@
 
         &__icon {
           height: 50px;
-          padding: 1em;
+          padding: 0.9em;
           background-color: vars.$mainColor;
           border-radius: 50%;
+          border: 2px solid vars.$mainColor;
         }
 
         &__label {
@@ -58,9 +59,7 @@
 
 .selected {
   .nav__list__button__item__icon {
-    border: 2px solid vars.$white;
-    height: 51px;
-    padding: 0.9em;
+    border-color: vars.$white;
   }
 }
 
@@ -87,8 +86,9 @@
 
           &__icon {
             height: 60px;
-            padding: 1.3em;
+            padding: 1.1em;
             z-index: 2;
+            border: 2px solid vars.$mainColor;
           }
 
           &__label {
@@ -113,9 +113,7 @@
 
   .selected {
     .nav__list__button__item__icon {
-      border: 2px solid vars.$white;
-      height: 61px;
-      padding: 1.2em;
+      border-color: vars.$white;
     }
   }
 }
@@ -129,9 +127,3 @@
     }
   }
 }
-
-// for big screen =>
-
-// Icon 
-// height: 60px;
-// padding: 1.3em;

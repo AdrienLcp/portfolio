@@ -105,6 +105,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 10vh;
 
     &__header {
       width: 40em;
@@ -177,6 +178,7 @@
             &__icon {
               padding: 0.7em;
               z-index: 2;
+              border: 2px solid vars.$mainColor;
             }
 
             &__label {
@@ -192,8 +194,7 @@
 
             &:hover {
               .poupets__infos__buttons__item__link__icon {
-                border: 2px solid vars.$white;
-                height: 54px;
+                border-color: vars.$white;
               }
 
               .poupets__infos__buttons__item__link__label {

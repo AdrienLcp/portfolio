@@ -327,12 +327,14 @@
       &__images {
         width: 50em;
         max-width: 50em;
+        margin-top: 10em;
+        margin-bottom: 20em;
         
         &__item {
-          height: 100px;
+          height: 150px;
 
           &:hover {
-            transform: scale(5);
+            transform: scale(3);
           }
         }
       }

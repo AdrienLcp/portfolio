@@ -103,6 +103,7 @@
 @media screen and (min-width: 850px) {
   .adrien {
     margin-left: 10em;
+    margin-top: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -178,6 +179,7 @@
             &__icon {
               padding: 0.7em;
               z-index: 2;
+              border: 2px solid vars.$mainColor;
             }
 
             &__label {
@@ -193,8 +195,7 @@
 
             &:hover {
               .adrien__infos__buttons__item__link__icon {
-                border: 2px solid vars.$white;
-                height: 54px;
+                border-color: vars.$white;
               }
 
               .adrien__infos__buttons__item__link__label {
@@ -204,6 +205,7 @@
             }
 
             &:active {
+              transition: .2s;
               transform: scale(0.8);
             }
           }
