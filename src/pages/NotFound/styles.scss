@@ -40,13 +40,14 @@
       padding: 1em;
       margin-top: 3em;
       z-index: 2;
+      border: 2px solid vars.$mainColor;
     }
 
     &__label {
       color: vars.$white;
       text-align: center;
       opacity: 0;
-      width: 10em;
+      width: 20em;
       transition: .3s;
       transform: translateY(-1em);
     }
@@ -55,6 +56,10 @@
       .not-found__button__label {
         opacity: 1;
         transform: translateY(1em);
+      }
+      
+      .not-found__button__icon {
+        border-color: vars.$white;
       }
     }
 

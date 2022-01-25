@@ -1,11 +1,5 @@
 @use '../../styles/vars';
 
-// for big screen =>
-
-// Icon 
-// height: 60px;
-// padding: 1.3em;
-
 .nav {
   position: fixed !important;
   bottom: 0;
@@ -50,6 +44,7 @@
         }
 
         :active {
+          transition: .2s;
           transform: scale(0.9);
         }
       }
