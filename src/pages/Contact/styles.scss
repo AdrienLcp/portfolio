@@ -3,126 +3,145 @@
 .contact {
   width: 100vw;
   min-height: 100vh;
+  margin-bottom: 10em;
+  animation: from_nothing .5s ease-out;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10em;
-  animation: from_nothing .5s ease-out;
 
-  &__form {
-    margin-top: 4em;
+  &__title {
+    margin-top: 2em;
+    color: vars.$white;
+    font-weight: bold;
+    font-size: 2em;
+  }
+
+  &__container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90vw;
+    justify-content: center;
 
-    &__input {
-      border-color: transparent;
-      padding: 1em;
-      font-size: 0.7em;
-      text-align: center;
-      background-color: vars.$white;
-      border-radius: 50px;
-      color: vars.$black;
-      width: 80vw;
-      max-width: 250px;
-      font-family: 'Poppins';
-
-      &:focus {
-        outline: none !important;
-        border: 3px solid vars.$mainColor;
-      }
-    }
-
-    &__area {
-      margin-top: 2em;
-      border-color: transparent;
-      padding: 2em;
-      height: 15em;
-      border-radius: 20px;
-      font-size: 0.7em;
-      width: 80vw;
-      max-width: 250px;
-      color: vars.$black;
-      font-family: 'Poppins';
-
-      &:focus {
-        outline: none !important;
-        border: 3px solid vars.$mainColor;
-      }
-    }
-
-    &__submit {
-      margin-top: 1em;
-      border: none;
-      display: flex;
-      align-items: center;
-      background: transparent;
-      background-color: vars.$mainColor;
-      border-radius: 20px;
-      padding: 0.7em;
-      transition: .2s;
-
-      &__icon {
-        height: 20px;
-      }
-
-      &__label {
-        color: vars.$white;
-        margin: 0 1em;
-        font-size: 0.8em;
-      }
-
-      &:active {
-        transform: scale(0.9);
-      }
-    }
-  }
-
-  &__success {
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    animation: from_nothing .5s ease-out;
-
-    &__icon {
-      height: 30px;
-      margin-bottom: 1em;
-    }
-
-    &__message {
-      color: vars.$white;
-      font-weight: bold;
-    }
-  }
-
-  &__infos {
-    margin-top: 3em;
-
-    &__list {
+    &__form {
+      margin-top: 4em;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      width: 90vw;
 
-      &__item {
+      &__input {
+        border-color: transparent;
+        padding: 1em;
+        font-size: 0.7em;
+        text-align: center;
+        background-color: vars.$white;
+        border-radius: 50px;
+        color: vars.$black;
+        width: 80vw;
+        max-width: 250px;
+        font-family: 'Poppins';
+
+        &:focus {
+          outline: none !important;
+          border: 3px solid vars.$mainColor;
+        }
+      }
+
+      &__area {
         margin-top: 2em;
+        border-color: transparent;
+        padding: 2em;
+        height: 15em;
+        border-radius: 20px;
+        font-size: 0.7em;
+        width: 80vw;
+        max-width: 250px;
+        color: vars.$black;
+        font-family: 'Poppins';
+
+        &:focus {
+          outline: none !important;
+          border: 3px solid vars.$mainColor;
+        }
+      }
+
+      &__submit {
+        margin-top: 1em;
+        border: none;
         display: flex;
-        flex-direction: column;
         align-items: center;
+        background: transparent;
+        background-color: vars.$mainColor;
+        border-radius: 20px;
+        padding: 0.7em;
+        transition: .2s;
 
         &__icon {
-          background-color: vars.$mainColor;
-          padding: 0.7em;
-          border-radius: 50%;
-          height: 40px;
+          height: 20px;
         }
 
         &__label {
-          color: vars.$grey;
-          margin-top: 1em;
-          font-size: 0.7em;
+          color: vars.$white;
+          margin: 0 1em;
+          font-size: 0.8em;
+        }
+
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+    }
+
+    &__success {
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      animation: from_nothing .5s ease-out;
+
+      &__icon {
+        height: 30px;
+        margin-bottom: 1em;
+      }
+
+      &__message {
+        color: vars.$white;
+        font-weight: bold;
+      }
+    }
+
+    &__infos {
+      margin-top: 3em;
+
+      &__list {
+        display: flex;
+        flex-direction: column;
+
+        &__item {
+          margin-top: 2em;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          &__icon {
+            background-color: vars.$mainColor;
+            padding: 0.7em;
+            border-radius: 50%;
+            height: 40px;
+          }
+
+          &__label {
+            color: vars.$grey;
+            margin-top: 1em;
+            font-size: 0.7em;
+          }
+
+          &__span {
+            position: absolute;
+            opacity: 0;
+          }
         }
       }
     }
@@ -131,102 +150,128 @@
 
 @media screen and (min-width: 850px) {
   .contact {
-    flex-direction: row;
-    width: auto;
     margin-bottom: 0;
-    margin-left: 20em;
 
-    &__form {
+    &__title {
       margin-top: 0;
+      font-size: 4em;
+      margin-bottom: 2em;
+    }
+
+    &__container {
+      flex-direction: row;
       width: auto;
-      align-items: flex-start;
+      margin-left: 20em;
 
-      &__input {
-        width: 20em;
-        max-width: 20em;
-        text-align: start;
-        font-size: 0.8em;
-        padding-left: 2em;
-      }
-      
-      &__area {
-        width: 25em;
-        max-width: 25em;
-        height: 15em;
-        font-size: 0.8em;
-        padding-left: 2em;
-      }
+      &__form {
+        margin-top: 0;
+        width: auto;
+        align-items: flex-start;
 
-      &__submit {
-        margin-top: 2em;
-        background-color: transparent;
-        border-radius: none;
-        padding: 0;
-
-        &__icon {
-          height: 50px;
-          background-color: vars.$mainColor;
-          border-radius: 50%;
-          padding: 1em;
-          z-index: 2;
+        &__input {
+          width: 20em;
+          max-width: 20em;
+          text-align: start;
+          font-size: 0.8em;
+          padding-left: 2em;
         }
         
-        &__label {
-          opacity: 0;
-          transform: translateX(-3em);
-          opacity: 0;
-          z-index: 1;
-          transition: .3s;
-          margin: 0;
-          font-size: 1em;
-          background-color: vars.$mainColor;
-          padding: 1.3em 2.5em;
-          height: 50px;
-          border-top-right-radius: 30px;
-          border-bottom-right-radius: 30px;
+        &__area {
+          width: 25em;
+          max-width: 25em;
+          height: 15em;
+          font-size: 0.8em;
+          padding-left: 2em;
         }
 
-        &:hover {
-          .contact__form__submit__label {
-            opacity: 1;
-            transform: translateX(-2em);
-          }
-        }
-      }
-    }
-
-    &__success {
-      padding: 2em;
-      border-radius: 50px;
-      border: 2px solid vars.$mainColor;
-      flex-direction: row;
-
-      &__icon {
-        margin-right: 1em;
-        margin-bottom: 0;
-      }
-    }
-
-    &__infos {
-      margin-top: 0;
-      margin-left: 5em;
-
-      &__list {
-        justify-content: space-evenly;
-
-        &__item {
-          flex-direction: row;
-          margin: 1em;
+        &__submit {
+          margin-top: 2em;
+          background-color: transparent;
+          border-radius: none;
+          padding: 0;
 
           &__icon {
             height: 50px;
+            background-color: vars.$mainColor;
+            border-radius: 50%;
+            padding: 1em;
+            z-index: 2;
+          }
+          
+          &__label {
+            opacity: 0;
+            transform: translateX(-3em);
+            opacity: 0;
+            z-index: 1;
+            transition: .3s;
+            margin: 0;
+            font-size: 1em;
+            background-color: vars.$mainColor;
+            padding: 1.3em 2.5em;
+            height: 50px;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
           }
 
-          &__label {
-            color: vars.$white;
-            margin-top: 0;
-            margin-left: 1em;
-            font-size: 0.8em;
+          &:hover {
+            .contact__form__submit__label {
+              opacity: 1;
+              transform: translateX(-2em);
+            }
+          }
+        }
+      }
+
+      &__success {
+        padding: 2em;
+        border-radius: 50px;
+        border: 2px solid vars.$mainColor;
+        flex-direction: row;
+
+        &__icon {
+          margin-right: 1em;
+          margin-bottom: 0;
+        }
+      }
+
+      &__infos {
+        margin-top: 0;
+        margin-left: 5em;
+
+        &__list {
+          justify-content: space-evenly;
+
+          &__item {
+            flex-direction: row;
+            margin: 1em;
+            position: relative;
+
+            &__icon {
+              height: 50px;
+            }
+
+            &__label {
+              color: vars.$white;
+              margin-top: 0;
+              margin-left: 1em;
+              font-size: 0.8em;
+            }
+
+            &__span {
+              position: absolute;
+              color: vars.$grey;
+              font-size: 0.7em;
+              opacity: 0;
+              transform: translate(10em, 0em);
+              transition: .3s;
+            }
+
+            &.copied {
+              .contact__infos__list__item__span {
+                opacity: 1;
+                transform: translate(10em, 2.5em);
+              }
+            }
           }
         }
       }
@@ -243,91 +288,95 @@
     }
   }
 }
+
 @media screen and (min-width: 1440px) {
   .contact {
-    flex-direction: row;
-    width: auto;
     margin-bottom: 0;
 
-    &__form {
-      margin-top: 0;
-      width: auto;
-      align-items: flex-start;
+    &__container {
+    flex-direction: row;
+    width: auto;
 
-      &__input {
-        width: 30em;
-        text-align: start;
-        font-size: 1em;
-        padding-left: 2em;
-      }
-      
-      &__area {
-        width: 37em;
-        max-width: 37em;
-        min-width: 25em;
-        height: 20em;
-        font-size: 1em;
-        padding-left: 2em;
-      }
+      &__form {
+        margin-top: 0;
+        width: auto;
+        align-items: flex-start;
 
-      &__submit {
-        margin-top: 2em;
-        background-color: transparent;
-        border-radius: none;
-        padding: 0;
-
-        &__icon {
-          height: 50px;
-          background-color: vars.$mainColor;
-          border-radius: 50%;
-          padding: 1em;
-          z-index: 2;
+        &__input {
+          width: 30em;
+          text-align: start;
+          font-size: 1em;
+          padding-left: 2em;
         }
         
-        &__label {
-          opacity: 0;
-          transform: translateX(-3em);
-          opacity: 0;
-          z-index: 1;
-          transition: .3s;
-          margin: 0;
+        &__area {
+          width: 37em;
+          max-width: 37em;
+          min-width: 25em;
+          height: 20em;
           font-size: 1em;
-          background-color: vars.$mainColor;
-          padding: 1.3em 2.5em;
-          height: 50px;
-          border-top-right-radius: 30px;
-          border-bottom-right-radius: 30px;
+          padding-left: 2em;
         }
 
-        &:hover {
-          .contact__form__submit__label {
-            opacity: 1;
-            transform: translateX(-2em);
+        &__submit {
+          margin-top: 2em;
+          background-color: transparent;
+          border-radius: none;
+          padding: 0;
+
+          &__icon {
+            height: 50px;
+            background-color: vars.$mainColor;
+            border-radius: 50%;
+            padding: 1em;
+            z-index: 2;
+          }
+          
+          &__label {
+            opacity: 0;
+            transform: translateX(-3em);
+            opacity: 0;
+            z-index: 1;
+            transition: .3s;
+            margin: 0;
+            font-size: 1em;
+            background-color: vars.$mainColor;
+            padding: 1.3em 2.5em;
+            height: 50px;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+          }
+
+          &:hover {
+            .contact__form__submit__label {
+              opacity: 1;
+              transform: translateX(-2em);
+            }
           }
         }
       }
-    }
 
-    &__infos {
-      margin-top: 0;
-      margin-left: 10em;
+      &__infos {
+        margin-top: 0;
+        margin-left: 10em;
 
-      &__list {
-        justify-content: space-evenly;
+        &__list {
+          justify-content: space-evenly;
 
-        &__item {
-          flex-direction: row;
-          margin: 1em;
+          &__item {
+            flex-direction: row;
+            margin: 1em;
 
-          &__icon {
-            height: 60px;
-          }
+            &__icon {
+              height: 60px;
+            }
 
-          &__label {
-            color: vars.$white;
-            margin-top: 0;
-            margin-left: 1em;
-            font-size: 1em;
+            &__label {
+              color: vars.$white;
+              margin-top: 0;
+              margin-left: 1em;
+              font-size: 1em;
+            }
           }
         }
       }

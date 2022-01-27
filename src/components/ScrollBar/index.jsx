@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 import './styles.scss';
 
@@ -11,7 +11,7 @@ const ScrollBar = () => {
 
   // window.addEventListener('scroll', () => {
   //   let progress = (document.documentElement.scrollTop / totalHeight) * 100;
-  //   scrollBarContainer.current.style.height = progress + '%';
+  //   scrollBarContainer.current?.style.height = progress + '%';
   // });
 
   // const scroll = (event) => {

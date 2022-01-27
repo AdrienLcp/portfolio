@@ -24,6 +24,8 @@ const Portfolio = () => {
 
   useEffect(() => {
     document.title = "Adrien Lacourpaille - Projets";
+
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {

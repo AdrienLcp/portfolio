@@ -22,6 +22,8 @@ const About = () => {
 
   useEffect(() => {
     document.title = "Adrien Lacourpaille - À propos";
+
+    window.scrollTo(0, 0);
   }, []);
 
   const toggleMenu = () => {

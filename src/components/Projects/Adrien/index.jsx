@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import './styles.scss';
 
@@ -10,6 +10,10 @@ import quit from '../../../media/icons/quit.svg';
 const Adrien = ({ setShowPortfolio, setShowPresentation }) => {
 
   const adrienRef = useRef(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const close = () => {
     adrienRef.current.style.opacity = '0';

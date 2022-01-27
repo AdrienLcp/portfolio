@@ -14,6 +14,8 @@ const Knowledges = () => {
 
   useEffect(() => {
     document.title = "Adrien Lacourpaille - Compétences";
+
+    window.scrollTo(0, 0);
   }, []);
 
   return (

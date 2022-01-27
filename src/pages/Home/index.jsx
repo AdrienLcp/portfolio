@@ -27,7 +27,9 @@ const Home = () => {
 
   useEffect(() => {
     document.title = "Adrien Lacourpaille";
-  }, []);
+
+    window.scrollTo(0, 0);
+  }, []); 
 
   useEffect(() => {
     if (

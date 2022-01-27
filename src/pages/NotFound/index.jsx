@@ -10,6 +10,8 @@ const NotFound = () => {
 
   useEffect(() => {
     document.title = "Page inconnue";
+
+    window.scrollTo(0, 0);
   }, []);
 
   return (

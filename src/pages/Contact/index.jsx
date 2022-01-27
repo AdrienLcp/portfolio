@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 
 import './styles.scss';
@@ -11,67 +11,87 @@ import localisation from '../../media/icons/localisation.svg';
 
 const Contact = () => {
 
+  const copied = useRef(null);
   const [state, handleSubmit] = useForm('mknkynke');
 
   useEffect(() => {
     document.title = "Adrien Lacourpaille - Contact";
+
+    window.scrollTo(0, 0);
   }, []);
+
+  const copyOnClipboard = (text) => {
+    navigator.clipboard.writeText(text);
+    copied.current.classList.add('copied');
+
+    setTimeout(() => {
+      copied.current.classList.remove('copied');
+    }, 5000);
+  };
 
   if (state.succeeded) {
     return (
       <div className='contact'>
-        <section className='contact__success'>
+
+        <h4 className='contact__title'>
+          Contactez-moi
+        </h4>
+        <section className='contact__container__success'>
           <img
             src={success}
             alt='Succès'
-            className='contact__success__icon'
+            className='contact__container__success__icon'
           />
-          <p className='contact__success__message'>
+          <p className='contact__container__success__message'>
             Message envoyé !
           </p>
         </section>
 
-        <section className='contact__infos'>
-          <ul className='contact__infos__list'>
+        <section className='contact__container__infos'>
+          <ul className='contact__container__infos__list'>
 
             <li
               key={1}
-              className='contact__infos__list__item'
+              className='contact__container__infos__list__item'
             >
               <img
                 src={localisation}
                 alt='Icône de la géolocalisation'
-                className='contact__infos__list__item__icon'
+                className='contact__container__infos__list__item__icon'
               />
-              <p className='contact__infos__list__item__label'>
+              <p className='contact__container__infos__list__item__label'>
                 Couëron ~ 5 minutes de Nantes
               </p>
             </li>
 
             <li
               key={2}
-              className='contact__infos__list__item'
+              className='contact__container__infos__list__item'
+              ref={copied}
+              onClick={() => {
+                copyOnClipboard('adrienlcp@gmail.com');
+              }}
             >
               <img
                 src={mail}
                 alt='Icône du mail'
-                className='contact__infos__list__item__icon'
+                className='contact__container__infos__list__item__icon'
               />
-              <p className='contact__infos__list__item__label'>
+              <p className='contact__container__infos__list__item__label'>
                 adrienlcp@gmail.com
               </p>
             </li>
             
             <li
               key={3}
-              className='contact__infos__list__item'
+              className='contact__container__infos__list__item'
             >
               <img
                 src={phone}
                 alt='Icône du mail'
-                className='contact__infos__list__item__icon'
+                className='contact__container__infos__list__item__icon'
               />
-              <p className='contact__infos__list__item__label'>
+              <p className='contact__container__infos__list__item__label'>
                 06.50.23.40.20
               </p>
             </li>
@@ -84,96 +104,110 @@ const Contact = () => {
 
   return (
     <div className='contact'>
-      <form
-        className='contact__form'
-        onSubmit={handleSubmit}
-      >
-        <input
-          className='contact__form__input'
-          id='email'
-          type='email' 
-          name='email'
-          placeholder='Insérez votre adresse mail'
-        />
-        <ValidationError
-          prefix='Email' 
-          field='email'
-          errors={state.errors}
-        />
-        <textarea
-          className='contact__form__area'
-          id='message'
-          name='message'
-          placeholder='Envoyez moi un message'
-        />
-        <ValidationError
-          prefix='Message'
-          field='message'
-          errors={state.errors}
-        />
-        <button 
-          className='contact__form__submit'
-          type='submit'
-          disabled={state.submitting}
+
+      <h4 className='contact__title'>
+        Contactez-moi
+      </h4>
+      <section className='contact__container'>
+        <form
+          className='contact__container__form'
+          onSubmit={handleSubmit}
         >
-          <img
-            className='contact__form__submit__icon'
-            alt='Envoyer les message'
-            src={send}
+          <input
+            className='contact__container__form__input'
+            id='email'
+            type='email' 
+            name='email'
+            placeholder='Insérez votre adresse mail'
           />
-          <p className='contact__form__submit__label'>
-            Envoyer
-          </p>
-        </button>
-      </form>
-
-      <section className='contact__infos'>
-        <ul className='contact__infos__list'>
-
-          <li
-            key={1}
-            className='contact__infos__list__item'
+          <ValidationError
+            prefix='Email' 
+            field='email'
+            errors={state.errors}
+          />
+          <textarea
+            className='contact__container__form__area'
+            id='message'
+            name='message'
+            placeholder='Envoyez moi un message'
+          />
+          <ValidationError
+            prefix='Message'
+            field='message'
+            errors={state.errors}
+          />
+          <button 
+            className='contact__container__form__submit'
+            type='submit'
+            disabled={state.submitting}
           >
             <img
-              src={localisation}
-              alt='Icône de la géolocalisation'
-              className='contact__infos__list__item__icon'
+              className='contact__container__form__submit__icon'
+              alt='Envoyer les message'
+              src={send}
             />
-            <p className='contact__infos__list__item__label'>
-              Couëron ~ 5 minutes de Nantes
+            <p className='contact__container__form__submit__label'>
+              Envoyer
             </p>
-          </li>
+          </button>
+        </form>
 
-          <li
-            key={2}
-            className='contact__infos__list__item'
-          >
-            <img
-              src={mail}
-              alt='Icône du mail'
-              className='contact__infos__list__item__icon'
-            />
-            <p className='contact__infos__list__item__label'>
-              adrienlcp@gmail.com
-            </p>
-          </li>
-          
-          <li
-            key={3}
-            className='contact__infos__list__item'
-          >
-            <img
-              src={phone}
-              alt='Icône du mail'
-              className='contact__infos__list__item__icon'
-            />
-            <p className='contact__infos__list__item__label'>
-              06.50.23.40.20
-            </p>
-          </li>
+        <section className='contact__container__infos'>
+          <ul className='contact__container__infos__list'>
 
-        </ul>
+            <li
+              key={1}
+              className='contact__container__infos__list__item'
+            >
+              <img
+                src={localisation}
+                alt='Icône de la géolocalisation'
+                className='contact__container__infos__list__item__icon'
+              />
+              <p className='contact__container__infos__list__item__label'>
+                Couëron ~ 5 minutes de Nantes
+              </p>
+            </li>
+
+            <li
+              key={2}
+              className='contact__container__infos__list__item'
+              ref={copied}
+              onClick={() => {
+                copyOnClipboard('adrienlcp@gmail.com');
+              }}
+            >
+              <img
+                src={mail}
+                alt='Icône du mail'
+                className='contact__container__infos__list__item__icon'
+              />
+              <p className='contact__container__infos__list__item__label'>
+                adrienlcp@gmail.com
+              </p>
+              <span className='contact__container__infos__list__item__span'>
+                Copié dans le presse-papier
+              </span>
+            </li>
+            
+            <li
+              key={3}
+              className='contact__container__infos__list__item'
+            >
+              <img
+                src={phone}
+                alt='Icône du mail'
+                className='contact__container__infos__list__item__icon'
+              />
+              <p className='contact__container__infos__list__item__label'>
+                06.50.23.40.20
+              </p>
+            </li>
+
+          </ul>
+        </section>
       </section>
+      
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import './styles.scss';
 
@@ -10,6 +10,10 @@ import quit from '../../../media/icons/quit.svg';
 const Poupets = ({ setShowPoupets, setShowPresentation }) => {
 
   const poupetsRef = useRef(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const close = () => {
     poupetsRef.current.style.opacity = '0';
