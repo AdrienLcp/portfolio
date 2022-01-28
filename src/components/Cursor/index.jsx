@@ -30,7 +30,10 @@ const Cursor = () => {
       className='cursor'
       ref={cursorRef}
     >
-      <div className='cursor__element' ref={pulseRef}></div>
+      <div 
+        className='cursor__element'
+        ref={pulseRef}
+      ></div>
     </div>
   );
 };

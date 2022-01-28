@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Import components
@@ -18,27 +18,26 @@ import './styles/index.scss';
 
 const App = () => {
 
-  const [showLoader, setShowLoader] = useState(true);
-
   return (
     <BrowserRouter>
+
       <ScrollBar />
       <Cursor />
       <Navigation />
 
       <Routes>
 
-        <Route path="/" element={ <Home setShowLoader={setShowLoader} /> } />
+        <Route path="/" element={ <Home /> } />
 
-        <Route path="/a_propos" element={ <About setShowLoader={setShowLoader} /> } />
+        <Route path="/a_propos" element={ <About /> } />
 
-        <Route path="/contact" element={ <Contact setShowLoader={setShowLoader} /> } />
+        <Route path="/contact" element={ <Contact /> } />
 
-        <Route path="/competences" element={ <Knowledges setShowLoader={setShowLoader} /> } />
+        <Route path="/competences" element={ <Knowledges /> } />
 
-        <Route path="/projets" element={ <Portfolio setShowLoader={setShowLoader} /> } />
+        <Route path="/projets" element={ <Portfolio /> } />
 
-        <Route path="/*" element={ <NotFound setShowLoader={setShowLoader} /> } />
+        <Route path="/*" element={ <NotFound /> } />
 
       </Routes>
     </BrowserRouter>

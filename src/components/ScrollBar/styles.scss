@@ -24,13 +24,13 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgb(100, 66, 148);
+    background: vars.$mainColor;
     border-radius: 10px;
     z-index: 110;
     cursor: pointer !important;
 
     &:hover {
-      background: vars.$mainColor;
+      background: rgb(100, 66, 148);
       cursor: pointer !important;
     }
   }
