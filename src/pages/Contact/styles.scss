@@ -258,16 +258,14 @@
             }
 
             &__span {
-              position: absolute;
               color: vars.$grey;
               font-size: 0.7em;
-              opacity: 0;
               transform: translate(10em, 0em);
               transition: .3s;
             }
 
             &.copied {
-              .contact__infos__list__item__span {
+              .contact__container__infos__list__item__span {
                 opacity: 1;
                 transform: translate(10em, 2.5em);
               }
