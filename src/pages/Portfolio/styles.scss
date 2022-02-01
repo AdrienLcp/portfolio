@@ -59,7 +59,7 @@
       flex-direction: column;
       justify-content: flex-end;
       align-items: center;
-      width: 90vw;
+      width: 30em;
       height: 10em;
       padding: 5em;
       background: linear-gradient(rgba(vars.$black, 0) 0%, rgba(rgba(vars.$black, 1), 100) 30%);
@@ -72,12 +72,11 @@
         flex-direction: row;
 
         &__item {
-          width: 33%;
+          width: 34%;
           flex-direction: column;
           justify-content: center;
           border: 2px solid vars.$grey;
           transition: width .3s ease;
-          border-radius: 20px;
           height: 5em;
           margin: 1em;
           transition: .3s;
@@ -107,11 +106,13 @@
           &__title {
             position: absolute;
             color: vars.$white;
+            width: 10em;
             font-size: 1em;
             opacity: 0;
             z-index: 2;
             transform: translateY(1em);
             transition: .3s;
+            text-align: center;
           }
         }
       }
@@ -137,5 +138,4 @@
       }
     }
   }
-
 }

@@ -59,7 +59,7 @@ const Portfolio = () => {
 
           <li
             key={0}
-            className='portfolio__menu__list__item'
+            className='portfolio__menu__list__item projet-1'
             ref={majaRef}
             onClick={() => {
               setShowPresentation(false);
@@ -80,7 +80,7 @@ const Portfolio = () => {
 
           <li
             key={1}
-            className='portfolio__menu__list__item'
+            className='portfolio__menu__list__item projet-2'
             ref={portfolioRef}
             onClick={() => {
               setShowPresentation(false);
@@ -101,7 +101,7 @@ const Portfolio = () => {
 
           <li
             key={2}
-            className='portfolio__menu__list__item'
+            className='portfolio__menu__list__item projet-3'
             ref={poupetsRef}
             onClick={() => {
               setShowPresentation(false);

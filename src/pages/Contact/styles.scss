@@ -41,10 +41,11 @@
         width: 80vw;
         max-width: 250px;
         font-family: 'Poppins';
+        border: 2px solid transparent;
 
         &:focus {
           outline: none !important;
-          border: 3px solid vars.$mainColor;
+          border-color: vars.$mainColor;
         }
       }
 
@@ -59,10 +60,11 @@
         max-width: 250px;
         color: vars.$black;
         font-family: 'Poppins';
+        border: 2px solid transparent;
 
         &:focus {
           outline: none !important;
-          border: 3px solid vars.$mainColor;
+          border-color: vars.$mainColor;
         }
       }
 
@@ -174,6 +176,7 @@
           text-align: start;
           font-size: 0.8em;
           padding-left: 2em;
+          border: 3px solid transparent;
         }
         
         &__area {
@@ -182,6 +185,7 @@
           height: 15em;
           font-size: 0.8em;
           padding-left: 2em;
+          border: 3px solid transparent;
         }
 
         &__submit {
@@ -346,7 +350,7 @@
           }
 
           &:hover {
-            .contact__form__submit__label {
+            .contact__container__form__submit__label {
               opacity: 1;
               transform: translateX(-2em);
             }

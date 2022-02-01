@@ -26,7 +26,7 @@ const Contact = () => {
 
     setTimeout(() => {
       copied.current.classList.remove('copied');
-    }, 5000);
+    }, 3000);
   };
 
   if (state.succeeded) {
@@ -36,67 +36,71 @@ const Contact = () => {
         <h4 className='contact__title'>
           Contactez-moi
         </h4>
-        <section className='contact__container__success'>
-          <img
-            src={success}
-            alt='Succès'
-            className='contact__container__success__icon'
-          />
-          <p className='contact__container__success__message'>
-            Message envoyé !
-          </p>
-        </section>
+        <section className='contact__container'>
+          <section className='contact__container__success'>
+            <img
+              src={success}
+              alt='Succès'
+              className='contact__container__success__icon'
+            />
+            <p className='contact__container__success__message'>
+              Message envoyé !
+            </p>
+          </section>
 
-        <section className='contact__container__infos'>
-          <ul className='contact__container__infos__list'>
+          <section className='contact__container__infos'>
+            <ul className='contact__container__infos__list'>
 
-            <li
-              key={1}
-              className='contact__container__infos__list__item'
-            >
-              <img
-                src={localisation}
-                alt='Icône de la géolocalisation'
-                className='contact__container__infos__list__item__icon'
-              />
-              <p className='contact__container__infos__list__item__label'>
-                Couëron ~ 5 minutes de Nantes
-              </p>
-            </li>
+              <li
+                key={1}
+                className='contact__container__infos__list__item'
+              >
+                <img
+                  src={localisation}
+                  alt='Icône de la géolocalisation'
+                  className='contact__container__infos__list__item__icon'
+                />
+                <p className='contact__container__infos__list__item__label'>
+                  Couëron ~ 5 minutes de Nantes
+                </p>
+              </li>
 
-            <li
-              key={2}
-              className='contact__container__infos__list__item'
-              ref={copied}
-              onClick={() => {
-                copyOnClipboard('adrienlcp@gmail.com');
-              }}
-            >
-              <img
-                src={mail}
-                alt='Icône du mail'
-                className='contact__container__infos__list__item__icon'
-              />
-              <p className='contact__container__infos__list__item__label'>
-                adrienlcp@gmail.com
-              </p>
-            </li>
-            
-            <li
-              key={3}
-              className='contact__container__infos__list__item'
-            >
-              <img
-                src={phone}
-                alt='Icône du mail'
-                className='contact__container__infos__list__item__icon'
-              />
-              <p className='contact__container__infos__list__item__label'>
-                06.50.23.40.20
-              </p>
-            </li>
-
-          </ul>
+              <li
+                key={2}
+                className='contact__container__infos__list__item'
+                ref={copied}
+                onClick={() => {
+                  copyOnClipboard('adrienlcp@gmail.com');
+                }}
+              >
+                <img
+                  src={mail}
+                  alt='Icône du mail'
+                  className='contact__container__infos__list__item__icon'
+                />
+                <p className='contact__container__infos__list__item__label'>
+                  adrienlcp@gmail.com
+                </p>
+                <span className='contact__container__infos__list__item__span'>
+                  Copié dans le presse-papier
+                </span>
+              </li>
+              
+              <li
+                key={3}
+                className='contact__container__infos__list__item'
+              >
+                <img
+                  src={phone}
+                  alt='Icône du mail'
+                  className='contact__container__infos__list__item__icon'
+                />
+                <p className='contact__container__infos__list__item__label'>
+                  06.50.23.40.20
+                </p>
+              </li>
+            </ul>
+          </section>
         </section>
       </div>
     );
@@ -207,7 +211,6 @@ const Contact = () => {
           </ul>
         </section>
       </section>
-      
     </div>
   );
 };
