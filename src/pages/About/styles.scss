@@ -291,7 +291,13 @@
           height: 30px;
           background-color: vars.$mainColor;
           padding: 0.3em;
-          transform: translateX(-0.9em);
+          transition: .3s;
+          transform: translateX(-1.15em);
+
+          &:hover {
+            z-index: 2;
+            transform: translateX(-1.15em) scale(2);
+          }
         }
 
         &_violet {
@@ -351,6 +357,20 @@
 
       &__text {
         font-size: 1.1em;
+
+        &__icon {
+          border-radius: 50%;
+          height: 30px;
+          background-color: vars.$mainColor;
+          padding: 0.3em;
+          transition: .3s;
+          transform: translateX(-0.9em);
+
+          &:hover {
+            z-index: 2;
+            transform: translateX(-0.9em) scale(2);
+          }
+        }
       }
     }
   }

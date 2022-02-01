@@ -71,23 +71,23 @@
     &__list {
       width: auto;
       flex-direction: column;
-      margin-left: 3em;
+      margin-left: 2em;
 
       &__button {
-        margin: 1.5vh;
+        margin: 1.2vh;
 
         &__item {
           flex-direction: row;
 
           &__icon {
-            height: 60px;
-            padding: 1.1em;
+            height: 55px;
+            padding: 1em;
             z-index: 2;
             border: 2px solid vars.$mainColor;
           }
 
           &__label {
-            font-size: 1em;
+            font-size: 0.9em;
             transform: translateX(-2em);
             transition: .3s;
             opacity: 0;
@@ -109,6 +109,29 @@
   .selected {
     .nav__list__button__item__icon {
       border-color: vars.$white;
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .nav {
+    &__list {
+      margin-left: 3em;
+
+      &__button {
+        margin: 1.5vh;
+
+        &__item {
+          &__icon {
+            height: 60px;
+            padding: 1.1em;
+          }
+
+          &__label {
+            font-size: 1em;
+          }
+        }
+      }
     }
   }
 }
