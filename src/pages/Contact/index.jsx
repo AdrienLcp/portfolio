@@ -156,18 +156,20 @@ const Contact = () => {
           </button>
         </form>
 
-        <section className='contact__container__infos'>
+        <footer className='contact__container__infos'>
           <ul className='contact__container__infos__list'>
 
             <li
               key={1}
               className='contact__container__infos__list__item'
             >
-              <img
-                src={localisation}
-                alt='Icône de la géolocalisation'
-                className='contact__container__infos__list__item__icon'
-              />
+              <div className='contact__container__infos__list__item__icon'>
+                <img
+                  src={localisation}
+                  alt='Icône de la géolocalisation'
+                  className='contact__container__infos__list__item__icon__img'
+                />
+              </div>
               <p className='contact__container__infos__list__item__label'>
                 Couëron ~ 5 minutes de Nantes
               </p>
@@ -181,16 +183,21 @@ const Contact = () => {
                 copyOnClipboard('adrienlcp@gmail.com');
               }}
             >
-              <img
-                src={mail}
-                alt='Icône du mail'
-                className='contact__container__infos__list__item__icon'
-              />
+              <div className='contact__container__infos__list__item__icon'>
+                <img
+                  src={mail}
+                  alt='Icône du mail'
+                  className='contact__container__infos__list__item__icon__img'
+                />
+              </div>
               <p className='contact__container__infos__list__item__label'>
                 adrienlcp@gmail.com
               </p>
               <span className='contact__container__infos__list__item__span'>
                 Copié dans le presse-papier
+              </span>
+              <span className='contact__container__infos__list__item__hover'>
+                Cliquez pour copier le mail dans le presse-papier
               </span>
             </li>
             
@@ -198,18 +205,20 @@ const Contact = () => {
               key={3}
               className='contact__container__infos__list__item'
             >
-              <img
-                src={phone}
-                alt='Icône du mail'
-                className='contact__container__infos__list__item__icon'
-              />
+              <div className='contact__container__infos__list__item__icon'>
+                <img
+                  src={phone}
+                  alt='Icône du mail'
+                  className='contact__container__infos__list__item__icon__img'
+                />
+              </div>
               <p className='contact__container__infos__list__item__label'>
                 06.50.23.40.20
               </p>
             </li>
 
           </ul>
-        </section>
+        </footer>
       </section>
     </div>
   );

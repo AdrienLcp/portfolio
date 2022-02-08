@@ -9,10 +9,9 @@
   ::-webkit-scrollbar {
     // width: 0;
     // background: transparent;
-    width: 15px;
+    width: 12px;
     background: vars.$darkGrey;
     z-index: 100;
-    cursor: pointer !important;
     background: vars.$black;
   }
 
@@ -20,18 +19,15 @@
     background: vars.$darkGrey;
     border-radius: 10px;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
-    cursor: pointer !important;
   }
 
   ::-webkit-scrollbar-thumb {
     background: vars.$mainColor;
     border-radius: 10px;
     z-index: 110;
-    cursor: pointer !important;
 
     &:hover {
       background: rgb(100, 66, 148);
-      cursor: pointer !important;
     }
   }
 

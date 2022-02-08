@@ -27,6 +27,7 @@
     margin-bottom: 8em;
 
     &.opened li {
+      visibility: visible;
       transform: rotate(calc(360deg / 5 * var(--i)));
     }
 
@@ -84,6 +85,7 @@
       transition: 0.5s;
       transition-delay: calc(0.1s * var(--i));
       transform: rotate(0deg) translateX(160px);
+      visibility: hidden;
 
       &__item {
         z-index: 10;

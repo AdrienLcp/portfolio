@@ -88,6 +88,7 @@
 
 @media screen and (min-width: 850px) {
   .knowledges {
+    overflow-x: hidden;
     &__CV {
       margin: 0;
       position: fixed;
@@ -134,24 +135,51 @@
       margin-bottom: 0;
     }
   }
-}
-@media screen and (min-width: 1300px) {
+
   .left {
-    transform: translateX(-5em);
+    transition: 1s;
+    transform: translateX(100vw);
+
+    &.slide__from-right {
+      transform: translateX(0);
+    }
   }
 
   .right {
-    transform: translateX(5em);
+    transition: 1s;
+    transform: translateX(-100vw);
+
+    &.slide__from-left {
+      transform: translateX(0);
+    }
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .left {
+    &.slide__from-right {
+      transform: translateX(-5em);
+    }
+  }
+
+  .right {
+    &.slide__from-left {
+      transform: translateX(5em);
+    }
   }
 }
 
 @media screen and (min-width: 1920px) {
   .left {
-    transform: translateX(-10em);
+    &.slide__from-right {
+      transform: translateX(-10em);
+    }
   }
 
   .right {
-    transform: translateX(10em);
+    &.slide__from-left {
+      transform: translateX(10em);
+    }
   }
 
   .knowledges {

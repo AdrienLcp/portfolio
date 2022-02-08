@@ -132,6 +132,14 @@
             padding: 0.7em;
             border-radius: 50%;
             height: 40px;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &__img {
+              height: 20px;
+            }
           }
 
           &__label {
@@ -141,6 +149,11 @@
           }
 
           &__span {
+            position: absolute;
+            opacity: 0;
+          }
+
+          &__hover {
             position: absolute;
             opacity: 0;
           }
@@ -251,7 +264,13 @@
             position: relative;
 
             &__icon {
-              height: 50px;
+              height: 60px;
+              width: 60px;
+              padding: 1em;
+
+              &__img {
+                height: 30px;
+              }
             }
 
             &__label {
@@ -268,10 +287,31 @@
               transition: .3s;
             }
 
+            &__hover {
+              color: vars.$white;
+              background-color: vars.$mainColor;
+              border-radius: 50px;
+              padding: 0.5em 1.5em;
+              font-size: 0.7em;
+              transform: translate(100%, -100%);
+              text-align: center;
+              transition: .2s;
+            }
+
             &.copied {
               .contact__container__infos__list__item__span {
                 opacity: 1;
                 transform: translate(10em, 2.5em);
+              }
+
+              .contact__container__infos__list__item__hover {
+                display: none;
+              }
+            }
+
+            &:hover {
+              .contact__container__infos__list__item__hover {
+                opacity: 1;
               }
             }
           }
@@ -370,7 +410,12 @@
             margin: 1em;
 
             &__icon {
-              height: 60px;
+              height: 70px;
+              width: 70px;
+
+              &__img {
+                height: 35px;
+              }
             }
 
             &__label {

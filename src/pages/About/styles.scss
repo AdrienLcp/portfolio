@@ -141,6 +141,7 @@
       transition: transform 1.25s;
   
       &.opened li {
+        visibility: visible;
         transform: rotate(calc(360deg / 5 * var(--i)));
       }
   
@@ -197,6 +198,7 @@
         transform: rotate(0deg) translateX(160px);
         background-color: vars.$mainColor;
         border-radius: 50%;
+        visibility: hidden;
   
         & a {
           display: flex;

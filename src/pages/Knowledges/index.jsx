@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import './styles.scss';
 
@@ -12,10 +12,33 @@ import CV from '../../media/files/CV_Adrien_Lacourpaille.pdf';
 
 const Knowledges = () => {
 
+  const slide1 = useRef(null);
+  const slide2 = useRef(null);
+  const slide3 = useRef(null);
+  const slide4 = useRef(null);
+
   useEffect(() => {
     document.title = "Adrien Lacourpaille - Compétences";
 
     window.scrollTo(0, 0);
+
+    slide1.current.classList.add('slide__from-right');
+    slide2.current.classList.add('slide__from-left');
+
+    window.addEventListener('scroll', () => {
+      const { scrollTop, clientHeight } = document.documentElement;
+
+      const topSlideElement3 = slide3.current.getBoundingClientRect().top;
+      const topSlideElement4 = slide4.current.getBoundingClientRect().top;
+
+      if (scrollTop > (scrollTop + topSlideElement3).toFixed() - clientHeight * 0.8) {
+        slide3.current.classList.add('slide__from-right');
+      };
+
+      if (scrollTop > (scrollTop + topSlideElement4).toFixed() - clientHeight * 0.8) {
+        slide4.current.classList.add('slide__from-left');
+      };
+    });
   }, []);
 
   return (
@@ -35,7 +58,7 @@ const Knowledges = () => {
             Télécharger le CV
           </p>
         </a>
-      <section className='knowledges__skills left'>
+      <section className='knowledges__skills left' ref={slide1}>
         <h4 className='knowledges__skills__title'>
           Compétences
         </h4>
@@ -67,7 +90,7 @@ const Knowledges = () => {
         </ul>
       </section>
 
-      <section className='knowledges__skills right'>
+      <section className='knowledges__skills right' ref={slide2}>
         <h4 className='knowledges__skills__title'>
           Outils
         </h4>
@@ -99,7 +122,7 @@ const Knowledges = () => {
         </ul>
       </section>
 
-      <section className='knowledges__skills left'>
+      <section className='knowledges__skills left' ref={slide3}>
         <h4 className='knowledges__skills__title'>
           À venir
         </h4>
@@ -131,7 +154,7 @@ const Knowledges = () => {
         </ul>
       </section>
 
-      <section className='knowledges__skills right'>
+      <section className='knowledges__skills right' ref={slide4}>
         <h4 className='knowledges__skills__title'>
           Les détails
         </h4>
