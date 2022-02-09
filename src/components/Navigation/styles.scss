@@ -95,6 +95,10 @@
           }
 
           &:hover {
+            .nav__list__button__item__icon {
+              border-color: vars.$white;
+            }
+
             .nav__list__button__item__label {
               transition: .3s;
               transform: translateX(1em);

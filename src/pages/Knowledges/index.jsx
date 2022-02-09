@@ -31,11 +31,11 @@ const Knowledges = () => {
       const topSlideElement3 = slide3.current.getBoundingClientRect().top;
       const topSlideElement4 = slide4.current.getBoundingClientRect().top;
 
-      if (scrollTop > (scrollTop + topSlideElement3).toFixed() - clientHeight * 0.8) {
+      if (scrollTop > (scrollTop + topSlideElement3).toFixed() - clientHeight * 0.7) {
         slide3.current.classList.add('slide__from-right');
       };
 
-      if (scrollTop > (scrollTop + topSlideElement4).toFixed() - clientHeight * 0.8) {
+      if (scrollTop > (scrollTop + topSlideElement4).toFixed() - clientHeight * 0.7) {
         slide4.current.classList.add('slide__from-left');
       };
     });
@@ -43,21 +43,21 @@ const Knowledges = () => {
 
   return (
     <div className='knowledges'>
-        <a
-          href={CV}
-          target='_blank'
-          rel='noreferrer'
-          className='knowledges__CV'
-        >
-          <img
-            src={download}
-            alt='Télécharger le CV'
-            className='knowledges__CV__icon'
-          />
-          <p className='knowledges__CV__label'>
-            Télécharger le CV
-          </p>
-        </a>
+      <a
+        href={CV}
+        target='_blank'
+        rel='noreferrer'
+        className='knowledges__CV'
+      >
+        <img
+          src={download}
+          alt='Télécharger le CV'
+          className='knowledges__CV__icon'
+        />
+        <p className='knowledges__CV__label'>
+          Télécharger le CV
+        </p>
+      </a>
       <section className='knowledges__skills left' ref={slide1}>
         <h4 className='knowledges__skills__title'>
           Compétences
