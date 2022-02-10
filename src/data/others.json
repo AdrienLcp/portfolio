@@ -1,22 +1,22 @@
 [
   {
-      "name": "VSCode",
-      "logo": "./media/knowledges/vscode.svg"
+    "name": "VSCode",
+    "logo": "./media/knowledges/vscode.svg"
   },
   {
-      "name": "Git & Github",
-      "logo": "./media/social/github.svg"
+    "name": "Git & Github",
+    "logo": "./media/social/github.svg"
   },
   {
-      "name": "Linux",
-      "logo": "./media/knowledges/linux.svg"
+    "name": "Linux",
+    "logo": "./media/knowledges/linux.svg"
   },
   {
-      "name": "Windows",
-      "logo": "./media/knowledges/windows.svg"
+    "name": "Windows",
+    "logo": "./media/knowledges/windows.svg"
   },
   {
-      "name": "Normes ES6",
-      "logo": "./media/icons/snippet_white.svg"
+    "name": "Normes ES6",
+    "logo": "./media/icons/snippet_white.svg"
   }
 ]

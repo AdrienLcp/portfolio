@@ -1,22 +1,22 @@
 [
   {
-      "name": "React Native",
-      "logo": "./media/knowledges/react.svg"
+    "name": "React Native",
+    "logo": "./media/knowledges/react.svg"
   },
   {
-      "name": "Vue.js",
-      "logo": "./media/knowledges/vue.svg"
+    "name": "Vue.js",
+    "logo": "./media/knowledges/vue.svg"
   },
   {
-      "name": "Angular",
-      "logo": "./media/knowledges/angular.svg"
+    "name": "Angular",
+    "logo": "./media/knowledges/angular.svg"
   },
   {
-      "name": "Python",
-      "logo": "./media/knowledges/python.svg"
+    "name": "Python",
+    "logo": "./media/knowledges/python.svg"
   },
   {
-      "name": "TypeScript",
-      "logo": "./media/knowledges/typescript.svg"
+    "name": "TypeScript",
+    "logo": "./media/knowledges/typescript.svg"
   }
 ]

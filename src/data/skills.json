@@ -1,18 +1,18 @@
 [
   {
-      "name": "Compréhension de l'anglais",
-      "logo": "./media/knowledges/english.svg"
+    "name": "Méthodes agiles SCRUM",
+    "logo": "./media/knowledges/method.svg"
   },
   {
-      "name": "Permis B & Voiture",
-      "logo": "./media/knowledges/car.svg"
+    "name": "Compréhension de l'anglais",
+    "logo": "./media/knowledges/english.svg"
   },
   {
-      "name": "Connaissances en hardware",
-      "logo": "./media/knowledges/hardware.svg"
+    "name": "Permis B & Voiture",
+    "logo": "./media/knowledges/car.svg"
   },
   {
-      "name": "Carbure au café",
-      "logo": "./media/knowledges/coffee.svg"
+    "name": "Connaissances en hardware",
+    "logo": "./media/knowledges/hardware.svg"
   }
 ]

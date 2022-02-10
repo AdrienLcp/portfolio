@@ -1,22 +1,22 @@
 [
   {
-      "name": "JavaScript",
-      "logo": "./media/knowledges/javascript.svg"
+    "name": "JavaScript",
+    "logo": "./media/knowledges/javascript.svg"
   },    
   {
-      "name": "React",
-      "logo": "./media/knowledges/react.svg"
+    "name": "React",
+    "logo": "./media/knowledges/react.svg"
   },
   {
-      "name": "HTML",
-      "logo": "./media/knowledges/html.svg"
+    "name": "HTML",
+    "logo": "./media/knowledges/html.svg"
   },
   {
-      "name": "CSS",
-      "logo": "./media/knowledges/css.svg"
+    "name": "CSS",
+    "logo": "./media/knowledges/css.svg"
   },
   {
-      "name": "SASS",
-      "logo": "./media/knowledges/sass.svg"
+    "name": "SASS",
+    "logo": "./media/knowledges/sass.svg"
   }
 ]
