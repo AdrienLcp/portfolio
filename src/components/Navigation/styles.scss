@@ -50,7 +50,8 @@
         }
 
         :active {
-          transform: scale(0.9);
+          transition: .2s;
+          transform: scale(0.9) translateY(-0.4em);
         }
       }
     }
@@ -113,6 +114,11 @@
               opacity: 1;
             }
           }
+
+          :active {
+            transition: .2s;
+            transform: scale(0.9) translateY(0);
+          }
         }
       }
     }
@@ -159,6 +165,11 @@
 
       &__label {
         display: none;
+      }
+
+      :active {
+        transition: .2s;
+        transform: scale(0.9) translateY(0);
       }
     }
   }

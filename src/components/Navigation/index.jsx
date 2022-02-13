@@ -15,8 +15,8 @@ const Navigation = () => {
     <nav className='nav'>
       <ul className='nav__list'>
          
-        <li 
-          key={1} 
+        <li
+          key={1}
           className='nav__list__button'
         >
           <NavLink
@@ -34,11 +34,11 @@ const Navigation = () => {
           </NavLink>
         </li>
         
-        <li 
+        <li
           key={2}
           className='nav__list__button'
         >
-          <NavLink 
+          <NavLink
             to='/competences'
             className={(navData) => navData.isActive ? 'nav__list__button__item selected' : 'nav__list__button__item'}
           >
@@ -53,11 +53,11 @@ const Navigation = () => {
           </NavLink>
         </li>
 
-        <li 
+        <li
           key={3}
           className='nav__list__button'
         >
-          <NavLink 
+          <NavLink
             to='/projets'
             className={(navData) => navData.isActive ? 'nav__list__button__item selected' : 'nav__list__button__item'}
           >
@@ -72,11 +72,11 @@ const Navigation = () => {
           </NavLink>
         </li>
         
-        <li 
+        <li
           key={4}
           className='nav__list__button'
         >
-          <NavLink 
+          <NavLink
             to='/a_propos'
             className={(navData) => navData.isActive ? 'nav__list__button__item selected' : 'nav__list__button__item'}
           >
