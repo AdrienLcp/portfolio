@@ -44,6 +44,7 @@ const Knowledges = () => {
   return (
     <div className='knowledges'>
       <a
+        download
         href={CV}
         target='_blank'
         rel='noreferrer'
