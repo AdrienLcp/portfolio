@@ -49,7 +49,7 @@ const Home = () => {
   };
 
   return (
-    <div className='home'>
+    <main className='home'>
       <ul
         className='home__socials'
         ref={menu}
@@ -232,7 +232,7 @@ const Home = () => {
           setShowEasterEgg={setShowEasterEgg}
         />
       )}
-    </div>
+    </main>
   );
 };
 

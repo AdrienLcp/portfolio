@@ -32,6 +32,14 @@
     border: 2px solid vars.$mainColor;
     border-radius: 50%;
     height: 70px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__img {
+      height: 100%;
+    }
   }
 
   &__socials {
@@ -51,10 +59,11 @@
     &__text {
       font-size: 0.8em;
       color: vars.$grey;
+      margin-bottom: 1em;
 
       &_violet {
         color: vars.$mainColor;
-        margin-left: 0.3em;
+        padding-left: 0.3em;
         font-weight: bold;
       }
       
@@ -73,7 +82,15 @@
 
       &__item {
         height: 50px;
-        border-radius: 50%;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__img {
+          border-radius: 50%;
+          height: 100%;
+        }
       }
     }
   }
@@ -99,9 +116,17 @@
       &__icon {
         border-radius: 50%;
         height: 20px;
+        width: 20px;
         background-color: vars.$mainColor;
         padding: 0.3em;
         transform: translateX(-1em);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__img {
+          height: 100%;
+        }
       }
 
       &_violet {
@@ -152,8 +177,8 @@
   
       &__toggle {
         position: absolute;
-        width: 60px;
-        height: 60px;
+        width: 140px;
+        height: 140px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -164,7 +189,7 @@
         transform: translateY(10px) translateX(80px);
   
         &__img {
-          max-height: 140px;
+          height: 100%;
           border-radius: 50%;
           border: 3px solid transparent;
         }
@@ -264,6 +289,7 @@
 
         &__item {
           height: 75px;
+          width: 75px;
           transition: .3s;
 
           &:hover {
@@ -291,6 +317,7 @@
         &__icon {
           border-radius: 50%;
           height: 30px;
+          width: 30px;
           background-color: vars.$mainColor;
           padding: 0.3em;
           transition: .3s;

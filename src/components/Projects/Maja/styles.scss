@@ -14,6 +14,14 @@
 
     &__logo {
       height: 70px;
+      width: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &__img {
+        height: 100%;
+      }
     }
 
     &__title {
@@ -23,19 +31,25 @@
     }
 
     &__quit {
-      border: none;
+      position: relative;
       background-color: vars.$black;
+      height: 40px;
+      width: 40px;
+      padding: 1em;
+      border-radius: 50%;
+      border: 2px solid vars.$white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .2s;
+      cursor: none;
 
       &__icon {
-        height: 50px;
-        margin-bottom: 0.5em;
-        padding: 1em;
-        border-radius: 50%;
-        border: 2px solid vars.$white;
-        transform: translateY(0.75em);
+        height: 15px;
       }
 
       &__label {
+        position: absolute;
         opacity: 0;
       }
 
@@ -81,18 +95,31 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        transition: .2s;
 
         &__icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           height: 50px;
+          width: 50px;
           background-color: vars.$mainColor;
           padding: 0.8em;
           border-radius: 50%;
+
+          &__img {
+            height: 100%;
+          }
         }
 
         &__label {
           font-size: 0.8em;
           margin-top: 1em;
           color: vars.$white;
+        }
+
+        &:active {
+          transform: scale(0.8);
         }
       }
     }
@@ -126,12 +153,12 @@
       }
 
       &__quit {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: .2s;
+        transform: translate(100%, -100%);
+        width: 50px;
+        height: 50px;
 
         &__icon {
+          height: 20px;
           z-index: 2;
         }
 
@@ -139,7 +166,6 @@
           z-index: 1;
           opacity: 0;
           color: vars.$white;
-          position: absolute;
           text-align: center;
           transition: .3s;
           transform: translateY(1em);
@@ -147,13 +173,13 @@
 
         &:hover {
           .maja__header__quit__label {
-            transform: translateY(4em);
+            transform: translateY(3em);
             opacity: 1;
           }
         }
 
         &:active {
-          transform: scale(0.8);
+          transform: translate(100%, -100%) scale(0.8);
         }
       }
     }
@@ -206,10 +232,6 @@
                 opacity: 1;
                 transform: translateY(3em);
               }
-            }
-
-            &:active {
-              transform: scale(0.8);
             }
           }
         }

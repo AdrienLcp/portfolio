@@ -28,12 +28,13 @@ const Poupets = ({ setShowPoupets, setShowPresentation }) => {
     <div className='poupets' ref={poupetsRef}>
 
       <section className='poupets__header'>
-
-        <img
-          src={poupets}
-          alt='Logo de mon portfolio'
-          className='poupets__header__logo'
-        />
+        <div className='poupets__header__logo'>
+          <img
+            src={poupets}
+            alt='Logo de mon portfolio'
+            className='poupets__header__logo__img'
+          />
+        </div>
 
         <h3 className='poupets__header__title'>
           Les Poupets
@@ -96,11 +97,13 @@ const Poupets = ({ setShowPoupets, setShowPresentation }) => {
               target='_blank'
               href='https://poupets.netlify.app/'
             >
-              <img
-                src={link}
-                alt='Lien vers mon portfolio'
-                className='poupets__infos__buttons__item__link__icon'
-              />
+              <div className='poupets__infos__buttons__item__link__icon'>
+                <img
+                  src={link}
+                  alt='Lien vers mon portfolio'
+                  className='poupets__infos__buttons__item__link__icon__img'
+                />
+              </div>
               <p className='poupets__infos__buttons__item__link__label'>
                 Visiter le site
               </p>
@@ -114,11 +117,14 @@ const Poupets = ({ setShowPoupets, setShowPresentation }) => {
               target='_blank'
               href='https://github.com/AdrienLcp/poupets'
             >
-              <img
-                src={github}
-                alt='Lien vers le Github de mon portfolio'
-                className='poupets__infos__buttons__item__link__icon'
-              />
+              <div className='poupets__infos__buttons__item__link__icon'>
+                <img
+                  src={github}
+                  alt='Lien vers le Github de mon portfolio'
+                  className='poupets__infos__buttons__item__link__icon__img'
+                />
+              </div>
+
               <p className='poupets__infos__buttons__item__link__label'>
                 Voir le Github
               </p>

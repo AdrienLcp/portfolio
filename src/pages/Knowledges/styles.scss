@@ -14,9 +14,11 @@
     justify-content: center;
     text-align: center;
     margin: 5vh;
+    height: 60px;
+    width: 60px;
 
     &__icon {
-      height: 60px;
+      height: 100%;
       background-color: vars.$mainColor;
       border-radius: 50%;
       z-index: 2;
@@ -28,6 +30,7 @@
       margin-top: 0.5em;
       color: vars.$white;
       font-size: 0.7em;
+      width: 200%;
     }
 
     &:active {
@@ -68,16 +71,17 @@
         align-items: center;
         justify-content: center;
         width: 60px;
+        height: 60px;
         margin: 1em;
 
         &__icon {
-          height: 60px;
+          height: 100%;
           padding: 0.5em;
         }
 
         &__label {
           color: vars.$white;
-          font-size: 0.7rem;
+          font-size: 0.6rem;
           text-align: center;
           width: 100px;
         }
@@ -89,6 +93,7 @@
 @media screen and (min-width: 850px) {
   .knowledges {
     overflow-x: hidden;
+    
     &__CV {
       margin: 0;
       position: fixed;
@@ -238,9 +243,10 @@
 
         &__item {
           position: relative;
+          height: 80px;
+          width: 80px;
 
           &__icon {
-            height: 100px;
             padding: 1em;
             z-index: 2;
           }

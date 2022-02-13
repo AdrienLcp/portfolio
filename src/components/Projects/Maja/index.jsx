@@ -28,12 +28,13 @@ const Maja = ({ setShowMaja, setShowPresentation }) => {
     <div className='maja' ref={majaRef}>
 
       <section className='maja__header'>
-
-        <img
-          src={maja}
-          alt='Logo de MAJA'
-          className='maja__header__logo'
-        />
+        <div className='maja__header__logo'>
+          <img
+            src={maja}
+            alt='Logo de mon portfolio'
+            className='maja__header__logo__img'
+          />
+        </div>
 
         <h3 className='maja__header__title'>
           MAJA
@@ -96,11 +97,13 @@ const Maja = ({ setShowMaja, setShowPresentation }) => {
               target='_blank'
               href='https://www.majagame.com/'
             >
-              <img
-                src={link}
-                alt='Lien vers MAJA'
-                className='maja__infos__buttons__item__link__icon'
-              />
+              <div className='maja__infos__buttons__item__link__icon'>
+                <img
+                  src={link}
+                  alt='Lien vers MAJA'
+                  className='maja__infos__buttons__item__link__icon__img'
+                />
+              </div>
               <p className='maja__infos__buttons__item__link__label'>
                 Visiter le site
               </p>
@@ -114,11 +117,13 @@ const Maja = ({ setShowMaja, setShowPresentation }) => {
               target='_blank'
               href='https://github.com/ProjectMAJA'
             >
-              <img
-                src={github}
-                alt='Lien vers le Github de MAJA'
-                className='maja__infos__buttons__item__link__icon'
-              />
+              <div className='maja__infos__buttons__item__link__icon'>
+                <img
+                  src={github}
+                  alt='Lien vers le Github de MAJA'
+                  className='maja__infos__buttons__item__link__icon__img'
+                />
+              </div>
               <p className='maja__infos__buttons__item__link__label'>
                 Voir le Github
               </p>

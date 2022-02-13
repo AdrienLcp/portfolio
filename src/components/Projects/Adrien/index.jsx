@@ -28,12 +28,13 @@ const Adrien = ({ setShowPortfolio, setShowPresentation }) => {
     <div className='adrien' ref={adrienRef}>
 
       <section className='adrien__header'>
-
-        <img
-          src={adrien}
-          alt='Logo de mon portfolio'
-          className='adrien__header__logo'
-        />
+        <div className='adrien__header__logo'>
+          <img
+            src={adrien}
+            alt='Logo de mon portfolio'
+            className='adrien__header__logo__img'
+          />
+        </div>
 
         <h3 className='adrien__header__title'>
           Mon Portfolio
@@ -96,13 +97,15 @@ const Adrien = ({ setShowPortfolio, setShowPresentation }) => {
               target='_blank'
               href='https://www.adrienlacourpaille.com/'
             >
-              <img
-                src={link}
-                alt='Lien vers mon portfolio'
-                className='adrien__infos__buttons__item__link__icon'
-              />
+              <div className='adrien__infos__buttons__item__link__icon'>
+                <img
+                  src={link}
+                  alt='Lien vers mon portfolio'
+                  className='adrien__infos__buttons__item__link__icon__img'
+                />
+              </div>
               <p className='adrien__infos__buttons__item__link__label'>
-                Visiter le site
+                Vous êtes déjà dessus
               </p>
             </a>
           </li>
@@ -114,11 +117,13 @@ const Adrien = ({ setShowPortfolio, setShowPresentation }) => {
               target='_blank'
               href='https://github.com/AdrienLcp/portfolio'
             >
-              <img
-                src={github}
-                alt='Lien vers le Github de mon portfolio'
-                className='adrien__infos__buttons__item__link__icon'
-              />
+              <div className='adrien__infos__buttons__item__link__icon'>
+                <img
+                  src={github}
+                  alt='Lien vers le Github de mon portfolio'
+                  className='adrien__infos__buttons__item__link__icon__img'
+                />
+              </div>
               <p className='adrien__infos__buttons__item__link__label'>
                 Voir le Github
               </p>
