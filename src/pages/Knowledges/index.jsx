@@ -22,23 +22,26 @@ const Knowledges = () => {
 
     window.scrollTo(0, 0);
 
-    slide1.current.classList.add('slide__from-right');
-    slide2.current.classList.add('slide__from-left');
+    if (document.documentElement.clientWidth >= 850) {
 
-    window.addEventListener('scroll', () => {
-      const { scrollTop, clientHeight } = document.documentElement;
+      slide1.current.classList.add('slide__from-right');
+      slide2.current.classList.add('slide__from-left');
 
-      const topSlideElement3 = slide3.current.getBoundingClientRect().top;
-      const topSlideElement4 = slide4.current.getBoundingClientRect().top;
+      window.addEventListener('scroll', () => {
+        const { scrollTop, clientHeight } = document.documentElement;
 
-      if (scrollTop > (scrollTop + topSlideElement3).toFixed() - clientHeight * 0.7) {
-        slide3.current.classList.add('slide__from-right');
-      };
+        const topSlideElement3 = slide3.current.getBoundingClientRect().top;
+        const topSlideElement4 = slide4.current.getBoundingClientRect().top;
 
-      if (scrollTop > (scrollTop + topSlideElement4).toFixed() - clientHeight * 0.7) {
-        slide4.current.classList.add('slide__from-left');
-      };
-    });
+        if (scrollTop > (scrollTop + topSlideElement3).toFixed() - clientHeight * 0.7) {
+          slide3.current.classList.add('slide__from-right');
+        };
+
+        if (scrollTop > (scrollTop + topSlideElement4).toFixed() - clientHeight * 0.7) {
+          slide4.current.classList.add('slide__from-left');
+        };
+      });
+    };
   }, []);
 
   return (

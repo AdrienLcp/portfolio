@@ -1,150 +1,91 @@
 @use '../../styles/vars';
 
-.behind {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  z-index: 25;
-}
-
 .easter-egg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 50;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: .3s;
-  animation: from_nothing .5s ease-out;
-
-  &__container {
-    background: vars.$darkGrey;
-    color: vars.$white;
-    z-index: 11;
+  &__button {
+    padding: 1em;
+    z-index: 12;
+    width: 10em;
+    margin-top: 2em;
+    transition: .2s;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 3em 4em 2em 4em;
-    border-radius: 20px;
-    z-index: 30;
-    position: relative;
+    justify-content: center;
 
-    &__quit {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      width: 40px;
-      height: 40px;
-      border: none;
-      background: transparent;
-      border-radius: 50%;
+    &__icon {
+      background-color: vars.$mainColor;
       padding: 1em;
-      transition: .2s;
-      cursor: none !important;
+      border-radius: 50%;
+      z-index: 12;
+      border: 2px solid vars.$mainColor;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
 
-      &__icon {
+      &__img {
         height: 100%;
-      }
-
-      &:hover {
-        background: vars.$mainColor;
-      }
-
-      &:active {
-        transform: scale(0.8);
       }
     }
 
-    &__button {
-      padding: 1em;
-      z-index: 12;
+    &__label {
+      opacity: 0;
       width: 10em;
-      margin-top: 2em;
-      transition: .2s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      transition: .3s;
+      z-index: 13;
+      transform: translateY(-1em);
+      z-index: 1;
+    }
 
-      &__icon {
-        background-color: vars.$mainColor;
-        padding: 1em;
-        border-radius: 50%;
-        z-index: 12;
-        border: 2px solid vars.$mainColor;
-        width: 70px;
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &__img {
-          height: 100%;
-        }
+    &:hover {
+      .easter-egg__button__label {
+        opacity: 1;
+        transform: translateY(1em);
       }
 
-      &__label {
-        opacity: 0;
-        width: 10em;
-        transition: .3s;
-        z-index: 13;
-        transform: translateY(-1em);
+      .easter-egg__button__icon {
+        border-color: vars.$white;
       }
+    }
 
-      &:hover {
-        .easter-egg__container__button__label {
-          opacity: 1;
-          transform: translateY(1em);
-        }
-
-        .easter-egg__container__button__icon {
-          border-color: vars.$white;
-        }
-      }
-
-      &:active {
-        transform: scale(0.9);
-      }
+    &:active {
+      transform: scale(0.9);
     }
   }
 }
 
 @media screen and (max-width: 850px) {
   .easter-egg {
-    &__container {
-      max-width: 80vw;
-      font-size: 0.6em;
 
-      &__quit {
-        display: none;
+    &__title {
+      font-size: 0.8em;
+    }
+
+    &__button {
+      &__icon {
+        height: 50px;
+        width: 50px;
+        padding: 0.7em;
       }
 
-      &__button {
-        &__icon {
-          height: 40px;
-          width: 40px;
-        }
+      &__label {
+        transform: none;
+        opacity: 1;
+        margin-top: 1em;
+        font-size: 0.7em;
+      }
 
-        &__label {
+      &:hover {
+        .easter-egg__button__label {
           transform: none;
-          opacity: 1;
-          margin-top: 1em;
-        }
-
-        &:hover {
-          .easter-egg__container__button__label {
-            transform: none;
-          }
         }
       }
     }
   }
 }
+
 
 
 // Copy pasta from the web
