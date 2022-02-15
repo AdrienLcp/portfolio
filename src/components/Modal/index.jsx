@@ -27,6 +27,10 @@ const Modal = (props) => {
             alt='Fermer cette fenêtre'
             src={quit}
           />
+
+          <p className='modal__container__quit__label'>
+            Fermer
+          </p>
         </button>
 
         {props.children}
