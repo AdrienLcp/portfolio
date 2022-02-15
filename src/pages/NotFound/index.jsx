@@ -15,28 +15,33 @@ const NotFound = () => {
   }, []);
 
   return (
-    <div className='not-found'>
-      <img
-        src={stitch}
-        alt='Stitch est perdu'
-        className='not-found__img'
-      />
+    <section className='not-found'>
+      <div className='not-found__container'>
+        <img
+          src={stitch}
+          alt='Stitch est perdu'
+          className='not-found__container__img'
+        />
+      </div>
       <p className='not-found__title'>404</p>
       <p className='not-found__text'>La page que vous cherchez n'existe pas</p>
       <NavLink
         to='/'
-        className='not-found__button'  
+        className='not-found__button'
       >
-        <img
-          src={home}
-          alt="Retourner à l'accueil"
-          className='not-found__button__icon'
-        />
+        <div className='not-found__button__icon'>
+          <img
+            src={home}
+            alt="Retourner à l'accueil"
+            className='not-found__button__icon__img'
+          />
+        </div>
+        
         <p className='not-found__button__label'>
           Retourner à l'accueil
         </p>
       </NavLink>
-    </div>
+    </section>
   );
 };
 

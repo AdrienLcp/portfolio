@@ -18,6 +18,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: .3s;
   animation: from_nothing .5s ease-out;
 
   &__container {
@@ -28,9 +29,36 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 4em;
+    padding: 3em 4em 2em 4em;
     border-radius: 20px;
     z-index: 30;
+    position: relative;
+
+    &__quit {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: transparent;
+      border-radius: 50%;
+      padding: 1em;
+      transition: .2s;
+      cursor: none !important;
+
+      &__icon {
+        height: 100%;
+      }
+
+      &:hover {
+        background: vars.$mainColor;
+      }
+
+      &:active {
+        transform: scale(0.8);
+      }
+    }
 
     &__button {
       padding: 1em;
@@ -49,6 +77,15 @@
         border-radius: 50%;
         z-index: 12;
         border: 2px solid vars.$mainColor;
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__img {
+          height: 100%;
+        }
       }
 
       &__label {
@@ -83,9 +120,14 @@
       max-width: 80vw;
       font-size: 0.6em;
 
+      &__quit {
+        display: none;
+      }
+
       &__button {
         &__icon {
           height: 40px;
+          width: 40px;
         }
 
         &__label {

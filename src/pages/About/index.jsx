@@ -385,7 +385,7 @@ const About = () => {
           Aujourd'hui, j'écoute pas mal de musiques de films pendant que je code. Outre le développement, je passe mon temps libre ... devant des jeux vidéos, des films et des séries. Je m'intéresse aussi au poker et aux nouvelles technologies.
         </p>
         <p className='about__history__text'>
-          J'ai deux chats, Poupette, et son fils, Poupineau, que j'aime beaucoup et qui me donnent beaucoup d'amour. Je leur ai d'ailleurs fait un petit site (voir
+          J'ai deux chats, Poupette, et son fils, Poupineau. Je leur ai d'ailleurs fait un petit site (voir
           <NavLink
             to='/projets'
             className='about__history__text_violet'
