@@ -8,21 +8,23 @@ const Cursor = () => {
   const pulseRef = useRef(null);
 
   useEffect(() => {
-    document.addEventListener('mousemove', (event) => {
-      const { clientX, clientY } = event;
-      const mouseX = clientX - cursorRef.current.clientWidth / 2;
-      const mouseY = clientY - cursorRef.current.clientHeight / 2;
+    if (document.documentElement.clientWidth >= 850) {
+      document.addEventListener('mousemove', (event) => {
+        const { clientX, clientY } = event;
+        const mouseX = clientX - cursorRef.current.clientWidth / 2;
+        const mouseY = clientY - cursorRef.current.clientHeight / 2;
 
-      cursorRef.current.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-    });
+        cursorRef.current.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      });
 
-    document.addEventListener('click', () => {
-      pulseRef.current.classList.add('pulse');
+      document.addEventListener('click', () => {
+        pulseRef.current.classList.add('pulse');
 
-      setTimeout(() => {
-        pulseRef.current.classList.remove('pulse');
-      }, 300);
-    });
+        setTimeout(() => {
+          pulseRef.current.classList.remove('pulse');
+        }, 300);
+      });
+    };
   }, []);
 
   return (

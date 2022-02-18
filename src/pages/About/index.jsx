@@ -1,14 +1,8 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import './styles.scss';
 
-import linkedin from '../../media/social/linkedin.svg';
-import facebook from '../../media/social/facebook.svg';
-import twitter from '../../media/social/twitter.svg';
-import instagram from '../../media/social/instagram.svg';
-import github from '../../media/social/github.svg';
-import adrien from '../../media/social/adrien.png';
 import poupette from '../../media/img/poupette.jpg';
 import poupineau from '../../media/img/poupineau.jpg';
 import snippet from '../../media/icons/snippet_white.svg';
@@ -16,9 +10,11 @@ import book from '../../media/icons/book.svg';
 import warehouse from '../../media/icons/warehouse.svg';
 import truck from '../../media/icons/truck.svg';
 
+import Socials from '../../components/Socials';
+
 const About = () => {
 
-  const menu = useRef(null);
+  const [translateTitle, setTranslateTitle] = useState(false);
 
   useEffect(() => {
     document.title = "Adrien Lacourpaille - À propos";
@@ -26,145 +22,13 @@ const About = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const toggleMenu = () => {
-    menu.current.classList.toggle('opened');
-  };
-
   return (
     <div className='about'>
-      <div className='about__img'>
-        <img
-          src={adrien}
-          alt='Adrien'
-          className='about__img__img'
-        />
-      </div>
-      <ul
-        className='about__socials'
-        ref={menu}
-      >
-        <div 
-          className='about__socials__toggle'
-          onClick={() => {
-            toggleMenu();
-          }}
-        >
-          <img
-            src={adrien}
-            alt='Adrien'
-            className='about__socials__toggle__img'
-          />
-          <p className='about__socials__toggle__label'>
-            Voir mes réseaux
-          </p>
-        </div>
 
-        <li
-          key={1}
-          className='about__socials__links social_0'
-        >
-          <a 
-            href='https://www.linkedin.com/in/adrien-lacourpaille/'
-            target='_blank'
-            rel='noreferrer'
-          >
-            <img
-              src={linkedin}
-              alt='Lien vers mon LinkedIn'
-              className='about__socials__links__item'
-            />
-
-            <p className='about__socials__links__label'>
-              Linkedin
-            </p>
-          </a>
-        </li>
-
-        <li
-          key={2}
-          className='about__socials__links social_1'
-        >
-          <a 
-            href='https://github.com/AdrienLcp'
-            target='_blank'
-            rel='noreferrer'
-          >
-            <img
-              src={github}
-              alt='Lien vers mon Github'
-              className='about__socials__links__item'
-            />
-
-            <p className='about__socials__links__label'>
-              Github
-            </p>
-          </a>
-        </li>
-
-        <li
-          key={3}
-          className='about__socials__links social_2'
-        >
-          <a 
-            href='https://www.instagram.com/adrien.lcp/'
-            target='_blank'
-            rel='noreferrer'
-          >
-            <img
-              src={instagram}
-              alt='Lien vers mon Instagram'
-              className='about__socials__links__item'
-            />
-
-            <p className='about__socials__links__label'>
-              Instagram
-            </p>
-          </a>
-        </li>
-
-        <li
-          key={4}
-          className='about__socials__links social_3'
-        >
-          <a 
-            href='https://twitter.com/Adrien_Lcp'
-            target='_blank'
-            rel='noreferrer'
-          >
-            <img
-              src={twitter}
-              alt='Lien vers mon Twitter'
-              className='about__socials__links__item'
-            />
-
-            <p className='about__socials__links__label'>
-              Twitter
-            </p>
-          </a>
-        </li>
-
-        <li
-          key={5}
-          className='about__socials__links social_4'
-        >
-          <a 
-            href='https://www.facebook.com/profile.php?id=100008182473616'
-            target='_blank'
-            rel='noreferrer'
-          >
-            <img
-              src={facebook}
-              alt='Lien vers mon Facebook'
-              className='about__socials__links__item'
-            />
-
-            <p className='about__socials__links__label'>
-              Facebook
-            </p>
-          </a>
-        </li>
-
-      </ul>
+      <Socials
+        setTranslateTitle={setTranslateTitle}
+        translateTitle={translateTitle}
+      />
 
       <section className='about__history'>
         <h3 className='about__history__title'>

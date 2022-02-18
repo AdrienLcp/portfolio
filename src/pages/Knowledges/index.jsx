@@ -45,7 +45,7 @@ const Knowledges = () => {
   }, []);
 
   return (
-    <div className='knowledges'>
+    <main className='knowledges'>
       <a
         download
         href={CV}
@@ -189,7 +189,7 @@ const Knowledges = () => {
           })}
         </ul>
       </section>
-    </div>
+    </main>
   );
 };
 

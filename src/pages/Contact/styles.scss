@@ -314,9 +314,8 @@
               border-radius: 50px;
               padding: 0.5em 1.5em;
               font-size: 0.7em;
-              transform: translate(-110%);
               text-align: center;
-              transition: .2s;
+              transition: .3s;
             }
 
             &.copied {
@@ -332,6 +331,7 @@
 
             &:hover {
               .contact__container__infos__list__item__hover {
+                transform: translate(-110%);
                 opacity: 1;
               }
             }
