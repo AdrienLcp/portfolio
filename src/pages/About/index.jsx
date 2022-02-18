@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import './styles.scss';
@@ -14,12 +14,41 @@ import Socials from '../../components/Socials';
 
 const About = () => {
 
+  const slideRef1 = useRef(null);
+  const slideRef2 = useRef(null);
+  const slideRef3 = useRef(null);
+  const slideRef4 = useRef(null);
+  const slideRef5 = useRef(null);
+
   const [translateTitle, setTranslateTitle] = useState(false);
 
   useEffect(() => {
     document.title = "Adrien Lacourpaille - À propos";
 
     window.scrollTo(0, 0);
+
+    slideRef1.current.classList.add('slide__from-right');
+    slideRef2.current.classList.add('slide__from-right');
+
+    window.addEventListener('scroll', () => {
+      const { scrollTop, clientHeight } = document.documentElement;
+
+      const topSlideElement3 = slideRef3.current.getBoundingClientRect().top;
+      const topSlideElement4 = slideRef4.current.getBoundingClientRect().top;
+      const topSlideElement5 = slideRef5.current.getBoundingClientRect().top;
+
+      if (scrollTop > (scrollTop + topSlideElement3).toFixed() - clientHeight * 0.6) {
+        slideRef3.current.classList.add('slide__from-right');
+      };
+
+      if (scrollTop > (scrollTop + topSlideElement4).toFixed() - clientHeight * 0.6) {
+        slideRef4.current.classList.add('slide__from-right');
+      };
+
+      if (scrollTop > (scrollTop + topSlideElement5).toFixed() - clientHeight * 0.6) {
+        slideRef5.current.classList.add('slide__from-right');
+      };
+    });
   }, []);
 
   return (
@@ -30,7 +59,7 @@ const About = () => {
         translateTitle={translateTitle}
       />
 
-      <section className='about__history'>
+      <section className='about__history' ref={slideRef1}>
         <h3 className='about__history__title'>
           À propos de moi
         </h3>
@@ -46,7 +75,7 @@ const About = () => {
         </p>
       </section>
 
-      <section className='about__history'>
+      <section className='about__history' ref={slideRef2}>
         <h3 className='about__history__title'>
           Mon Parcours
         </h3>
@@ -77,7 +106,7 @@ const About = () => {
         </p>
       </section>
 
-      <section className='about__history'>
+      <section className='about__history' ref={slideRef3}>
         <h3 className="about__history__title">
           Ma formation
         </h3>
@@ -117,12 +146,12 @@ const About = () => {
         </p>
       </section>
 
-      <section className='about__knowledge'>
+      <section className='about__knowledge' ref={slideRef4}>
         <h3 className='about__knowledge__title'>
           Mes expériences
         </h3>
 
-        <p className='about__knowledge__text'>
+        <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
             <img 
               className='about__knowledge__text__icon__img'
@@ -131,9 +160,9 @@ const About = () => {
             />
           </div>
           2022 - <span className='about__knowledge__text_bold'>Lead Dev Front</span> -<span className='about__knowledge__text_violet'>Portfolio</span>
-        </p>
+        </div>
 
-        <p className='about__knowledge__text'>
+        <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
             <img 
               className='about__knowledge__text__icon__img'
@@ -142,9 +171,9 @@ const About = () => {
             />
           </div>
           2021 - <span className='about__knowledge__text_bold'>Lead Dev Front</span> -<span className='about__knowledge__text_violet'>Les Poupets</span>
-        </p>
+        </div>
 
-        <p className='about__knowledge__text'>
+        <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
             <img 
               className='about__knowledge__text__icon__img'
@@ -153,9 +182,9 @@ const About = () => {
             />
           </div>
           2021 - <span className='about__knowledge__text_bold'>Lead Dev Front</span> -<span className='about__knowledge__text_violet'>MAJA</span>
-        </p>
+        </div>
 
-        <p className='about__knowledge__text'>
+        <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
             <img 
               className='about__knowledge__text__icon__img'
@@ -164,9 +193,9 @@ const About = () => {
             />
           </div>
           2021 - <span className='about__knowledge__text_bold'>Formation Développeur Web</span> -<span className='about__knowledge__text_violet'>O'Clock</span>
-        </p>
+        </div>
 
-        <p className='about__knowledge__text'>
+        <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
             <img 
               className='about__knowledge__text__icon__img'
@@ -175,9 +204,9 @@ const About = () => {
             />
           </div>
           2016 à 2021 - <span className='about__knowledge__text_bold'>Magasinier polyvalent</span> -<span className='about__knowledge__text_violet'>P2R - Proconcept 2 Roues</span>
-        </p>
+        </div>
 
-        <p className='about__knowledge__text'>
+        <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
             <img 
               className='about__knowledge__text__icon__img'
@@ -186,9 +215,9 @@ const About = () => {
             />
           </div>
           2015 à 2016 - <span className='about__knowledge__text_bold'>Missions intérim diverses</span> -<span className='about__knowledge__text_violet'>Absolis, Samsic, Adwork's, ...</span>
-        </p>
+        </div>
 
-        <p className='about__knowledge__text'>
+        <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
             <img 
               className='about__knowledge__text__icon__img'
@@ -197,9 +226,9 @@ const About = () => {
             />
           </div>
           2014 à 2015 - <span className='about__knowledge__text_bold'>Remplacements polyvalents</span> -<span className='about__knowledge__text_violet'>Mairie de Vertou, piscine de Vertou, ...</span>
-        </p>
+        </div>
 
-        <p className='about__knowledge__text'>
+        <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
             <img 
               className='about__knowledge__text__icon__img'
@@ -208,9 +237,9 @@ const About = () => {
             />
           </div>
           2014 - <span className='about__knowledge__text_bold'>Conducteur de navette</span> -<span className='about__knowledge__text_violet'>Leclerc Pôle Sud</span>
-        </p>
+        </div>
 
-        <p className='about__knowledge__text'>
+        <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
             <img 
               className='about__knowledge__text__icon__img'
@@ -219,9 +248,9 @@ const About = () => {
             />
           </div>
           2012 à 2013 - <span className='about__knowledge__text_bold'>Agent de maintenance</span> -<span className='about__knowledge__text_violet'>Maison de retraite Saint-André</span>
-        </p>
+        </div>
 
-        <p className='about__knowledge__text last'>
+        <div className='about__knowledge__text last'>
           <div className='about__knowledge__text__icon'>
             <img 
               className='about__knowledge__text__icon__img'
@@ -230,10 +259,10 @@ const About = () => {
             />
           </div>
           2012 - <span className='about__knowledge__text_bold'>CAP Maintenance des Bâtiments</span> -<span className='about__knowledge__text_violet'>La Baugerie</span>
-        </p>
+        </div>
       </section>
 
-      <section className='about__history'>
+      <section className='about__history' ref={slideRef5}>
         <h3 className='about__history__title'>
           Mes activités
         </h3>

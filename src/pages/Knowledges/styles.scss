@@ -27,7 +27,7 @@
     }
 
     &__label {
-      margin-top: 0.5em;
+      margin-top: 0.8em;
       color: vars.$white;
       font-size: 0.7em;
       width: 200%;
@@ -40,22 +40,21 @@
 
   &__skills {
     width: 90vw;
-    margin-bottom: 3em;
     background-color: vars.$darkGrey;
-    padding: 2em;
+    padding: 1em;
     margin-top: 1em;
-    border-radius: 20px;
+    border-radius: 10px;
 
     &__title {
       color: vars.$white;
       font-weight: bold;
-      font-size: 1.2em;
+      font-size: 1em;
       margin-bottom: 0.5rem;
     }
 
     &__subtitle {
       color: vars.$grey;
-      font-size: 0.8em;
+      font-size: 0.6em;
     }
 
     &__list {
@@ -70,9 +69,9 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 60px;
-        height: 60px;
-        margin: 1em;
+        width: 40px;
+        height: 40px;
+        margin: 0.4em;
 
         &__icon {
           height: 100%;
@@ -81,9 +80,8 @@
 
         &__label {
           color: vars.$white;
-          font-size: 0.6rem;
+          font-size: 0.3rem;
           text-align: center;
-          width: 100px;
         }
       }
     }
@@ -138,6 +136,24 @@
       width: 40vw;
       margin-top: 5em;
       margin-bottom: 0;
+      padding: 2em;
+      border-radius: 20px;
+      margin-left: 5em;
+
+      &__title {
+        font-size: 1.2em;
+      }
+
+      &__list__item {
+        width: 50px;
+        height: 50px;
+        margin: 1em;
+
+        &__label {
+          font-size: 0.5rem;
+          line-height: 120%;
+        }
+      }
     }
   }
 
@@ -259,6 +275,7 @@
             transform: translateY(1em);
             transition: .3s;
             width: 20em;
+            line-height: 140%;
           }
           
           &:hover {

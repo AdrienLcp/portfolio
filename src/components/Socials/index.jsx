@@ -58,11 +58,13 @@ const Socials = (props) => {
             target='_blank'
             rel='noreferrer'
           >
-            <img
-              src={linkedin}
-              alt='Lien vers mon LinkedIn'
-              className='socials__container__links__item'
-            />
+            <div className='socials__container__links__item'>
+              <img
+                className='socials__container__links__item__img'
+                src={linkedin}
+                alt='Lien vers mon LinkedIn'
+              />
+            </div>
 
             <p className='socials__container__links__label'>
               Linkedin
@@ -79,11 +81,13 @@ const Socials = (props) => {
             target='_blank'
             rel='noreferrer'
           >
-            <img
-              src={github}
-              alt='Lien vers mon Github'
-              className='socials__container__links__item'
-            />
+            <div className='socials__container__links__item'>
+              <img
+                src={github}
+                alt='Lien vers mon Github'
+                className='socials__container__links__item__img'
+              />
+            </div>
 
             <p className='socials__container__links__label'>
               Github
@@ -100,11 +104,13 @@ const Socials = (props) => {
             target='_blank'
             rel='noreferrer'
           >
-            <img
-              src={instagram}
-              alt='Lien vers mon Instagram'
-              className='socials__container__links__item'
-            />
+            <div className='socials__container__links__item'>
+              <img
+                src={instagram}
+                alt='Lien vers mon Instagram'
+                className='socials__container__links__item__img'
+              />
+            </div>
 
             <p className='socials__container__links__label'>
               Instagram
@@ -121,11 +127,13 @@ const Socials = (props) => {
             target='_blank'
             rel='noreferrer'
           >
-            <img
-              src={twitter}
-              alt='Lien vers mon Twitter'
-              className='socials__container__links__item'
-            />
+            <div className='socials__container__links__item'>
+              <img
+                src={twitter}
+                alt='Lien vers mon Twitter'
+                className='socials__container__links__item__img'
+              />
+            </div>
 
             <p className='socials__container__links__label'>
               Twitter
@@ -137,16 +145,18 @@ const Socials = (props) => {
           key={5}
           className='socials__container__links social_4'
         >
-          <a
+          <a 
             href='https://www.facebook.com/profile.php?id=100008182473616'
             target='_blank'
             rel='noreferrer'
           >
-            <img
-              src={facebook}
-              alt='Lien vers mon Facebook'
-              className='socials__container__links__item'
-            />
+            <div className='socials__container__links__item'>
+              <img
+                src={facebook}
+                alt='Lien vers mon Facebook'
+                className='socials__container__links__item__img'
+              />
+            </div>
 
             <p className='socials__container__links__label'>
               Facebook
