@@ -65,7 +65,7 @@
     top: -5vh;
     right: 5vw;
     z-index: 1;
-    height: 60px;
+    height: 70px;
     padding: 1em;
     animation: to_bottom 23s linear infinite;
   }
@@ -75,7 +75,7 @@
     top: -10vh;
     right: 30vw;
     z-index: 1;
-    height: 65px;
+    height: 60px;
     padding: 1em;
     animation: to_bottom 27s linear infinite;
   }
@@ -85,7 +85,7 @@
     top: -5vh;
     right: 55vw;
     z-index: 1;
-    height: 70px;
+    height: 65px;
     padding: 1em;
     animation: to_bottom 20s linear infinite;
   }
@@ -139,6 +139,26 @@
       &__subtitle {
         font-size: 1em;
       }
+    }
+
+    &__icon1 {
+      height: 45px;
+    }
+
+    &__icon2 {
+      height: 45px;
+    }
+
+    &__icon3 {
+      height: 45px;
+    }
+
+    &__icon4 {
+      height: 45px;
+    }
+
+    &__icon5 {
+      height: 45px;
     }
   }
 }
