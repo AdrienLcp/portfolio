@@ -128,6 +128,7 @@
 
   .selected {
     .nav__list__button__item__icon {
+      transition: box-shadow 1s;
       border-color: vars.$white;
       box-shadow: 0 0 50px vars.$grey;
     }

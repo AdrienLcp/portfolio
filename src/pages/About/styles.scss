@@ -11,10 +11,12 @@
     width: 90vw;
     max-width: 500px;
     transform: translateX(100vw);
+    opacity: 0;
     transition: 1s;
 
     &.slide__from-right {
       transform: translateX(0);
+      opacity: 1;
     }
 
     &__title {
@@ -66,10 +68,12 @@
     width: 90vw;
     max-width: 500px;
     transform: translateX(100vw);
+    opacity: 0;
     transition: 1s;
 
     &.slide__from-right {
       transform: translateX(0);
+      opacity: 1;
     }
 
     &__title {
