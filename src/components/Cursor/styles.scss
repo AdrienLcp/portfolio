@@ -35,14 +35,9 @@
   }
 
   @keyframes pulsing {
-    0% {
-      border: none;
-    }
-    
     100% {
       transform: scale(5);
       opacity: 0;
-      border: none;
     }
   }
 }

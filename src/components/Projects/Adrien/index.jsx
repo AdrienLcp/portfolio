@@ -16,12 +16,8 @@ const Adrien = ({ setShowPortfolio, setShowPresentation }) => {
   }, []);
 
   const close = () => {
-    adrienRef.current.style.opacity = '0';
-    
-    setTimeout(() => {
-      setShowPortfolio(false);
-      setShowPresentation(true);
-    }, 300);
+    setShowPortfolio(false);
+    setShowPresentation(true);
   };
 
   return (

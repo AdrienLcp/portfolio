@@ -14,7 +14,8 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  animation: from_nothing .5s ease-out;
+  opacity: 0;
+  animation: apparition 1s ease-out forwards;
 
   &__header {
     margin-left: 10em;
@@ -31,31 +32,41 @@
     }
 
     &__title {
-      color: vars.$white;
-      text-shadow: 2px 2px 4px #000000;
-      font-size: 3em;
-      font-weight: bold;
-      animation: title 1000ms ease-out;
-      transition: .3s;
-      z-index: 2;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: apparition 1s ease-out forwards;
 
-      &:hover {
-        transform: scale(0.8);
+      &__label {
+        color: vars.$white;
+        text-shadow: 2px 2px 4px vars.$black;
+        font-size: 3em;
+        font-weight: bold;
+        z-index: 2;
+        transition: .3s;
+
+        &:hover {
+          transform: scale(0.9);
+        }
       }
     }
 
     &__subtitle {
-      color: vars.$white;
-      text-shadow: 2px 2px 4px #000000;
-      font-size: 2em;
-      font-weight: bold;
-      margin: 1.5em;
-      animation: subtitle 1000ms ease-out;
-      transition: .3s;
-      z-index: 2;
+      transform: translateX(20px);
+      opacity: 0;
+      animation: apparition 1s ease-out forwards;
 
-      &:hover {
-        transform: scale(0.8);
+      &__label {
+        color: vars.$white;
+        text-shadow: 2px 2px 4px vars.$black;
+        font-size: 2em;
+        font-weight: bold;
+        margin: 1.5em;
+        transition: .3s;
+        z-index: 2;
+
+        &:hover {
+          transform: scale(0.9);
+        }
       }
     }
   }
@@ -114,11 +125,11 @@
 @media screen and (max-width: 1000px) {
   .home {
     &__header {
-      &__title {
+      &__title__label {
         font-size: 2em;
       }
 
-      &__subtitle {
+      &__subtitle__label {
         font-size: 1em;
       }
     }
@@ -132,11 +143,11 @@
       margin-top: 5em;
       margin-left: 0;
 
-      &__title {
+      &__title__label {
         font-size: 1.5em;
       }
 
-      &__subtitle {
+      &__subtitle__label {
         font-size: 1em;
       }
     }
@@ -165,33 +176,13 @@
 
 @media screen and (max-width: 300px) {
   .home__header {
-    &__title {
+    &__title__label {
       font-size: 1em;
     }
 
-    &__subtitle {
+    &__subtitle__label {
       font-size: 0.8em;
     }
-  }
-}
-
-@keyframes title {
-  0% {
-    transform: translateX(-150vh);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes subtitle {
-  0% {
-    transform: translateX(150vh);
-  }
-
-  100% {
-    transform: translateX(0);
   }
 }
 

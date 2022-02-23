@@ -16,12 +16,8 @@ const Poupets = ({ setShowPoupets, setShowPresentation }) => {
   }, []);
 
   const close = () => {
-    poupetsRef.current.style.opacity = '0';
-    
-    setTimeout(() => {
-      setShowPoupets(false);
-      setShowPresentation(true);
-    }, 300);
+    setShowPoupets(false);
+    setShowPresentation(true);
   };
 
   return (

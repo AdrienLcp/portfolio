@@ -1,14 +1,7 @@
 @use '../../styles/vars';
 
-.scrollbar {
-  display: none;
-}
-
 @media screen and (min-width: 850px) {
-
   ::-webkit-scrollbar {
-    // width: 0;
-    // background: transparent;
     width: 12px;
     background: vars.$darkGrey;
     z-index: 100;
@@ -30,27 +23,4 @@
       background: rgb(100, 66, 148);
     }
   }
-
-  // .scrollbar {
-  //   display: contents;
-
-  //   &__container {
-  //     position: fixed;
-  //     top: 0;
-  //     right: 0;
-  //     width: 15px;
-  //     height: 0;
-  //     background: linear-gradient(#ba99e6, vars.$mainColor);
-  //     z-index: 900;
-  //   }
-
-  //   &__click {
-  //     position: fixed;
-  //     top: 0;
-  //     right: 0;
-  //     width: 15px;
-  //     height: 100vh;
-  //     background: rgba(170, 170, 170, 0.3);
-  //   }
-  // }
 }

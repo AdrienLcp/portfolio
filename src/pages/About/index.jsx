@@ -153,112 +153,132 @@ const About = () => {
 
         <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
-            <img 
+            <img
               className='about__knowledge__text__icon__img'
               alt='Icône expérience'
               src={snippet}
             />
           </div>
-          2022 - <span className='about__knowledge__text_bold'>Lead Dev Front</span> -<span className='about__knowledge__text_violet'>Portfolio</span>
+          <span className='about__knowledge__text__year'>2022</span>
+          <span className='about__knowledge__text_bold'>Lead Dev Front</span> -
+          <span className='about__knowledge__text_violet'>Portfolio</span>
         </div>
 
         <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
-            <img 
+            <img
               className='about__knowledge__text__icon__img'
               alt='Icône expérience'
               src={snippet}
             />
           </div>
-          2021 - <span className='about__knowledge__text_bold'>Lead Dev Front</span> -<span className='about__knowledge__text_violet'>Les Poupets</span>
+          <span className='about__knowledge__text__year'>2021</span>
+          <span className='about__knowledge__text_bold'>Lead Dev Front</span> -
+          <span className='about__knowledge__text_violet'>Les Poupets</span>
         </div>
 
         <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
-            <img 
+            <img
               className='about__knowledge__text__icon__img'
               alt='Icône expérience'
               src={snippet}
             />
           </div>
-          2021 - <span className='about__knowledge__text_bold'>Lead Dev Front</span> -<span className='about__knowledge__text_violet'>MAJA</span>
+          <span className='about__knowledge__text__year'>2021</span>
+          <span className='about__knowledge__text_bold'>Lead Dev Front</span> -
+          <span className='about__knowledge__text_violet'>MAJA</span>
         </div>
 
         <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
-            <img 
+            <img
               className='about__knowledge__text__icon__img'
               alt='Icône expérience'
               src={book}
             />
           </div>
-          2021 - <span className='about__knowledge__text_bold'>Formation Développeur Web</span> -<span className='about__knowledge__text_violet'>O'Clock</span>
+          <span className='about__knowledge__text__year'>2021</span>
+          <span className='about__knowledge__text_bold'>Formation Développeur Web</span> -
+          <span className='about__knowledge__text_violet'>O'Clock</span>
         </div>
 
         <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
-            <img 
+            <img
               className='about__knowledge__text__icon__img'
               alt='Icône expérience'
               src={warehouse}
             />
           </div>
-          2016 à 2021 - <span className='about__knowledge__text_bold'>Magasinier polyvalent</span> -<span className='about__knowledge__text_violet'>P2R - Proconcept 2 Roues</span>
+          <span className='about__knowledge__text__year'>2016 à 2021</span>
+          <span className='about__knowledge__text_bold'>Magasinier polyvalent</span> -
+          <span className='about__knowledge__text_violet'>P2R - Proconcept 2 Roues</span>
         </div>
 
         <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
-            <img 
+            <img
               className='about__knowledge__text__icon__img'
               alt='Icône expérience'
               src={warehouse}
             />
           </div>
-          2015 à 2016 - <span className='about__knowledge__text_bold'>Missions intérim diverses</span> -<span className='about__knowledge__text_violet'>Absolis, Samsic, Adwork's, ...</span>
+          <span className='about__knowledge__text__year'>2015 à 2016</span>
+          <span className='about__knowledge__text_bold'>Missions intérim diverses</span> -
+          <span className='about__knowledge__text_violet'>Absolis, Samsic, Adwork's, ...</span>
         </div>
 
         <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
-            <img 
+            <img
               className='about__knowledge__text__icon__img'
               alt='Icône expérience'
               src={warehouse}
             />
           </div>
-          2014 à 2015 - <span className='about__knowledge__text_bold'>Remplacements polyvalents</span> -<span className='about__knowledge__text_violet'>Mairie de Vertou, piscine de Vertou, ...</span>
+          <span className='about__knowledge__text__year'>2014 à 2015</span>
+          <span className='about__knowledge__text_bold'>Remplacements polyvalents</span> -
+          <span className='about__knowledge__text_violet'>Mairie de Vertou, piscine de Vertou, ...</span>
         </div>
 
         <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
-            <img 
+            <img
               className='about__knowledge__text__icon__img'
               alt='Icône expérience'
               src={truck}
             />
           </div>
-          2014 - <span className='about__knowledge__text_bold'>Conducteur de navette</span> -<span className='about__knowledge__text_violet'>Leclerc Pôle Sud</span>
+          <span className='about__knowledge__text__year'>2014</span>
+          <span className='about__knowledge__text_bold'>Conducteur de navette</span> -
+          <span className='about__knowledge__text_violet'>Leclerc Pôle Sud</span>
         </div>
 
         <div className='about__knowledge__text'>
           <div className='about__knowledge__text__icon'>
-            <img 
+            <img
               className='about__knowledge__text__icon__img'
               alt='Icône expérience'
               src={warehouse}
             />
           </div>
-          2012 à 2013 - <span className='about__knowledge__text_bold'>Agent de maintenance</span> -<span className='about__knowledge__text_violet'>Maison de retraite Saint-André</span>
+          <span className='about__knowledge__text__year'>2012 à 2013</span>
+          <span className='about__knowledge__text_bold'>Agent de maintenance</span> -
+          <span className='about__knowledge__text_violet'>Maison de retraite Saint-André</span>
         </div>
 
         <div className='about__knowledge__text last'>
           <div className='about__knowledge__text__icon'>
-            <img 
+            <img
               className='about__knowledge__text__icon__img'
               alt='Icône expérience'
               src={book}
             />
           </div>
-          2012 - <span className='about__knowledge__text_bold'>CAP Maintenance des Bâtiments</span> -<span className='about__knowledge__text_violet'>La Baugerie</span>
+          <span className='about__knowledge__text__year'>2012</span>
+          <span className='about__knowledge__text_bold'>CAP Maintenance des Bâtiments</span> -
+          <span className='about__knowledge__text_violet'>La Baugerie</span>
         </div>
       </section>
 

@@ -5,7 +5,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: from_nothing .5s ease-out;
+  opacity: 0;
+  transform: translateY(-100px);
+  animation: apparition 1s 0.5s ease-out forwards;
 
   &__icon {
     margin-top: 2em;

@@ -11,6 +11,8 @@
   z-index: 99;
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(2px);
+  opacity: 0;
+  animation: apparition 1s ease-out forwards;
 
   &__list {
     width: 100%;
@@ -127,6 +129,7 @@
   .selected {
     .nav__list__button__item__icon {
       border-color: vars.$white;
+      box-shadow: 0 0 50px vars.$grey;
     }
   }
 }

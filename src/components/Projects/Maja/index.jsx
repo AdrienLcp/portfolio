@@ -16,12 +16,8 @@ const Maja = ({ setShowMaja, setShowPresentation }) => {
   }, []);
 
   const close = () => {
-    majaRef.current.style.opacity = '0';
-    
-    setTimeout(() => {
-      setShowMaja(false);
-      setShowPresentation(true);
-    }, 300);
+    setShowMaja(false);
+    setShowPresentation(true);
   };
 
   return (

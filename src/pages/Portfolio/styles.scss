@@ -1,11 +1,12 @@
 @use '../../styles/vars';
 
 .portfolio {
-  animation: from_nothing .5s ease-out;
-
   &__menu {
     margin-top: 1em;
     width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: apparition 1s ease-out forwards;
 
     &__list {
       width: 100vw;

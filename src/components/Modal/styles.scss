@@ -18,7 +18,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: from_nothing .5s ease-out;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: apparition 0.5s ease-out forwards;
 
   &__container {
     margin-left: 10em;

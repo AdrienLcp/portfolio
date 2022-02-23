@@ -14,35 +14,42 @@ body {
   }
 }
 
-@keyframes from_nothing {
-  0% {
-    opacity: 0;
-  }
-
+@keyframes apparition {
   100% {
+    transform: none;
     opacity: 1;
   }
 }
 
-@keyframes from_bottom {
-  0% {
-    transform: translateY(100vh);
-  }
+// @keyframes from_nothing {
+//   0% {
+//     opacity: 0;
+//   }
 
-  100% {
-    transform: translateY(0);
-  }
-}
+//   100% {
+//     opacity: 1;
+//   }
+// }
 
-@keyframes from_top {
-  0% {
-    transform: translateY(-100vh);
-  }
+// @keyframes from_bottom {
+//   0% {
+//     transform: translateY(100vh);
+//   }
 
-  100% {
-    transform: translateY(0);
-  }
-}
+//   100% {
+//     transform: translateY(0);
+//   }
+// }
+
+// @keyframes from_top {
+//   0% {
+//     transform: translateY(-100vh);
+//   }
+
+//   100% {
+//     transform: translateY(0);
+//   }
+// }
 
 @media screen and (min-width: 850px) {
   body {

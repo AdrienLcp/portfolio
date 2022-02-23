@@ -4,7 +4,9 @@
   margin-top: 2em;
   padding: 1em;
   margin-bottom: 6em;
-  animation: from_nothing .5s ease-out;
+  opacity: 0;
+  transform: translateY(-100px);
+  animation: apparition 1s ease-out forwards;
 
   &__title {
     color: vars.$white;

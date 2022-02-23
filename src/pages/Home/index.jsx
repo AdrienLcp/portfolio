@@ -45,13 +45,17 @@ const Home = () => {
       />
       
       <header className={translateTitle ? 'home__header translate' : 'home__header'}>
-        <h1 className='home__header__title'>
-          Adrien Lacourpaille
-        </h1>
+        <section className='home__header__title'>
+          <h1 className='home__header__title__label'>
+            Adrien Lacourpaille
+          </h1>
+        </section>
 
-        <h2 className='home__header__subtitle'>
-          Développeur Front
-        </h2>
+        <section className='home__header__subtitle'>
+          <h2 className='home__header__subtitle__label'>
+            Développeur Front
+          </h2>
+        </section>
       </header>
 
       <img
