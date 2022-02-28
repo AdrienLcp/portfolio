@@ -75,19 +75,25 @@
     justify-content: center;
     background-color: transparent;
     backdrop-filter: none;
+    transform: translateX(-100%);
+    opacity: 0;
+    animation: apparition 1s 1s ease-out forwards;
 
     &__list {
       width: auto;
       flex-direction: column;
       margin-left: 2em;
+      opacity: inherit;
 
       &__button {
         margin: 1.2vh;
+        opacity: inherit;
 
         &__item {
           flex-direction: row;
           height: 55px;
           width: 55px;
+          opacity: inherit;
 
           &__icon {
             transform: translateY(0);
@@ -108,7 +114,7 @@
 
           &:hover {
             .nav__list__button__item__icon {
-              // border-color: vars.$white;
+              border-color: vars.$white;
               background-color: vars.$mainHover;
             }
 

@@ -234,9 +234,11 @@
         
         &__area {
           width: 25em;
-          max-width: 40em;
-          max-height: 30vh;
           height: 15em;
+          max-width: 50vw;
+          min-width: 15em;
+          max-height: 30vh;
+          min-height: 10em;
           font-size: 0.8em;
           padding-left: 2em;
           border: 3px solid transparent;
@@ -392,13 +394,14 @@
         
         &__area {
           width: 37em;
-          max-width: 37em;
+          max-width: 50vw;
           max-height: 60vh;
           min-width: 25em;
           min-height: 15em;
           height: 20em;
           font-size: 1em;
           padding-left: 2em;
+          border-radius: 50px;
         }
 
         &__submit {
