@@ -94,7 +94,7 @@
           border: 3px solid transparent;
           border-radius: 50%;
           z-index: 2;
-            border-color: vars.$mainColor;
+          border-color: vars.$mainColor;
         }
 
         &__label {
@@ -138,6 +138,11 @@
           }
 
           &:hover {
+            .socials__container__links__item {
+              background-color: vars.$mainHover;
+              border-color: vars.$white;
+            }
+
             .socials__container__links__label {
               opacity: 1;
               transform: translateY(0);
@@ -155,6 +160,7 @@
           height: 60px;
           padding: 1em;
           border-radius: 50%;
+          border: 2px solid vars.$mainColor;
 
           &__img {
             height: 100%;

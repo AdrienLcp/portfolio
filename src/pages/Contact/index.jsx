@@ -145,6 +145,7 @@ const Contact = () => {
             className='contact__container__form__area'
             id='message'
             name='message'
+            type='text'
             placeholder='Envoyez moi un message'
           />
           <ValidationError
