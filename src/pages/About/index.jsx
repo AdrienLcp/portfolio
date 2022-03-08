@@ -17,8 +17,6 @@ const About = () => {
   const slideRef1 = useRef(null);
   const slideRef2 = useRef(null);
   const slideRef3 = useRef(null);
-  const slideRef4 = useRef(null);
-  const slideRef5 = useRef(null);
 
   const [translateTitle, setTranslateTitle] = useState(false);
 
@@ -27,26 +25,23 @@ const About = () => {
 
     window.scrollTo(0, 0);
 
-    slideRef1.current.classList.add('slide__from-right');
-    slideRef2.current.classList.add('slide__from-right');
-
     window.addEventListener('scroll', () => {
       const { scrollTop, clientHeight } = document.documentElement;
 
+      const topSlideElement1 = slideRef1.current.getBoundingClientRect().top;
+      const topSlideElement2 = slideRef2.current.getBoundingClientRect().top;
       const topSlideElement3 = slideRef3.current.getBoundingClientRect().top;
-      const topSlideElement4 = slideRef4.current.getBoundingClientRect().top;
-      const topSlideElement5 = slideRef5.current.getBoundingClientRect().top;
+
+      if (scrollTop > (scrollTop + topSlideElement1).toFixed() - clientHeight * 0.6) {
+        slideRef1.current.classList.add('slide__from-right');
+      };
+
+      if (scrollTop > (scrollTop + topSlideElement2).toFixed() - clientHeight * 0.6) {
+        slideRef2.current.classList.add('slide__from-right');
+      };
 
       if (scrollTop > (scrollTop + topSlideElement3).toFixed() - clientHeight * 0.6) {
         slideRef3.current.classList.add('slide__from-right');
-      };
-
-      if (scrollTop > (scrollTop + topSlideElement4).toFixed() - clientHeight * 0.6) {
-        slideRef4.current.classList.add('slide__from-right');
-      };
-
-      if (scrollTop > (scrollTop + topSlideElement5).toFixed() - clientHeight * 0.6) {
-        slideRef5.current.classList.add('slide__from-right');
       };
     });
   }, []);
@@ -59,7 +54,7 @@ const About = () => {
         translateTitle={translateTitle}
       />
 
-      <section className='about__history' ref={slideRef1}>
+      <section className='about__history about__history__1'>
         <h3 className='about__history__title'>
           À propos de moi
         </h3>
@@ -75,7 +70,7 @@ const About = () => {
         </p>
       </section>
 
-      <section className='about__history' ref={slideRef2}>
+      <section className='about__history about__history__2'>
         <h3 className='about__history__title'>
           Mon Parcours
         </h3>
@@ -106,7 +101,7 @@ const About = () => {
         </p>
       </section>
 
-      <section className='about__history' ref={slideRef3}>
+      <section className='about__history' ref={slideRef1}>
         <h3 className="about__history__title">
           Ma formation
         </h3>
@@ -146,7 +141,7 @@ const About = () => {
         </p>
       </section>
 
-      <section className='about__knowledge' ref={slideRef4}>
+      <section className='about__knowledge' ref={slideRef2}>
         <h3 className='about__knowledge__title'>
           Mes expériences
         </h3>
@@ -282,7 +277,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className='about__history' ref={slideRef5}>
+      <section className='about__history' ref={slideRef3}>
         <h3 className='about__history__title'>
           Mes activités
         </h3>

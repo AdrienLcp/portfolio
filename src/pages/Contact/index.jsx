@@ -161,7 +161,7 @@ const Contact = () => {
             <div className='contact__container__form__submit__icon'>
               <img
                 className='contact__container__form__submit__icon__img'
-                alt='Envoyer les message'
+                alt='Envoyer le message'
                 src={send}
               />
             </div>

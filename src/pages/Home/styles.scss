@@ -33,8 +33,8 @@
 
     &__title {
       opacity: 0;
-      transform: translateX(-20px);
-      animation: apparition 1s ease-out forwards;
+      transform: translateX(-50px);
+      animation: apparition 1s 0.5s ease-out forwards;
 
       &__label {
         color: vars.$white;
@@ -51,9 +51,9 @@
     }
 
     &__subtitle {
-      transform: translateX(20px);
+      transform: translateX(50px);
       opacity: 0;
-      animation: apparition 1s ease-out forwards;
+      animation: apparition 1s 0.5s ease-out forwards;
 
       &__label {
         color: vars.$white;

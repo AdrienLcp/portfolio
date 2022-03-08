@@ -6,8 +6,8 @@
   flex-direction: column;
   align-items: center;
   opacity: 0;
-  transform: translateY(-100px);
-  animation: apparition 1s 0.5s ease-out forwards;
+  transform: translateY(-30px);
+  animation: apparition 1s ease-out forwards;
 
   &__icon {
     margin-top: 2em;
