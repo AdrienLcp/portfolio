@@ -61,8 +61,8 @@
       justify-content: flex-end;
       align-items: center;
       width: 30em;
-      height: 10em;
-      padding: 5em;
+      height: 5em;
+      padding: 2em;
       background: linear-gradient(rgba(vars.$black, 0) 0%, rgba(rgba(vars.$black, 1), 100) 30%);
       margin-left: 10em;
       z-index: 5;
@@ -126,7 +126,7 @@
 @media screen and (min-width: 1440px) {
   .portfolio {
     &__menu {
-      height: 20em;
+      height: 10em;
       width: 40em;
 
       &__list {

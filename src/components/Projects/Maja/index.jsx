@@ -27,7 +27,7 @@ const Maja = ({ setShowMaja, setShowPresentation }) => {
     <div className='project'>
 
       <section className='project__header'>
-        <div className='project__header__logo'>
+        <div className='project__header__logo maja_logo'>
           <img
             src={maja}
             alt='Logo de mon portfolio'
