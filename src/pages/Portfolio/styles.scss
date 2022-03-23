@@ -1,6 +1,8 @@
 @use '../../styles/vars';
 
 .portfolio {
+  padding-bottom: 8em;
+
   &__menu {
     margin-top: 1em;
     width: 100%;
@@ -43,15 +45,14 @@
   }
 }
 
-.project_selected {
-  background-color: vars.$mainColor;
-}
-
 @media screen and (min-width: 850px) {
   .portfolio {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: 10em;
+    padding-bottom: 20em;
 
     &__menu {
       position: fixed;
@@ -64,7 +65,6 @@
       height: 5em;
       padding: 2em;
       background: linear-gradient(rgba(vars.$black, 0) 0%, rgba(rgba(vars.$black, 1), 100) 30%);
-      margin-left: 10em;
       z-index: 5;
       transform: translateY(1em);
       
@@ -157,6 +157,10 @@
         }
       }
     }
+  }
+
+  hr {
+    width: 20em;
   }
 }
 

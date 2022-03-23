@@ -1,27 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import './styles.scss';
 
 import maja from '../../../media/projects/maja.svg';
 import link from '../../../media/icons/link.svg';
 import github from '../../../media/social/github.svg';
-import quit from '../../../media/icons/quit.svg';
 import react from '../../../media/knowledges/react.svg';
 import pgsql from '../../../media/knowledges/pgsql.svg';
 import sdk from '../../../media/knowledges/sound.svg';
 import deezer from '../../../media/knowledges/deezer.svg';
 import jwt from '../../../media/knowledges/jwt.svg';
 
-const Maja = ({ setShowMaja, setShowPresentation }) => {
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  const close = () => {
-    setShowMaja(false);
-    setShowPresentation(true);
-  };
+const Maja = () => {
 
   return (
     <div className='project'>
@@ -38,22 +28,6 @@ const Maja = ({ setShowMaja, setShowPresentation }) => {
         <h3 className='project__header__title'>
           MAJA
         </h3>
-
-        <button
-          className='project__header__quit'
-          onClick={() => {
-            close();
-          }}
-        >
-          <img
-            src={quit}
-            className='project__header__quit__icon'
-            alt='Fermer ce projet'
-          />
-          <p className='project__header__quit__label'>
-            Fermer
-          </p>
-        </button>
       </section>
       
       <section className='project__infos'>

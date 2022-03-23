@@ -192,7 +192,7 @@ const Contact = () => {
 
             <li
               key={2}
-              className='contact__container__infos__list__item'
+              className='contact__container__infos__list__item mail'
               ref={copied}
               onClick={() => {
                 copyOnClipboard('adrienlcp@gmail.com');

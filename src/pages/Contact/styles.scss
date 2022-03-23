@@ -304,6 +304,10 @@
             margin: 1em;
             position: relative;
 
+            &.mail {
+              cursor: copy;
+            }
+
             &__icon {
               height: 60px;
               width: 60px;

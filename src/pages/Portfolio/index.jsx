@@ -1,26 +1,17 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect } from 'react';
 
 import Projects from '../../components/Projects';
 import Maja from '../../components/Projects/Maja';
-import Adrien from '../../components/Projects/Adrien';
+import Todolist from '../../components/Projects/Todolist';
 import Poupets from '../../components/Projects/Poupets';
 
 import './styles.scss';
 
 import poupets from '../../media/projects/poupets.svg';
-import adrien from '../../media/projects/adrien.png';
+import list from '../../media/projects/list.svg';
 import maja from '../../media/projects/maja.svg';
 
 const Portfolio = () => {
-
-  const majaRef = useRef(null);
-  const poupetsRef = useRef(null);
-  const portfolioRef = useRef(null);
-
-  const [showPresentation, setShowPresentation] = useState(true);
-  const [showPoupets, setShowPoupets] = useState(false);
-  const [showMaja, setShowMaja] = useState(false);
-  const [showPortfolio, setShowPortfolio] = useState(false);
 
   useEffect(() => {
     document.title = "Adrien Lacourpaille - Projets";
@@ -28,45 +19,16 @@ const Portfolio = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    if (showMaja === true) {
-      majaRef.current.classList.add('project_selected');
-    } else {
-      majaRef.current.classList.remove('project_selected');
-    };
-  }, [showMaja]);
-
-  useEffect(() => {
-    if (showPortfolio === true) {
-      portfolioRef.current.classList.add('project_selected');
-    } else {
-      portfolioRef.current.classList.remove('project_selected');
-    };
-  }, [showPortfolio]);
-
-  useEffect(() => {
-    if (showPoupets === true) {
-      poupetsRef.current.classList.add('project_selected');
-    } else {
-      poupetsRef.current.classList.remove('project_selected');
-    };
-  }, [showPoupets]);
-
   return (
     <div className='portfolio'>
+
       <nav className='portfolio__menu'>
         <ul className='portfolio__menu__list'>
 
-          <li
+          <a
             key={0}
             className='portfolio__menu__list__item projet-1'
-            ref={majaRef}
-            onClick={() => {
-              setShowPresentation(false);
-              setShowPoupets(false);
-              setShowPortfolio(false);
-              setShowMaja(true);
-            }}
+            href='#maja'
           >
             <img
               className='portfolio__menu__list__item__img'
@@ -76,39 +38,12 @@ const Portfolio = () => {
             <p className='portfolio__menu__list__item__title'>
               MAJA
             </p>
-          </li>
+          </a>
 
-          <li
+          <a
             key={1}
-            className='portfolio__menu__list__item projet-2'
-            ref={portfolioRef}
-            onClick={() => {
-              setShowPresentation(false);
-              setShowPoupets(false);
-              setShowMaja(false);
-              setShowPortfolio(true);
-            }}
-          >
-            <img
-              className='portfolio__menu__list__item__img'
-              alt='Icône du site'
-              src={adrien}
-            />
-            <p className='portfolio__menu__list__item__title'>
-              Adrien Lacourpaille
-            </p>
-          </li>
-
-          <li
-            key={2}
             className='portfolio__menu__list__item projet-3'
-            ref={poupetsRef}
-            onClick={() => {
-              setShowPresentation(false);
-              setShowPortfolio(false);
-              setShowMaja(false);
-              setShowPoupets(true);
-            }}
+            href='#poupets'
           >
             <img
               className='portfolio__menu__list__item__img'
@@ -118,35 +53,45 @@ const Portfolio = () => {
             <p className='portfolio__menu__list__item__title'>
               Les Poupets
             </p>
-          </li>
+          </a>
 
+          <a
+            key={2}
+            className='portfolio__menu__list__item projet-2'
+            href='#todolist'
+          >
+            <img
+              className='portfolio__menu__list__item__img'
+              alt='Icône du site'
+              src={list}
+            />
+            <p className='portfolio__menu__list__item__title'>
+              Procrastinalist
+            </p>
+          </a>
         </ul>
       </nav>
-      
-      {showPresentation && (
-        <Projects />
-      )}
 
-      {showMaja && (
-        <Maja
-          setShowMaja={setShowMaja}
-          setShowPresentation={setShowPresentation}
-        />
-      )}
+      <Projects />
 
-      {showPoupets && (
-        <Poupets
-          setShowPoupets={setShowPoupets}
-          setShowPresentation={setShowPresentation}
-        />
-      )}
+      <hr />
 
-      {showPortfolio && (
-        <Adrien
-          setShowPortfolio={setShowPortfolio}
-          setShowPresentation={setShowPresentation}
-        />
-      )}
+      <section id='maja'>
+        <Maja />
+      </section>
+
+      <hr />
+
+      <section id='poupets'>
+        <Poupets />
+      </section>
+
+      <hr />
+
+      <section id='todolist'>
+        <Todolist />
+      </section>
+
     </div>
   );
 };

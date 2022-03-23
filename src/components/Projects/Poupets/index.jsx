@@ -1,24 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import './styles.scss';
 
 import poupets from '../../../media/projects/poupets.svg';
 import link from '../../../media/icons/link.svg';
 import github from '../../../media/social/github.svg';
-import quit from '../../../media/icons/quit.svg';
 import html from '../../../media/knowledges/html.svg';
 import css from '../../../media/knowledges/css.svg';
 
-const Poupets = ({ setShowPoupets, setShowPresentation }) => {
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  const close = () => {
-    setShowPoupets(false);
-    setShowPresentation(true);
-  };
+const Poupets = ( ) => {
 
   return (
     <div className='project'>
@@ -35,22 +25,6 @@ const Poupets = ({ setShowPoupets, setShowPresentation }) => {
         <h3 className='project__header__title'>
           Les Poupets
         </h3>
-
-        <button
-          className='project__header__quit'
-          onClick={() => {
-            close();
-          }}
-        >
-          <img
-            src={quit}
-            className='project__header__quit__icon'
-            alt='Fermer ce projet'
-          />
-          <p className='project__header__quit__label'>
-            Fermer
-          </p>
-        </button>
       </section>
       
       <section className='project__infos'>
