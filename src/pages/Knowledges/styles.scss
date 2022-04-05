@@ -184,29 +184,21 @@
 
 @media screen and (min-width: 1300px) {
   .left {
-    &.slide__from-right {
-      transform: translateX(-5em);
-    }
+    transform: translateX(-5em);
   }
 
   .right {
-    &.slide__from-left {
-      transform: translateX(5em);
-    }
+    transform: translateX(5em);
   }
 }
 
 @media screen and (min-width: 1920px) {
   .left {
-    &.slide__from-right {
-      transform: translateX(-10em);
-    }
+    transform: translateX(-10em);
   }
 
   .right {
-    &.slide__from-left {
-      transform: translateX(10em);
-    }
+    transform: translateX(10em);
   }
 
   .knowledges {
