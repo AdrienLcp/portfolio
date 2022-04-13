@@ -161,6 +161,8 @@
 
   hr {
     width: 20em;
+    opacity: 0;
+    animation: apparition 1s 1s ease-out forwards;
   }
 }
 

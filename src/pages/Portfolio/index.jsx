@@ -3,11 +3,11 @@ import React, { useEffect } from 'react';
 import Projects from '../../components/Projects';
 import Maja from '../../components/Projects/Maja';
 import Todolist from '../../components/Projects/Todolist';
-import Poupets from '../../components/Projects/Poupets';
+import Madam from '../../components/Projects/Madam';
 
 import './styles.scss';
 
-import poupets from '../../media/projects/poupets.svg';
+import madam from '../../media/projects/madam.png';
 import list from '../../media/projects/list.svg';
 import maja from '../../media/projects/maja.svg';
 
@@ -58,15 +58,15 @@ const Portfolio = () => {
           <a
             key={2}
             className='portfolio__menu__list__item projet-3'
-            href='#poupets'
+            href='#madam'
           >
             <img
               className='portfolio__menu__list__item__img'
               alt='Icône du site'
-              src={poupets}
+              src={madam}
             />
             <p className='portfolio__menu__list__item__title'>
-              Les Poupets
+              MaDaM
             </p>
           </a>
         </ul>
@@ -88,8 +88,8 @@ const Portfolio = () => {
 
       <hr />
 
-      <section id='poupets'>
-        <Poupets />
+      <section id='madam'>
+        <Madam />
       </section>
 
     </div>

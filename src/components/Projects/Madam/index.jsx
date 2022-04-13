@@ -2,13 +2,14 @@ import React from 'react';
 
 import './styles.scss';
 
-import poupets from '../../../media/projects/poupets.svg';
+import madam from '../../../media/projects/madam.png';
 import link from '../../../media/icons/link.svg';
 import github from '../../../media/social/github.svg';
 import html from '../../../media/knowledges/html.svg';
-import css from '../../../media/knowledges/css.svg';
+import javascript from '../../../media/knowledges/javascript.svg';
+import scss from '../../../media/knowledges/sass.svg';
 
-const Poupets = ( ) => {
+const Madam = ( ) => {
 
   return (
     <div className='project'>
@@ -16,14 +17,14 @@ const Poupets = ( ) => {
       <section className='project__header'>
         <div className='project__header__logo'>
           <img
-            src={poupets}
+            src={madam}
             alt='Logo de mon portfolio'
             className='project__header__logo__img'
           />
         </div>
 
         <h3 className='project__header__title'>
-          Les Poupets
+          MaDaM
         </h3>
       </section>
       
@@ -39,24 +40,24 @@ const Poupets = ( ) => {
                 <div className='project__infos__list__item__techno__langages__img'>
                   <img
                     className='project__infos__list__item__techno__langages__img__icon'
-                    alt='HTML'
-                    src={html}
+                    alt='JavaScript'
+                    src={javascript}
                   />
                 </div>
                 <p className='project__infos__list__item__techno__langages__label'>
-                  HTML
+                  Javascript
                 </p>
               </div>
               <div className='project__infos__list__item__techno__langages'>
                 <div className='project__infos__list__item__techno__langages__img'>
                   <img
                     className='project__infos__list__item__techno__langages__img__icon'
-                    alt='CSS'
-                    src={css}
+                    alt='SCSS'
+                    src={scss}
                   />
                 </div>
                 <p className='project__infos__list__item__techno__langages__label'>
-                  CSS
+                  SCSS
                 </p>
               </div>
             </div>
@@ -67,7 +68,7 @@ const Poupets = ( ) => {
               Rôle
             </h4>
             <p className='project__infos__list__item__text'>
-              Lead Dev Front, Product Owner, Scrum Master, Git Master
+              Tout le développement
             </p>
           </li>
 
@@ -76,7 +77,7 @@ const Poupets = ( ) => {
               Description
             </h4>
             <p className='project__infos__list__item__text'>
-              Un petit site, qui n'a demandé que quelques heures. Juste de quoi m'entraîner pendant la formation. J'ai ajouté une pointe de React après la fin de ma formation, pour trier entre les chats à voir, ainsi que quelques animations rapides.
+              Un petit site vitrine, commandé par mes deux premiers clients. Étant mon premier projet solo, il est loin d'être parfait, mais il reste intéressant pour les animations, le travail des couleurs et surtout pour le slider fait maison que j'ai créé (ni doc ni tuto).
             </p>
           </li>
         </ul>
@@ -88,7 +89,7 @@ const Poupets = ( ) => {
               className='project__infos__buttons__item__link'
               rel='noreferrer'
               target='_blank'
-              href='https://poupets.netlify.app/'
+              href='https://madam-project.netlify.app/'
             >
               <div className='project__infos__buttons__item__link__icon'>
                 <img
@@ -108,7 +109,7 @@ const Poupets = ( ) => {
               className='project__infos__buttons__item__link'
               rel='noreferrer'
               target='_blank'
-              href='https://github.com/AdrienLcp/poupets'
+              href='https://github.com/AdrienLcp/madam'
             >
               <div className='project__infos__buttons__item__link__icon'>
                 <img
@@ -130,4 +131,4 @@ const Poupets = ( ) => {
   );
 };
 
-export default Poupets;
+export default Madam;

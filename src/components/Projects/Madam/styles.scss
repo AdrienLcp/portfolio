@@ -3,6 +3,8 @@
 .project {
   width: 100vw;
   margin-top: 4em;
+  opacity: 0;
+  animation: apparition 1s 1s ease-out forwards;
 
   &__header {
     display: flex;
