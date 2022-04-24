@@ -155,8 +155,21 @@ const About = () => {
             />
           </div>
           <span className='about__knowledge__text__year'>2022</span>
-          <span className='about__knowledge__text_bold'>Lead Dev Front</span> -
-          <span className='about__knowledge__text_violet'>Portfolio</span>
+          <span className='about__knowledge__text_bold'>Développement</span> -
+          <span className='about__knowledge__text_violet'>Todolist Procrastinalist</span>
+        </div>
+
+        <div className='about__knowledge__text'>
+          <div className='about__knowledge__text__icon'>
+            <img
+              className='about__knowledge__text__icon__img'
+              alt='Icône expérience'
+              src={snippet}
+            />
+          </div>
+          <span className='about__knowledge__text__year'>2022</span>
+          <span className='about__knowledge__text_bold'>Développement</span> -
+          <span className='about__knowledge__text_violet'>Portfolio personnel</span>
         </div>
 
         <div className='about__knowledge__text'>
@@ -168,7 +181,7 @@ const About = () => {
             />
           </div>
           <span className='about__knowledge__text__year'>2021</span>
-          <span className='about__knowledge__text_bold'>Lead Dev Front</span> -
+          <span className='about__knowledge__text_bold'>Développement</span> -
           <span className='about__knowledge__text_violet'>Les Poupets</span>
         </div>
 

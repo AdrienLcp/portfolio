@@ -5,7 +5,6 @@ import './styles.scss';
 import madam from '../../../media/projects/madam.png';
 import link from '../../../media/icons/link.svg';
 import github from '../../../media/social/github.svg';
-import html from '../../../media/knowledges/html.svg';
 import javascript from '../../../media/knowledges/javascript.svg';
 import scss from '../../../media/knowledges/sass.svg';
 
