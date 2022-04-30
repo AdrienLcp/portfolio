@@ -42,7 +42,7 @@ const Projects = () => {
       </h4>
       
       <p className='projects__text'>
-        En ce moment, je travaille, avec un collaborateur, sur un projet de Sudoku en ligne. Utilisation d'un algorithme pour générer une grille aléatoire, jouabilité intuitive avec utilisation d'un clavier virtuel et du clavier physique et sauvegarde de grilles dans le local storage.
+        En ce moment, je travaille sur un site de quizz participatif ainsi que sur un jeu de mots croisés.
         <br />
         <br />
         Je réfléchis également à me lancer dans l'auto-entreprenariat, pour plus de liberté dans mes projets et la gestion de mon temps de travail.
