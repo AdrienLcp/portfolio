@@ -2,10 +2,14 @@
   {
     "name": "JavaScript",
     "logo": "./media/knowledges/javascript.svg"
-  },    
+  },
   {
     "name": "React",
     "logo": "./media/knowledges/react.svg"
+  },
+  {
+    "name": "Next",
+    "logo": "./media/knowledges/next.svg"
   },
   {
     "name": "HTML",
