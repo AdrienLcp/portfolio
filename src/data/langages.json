@@ -4,6 +4,10 @@
     "logo": "./media/knowledges/javascript.svg"
   },
   {
+    "name": "TypeScript",
+    "logo": "./media/knowledges/typescript.svg"
+  },
+  {
     "name": "React",
     "logo": "./media/knowledges/react.svg"
   },

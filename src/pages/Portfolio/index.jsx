@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 
 import Projects from '../../components/Projects';
 import Sudocute from '../../components/Projects/Sudocute';
-import Todolist from '../../components/Projects/Todolist';
 import Madam from '../../components/Projects/Madam';
+import Kanisson from '../../components/Projects/Kanisson';
 
 import './styles.scss';
 
 import madam from '../../media/projects/madam.png';
-import list from '../../media/projects/list.svg';
+import kanisson from '../../media/projects/kanisson.png';
 import sudoku from '../../media/projects/sudoku.png';
 
 const Portfolio = () => {
@@ -27,6 +27,21 @@ const Portfolio = () => {
 
           <a
             key={0}
+            className='portfolio__menu__list__item projet-2'
+            href='#kanisson'
+          >
+            <img
+              className='portfolio__menu__list__item__img'
+              alt='Icône du site'
+              src={kanisson}
+            />
+            <p className='portfolio__menu__list__item__title'>
+              Kanisson
+            </p>
+          </a>
+
+          <a
+            key={1}
             className='portfolio__menu__list__item projet-1'
             href='#sudocute'
           >
@@ -37,21 +52,6 @@ const Portfolio = () => {
             />
             <p className='portfolio__menu__list__item__title'>
               SudoCute
-            </p>
-          </a>
-
-          <a
-            key={1}
-            className='portfolio__menu__list__item projet-2'
-            href='#todolist'
-          >
-            <img
-              className='portfolio__menu__list__item__img'
-              alt='Icône du site'
-              src={list}
-            />
-            <p className='portfolio__menu__list__item__title'>
-              Procrastinalist
             </p>
           </a>
 
@@ -76,14 +76,14 @@ const Portfolio = () => {
 
       <hr />
 
-      <section id='sudocute'>
-        <Sudocute />
+      <section id='kanisson'>
+        <Kanisson />
       </section>
 
       <hr />
 
-      <section id='todolist'>
-        <Todolist />
+      <section id='sudocute'>
+        <Sudocute />
       </section>
 
       <hr />

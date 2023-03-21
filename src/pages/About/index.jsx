@@ -53,14 +53,14 @@ const About = () => {
         setTranslateTitle={setTranslateTitle}
         translateTitle={translateTitle}
       />
-
+{/* 
       <section className='about__history about__history__1'>
         <h3 className='about__history__title'>
           À propos de moi
         </h3>
 
         <p className='about__history__text'>
-          Je m'appelle<span className='about__history__text_violet'>Adrien</span>, j'ai 27 ans.
+          Je m'appelle<span className='about__history__text_violet'>Adrien</span>, j'ai 28 ans.
         </p>
         <p className='about__history__text'>
           J'habite à côté de Nantes, et suis mobile dans tout le département (44).
@@ -68,7 +68,7 @@ const About = () => {
         <p className='about__history__text'>
           J'ai toujours été passionné par le monde de l'informatique, et des nouvelles technologies. Je recherche actuellement un poste de développeur front, idéalement<span className='about__history__text_violet'>React</span>.
         </p>
-      </section>
+      </section> */}
 
       <section className='about__history about__history__2'>
         <h3 className='about__history__title'>
@@ -76,7 +76,7 @@ const About = () => {
         </h3>
 
         <p className='about__history__text'>
-          À la sortie du collège, je ne savais pas quoi faire de ma vie, ni quelles études faire. J'ai alors suivi un CAP en maintenance des bâtiments. J'y ai vu un moyen de sortir vite des études et entrer rapidement dans la vie active. J'ai obtenu mon diplôme en 2012.
+          À la sortie du collège, je ne savais pas quelles études faire. J'ai alors suivi un CAP en maintenance des bâtiments. J'y ai vu un moyen de sortir vite des études et entrer rapidement dans la vie active. J'ai obtenu mon diplôme en 2012.
         </p>
 
         <p className='about__history__text'>
@@ -121,23 +121,11 @@ const About = () => {
         </p>
 
         <p className='about__history__text'>
-          Le dernier mois était le plus passionnant. Nous avons pu réaliser un projet de A à Z, par équipe. J'ai alors été accompagné des géniaux Mathieu, Axel et Johanna. Nous avons suivi la méthode agile SCRUM : Johanna était Product Owner, Axel était le Git Master, Mathieu était notre Lead Dev Back, tandis que je faisais office de Lead Dev Front.
+          Le dernier mois était le plus passionnant. Nous avons pu réaliser un projet de A à Z, par équipe. Je me suis occupé de la partie front du projet, et nous avons créé un site en suivant une méthode SCRUM, avec du back et une base de données.
         </p>
 
         <p className='about__history__text'>
-          Nous avons alors créé
-          <a
-            href='https://www.majagame.com'
-            rel='noreferrer'
-            target='_blank'
-            className='about__history__text_violet'
-          >
-            MAJA
-          </a> , un site de blind test participatif. J'y ai créé la plupart des pages visibles, animations et intéractions entre l'utilisateur et le serveur (le site est actuellement en maintenance pour remettre la base de données en ligne).
-        </p>
-
-        <p className='about__history__text'>
-          Depuis la fin de ma formation, je continue de coder sur mon temps libre. J'ai cependant dû trouver un job, pour continuer de payer mon loyer, en attendant d'étoffer mon portfolio et d'être recruté en tant que développeur.
+          Depuis la fin de ma formation, j'ai continué de créer des sites sur mon temps libre. Depuis mars 2023, je suis développeur en CDI pour une entreprise près de Nantes.
         </p>
       </section>
 
@@ -154,9 +142,9 @@ const About = () => {
               src={snippet}
             />
           </div>
-          <span className='about__knowledge__text__year'>2022</span>
-          <span className='about__knowledge__text_bold'>Développement</span> -
-          <span className='about__knowledge__text_violet'>Todolist Procrastinalist</span>
+          <span className='about__knowledge__text__year'>Depuis 2023</span>
+          <span className='about__knowledge__text_bold'>Développeur</span> -
+          <span className='about__knowledge__text_violet'>Ucaya</span>
         </div>
 
         <div className='about__knowledge__text'>
@@ -167,9 +155,9 @@ const About = () => {
               src={snippet}
             />
           </div>
-          <span className='about__knowledge__text__year'>2022</span>
-          <span className='about__knowledge__text_bold'>Développement</span> -
-          <span className='about__knowledge__text_violet'>Portfolio personnel</span>
+          <span className='about__knowledge__text__year'>2021 - 2023</span>
+          <span className='about__knowledge__text_bold'>Développeur</span> -
+          <span className='about__knowledge__text_violet'>Projets personnels</span>
         </div>
 
         <div className='about__knowledge__text'>
@@ -177,25 +165,12 @@ const About = () => {
             <img
               className='about__knowledge__text__icon__img'
               alt='Icône expérience'
-              src={snippet}
+              src={warehouse}
             />
           </div>
-          <span className='about__knowledge__text__year'>2021</span>
-          <span className='about__knowledge__text_bold'>Développement</span> -
-          <span className='about__knowledge__text_violet'>Les Poupets</span>
-        </div>
-
-        <div className='about__knowledge__text'>
-          <div className='about__knowledge__text__icon'>
-            <img
-              className='about__knowledge__text__icon__img'
-              alt='Icône expérience'
-              src={snippet}
-            />
-          </div>
-          <span className='about__knowledge__text__year'>2021</span>
-          <span className='about__knowledge__text_bold'>Lead Dev Front</span> -
-          <span className='about__knowledge__text_violet'>MAJA</span>
+          <span className='about__knowledge__text__year'>2021 à 2022</span>
+          <span className='about__knowledge__text_bold'>Employé commercial</span> -
+          <span className='about__knowledge__text_violet'>Super U Couëron</span>
         </div>
 
         <div className='about__knowledge__text'>
