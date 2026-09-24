@@ -1,0 +1,8 @@
+export const LOCALES = ['en', 'fr'] as const
+
+export type Locale = (typeof LOCALES)[number]
+
+export const DEFAULT_LOCALE: Locale = 'en'
+
+export const isLocale = (value: string): value is Locale =>
+  LOCALES.some((locale) => locale === value)

@@ -1,0 +1,15 @@
+packages:
+  - packages/*
+
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+
+engineStrict: true
+
+publicHoistPattern:
+  - '@biomejs/*'
+
+# A release younger than a day is not installed: most hijacked npm versions
+# are pulled within hours.
+minimumReleaseAge: 1440
