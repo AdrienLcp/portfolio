@@ -1,5 +1,7 @@
 import type React from 'react'
 
+import './app-shell.sass'
+
 type AppShellProps = {
   children: React.ReactNode
 }

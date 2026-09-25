@@ -1,0 +1,40 @@
+@use './styles/layout'
+@use './styles/token'
+@use './styles/typography'
+
+@layer components
+  .error-screen
+    @include layout.page
+
+    .broken-box
+      @include layout.field-dominant
+
+      border-bottom: var(--outline-thick) solid var(--print-ink)
+      display: flex
+      flex: 1
+      flex-direction: column
+      gap: var(--space-l)
+      justify-content: flex-end
+      padding: var(--space-3xl) var(--gutter) var(--space-xl)
+
+    .failure-title
+      @include typography.title
+
+      color: var(--accent)
+      font-size: clamp(2rem, 1.2rem + 4vw, 4.5rem)
+      max-width: 16ch
+
+    .failure
+      align-self: flex-start
+      background: var(--token)
+      border-radius: var(--radius-s)
+      color: var(--on-token)
+      max-width: 100%
+      overflow-wrap: anywhere
+      padding: var(--space-xs) var(--space-s)
+
+    .way-out
+      padding: var(--space-xl) var(--gutter) var(--space-2xl)
+
+    .reload
+      @include token.token

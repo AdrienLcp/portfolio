@@ -1,0 +1,16 @@
+// Pure module: mixins only.
+
+/// react-aria stamps `data-focus-visible` on keyboard focus only. The colour
+/// is `--focus`, which each field redefines to one that carries on it.
+@mixin ring
+  &[data-focus-visible],
+  &:focus-visible
+    outline: var(--outline-thick) solid var(--focus)
+    outline-offset: 3px
+
+/// Only a real pointer hovers: a touch screen replays `:hover` after a tap and
+/// leaves it stuck until the next one.
+@mixin hovered
+  @media (hover: hover) and (pointer: fine)
+    &[data-hovered]
+      @content

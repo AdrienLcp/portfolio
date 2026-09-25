@@ -1,0 +1,56 @@
+// Pure module: mixins only. Safe to @use from any component.
+//
+// Two voices. Archivo is the printed box: stretched wide and black on the lid,
+// at its normal width for anything a hand presses. Literata is the booklet:
+// everything read as a sentence.
+
+/// The lid lettering. Sized against its container rather than the viewport, so
+/// the longest word of the name fits the narrowest lid, 320px included.
+@mixin lid
+  font-family: var(--font-display)
+  font-size: min(6rem, 10cqi)
+  font-stretch: 125%
+  font-weight: 900
+  letter-spacing: -0.035em
+  line-height: 0.88
+  text-transform: uppercase
+
+@mixin title
+  font-family: var(--font-display)
+  font-size: var(--text-title)
+  font-stretch: 118%
+  font-weight: 900
+  letter-spacing: -0.025em
+  line-height: 1
+
+@mixin lead
+  font-family: var(--font-read)
+  font-size: var(--text-lead)
+  font-style: italic
+  font-weight: 500
+  line-height: 1.35
+
+@mixin body
+  font-family: var(--font-read)
+  font-size: var(--text-body)
+  font-weight: 400
+  line-height: 1.6
+
+/// A control's own label: a token, a button.
+@mixin control
+  font-family: var(--font-display)
+  font-size: var(--text-body)
+  font-stretch: 100%
+  font-weight: 800
+  line-height: 1.2
+
+@mixin caption
+  font-family: var(--font-display)
+  font-size: var(--text-caption)
+  font-stretch: 100%
+  font-weight: 600
+  line-height: 1.35
+
+@mixin code
+  font-family: var(--font-code)
+  font-size: 0.9em

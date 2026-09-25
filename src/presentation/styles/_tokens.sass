@@ -1,0 +1,82 @@
+// Side-effect module: emits `:root`. Loaded once, from globals.sass.
+//
+// Every colour is an exact conversion of the palette's hex, written as one
+// `light-dark()` pair so light and dark read side by side. The theme itself is
+// only `color-scheme`, set by the three rules at the bottom.
+//
+// Measured contrast, light / dark: ink on paper 14.7 / 15.1, on-dominant on
+// the dominant field 7.9 / 6.5, print ink on the secondary field 5.0 / 5.8,
+// active on paper 4.7 / 8.8. The accent reaches only 4.3 on the dominant field,
+// so it is for display type and tokens there, never for small text.
+
+@layer tokens
+  \:root
+    color-scheme: light
+
+    --paper: light-dark(oklch(95.73% 0.0058 153.77), oklch(19.78% 0.0171 195.85))
+    --ink: light-dark(oklch(23.34% 0.0209 185.33), oklch(93.62% 0.0094 171.79))
+    --ink-soft: color-mix(in oklab, var(--ink) 78%, var(--paper))
+
+    --field-dominant: light-dark(oklch(40.18% 0.0630 202.63), oklch(43.03% 0.0625 201.17))
+    --on-dominant: light-dark(oklch(95.73% 0.0058 153.77), oklch(93.62% 0.0094 171.79))
+    --field-secondary: light-dark(oklch(65.86% 0.1559 35.67), oklch(69.61% 0.1448 36.52))
+    --accent: light-dark(oklch(77.71% 0.1420 76.82), oklch(80.86% 0.1388 79.19))
+    --active: light-dark(oklch(54.67% 0.1523 34.72), oklch(78.37% 0.1295 38.34))
+
+    // A printed piece — a token, a sticker — keeps its own inks in both themes:
+    // it is cardboard lying on the table, not a surface the theme repaints.
+    --print-ink: oklch(23.34% 0.0209 185.33)
+    --print-paper: oklch(95.73% 0.0058 153.77)
+    --on-secondary: var(--print-ink)
+    --on-accent: var(--print-ink)
+    --token: light-dark(color-mix(in oklab, var(--print-paper) 40%, white), var(--print-paper))
+    --on-token: var(--print-ink)
+
+    --outline: var(--ink)
+    --focus: var(--active)
+    --shadow: light-dark(color-mix(in oklab, var(--print-ink) 30%, transparent), color-mix(in oklab, black 62%, transparent))
+
+    --font-display: 'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif
+    --font-read: 'Literata', Georgia, 'Times New Roman', serif
+    --font-code: ui-monospace, 'Cascadia Code', Consolas, monospace
+
+    --text-caption: clamp(0.8125rem, 0.78rem + 0.15vw, 0.875rem)
+    --text-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem)
+    --text-lead: clamp(1.125rem, 1rem + 0.6vw, 1.5rem)
+    --text-title: clamp(1.75rem, 1.3rem + 2.2vw, 3rem)
+    --text-display: clamp(2.5rem, 1.2rem + 6.5vw, 6rem)
+
+    --space-2xs: 4px
+    --space-xs: 8px
+    --space-s: 12px
+    --space-m: 20px
+    --space-l: 32px
+    --space-xl: 48px
+    --space-2xl: 72px
+    --space-3xl: 112px
+    --gutter: clamp(16px, 4vw, 48px)
+    --measure: 65ch
+
+    --radius-s: 4px
+    --radius-m: 10px
+    --radius-full: 999px
+    --outline-thin: 2px
+    --outline-thick: 3px
+
+    --transition-fast: 120ms
+    --transition-base: 280ms
+    --transition-slow: 560ms
+    --timing: cubic-bezier(0.16, 1, 0.3, 1)
+
+  \:root[data-theme='dark']
+    color-scheme: dark
+
+  @media (prefers-color-scheme: dark)
+    \:root:not([data-theme='light'])
+      color-scheme: dark
+
+  @media (prefers-reduced-motion: reduce)
+    \:root
+      --transition-fast: 0ms
+      --transition-base: 0ms
+      --transition-slow: 0ms

@@ -6,6 +6,8 @@ import { routes } from '@/infrastructure/router/routes'
 import { AppProviders } from '@/presentation/app-providers'
 import { applyInitialLocale } from '@/presentation/i18n/initial-locale'
 
+import '@/presentation/styles/globals.sass'
+
 const initialLocale = applyInitialLocale()
 
 const container = document.getElementById('root')

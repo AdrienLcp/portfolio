@@ -1,0 +1,37 @@
+// The layer order is declared in index.html, where the module graph cannot
+// reorder it.
+
+@use './fonts'
+@use './reset'
+@use './tokens'
+@use './typography'
+
+@layer base
+  html
+    background: var(--paper)
+    scrollbar-color: var(--field-dominant) var(--paper)
+
+  body
+    @include typography.body
+
+    background: var(--paper)
+    caret-color: var(--active)
+    color: var(--ink)
+    overflow-x: clip
+
+  #root
+    display: flex
+    flex-direction: column
+    min-height: 100dvh
+
+  a
+    text-decoration-thickness: 2px
+    text-underline-offset: 0.22em
+
+  code
+    @include typography.code
+
+  ::selection
+    background: var(--accent)
+    color: var(--on-accent)
+

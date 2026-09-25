@@ -1,0 +1,30 @@
+@use '../../presentation/styles/layout'
+@use '../../presentation/styles/token'
+@use '../../presentation/styles/typography'
+
+@layer components
+  .not-found-page
+    @include layout.page
+
+    .missing-piece
+      @include layout.field-secondary
+
+      border-bottom: var(--outline-thick) solid var(--outline)
+      display: flex
+      flex: 1
+      flex-direction: column
+      justify-content: flex-end
+      padding: var(--space-3xl) var(--gutter) var(--space-xl)
+
+    .missing-path
+      @include typography.title
+
+      font-size: clamp(2rem, 1.2rem + 4vw, 4.5rem)
+      max-width: 18ch
+      overflow-wrap: anywhere
+
+    .way-back
+      padding: var(--space-xl) var(--gutter) var(--space-2xl)
+
+    .back-home
+      @include token.token

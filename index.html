@@ -3,7 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <!--
+      The lid's petrol field in each palette, because the lid is what the top of
+      the first page paints. They are `--field-dominant` in `_tokens.sass`: if
+      that token moves, these move with it.
+    -->
+    <meta content="#0f5257" data-scheme="light" media="(prefers-color-scheme: light)" name="theme-color" />
+    <meta content="#1b5a5e" data-scheme="dark" media="(prefers-color-scheme: dark)" name="theme-color" />
+    <!--
+      The stylesheet follows the system theme on its own, so only an explicit
+      choice is stamped, before the first paint rather than from React, which
+      runs after it. The key and its values are `preferences-storage.ts`'s.
+      The theme-color tags are media-scoped to the system preference, so an
+      explicit choice has to retarget them too.
+    -->
+    <script>
+      try {
+        const theme = localStorage.getItem('portfolio:theme')
+
+        if (theme === 'dark' || theme === 'light') {
+          document.documentElement.dataset.theme = theme
+
+          for (const meta of document.querySelectorAll('meta[name="theme-color"][data-scheme]')) {
+            meta.media = meta.dataset.scheme === theme ? 'all' : 'not all'
+          }
+        }
+      } catch {}
+    </script>
     <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link as="font" crossorigin href="/fonts/archivo-latin.woff2" rel="preload" type="font/woff2" />
+    <link as="font" crossorigin href="/fonts/literata-latin-italic.woff2" rel="preload" type="font/woff2" />
     <title>Adrien Lacourpaille</title>
     <!--
       A layer's position is fixed where its name first appears, and Vite injects
@@ -15,6 +44,13 @@
     </style>
   </head>
   <body>
+<!--
+THESIS: Every piece of work is a published game box: the lid sells it, the contents list proves it, the numbered rule booklet explains it. It refuses the dark developer portfolio made of a name, a tagline and a grid of cards.
+OWN-WORLD: Four-colour box printing in petrol and tomato with marigold tokens on mint-grey paper; flat fields own whole regions, die-cut tokens, ink outlines, no gradient. Archivo stretched wide and black on the lid, Literata in the booklet.
+STORY: The visitor opens the box, reads what is inside (one realtime server, three games, two languages, two themes, zero flash) and leaves knowing Adrien ships finished, crafted, deeply engineered products.
+FIRST VIEWPORT: The lid, full-bleed: the name in wide black Archivo, a "Full-stack developer" badge, the illustrated lid art and the contents callout; Projects, About and Contact as tokens along the top; lifting the lid is the primary action.
+FORM: a game box and its rule booklet.
+-->
     <div id="root"></div>
     <script src="/src/main.tsx" type="module"></script>
   </body>

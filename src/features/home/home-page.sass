@@ -1,0 +1,48 @@
+@use '../../presentation/styles/layout'
+@use '../../presentation/styles/token'
+@use '../../presentation/styles/typography'
+
+@layer components
+  .home-page
+    @include layout.page
+
+    .lid
+      @include layout.field-dominant
+
+      container-type: inline-size
+      display: flex
+      flex: 1
+      flex-direction: column
+      gap: var(--space-2xl)
+      justify-content: space-between
+      padding: var(--space-m) var(--gutter) var(--space-xl)
+
+    .locale-switch
+      @include token.token
+
+      align-self: flex-end
+
+    .owner-name
+      @include typography.lid
+
+      color: var(--accent)
+      max-width: 12ch
+
+    .lid-band
+      @include layout.field-secondary
+
+      border-top: var(--outline-thick) solid var(--outline)
+      padding: var(--space-m) var(--gutter) var(--space-l)
+
+    .status
+      @include typography.lead
+
+      max-width: var(--measure)
+
+    @include layout.wide
+      .lid
+        padding-top: var(--space-l)
+        padding-bottom: var(--space-2xl)
+
+      .lid-band
+        padding-block: var(--space-l) var(--space-xl)
