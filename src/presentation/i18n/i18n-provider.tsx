@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 import { createSafeContext } from '@/helpers/contexts'
 import { writeStoredLocale } from '@/infrastructure/storage/preferences-storage'
-import { I18nProvider as ReactAriaI18nProvider } from '@/presentation/components/i18n-provider'
+import { I18nProvider as ReactAriaI18nProvider } from '@/presentation/components/ui/i18n-provider'
 
 import { i18n } from './i18n'
 import type { Locale } from './locale'

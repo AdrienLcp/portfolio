@@ -1,0 +1,35 @@
+@use '../../styles/typography'
+
+@layer components
+  .tooltip
+    @include typography.caption
+
+    background: var(--print-ink)
+    box-shadow: 0 3px 7px var(--shadow)
+    color: var(--print-paper)
+    max-width: 28ch
+    padding: 6px 10px
+
+    &[data-entering]
+      animation: tooltip-slip var(--transition-base, 0) var(--timing, ease)
+
+    &[data-exiting]
+      animation: tooltip-slip var(--transition-fast, 0) var(--timing, ease) reverse
+
+    .tooltip-arrow svg
+      display: block
+      fill: var(--print-ink)
+
+    &[data-placement='bottom'] .tooltip-arrow svg
+      rotate: 180deg
+
+    &[data-placement='left'] .tooltip-arrow svg
+      rotate: -90deg
+
+    &[data-placement='right'] .tooltip-arrow svg
+      rotate: 90deg
+
+  @keyframes tooltip-slip
+    from
+      opacity: 0
+      transform: translateY(4px)

@@ -1,0 +1,12 @@
+@use '../../styles/focus'
+
+@layer components
+  .tab-list
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-xs) var(--space-s)
+
+  .tab-panel
+    @include focus.ring
+
+    margin-top: var(--space-l)

@@ -13,5 +13,15 @@ export const EN_DICTIONARY = defineDictionary({
   notFound: {
     backHome: 'Back to the home page',
     message: 'No page lives at {path}.'
+  },
+  theme: {
+    auto: 'Auto',
+    dark: 'Night',
+    label: 'Theme',
+    light: 'Day'
+  },
+  ui: {
+    close: 'Close',
+    newTab: '(opens in a new tab)'
   }
 })

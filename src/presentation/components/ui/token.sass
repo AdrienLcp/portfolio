@@ -1,0 +1,100 @@
+// A style system: every piece shaped like a token (button, link, tab) is
+// restyled here as one, so the states resolve in one file's source order.
+
+@use '../../styles/focus'
+@use '../../styles/typography'
+
+@layer components
+  /// A die-cut game token: a printed disc of cardboard with an ink edge. Its
+  /// pip turns to the active colour when it marks where you are.
+  .token
+    @include typography.control
+    @include focus.ring
+
+    --token-face: var(--token)
+
+    align-items: center
+    align-self: flex-start
+    background: var(--token-face)
+    border: var(--outline-thin) solid var(--print-ink)
+    border-radius: var(--radius-full)
+    box-shadow: inset 0 0 0 2px var(--token-face), inset 0 0 0 3.5px color-mix(in oklab, var(--print-ink) 35%, transparent), 0 3px 7px var(--shadow)
+    color: var(--on-token)
+    cursor: pointer
+    display: inline-flex
+    gap: var(--space-xs)
+    min-height: 44px
+    padding: 0 var(--space-m) 0 var(--space-s)
+    position: relative
+    text-decoration: none
+    transition: transform var(--transition-base, 0) var(--timing, ease), box-shadow var(--transition-base, 0) var(--timing, ease)
+
+    &::before
+      background: currentColor
+      border-radius: var(--radius-full)
+      box-sizing: border-box
+      content: ''
+      flex: none
+      height: 12px
+      transition: background-color var(--transition-fast, 0) var(--timing, ease)
+      width: 12px
+
+    &[aria-current='page']::before
+      background: var(--print-brick)
+
+    @include focus.hovered
+      transform: translateY(-3px) rotate(-1.5deg)
+
+      &::before
+        background: var(--print-brick)
+
+    &[data-pressed]
+      transform: translateY(1px)
+
+    // The pip itself turns into the wait: the token keeps its exact width.
+    &[data-pending]
+      cursor: progress
+
+      &::before
+        animation: token-roll var(--transition-slow, 0) linear infinite
+        background: transparent
+        border: 2.5px solid currentColor
+        border-right-color: transparent
+
+    &[data-disabled]
+      box-shadow: inset 0 0 0 2px var(--token-face)
+      color: color-mix(in oklab, var(--print-ink) 55%, var(--token-face))
+      cursor: not-allowed
+      transform: none
+
+    // A played token: pressed flat into the board, printed in reverse.
+    &[data-selected]
+      --token-face: var(--print-ink)
+
+      box-shadow: inset 0 0 0 2px var(--token-face)
+      color: var(--print-paper)
+      transform: none
+
+      &::before
+        background: var(--print-marigold)
+
+    &.accent
+      --token-face: var(--print-marigold)
+
+    &.icon-only
+      justify-content: center
+      min-width: 44px
+      padding: 0
+
+      &::before
+        display: none
+
+    .token-icon
+      margin-inline-end: calc(var(--space-xs) * -0.5)
+
+    .token-progress
+      position: absolute
+
+  @keyframes token-roll
+    to
+      transform: rotate(1turn)

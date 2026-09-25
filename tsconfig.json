@@ -28,5 +28,12 @@
     "target": "esnext",
     "verbatimModuleSyntax": true
   },
-  "include": ["scripts", "src", "vite.config.ts"]
+  "include": [
+    ".storybook",
+    "scripts",
+    "src",
+    "vite.config.ts",
+    "vitest.config.ts",
+    "vitest.setup.ts"
+  ]
 }

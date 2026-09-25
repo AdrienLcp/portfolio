@@ -12,16 +12,24 @@
   "devDependencies": {
     "@biomejs/biome": "2.5.14",
     "@react-aria/optimize-locales-plugin": "^2.0.2",
+    "@storybook/addon-a11y": "^10.6.0",
+    "@storybook/addon-docs": "^10.6.0",
+    "@storybook/addon-vitest": "^10.6.0",
+    "@storybook/react-vite": "^10.6.0",
     "@types/node": "^26.6.2",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "^6.1.1",
+    "@vitest/browser": "^4.1.11",
+    "@vitest/browser-playwright": "^4.1.11",
     "oxc-transform-react": "^0.151.0",
+    "playwright": "~1.63.0",
     "sass": "^1.105.0",
+    "storybook": "^10.6.0",
     "tsx": "^4.23.15",
     "typescript": "~6.0.3",
     "vite": "~8.3.0",
-    "vitest": "^5.0.1"
+    "vitest": "^4.1.11"
   },
   "engines": {
     "node": ">=24.0.0",
@@ -32,18 +40,21 @@
   "private": true,
   "scripts": {
     "build": "pnpm typecheck && vite build",
+    "build-storybook": "storybook build",
     "deps:upgrade": "corepack use pnpm@latest && pnpm -r up -L && biome migrate --write",
     "dev": "vite",
     "lint": "biome check --write",
     "lint:ci": "biome ci",
     "preinstall": "git config core.hooksPath .githooks || true",
     "preview": "vite preview",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "storybook": "storybook dev -p 6006",
+    "test": "vitest run --project unit",
+    "test:components": "vitest run --project stories",
+    "test:watch": "vitest --project unit",
     "toolkit:check": "node --import tsx scripts/toolkit.ts --check",
     "toolkit:sync": "node --import tsx scripts/toolkit.ts",
     "typecheck": "tsc --noEmit",
-    "validate": "pnpm toolkit:check && pnpm build && pnpm lint:ci && pnpm test"
+    "validate": "pnpm toolkit:check && pnpm build && pnpm lint:ci && pnpm test && pnpm test:components"
   },
   "type": "module",
   "version": "0.1.0"

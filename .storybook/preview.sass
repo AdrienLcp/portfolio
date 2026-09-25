@@ -1,0 +1,23 @@
+// Scaffolding for the stories only: never imported by the app.
+
+@use '../src/presentation/styles/layout'
+
+@layer components
+  .story-measure
+    max-width: var(--measure)
+
+  .story-fields
+    display: grid
+
+  .story-field
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-m)
+    padding: var(--space-l) var(--gutter)
+
+    &.dominant
+      @include layout.field-dominant
+
+    &.secondary
+      @include layout.field-secondary

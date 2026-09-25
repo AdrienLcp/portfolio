@@ -159,7 +159,7 @@ The system is flat. Fields have no shadow and no layering; they are printed side
 
 ## Shapes
 
-Two shapes. Fields are hard-edged rectangles running to the viewport edges, with no rounding. Pieces are full pills (999px radius) with a 2px print-ink border. A small inline chip (4px radius) is used only for a monospace error detail on the error screen. Where two fields meet, a 3px ink rule marks the fold.
+Two shapes. Fields are hard-edged rectangles running to the viewport edges, with no rounding. Pieces are full pills (999px radius) with a 2px print-ink border. Things printed flat on the box (a stamp, a sheet, a tooltip slip) are square-cornered like the fields. A small inline chip (4px radius) is used only for a monospace error detail on the error screen and for the focus ring of an inline link. Where two fields meet, a 3px ink rule marks the fold.
 
 ## Components
 
@@ -167,10 +167,37 @@ Two shapes. Fields are hard-edged rectangles running to the viewport edges, with
 The single link and button shape: a die-cut cardboard disc stretched into a pill, lying on whatever field it sits on.
 - **Shape:** full pill (999px), 2px print-ink border, 44px minimum height, 12px left and 20px right padding, 8px gap to its pip.
 - **Colour:** print paper (lightened toward white by day) with print ink text, identical on every field and in both themes.
-- **Pip:** a 12px ink disc before the label. It turns brick when the token marks the current page or is hovered.
+- **Pip:** a 12px ink disc before the label. It turns brick (the fixed print brick, whatever the theme) when the token marks the current page or is hovered.
+- **Accent:** a marigold token (fixed print marigold, print ink text) for the one action a screen is for. Never more than one per screen.
+- **Played:** a selected tab is a token pressed flat into the board: print ink face, paper text, marigold pip, no shadow, no lift.
+- **Pending:** the pip turns into a rolling open ring; the token keeps its width and stays focusable.
+- **Disabled:** the shadow goes, the text fades to 55% ink; the token neither lifts nor tilts.
+- **Icon:** an icon after the label (a new-tab arrow, a copy mark). An icon-only token is a 44px disc with no pip, always named by an `aria-label`.
 - **Hover:** only under a real pointer (`hover: hover` and `pointer: fine`): the token lifts 3px and tilts 1.5 degrees, over 280ms on `cubic-bezier(0.16, 1, 0.3, 1)`. Pressed, it sinks 1px.
 - **Focus:** a 3px outline offset by 3px, drawn only on keyboard focus, in the focus colour of the field underneath.
 - **Reduced motion:** all transition durations drop to zero.
+
+### Text link
+A link inside a sentence stays text: inherited colour, a 2px underline at 45% of the text colour, offset 0.22em. Under a pointer the underline takes the field's focus colour (brick on paper, marigold on petrol, ink on tomato) and drops to 0.3em. A link opening a new tab carries a small arrow and says so in its accessible name.
+
+### Theme rail
+A three-slot rail cut into the board (Auto, Day, Night) with one pawn on it. The rail is a printed piece: print paper darkened 16% toward ink, 2px ink edge, an inset shadow for the groove. Each slot shows an empty 10px hole; the pawn (a token face, ink edge, short shadow) sits under the slot in play and slides to the next one over 280ms. The chosen slot's hole is filled brick. Auto is an explicit choice, not the absence of one.
+
+### Stamp
+A tag in a contents list (the stack of a project): uppercase Archivo 700 at caption size, tracked 0.06em, a 2px border in the current text colour, square corners, no shadow. Read, never pressed.
+
+### Booklet entry
+A disclosure is one entry of the rule booklet: a 2px rule above each entry (and below the last), the title in Archivo 800 at lead size and 110% width, and at the end of the line a 36px token disc holding a plus that turns 45 degrees into a cross when open. The panel keeps the 65ch measure and fades in 6px from above.
+
+### Sheet
+A dialog is a printed sheet laid on the table: paper, a 3px ink border, square corners, one short soft shadow (it is a lifted piece), 44rem at most. The table shows through print ink at 72%, never blurred. It drops in from 18px above with a 1 degree tilt. Its title uses the heading step (Archivo 900, 112% width); its close control is an icon-only token.
+
+### Slips
+- **Tooltip:** a square slip of print ink with paper caption text and a small arrow, 28ch at most, sliding 4px into place.
+- **Toast:** a marigold pill of print (ink edge, ink text, one short shadow) at the bottom centre, with a check mark and an icon-only close token. One at a time, four seconds, paused while hovered or focused.
+
+### Icons
+One family, drawn on a 24-unit grid: 2.75 stroke, square caps, mitred joins, sized 1.125em, so they sit beside Archivo 800. Decorative only; the control that holds one carries the name.
 
 ### Fields
 - **Lid (dominant field):** petrol, paper text, marigold display lettering, focus ring in marigold.

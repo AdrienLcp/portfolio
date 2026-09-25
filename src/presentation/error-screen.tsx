@@ -2,7 +2,7 @@ import type React from 'react'
 
 import { paths, useRouteFailure } from '@/infrastructure/router/navigation'
 import { AppShell } from '@/presentation/app-shell'
-import { Link } from '@/presentation/components/link'
+import { Link } from '@/presentation/components/ui/link'
 import { useTranslate } from '@/presentation/i18n/i18n-provider'
 
 import './error-screen.sass'
@@ -25,9 +25,7 @@ export const ErrorScreen: React.FC = () => {
           </p>
         </div>
         <div className='way-out'>
-          <Link className='reload' href={paths.root}>
-            {translate('error.reload')}
-          </Link>
+          <Link href={paths.root}>{translate('error.reload')}</Link>
         </div>
       </main>
     </AppShell>

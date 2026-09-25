@@ -1,0 +1,72 @@
+@use '../../styles/focus'
+@use '../../styles/typography'
+
+@layer components
+  .disclosure
+    border-top: var(--outline-thin) solid var(--outline)
+
+    &:last-child
+      border-bottom: var(--outline-thin) solid var(--outline)
+
+    .disclosure-heading
+      margin: 0
+
+    .disclosure-trigger
+      @include focus.ring
+
+      align-items: center
+      background: none
+      border: 0
+      color: inherit
+      cursor: pointer
+      display: flex
+      gap: var(--space-m)
+      justify-content: space-between
+      padding: var(--space-m) 0
+      text-align: start
+      width: 100%
+
+    .disclosure-title
+      @include typography.control
+
+      font-size: var(--text-lead)
+      font-stretch: 110%
+      text-wrap: balance
+
+    // A small token lying at the end of the line: it lifts under a pointer and
+    // turns its plus into a cross once the fold is open.
+    .disclosure-mark
+      align-items: center
+      background: var(--token)
+      border: var(--outline-thin) solid var(--print-ink)
+      border-radius: var(--radius-full)
+      box-shadow: 0 2px 5px var(--shadow)
+      color: var(--on-token)
+      display: inline-flex
+      flex: none
+      height: 36px
+      justify-content: center
+      transition: transform var(--transition-base, 0) var(--timing, ease)
+      width: 36px
+
+      .icon
+        transition: rotate var(--transition-base, 0) var(--timing, ease)
+
+    .disclosure-trigger[data-hovered] .disclosure-mark
+      @media (hover: hover) and (pointer: fine)
+        transform: translateY(-2px) rotate(-4deg)
+
+    &[data-expanded] .disclosure-mark .icon
+      rotate: 45deg
+
+    .disclosure-panel
+      max-width: var(--measure)
+
+    // react-aria stamps `data-expanded` on the root, not on the panel.
+    &[data-expanded] .disclosure-panel
+      padding-bottom: var(--space-l)
+      transition: opacity var(--transition-base, 0) var(--timing, ease), translate var(--transition-base, 0) var(--timing, ease)
+
+      @starting-style
+        opacity: 0
+        translate: 0 -6px

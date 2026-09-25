@@ -1,0 +1,57 @@
+@use '../../styles/focus'
+@use '../../styles/typography'
+
+@layer components
+  .toast-region
+    @include focus.ring
+
+    bottom: var(--space-l)
+    display: flex
+    flex-direction: column
+    gap: var(--space-xs)
+    left: 50%
+    position: fixed
+    translate: -50% 0
+    width: max-content
+    max-width: calc(100vw - 2 * var(--gutter))
+    z-index: 20
+
+  // A marigold slip dropped on the table: the same printed piece in both
+  // themes, with an ink edge and one short shadow.
+  .toast
+    @include typography.control
+    @include focus.ring
+
+    --focus: var(--print-ink)
+
+    align-items: center
+    background: var(--print-marigold)
+    border: var(--outline-thin) solid var(--print-ink)
+    border-radius: var(--radius-full)
+    box-shadow: 0 4px 10px var(--shadow)
+    color: var(--print-ink)
+    display: flex
+    gap: var(--space-xs)
+    padding: var(--space-2xs) var(--space-2xs) var(--space-2xs) var(--space-m)
+
+    &[data-entering]
+      animation: toast-drop var(--transition-slow, 0) var(--timing, ease)
+
+    &[data-exiting]
+      animation: toast-drop var(--transition-fast, 0) var(--timing, ease) reverse
+
+    .toast-content
+      flex: 1
+
+    // Compounded with `.token` to outrank `token.sass` whatever order they load in.
+    .token.toast-close
+      --token-face: var(--print-marigold)
+
+      box-shadow: none
+      min-height: 36px
+      min-width: 36px
+
+  @keyframes toast-drop
+    from
+      opacity: 0
+      transform: translateY(16px) rotate(2deg)

@@ -1,0 +1,64 @@
+@use '../styles/focus'
+@use '../styles/typography'
+
+@layer components
+  // A printed piece of the game, so it keeps its own inks in both themes.
+  .theme-switch
+    align-self: flex-start
+    background: color-mix(in oklab, var(--print-ink) 16%, var(--print-paper))
+    border: var(--outline-thin) solid var(--print-ink)
+    border-radius: var(--radius-full)
+    box-shadow: inset 0 2px 4px color-mix(in oklab, var(--print-ink) 30%, transparent)
+    display: inline-flex
+    padding: 3px
+
+    .theme-slot
+      @include typography.control
+      @include focus.ring
+
+      align-items: center
+      background: none
+      border: 0
+      border-radius: var(--radius-full)
+      color: var(--print-ink)
+      cursor: pointer
+      display: inline-flex
+      font-size: var(--text-caption)
+      gap: 6px
+      isolation: isolate
+      min-height: 38px
+      padding: 0 var(--space-s) 0 10px
+      position: relative
+
+      // An empty hole where the pawn could stand.
+      &::before
+        border: var(--outline-thin) solid color-mix(in oklab, var(--print-ink) 55%, transparent)
+        border-radius: var(--radius-full)
+        box-sizing: border-box
+        content: ''
+        height: 10px
+        transition: background-color var(--transition-fast, 0) var(--timing, ease), border-color var(--transition-fast, 0) var(--timing, ease)
+        width: 10px
+
+      &[data-selected]::before
+        background: var(--print-brick)
+        border-color: var(--print-brick)
+
+      @include focus.hovered
+        &:not([data-selected])::before
+          border-color: var(--print-ink)
+
+    // The pawn: a token face with its ink edge and one short shadow, slid from
+    // slot to slot by react-aria through the `translate` transition.
+    .theme-pawn
+      background: var(--token)
+      border: var(--outline-thin) solid var(--print-ink)
+      border-radius: var(--radius-full)
+      box-shadow: 0 2px 5px var(--shadow)
+      inset: 0
+      position: absolute
+      transition: translate var(--transition-base, 0) var(--timing, ease)
+      z-index: -1
+
+    .theme-slot-label
+      line-height: 1

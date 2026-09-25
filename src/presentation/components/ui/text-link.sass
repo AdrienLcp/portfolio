@@ -1,0 +1,26 @@
+@use '../../styles/focus'
+
+@layer components
+  /// The underline takes the colour `--focus` gives each field — brick on
+  /// paper, marigold on petrol, ink on tomato — so it always reads on it.
+  .text-link
+    @include focus.ring
+
+    border-radius: var(--radius-s)
+    color: inherit
+    cursor: pointer
+    text-decoration-color: color-mix(in oklab, currentColor 45%, transparent)
+    text-decoration-line: underline
+    text-decoration-thickness: var(--outline-thin)
+    text-underline-offset: 0.22em
+    transition: text-decoration-color var(--transition-fast, 0) var(--timing, ease), text-underline-offset var(--transition-fast, 0) var(--timing, ease)
+
+    @include focus.hovered
+      text-decoration-color: var(--focus)
+      text-underline-offset: 0.3em
+
+    .text-link-icon
+      height: 0.8em
+      margin-inline-start: 0.15em
+      vertical-align: -0.05em
+      width: 0.8em

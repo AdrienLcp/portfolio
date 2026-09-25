@@ -1,0 +1,21 @@
+@use '../../styles/focus'
+@use '../../styles/typography'
+
+@layer components
+  .tag-list
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-xs)
+
+  .stamp
+    @include typography.caption
+    @include focus.ring
+
+    align-items: center
+    border: var(--outline-thin) solid currentColor
+    display: inline-flex
+    font-weight: 700
+    letter-spacing: 0.06em
+    min-height: 28px
+    padding: 0 var(--space-xs)
+    text-transform: uppercase

@@ -1,7 +1,7 @@
 import type React from 'react'
 
 import { useLocalizedCurrentPath } from '@/infrastructure/router/navigation'
-import { Link } from '@/presentation/components/link'
+import { Link } from '@/presentation/components/ui/link'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 
 import './home-page.sass'

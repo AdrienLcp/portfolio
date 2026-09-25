@@ -15,5 +15,15 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
   notFound: {
     backHome: 'Retour à l’accueil',
     message: 'Aucune page à l’adresse {path}.'
+  },
+  theme: {
+    auto: 'Auto',
+    dark: 'Nuit',
+    label: 'Thème',
+    light: 'Jour'
+  },
+  ui: {
+    close: 'Fermer',
+    newTab: '(s’ouvre dans un nouvel onglet)'
   }
 }
