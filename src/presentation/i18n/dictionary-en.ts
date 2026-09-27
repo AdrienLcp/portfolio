@@ -2,6 +2,11 @@ import { defineDictionary } from '@adrienlcp/i18n/dictionary'
 
 export const EN_DICTIONARY = defineDictionary({
   error: {
+    api: {
+      invalid_content:
+        'This content failed its own checks and cannot be shown.',
+      not_found: 'Nothing lives at this address.'
+    },
     reload: 'Reload the page',
     title: 'Something broke on this page.'
   },

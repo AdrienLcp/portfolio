@@ -4,6 +4,11 @@ import type { EN_DICTIONARY } from './dictionary-en'
 
 export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
   error: {
+    api: {
+      invalid_content:
+        'Ce contenu n’a pas passé ses propres contrôles et ne peut pas s’afficher.',
+      not_found: 'Rien à cette adresse.'
+    },
     reload: 'Recharger la page',
     title: 'Quelque chose a cassé sur cette page.'
   },
