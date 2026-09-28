@@ -83,7 +83,6 @@ export const EN_DICTIONARY = defineDictionary({
     home: 'Adrien Lacourpaille, home page',
     menu: 'Menu',
     navigation: 'Main',
-    otherLocale: 'Français',
     projects: 'Projects'
   },
   home: {
@@ -142,6 +141,9 @@ export const EN_DICTIONARY = defineDictionary({
     openBox: 'Open the box',
     role: 'Full-stack developer in Nantes. Websites, APIs, party games.',
     title: 'Adrien Lacourpaille'
+  },
+  locale: {
+    label: 'Language'
   },
   notFound: {
     backHome: 'Back to the home page',

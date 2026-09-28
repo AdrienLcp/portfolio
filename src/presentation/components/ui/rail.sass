@@ -1,9 +1,10 @@
-@use '../styles/focus'
-@use '../styles/typography'
+@use '../../styles/focus'
+@use '../../styles/typography'
 
 @layer components
-  // A printed piece of the game, so it keeps its own inks in both themes.
-  .theme-switch
+  // A printed piece of the game, so it keeps its own inks in both themes: a
+  // row of slots cut into the board, one pawn standing in the one in play.
+  .rail
     align-self: flex-start
     background: color-mix(in oklab, var(--print-ink) 16%, var(--print-paper))
     border: var(--outline-thin) solid var(--print-ink)
@@ -12,7 +13,7 @@
     display: inline-flex
     padding: 3px
 
-    .theme-slot
+    .rail-slot
       @include typography.control
       @include focus.ring
 
@@ -29,6 +30,7 @@
       min-height: 38px
       padding: 0 var(--space-s) 0 10px
       position: relative
+      text-decoration: none
 
       // An empty hole where the pawn could stand.
       &::before
@@ -40,17 +42,22 @@
         transition: background-color var(--transition-fast, 0) var(--timing, ease), border-color var(--transition-fast, 0) var(--timing, ease)
         width: 10px
 
-      &[data-selected]::before
+      // Already there: nothing to press.
+      &[aria-current]
+        cursor: default
+
+      &[data-selected]::before,
+      &[aria-current]::before
         background: var(--print-brick)
         border-color: var(--print-brick)
 
       @include focus.hovered
-        &:not([data-selected])::before
+        &:not([data-selected], [aria-current])::before
           border-color: var(--print-ink)
 
     // The pawn: a token face with its ink edge and one short shadow, slid from
     // slot to slot by react-aria through the `translate` transition.
-    .theme-pawn
+    .rail-pawn
       background: var(--token)
       border: var(--outline-thin) solid var(--print-ink)
       border-radius: var(--radius-full)
@@ -60,5 +67,5 @@
       transition: translate var(--transition-base, 0) var(--timing, ease)
       z-index: -1
 
-    .theme-slot-label
+    .rail-slot-label
       line-height: 1

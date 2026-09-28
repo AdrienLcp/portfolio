@@ -1,4 +1,5 @@
 import type React from 'react'
+import { createElement } from 'react'
 import {
   Link as ReactAriaLink,
   type LinkProps as ReactAriaLinkProps
@@ -22,10 +23,22 @@ export type LinkProps = Omit<ReactAriaLinkProps, 'children'> & {
   variant?: TokenVariant
 }
 
+/**
+ * react-aria types `hrefLang` but leaves it off the `<a>` it renders, so it is
+ * put back by hand: a crawler reads it to pair a page with its translation.
+ */
+export const renderHrefLang = (
+  hrefLang: string | undefined
+): ReactAriaLinkProps['render'] =>
+  hrefLang === undefined
+    ? undefined
+    : (domProps) => createElement('a', { ...domProps, hrefLang })
+
 /** A link shaped as a token: a place to go, printed as a piece to press. */
 export const Link: React.FC<LinkProps> = ({
   children,
   className,
+  hrefLang,
   isCurrent = false,
   rel,
   target,
@@ -42,6 +55,7 @@ export const Link: React.FC<LinkProps> = ({
       variant === 'accent' && 'accent'
     )}
     rel={relForTarget({ rel, target })}
+    render={renderHrefLang(hrefLang)}
     target={target}
   >
     {children}

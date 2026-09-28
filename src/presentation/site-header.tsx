@@ -8,18 +8,15 @@ import {
   cvPathFor,
   homePathFor,
   projectsPathFor,
-  useCurrentPath,
-  useLocalizedCurrentPath
+  useCurrentPath
 } from '@/infrastructure/router/navigation'
 import { Button } from '@/presentation/components/ui/button'
 import { Link } from '@/presentation/components/ui/link'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
-import type { Locale } from '@/presentation/i18n/locale'
+import { LocaleSwitch } from '@/presentation/locale-switch'
 import { ThemeSwitch } from '@/presentation/theme/theme-switch'
 
 import './site-header.sass'
-
-const OTHER_LOCALE: Record<Locale, Locale> = { en: 'fr', fr: 'en' }
 
 type Page = {
   label: string
@@ -71,8 +68,6 @@ const MenuSheet: React.FC<Omit<PageLinksProps, 'onNavigate'>> = (props) => {
 export const SiteHeader: React.FC = () => {
   const { locale, translate } = useI18n()
   const currentPath = useCurrentPath()
-  const otherLocale = OTHER_LOCALE[locale]
-  const otherLocalePath = useLocalizedCurrentPath(otherLocale)
   const homePath = homePathFor(locale)
   const pages: Page[] = [
     { label: translate('header.projects'), path: projectsPathFor(locale) },
@@ -95,16 +90,7 @@ export const SiteHeader: React.FC = () => {
         <div className='page-links'>
           <PageLinks currentPath={currentPath} pages={pages} />
         </div>
-        {otherLocalePath !== null && (
-          <Link
-            href={otherLocalePath}
-            hrefLang={otherLocale}
-            lang={otherLocale}
-            routerOptions={{ replace: true }}
-          >
-            {translate('header.otherLocale')}
-          </Link>
-        )}
+        <LocaleSwitch />
         <MenuSheet currentPath={currentPath} pages={pages} />
       </nav>
       <ThemeSwitch />

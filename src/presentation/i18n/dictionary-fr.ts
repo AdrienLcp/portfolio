@@ -84,7 +84,6 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
     home: 'Adrien Lacourpaille, page d’accueil',
     menu: 'Menu',
     navigation: 'Principale',
-    otherLocale: 'English',
     projects: 'Projets'
   },
   home: {
@@ -145,6 +144,9 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
     openBox: 'Ouvrir la boîte',
     role: 'Développeur full-stack à Nantes. Des sites, des API, des jeux de soirée.',
     title: 'Adrien Lacourpaille'
+  },
+  locale: {
+    label: 'Langue'
   },
   notFound: {
     backHome: 'Retour à l’accueil',

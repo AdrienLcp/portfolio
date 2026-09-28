@@ -95,8 +95,13 @@ export const localeInPath = (pathname: string): Locale | null => {
 }
 
 /** The same page in another language, or `null` on a path that names none. */
-export const useLocalizedCurrentPath = (locale: Locale): string | null => {
-  const { pathname } = useLocation()
+export const pathInLocale = ({
+  locale,
+  pathname
+}: {
+  locale: Locale
+  pathname: string
+}): string | null => {
   const [, first, ...rest] = pathname.split('/')
 
   return first !== undefined && isLocale(first)
