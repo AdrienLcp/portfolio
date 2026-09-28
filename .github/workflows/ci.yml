@@ -12,22 +12,40 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 24
-          package-manager-cache: false
-      - run: corepack enable
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
         with:
           cache: pnpm
           node-version: 24
+
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec playwright install --with-deps chromium
-      - run: pnpm validate
-      - run: pnpm lighthouse
+
+      # `--with-deps` runs `apt-get update` over every source the runner image
+      # carries, and one of them is Google's own Chrome repository — which
+      # nothing here installs from, Playwright shipping the Chromium it drives.
+      # Google publishes that index a piece at a time, so an update landing
+      # between the pieces fails on a hash mismatch and takes the whole job with
+      # it, for minutes or for hours. Dropping the source leaves the step
+      # standing on Ubuntu's mirrors alone.
+      - name: Install Chromium
+        run: |
+          sudo rm -f /etc/apt/sources.list.d/*google*
+          pnpm exec playwright install --with-deps chromium
+
+      # `validate` lints with `lint:ci`, not `lint`: `pnpm lint` is
+      # `biome check --write`, which repairs the drift and exits 0, so it would
+      # pass on exactly the code CI exists to reject.
+      - name: Validate
+        run: pnpm validate
+
+      - name: Lighthouse
+        run: pnpm lighthouse
+
       - if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: lighthouse-reports
           path: lighthouse-reports
