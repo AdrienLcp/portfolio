@@ -13,3 +13,20 @@ export const scrollToTop = (): void => {
 export const scrollToElement = (element: HTMLElement): void => {
   element.scrollIntoView({ behavior: scrollBehavior(), block: 'start' })
 }
+
+/** Resolves `false` where the clipboard is denied, as over plain HTTP. */
+export const copyText = async (text: string): Promise<boolean> => {
+  try {
+    await navigator.clipboard.writeText(text)
+    return true
+  } catch {
+    return false
+  }
+}
+
+/** The fallback when copying fails: the text is selected, ready for a keystroke. */
+export const selectContents = (element: HTMLElement): void => {
+  const selection = getSelection()
+
+  selection?.selectAllChildren(element)
+}

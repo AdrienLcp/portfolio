@@ -1,6 +1,25 @@
 import { defineDictionary } from '@adrienlcp/i18n/dictionary'
 
 export const EN_DICTIONARY = defineDictionary({
+  about: {
+    credit: 'A game by Adrien Lacourpaille.',
+    lead: 'I spent six years putting spare parts in their place. Now I do it with code.',
+    path: 'How I got here',
+    seeProjects: 'See the projects',
+    title: 'About',
+    toolbox: 'The toolbox',
+    writeToMe: 'Write to me'
+  },
+  contact: {
+    copied: 'Address copied',
+    copy: 'Copy the address',
+    elsewhere: 'Elsewhere',
+    lead: 'A question, an idea, or just saying hello: my inbox is open.',
+    noForm:
+      'No form here: this site has no server, and your mail app does the job perfectly.',
+    title: 'Contact',
+    write: 'Write an email'
+  },
   cv: {
     download: 'Download the CV',
     downloadPlain: 'ATS version',
@@ -36,8 +55,11 @@ export const EN_DICTIONARY = defineDictionary({
     colophon: 'Adrien Lacourpaille, {year}. Printed in petrol and tomato.'
   },
   header: {
+    about: 'About',
+    contact: 'Contact',
     cv: 'CV',
     home: 'Adrien Lacourpaille, home page',
+    menu: 'Menu',
     navigation: 'Main',
     otherLocale: 'Français',
     projects: 'Projects'
@@ -65,7 +87,8 @@ export const EN_DICTIONARY = defineDictionary({
         title: 'Honest hover'
       },
       languages: {
-        description: 'English and French, served by @adrienlcp/i18n.',
+        description:
+          'English and French, served by @adrienlcp/i18n, my own take on Web Dev Simplified’s approach.',
         title: 'Languages'
       },
       lead: 'Everything is in its place, nothing is missing. Check before the first game.',
@@ -95,7 +118,7 @@ export const EN_DICTIONARY = defineDictionary({
       title: 'Contents of the box'
     },
     openBox: 'Open the box',
-    role: 'Full-stack developer. I ship finished things, from the socket to the last hover.',
+    role: 'Full-stack developer in Nantes. Websites, APIs, party games.',
     title: 'Adrien Lacourpaille'
   },
   notFound: {
@@ -111,7 +134,7 @@ export const EN_DICTIONARY = defineDictionary({
     stack: 'Stack'
   },
   projects: {
-    lead: 'Finished games only, down to the last piece.',
+    lead: 'What I code in the evening, once the workday is done.',
     open: 'Read the rules of {name}',
     title: 'Projects'
   },

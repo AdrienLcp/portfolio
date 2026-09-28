@@ -3,6 +3,11 @@ import { z } from 'zod'
 import { localizedTextSchema } from '@/features/content/localized-text'
 import type { Locale } from '@/presentation/i18n/locale'
 
+export const PROFILE_PHOTO = {
+  path: '/images/adrien-lacourpaille.webp',
+  size: 480
+} as const
+
 export const profileSchema = z.strictObject({
   links: z.strictObject({
     github: z.url(),

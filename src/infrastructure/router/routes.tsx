@@ -2,6 +2,7 @@ import type { LoaderFunction, RouteObject } from 'react-router'
 
 import { NotFoundPage } from '@/features/not-found/not-found-page'
 import {
+  aboutLoader,
   cvLoader,
   projectLoader,
   projectsLoader
@@ -19,6 +20,12 @@ type LocalizedPath = (typeof localizedPaths)[keyof typeof localizedPaths]
 
 /** Keyed by path, so a path with no page fails to compile. */
 const pageFor = {
+  [localizedPaths.about]: async () => ({
+    Component: (await import('@/features/about/about-page')).AboutPage
+  }),
+  [localizedPaths.contact]: async () => ({
+    Component: (await import('@/features/contact/contact-page')).ContactPage
+  }),
   [localizedPaths.cv]: async () => ({
     Component: (await import('@/features/cv/cv-page')).CvPage
   }),
@@ -38,6 +45,8 @@ const pageFor = {
 
 /** Outside `lazy`, so the data starts downloading beside the page's chunk. */
 const loaderFor = {
+  [localizedPaths.about]: aboutLoader,
+  [localizedPaths.contact]: cvLoader,
   [localizedPaths.cv]: cvLoader,
   [localizedPaths.cvPlain]: cvLoader,
   [localizedPaths.home]: projectsLoader,

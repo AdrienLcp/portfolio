@@ -1,6 +1,7 @@
 import type { LoaderFunctionArgs, Params } from 'react-router'
 
 import {
+  fetchAbout,
   fetchCv,
   fetchProfile,
   fetchProject,
@@ -38,4 +39,10 @@ export const cvLoader = ({ params }: LoaderFunctionArgs) => {
   const locale = localeParam(params)
 
   return { cv: fetchCv(locale), profile: fetchProfile(locale) }
+}
+
+export const aboutLoader = ({ params }: LoaderFunctionArgs) => {
+  const locale = localeParam(params)
+
+  return { about: fetchAbout(locale), cv: fetchCv(locale) }
 }

@@ -3,6 +3,25 @@ import type { DictionaryFor } from '@adrienlcp/i18n/dictionary'
 import type { EN_DICTIONARY } from './dictionary-en'
 
 export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
+  about: {
+    credit: 'Un jeu d’Adrien Lacourpaille.',
+    lead: 'J’ai rangé des pièces détachées pendant six ans. Maintenant, je range du code.',
+    path: 'Comment j’en suis arrivé là',
+    seeProjects: 'Voir les projets',
+    title: 'À propos',
+    toolbox: 'La boîte à outils',
+    writeToMe: 'M’écrire'
+  },
+  contact: {
+    copied: 'Adresse copiée',
+    copy: 'Copier l’adresse',
+    elsewhere: 'Ailleurs',
+    lead: 'Une question, une idée, ou juste envie de dire bonjour : ma boîte mail est ouverte.',
+    noForm:
+      'Pas de formulaire ici : ce site n’a pas de serveur, et votre messagerie fait ça très bien.',
+    title: 'Contact',
+    write: 'Écrire un e-mail'
+  },
   cv: {
     download: 'Télécharger le CV',
     downloadPlain: 'Version ATS',
@@ -38,8 +57,11 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
     colophon: 'Adrien Lacourpaille, {year}. Imprimé en pétrole et tomate.'
   },
   header: {
+    about: 'À propos',
+    contact: 'Contact',
     cv: 'CV',
     home: 'Adrien Lacourpaille, page d’accueil',
+    menu: 'Menu',
     navigation: 'Principale',
     otherLocale: 'English',
     projects: 'Projets'
@@ -67,7 +89,8 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
         title: 'Survol honnête'
       },
       languages: {
-        description: 'Anglais et français, servis par @adrienlcp/i18n.',
+        description:
+          'Anglais et français, servis par @adrienlcp/i18n, ma version de l’approche de Web Dev Simplified.',
         title: 'Langues'
       },
       lead: 'Tout est rangé, rien ne manque. Vérifiez avant la première partie.',
@@ -99,7 +122,7 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
       title: 'Contenu de la boîte'
     },
     openBox: 'Ouvrir la boîte',
-    role: 'Développeur full-stack. Je livre des choses finies, du socket jusqu’au dernier survol.',
+    role: 'Développeur full-stack à Nantes. Des sites, des API, des jeux de soirée.',
     title: 'Adrien Lacourpaille'
   },
   notFound: {
@@ -115,7 +138,7 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
     stack: 'Stack technique'
   },
   projects: {
-    lead: 'Uniquement des jeux finis, jusqu’à la dernière pièce.',
+    lead: 'Ce que je code le soir, une fois le travail fini.',
     open: 'Lire les règles de {name}',
     title: 'Projets'
   },

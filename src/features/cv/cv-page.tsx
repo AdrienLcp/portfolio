@@ -8,7 +8,7 @@ import {
   formatPeriod,
   formatPhone
 } from '@/features/cv/cv-format'
-import type { Profile } from '@/features/profile/profile'
+import { PROFILE_PHOTO, type Profile } from '@/features/profile/profile'
 import { homePathFor, useCvData } from '@/infrastructure/router/navigation'
 import { Icon } from '@/presentation/components/icon'
 import { Link } from '@/presentation/components/ui/link'
@@ -20,9 +20,6 @@ import { MissingPiece } from '@/presentation/missing-piece'
 import { RouteFallback } from '@/presentation/route-fallback'
 
 import './cv-page.sass'
-
-const PHOTO_PATH = '/images/adrien-lacourpaille.webp'
-const PHOTO_SIZE = 480
 
 type CvSheetProps = {
   cv: Cv
@@ -60,9 +57,9 @@ const CvSheet: React.FC<CvSheetProps> = ({ cv, profile }) => {
         <img
           alt={translate('cv.photo')}
           className='cv-photo'
-          height={PHOTO_SIZE}
-          src={PHOTO_PATH}
-          width={PHOTO_SIZE}
+          height={PROFILE_PHOTO.size}
+          src={PROFILE_PHOTO.path}
+          width={PROFILE_PHOTO.size}
         />
       </header>
 

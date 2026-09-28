@@ -9,13 +9,20 @@ import {
 
 import { isLocale, type Locale } from '@/presentation/i18n/locale'
 
-import type { cvLoader, projectLoader, projectsLoader } from './loaders'
+import type {
+  aboutLoader,
+  cvLoader,
+  projectLoader,
+  projectsLoader
+} from './loaders'
 
 /**
  * Every indexable page names its language, because a search index keeps one
  * document per URL and never varies `Accept-Language`.
  */
 export const localizedPaths = {
+  about: '/:locale/about',
+  contact: '/:locale/contact',
   cv: '/:locale/cv',
   cvPlain: '/:locale/cv/plain',
   home: '/:locale',
@@ -41,6 +48,12 @@ const pathFor = <TPath extends string>(
 export const homePathFor = (locale: Locale): string =>
   pathFor(paths.home, { locale })
 
+export const aboutPathFor = (locale: Locale): string =>
+  pathFor(paths.about, { locale })
+
+export const contactPathFor = (locale: Locale): string =>
+  pathFor(paths.contact, { locale })
+
 export const cvPathFor = (locale: Locale): string =>
   pathFor(paths.cv, { locale })
 
@@ -57,6 +70,8 @@ export const projectPathFor = ({
   locale: Locale
   slug: string
 }): string => pathFor(paths.project, { locale, slug })
+
+export const useAboutData = () => useLoaderData<typeof aboutLoader>()
 
 export const useCvData = () => useLoaderData<typeof cvLoader>()
 

@@ -1,0 +1,97 @@
+import type React from 'react'
+import { Suspense, use, useRef } from 'react'
+
+import { copyText, selectContents } from '@/infrastructure/browser'
+import { cvPathFor, useCvData } from '@/infrastructure/router/navigation'
+import { Icon } from '@/presentation/components/icon'
+import { Lid } from '@/presentation/components/lid'
+import { Button } from '@/presentation/components/ui/button'
+import { Link } from '@/presentation/components/ui/link'
+import { showToast } from '@/presentation/components/ui/toast'
+import { VisuallyHidden } from '@/presentation/components/ui/visually-hidden'
+import { useI18n } from '@/presentation/i18n/i18n-provider'
+import { apiErrorKey } from '@/presentation/i18n/translation'
+
+import './contact-page.sass'
+
+/** The address printed as large as the lid allows: it is the whole page. */
+const Mailbox: React.FC = () => {
+  const { locale, translate } = useI18n()
+  const { cv, profile } = useCvData()
+  const cvResult = use(cv)
+  const profileResult = use(profile)
+  const addressRef = useRef<HTMLParagraphElement>(null)
+
+  if (cvResult.status === 'failure' || profileResult.status === 'failure') {
+    const error =
+      cvResult.status === 'failure' ? cvResult.error : 'invalid_content'
+
+    return <p className='contact-failure'>{translate(apiErrorKey(error))}</p>
+  }
+
+  const { email } = cvResult.data.contact
+  const { links } = profileResult.data
+
+  const copyAddress = async (): Promise<void> => {
+    if (await copyText(email)) {
+      showToast(translate('contact.copied'))
+    } else if (addressRef.current !== null) {
+      selectContents(addressRef.current)
+    }
+  }
+
+  return (
+    <>
+      <section aria-labelledby='contact-mail' className='mail-slot'>
+        <VisuallyHidden elementType='h2' id='contact-mail'>
+          {translate('cv.email')}
+        </VisuallyHidden>
+        <p className='contact-address' ref={addressRef}>
+          {email}
+        </p>
+        <div className='contact-actions'>
+          <Link href={`mailto:${email}`} variant='accent'>
+            {translate('contact.write')}
+            <Icon className='token-icon' name='mail' />
+          </Link>
+          <Button icon='copy' onPress={() => void copyAddress()}>
+            {translate('contact.copy')}
+          </Button>
+        </div>
+        <p className='contact-note'>{translate('contact.noForm')}</p>
+      </section>
+      <section aria-labelledby='contact-elsewhere' className='elsewhere'>
+        <h2 className='elsewhere-heading' id='contact-elsewhere'>
+          {translate('contact.elsewhere')}
+        </h2>
+        <div className='elsewhere-links'>
+          <Link href={links.github} target='_blank'>
+            GitHub
+          </Link>
+          <Link href={links.linkedin} target='_blank'>
+            LinkedIn
+          </Link>
+          <Link href={cvPathFor(locale)}>{translate('header.cv')}</Link>
+        </div>
+      </section>
+    </>
+  )
+}
+
+export const ContactPage: React.FC = () => {
+  const { translate } = useI18n()
+
+  return (
+    <main className='contact-page'>
+      <Lid
+        band={<p>{translate('contact.lead')}</p>}
+        title={translate('contact.title')}
+      />
+      <div className='contact-sheet'>
+        <Suspense fallback={<div aria-busy='true' className='pending' />}>
+          <Mailbox />
+        </Suspense>
+      </div>
+    </main>
+  )
+}

@@ -1,0 +1,64 @@
+@use '../../presentation/styles/layout'
+@use '../../presentation/styles/typography'
+
+@layer components
+  .contact-page
+    @include layout.page
+
+    .contact-sheet
+      display: flex
+      flex: 1
+      flex-direction: column
+      gap: var(--space-2xl)
+      padding: var(--space-2xl) var(--gutter) var(--space-3xl)
+
+    .pending
+      min-height: 16rem
+
+    .contact-failure
+      @include typography.lead
+
+      max-width: var(--measure)
+
+    .mail-slot
+      align-items: flex-start
+      container-type: inline-size
+      display: flex
+      flex-direction: column
+      gap: var(--space-l)
+      max-width: 72rem
+      width: 100%
+
+    // 19 characters of wide black lettering: sized to the container so the
+    // whole address holds on one line at 320px.
+    .contact-address
+      font-family: var(--font-display)
+      font-size: min(4.5rem, 7.6cqi)
+      font-stretch: 118%
+      font-weight: 900
+      letter-spacing: -0.025em
+      line-height: 1
+      user-select: all
+
+    .contact-actions,
+    .elsewhere-links
+      display: flex
+      flex-wrap: wrap
+      gap: var(--space-s)
+
+    .contact-note
+      color: var(--ink-soft)
+      max-width: var(--measure)
+
+    .elsewhere
+      border-top: var(--outline-thin) solid var(--ink)
+      display: flex
+      flex-direction: column
+      gap: var(--space-m)
+      max-width: 72rem
+      padding-top: var(--space-l)
+
+    .elsewhere-heading
+      @include typography.heading
+
+      text-transform: uppercase
