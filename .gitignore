@@ -7,3 +7,4 @@ storybook-static
 .wrangler
 e2e/test-results
 playwright-report
+lighthouse-reports
