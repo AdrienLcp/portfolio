@@ -5,3 +5,5 @@ storybook-static
 *.tsbuildinfo
 *.env.local
 .wrangler
+e2e/test-results
+playwright-report
