@@ -43,6 +43,7 @@
     "build": "pnpm typecheck && pnpm build:client && pnpm build:ssr && pnpm prerender",
     "build-storybook": "storybook build",
     "build:client": "vite build",
+    "build:pages": "pnpm build && storybook build --quiet --output-dir dist/storybook",
     "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-ssr",
     "cv:pdf": "node --import tsx scripts/cv-pdf.ts",
     "deps:upgrade": "corepack use pnpm@latest && pnpm -r up -L && biome migrate --write",

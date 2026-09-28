@@ -364,6 +364,18 @@ const sitemapFor = (pages: PrerenderedPage[]): string => {
 const robotsFor = (): string =>
   `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`
 
+/**
+ * What Pages answers, with a 404 status, on any path without a file. It is the
+ * bare shell rather than a prerendered page: the not-found page names the path
+ * that was asked for, which no build can know, so the app renders it.
+ */
+const notFoundDocumentFor = (shell: string): string =>
+  replaceOnce({
+    html: shell,
+    pattern: /<\/head>/,
+    replacement: '  <meta name="robots" content="noindex" />\n  </head>'
+  })
+
 const template = await readFile(join(CLIENT_DIR, 'index.html'), 'utf8')
 const origin = originOf(template)
 const templateStylesheets = linkedStylesheetsOf(template)
@@ -415,6 +427,11 @@ await writeFile(
   'utf8'
 )
 await writeFile(join(CLIENT_DIR, 'robots.txt'), robotsFor(), 'utf8')
+await writeFile(
+  join(CLIENT_DIR, '404.html'),
+  notFoundDocumentFor(template),
+  'utf8'
+)
 
 console.info(
   `prerendered ${prerenderedPages.length} documents into ${CLIENT_DIR} at ${origin}`
