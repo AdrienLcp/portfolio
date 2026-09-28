@@ -7,7 +7,7 @@ export const CV: z.input<typeof cvSchema> = {
     email: 'adrienlcp@gmail.com',
     location: { en: 'Couëron, near Nantes', fr: 'Couëron, près de Nantes' },
     phone: '+33650234020',
-    website: 'https://adrienlacourpaille.com'
+    website: 'https://adrienlacourpaille.dev'
   },
   education: [
     {
