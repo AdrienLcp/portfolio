@@ -9,6 +9,8 @@ import {
 import { Lid } from '@/presentation/components/lid'
 import { Stamp, StampList } from '@/presentation/components/stamp'
 import { Link } from '@/presentation/components/ui/link'
+import { projectHead } from '@/presentation/head/document-head'
+import { useDocumentTitle } from '@/presentation/head/use-document-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { apiErrorKey } from '@/presentation/i18n/translation'
 import { MissingPiece } from '@/presentation/missing-piece'
@@ -23,6 +25,7 @@ type RuleBookletProps = {
 /** The case study, printed as the game's rule booklet. */
 const RuleBooklet: React.FC<RuleBookletProps> = ({ project }) => {
   const { locale, translate } = useI18n()
+  useDocumentTitle(projectHead(project).title)
 
   return (
     <>

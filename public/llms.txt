@@ -1,0 +1,28 @@
+# Adrien Lacourpaille
+
+> Full-stack developer in Nantes, France: websites, APIs and party games.
+> TypeScript and React on the front, Node on the back.
+
+Adrien came to code through the Site du Zéro as a teenager, spent six years in
+a warehouse, retrained at O'Clock in 2021 and was hired as a developer in
+Nantes in March 2023. In the evenings he builds Taverla, realtime party games
+for one screen and the whole room, alone and end to end.
+
+## Pages
+
+Every page is served in English under `/en` and in French under `/fr`, as its
+own document with its own `lang`, title and description. `/` carries no
+language: it negotiates from the browser's and redirects, which is what
+`hreflang="x-default"` points at.
+
+- [Home](https://adrienlacourpaille.dev/en): who he is, and what is in the box.
+- [Projects](https://adrienlacourpaille.dev/en/projects)
+- [Taverla](https://adrienlacourpaille.dev/en/projects/taverla): party games on every phone in the room, on the same instant.
+- [About](https://adrienlacourpaille.dev/en/about): the path into development, and the toolbox.
+- [CV](https://adrienlacourpaille.dev/en/cv), also as a PDF.
+- [Contact](https://adrienlacourpaille.dev/en/contact)
+
+## Elsewhere
+
+- [GitHub](https://github.com/AdrienLcp)
+- [LinkedIn](https://www.linkedin.com/in/adrien-lacourpaille/)

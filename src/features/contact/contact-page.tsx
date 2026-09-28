@@ -9,6 +9,7 @@ import { Button } from '@/presentation/components/ui/button'
 import { Link } from '@/presentation/components/ui/link'
 import { showToast } from '@/presentation/components/ui/toast'
 import { VisuallyHidden } from '@/presentation/components/ui/visually-hidden'
+import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { apiErrorKey } from '@/presentation/i18n/translation'
 
@@ -82,6 +83,7 @@ const Mailbox: React.FC = () => {
 
 export const ContactPage: React.FC = () => {
   const { translate } = useI18n()
+  useIndexedPageTitle('contact')
 
   return (
     <main className='contact-page'>

@@ -8,6 +8,7 @@ import {
 import { Lid } from '@/presentation/components/lid'
 import { Stamp, StampList } from '@/presentation/components/stamp'
 import { Link } from '@/presentation/components/ui/link'
+import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { apiErrorKey } from '@/presentation/i18n/translation'
 
@@ -50,6 +51,7 @@ const Shelf: React.FC = () => {
 
 export const ProjectsPage: React.FC = () => {
   const { translate } = useI18n()
+  useIndexedPageTitle('projects')
 
   return (
     <main className='projects-page'>

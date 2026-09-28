@@ -31,9 +31,39 @@
       } catch {}
     </script>
     <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <!-- iOS ignores an SVG icon, and a phone is where a page is added to a home screen. -->
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
     <link as="font" crossorigin href="/fonts/archivo-latin.woff2" rel="preload" type="font/woff2" />
     <link as="font" crossorigin href="/fonts/literata-latin-italic.woff2" rel="preload" type="font/woff2" />
-    <title>Adrien Lacourpaille</title>
+    <!--
+      This head is the English home page's. Every tag below that names a page
+      is rewritten per document by `scripts/prerender.ts`, which fails the build
+      if one stops matching; unrewritten, it is what `pnpm dev` and the SPA
+      fallback serve. The copy lives in `presentation/head/document-head.ts`:
+      these must be its `en.home` entry word for word.
+    -->
+    <title>Adrien Lacourpaille — Full-stack developer</title>
+    <meta
+      content="Adrien Lacourpaille, full-stack developer in Nantes: websites, APIs and party games. Taverla, realtime party games built alone end to end, in two languages and two themes."
+      name="description"
+    />
+    <!-- The one place the host is written down: the prerender reads the origin from it. -->
+    <link href="https://adrienlacourpaille.dev/" rel="canonical" />
+    <meta content="website" property="og:type" />
+    <meta content="Adrien Lacourpaille" property="og:site_name" />
+    <meta content="Adrien Lacourpaille — Full-stack developer" property="og:title" />
+    <meta
+      content="Adrien Lacourpaille, full-stack developer in Nantes: websites, APIs and party games. Taverla, realtime party games built alone end to end, in two languages and two themes."
+      property="og:description"
+    />
+    <meta content="https://adrienlacourpaille.dev/" property="og:url" />
+    <meta content="https://adrienlacourpaille.dev/og.png" property="og:image" />
+    <meta content="1200" property="og:image:width" />
+    <meta content="630" property="og:image:height" />
+    <meta content="The lid of Adrien Lacourpaille's portfolio: his name in wide marigold letters on a petrol field, over a tomato band." property="og:image:alt" />
+    <meta content="en_US" property="og:locale" />
+    <meta content="fr_FR" property="og:locale:alternate" />
+    <meta content="summary_large_image" name="twitter:card" />
     <!--
       A layer's position is fixed where its name first appears, and Vite injects
       stylesheets in module-graph order: declared here, the order cannot depend

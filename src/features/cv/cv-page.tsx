@@ -14,6 +14,7 @@ import { Icon } from '@/presentation/components/icon'
 import { Link } from '@/presentation/components/ui/link'
 import { TextLink } from '@/presentation/components/ui/text-link'
 import { VisuallyHidden } from '@/presentation/components/ui/visually-hidden'
+import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { apiErrorKey } from '@/presentation/i18n/translation'
 import { MissingPiece } from '@/presentation/missing-piece'
@@ -253,10 +254,14 @@ const CvContent: React.FC = () => {
   )
 }
 
-export const CvPage: React.FC = () => (
-  <main className='cv-page'>
-    <Suspense fallback={<RouteFallback />}>
-      <CvContent />
-    </Suspense>
-  </main>
-)
+export const CvPage: React.FC = () => {
+  useIndexedPageTitle('cv')
+
+  return (
+    <main className='cv-page'>
+      <Suspense fallback={<RouteFallback />}>
+        <CvContent />
+      </Suspense>
+    </main>
+  )
+}
