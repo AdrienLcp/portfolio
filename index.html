@@ -30,6 +30,33 @@
         }
       } catch {}
     </script>
+    <!--
+      Archivo is drawn at five widths, from 100% to 125%, so no metric-adjusted
+      fallback matches them all, and swapping it in reflows every heading, the
+      nav and the stamps. The page waits for it instead, at most a moment: the
+      file is preloaded, and past the cap it swaps in as usual. The URL and the
+      descriptors are the latin face's in `_fonts.sass`.
+    -->
+    <style>
+      :root[data-fonts-pending] #root {
+        visibility: hidden;
+      }
+    </style>
+    <script>
+      if ('FontFace' in window) {
+        const root = document.documentElement
+        const reveal = () => delete root.dataset.fontsPending
+
+        root.dataset.fontsPending = ''
+        setTimeout(reveal, 800)
+        new FontFace('Archivo', "url('/fonts/archivo-latin.woff2') format('woff2')", {
+          stretch: '100% 125%',
+          weight: '600 900'
+        })
+          .load()
+          .then(reveal, reveal)
+      }
+    </script>
     <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
     <!-- iOS ignores an SVG icon, and a phone is where a page is added to a home screen. -->
     <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
