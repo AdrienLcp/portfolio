@@ -3,6 +3,27 @@ import type { DictionaryFor } from '@adrienlcp/i18n/dictionary'
 import type { EN_DICTIONARY } from './dictionary-en'
 
 export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
+  cv: {
+    download: 'Télécharger le CV',
+    downloadPlain: 'Version ATS',
+    email: 'E-mail',
+    phone: 'Téléphone',
+    photo: 'Adrien Lacourpaille, souriant, en chemise sombre',
+    plainNote:
+      'La version ATS est le même CV sur une seule colonne sobre, pour les logiciels de recrutement.',
+    present: 'aujourd’hui',
+    sections: {
+      contact: 'Coordonnées',
+      education: 'Formation',
+      experience: 'Expérience',
+      extras: 'Divers',
+      projects: 'Projets personnels',
+      skills: 'Compétences',
+      specs: 'En bref',
+      summary: 'Profil'
+    },
+    website: 'Site web'
+  },
   error: {
     api: {
       invalid_content:
@@ -17,6 +38,7 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
     colophon: 'Adrien Lacourpaille, {year}. Imprimé en pétrole et tomate.'
   },
   header: {
+    cv: 'CV',
     home: 'Adrien Lacourpaille, page d’accueil',
     navigation: 'Principale',
     otherLocale: 'English',

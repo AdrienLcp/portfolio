@@ -1,6 +1,7 @@
 import { Result } from '@adrienlcp/result'
 import type { z } from 'zod'
 
+import { type Cv, cvSchema, localizeCv } from '@/features/cv/cv'
 import {
   localizeProfile,
   type Profile,
@@ -13,6 +14,7 @@ import {
 } from '@/features/projects/project'
 import type { Locale } from '@/presentation/i18n/locale'
 
+import { CV } from './data/cv'
 import { PROFILE } from './data/profile'
 import { PROJECTS } from './data/projects'
 
@@ -46,6 +48,16 @@ export const fetchProfile = async (
   return profile.status === 'failure'
     ? profile
     : Result.success(localizeProfile(profile.data, locale))
+}
+
+export const fetchCv = async (
+  locale: Locale
+): Promise<Result<Cv, ApiError>> => {
+  const cv = await parseContent(cvSchema, CV)
+
+  return cv.status === 'failure'
+    ? cv
+    : Result.success(localizeCv(cv.data, locale))
 }
 
 export const fetchProjects = async (

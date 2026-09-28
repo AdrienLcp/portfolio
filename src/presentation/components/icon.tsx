@@ -13,6 +13,7 @@ const ICON_PATHS = {
   chevronUp: 'M5 15l7-7 7 7',
   close: 'M5.5 5.5l13 13M18.5 5.5l-13 13',
   copy: 'M9 9h11v11H9zM15 9V4H4v11h5',
+  download: 'M12 3v12M6.5 9.5L12 15l5.5-5.5M4 20h16',
   mail: 'M3 5.5h18v13H3zM3 5.5l9 7.5 9-7.5',
   newTab: 'M7 17L17 7M8.5 7H17v8.5',
   note: 'M9 18V5l11-2v13M9 18a3 3 0 1 1-6 0a3 3 0 1 1 6 0M20 16a3 3 0 1 1-6 0a3 3 0 1 1 6 0',

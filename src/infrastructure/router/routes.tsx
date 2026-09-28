@@ -1,7 +1,11 @@
 import type { LoaderFunction, RouteObject } from 'react-router'
 
 import { NotFoundPage } from '@/features/not-found/not-found-page'
-import { projectLoader, projectsLoader } from '@/infrastructure/router/loaders'
+import {
+  cvLoader,
+  projectLoader,
+  projectsLoader
+} from '@/infrastructure/router/loaders'
 import {
   LocalePrefixedRoutes,
   NegotiatedLocaleRedirect
@@ -15,6 +19,12 @@ type LocalizedPath = (typeof localizedPaths)[keyof typeof localizedPaths]
 
 /** Keyed by path, so a path with no page fails to compile. */
 const pageFor = {
+  [localizedPaths.cv]: async () => ({
+    Component: (await import('@/features/cv/cv-page')).CvPage
+  }),
+  [localizedPaths.cvPlain]: async () => ({
+    Component: (await import('@/features/cv/cv-plain-page')).CvPlainPage
+  }),
   [localizedPaths.home]: async () => ({
     Component: (await import('@/features/home/home-page')).HomePage
   }),
@@ -28,12 +38,18 @@ const pageFor = {
 
 /** Outside `lazy`, so the data starts downloading beside the page's chunk. */
 const loaderFor = {
+  [localizedPaths.cv]: cvLoader,
+  [localizedPaths.cvPlain]: cvLoader,
   [localizedPaths.home]: projectsLoader,
   [localizedPaths.project]: projectLoader,
   [localizedPaths.projects]: projectsLoader
 } satisfies Record<LocalizedPath, LoaderFunction>
 
+/** Pages printed bare, without the site's header and footer. */
+const BARE_PATHS: ReadonlySet<LocalizedPath> = new Set([localizedPaths.cvPlain])
+
 const routeFor = (path: LocalizedPath): RouteObject => ({
+  handle: { isBare: BARE_PATHS.has(path) },
   lazy: pageFor[path],
   loader: loaderFor[path],
   path

@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest'
 
-import { fetchProfile, fetchProject, fetchProjects } from './portfolio-api'
+import {
+  fetchCv,
+  fetchProfile,
+  fetchProject,
+  fetchProjects
+} from './portfolio-api'
 
 describe('portfolio api', () => {
   it('[api] serves the embedded projects in the requested locale', async () => {
@@ -32,6 +37,14 @@ describe('portfolio api', () => {
 
     expect(profile.status === 'success' && profile.data.role).toBe(
       'Full-stack developer'
+    )
+  })
+
+  it('[api] serves the CV in the requested locale', async () => {
+    const cv = await fetchCv('fr')
+
+    expect(cv.status === 'success' && cv.data.title).toBe(
+      'Développeur full-stack'
     )
   })
 })

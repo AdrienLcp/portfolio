@@ -1,0 +1,322 @@
+@use '../../presentation/styles/layout'
+@use '../../presentation/styles/typography'
+
+@layer components
+  .cv-page
+    @include layout.page
+
+  .cv-sheet
+    display: flex
+    flex: 1
+    flex-direction: column
+
+  .cv-cover
+    @include layout.field-dominant
+
+    align-items: end
+    container-type: inline-size
+    display: grid
+    gap: var(--space-l)
+    grid-template-columns: minmax(0, 1fr) auto
+    padding: var(--space-2xl) var(--gutter) var(--space-xl)
+
+  // Too narrow to share a row with the portrait, the name would shrink to a
+  // caption: the portrait moves above it instead.
+  @media (width < 34rem)
+    .cv-cover
+      align-items: start
+      grid-template-columns: minmax(0, 1fr)
+
+    .cv-photo
+      order: -1
+      width: 96px
+
+  .cv-identity
+    container-type: inline-size
+    display: grid
+    gap: var(--space-m)
+
+  .cv-name
+    @include typography.lid
+
+    color: var(--accent)
+    font-size: min(5.5rem, 10cqi)
+    max-width: 12ch
+
+  .cv-role
+    @include typography.control
+
+    display: grid
+    font-size: var(--text-lead)
+    font-stretch: 112%
+    gap: var(--space-2xs)
+
+  .cv-headline
+    @include typography.lead
+
+    font-size: var(--text-body)
+
+  // A portrait punched out like a token: paper edge, ink rim, lying a touch
+  // askew on the lid.
+  .cv-photo
+    aspect-ratio: 1
+    border: 5px solid var(--print-paper)
+    border-radius: var(--radius-full)
+    box-shadow: 0 0 0 var(--outline-thick) var(--print-ink), 0 8px 18px var(--shadow)
+    height: auto
+    object-fit: cover
+    rotate: -3deg
+    width: clamp(96px, 20cqi, 208px)
+
+  .cv-band
+    @include layout.field-secondary
+
+    border-top: var(--outline-thick) solid var(--outline)
+    display: grid
+    gap: var(--space-l)
+    padding: var(--space-l) var(--gutter) var(--space-xl)
+
+  .cv-summary
+    @include typography.lead
+
+    max-width: var(--measure)
+
+  .cv-downloads
+    align-content: start
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-s)
+
+    .token
+      align-self: auto
+
+  .cv-downloads-note
+    @include typography.caption
+
+    flex-basis: 100%
+    max-width: 36ch
+
+  // The strip of specs on the back of a game box: a few facts, ruled apart.
+  .cv-specs
+    border-bottom: var(--outline-thick) solid var(--ink)
+
+  .cv-spec-list
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr))
+
+  .cv-spec
+    border-top: var(--outline-thin) solid var(--ink)
+    display: grid
+    gap: var(--space-2xs)
+    margin-top: calc(var(--outline-thin) * -1)
+    padding: var(--space-m) var(--gutter)
+
+    dt
+      @include typography.caption
+
+      color: var(--ink-soft)
+      letter-spacing: 0.06em
+      text-transform: uppercase
+
+    dd
+      @include typography.control
+
+      font-size: var(--text-lead)
+      font-stretch: 118%
+      font-weight: 900
+
+  .cv-body
+    display: grid
+    gap: var(--space-2xl)
+    padding: var(--space-2xl) var(--gutter) var(--space-3xl)
+
+  .cv-main,
+  .cv-aside
+    align-content: start
+    display: grid
+    gap: var(--space-2xl)
+
+  .cv-section
+    align-content: start
+    display: grid
+    gap: var(--space-m)
+
+  .cv-heading
+    @include typography.heading
+
+    border-top: var(--outline-thick) solid var(--ink)
+    padding-block-start: var(--space-s)
+
+  .cv-job
+    display: grid
+    gap: var(--space-l)
+
+  .cv-entry-head
+    align-items: baseline
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-2xs) var(--space-m)
+    justify-content: space-between
+
+  .cv-job-title
+    @include typography.control
+
+    display: grid
+    font-size: var(--text-lead)
+    font-stretch: 112%
+
+  .cv-employer
+    @include typography.caption
+
+    color: var(--ink-soft)
+    font-size: var(--text-body)
+
+  .cv-period
+    @include typography.caption
+
+    color: var(--ink-soft)
+    font-variant-numeric: tabular-nums
+    white-space: nowrap
+
+  .cv-missions
+    display: grid
+    gap: var(--space-l)
+
+  .cv-mission,
+  .cv-projects > li
+    display: grid
+    gap: var(--space-xs)
+    max-width: var(--measure)
+
+  .cv-mission-title
+    @include typography.control
+
+  .cv-points
+    display: grid
+    gap: var(--space-xs)
+    max-width: var(--measure)
+
+    li
+      padding-inline-start: calc(8px + var(--space-s))
+      position: relative
+
+      // The token's pip, printed as the list's bullet.
+      &::before
+        background: var(--active)
+        border-radius: var(--radius-full)
+        content: ''
+        height: 8px
+        inset-inline-start: 0
+        position: absolute
+        top: 0.65em
+        width: 8px
+
+  .cv-projects
+    display: grid
+    gap: var(--space-l)
+
+  .cv-contact
+    display: grid
+    gap: var(--space-2xs)
+    overflow-wrap: anywhere
+
+  .cv-skills
+    display: grid
+    gap: var(--space-s)
+
+    dt
+      @include typography.caption
+
+      letter-spacing: 0.06em
+      text-transform: uppercase
+
+  .cv-education
+    display: grid
+
+  .cv-extras
+    display: grid
+    gap: var(--space-2xs)
+
+  @include layout.wide
+    .cv-band
+      align-items: end
+      grid-template-columns: minmax(0, 65ch) minmax(16rem, 22rem)
+      justify-content: space-between
+
+    .cv-body
+      grid-template-columns: minmax(0, 65ch) minmax(16rem, 22rem)
+      justify-content: space-between
+
+  // The designed PDF: this very sheet on one A4 page, day inks, no chrome.
+  @media print
+    @page
+      margin: 0
+      size: A4
+
+    \:root,
+    \:root[data-theme]
+      color-scheme: light
+
+    *
+      print-color-adjust: exact
+
+    .site-header,
+    .site-footer,
+    .cv-downloads,
+    .text-link-icon
+      display: none
+
+    .cv-page
+      --gutter: 11mm
+      --measure: none
+      --space-2xs: 0.6mm
+      --space-xs: 1mm
+      --space-s: 1.6mm
+      --space-m: 2.4mm
+      --space-l: 2.8mm
+      --space-xl: 5mm
+      --space-2xl: 4mm
+      --text-caption: 7.2pt
+      --text-body: 8.2pt
+      --text-lead: 9pt
+
+      font-size: var(--text-body)
+      line-height: 1.4
+
+    .cv-cover
+      gap: 6mm
+      padding-block: 7mm 5mm
+
+    .cv-name
+      font-size: 28pt
+
+    .cv-photo
+      border-width: 1.2mm
+      width: 27mm
+
+    .cv-band
+      padding-block: 3mm 3.6mm
+
+    .cv-summary
+      line-height: 1.35
+
+    .cv-spec
+      padding-block: 2.4mm
+
+    .cv-body
+      gap: 8mm
+      grid-template-columns: minmax(0, 1fr) 55mm
+      padding-block: 5mm 8mm
+
+    .cv-heading
+      font-size: 12pt
+
+    .cv-points li::before
+      height: 1.4mm
+      top: 0.55em
+      width: 1.4mm
+
+    .cv-job,
+    .cv-missions,
+    .cv-projects
+      gap: var(--space-l)

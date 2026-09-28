@@ -1,6 +1,27 @@
 import { defineDictionary } from '@adrienlcp/i18n/dictionary'
 
 export const EN_DICTIONARY = defineDictionary({
+  cv: {
+    download: 'Download the CV',
+    downloadPlain: 'ATS version',
+    email: 'Email',
+    phone: 'Phone',
+    photo: 'Adrien Lacourpaille, smiling, in a dark shirt',
+    plainNote:
+      'The ATS version is the same CV in one plain column, for recruitment software.',
+    present: 'present',
+    sections: {
+      contact: 'Contact',
+      education: 'Education',
+      experience: 'Experience',
+      extras: 'More',
+      projects: 'Personal projects',
+      skills: 'Skills',
+      specs: 'At a glance',
+      summary: 'Profile'
+    },
+    website: 'Website'
+  },
   error: {
     api: {
       invalid_content:
@@ -15,6 +36,7 @@ export const EN_DICTIONARY = defineDictionary({
     colophon: 'Adrien Lacourpaille, {year}. Printed in petrol and tomato.'
   },
   header: {
+    cv: 'CV',
     home: 'Adrien Lacourpaille, home page',
     navigation: 'Main',
     otherLocale: 'Français',

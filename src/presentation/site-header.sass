@@ -37,6 +37,10 @@
         gap: 6px
         padding-inline: 10px var(--space-s)
 
+    // The footer carries it below 900px, where the row has no room left.
+    .token.cv-link
+      display: none
+
     // Beside the links only where the row has room for it; the footer holds it
     // below that.
     .theme-switch
@@ -45,6 +49,9 @@
     @include layout.wide
       .site-nav
         gap: var(--space-xs)
+
+        .token.cv-link
+          display: inline-flex
 
         .token
           gap: var(--space-xs)

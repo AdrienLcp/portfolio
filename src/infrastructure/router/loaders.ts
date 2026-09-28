@@ -1,6 +1,11 @@
 import type { LoaderFunctionArgs, Params } from 'react-router'
 
-import { fetchProject, fetchProjects } from '@/infrastructure/api/portfolio-api'
+import {
+  fetchCv,
+  fetchProfile,
+  fetchProject,
+  fetchProjects
+} from '@/infrastructure/api/portfolio-api'
 import {
   DEFAULT_LOCALE,
   isLocale,
@@ -28,3 +33,9 @@ export const projectLoader = ({ params }: LoaderFunctionArgs) => ({
     slug: params.slug ?? ''
   })
 })
+
+export const cvLoader = ({ params }: LoaderFunctionArgs) => {
+  const locale = localeParam(params)
+
+  return { cv: fetchCv(locale), profile: fetchProfile(locale) }
+}

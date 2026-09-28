@@ -1,6 +1,7 @@
 import type React from 'react'
 
 import {
+  cvPathFor,
   homePathFor,
   projectsPathFor,
   useCurrentPath,
@@ -23,6 +24,7 @@ export const SiteHeader: React.FC = () => {
   const otherLocalePath = useLocalizedCurrentPath(otherLocale)
   const homePath = homePathFor(locale)
   const projectsPath = projectsPathFor(locale)
+  const cvPath = cvPathFor(locale)
 
   return (
     <header className='site-header'>
@@ -37,6 +39,13 @@ export const SiteHeader: React.FC = () => {
       <nav aria-label={translate('header.navigation')} className='site-nav'>
         <Link href={projectsPath} isCurrent={currentPath === projectsPath}>
           {translate('header.projects')}
+        </Link>
+        <Link
+          className='cv-link'
+          href={cvPath}
+          isCurrent={currentPath === cvPath}
+        >
+          {translate('header.cv')}
         </Link>
         {otherLocalePath !== null && (
           <Link

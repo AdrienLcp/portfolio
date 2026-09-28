@@ -1,0 +1,53 @@
+// Nothing of the printed world here: recruitment software reads text in source
+// order and stumbles on columns, colour and display type.
+
+@layer components
+  \:root:has(.cv-plain-page)
+    background: white
+    color-scheme: light
+
+    body
+      background: white
+      color: black
+
+  .cv-plain-page
+    padding: 8mm 14mm
+
+  .cv-plain
+    display: grid
+    font-family: Arial, Helvetica, sans-serif
+    font-size: 9.5pt
+    gap: 1.2mm
+    line-height: 1.35
+    max-width: 180mm
+
+    h1
+      font-size: 18pt
+
+    h2
+      border-bottom: 1px solid black
+      font-size: 11pt
+      margin-block-start: 2mm
+      text-transform: uppercase
+
+    h3
+      font-size: 10.5pt
+
+    ul
+      display: grid
+      gap: 0.6mm
+      list-style: disc
+      padding-inline-start: 5mm
+
+    section,
+    .cv-plain-mission
+      display: grid
+      gap: 1.2mm
+
+  .cv-plain-title
+    font-weight: 700
+
+  @media print
+    @page
+      margin: 0
+      size: A4

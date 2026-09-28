@@ -4,6 +4,7 @@ import {
   Outlet,
   ScrollRestoration,
   useHref,
+  useMatches,
   useNavigate
 } from 'react-router'
 
@@ -46,8 +47,15 @@ const useRouterHref = (href: string): string => {
  * react-aria's `RouterProvider` is what turns an `href` on any react-aria
  * `Link`, `MenuItem` or `ListBoxItem` into a client-side navigation.
  */
+const isBareHandle = (handle: unknown): boolean =>
+  typeof handle === 'object' &&
+  handle !== null &&
+  'isBare' in handle &&
+  handle.isBare === true
+
 export const RootRoute: React.FC = () => {
   const navigate = useNavigate()
+  const isBare = useMatches().some((match) => isBareHandle(match.handle))
 
   return (
     <RouterProvider
@@ -58,7 +66,10 @@ export const RootRoute: React.FC = () => {
       }}
       useHref={useRouterHref}
     >
-      <AppShell footer={<SiteFooter />} header={<SiteHeader />}>
+      <AppShell
+        footer={isBare ? null : <SiteFooter />}
+        header={isBare ? null : <SiteHeader />}
+      >
         <Outlet />
       </AppShell>
       <ScrollRestoration />
