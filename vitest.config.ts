@@ -12,6 +12,8 @@ export default mergeConfig(
         {
           extends: true,
           test: {
+            // `e2e/` belongs to Playwright, whose `test()` throws under Vitest.
+            exclude: ['e2e/**', 'node_modules/**'],
             name: 'unit'
           }
         },
