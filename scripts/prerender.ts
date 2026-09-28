@@ -229,6 +229,19 @@ const preloadsFor = (module: string): string =>
     )
     .join('')
 
+/**
+ * The faces a prerendered page paints before any script runs. Kept out of
+ * `index.html`, whose bare shell also serves the redirect at `/`, the plain CV
+ * set in Arial and the not-found page: none of them paints before the app has
+ * run, and a font preloaded there sits unused while the browser warns about it.
+ */
+const FONT_PRELOADS = ['archivo-latin', 'literata-latin-italic']
+  .map(
+    (face) =>
+      `\n    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/${face}.woff2">`
+  )
+  .join('')
+
 /** `<` escaped, so no string in the data can close the script it sits in. */
 const jsonLd = (data: object): string =>
   `<script type="application/ld+json">${JSON.stringify(data).replaceAll('<', '\\u003c')}</script>`
@@ -321,7 +334,7 @@ const documentFor = ({
       replaceOnce({
         html,
         pattern: PRELOADED_MODULES,
-        replacement: `${preloadedModules}${preloads}`
+        replacement: `${FONT_PRELOADS}${preloadedModules}${preloads}`
       }),
     (html: string) =>
       replaceOnce({
