@@ -84,7 +84,8 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
     home: 'Adrien Lacourpaille, page d’accueil',
     menu: 'Menu',
     navigation: 'Principale',
-    projects: 'Projets'
+    projects: 'Projets',
+    skip: 'Aller au contenu'
   },
   home: {
     closeLid: 'Refermer le couvercle',

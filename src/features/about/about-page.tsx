@@ -9,6 +9,7 @@ import {
   useAboutData
 } from '@/infrastructure/router/navigation'
 import { Lid } from '@/presentation/components/lid'
+import { Main } from '@/presentation/components/main'
 import { Stamp, StampList } from '@/presentation/components/stamp'
 import { Link } from '@/presentation/components/ui/link'
 import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
@@ -88,7 +89,7 @@ export const AboutPage: React.FC = () => {
   useIndexedPageTitle('about')
 
   return (
-    <main className='about-page'>
+    <Main className='about-page'>
       <Lid
         band={<p>{translate('about.lead')}</p>}
         title={translate('about.title')}
@@ -130,6 +131,6 @@ export const AboutPage: React.FC = () => {
           </div>
         </div>
       </div>
-    </main>
+    </Main>
   )
 }

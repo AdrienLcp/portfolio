@@ -5,6 +5,7 @@ import { copyText, selectContents } from '@/infrastructure/browser'
 import { cvPathFor, useCvData } from '@/infrastructure/router/navigation'
 import { Icon } from '@/presentation/components/icon'
 import { Lid } from '@/presentation/components/lid'
+import { Main } from '@/presentation/components/main'
 import { Button } from '@/presentation/components/ui/button'
 import { Link } from '@/presentation/components/ui/link'
 import { showToast } from '@/presentation/components/ui/toast'
@@ -86,7 +87,7 @@ export const ContactPage: React.FC = () => {
   useIndexedPageTitle('contact')
 
   return (
-    <main className='contact-page'>
+    <Main className='contact-page'>
       <Lid
         band={<p>{translate('contact.lead')}</p>}
         title={translate('contact.title')}
@@ -96,6 +97,6 @@ export const ContactPage: React.FC = () => {
           <Mailbox />
         </Suspense>
       </div>
-    </main>
+    </Main>
   )
 }

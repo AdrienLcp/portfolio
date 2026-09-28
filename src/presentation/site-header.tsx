@@ -14,6 +14,7 @@ import { Button } from '@/presentation/components/ui/button'
 import { Link } from '@/presentation/components/ui/link'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { LocaleSwitch } from '@/presentation/locale-switch'
+import { SkipLink } from '@/presentation/skip-link'
 import { ThemeSwitch } from '@/presentation/theme/theme-switch'
 
 import './site-header.sass'
@@ -78,6 +79,7 @@ export const SiteHeader: React.FC = () => {
 
   return (
     <header className='site-header'>
+      <SkipLink />
       <Link
         aria-label={translate('header.home')}
         className='monogram'

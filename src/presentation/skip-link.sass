@@ -1,0 +1,13 @@
+@layer components
+  // Parked above the viewport, and set down over the monogram, token on token,
+  // as soon as the keyboard reaches it.
+  .token.skip-link
+    left: var(--gutter)
+    position: fixed
+    top: var(--space-m)
+    transition: translate var(--transition-base, 0) var(--timing, ease)
+    translate: 0 calc(-100% - var(--space-m) - 12px)
+    z-index: 30
+
+    &:focus-visible
+      translate: 0

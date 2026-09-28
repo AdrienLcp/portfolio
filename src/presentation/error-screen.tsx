@@ -2,6 +2,7 @@ import type React from 'react'
 
 import { paths, useRouteFailure } from '@/infrastructure/router/navigation'
 import { AppShell } from '@/presentation/app-shell'
+import { Main } from '@/presentation/components/main'
 import { Link } from '@/presentation/components/ui/link'
 import { useTranslate } from '@/presentation/i18n/i18n-provider'
 
@@ -21,7 +22,7 @@ export const ErrorScreen: React.FC = () => {
 
   return (
     <AppShell>
-      <main className='error-screen'>
+      <Main className='error-screen'>
         <div className='broken-box'>
           <svg
             aria-hidden='true'
@@ -43,7 +44,7 @@ export const ErrorScreen: React.FC = () => {
             {translate('error.reload')}
           </Link>
         </div>
-      </main>
+      </Main>
     </AppShell>
   )
 }

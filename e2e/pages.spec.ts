@@ -45,6 +45,26 @@ test('[e2e] the about page leads to the projects and to contact', async ({
   await expect(page).toHaveURL('/en/contact')
 })
 
+test('[e2e] the keyboard skips the header and lands on each new page', async ({
+  page
+}) => {
+  await page.goto('/en/about')
+
+  await page.keyboard.press('Tab')
+  await expect(
+    page.getByRole('link', { name: 'Skip to content' })
+  ).toBeFocused()
+  await page.keyboard.press('Enter')
+  await expect(page.getByRole('main')).toBeFocused()
+  await page.keyboard.press('Tab')
+  await expect(page.getByRole('link', { name: 'Write to me' })).toBeFocused()
+
+  await mainNavigation(page).getByRole('link', { name: 'Projects' }).focus()
+  await page.keyboard.press('Enter')
+  await expect(page).toHaveURL('/en/projects')
+  await expect(page.getByRole('main')).toBeFocused()
+})
+
 test('[e2e] both CV downloads are real PDFs', async ({ page, request }) => {
   await page.goto('/en/cv')
 

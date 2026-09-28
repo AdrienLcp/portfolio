@@ -7,6 +7,7 @@ import {
   useProjectData
 } from '@/infrastructure/router/navigation'
 import { Lid } from '@/presentation/components/lid'
+import { Main } from '@/presentation/components/main'
 import { Stamp, StampList } from '@/presentation/components/stamp'
 import { Link } from '@/presentation/components/ui/link'
 import { projectHead } from '@/presentation/head/document-head'
@@ -94,9 +95,9 @@ const ProjectCase: React.FC = () => {
 }
 
 export const ProjectPage: React.FC = () => (
-  <main className='project-page'>
+  <Main className='project-page'>
     <Suspense fallback={<RouteFallback />}>
       <ProjectCase />
     </Suspense>
-  </main>
+  </Main>
 )

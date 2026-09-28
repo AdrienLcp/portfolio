@@ -83,7 +83,8 @@ export const EN_DICTIONARY = defineDictionary({
     home: 'Adrien Lacourpaille, home page',
     menu: 'Menu',
     navigation: 'Main',
-    projects: 'Projects'
+    projects: 'Projects',
+    skip: 'Skip to content'
   },
   home: {
     closeLid: 'Close the lid',

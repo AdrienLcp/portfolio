@@ -5,6 +5,7 @@ import type { Cv } from '@/features/cv/cv'
 import { displayUrl, formatPeriod, formatPhone } from '@/features/cv/cv-format'
 import type { Profile } from '@/features/profile/profile'
 import { useCvData } from '@/infrastructure/router/navigation'
+import { Main } from '@/presentation/components/main'
 import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import type { Locale } from '@/presentation/i18n/locale'
@@ -140,11 +141,11 @@ export const CvPlainPage: React.FC = () => {
   useIndexedPageTitle('cv')
 
   return (
-    <main className='cv-plain-page'>
+    <Main className='cv-plain-page'>
       <meta content='noindex' name='robots' />
       <Suspense fallback={null}>
         <CvPlainContent />
       </Suspense>
-    </main>
+    </Main>
   )
 }

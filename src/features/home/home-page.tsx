@@ -3,6 +3,7 @@ import { useRef } from 'react'
 
 import { scrollToElement, scrollToTop } from '@/infrastructure/browser'
 import { Lid } from '@/presentation/components/lid'
+import { Main } from '@/presentation/components/main'
 import { Button } from '@/presentation/components/ui/button'
 import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
 import { useTranslate } from '@/presentation/i18n/i18n-provider'
@@ -32,7 +33,7 @@ export const HomePage: React.FC = () => {
   }
 
   return (
-    <main className='home-page'>
+    <Main className='home-page'>
       <Lid
         band={
           <>
@@ -47,6 +48,6 @@ export const HomePage: React.FC = () => {
         titleRef={lidTitleRef}
       />
       <BoxContents onCloseLid={closeLid} titleRef={contentsTitleRef} />
-    </main>
+    </Main>
   )
 }

@@ -1,6 +1,7 @@
 import type React from 'react'
 
 import { homePathFor, useCurrentPath } from '@/infrastructure/router/navigation'
+import { Main } from '@/presentation/components/main'
 import { notFoundTitle } from '@/presentation/head/document-head'
 import { useDocumentTitle } from '@/presentation/head/use-document-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
@@ -15,12 +16,12 @@ export const NotFoundPage: React.FC = () => {
   useDocumentTitle(notFoundTitle(translate('notFound.note')))
 
   return (
-    <main className='not-found-page'>
+    <Main className='not-found-page'>
       <MissingPiece
         backHref={homePathFor(locale)}
         backLabel={translate('notFound.backHome')}
         message={translate('notFound.message', { path })}
       />
-    </main>
+    </Main>
   )
 }

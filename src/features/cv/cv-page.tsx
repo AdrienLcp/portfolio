@@ -11,6 +11,7 @@ import {
 import { PROFILE_PHOTO, type Profile } from '@/features/profile/profile'
 import { homePathFor, useCvData } from '@/infrastructure/router/navigation'
 import { Icon } from '@/presentation/components/icon'
+import { Main } from '@/presentation/components/main'
 import { Link } from '@/presentation/components/ui/link'
 import { TextLink } from '@/presentation/components/ui/text-link'
 import { VisuallyHidden } from '@/presentation/components/ui/visually-hidden'
@@ -258,10 +259,10 @@ export const CvPage: React.FC = () => {
   useIndexedPageTitle('cv')
 
   return (
-    <main className='cv-page'>
+    <Main className='cv-page'>
       <Suspense fallback={<RouteFallback />}>
         <CvContent />
       </Suspense>
-    </main>
+    </Main>
   )
 }

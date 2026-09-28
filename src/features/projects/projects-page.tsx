@@ -6,6 +6,7 @@ import {
   useProjectsData
 } from '@/infrastructure/router/navigation'
 import { Lid } from '@/presentation/components/lid'
+import { Main } from '@/presentation/components/main'
 import { Stamp, StampList } from '@/presentation/components/stamp'
 import { Link } from '@/presentation/components/ui/link'
 import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
@@ -54,7 +55,7 @@ export const ProjectsPage: React.FC = () => {
   useIndexedPageTitle('projects')
 
   return (
-    <main className='projects-page'>
+    <Main className='projects-page'>
       <Lid
         band={<p>{translate('projects.lead')}</p>}
         title={translate('projects.title')}
@@ -64,6 +65,6 @@ export const ProjectsPage: React.FC = () => {
           <Shelf />
         </Suspense>
       </div>
-    </main>
+    </Main>
   )
 }
