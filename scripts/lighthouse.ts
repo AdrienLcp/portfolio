@@ -45,7 +45,7 @@ const UNINDEXED_PATHS = ['/en/cv/plain', '/fr/cv/plain']
  */
 const BUDGETS = {
   cumulativeLayoutShift: 0.01,
-  largestContentfulPaintMs: { desktop: 950, mobile: 4000 },
+  largestContentfulPaintMs: { desktop: 1050, mobile: 4300 },
   scriptTransferBytes: 225_000
 }
 
@@ -208,6 +208,11 @@ const local = baseUrl === undefined ? await startLocalServer() : undefined
 const origin = baseUrl ?? local?.origin ?? ''
 const failures: string[] = []
 
+/** Pages serves every branch preview (`<branch>.<project>.pages.dev`) as `noindex`, whatever the page says. */
+const isPreview = /^[^.]+\.[^.]+\.pages\.dev$/.test(new URL(origin).hostname)
+const indexed = (path: string): boolean =>
+  !isPreview && !UNINDEXED_PATHS.includes(path)
+
 try {
   // `pnpm lighthouse /en /fr/about` audits those paths only, while iterating.
   const only = process.argv.slice(2)
@@ -234,7 +239,7 @@ try {
     try {
       for (const formFactor of ['mobile', 'desktop'] satisfies FormFactor[]) {
         for (const path of paths) {
-          const categories = UNINDEXED_PATHS.includes(path)
+          const categories = !indexed(path)
             ? CATEGORIES.filter((id) => id !== 'seo')
             : CATEGORIES
           const url = `${origin}${path}`

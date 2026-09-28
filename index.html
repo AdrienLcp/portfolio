@@ -33,9 +33,10 @@
     <!--
       Archivo is drawn at five widths, from 100% to 125%, so no metric-adjusted
       fallback matches them all, and swapping it in reflows every heading, the
-      nav and the stamps. The page waits for it instead, at most a moment: the
-      file is preloaded, and past the cap it swaps in as usual. The URL and the
-      descriptors are the latin face's in `_fonts.sass`.
+      nav and the stamps; Literata swapping in rewraps every paragraph. The page
+      waits for both instead, at most a moment: the files are preloaded, and
+      past the cap they swap in as usual. The URLs and the descriptors are the
+      latin faces' in `_fonts.sass`.
     -->
     <style>
       :root[data-fonts-pending] #root {
@@ -49,12 +50,15 @@
 
         root.dataset.fontsPending = ''
         setTimeout(reveal, 800)
-        new FontFace('Archivo', "url('/fonts/archivo-latin.woff2') format('woff2')", {
-          stretch: '100% 125%',
-          weight: '600 900'
-        })
-          .load()
-          .then(reveal, reveal)
+        Promise.all([
+          new FontFace('Archivo', "url('/fonts/archivo-latin.woff2') format('woff2')", {
+            stretch: '100% 125%',
+            weight: '600 900'
+          }).load(),
+          new FontFace('Literata', "url('/fonts/literata-latin.woff2') format('woff2')", {
+            weight: '400 700'
+          }).load()
+        ]).then(reveal, reveal)
       }
     </script>
     <link href="/favicon.svg" rel="icon" type="image/svg+xml" />

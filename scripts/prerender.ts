@@ -235,7 +235,11 @@ const preloadsFor = (module: string): string =>
  * set in Arial and the not-found page: none of them paints before the app has
  * run, and a font preloaded there sits unused while the browser warns about it.
  */
-const FONT_PRELOADS = ['archivo-latin', 'literata-latin-italic']
+const FONT_PRELOADS = [
+  'archivo-latin',
+  'literata-latin',
+  'literata-latin-italic'
+]
   .map(
     (face) =>
       `\n    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/${face}.woff2">`
