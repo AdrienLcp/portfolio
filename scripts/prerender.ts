@@ -11,8 +11,8 @@ type EntryServer = {
   prerenderedPages: PrerenderedPage[]
   renderPage: (page: PrerenderedPage) => Promise<RenderedPage>
   structuredDataFor: (args: {
-    locale: Locale
     origin: string
+    page: PrerenderedPage
   }) => Promise<object>
 }
 
@@ -402,7 +402,7 @@ for (const page of prerenderedPages) {
       preloads: preloadsFor(page.module),
       rendered: await renderPage(page),
       siblings: siblingsOf(page),
-      structuredData: await structuredDataFor({ locale: page.locale, origin }),
+      structuredData: await structuredDataFor({ origin, page }),
       styles: await inlineStylesFor(page.module)
     }),
     'utf8'

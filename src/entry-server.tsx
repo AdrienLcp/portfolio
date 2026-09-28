@@ -7,6 +7,7 @@ import {
 } from 'react-router'
 
 import { PROFILE_PHOTO } from '@/features/profile/profile'
+import type { Project } from '@/features/projects/project'
 import { PROJECTS } from '@/infrastructure/api/data/projects'
 import { fetchProfile, fetchProject } from '@/infrastructure/api/portfolio-api'
 import {
@@ -43,6 +44,8 @@ export type RenderedPage = PageHead & {
 
 export { IMAGE_ALTS as imageAlts, OPEN_GRAPH_LOCALES as openGraphLocales }
 
+const PROJECT_PAGE_PREFIX = 'project:'
+
 /** The keys of the heads, which are typed over the routes. */
 const INDEXED_PAGES = Object.keys(PAGE_HEADS.en) as IndexedPage[]
 
@@ -63,7 +66,7 @@ const pagesFor = (locale: Locale): PrerenderedPage[] => [
     ({ slug }): PrerenderedPage => ({
       locale,
       module: pageModuleFor(localizedPaths.project),
-      page: `project:${slug}`,
+      page: `${PROJECT_PAGE_PREFIX}${slug}`,
       path: projectPathFor({ locale, slug })
     })
   )
@@ -72,25 +75,33 @@ const pagesFor = (locale: Locale): PrerenderedPage[] => [
 /** Read off the data, so a project added there gets its own document. */
 export const prerenderedPages: PrerenderedPage[] = LOCALES.flatMap(pagesFor)
 
-const headFor = async ({
+const isProjectPage = (
+  page: PrerenderedPage['page']
+): page is `project:${string}` => page.startsWith(PROJECT_PAGE_PREFIX)
+
+const projectOf = async ({
   locale,
   page
-}: PrerenderedPage): Promise<PageHead> => {
-  if (!page.startsWith('project:')) {
-    return PAGE_HEADS[locale][page as IndexedPage]
-  }
-
+}: {
+  locale: Locale
+  page: `project:${string}`
+}): Promise<Project> => {
   const project = await fetchProject({
     locale,
-    slug: page.slice('project:'.length)
+    slug: page.slice(PROJECT_PAGE_PREFIX.length)
   })
 
   if (project.status === 'failure') {
     throw new Error(`${page} could not be read: ${project.error}`)
   }
 
-  return projectHead(project.data)
+  return project.data
 }
+
+const headFor = async ({ locale, page }: PrerenderedPage): Promise<PageHead> =>
+  isProjectPage(page)
+    ? projectHead(await projectOf({ locale, page }))
+    : PAGE_HEADS[locale][page]
 
 const handler = createStaticHandler(routes)
 
@@ -138,16 +149,48 @@ export const renderPage = async (
   return { ...(await headFor(prerendered)), html }
 }
 
-/**
- * Who the site is about, in the language of the document: a search engine
- * reads it to tie the pages, the photo and the profiles to one person.
- */
-export const structuredDataFor = async ({
+/** What a project page is about: the code, and the app it ships when it is live. */
+const projectNodeFor = ({
   locale,
-  origin
+  origin,
+  path,
+  project
 }: {
   locale: Locale
   origin: string
+  path: string
+  project: Project
+}): object => ({
+  '@id': `${origin}${path}#project`,
+  '@type': 'SoftwareSourceCode',
+  author: { '@id': `${origin}/#person` },
+  codeRepository: project.links.repository,
+  description: project.summary,
+  inLanguage: locale,
+  isPartOf: { '@id': `${origin}/#website` },
+  keywords: project.stack,
+  name: project.name,
+  ...(project.links.live && {
+    targetProduct: {
+      '@type': 'WebApplication',
+      name: project.name,
+      url: project.links.live
+    }
+  }),
+  url: `${origin}${path}`
+})
+
+/**
+ * Who the site is about, in the language of the document: a search engine
+ * reads it to tie the pages, the photo and the profiles to one person. A
+ * project document adds what the project is.
+ */
+export const structuredDataFor = async ({
+  origin,
+  page: { locale, page, path }
+}: {
+  origin: string
+  page: PrerenderedPage
 }): Promise<object> => {
   const profile = await fetchProfile(locale)
 
@@ -182,7 +225,17 @@ export const structuredDataFor = async ({
         inLanguage: locale,
         name,
         url: home
-      }
+      },
+      ...(isProjectPage(page)
+        ? [
+            projectNodeFor({
+              locale,
+              origin,
+              path,
+              project: await projectOf({ locale, page })
+            })
+          ]
+        : [])
     ]
   }
 }
