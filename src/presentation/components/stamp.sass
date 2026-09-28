@@ -1,0 +1,23 @@
+@use '../styles/typography'
+
+@layer components
+  .stamp-list
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-xs)
+
+  .stamp
+    @include typography.caption
+
+    border: var(--outline-thin) solid currentColor
+    font-weight: 700
+    letter-spacing: 0.06em
+    padding: 3px var(--space-xs)
+    text-transform: uppercase
+
+    &.code
+      @include typography.code
+
+      font-size: var(--text-caption)
+      letter-spacing: 0
+      text-transform: none

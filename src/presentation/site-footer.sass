@@ -1,0 +1,29 @@
+@use './styles/layout'
+@use './styles/typography'
+
+@layer components
+  .site-footer
+    align-items: center
+    border-top: var(--outline-thick) solid var(--ink)
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-m) var(--space-l)
+    padding: var(--space-l) var(--gutter) var(--space-xl)
+
+    .token,
+    .theme-switch
+      align-self: auto
+
+    .colophon
+      @include typography.caption
+
+      color: var(--ink-soft)
+      flex-basis: 100%
+
+    @include layout.wide
+      .theme-switch
+        display: none
+
+      .colophon
+        flex-basis: auto
+        margin-inline-start: auto

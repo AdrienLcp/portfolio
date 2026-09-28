@@ -204,7 +204,7 @@ One family, drawn on a 24-unit grid: 2.75 stroke, square caps, mitred joins, siz
 - **Band / missing piece (secondary field):** tomato, print-ink text, focus ring in print ink, a 3px ink rule on the edge it shares with the next field.
 
 ### Navigation
-There is no navigation bar yet. The locale switch is a token in the lid's top-right corner, naming the other language in that language.
+A header strip printed on the lid's petrol field, so on the home page header and lid read as one field. At its left, the initials disc (a token with no pip, lettered in the lid's wide Archivo) leads home. At its right, the page tokens (Projects), then the locale token naming the other language in that language, then, from 900px, the theme rail. Below 900px the rail moves to the footer, a paper strip under a 3px ink rule that also carries the GitHub and LinkedIn tokens and a caption colophon. Page changes are view transitions.
 
 ### Browser Surfaces
 Text selection is marigold with print ink; the caret is brick; the scrollbar is a petrol thumb on paper; link underlines are 2px thick, offset 0.22em.

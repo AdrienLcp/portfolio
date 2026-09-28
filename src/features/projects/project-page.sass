@@ -1,0 +1,65 @@
+@use '../../presentation/styles/layout'
+@use '../../presentation/styles/typography'
+
+@layer components
+  .project-page
+    @include layout.page
+
+    .rule-booklet
+      display: grid
+      flex: 1
+      gap: var(--space-2xl)
+      padding: var(--space-2xl) var(--gutter) var(--space-3xl)
+
+    .booklet-text,
+    .booklet-aside
+      align-content: start
+      display: grid
+      gap: var(--space-2xl)
+
+    .booklet-summary
+      @include typography.lead
+
+      font-style: normal
+      max-width: var(--measure)
+
+    .booklet-section
+      display: grid
+      gap: var(--space-m)
+
+    .booklet-heading
+      @include typography.heading
+
+      border-top: var(--outline-thick) solid var(--ink)
+      padding-block-start: var(--space-s)
+
+    .highlights
+      display: grid
+      gap: var(--space-s)
+      max-width: var(--measure)
+
+      li
+        padding-inline-start: calc(12px + var(--space-s))
+        position: relative
+
+        // The token's pip, printed as the booklet's bullet.
+        &::before
+          background: var(--active)
+          border-radius: var(--radius-full)
+          content: ''
+          height: 12px
+          inset-inline-start: 0
+          position: absolute
+          top: 0.55em
+          width: 12px
+
+    .booklet-links
+      align-items: flex-start
+      display: flex
+      flex-direction: column
+      gap: var(--space-s)
+
+    @include layout.wide
+      .rule-booklet
+        grid-template-columns: minmax(0, 65ch) minmax(16rem, 22rem)
+        justify-content: space-between

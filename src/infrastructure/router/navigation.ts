@@ -2,18 +2,23 @@ import {
   generatePath,
   isRouteErrorResponse,
   type PathParam,
+  useLoaderData,
   useLocation,
   useRouteError
 } from 'react-router'
 
 import { isLocale, type Locale } from '@/presentation/i18n/locale'
 
+import type { projectLoader, projectsLoader } from './loaders'
+
 /**
  * Every indexable page names its language, because a search index keeps one
  * document per URL and never varies `Accept-Language`.
  */
 export const localizedPaths = {
-  home: '/:locale'
+  home: '/:locale',
+  project: '/:locale/projects/:slug',
+  projects: '/:locale/projects'
 } as const
 
 /** What `hreflang="x-default"` points at: it negotiates and redirects. */
@@ -33,6 +38,21 @@ const pathFor = <TPath extends string>(
 
 export const homePathFor = (locale: Locale): string =>
   pathFor(paths.home, { locale })
+
+export const projectsPathFor = (locale: Locale): string =>
+  pathFor(paths.projects, { locale })
+
+export const projectPathFor = ({
+  locale,
+  slug
+}: {
+  locale: Locale
+  slug: string
+}): string => pathFor(paths.project, { locale, slug })
+
+export const useProjectsData = () => useLoaderData<typeof projectsLoader>()
+
+export const useProjectData = () => useLoaderData<typeof projectLoader>()
 
 export const localizedPathFor = ({
   locale,

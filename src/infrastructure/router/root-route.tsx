@@ -2,12 +2,15 @@ import type React from 'react'
 import {
   type NavigateOptions,
   Outlet,
+  ScrollRestoration,
   useHref,
   useNavigate
 } from 'react-router'
 
 import { AppShell } from '@/presentation/app-shell'
 import { RouterProvider } from '@/presentation/components/ui/router-provider'
+import { SiteFooter } from '@/presentation/site-footer'
+import { SiteHeader } from '@/presentation/site-header'
 
 declare module 'react-aria-components' {
   interface RouterConfig {
@@ -27,6 +30,18 @@ const ignoreSupersededNavigation = (error: unknown): void => {
   throw error
 }
 
+const ABSOLUTE_URL = /^[a-z][a-z\d+.-]*:/i
+
+/**
+ * react-router resolves every href against the current route, an external URL
+ * included: `https://…` would come out as `/en/projects/https:/…`.
+ */
+const useRouterHref = (href: string): string => {
+  const routeHref = useHref(href)
+
+  return ABSOLUTE_URL.test(href) ? href : routeHref
+}
+
 /**
  * react-aria's `RouterProvider` is what turns an `href` on any react-aria
  * `Link`, `MenuItem` or `ListBoxItem` into a client-side navigation.
@@ -41,11 +56,12 @@ export const RootRoute: React.FC = () => {
           navigate(path, { viewTransition: true, ...options })
         ).catch(ignoreSupersededNavigation)
       }}
-      useHref={useHref}
+      useHref={useRouterHref}
     >
-      <AppShell>
+      <AppShell footer={<SiteFooter />} header={<SiteHeader />}>
         <Outlet />
       </AppShell>
+      <ScrollRestoration />
     </RouterProvider>
   )
 }

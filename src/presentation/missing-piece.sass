@@ -1,0 +1,38 @@
+@use './styles/layout'
+@use './styles/typography'
+
+@layer components
+  .missing-piece
+    @include layout.field-secondary
+
+    border-block: var(--outline-thick) solid var(--outline)
+    display: flex
+    flex: 1
+    flex-direction: column
+    gap: var(--space-m)
+    justify-content: flex-end
+    padding: var(--space-3xl) var(--gutter) var(--space-xl)
+
+    // Where the piece should lie: a die-cut hole, dashed like a cutting line.
+    .empty-slot
+      aspect-ratio: 1
+      border: var(--outline-thick) dashed var(--print-ink)
+      border-radius: var(--radius-full)
+      box-shadow: inset 0 3px 8px color-mix(in oklab, var(--print-ink) 28%, transparent)
+      margin-block-end: var(--space-l)
+      width: clamp(72px, 12vw, 120px)
+
+    .missing-message
+      @include typography.title
+
+      font-size: clamp(2rem, 1.2rem + 4vw, 4.5rem)
+      max-width: 18ch
+      overflow-wrap: anywhere
+
+    .missing-note
+      @include typography.lead
+
+      max-width: var(--measure)
+
+  .way-back
+    padding: var(--space-xl) var(--gutter) var(--space-2xl)

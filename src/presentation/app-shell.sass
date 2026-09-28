@@ -1,5 +1,8 @@
 @layer components
   .app-shell
+    // The header's exact height, so a page can fill what the viewport has left.
+    --site-header-height: calc(44px + 2 * var(--space-m))
+
     display: flex
     flex: 1
     flex-direction: column

@@ -12,9 +12,25 @@
       display: flex
       flex: 1
       flex-direction: column
-      gap: var(--space-l)
+      gap: var(--space-m)
       justify-content: flex-end
       padding: var(--space-3xl) var(--gutter) var(--space-xl)
+      position: relative
+
+    // Drawn across the whole field at its upper third, edge to edge.
+    .crack
+      height: clamp(18px, 3vw, 36px)
+      inset-inline: 0
+      position: absolute
+      top: 30%
+      width: 100%
+
+      polyline
+        fill: none
+        stroke: var(--accent)
+        stroke-linejoin: miter
+        stroke-width: 3px
+        vector-effect: non-scaling-stroke
 
     .failure-title
       @include typography.title
@@ -23,11 +39,17 @@
       font-size: clamp(2rem, 1.2rem + 4vw, 4.5rem)
       max-width: 16ch
 
+    .failure-note
+      @include typography.lead
+
+      max-width: var(--measure)
+
     .failure
       align-self: flex-start
       background: var(--token)
       border-radius: var(--radius-s)
       color: var(--on-token)
+      margin-block-start: var(--space-xs)
       max-width: 100%
       overflow-wrap: anywhere
       padding: var(--space-xs) var(--space-s)

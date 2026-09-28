@@ -1,0 +1,68 @@
+@use '../../presentation/styles/layout'
+@use '../../presentation/styles/typography'
+
+@layer components
+  .projects-page
+    @include layout.page
+
+    .shelves
+      flex: 1
+      padding: var(--space-2xl) var(--gutter) var(--space-3xl)
+
+    .shelf-pending
+      min-height: 16rem
+
+    .shelf-failure
+      @include typography.lead
+
+      max-width: var(--measure)
+
+    .shelf
+      display: grid
+      max-width: 72rem
+
+    // A booklet entry per box: a rule above each, and below the last.
+    .shelf-box
+      align-items: flex-start
+      border-top: var(--outline-thick) solid var(--ink)
+      display: flex
+      flex-direction: column
+      gap: var(--space-m)
+      padding-block: var(--space-l) var(--space-xl)
+
+      &:last-child
+        border-bottom: var(--outline-thick) solid var(--ink)
+
+    .box-name
+      @include typography.title
+
+      text-transform: uppercase
+
+    .box-tagline
+      @include typography.lead
+
+      max-width: 40ch
+
+    .shelf-box > .token
+      margin-block-start: var(--space-s)
+
+    @include layout.wide
+      .shelf-box
+        column-gap: var(--space-2xl)
+        display: grid
+        grid-template-columns: minmax(0, 1fr) auto
+        grid-template-areas: 'name action' 'tagline action' 'stack action'
+
+        .box-name
+          grid-area: name
+
+        .box-tagline
+          grid-area: tagline
+
+        .stamp-list
+          grid-area: stack
+
+      .shelf-box > .token
+        align-self: end
+        grid-area: action
+        margin-block-start: 0

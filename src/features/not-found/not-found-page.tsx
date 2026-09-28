@@ -1,8 +1,8 @@
 import type React from 'react'
 
 import { homePathFor, useCurrentPath } from '@/infrastructure/router/navigation'
-import { Link } from '@/presentation/components/ui/link'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
+import { MissingPiece } from '@/presentation/missing-piece'
 
 import './not-found-page.sass'
 
@@ -12,14 +12,11 @@ export const NotFoundPage: React.FC = () => {
 
   return (
     <main className='not-found-page'>
-      <div className='missing-piece'>
-        <h1 className='missing-path'>
-          {translate('notFound.message', { path })}
-        </h1>
-      </div>
-      <div className='way-back'>
-        <Link href={homePathFor(locale)}>{translate('notFound.backHome')}</Link>
-      </div>
+      <MissingPiece
+        backHref={homePathFor(locale)}
+        backLabel={translate('notFound.backHome')}
+        message={translate('notFound.message', { path })}
+      />
     </main>
   )
 }

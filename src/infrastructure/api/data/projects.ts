@@ -27,6 +27,7 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
       }
     ],
     links: {
+      live: 'https://taverla.onrender.com/',
       repository: 'https://github.com/AdrienLcp/taverla'
     },
     name: 'Taverla',

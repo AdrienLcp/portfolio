@@ -1,0 +1,55 @@
+@use './styles/layout'
+
+@layer components
+  .site-header
+    @include layout.field-dominant
+
+    align-items: center
+    display: flex
+    gap: var(--space-s)
+    height: var(--site-header-height)
+    justify-content: space-between
+    padding: 0 var(--gutter)
+    view-transition-name: site-header
+
+    // The initials disc: a token with no pip, its letters in the lid's lettering.
+    .token.monogram
+      align-self: auto
+      font-stretch: 125%
+      font-weight: 900
+      justify-content: center
+      letter-spacing: -0.02em
+      min-width: 44px
+      padding: 0
+
+      &::before
+        display: none
+
+    // Tighter below 900px: "Français" beside "Projects" must still fit a
+    // 320px row.
+    .site-nav
+      display: flex
+      gap: var(--space-2xs)
+      margin-inline-start: auto
+
+      .token
+        align-self: auto
+        gap: 6px
+        padding-inline: 10px var(--space-s)
+
+    // Beside the links only where the row has room for it; the footer holds it
+    // below that.
+    .theme-switch
+      display: none
+
+    @include layout.wide
+      .site-nav
+        gap: var(--space-xs)
+
+        .token
+          gap: var(--space-xs)
+          padding-inline: var(--space-s) var(--space-m)
+
+      .theme-switch
+        align-self: auto
+        display: inline-flex

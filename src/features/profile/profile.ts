@@ -5,7 +5,8 @@ import type { Locale } from '@/presentation/i18n/locale'
 
 export const profileSchema = z.strictObject({
   links: z.strictObject({
-    github: z.url()
+    github: z.url(),
+    linkedin: z.url()
   }),
   name: z.string().trim().min(1),
   role: localizedTextSchema

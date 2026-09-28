@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useSyncExternalStore } from 'react'
 
 import {
   readStoredTheme,
@@ -19,19 +19,41 @@ export const isThemeChoice = (value: string): value is ThemeChoice =>
 const themeFor = (choice: ThemeChoice): Theme | null =>
   isTheme(choice) ? choice : null
 
+/** One choice for the whole page: the header and the footer each hold a rail. */
+let currentChoice: ThemeChoice | null = null
+const listeners = new Set<() => void>()
+
+const readChoice = (): ThemeChoice => {
+  currentChoice ??= readStoredTheme() ?? 'auto'
+
+  return currentChoice
+}
+
+const subscribe = (listener: () => void): (() => void) => {
+  listeners.add(listener)
+
+  return () => {
+    listeners.delete(listener)
+  }
+}
+
+/** A prerendered document cannot know the visitor's choice. */
+const prerenderedChoice = (): ThemeChoice => 'auto'
+
+const choose = (next: ThemeChoice): void => {
+  currentChoice = next
+  writeStoredTheme(themeFor(next))
+  applyTheme(themeFor(next))
+
+  for (const listener of listeners) {
+    listener()
+  }
+}
+
 export const useThemeChoice = (): {
   choice: ThemeChoice
   choose: (choice: ThemeChoice) => void
-} => {
-  const [choice, setChoice] = useState<ThemeChoice>(
-    () => readStoredTheme() ?? 'auto'
-  )
-
-  const choose = (next: ThemeChoice): void => {
-    setChoice(next)
-    writeStoredTheme(themeFor(next))
-    applyTheme(themeFor(next))
-  }
-
-  return { choice, choose }
-}
+} => ({
+  choice: useSyncExternalStore(subscribe, readChoice, prerenderedChoice),
+  choose
+})

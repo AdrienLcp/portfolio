@@ -1,6 +1,7 @@
-import type { RouteObject } from 'react-router'
+import type { LoaderFunction, RouteObject } from 'react-router'
 
 import { NotFoundPage } from '@/features/not-found/not-found-page'
+import { projectLoader, projectsLoader } from '@/infrastructure/router/loaders'
 import {
   LocalePrefixedRoutes,
   NegotiatedLocaleRedirect
@@ -16,11 +17,25 @@ type LocalizedPath = (typeof localizedPaths)[keyof typeof localizedPaths]
 const pageFor = {
   [localizedPaths.home]: async () => ({
     Component: (await import('@/features/home/home-page')).HomePage
+  }),
+  [localizedPaths.project]: async () => ({
+    Component: (await import('@/features/projects/project-page')).ProjectPage
+  }),
+  [localizedPaths.projects]: async () => ({
+    Component: (await import('@/features/projects/projects-page')).ProjectsPage
   })
 } satisfies Record<LocalizedPath, RouteObject['lazy']>
 
+/** Outside `lazy`, so the data starts downloading beside the page's chunk. */
+const loaderFor = {
+  [localizedPaths.home]: projectsLoader,
+  [localizedPaths.project]: projectLoader,
+  [localizedPaths.projects]: projectsLoader
+} satisfies Record<LocalizedPath, LoaderFunction>
+
 const routeFor = (path: LocalizedPath): RouteObject => ({
   lazy: pageFor[path],
+  loader: loaderFor[path],
   path
 })
 
