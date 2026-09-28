@@ -14,6 +14,8 @@ import { Link } from '@/presentation/components/ui/link'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { apiErrorKey } from '@/presentation/i18n/translation'
 
+import { TechLogo } from './tech-logo'
+
 import './about-page.sass'
 
 type TrackProps = {
@@ -56,7 +58,10 @@ const Toolbox: React.FC = () => {
           <dd>
             <StampList>
               {skill.terms.map((term) => (
-                <Stamp key={term}>{term}</Stamp>
+                <Stamp key={term}>
+                  <TechLogo term={term} />
+                  {term}
+                </Stamp>
               ))}
             </StampList>
           </dd>

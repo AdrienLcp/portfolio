@@ -57,7 +57,9 @@
     --space-xl: 48px
     --space-2xl: 72px
     --space-3xl: 112px
-    --gutter: clamp(16px, 4vw, 48px)
+    // Fields stay full-bleed; past the frame, their content centres in it.
+    --frame: 90rem
+    --gutter: max(clamp(16px, 4vw, 48px), (100vw - var(--frame)) / 2)
     --measure: 65ch
 
     --radius-s: 4px

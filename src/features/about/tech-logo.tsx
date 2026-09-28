@@ -1,0 +1,94 @@
+import type React from 'react'
+import {
+  type SimpleIcon,
+  siBiome,
+  siClaude,
+  siDocker,
+  siDotnet,
+  siExpress,
+  siGithubactions,
+  siGitlab,
+  siGooglecloud,
+  siGooglegemini,
+  siHono,
+  siLighthouse,
+  siModelcontextprotocol,
+  siMongodb,
+  siN8n,
+  siNextdotjs,
+  siNodedotjs,
+  siOpenapiinitiative,
+  siOpentelemetry,
+  siPnpm,
+  siPostgresql,
+  siReact,
+  siReactrouter,
+  siSass,
+  siSocketdotio,
+  siStorybook,
+  siTypescript,
+  siVite,
+  siVitest
+} from 'simple-icons'
+
+/**
+ * Matched by substring, first hit wins: a term reads differently in each
+ * locale ("MCP servers", "serveurs MCP"), so a longer name that contains a
+ * shorter one ("React Router", "Vitest") comes before it. `null` keeps a term
+ * that has no logo from matching the shorter one.
+ */
+const LOGOS: readonly (readonly [string, SimpleIcon | null])[] = [
+  ['React Aria', null],
+  ['React Native', siReact],
+  ['React Router', siReactrouter],
+  ['React', siReact],
+  ['TypeScript', siTypescript],
+  ['Vitest', siVitest],
+  ['Vite', siVite],
+  ['Sass', siSass],
+  ['Storybook', siStorybook],
+  ['Node.js', siNodedotjs],
+  ['Express', siExpress],
+  ['Hono', siHono],
+  ['OpenAPI', siOpenapiinitiative],
+  ['Socket.IO', siSocketdotio],
+  ['MongoDB', siMongodb],
+  ['PostgreSQL', siPostgresql],
+  ['Biome', siBiome],
+  ['Lighthouse', siLighthouse],
+  ['Docker', siDocker],
+  ['GitLab', siGitlab],
+  ['GitHub Actions', siGithubactions],
+  ['GCP', siGooglecloud],
+  ['OpenTelemetry', siOpentelemetry],
+  ['Claude', siClaude],
+  ['MCP', siModelcontextprotocol],
+  ['n8n', siN8n],
+  ['Gemini', siGooglegemini],
+  ['Next.js', siNextdotjs],
+  ['pnpm', siPnpm],
+  ['.NET', siDotnet]
+]
+
+export const logoFor = (term: string): SimpleIcon | null =>
+  LOGOS.find(([name]) => term.includes(name))?.[1] ?? null
+
+type TechLogoProps = {
+  term: string
+}
+
+/** Stamped in the ink of the stamp around it, never in the brand's colour. */
+export const TechLogo: React.FC<TechLogoProps> = ({ term }) => {
+  const logo = logoFor(term)
+
+  return logo === null ? null : (
+    <svg
+      aria-hidden='true'
+      className='tech-logo'
+      focusable='false'
+      viewBox='0 0 24 24'
+    >
+      <path d={logo.path} />
+    </svg>
+  )
+}
