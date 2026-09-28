@@ -12,9 +12,11 @@ import { VisuallyHidden } from '@/presentation/components/ui/visually-hidden'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { apiErrorKey } from '@/presentation/i18n/translation'
 
+import { ReplyCard } from './reply-card'
+
 import './contact-page.sass'
 
-/** The address printed as large as the lid allows: it is the whole page. */
+/** The address printed as large as the lid allows, the reply card under it. */
 const Mailbox: React.FC = () => {
   const { locale, translate } = useI18n()
   const { cv, profile } = useCvData()
@@ -58,8 +60,8 @@ const Mailbox: React.FC = () => {
             {translate('contact.copy')}
           </Button>
         </div>
-        <p className='contact-note'>{translate('contact.noForm')}</p>
       </section>
+      <ReplyCard />
       <section aria-labelledby='contact-elsewhere' className='elsewhere'>
         <h2 className='elsewhere-heading' id='contact-elsewhere'>
           {translate('contact.elsewhere')}

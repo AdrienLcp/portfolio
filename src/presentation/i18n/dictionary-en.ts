@@ -14,9 +14,31 @@ export const EN_DICTIONARY = defineDictionary({
     copied: 'Address copied',
     copy: 'Copy the address',
     elsewhere: 'Elsewhere',
+    form: {
+      again: 'Write another',
+      email: 'Your email',
+      emailHint: 'Only used to reply to you.',
+      emailInvalid:
+        'This address looks incomplete: something like name@example.com.',
+      emailMissing: 'An address, so I can write back.',
+      failure: {
+        refused:
+          'The mail service turned the card down. Try again, or write to the address above.',
+        unreachable:
+          'The card could not leave: the connection seems down. Try again in a moment, or write to the address above.'
+      },
+      message: 'Your message',
+      messageMissing: 'The card is still blank.',
+      name: 'Your name',
+      nameMissing: 'Tell me who is writing.',
+      posted: 'Posted',
+      postedNote:
+        'Thanks for writing. I read everything, and I reply from my own inbox.',
+      send: 'Send the card',
+      sending: 'Sending the card',
+      title: 'Or fill in the reply card'
+    },
     lead: 'A question, an idea, or just saying hello: my inbox is open.',
-    noForm:
-      'No form here: this site has no server, and your mail app does the job perfectly.',
     title: 'Contact',
     write: 'Write an email'
   },

@@ -16,9 +16,30 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
     copied: 'Adresse copiée',
     copy: 'Copier l’adresse',
     elsewhere: 'Ailleurs',
+    form: {
+      again: 'En écrire une autre',
+      email: 'Votre e-mail',
+      emailHint: 'Uniquement pour vous répondre.',
+      emailInvalid: 'Cette adresse semble incomplète : du type nom@exemple.fr.',
+      emailMissing: 'Une adresse, pour que je puisse répondre.',
+      failure: {
+        refused:
+          'Le service d’envoi a refusé la carte. Réessayez, ou écrivez à l’adresse ci-dessus.',
+        unreachable:
+          'La carte n’a pas pu partir : la connexion semble coupée. Réessayez dans un instant, ou écrivez à l’adresse ci-dessus.'
+      },
+      message: 'Votre message',
+      messageMissing: 'La carte est encore vierge.',
+      name: 'Votre nom',
+      nameMissing: 'Dites-moi qui écrit.',
+      posted: 'Postée',
+      postedNote:
+        'Merci d’avoir écrit. Je lis tout, et je réponds depuis ma propre boîte.',
+      send: 'Envoyer la carte',
+      sending: 'Envoi de la carte',
+      title: 'Ou remplissez la carte-réponse'
+    },
     lead: 'Une question, une idée, ou juste envie de dire bonjour : ma boîte mail est ouverte.',
-    noForm:
-      'Pas de formulaire ici : ce site n’a pas de serveur, et votre messagerie fait ça très bien.',
     title: 'Contact',
     write: 'Écrire un e-mail'
   },

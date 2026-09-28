@@ -20,7 +20,8 @@ const ICON_PATHS = {
   note: 'M9 18V5l11-2v13M9 18a3 3 0 1 1-6 0a3 3 0 1 1 6 0M20 16a3 3 0 1 1-6 0a3 3 0 1 1 6 0',
   plus: 'M12 4v16M4 12h16',
   question:
-    'M4 3h16v18H4zM9 9.5a3 3 0 1 1 4.2 2.7c-.8.4-1.2 1-1.2 1.8v.5M12 17v1.5'
+    'M4 3h16v18H4zM9 9.5a3 3 0 1 1 4.2 2.7c-.8.4-1.2 1-1.2 1.8v.5M12 17v1.5',
+  send: 'M21 3L10 14M21 3l-7 18-4-7-7-4z'
 } as const
 
 export type IconName = keyof typeof ICON_PATHS
