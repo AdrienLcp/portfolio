@@ -61,6 +61,10 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
         fr: 'Result tient en trente lignes. Un succès qui ne porte rien n’a pas de clé data du tout : personne n’y lit undefined.'
       },
       {
+        en: 'A phone paints its toolbar from the theme-color tags, which follow the system, not the visitor. The theme package rewrites their media query before the first paint, so a dark choice on a light phone gets a dark toolbar too.',
+        fr: 'Un téléphone peint sa barre d’outils avec les balises theme-color, qui suivent le système, pas le visiteur. Le paquet de thème réécrit leur media query avant le premier rendu : un choix sombre sur un téléphone clair a aussi sa barre sombre.'
+      },
+      {
         en: 'Released with Changesets and published from GitHub Actions with npm provenance, never from a laptop.',
         fr: 'Versionnés avec Changesets et publiés depuis GitHub Actions avec la provenance npm, jamais depuis un portable.'
       },
@@ -70,7 +74,11 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
       }
     ],
     links: {
-      packages: ['@adrienlcp/i18n', '@adrienlcp/result'],
+      packages: [
+        '@adrienlcp/i18n',
+        '@adrienlcp/result',
+        '@adrienlcp/theme-preference'
+      ],
       repository: 'https://github.com/AdrienLcp/packages'
     },
     name: 'Packages',
@@ -104,6 +112,20 @@ if (result.status === 'failure') return result.error
 result.data
 // number`,
         title: '@adrienlcp/result'
+      },
+      {
+        code: `export const themeStore = createThemePreferenceStore({
+  storageKey: 'app:theme'
+})
+
+// vite.config.ts: runs before the first paint
+plugins: [themePreferencePlugin(themeStore)]
+
+themeStore.setPreference('dark')
+// <html data-theme="dark">
+// dark theme-color  → media="all"
+// light theme-color → media="not all"`,
+        title: '@adrienlcp/theme-preference'
       }
     ],
     slug: 'packages',
@@ -116,8 +138,8 @@ result.data
       'GitHub Actions'
     ],
     summary: {
-      en: 'Small TypeScript packages with no dependencies, published on npm, each lifted out of a project once a second one needed it. The first two: one translates, and knows at compile time what each message asks for; the other says whether something worked, without throwing and without null.',
-      fr: 'Des petits paquets TypeScript sans dépendance, publiés sur npm, chacun sorti d’un projet dès qu’un deuxième en avait besoin. Les deux premiers : l’un traduit, et sait dès la compilation ce que chaque message attend ; l’autre dit si quelque chose a marché, sans exception et sans null.'
+      en: 'Small TypeScript packages with no dependencies, published on npm, each lifted out of a project once a second one needed it. The first three: one translates, and knows at compile time what each message asks for; one says whether something worked, without throwing and without null; one keeps the chosen theme from flashing, down to the phone’s toolbar.',
+      fr: 'Des petits paquets TypeScript sans dépendance, publiés sur npm, chacun sorti d’un projet dès qu’un deuxième en avait besoin. Les trois premiers : l’un traduit, et sait dès la compilation ce que chaque message attend ; l’autre dit si quelque chose a marché, sans exception et sans null ; le dernier garde le thème choisi sans flash, jusqu’à la barre du téléphone.'
     },
     tagline: {
       en: 'The npm packages under this site and Taverla, typed as far as the compiler goes.',
