@@ -73,8 +73,8 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
         fr: 'Versionnés avec Changesets et publiés depuis GitHub Actions avec la provenance npm, jamais depuis un portable.'
       },
       {
-        en: 'This site installs all six from npm, and Taverla the first three.',
-        fr: 'Ce site installe les six depuis npm, et Taverla les trois premiers.'
+        en: 'This site and Taverla both install all six from npm.',
+        fr: 'Ce site et Taverla installent tous les deux les six depuis npm.'
       }
     ],
     links: {
