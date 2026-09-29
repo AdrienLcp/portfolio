@@ -7,7 +7,7 @@ import type { Locale } from '../src/presentation/i18n/locale'
 
 type EntryServer = {
   imageAlts: Record<Locale, string>
-  openGraphLocales: Record<Locale, string>
+  openGraphLocaleFor: (locale: Locale) => string
   prerenderedPages: PrerenderedPage[]
   renderPage: (page: PrerenderedPage) => Promise<RenderedPage>
   structuredDataFor: (args: {
@@ -258,7 +258,7 @@ const documentFor = ({
     .filter((sibling) => sibling.locale !== page.locale)
     .map(
       (sibling) =>
-        `<meta content="${openGraphLocales[sibling.locale]}" property="og:locale:alternate" />`
+        `<meta content="${openGraphLocaleFor(sibling.locale)}" property="og:locale:alternate" />`
     )
     .join('\n    ')
 
@@ -311,7 +311,7 @@ const documentFor = ({
       setMeta({
         html,
         identifyingAttribute: 'property="og:locale"',
-        value: openGraphLocales[page.locale]
+        value: openGraphLocaleFor(page.locale)
       }),
     (html: string) =>
       replaceOnce({
@@ -391,7 +391,7 @@ const buildManifest: Record<string, BuildChunk> = JSON.parse(
 
 const {
   imageAlts,
-  openGraphLocales,
+  openGraphLocaleFor,
   prerenderedPages,
   renderPage,
   structuredDataFor

@@ -1,5 +1,6 @@
 import type { localizedPaths } from '@/infrastructure/router/navigation'
 import type { Locale } from '@/presentation/i18n/locale'
+import { REGIONAL_LOCALES } from '@/presentation/i18n/regional-locales'
 
 export type IndexedPage = Exclude<
   keyof typeof localizedPaths,
@@ -87,7 +88,5 @@ export const IMAGE_ALTS: Record<Locale, string> = {
   fr: 'Le couvercle du portfolio d’Adrien Lacourpaille : son nom en larges lettres jaune souci sur un fond pétrole, au-dessus d’une bande tomate.'
 }
 
-export const OPEN_GRAPH_LOCALES: Record<Locale, string> = {
-  en: 'en_US',
-  fr: 'fr_FR'
-}
+export const openGraphLocaleFor = (locale: Locale): string =>
+  REGIONAL_LOCALES[locale].replace('-', '_')

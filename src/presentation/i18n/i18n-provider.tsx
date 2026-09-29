@@ -7,12 +7,8 @@ import { I18nProvider as ReactAriaI18nProvider } from '@/presentation/components
 
 import { i18n } from './i18n'
 import type { Locale } from './locale'
+import { REGIONAL_LOCALES } from './regional-locales'
 import type { Translate } from './translation'
-
-const REACT_ARIA_OPTIMIZED_LOCALES: Record<Locale, string> = {
-  en: 'en-US',
-  fr: 'fr-FR'
-}
 
 type I18nContextValue = {
   locale: Locale
@@ -53,7 +49,7 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({
         translate: i18n.translator(locale)
       }}
     >
-      <ReactAriaI18nProvider locale={REACT_ARIA_OPTIMIZED_LOCALES[locale]}>
+      <ReactAriaI18nProvider locale={REGIONAL_LOCALES[locale]}>
         {children}
       </ReactAriaI18nProvider>
     </I18nContext>

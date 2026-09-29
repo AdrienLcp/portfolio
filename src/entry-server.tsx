@@ -21,7 +21,7 @@ import { AppProviders } from '@/presentation/app-providers'
 import {
   IMAGE_ALTS,
   type IndexedPage,
-  OPEN_GRAPH_LOCALES,
+  openGraphLocaleFor,
   PAGE_HEADS,
   type PageHead,
   projectHead
@@ -39,7 +39,7 @@ export type RenderedPage = PageHead & {
   html: string
 }
 
-export { IMAGE_ALTS as imageAlts, OPEN_GRAPH_LOCALES as openGraphLocales }
+export { IMAGE_ALTS as imageAlts, openGraphLocaleFor }
 
 const PROJECT_PAGE_PREFIX = 'project:'
 
