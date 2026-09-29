@@ -7,12 +7,12 @@ import {
 import { relForTarget } from '@/helpers/links'
 import { composeClassName } from '@/presentation/components/compose-class-name'
 
-import type { TokenVariant } from './button'
 import {
   ariaCurrentLeftOutOfLinkProps,
   restoreHrefLangDroppedByReactAria
 } from './link-quirks'
 import { NewTabMark } from './new-tab-mark'
+import type { TokenVariant } from './token-variant'
 
 import './token.sass'
 
@@ -20,7 +20,7 @@ export type LinkProps = Omit<ReactAriaLinkProps, 'children'> & {
   children: React.ReactNode
   /** Lights the pip: the link leads to the page on screen. */
   isCurrent?: boolean
-  /** The token's print, as on `Button` (default: `'plain'`). */
+  /** The token's print (default: `'plain'`). */
   variant?: TokenVariant
 }
 

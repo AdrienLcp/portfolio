@@ -8,9 +8,9 @@ import {
 import { composeClassName } from '@/presentation/components/compose-class-name'
 import { Icon, type IconName } from '@/presentation/components/icon'
 
-import './token.sass'
+import type { TokenVariant } from './token-variant'
 
-export type TokenVariant = 'plain' | 'accent'
+import './token.sass'
 
 type ContentProps =
   | {
@@ -43,11 +43,7 @@ export type ButtonProps = Omit<
 > &
   ContentProps &
   PendingProps & {
-    /**
-     * The token's print (default: `'plain'`):
-     * - `'plain'` — the paper token every control takes
-     * - `'accent'` — marigold, for the one action a screen is for
-     */
+    /** The token's print (default: `'plain'`). */
     variant?: TokenVariant
   }
 
