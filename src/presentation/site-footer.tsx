@@ -8,7 +8,12 @@ import { ThemeSwitch } from '@/presentation/theme/theme-switch'
 
 import './site-footer.sass'
 
-export const SiteFooter: React.FC = () => {
+type SiteFooterProps = {
+  /** Printed in the colophon; read from the clock by the caller. */
+  year: number
+}
+
+export const SiteFooter: React.FC<SiteFooterProps> = ({ year }) => {
   const { locale, translate } = useI18n()
 
   return (
@@ -16,15 +21,13 @@ export const SiteFooter: React.FC = () => {
       <ThemeSwitch />
       <Link href={cvPathFor(locale)}>{translate('header.cv')}</Link>
       <Link href={PROFILE.links.github} target='_blank'>
-        GitHub
+        {translate('common.github')}
       </Link>
       <Link href={PROFILE.links.linkedin} target='_blank'>
-        LinkedIn
+        {translate('common.linkedin')}
       </Link>
       <p className='colophon'>
-        {translate('footer.colophon', {
-          year: String(new Date().getFullYear())
-        })}
+        {translate('footer.colophon', { year: String(year) })}
       </p>
     </footer>
   )

@@ -11,6 +11,7 @@ import {
 } from 'react-router'
 
 import { prefersReducedMotion } from '@/infrastructure/browser'
+import { currentYear } from '@/infrastructure/clock'
 import { AppShell } from '@/presentation/app-shell'
 import { focusMain } from '@/presentation/components/main'
 import { RouterProvider } from '@/presentation/components/ui/router-provider'
@@ -95,7 +96,7 @@ export const RootRoute: React.FC = () => {
       useHref={useRouterHref}
     >
       <AppShell
-        footer={isBare ? null : <SiteFooter />}
+        footer={isBare ? null : <SiteFooter year={currentYear()} />}
         header={isBare ? null : <SiteHeader />}
       >
         <Outlet />
