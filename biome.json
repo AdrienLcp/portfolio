@@ -58,7 +58,6 @@
       }
     }
   },
-  "plugins": ["./biome-plugins/no-undefined-argument-result.grit"],
   "vcs": {
     "clientKind": "git",
     "defaultBranch": "main",
