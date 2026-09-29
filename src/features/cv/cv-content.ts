@@ -124,13 +124,22 @@ export const CV: z.input<typeof cvSchema> = {
       year: '2026'
     },
     {
-      link: 'https://github.com/AdrienLcp/vap',
-      name: 'vap',
+      link: 'https://sport-buk.pages.dev/specimen',
+      name: 'Séance',
       summary: {
-        en: 'Next.js e-commerce: Drizzle/PostgreSQL, Better Auth, Stripe, transactional emails. Discontinued, code public.',
-        fr: 'E-commerce Next.js : Drizzle/PostgreSQL, Better Auth, Stripe, emails transactionnels. Projet arrêté, code public.'
+        en: 'Training PWA, fully offline with no server: Workbox, IndexedDB, local reminders, SVG charts.',
+        fr: 'PWA d’entraînement hors ligne sans serveur : Workbox, IndexedDB, rappels, graphiques SVG.'
       },
-      year: '2025'
+      year: '2026'
+    },
+    {
+      link: 'https://github.com/AdrienLcp/packages',
+      name: '@adrienlcp/*',
+      summary: {
+        en: 'Ten tested TypeScript packages on npm, released from GitHub Actions with provenance, used by three apps.',
+        fr: 'Dix paquets TypeScript testés, publiés sur npm par la CI avec provenance, dans trois apps.'
+      },
+      year: '2026'
     }
   ],
   skills: [
