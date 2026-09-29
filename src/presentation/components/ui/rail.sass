@@ -2,8 +2,6 @@
 @use '../../styles/typography'
 
 @layer components
-  // A printed piece of the game, so it keeps its own inks in both themes: a
-  // row of slots cut into the board, one pawn standing in the one in play.
   .rail
     align-self: flex-start
     background: color-mix(in oklab, var(--print-ink) 16%, var(--print-paper))
@@ -32,7 +30,6 @@
       position: relative
       text-decoration: none
 
-      // An empty hole where the pawn could stand.
       &::before
         border: var(--outline-thin) solid color-mix(in oklab, var(--print-ink) 55%, transparent)
         border-radius: var(--radius-full)
@@ -42,7 +39,6 @@
         transition: background-color var(--transition-fast, 0) var(--timing, ease), border-color var(--transition-fast, 0) var(--timing, ease)
         width: 10px
 
-      // Already there: nothing to press.
       &[aria-current]
         cursor: default
 
@@ -55,8 +51,6 @@
         &:not([data-selected], [aria-current])::before
           border-color: var(--print-ink)
 
-    // The pawn: a token face with its ink edge and one short shadow, slid from
-    // slot to slot by react-aria through the `translate` transition.
     .rail-pawn
       background: var(--token)
       border: var(--outline-thin) solid var(--print-ink)

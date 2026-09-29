@@ -17,24 +17,23 @@ import './token.sass'
 
 export type LinkProps = Omit<ReactAriaLinkProps, 'children'> & {
   children: React.ReactNode
-  /** Lights the pip: the link leads to the page on screen. */
   isCurrent?: boolean
-  /** The token's print, as on `Button` (default: `'plain'`). */
   variant?: TokenVariant
 }
 
-/**
- * react-aria types `hrefLang` but leaves it off the `<a>` it renders, so it is
- * put back by hand: a crawler reads it to pair a page with its translation.
- */
-export const renderHrefLang = (
+export const ariaCurrentLeftOutOfLinkProps = (
+  isCurrent: boolean,
+  value: 'page' | 'true'
+): { 'aria-current'?: 'page' | 'true' } =>
+  isCurrent ? { 'aria-current': value } : {}
+
+export const restoreHrefLangDroppedByReactAria = (
   hrefLang: string | undefined
 ): ReactAriaLinkProps['render'] =>
   hrefLang === undefined
     ? undefined
     : (domProps) => createElement('a', { ...domProps, hrefLang })
 
-/** A link shaped as a token: a place to go, printed as a piece to press. */
 export const Link: React.FC<LinkProps> = ({
   children,
   className,
@@ -47,15 +46,14 @@ export const Link: React.FC<LinkProps> = ({
 }) => (
   <ReactAriaLink
     {...props}
-    // react-aria forwards `aria-current` but leaves it out of `LinkProps`.
-    {...(isCurrent && { 'aria-current': 'page' })}
+    {...ariaCurrentLeftOutOfLinkProps(isCurrent, 'page')}
     className={composeClassName(
       className,
       'token',
       variant === 'accent' && 'accent'
     )}
     rel={relForTarget({ rel, target })}
-    render={renderHrefLang(hrefLang)}
+    render={restoreHrefLangDroppedByReactAria(hrefLang)}
     target={target}
   >
     {children}
@@ -67,7 +65,6 @@ type NewTabMarkProps = {
   iconClassName: string
 }
 
-/** Warns before the jump, in the link's own name. */
 export const NewTabMark: React.FC<NewTabMarkProps> = ({ iconClassName }) => {
   const translate = useTranslate()
 

@@ -8,12 +8,6 @@ import {
 import { i18n } from './i18n'
 import type { Locale } from './locale'
 
-/**
- * The URL first, because it is the only source somebody else can have chosen:
- * a link shared in French opens in French. Then this device's last choice, then
- * the browser. Stamped on `<html lang>` before the first render, or a browser
- * sniffing English markup over French text offers to translate the page.
- */
 export const applyInitialLocale = (): Locale => {
   const inUrl = localeInPath(servedPath())
   const locale =

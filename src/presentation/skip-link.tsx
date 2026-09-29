@@ -5,10 +5,6 @@ import { useTranslate } from '@/presentation/i18n/i18n-provider'
 
 import './skip-link.sass'
 
-/**
- * A plain anchor, so it works before the app boots. Once it has, the click is
- * kept from the router, which would take the fragment for a navigation.
- */
 export const SkipLink: React.FC = () => {
   const translate = useTranslate()
 

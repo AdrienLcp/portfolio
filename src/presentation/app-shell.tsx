@@ -4,7 +4,6 @@ import './app-shell.sass'
 
 type AppShellProps = {
   children: React.ReactNode
-  /** Left out by the error screen, which must not depend on chrome that may be what broke. */
   footer?: React.ReactNode
   header?: React.ReactNode
 }

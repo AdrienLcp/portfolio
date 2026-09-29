@@ -36,7 +36,6 @@ export const Booklet: Story = {
   )
 }
 
-/** The trigger names the fold and reports whether it is open. */
 export const Toggles: Story = {
   play: async ({ canvasElement }) => {
     const trigger = within(canvasElement).getByRole('button', {

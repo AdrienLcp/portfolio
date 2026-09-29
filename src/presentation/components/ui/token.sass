@@ -1,12 +1,7 @@
-// A style system: every piece shaped like a token (button, link, tab) is
-// restyled here as one, so the states resolve in one file's source order.
-
 @use '../../styles/focus'
 @use '../../styles/typography'
 
 @layer components
-  /// A die-cut game token: a printed disc of cardboard with an ink edge. Its
-  /// pip turns to the active colour when it marks where you are.
   .token
     @include typography.control
     @include focus.ring
@@ -51,7 +46,6 @@
     &[data-pressed]
       transform: translateY(1px)
 
-    // The pip itself turns into the wait: the token keeps its exact width.
     &[data-pending]
       cursor: progress
 
@@ -67,7 +61,6 @@
       cursor: not-allowed
       transform: none
 
-    // A played token: pressed flat into the board, printed in reverse.
     &[data-selected]
       --token-face: var(--print-ink)
 

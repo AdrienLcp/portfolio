@@ -1,8 +1,6 @@
 @use '../../styles/focus'
 
 @layer components
-  /// The underline takes the colour `--focus` gives each field — brick on
-  /// paper, marigold on petrol, ink on tomato — so it always reads on it.
   .text-link
     @include focus.ring
 
@@ -19,7 +17,6 @@
       text-decoration-color: var(--focus)
       text-underline-offset: 0.3em
 
-    // Inline, against the reset's block SVG: the mark stays on the text's line.
     .text-link-icon
       display: inline-block
       height: 0.8em

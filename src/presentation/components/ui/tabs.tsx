@@ -15,7 +15,6 @@ import './token.sass'
 
 export { Tabs, type TabsProps } from 'react-aria-components'
 
-/** A row of tokens; the chosen one is played, pressed flat into the board. */
 export const TabList = <T extends object>({
   className,
   ...props

@@ -1,14 +1,3 @@
-// Side-effect module: emits `:root`. Loaded once, from globals.sass.
-//
-// Every colour is an exact conversion of the palette's hex, written as one
-// `light-dark()` pair so light and dark read side by side. The theme itself is
-// only `color-scheme`, set by the three rules at the bottom.
-//
-// Measured contrast, light / dark: ink on paper 14.7 / 15.1, on-dominant on
-// the dominant field 7.9 / 6.5, print ink on the secondary field 5.0 / 5.8,
-// active on paper 4.7 / 8.8. The accent reaches only 4.3 on the dominant field,
-// so it is for display type and tokens there, never for small text.
-
 @layer tokens
   \:root
     color-scheme: light
@@ -23,8 +12,6 @@
     --accent: light-dark(oklch(77.71% 0.1420 76.82), oklch(80.86% 0.1388 79.19))
     --active: light-dark(oklch(54.67% 0.1523 34.72), oklch(78.37% 0.1295 38.34))
 
-    // A printed piece — a token, a sticker — keeps its own inks in both themes:
-    // it is cardboard lying on the table, not a surface the theme repaints.
     --print-ink: oklch(23.34% 0.0209 185.33)
     --print-paper: oklch(95.73% 0.0058 153.77)
     --print-marigold: oklch(77.71% 0.1420 76.82)
@@ -57,7 +44,6 @@
     --space-xl: 48px
     --space-2xl: 72px
     --space-3xl: 112px
-    // Fields stay full-bleed; past the frame, their content centres in it.
     --frame: 90rem
     --gutter: max(clamp(16px, 4vw, 48px), (100vw - var(--frame)) / 2)
     --measure: 65ch

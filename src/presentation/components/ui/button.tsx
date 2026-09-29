@@ -15,11 +15,9 @@ export type TokenVariant = 'plain' | 'accent'
 type ContentProps =
   | {
       children: React.ReactNode
-      /** Drawn after the label. */
       icon?: IconName
     }
   | {
-      /** An icon alone names nothing: the label is required. */
       'aria-label': string
       children?: undefined
       icon: IconName
@@ -28,11 +26,6 @@ type ContentProps =
 type PendingProps =
   | {
       isPending: boolean
-      /**
-       * Names the wait for a screen reader — "Copying the address", not
-       * "Loading". A progress bar with no name says something is pending
-       * without ever saying what.
-       */
       pendingLabel: string
     }
   | { isPending?: undefined; pendingLabel?: never }
@@ -43,11 +36,6 @@ export type ButtonProps = Omit<
 > &
   ContentProps &
   PendingProps & {
-    /**
-     * The token's print (default: `'plain'`):
-     * - `'plain'` — the paper token every control takes
-     * - `'accent'` — marigold, for the one action a screen is for
-     */
     variant?: TokenVariant
   }
 

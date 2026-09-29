@@ -8,11 +8,9 @@ import './missing-piece.sass'
 type MissingPieceProps = {
   backHref: string
   backLabel: string
-  /** The one sentence the tomato field carries. */
   message: string
 }
 
-/** A page asked for a piece the box does not hold: its empty slot, and a way back. */
 export const MissingPiece: React.FC<MissingPieceProps> = ({
   backHref,
   backLabel,

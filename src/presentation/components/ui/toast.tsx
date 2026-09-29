@@ -20,15 +20,12 @@ type ToastMessage = {
 
 const TOAST_TIMEOUT_MS = 4000
 
-/** One slip at a time: a newer one replaces the older. */
 const toastQueue = new ToastQueue<ToastMessage>({ maxVisibleToasts: 1 })
 
-/** A short confirmation that something happened — "Address copied". */
 export const showToast = (title: string): void => {
   toastQueue.add({ title }, { timeout: TOAST_TIMEOUT_MS })
 }
 
-/** Mounted once, above everything that can call `showToast`. */
 export const ToastRegion: React.FC = () => {
   const translate = useTranslate()
 

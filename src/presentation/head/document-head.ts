@@ -1,21 +1,13 @@
 import type { localizedPaths } from '@/infrastructure/router/navigation'
 import type { Locale } from '@/presentation/i18n/locale'
 
-/**
- * A page served as its own document, one per language, read off the routes: a
- * page added there stops compiling here until both languages can introduce it.
- * A project's head comes from its own content (`projectHead`), and the plain CV
- * is a `noindex` copy of the CV.
- */
 export type IndexedPage = Exclude<
   keyof typeof localizedPaths,
   'cvPlain' | 'project'
 >
 
 export type PageHead = {
-  /** The search snippet, and the line a link unfurls with. */
   description: string
-  /** The browser tab, the search result, the unfurl. */
   title: string
 }
 
@@ -23,14 +15,6 @@ const SITE_NAME = 'Adrien Lacourpaille'
 
 const titled = (page: string): string => `${page} — ${SITE_NAME}`
 
-/**
- * The one place user-visible copy lives outside the dictionary: it is read by
- * somebody with no page in front of them, so it says who this is where the
- * page itself says what to look at.
- *
- * Read twice: the prerender writes it into each document, and
- * `useIndexedPageTitle` writes the tab after an in-app navigation.
- */
 export const PAGE_HEADS: Record<Locale, Record<IndexedPage, PageHead>> = {
   en: {
     about: {
@@ -98,16 +82,11 @@ export const projectHead = ({
 
 export const notFoundTitle = (message: string): string => titled(message)
 
-/** The share image is the same on every page, so its alt text is the site's. */
 export const IMAGE_ALTS: Record<Locale, string> = {
   en: "The lid of Adrien Lacourpaille's portfolio: his name in wide marigold letters on a petrol field, over a tomato band.",
   fr: 'Le couvercle du portfolio d’Adrien Lacourpaille : son nom en larges lettres jaune souci sur un fond pétrole, au-dessus d’une bande tomate.'
 }
 
-/**
- * `og:locale` is a POSIX-style tag with an underscore, not the BCP-47 one
- * react-aria is handed: a crawler reading `en-US` here treats it as absent.
- */
 export const OPEN_GRAPH_LOCALES: Record<Locale, string> = {
   en: 'en_US',
   fr: 'fr_FR'

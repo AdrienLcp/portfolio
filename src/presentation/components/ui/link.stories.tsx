@@ -24,7 +24,6 @@ export const Accent: Story = {
   args: { variant: 'accent' }
 }
 
-/** The pip lights up on the link to the page you are on. */
 export const Current: Story = {
   args: { isCurrent: true },
   play: async ({ canvasElement }) => {
@@ -35,10 +34,6 @@ export const Current: Story = {
   }
 }
 
-/**
- * A new tab is announced in the link's own name and drawn after its label,
- * and the opened page gets no handle on this one.
- */
 export const NewTab: Story = {
   args: {
     children: 'Taverla on GitHub',

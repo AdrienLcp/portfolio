@@ -46,7 +46,6 @@ const PageLinks: React.FC<PageLinksProps> = ({
     </Link>
   ))
 
-/** Below 900px the page tokens fold into a sheet slid out of the header. */
 const MenuSheet: React.FC<Omit<PageLinksProps, 'onNavigate'>> = (props) => {
   const { translate } = useI18n()
   const [isOpen, setIsOpen] = useState(false)
@@ -65,7 +64,6 @@ const MenuSheet: React.FC<Omit<PageLinksProps, 'onNavigate'>> = (props) => {
   )
 }
 
-/** Printed on the lid's own field, so on the home page the two read as one. */
 export const SiteHeader: React.FC = () => {
   const { locale, translate } = useI18n()
   const currentPath = useCurrentPath()

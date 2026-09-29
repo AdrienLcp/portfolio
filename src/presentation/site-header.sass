@@ -12,7 +12,6 @@
     padding: 0 var(--gutter)
     view-transition-name: site-header
 
-    // The initials disc: a token with no pip, its letters in the lid's lettering.
     .token.monogram
       align-self: auto
       font-stretch: 125%
@@ -25,8 +24,6 @@
       &::before
         display: none
 
-    // Tighter below 900px: the monogram, the language rail and the menu token
-    // must still fit a 320px row.
     .site-nav
       align-items: center
       display: flex
@@ -45,8 +42,6 @@
       display: none
       gap: inherit
 
-    // Beside the links only where the row has room for it; the footer holds it
-    // below that.
     .theme-switch
       display: none
 
@@ -68,7 +63,6 @@
         align-self: auto
         display: inline-flex
 
-  // Portalled out of the header: a sheet of paper slid from under the menu token.
   .menu-sheet
     background: var(--paper)
     border: var(--outline-thick) solid var(--ink)

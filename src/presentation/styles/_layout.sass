@@ -1,15 +1,9 @@
-// Pure module: mixins and breakpoints only.
-
-/// A media query cannot read a custom property, so breakpoints are SASS values.
 $wide-screen: 900px
 
 @mixin wide
   @media (width >= $wide-screen)
     @content
 
-/// A region printed in one flat colour, carrying the text and focus colours
-/// that survive on it. The active colour vanishes on both fields, so focus
-/// takes the accent on the dominant one and the print ink on the secondary.
 @mixin field-dominant
   --focus: var(--accent)
   --outline: var(--on-dominant)
@@ -24,7 +18,6 @@ $wide-screen: 900px
   background: var(--field-secondary)
   color: var(--on-secondary)
 
-/// A page is one column of the app shell, and fills it.
 @mixin page
   display: flex
   flex: 1

@@ -36,11 +36,6 @@ export const Disabled: Story = {
   args: { isDisabled: true }
 }
 
-/**
- * The pip turns into the wait, so the token keeps its width. react-aria keeps
- * a pending button focusable (`aria-disabled`, not `disabled`) and strips its
- * handlers, so the press cannot fire.
- */
 export const Pending: Story = {
   args: {
     children: 'Copy the address',
@@ -63,7 +58,6 @@ export const Pending: Story = {
   }
 }
 
-/** A className function survives the merge with the token's own classes. */
 export const KeepsAFunctionClassName: Story = {
   args: {
     className: ({ isHovered }) =>
@@ -77,7 +71,6 @@ export const KeepsAFunctionClassName: Story = {
   }
 }
 
-/** The ring answers the keyboard only, never a pointer press. */
 export const FocusRingOnKeyboardOnly: Story = {
   play: async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button')
@@ -90,7 +83,6 @@ export const FocusRingOnKeyboardOnly: Story = {
   }
 }
 
-/** A token keeps its print on every field of the box. */
 export const OnEveryField: Story = {
   parameters: { layout: 'fullscreen' },
   render: (args) => (

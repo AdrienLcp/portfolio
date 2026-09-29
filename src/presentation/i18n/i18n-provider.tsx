@@ -9,8 +9,7 @@ import { i18n } from './i18n'
 import type { Locale } from './locale'
 import type { Translate } from './translation'
 
-/** Must match the `optimizeLocales` list in `vite.config.ts`. */
-const REACT_ARIA_LOCALES: Record<Locale, string> = {
+const REACT_ARIA_OPTIMIZED_LOCALES: Record<Locale, string> = {
   en: 'en-US',
   fr: 'fr-FR'
 }
@@ -28,7 +27,6 @@ export const useTranslate = (): Translate => useI18n().translate
 
 type I18nProviderProps = {
   children: React.ReactNode
-  /** Already stamped on `<html lang>` by `applyInitialLocale`. */
   locale: Locale
 }
 
@@ -55,7 +53,7 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({
         translate: i18n.translator(locale)
       }}
     >
-      <ReactAriaI18nProvider locale={REACT_ARIA_LOCALES[locale]}>
+      <ReactAriaI18nProvider locale={REACT_ARIA_OPTIMIZED_LOCALES[locale]}>
         {children}
       </ReactAriaI18nProvider>
     </I18nContext>

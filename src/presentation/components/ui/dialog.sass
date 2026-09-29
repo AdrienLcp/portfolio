@@ -2,7 +2,6 @@
 @use '../../styles/typography'
 
 @layer components
-  // The table seen through the print ink: dimmed, never blurred.
   .dialog-overlay
     align-items: center
     background: color-mix(in oklab, var(--print-ink) 72%, transparent)
@@ -19,7 +18,6 @@
     &[data-exiting]
       animation: dialog-fade var(--transition-fast, 0) var(--timing, ease) reverse
 
-  // A sheet is a piece: lifted off the table, so it casts the one short shadow.
   .dialog-modal
     background: var(--paper)
     border: var(--outline-thick) solid var(--outline)

@@ -24,7 +24,6 @@ export const InASentence: Story = {
   )
 }
 
-/** The underline takes the focus colour of the field it is printed on. */
 export const OnEveryField: Story = {
   parameters: { layout: 'fullscreen' },
   render: (args) => (

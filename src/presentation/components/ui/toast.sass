@@ -16,8 +16,6 @@
     max-width: calc(100vw - 2 * var(--gutter))
     z-index: 20
 
-  // A marigold slip dropped on the table: the same printed piece in both
-  // themes, with an ink edge and one short shadow.
   .toast
     @include typography.control
     @include focus.ring
@@ -43,7 +41,6 @@
     .toast-content
       flex: 1
 
-    // Compounded with `.token` to outrank `token.sass` whatever order they load in.
     .token.toast-close
       --token-face: var(--print-marigold)
 

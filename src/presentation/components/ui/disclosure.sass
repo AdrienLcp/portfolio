@@ -33,8 +33,6 @@
       font-stretch: 110%
       text-wrap: balance
 
-    // A small token lying at the end of the line: it lifts under a pointer and
-    // turns its plus into a cross once the fold is open.
     .disclosure-mark
       align-items: center
       background: var(--token)
@@ -62,7 +60,6 @@
     .disclosure-panel
       max-width: var(--measure)
 
-    // react-aria stamps `data-expanded` on the root, not on the panel.
     &[data-expanded] .disclosure-panel
       padding-bottom: var(--space-l)
       transition: opacity var(--transition-base, 0) var(--timing, ease), translate var(--transition-base, 0) var(--timing, ease)

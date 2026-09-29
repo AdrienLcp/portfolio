@@ -9,7 +9,6 @@ type AppProvidersProps = {
   locale: Locale
 }
 
-/** Everything above the router, so a prerender can mount the same stack. */
 export const AppProviders: React.FC<AppProvidersProps> = ({
   children,
   locale
