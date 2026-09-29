@@ -33,7 +33,7 @@ export const CV: z.input<typeof cvSchema> = {
       employer: 'Ucaya',
       missions: [
         {
-          period: { from: '2024' },
+          period: { from: '2023' },
           points: [
             {
               en: 'React 19 / Express 5 / MongoDB monorepo: touch app, back office, OpenAPI-first API, realtime over Socket.IO.',
