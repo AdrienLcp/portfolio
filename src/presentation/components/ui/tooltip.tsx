@@ -1,11 +1,10 @@
+import { composeClassName } from '@adrienlcp/react'
 import type React from 'react'
 import {
   OverlayArrow,
   Tooltip as ReactAriaTooltip,
   type TooltipProps as ReactAriaTooltipProps
 } from 'react-aria-components'
-
-import { composeClassName } from '@/presentation/components/compose-class-name'
 
 import './tooltip.sass'
 

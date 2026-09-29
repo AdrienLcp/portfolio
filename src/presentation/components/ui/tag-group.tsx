@@ -1,3 +1,4 @@
+import { composeClassName } from '@adrienlcp/react'
 import type React from 'react'
 import {
   Tag as ReactAriaTag,
@@ -5,8 +6,6 @@ import {
   type TagListProps,
   type TagProps
 } from 'react-aria-components'
-
-import { composeClassName } from '@/presentation/components/compose-class-name'
 
 import './tag-group.sass'
 

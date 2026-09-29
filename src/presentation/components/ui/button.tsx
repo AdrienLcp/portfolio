@@ -1,3 +1,4 @@
+import { composeClassName } from '@adrienlcp/react'
 import type React from 'react'
 import {
   ProgressBar,
@@ -5,7 +6,6 @@ import {
   type ButtonProps as ReactAriaButtonProps
 } from 'react-aria-components'
 
-import { composeClassName } from '@/presentation/components/compose-class-name'
 import { Icon, type IconName } from '@/presentation/components/icon'
 
 import type { TokenVariant } from './token-variant'

@@ -1,8 +1,11 @@
 {
   "author": "Adrien Lacourpaille",
   "dependencies": {
+    "@adrienlcp/browser": "^0.1.0",
     "@adrienlcp/i18n": "^0.1.0",
+    "@adrienlcp/react": "^0.1.0",
     "@adrienlcp/result": "^0.1.0",
+    "@adrienlcp/safe-storage": "^0.1.0",
     "@adrienlcp/theme-preference": "^0.1.0",
     "react": "19.3.0",
     "react-aria-components": "1.21.1",

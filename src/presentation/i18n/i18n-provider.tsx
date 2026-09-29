@@ -1,7 +1,7 @@
+import { createSafeContext } from '@adrienlcp/react'
 import type React from 'react'
 import { useEffect, useState } from 'react'
 
-import { createSafeContext } from '@/helpers/contexts'
 import { writeStoredLocale } from '@/infrastructure/storage/preferences-storage'
 import { I18nProvider as ReactAriaI18nProvider } from '@/presentation/components/ui/i18n-provider'
 

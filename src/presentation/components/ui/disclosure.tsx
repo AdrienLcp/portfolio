@@ -1,3 +1,4 @@
+import { composeClassName } from '@adrienlcp/react'
 import type React from 'react'
 import {
   Button,
@@ -7,7 +8,6 @@ import {
   type DisclosureProps as ReactAriaDisclosureProps
 } from 'react-aria-components'
 
-import { composeClassName } from '@/presentation/components/compose-class-name'
 import { Icon } from '@/presentation/components/icon'
 
 import './disclosure.sass'

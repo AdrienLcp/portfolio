@@ -1,8 +1,8 @@
+import { copyText, selectContents } from '@adrienlcp/browser'
 import type React from 'react'
 import { Suspense, use, useRef } from 'react'
 
 import { useContactData } from '@/features/contact/contact-loader'
-import { copyText, selectContents } from '@/infrastructure/browser'
 import { cvPathFor } from '@/infrastructure/router/navigation'
 import { Icon } from '@/presentation/components/icon'
 import { Lid } from '@/presentation/components/lid'

@@ -1,3 +1,4 @@
+import { prefersReducedMotion } from '@adrienlcp/browser'
 import type React from 'react'
 import { useEffect, useRef } from 'react'
 import {
@@ -11,7 +12,6 @@ import {
 } from 'react-router'
 
 import { fetchProfile } from '@/features/profile/profile-api'
-import { prefersReducedMotion } from '@/infrastructure/browser'
 import { currentYear } from '@/infrastructure/clock'
 import { useRouteData } from '@/infrastructure/router/navigation'
 import { AppShell } from '@/presentation/app-shell'

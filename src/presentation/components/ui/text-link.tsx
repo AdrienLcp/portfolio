@@ -1,3 +1,4 @@
+import { composeClassName } from '@adrienlcp/react'
 import type React from 'react'
 import {
   Link as ReactAriaLink,
@@ -5,7 +6,6 @@ import {
 } from 'react-aria-components'
 
 import { relForTarget } from '@/helpers/links'
-import { composeClassName } from '@/presentation/components/compose-class-name'
 
 import { NewTabMark } from './new-tab-mark'
 

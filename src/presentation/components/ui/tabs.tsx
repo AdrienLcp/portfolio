@@ -1,3 +1,4 @@
+import { composeClassName } from '@adrienlcp/react'
 import type React from 'react'
 import {
   Tab as ReactAriaTab,
@@ -7,8 +8,6 @@ import {
   type TabPanelProps,
   type TabProps
 } from 'react-aria-components'
-
-import { composeClassName } from '@/presentation/components/compose-class-name'
 
 import './tabs.sass'
 import './token.sass'

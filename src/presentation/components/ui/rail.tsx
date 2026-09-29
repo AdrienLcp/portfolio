@@ -1,3 +1,4 @@
+import { composeClassName } from '@adrienlcp/react'
 import {
   Group,
   Link as ReactAriaLink,
@@ -7,8 +8,6 @@ import {
   ToggleButton,
   ToggleButtonGroup
 } from 'react-aria-components'
-
-import { composeClassName } from '@/presentation/components/compose-class-name'
 
 import {
   ariaCurrentLeftOutOfLinkProps,
