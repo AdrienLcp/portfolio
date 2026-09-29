@@ -14,9 +14,9 @@ if (container === null) {
   throw new Error('Missing #root in index.html')
 }
 
-const hasPreRenderedPage = container.hasChildNodes()
+const hasPrerenderedPage = container.hasChildNodes()
 
-if (hasPreRenderedPage) {
+if (hasPrerenderedPage) {
   await routerReadyToReplacePrerender()
 }
 
