@@ -1,12 +1,12 @@
-import type { LoaderFunction, RouteObject } from 'react-router'
+import type { LoaderFunction, Params, RouteObject } from 'react-router'
 
+import { aboutLoader } from '@/features/about/about-loader'
+import { contactLoader } from '@/features/contact/contact-loader'
+import { cvLoader } from '@/features/cv/cv-loader'
+import { homeLoader } from '@/features/home/home-loader'
 import { NotFoundPage } from '@/features/not-found/not-found-page'
-import {
-  aboutLoader,
-  cvLoader,
-  projectLoader,
-  projectsLoader
-} from '@/infrastructure/router/loaders'
+import { projectLoader } from '@/features/projects/project-loader'
+import { projectsLoader } from '@/features/projects/projects-loader'
 import {
   LocalePrefixedRoutes,
   NegotiatedLocaleRedirect
@@ -14,6 +14,11 @@ import {
 import { localizedPaths } from '@/infrastructure/router/navigation'
 import { RootRoute } from '@/infrastructure/router/root-route'
 import { ErrorScreen } from '@/presentation/error-screen'
+import {
+  DEFAULT_LOCALE,
+  isLocale,
+  type Locale
+} from '@/presentation/i18n/locale'
 import { RouteFallback } from '@/presentation/route-fallback'
 
 export type LocalizedPath = (typeof localizedPaths)[keyof typeof localizedPaths]
@@ -72,14 +77,18 @@ const pageFor = {
 export const pageModuleFor = (path: LocalizedPath): string =>
   pageFor[path].module
 
+const localeParam = ({ locale }: Params): Locale =>
+  locale !== undefined && isLocale(locale) ? locale : DEFAULT_LOCALE
+
 const loaderFor = {
-  [localizedPaths.about]: aboutLoader,
-  [localizedPaths.contact]: cvLoader,
-  [localizedPaths.cv]: cvLoader,
-  [localizedPaths.cvPlain]: cvLoader,
-  [localizedPaths.home]: projectsLoader,
-  [localizedPaths.project]: projectLoader,
-  [localizedPaths.projects]: projectsLoader
+  [localizedPaths.about]: ({ params }) => aboutLoader(localeParam(params)),
+  [localizedPaths.contact]: ({ params }) => contactLoader(localeParam(params)),
+  [localizedPaths.cv]: ({ params }) => cvLoader(localeParam(params)),
+  [localizedPaths.cvPlain]: ({ params }) => cvLoader(localeParam(params)),
+  [localizedPaths.home]: ({ params }) => homeLoader(localeParam(params)),
+  [localizedPaths.project]: ({ params }) =>
+    projectLoader({ locale: localeParam(params), slug: params.slug ?? '' }),
+  [localizedPaths.projects]: ({ params }) => projectsLoader(localeParam(params))
 } satisfies Record<LocalizedPath, LoaderFunction>
 
 const BARE_PATHS: ReadonlySet<LocalizedPath> = new Set([localizedPaths.cvPlain])

@@ -2,11 +2,11 @@ import type React from 'react'
 import { Suspense, use } from 'react'
 
 import type { Step } from '@/features/about/about'
+import { useAboutData } from '@/features/about/about-loader'
 import { PROFILE_PHOTO } from '@/features/profile/profile'
 import {
   contactPathFor,
-  projectsPathFor,
-  useAboutData
+  projectsPathFor
 } from '@/infrastructure/router/navigation'
 import { Lid } from '@/presentation/components/lid'
 import { Main } from '@/presentation/components/main'

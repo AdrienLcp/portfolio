@@ -9,13 +9,6 @@ import {
 
 import { isLocale, type Locale } from '@/presentation/i18n/locale'
 
-import type {
-  aboutLoader,
-  cvLoader,
-  projectLoader,
-  projectsLoader
-} from './loaders'
-
 export const localizedPaths = {
   about: '/:locale/about',
   contact: '/:locale/contact',
@@ -62,13 +55,8 @@ export const projectPathFor = ({
   slug: string
 }): string => pathFor(paths.project, { locale, slug })
 
-export const useAboutData = () => useLoaderData<typeof aboutLoader>()
-
-export const useCvData = () => useLoaderData<typeof cvLoader>()
-
-export const useProjectsData = () => useLoaderData<typeof projectsLoader>()
-
-export const useProjectData = () => useLoaderData<typeof projectLoader>()
+export const useRouteData = <TLoader extends (...args: never[]) => unknown>() =>
+  useLoaderData<TLoader>()
 
 export const localizedPathFor = ({
   locale,

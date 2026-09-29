@@ -2,10 +2,8 @@ import type React from 'react'
 import { Suspense, use } from 'react'
 
 import type { Project } from '@/features/projects/project'
-import {
-  projectsPathFor,
-  useProjectData
-} from '@/infrastructure/router/navigation'
+import { useProjectData } from '@/features/projects/project-loader'
+import { projectsPathFor } from '@/infrastructure/router/navigation'
 import { Lid } from '@/presentation/components/lid'
 import { Main } from '@/presentation/components/main'
 import { Stamp, StampList } from '@/presentation/components/stamp'

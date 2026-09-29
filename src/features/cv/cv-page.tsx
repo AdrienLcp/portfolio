@@ -8,8 +8,9 @@ import {
   formatPeriod,
   formatPhone
 } from '@/features/cv/cv-format'
+import { useCvData } from '@/features/cv/cv-loader'
 import { PROFILE_PHOTO, type Profile } from '@/features/profile/profile'
-import { homePathFor, useCvData } from '@/infrastructure/router/navigation'
+import { homePathFor } from '@/infrastructure/router/navigation'
 import { Icon } from '@/presentation/components/icon'
 import { Main } from '@/presentation/components/main'
 import { Link } from '@/presentation/components/ui/link'

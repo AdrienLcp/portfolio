@@ -1,10 +1,8 @@
 import type React from 'react'
 import { Suspense, use } from 'react'
 
-import {
-  projectPathFor,
-  useProjectsData
-} from '@/infrastructure/router/navigation'
+import { useHomeData } from '@/features/home/home-loader'
+import { projectPathFor } from '@/infrastructure/router/navigation'
 import { Icon, type IconName } from '@/presentation/components/icon'
 import { Stamp, StampList } from '@/presentation/components/stamp'
 import { Button } from '@/presentation/components/ui/button'
@@ -47,7 +45,7 @@ const GAMES = [
 
 const FeaturedProjectLink: React.FC = () => {
   const { locale, translate } = useI18n()
-  const { projects } = useProjectsData()
+  const { projects } = useHomeData()
   const result = use(projects)
 
   if (result.status === 'failure') {

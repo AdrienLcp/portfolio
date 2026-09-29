@@ -1,8 +1,9 @@
 import type React from 'react'
 import { Suspense, use, useRef } from 'react'
 
+import { useContactData } from '@/features/contact/contact-loader'
 import { copyText, selectContents } from '@/infrastructure/browser'
-import { cvPathFor, useCvData } from '@/infrastructure/router/navigation'
+import { cvPathFor } from '@/infrastructure/router/navigation'
 import { Icon } from '@/presentation/components/icon'
 import { Lid } from '@/presentation/components/lid'
 import { Main } from '@/presentation/components/main'
@@ -20,7 +21,7 @@ import './contact-page.sass'
 
 const Mailbox: React.FC = () => {
   const { locale, translate } = useI18n()
-  const { cv, profile } = useCvData()
+  const { cv, profile } = useContactData()
   const cvResult = use(cv)
   const profileResult = use(profile)
   const addressRef = useRef<HTMLParagraphElement>(null)
