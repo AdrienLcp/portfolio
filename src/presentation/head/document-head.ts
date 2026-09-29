@@ -73,6 +73,13 @@ export const PAGE_HEADS: Record<Locale, Record<IndexedPage, PageHead>> = {
   }
 }
 
+const isIndexedPage = (page: string): page is IndexedPage =>
+  page in PAGE_HEADS.en
+
+export const INDEXED_PAGES: IndexedPage[] = Object.keys(PAGE_HEADS.en).filter(
+  isIndexedPage
+)
+
 export const projectHead = ({
   name,
   summary

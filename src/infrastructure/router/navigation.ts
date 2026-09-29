@@ -29,6 +29,14 @@ const pathFor = <TPath extends string>(
   params: Record<PathParam<TPath>, string>
 ): string => generatePath<string>(path, params)
 
+export const pagePathFor = ({
+  locale,
+  page
+}: {
+  locale: Locale
+  page: Exclude<keyof typeof localizedPaths, 'project'>
+}): string => pathFor(localizedPaths[page], { locale })
+
 export const homePathFor = (locale: Locale): string =>
   pathFor(paths.home, { locale })
 
