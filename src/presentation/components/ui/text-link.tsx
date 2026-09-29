@@ -7,7 +7,7 @@ import {
 import { relForTarget } from '@/helpers/links'
 import { composeClassName } from '@/presentation/components/compose-class-name'
 
-import { NewTabMark } from './link'
+import { NewTabMark } from './new-tab-mark'
 
 import './text-link.sass'
 

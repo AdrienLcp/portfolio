@@ -13,7 +13,7 @@ import { composeClassName } from '@/presentation/components/compose-class-name'
 import {
   ariaCurrentLeftOutOfLinkProps,
   restoreHrefLangDroppedByReactAria
-} from './link'
+} from './link-quirks'
 import { VisuallyHidden } from './visually-hidden'
 
 import './rail.sass'
@@ -30,11 +30,13 @@ type RailProps = {
   className?: string
 }
 
+type RailSlotLabelProps<TId extends string> = {
+  item: RailItem<TId>
+}
+
 const RailSlotLabel = <TId extends string>({
   item
-}: {
-  item: RailItem<TId>
-}) =>
+}: RailSlotLabelProps<TId>) =>
   item.name === undefined ? (
     <span className='rail-slot-label'>{item.label}</span>
   ) : (
