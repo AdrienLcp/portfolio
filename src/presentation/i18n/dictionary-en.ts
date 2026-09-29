@@ -99,14 +99,6 @@ export const EN_DICTIONARY = defineDictionary({
           'Empty slot, on purpose: the right theme is set before the first paint.',
         title: 'Flash on load'
       },
-      games: {
-        blindTest: 'Blind test',
-        buzzer: 'Buzzer',
-        description:
-          'One shelf sharing one room, one QR code and every screen in it.',
-        quiz: 'Quiz',
-        title: 'Party games'
-      },
       hover: {
         description:
           'Kept for real pointers: nothing stays stuck after a tap on a phone.',
@@ -123,19 +115,28 @@ export const EN_DICTIONARY = defineDictionary({
         title: 'Set of lint rules'
       },
       packages: {
-        description: 'Written for my own projects, reused in each of them.',
+        description:
+          'Tested, released from CI with npm provenance, and installed by this site, Taverla and Séance.',
         open: 'See what they do',
-        title: 'House packages'
+        title: 'Packages published on npm'
       },
       primitives: {
         description:
           'Built on react-aria: keyboard, screen readers, visible focus.',
         title: 'Set of accessible primitives'
       },
-      server: {
+      seance: {
         description:
-          'Hono and WebSocket: the room, the rounds, and who buzzed first.',
-        title: 'Realtime server'
+          'Séance installs, runs with the network cut and keeps every number on the device.',
+        title: 'Servers to reach'
+      },
+      taverla: {
+        blindTest: 'Blind test',
+        buzzer: 'Buzzer',
+        description:
+          'One realtime server, one room, one QR code: every phone in it buzzes on the same instant.',
+        quiz: 'Quiz',
+        title: 'Party games on one realtime server'
       },
       themes: {
         description:

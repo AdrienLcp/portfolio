@@ -74,8 +74,8 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
         fr: 'Versionnés avec Changesets et publiés depuis GitHub Actions avec la provenance npm, jamais depuis un portable.'
       },
       {
-        en: 'This site, Taverla and Séance all install the six from npm.',
-        fr: 'Ce site, Taverla et Séance installent tous les trois les six depuis npm.'
+        en: 'This site, Taverla and Séance all install the ten from npm, down to their TypeScript and Biome configs.',
+        fr: 'Ce site, Taverla et Séance installent tous les trois les dix depuis npm, jusqu’à leurs configs TypeScript et Biome.'
       }
     ],
     kind: 'library',
@@ -86,7 +86,11 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
         '@adrienlcp/theme-preference',
         '@adrienlcp/safe-storage',
         '@adrienlcp/browser',
-        '@adrienlcp/react'
+        '@adrienlcp/react',
+        '@adrienlcp/react-aria',
+        '@adrienlcp/styles',
+        '@adrienlcp/tsconfig',
+        '@adrienlcp/biome-config'
       ],
       repository: 'https://github.com/AdrienLcp/packages'
     },
@@ -163,8 +167,8 @@ if (locale.status === 'failure') {
       'GitHub Actions'
     ],
     summary: {
-      en: 'Small TypeScript packages with no third-party dependency, published on npm, each lifted out of a project once a second one needed it. One translates, and knows at compile time what each message asks for; one says whether something worked, without throwing and without null; the others keep the chosen theme from flashing, and take the throw out of localStorage and the clipboard.',
-      fr: 'Des petits paquets TypeScript sans dépendance tierce, publiés sur npm, chacun sorti d’un projet dès qu’un deuxième en avait besoin. L’un traduit, et sait dès la compilation ce que chaque message attend ; un autre dit si quelque chose a marché, sans exception et sans null ; les suivants gardent le thème choisi sans flash, et ôtent les exceptions de localStorage et du presse-papiers.'
+      en: 'Small TypeScript packages with no third-party runtime dependency, published on npm, each lifted out of a project once a second one needed it. One translates, and knows at compile time what each message asks for; one says whether something worked, without throwing and without null; the others keep the chosen theme from flashing, take the throw out of localStorage and the clipboard, and share the reset, the focus ring and the compiler and linter settings every project starts from.',
+      fr: 'Des petits paquets TypeScript sans dépendance tierce à l’exécution, publiés sur npm, chacun sorti d’un projet dès qu’un deuxième en avait besoin. L’un traduit, et sait dès la compilation ce que chaque message attend ; un autre dit si quelque chose a marché, sans exception et sans null ; les suivants gardent le thème choisi sans flash, ôtent les exceptions de localStorage et du presse-papiers, et partagent le reset, l’anneau de focus et les réglages du compilateur et du linter dont part chaque projet.'
     },
     tagline: {
       en: 'The npm packages under this site, Taverla and Séance, typed as far as the compiler goes.',

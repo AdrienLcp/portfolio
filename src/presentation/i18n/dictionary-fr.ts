@@ -98,14 +98,6 @@ export const FR_DICTIONARY = defineDictionary({
           'Emplacement vide, et c’est voulu : le bon thème est posé avant le premier affichage.',
         title: 'Flash au chargement'
       },
-      games: {
-        blindTest: 'Blind test',
-        buzzer: 'Buzzer',
-        description:
-          'Une étagère qui partage une salle, un QR code et tous ses écrans.',
-        quiz: 'Quiz',
-        title: 'Jeux de soirée'
-      },
       hover: {
         description:
           'Réservé aux vrais pointeurs : rien ne reste collé après un tap sur un téléphone.',
@@ -124,19 +116,27 @@ export const FR_DICTIONARY = defineDictionary({
       },
       packages: {
         description:
-          'Écrits pour mes propres projets, réutilisés dans chacun d’eux.',
+          'Testés, publiés depuis la CI avec la provenance npm, et installés par ce site, Taverla et Séance.',
         open: 'Voir ce qu’ils font',
-        title: 'Paquets maison'
+        title: 'Paquets publiés sur npm'
       },
       primitives: {
         description:
           'Bâties sur react-aria : clavier, lecteurs d’écran, focus visible.',
         title: 'Jeu de primitives accessibles'
       },
-      server: {
+      seance: {
         description:
-          'Hono et WebSocket : la salle, les manches, et qui a buzzé en premier.',
-        title: 'Serveur temps réel'
+          'Séance s’installe, tourne réseau coupé et garde chaque chiffre sur l’appareil.',
+        title: 'Serveur à joindre'
+      },
+      taverla: {
+        blindTest: 'Blind test',
+        buzzer: 'Buzzer',
+        description:
+          'Un serveur temps réel, une salle, un QR code : tous les téléphones de la pièce buzzent au même instant.',
+        quiz: 'Quiz',
+        title: 'Jeux de soirée sur un serveur temps réel'
       },
       themes: {
         description:

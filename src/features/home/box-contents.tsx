@@ -11,6 +11,7 @@ import { Link } from '@/presentation/components/ui/link'
 import { useI18n, useTranslate } from '@/presentation/i18n/i18n-provider'
 import { LOCALE_NAMES, LOCALES } from '@/presentation/i18n/locale'
 
+import { OfflineDiagram } from './offline-diagram'
 import { SocketDiagram } from './socket-diagram'
 
 import './box-contents.sass'
@@ -49,6 +50,19 @@ const GAMES = [
   { face: 'buzzer', icon: 'buzzer', key: 'buzzer' },
   { face: 'quiz', icon: 'question', key: 'quiz' }
 ] as const satisfies readonly { face: string; icon: IconName; key: string }[]
+
+const PACKAGES = [
+  '@adrienlcp/i18n',
+  '@adrienlcp/result',
+  '@adrienlcp/theme-preference',
+  '@adrienlcp/safe-storage',
+  '@adrienlcp/browser',
+  '@adrienlcp/react',
+  '@adrienlcp/react-aria',
+  '@adrienlcp/styles',
+  '@adrienlcp/tsconfig',
+  '@adrienlcp/biome-config'
+] as const
 
 type ProjectRulesLinkProps = {
   /** Replaces the default label, which names the project. */
@@ -103,30 +117,58 @@ export const BoxContents: React.FC<BoxContentsProps> = ({
       </div>
       <ul className='tray'>
         <Compartment
-          area='server'
-          count={1}
-          description={translate('home.contents.server.description')}
-          title={translate('home.contents.server.title')}
+          area='taverla'
+          count={GAMES.length}
+          description={translate('home.contents.taverla.description')}
+          title={translate('home.contents.taverla.title')}
         >
           <SocketDiagram />
-        </Compartment>
-        <Compartment
-          area='games'
-          count={3}
-          description={translate('home.contents.games.description')}
-          title={translate('home.contents.games.title')}
-        >
           <ul className='game-cards'>
             {GAMES.map(({ face, icon, key }) => (
               <li className={`game-card ${face}`} key={key}>
                 <Icon className='game-icon' name={icon} />
-                {translate(`home.contents.games.${key}`)}
+                {translate(`home.contents.taverla.${key}`)}
               </li>
             ))}
           </ul>
           <div className='project-link'>
             <Suspense fallback={null}>
               <ProjectRulesLink slug='taverla' />
+            </Suspense>
+          </div>
+        </Compartment>
+        <Compartment
+          area='seance'
+          count={0}
+          description={translate('home.contents.seance.description')}
+          title={translate('home.contents.seance.title')}
+        >
+          <OfflineDiagram />
+          <div className='project-link'>
+            <Suspense fallback={null}>
+              <ProjectRulesLink slug='seance' />
+            </Suspense>
+          </div>
+        </Compartment>
+        <Compartment
+          area='packages'
+          count={PACKAGES.length}
+          description={translate('home.contents.packages.description')}
+          title={translate('home.contents.packages.title')}
+        >
+          <StampList>
+            {PACKAGES.map((name) => (
+              <Stamp isCode key={name}>
+                {name}
+              </Stamp>
+            ))}
+          </StampList>
+          <div className='project-link'>
+            <Suspense fallback={null}>
+              <ProjectRulesLink
+                label={translate('home.contents.packages.open')}
+                slug='packages'
+              />
             </Suspense>
           </div>
         </Compartment>
@@ -161,25 +203,6 @@ export const BoxContents: React.FC<BoxContentsProps> = ({
           description={translate('home.contents.flash.description')}
           title={translate('home.contents.flash.title')}
         />
-        <Compartment
-          area='packages'
-          count={2}
-          description={translate('home.contents.packages.description')}
-          title={translate('home.contents.packages.title')}
-        >
-          <StampList>
-            <Stamp isCode>@adrienlcp/i18n</Stamp>
-            <Stamp isCode>@adrienlcp/result</Stamp>
-          </StampList>
-          <div className='project-link'>
-            <Suspense fallback={null}>
-              <ProjectRulesLink
-                label={translate('home.contents.packages.open')}
-                slug='packages'
-              />
-            </Suspense>
-          </div>
-        </Compartment>
         <Compartment
           area='lint'
           count={1}

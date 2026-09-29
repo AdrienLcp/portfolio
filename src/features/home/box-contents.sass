@@ -81,11 +81,11 @@
         box-shadow: inset 0 2px 5px var(--shadow)
         color: var(--ink)
 
-    .socket-diagram
+    .socket-diagram,
+    .offline-diagram
       align-self: center
-      margin-block: auto
       max-width: 26rem
-      padding-block-start: var(--space-m)
+      padding-block: var(--space-m)
       width: 100%
 
       .wire
@@ -119,6 +119,20 @@
       .led
         stroke: none
 
+      .entry
+        stroke: var(--print-ink)
+        stroke-width: 2
+
+      .cut
+        stroke: var(--ink)
+        stroke-linecap: square
+        stroke-width: 4
+
+      .rack.absent
+        fill: none
+        stroke: var(--ink-soft)
+        stroke-dasharray: 6 6
+
       @media (prefers-reduced-motion: no-preference)
         .wire.inbound
           animation: wire-flow 1.4s linear infinite
@@ -126,6 +140,9 @@
         .wire.outbound
           animation: wire-flow 1.4s linear infinite
           animation-delay: 0.7s
+
+    .taverla > .socket-diagram
+      margin-block: auto
 
     .game-cards
       display: grid
@@ -191,10 +208,10 @@
 
     @include layout.wide
       .tray
-        grid-template-areas: 'server server server server server games games games games games games games' 'server server server server server languages languages languages languages themes themes themes' 'flash flash flash flash packages packages packages packages lint lint lint lint' 'primitives primitives primitives primitives primitives primitives hover hover hover hover hover hover'
+        grid-template-areas: 'taverla taverla taverla taverla taverla taverla taverla seance seance seance seance seance' 'packages packages packages packages packages packages packages packages packages packages packages packages' 'languages languages languages themes themes themes flash flash flash hover hover hover' 'primitives primitives primitives primitives primitives primitives lint lint lint lint lint lint'
         grid-template-columns: repeat(12, minmax(0, 1fr))
 
-      @each $area in server, games, languages, themes, flash, packages, lint, primitives, hover
+      @each $area in taverla, seance, packages, languages, themes, flash, hover, primitives, lint
         .compartment.#{$area}
           grid-area: $area
 
@@ -203,6 +220,7 @@
 
       .compartment-line,
       .compartment > .stamp-list,
+      .seance > .project-link,
       .packages > .project-link,
       .theme-chips
         padding-inline-start: calc(48px + var(--space-s))
