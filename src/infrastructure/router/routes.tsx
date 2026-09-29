@@ -7,11 +7,9 @@ import { homeLoader } from '@/features/home/home-loader'
 import { NotFoundPage } from '@/features/not-found/not-found-page'
 import { projectLoader } from '@/features/projects/project-loader'
 import { projectsLoader } from '@/features/projects/projects-loader'
-import {
-  LocalePrefixedRoutes,
-  NegotiatedLocaleRedirect
-} from '@/infrastructure/router/locale-prefix'
+import { LocalePrefixedRoutes } from '@/infrastructure/router/locale-prefixed-routes'
 import { localizedPaths } from '@/infrastructure/router/navigation'
+import { NegotiatedLocaleRedirect } from '@/infrastructure/router/negotiated-locale-redirect'
 import { RootRoute } from '@/infrastructure/router/root-route'
 import { ErrorScreen } from '@/presentation/error-screen'
 import {

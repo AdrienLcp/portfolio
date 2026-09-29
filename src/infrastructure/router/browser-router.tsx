@@ -1,8 +1,13 @@
-import { createBrowserRouter } from 'react-router'
+import type React from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router'
 
 import { routes } from './routes'
 
-export const router = createBrowserRouter(routes)
+const router = createBrowserRouter(routes)
+
+export const BrowserRouterProvider: React.FC = () => (
+  <RouterProvider router={router} />
+)
 
 const whenInitialized = (): Promise<void> =>
   new Promise((resolve) => {

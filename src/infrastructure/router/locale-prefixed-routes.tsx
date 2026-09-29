@@ -1,20 +1,11 @@
 import type React from 'react'
 import { useLayoutEffect } from 'react'
-import { Navigate, Outlet, useLocation } from 'react-router'
+import { Outlet, useLocation } from 'react-router'
 
-import {
-  localeInPath,
-  localizedPathFor
-} from '@/infrastructure/router/navigation'
+import { localeInPath } from '@/infrastructure/router/navigation'
+import { NegotiatedLocaleRedirect } from '@/infrastructure/router/negotiated-locale-redirect'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import type { Locale } from '@/presentation/i18n/locale'
-
-export const NegotiatedLocaleRedirect: React.FC = () => {
-  const { locale } = useI18n()
-  const { pathname } = useLocation()
-
-  return <Navigate replace to={localizedPathFor({ locale, pathname })} />
-}
 
 const useAdoptUrlLocaleBeforePaint = (localeInUrl: Locale | null): void => {
   const { locale, setLocale } = useI18n()
