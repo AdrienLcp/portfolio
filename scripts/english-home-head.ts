@@ -2,9 +2,12 @@ import { resolve } from 'node:path'
 
 import { normalizePath, type Plugin } from 'vite'
 
-import { IMAGE_ALTS, PAGE_HEADS } from '../src/presentation/head/document-head'
-import { OPEN_GRAPH_IMAGE_SIZE } from '../src/presentation/head/open-graph-image'
-import { setMeta, setTitle } from './head-tags'
+import {
+  IMAGE_ALTS,
+  PAGE_HEADS
+} from '../src/presentation/head/document-head.ts'
+import { OPEN_GRAPH_IMAGE_SIZE } from '../src/presentation/head/open-graph-image.ts'
+import { setMeta, setTitle } from './head-tags.ts'
 
 const APP_SHELL = normalizePath(
   resolve(import.meta.dirname, '..', 'index.html')

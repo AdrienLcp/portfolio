@@ -1,4 +1,4 @@
-import type { Locale } from './locale'
+import type { Locale } from './locale.ts'
 
 export const REGIONAL_LOCALES = {
   en: 'en-US',
