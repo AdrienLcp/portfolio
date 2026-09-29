@@ -70,7 +70,8 @@ const ProjectRulesLink: React.FC<ProjectRulesLinkProps> = ({ label, slug }) => {
 
   return project === undefined ? null : (
     <Link href={projectPathFor({ locale, slug: project.slug })}>
-      {label ?? translate('projects.open', { name: project.name })}
+      {label ??
+        translate(`projects.open.${project.kind}`, { name: project.name })}
     </Link>
   )
 }

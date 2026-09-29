@@ -26,6 +26,7 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
         fr: 'En anglais et en français, clair et sombre, sur un téléphone ou un portable.'
       }
     ],
+    kind: 'game',
     links: {
       live: 'https://taverla.onrender.com/',
       repository: 'https://github.com/AdrienLcp/taverla'
@@ -77,6 +78,7 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
         fr: 'Ce site, Taverla et Séance installent tous les trois les six depuis npm.'
       }
     ],
+    kind: 'library',
     links: {
       packages: [
         '@adrienlcp/i18n',
@@ -192,6 +194,7 @@ if (locale.status === 'failure') {
         fr: 'Trente-sept figures animées dessinées à partir d’articulations, pas de tracés : l’interpolation est polaire et chaînée depuis la hanche, pour qu’aucun os ne s’étire en plein mouvement.'
       }
     ],
+    kind: 'app',
     links: {
       live: 'https://sport-buk.pages.dev/specimen',
       repository: 'https://github.com/AdrienLcp/sport'

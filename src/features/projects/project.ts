@@ -16,8 +16,12 @@ const codeSampleSchema = z.strictObject({
   title: textSchema
 })
 
+/** What the project is, which decides how its page talks about it. */
+const projectKindSchema = z.enum(['app', 'game', 'library'])
+
 const projectSchema = z.strictObject({
   highlights: z.array(localizedTextSchema).min(1),
+  kind: projectKindSchema,
   links: z.strictObject({
     live: z.url().optional(),
     packages: z.array(npmPackageNameSchema).min(1).optional(),
@@ -38,6 +42,8 @@ export const projectsSchema = z
   .array(projectSchema)
   .min(1)
   .refine(hasUniqueSlugs, { message: 'Two projects share a slug' })
+
+export type ProjectKind = z.infer<typeof projectKindSchema>
 
 export type CodeSample = z.infer<typeof codeSampleSchema>
 

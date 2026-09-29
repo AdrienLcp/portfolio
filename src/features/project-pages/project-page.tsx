@@ -34,9 +34,9 @@ const RuleBooklet: React.FC<RuleBookletProps> = ({ project }) => {
         <div className='booklet-text'>
           <p className='booklet-summary'>{project.summary}</p>
           {project.samples !== undefined && (
-            <section aria-labelledby='how-it-plays' className='booklet-section'>
-              <h2 className='booklet-heading' id='how-it-plays'>
-                {translate('project.samples')}
+            <section aria-labelledby='samples' className='booklet-section'>
+              <h2 className='booklet-heading' id='samples'>
+                {translate(`project.samples.${project.kind}`)}
               </h2>
               <div className='samples'>
                 {project.samples.map((sample) => (
@@ -77,7 +77,7 @@ const RuleBooklet: React.FC<RuleBookletProps> = ({ project }) => {
             </Link>
             {project.links.live !== undefined && (
               <Link href={project.links.live} target='_blank'>
-                {translate('project.live')}
+                {translate(`project.live.${project.kind}`)}
               </Link>
             )}
             {project.links.packages?.map((packageName) => (

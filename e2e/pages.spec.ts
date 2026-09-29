@@ -33,6 +33,25 @@ test('[e2e] from the shelf to a project and back', async ({ page }) => {
   await expect(page).toHaveURL('/en/projects')
 })
 
+test('[e2e] each project page is worded after what the project is', async ({
+  page
+}) => {
+  await page.goto('/en/projects')
+  await page.getByRole('link', { name: 'Read about Séance' }).click()
+  await expect(page).toHaveURL('/en/projects/seance')
+  await expect(
+    page.getByRole('heading', { name: 'How it works' })
+  ).toBeVisible()
+  await expect(page.getByRole('link', { name: /^Open it/ })).toBeVisible()
+  await expect(page.getByText('How it plays')).toHaveCount(0)
+
+  await page.goto('/fr/projects/packages')
+  await expect(
+    page.getByRole('heading', { name: 'Comment on s’en sert' })
+  ).toBeVisible()
+  await expect(page.getByText('Comment ça se joue')).toHaveCount(0)
+})
+
 test('[e2e] the about page leads to the projects and to contact', async ({
   page
 }) => {

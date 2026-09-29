@@ -124,7 +124,7 @@ export const EN_DICTIONARY = defineDictionary({
       },
       packages: {
         description: 'Written for my own projects, reused in each of them.',
-        open: 'Read their rules',
+        open: 'See what they do',
         title: 'House packages'
       },
       primitives: {
@@ -159,15 +159,27 @@ export const EN_DICTIONARY = defineDictionary({
   project: {
     allProjects: 'All projects',
     highlights: 'In the box',
-    live: 'Play it',
+    live: {
+      app: 'Open it',
+      game: 'Play it',
+      library: 'Try them'
+    },
     package: '{name} on npm',
     repository: 'Read the code',
-    samples: 'How it plays',
+    samples: {
+      app: 'How it works',
+      game: 'How it plays',
+      library: 'How they are used'
+    },
     stack: 'Stack'
   },
   projects: {
     lead: 'What I code in the evening, once the workday is done.',
-    open: 'Read the rules of {name}',
+    open: {
+      app: 'Read about {name}',
+      game: 'Read the rules of {name}',
+      library: 'Read about {name}'
+    },
     title: 'Projects'
   },
   theme: {

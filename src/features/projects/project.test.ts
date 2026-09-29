@@ -4,6 +4,7 @@ import { localizeProject, type ProjectContent, projectsSchema } from './project'
 
 const project: ProjectContent = {
   highlights: [{ en: 'Buzzers', fr: 'Des buzzers' }],
+  kind: 'game',
   links: { repository: 'https://example.com/repository' },
   name: 'Example',
   slug: 'example-project',
@@ -59,6 +60,10 @@ describe('projectsSchema', () => {
     ).toBe(false)
   })
 
+  it('[content] rejects a kind the pages cannot word', () => {
+    expect(accepts({ ...project, kind: 'toy' })).toBe(false)
+  })
+
   it('[content] rejects a field the model does not know', () => {
     expect(accepts({ ...project, year: 2026 })).toBe(false)
   })
@@ -76,6 +81,7 @@ describe('localizeProject', () => {
   it('[content] keeps only the requested locale', () => {
     expect(localizeProject(project, 'fr')).toEqual({
       highlights: ['Des buzzers'],
+      kind: 'game',
       links: { repository: 'https://example.com/repository' },
       name: 'Example',
       slug: 'example-project',

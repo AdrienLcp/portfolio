@@ -40,7 +40,7 @@ const Shelf: React.FC = () => {
             href={projectPathFor({ locale, slug: project.slug })}
             variant='accent'
           >
-            {translate('projects.open', { name: project.name })}
+            {translate(`projects.open.${project.kind}`, { name: project.name })}
           </Link>
         </li>
       ))}
