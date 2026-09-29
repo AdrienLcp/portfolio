@@ -73,8 +73,8 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
         fr: 'Versionnés avec Changesets et publiés depuis GitHub Actions avec la provenance npm, jamais depuis un portable.'
       },
       {
-        en: 'This site and Taverla both install all six from npm.',
-        fr: 'Ce site et Taverla installent tous les deux les six depuis npm.'
+        en: 'This site, Taverla and Séance all install the six from npm.',
+        fr: 'Ce site, Taverla et Séance installent tous les trois les six depuis npm.'
       }
     ],
     links: {
@@ -165,8 +165,8 @@ if (locale.status === 'failure') {
       fr: 'Des petits paquets TypeScript sans dépendance tierce, publiés sur npm, chacun sorti d’un projet dès qu’un deuxième en avait besoin. L’un traduit, et sait dès la compilation ce que chaque message attend ; un autre dit si quelque chose a marché, sans exception et sans null ; les suivants gardent le thème choisi sans flash, et ôtent les exceptions de localStorage et du presse-papiers.'
     },
     tagline: {
-      en: 'The npm packages under this site and Taverla, typed as far as the compiler goes.',
-      fr: 'Les paquets npm sous ce site et sous Taverla, typés aussi loin que va le compilateur.'
+      en: 'The npm packages under this site, Taverla and Séance, typed as far as the compiler goes.',
+      fr: 'Les paquets npm sous ce site, sous Taverla et sous Séance, typés aussi loin que va le compilateur.'
     }
   },
   {
