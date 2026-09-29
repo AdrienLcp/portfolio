@@ -23,22 +23,13 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      # `--with-deps` runs `apt-get update` over every source the runner image
-      # carries, and one of them is Google's own Chrome repository — which
-      # nothing here installs from, Playwright shipping the Chromium it drives.
-      # Google publishes that index a piece at a time, so an update landing
-      # between the pieces fails on a hash mismatch and takes the whole job with
-      # it, for minutes or for hours. Dropping the source leaves the step
-      # standing on Ubuntu's mirrors alone.
-      - name: Install Chromium
-        run: |
-          sudo rm -f /etc/apt/sources.list.d/*google*
-          pnpm exec playwright install --with-deps chromium
+      - name: Drop Google's Chrome apt source, unused here and prone to hash mismatches mid-publish
+        run: sudo rm -f /etc/apt/sources.list.d/*google*
 
-      # `validate` lints with `lint:ci`, not `lint`: `pnpm lint` is
-      # `biome check --write`, which repairs the drift and exits 0, so it would
-      # pass on exactly the code CI exists to reject.
-      - name: Validate
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Validate, linting read-only so drift fails instead of being repaired
         run: pnpm validate
 
       - name: Lighthouse

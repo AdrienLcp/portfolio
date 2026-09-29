@@ -4,6 +4,9 @@ import { defineConfig, mergeConfig } from 'vitest/config'
 
 import viteConfig from './vite.config'
 
+const PLAYWRIGHT_SPECS = 'e2e/**'
+const WITHOUT_INDEX_HTML_FALLBACK = 'custom'
+
 export default mergeConfig(
   viteConfig,
   defineConfig({
@@ -12,20 +15,15 @@ export default mergeConfig(
         {
           extends: true,
           test: {
-            // `e2e/` belongs to Playwright, whose `test()` throws under Vitest.
-            exclude: ['e2e/**', 'node_modules/**'],
+            exclude: [PLAYWRIGHT_SPECS, 'node_modules/**'],
             name: 'unit'
           }
         },
         {
-          // Left on the default, Vite answers an unmatched request with
-          // index.html, which boots a second app inside the story.
-          appType: 'custom',
+          appType: WITHOUT_INDEX_HTML_FALLBACK,
           extends: true,
           plugins: [storybookTest({ configDir: '.storybook' })],
           test: {
-            // react-aria reads focus, pointer events and layout, which a DOM
-            // emulation only approximates.
             browser: {
               enabled: true,
               headless: true,

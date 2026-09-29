@@ -1,4 +1,10 @@
 import type { StorybookConfig } from '@storybook/react-vite'
+import type { InlineConfig } from 'vite'
+
+const withoutFlakyLazyCssChunks = (viteConfig: InlineConfig): InlineConfig => ({
+  ...viteConfig,
+  build: { ...viteConfig.build, cssCodeSplit: false }
+})
 
 const config: StorybookConfig = {
   addons: [
@@ -9,12 +15,7 @@ const config: StorybookConfig = {
   framework: '@storybook/react-vite',
   staticDirs: ['../public'],
   stories: ['../src/**/*.stories.@(ts|tsx)'],
-  // Per-story CSS chunks are lazy-preloaded on navigation and intermittently
-  // fail to load, which breaks the render: one eager stylesheet instead.
-  viteFinal: (viteConfig) => ({
-    ...viteConfig,
-    build: { ...viteConfig.build, cssCodeSplit: false }
-  })
+  viteFinal: withoutFlakyLazyCssChunks
 }
 
 export default config

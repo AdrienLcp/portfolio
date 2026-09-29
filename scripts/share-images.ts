@@ -6,11 +6,12 @@ import { createServer } from 'vite'
 
 const PUBLIC_DIR = join(import.meta.dirname, '..', 'public')
 
-/** The size `og:image:width` and `og:image:height` announce in `index.html`. */
-const OPEN_GRAPH = { height: 630, width: 1200 }
+const OPEN_GRAPH_SIZE_ANNOUNCED_IN_INDEX_HTML = { height: 630, width: 1200 }
 
-/** What iOS asks for; it rounds the corners itself, so the square is full-bleed. */
-const TOUCH_ICON_SIZE = 180
+const IOS_TOUCH_ICON_SIZE = 180
+
+const CONTROLS_HIDDEN_ON_A_SHARE_CARD =
+  '.site-nav, .theme-switch, .lid-band button'
 
 const server = await createServer({ logLevel: 'error', server: { port: 0 } })
 await server.listen()
@@ -26,30 +27,28 @@ try {
   const context = await browser.newContext({
     colorScheme: 'light',
     reducedMotion: 'reduce',
-    viewport: OPEN_GRAPH
+    viewport: OPEN_GRAPH_SIZE_ANNOUNCED_IN_INDEX_HTML
   })
   const page = await context.newPage()
 
   await page.goto(`${origin}/en`)
   await page.locator('.lid').first().waitFor()
-  // A share card is looked at, never clicked: the navigation and the button
-  // would read as a screenshot of an interface rather than as the lid.
   await page.addStyleTag({
-    content: '.site-nav, .theme-switch, .lid-band button { visibility: hidden }'
+    content: `${CONTROLS_HIDDEN_ON_A_SHARE_CARD} { visibility: hidden }`
   })
   await page.evaluate(() => document.fonts.ready)
   await page.screenshot({ path: join(PUBLIC_DIR, 'og.png') })
 
   const favicon = await readFile(join(PUBLIC_DIR, 'favicon.svg'), 'utf8')
   await page.setViewportSize({
-    height: TOUCH_ICON_SIZE,
-    width: TOUCH_ICON_SIZE
+    height: IOS_TOUCH_ICON_SIZE,
+    width: IOS_TOUCH_ICON_SIZE
   })
   await page.setContent(
     `<body style="margin:0">${favicon
       .replace(
         '<svg ',
-        `<svg width="${TOUCH_ICON_SIZE}" height="${TOUCH_ICON_SIZE}" `
+        `<svg width="${IOS_TOUCH_ICON_SIZE}" height="${IOS_TOUCH_ICON_SIZE}" `
       )
       .replace(' clip-path="url(#lid)"', '')}</body>`
   )

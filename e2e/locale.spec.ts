@@ -26,7 +26,8 @@ test('[e2e] a language picked on the rail outranks the browser’s', async ({
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('À propos')
   await expect(page.locator('html')).toHaveAttribute('lang', 'fr')
 
-  // The browser still asks for English; the device remembers the pick.
-  await page.goto('/')
-  await expect(page).toHaveURL('/fr')
+  await test.step('the device remembers the pick while the browser still asks for English', async () => {
+    await page.goto('/')
+    await expect(page).toHaveURL('/fr')
+  })
 })

@@ -6,7 +6,6 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   build: {
-    // Read by `scripts/prerender.ts` to inline the stylesheet each page's chunk carries.
     manifest: true
   },
   plugins: [

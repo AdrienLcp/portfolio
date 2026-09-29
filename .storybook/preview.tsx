@@ -10,10 +10,6 @@ import { isTheme } from '@/presentation/theme/theme'
 import '@/presentation/styles/globals.sass'
 import './preview.sass'
 
-/**
- * The toolbar's theme stamps `data-theme` the way the pre-paint script does,
- * and `auto` removes it so the stylesheet follows the system again.
- */
 const withTheme: Decorator = (Story, { globals }) => {
   const theme = String(globals.theme)
 
@@ -40,9 +36,10 @@ const withLocale: Decorator = (Story, { globals }) => {
   )
 }
 
-/** A story is not the app: a link press must not reload the preview frame. */
+const stayInPreviewFrame = () => undefined
+
 const withRouter: Decorator = (Story) => (
-  <RouterProvider navigate={() => undefined}>
+  <RouterProvider navigate={stayInPreviewFrame}>
     <Story />
   </RouterProvider>
 )

@@ -7,9 +7,14 @@ import { createServer } from 'vite'
 import { cvPdfPath } from '../src/features/cv/cv-format'
 import { LOCALES } from '../src/presentation/i18n/locale'
 
-/** 297mm at the 96dpi Chromium lays print out with. */
-const A4_HEIGHT_PX = 1123
-const A4_WIDTH_PX = 794
+const CHROMIUM_PRINT_DPI = 96
+const MM_PER_INCH = 25.4
+
+const printedPixels = (millimetres: number): number =>
+  Math.round((millimetres * CHROMIUM_PRINT_DPI) / MM_PER_INCH)
+
+const A4_HEIGHT_PX = printedPixels(297)
+const A4_WIDTH_PX = printedPixels(210)
 
 const PUBLIC_DIR = join(import.meta.dirname, '..', 'public')
 
@@ -23,11 +28,10 @@ const waitForSheet = async (page: Page, selector: string): Promise<void> => {
   })
 }
 
-/**
- * A CV is only worth sending on one sheet: overflow fails the run.
- * Measured under print media, which the page is left in for `page.pdf`.
- */
-const assertOnePage = async (page: Page, url: string): Promise<void> => {
+const switchToPrintAndAssertOnePage = async (
+  page: Page,
+  url: string
+): Promise<void> => {
   await page.emulateMedia({ media: 'print' })
   const height = await page.evaluate(
     () => document.documentElement.scrollHeight
@@ -67,7 +71,7 @@ try {
       await page.goto(url)
       await waitForSheet(page, isPlain ? '.cv-plain' : '.cv-sheet')
 
-      await assertOnePage(page, url)
+      await switchToPrintAndAssertOnePage(page, url)
 
       const path = join(PUBLIC_DIR, cvPdfPath({ isPlain, locale }))
       await page.pdf({ path, preferCSSPageSize: true, printBackground: true })

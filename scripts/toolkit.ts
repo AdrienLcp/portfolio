@@ -3,12 +3,6 @@ import { cp, readdir, readFile, rm } from 'node:fs/promises'
 import { join, relative, resolve } from 'node:path'
 import process from 'node:process'
 
-/**
- * The `src/` of each of these is a byte-identical copy of the toolkit's, and
- * this script is the only thing allowed to write it. The sync is one way: a
- * brick changes in the toolkit, then lands here. Editing a copy in place is
- * what produced five dialects of `Result` across the projects.
- */
 const VENDORED_PACKAGES = ['i18n', 'result']
 
 const REPOSITORY_ROOT = resolve(import.meta.dirname, '..')
@@ -104,10 +98,9 @@ const sync = async () => {
 }
 
 const isCheck = process.argv.includes('--check')
+const isToolkitClonedAlongside = existsSync(TOOLKIT_ROOT)
 
-// Nothing here is published and CI clones this repository alone, so the check
-// is a local guard rather than a pipeline gate: no toolkit, nothing to compare.
-if (existsSync(TOOLKIT_ROOT)) {
+if (isToolkitClonedAlongside) {
   await (isCheck ? check() : sync())
 } else if (isCheck) {
   console.info(`No toolkit at ${TOOLKIT_ROOT} — skipping the vendored check.`)
