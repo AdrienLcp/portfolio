@@ -3,6 +3,12 @@ import { cp, readdir, readFile, rm } from 'node:fs/promises'
 import { join, relative, resolve } from 'node:path'
 import process from 'node:process'
 
+/**
+ * The `src/` of each of these is a byte-identical copy of the toolkit's, and
+ * this script is the only thing allowed to write it. The sync is one way: a
+ * brick changes in the toolkit, then lands here. Editing a copy in place is
+ * what produced five dialects of `Result` across the projects.
+ */
 const VENDORED_PACKAGES = ['i18n', 'result']
 
 const REPOSITORY_ROOT = resolve(import.meta.dirname, '..')

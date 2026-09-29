@@ -4,6 +4,7 @@ import { expect, screen, userEvent, within } from 'storybook/test'
 import { Button } from './button'
 import { showToast } from './toast'
 
+/** The region itself is mounted once, by the preview, as the app mounts it. */
 const meta = {
   title: 'Components/Toast'
 } satisfies Meta

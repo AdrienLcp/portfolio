@@ -2,6 +2,10 @@ import type { Project } from '@/features/projects/domain/project'
 import { personIdFor, websiteIdFor } from '@/presentation/head/structured-data'
 import type { Locale } from '@/presentation/i18n/locale'
 
+/**
+ * What a project page is about: the code, and the app it ships when it is
+ * live.
+ */
 export const projectNodeFor = ({
   locale,
   origin,

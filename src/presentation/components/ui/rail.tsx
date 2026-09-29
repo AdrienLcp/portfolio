@@ -20,8 +20,10 @@ import './rail.sass'
 
 export type RailItem<TId extends string> = {
   id: TId
+  /** Printed in the slot. */
   label: string
   lang?: string
+  /** The slot's accessible name, when its print only abbreviates it. */
   name?: string
 }
 
@@ -54,6 +56,10 @@ type ChoiceRailProps<TId extends string> = RailProps & {
   selectedId: TId
 }
 
+/**
+ * A row of slots cut into the board, one pawn on it: the pawn sits on the
+ * choice in play and slides to the next one picked.
+ */
 export const ChoiceRail = <TId extends string>({
   className,
   items,
@@ -100,6 +106,10 @@ type LinkRailProps<TId extends string> = RailProps &
     items: LinkRailItem<TId>[]
   }
 
+/**
+ * The same rail with a link in each slot, for choices that are places: the
+ * pawn marks the one on screen and slides when another is reached.
+ */
 export const LinkRail = <TId extends string>({
   className,
   currentId,

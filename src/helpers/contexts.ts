@@ -1,5 +1,11 @@
 import { createContext, use } from 'react'
 
+/**
+ * Returns `[Context, useSafeContext, useOptionalContext]`. `useSafeContext`
+ * throws when the provider is missing, which turns a whole class of
+ * `undefined` bugs into one loud error naming the provider that should have
+ * been mounted.
+ */
 export const createSafeContext = <TValue>(name: string) => {
   const Context = createContext<TValue | undefined>(undefined)
 

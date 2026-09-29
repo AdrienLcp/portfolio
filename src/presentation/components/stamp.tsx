@@ -7,6 +7,7 @@ type StampListProps = {
   children: React.ReactNode
 }
 
+/** Tags printed on a contents list: read, never pressed. */
 export const StampList: React.FC<StampListProps> = ({ children, ...props }) => (
   <ul {...props} className='stamp-list'>
     {children}
@@ -15,6 +16,7 @@ export const StampList: React.FC<StampListProps> = ({ children, ...props }) => (
 
 type StampProps = {
   children: React.ReactNode
+  /** Set in code type, for a package name or anything typed as is. */
   isCode?: boolean
   lang?: string
 }

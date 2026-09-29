@@ -17,6 +17,11 @@ const useAdoptUrlLocaleBeforePaint = (localeInUrl: Locale | null): void => {
   }, [locale, localeInUrl, setLocale])
 }
 
+/**
+ * The URL decides the language. `useLocation` rather than `useParams`: a
+ * pathless layout has matched no param yet, and would read the locale as
+ * absent and redirect forever.
+ */
 export const LocalePrefixedRoutes: React.FC = () => {
   const { pathname } = useLocation()
   const localeInUrl = localeInPath(pathname)

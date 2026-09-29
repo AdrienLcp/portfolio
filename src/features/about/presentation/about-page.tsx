@@ -24,6 +24,7 @@ type TrackProps = {
   steps: Step[]
 }
 
+/** The path printed as a game board's track: one numbered square per step. */
 const Track: React.FC<TrackProps> = ({ steps }) => (
   <ol className='track'>
     {steps.map((step, index) => (

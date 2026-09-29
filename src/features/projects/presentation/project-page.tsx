@@ -21,6 +21,7 @@ type RuleBookletProps = {
   project: Project
 }
 
+/** The case study, printed as the game's rule booklet. */
 const RuleBooklet: React.FC<RuleBookletProps> = ({ project }) => {
   const { locale, translate } = useI18n()
   useDocumentTitle(projectHead(project).title)

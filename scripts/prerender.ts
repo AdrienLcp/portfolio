@@ -20,6 +20,10 @@ const ROOT = resolve(import.meta.dirname, '..')
 const CLIENT_DIR = join(ROOT, 'dist')
 const SERVER_ENTRY = join(ROOT, 'dist-ssr', 'entry-server.js')
 
+/**
+ * What the build emitted for each source module: the stylesheet a page's chunk
+ * carries.
+ */
 const VITE_MANIFEST_FILE = '.vite/manifest.json'
 
 type BuildChunk = {
@@ -28,6 +32,12 @@ type BuildChunk = {
   imports?: string[]
 }
 
+/**
+ * Every replacement must match exactly once. `index.html` stays a valid
+ * standalone document, since `pnpm dev` and the SPA fallback serve it, so there
+ * are no placeholders: a tag edited out of it fails the build instead of
+ * leaving every document with the wrong head.
+ */
 const replaceOnce = ({
   html,
   pattern,
@@ -68,6 +78,7 @@ const setMeta = ({
   value
 }: {
   html: string
+  /** `name="description"`, `property="og:title"`. */
   identifyingAttribute: string
   value: string
 }): string =>
@@ -81,6 +92,7 @@ const setMeta = ({
 
 const CANONICAL = /<link\s+href="[^"]*"\s+rel="canonical"\s*\/>/
 
+/** The canonical link is the one place a host is written down. */
 const originOfCanonicalLink = (template: string): string => {
   const canonical = CANONICAL.exec(template)
   const origin =
@@ -95,8 +107,13 @@ const originOfCanonicalLink = (template: string): string => {
   return new URL(origin).origin
 }
 
+/** `/en` → `en.html`, `/fr/about` → `fr/about.html`. */
 const htmlFileForPath = (path: string): string => `${path.slice(1)}.html`
 
+/**
+ * Every `<link rel="stylesheet">` the build emitted, as one run a `<style>`
+ * replaces.
+ */
 const LINKED_STYLESHEETS =
   /<link[^>]*rel="stylesheet"[^>]*>(?:\s*<link[^>]*rel="stylesheet"[^>]*>)*/
 
@@ -163,6 +180,10 @@ const readStylesheet = async (href: string): Promise<string> => {
   return css
 }
 
+/**
+ * The document holds the whole page's markup, so inlining only what the
+ * template links would paint it half-styled until the bundle arrives.
+ */
 const templateAndPageChunkStylesFor = async (
   module: string
 ): Promise<string> => {
@@ -203,6 +224,10 @@ const entryScriptOf = (html: string): string => {
   return src
 }
 
+/**
+ * The page's own chunk, which the router only reaches through a dynamic import
+ * once the entry has run: named here, it downloads with everything else.
+ */
 const lazyPageChunkPreloadsFor = (module: string): string =>
   chunkAfterItsStaticImports({ module, seen: new Set() })
     .map((chunk) => `/${chunk.file}`)
@@ -212,6 +237,12 @@ const lazyPageChunkPreloadsFor = (module: string): string =>
     )
     .join('')
 
+/**
+ * The faces a prerendered page paints before any script runs. Kept out of
+ * `index.html`, whose bare shell also serves the redirect at `/`, the plain CV
+ * set in Arial and the not-found page: none of them paints before the app has
+ * run, and a font preloaded there sits unused while the browser warns about it.
+ */
 const PRERENDERED_ONLY_FONT_PRELOADS = [
   'archivo-latin',
   'literata-latin',
@@ -240,6 +271,7 @@ const documentFor = ({
   page: PrerenderedPage
   preloads: string
   rendered: RenderedPage
+  /** This page included: `hreflang` must be reciprocal. */
   everyLanguageVersion: PrerenderedPage[]
   structuredData: object
   styles: string
@@ -347,6 +379,7 @@ const documentFor = ({
   ].reduce((html, step) => step(html), template)
 }
 
+/** One `<url>` per document, each listing every language it exists in. */
 const sitemapFor = (pages: PrerenderedPage[]): string => {
   const urls = pages.map((page) => {
     const alternates = everyLanguageVersionOf(page)
@@ -365,6 +398,11 @@ const sitemapFor = (pages: PrerenderedPage[]): string => {
 const robotsAllowingEveryPageSoNoindexStaysReadable = (): string =>
   `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`
 
+/**
+ * What Pages answers, with a 404 status, on any path without a file. It is the
+ * bare shell rather than a prerendered page: the not-found page names the path
+ * that was asked for, which no build can know, so the app renders it.
+ */
 const noindexShellForUnknownPaths = (shell: string): string =>
   replaceOnce({
     html: shell,

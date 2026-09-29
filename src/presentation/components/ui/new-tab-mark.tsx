@@ -9,6 +9,7 @@ type NewTabMarkProps = {
   iconClassName: string
 }
 
+/** Warns before the jump, in the link's own name. */
 export const NewTabMark: React.FC<NewTabMarkProps> = ({ iconClassName }) => {
   const translate = useTranslate()
 

@@ -29,6 +29,10 @@ type CvSheetProps = {
   profile: Profile
 }
 
+/**
+ * The back of the box: what the game is, its specs, and the credits. Printed,
+ * the same sheet becomes the designed PDF, on one A4 page.
+ */
 const CvSheet: React.FC<CvSheetProps> = ({ cv, profile }) => {
   const { locale, translate } = useI18n()
   const present = translate('cv.present')

@@ -2,6 +2,10 @@ import type React from 'react'
 
 import './icon.sass'
 
+/**
+ * Drawn on a 24-unit grid with the stroke of the lettering: square ends and
+ * mitred corners, heavy enough to sit beside Archivo at 800.
+ */
 const ICON_PATHS = {
   buzzer: 'M5 15a7 7 0 0 1 14 0M3 15h18v5H3zM12 4V2',
   check: 'M4 12.5l5 5L20 6.5',
@@ -27,6 +31,7 @@ type IconProps = {
   name: IconName
 }
 
+/** Decorative: the control that holds it carries the name. */
 export const Icon: React.FC<IconProps> = ({ className, name }) => (
   <svg
     aria-hidden='true'

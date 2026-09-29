@@ -16,6 +16,7 @@ import type { Locale } from '@/presentation/i18n/locale'
 
 import './cv-plain-page.sass'
 
+/** French sets its colon apart with a no-break space. */
 const COLON: Record<Locale, string> = { en: ': ', fr: ' : ' }
 
 type CvPlainProps = {
@@ -23,6 +24,10 @@ type CvPlainProps = {
   profile: Profile
 }
 
+/**
+ * The same CV for recruitment software: one column, standard headings, plain
+ * text in reading order, every URL spelled out. Only its PDF is linked; the page itself stays noindex.
+ */
 const CvPlain: React.FC<CvPlainProps> = ({ cv, profile }) => {
   const { locale, translate } = useI18n()
   const present = translate('cv.present')

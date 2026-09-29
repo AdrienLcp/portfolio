@@ -31,6 +31,7 @@ export const Sheet: Story = {
   )
 }
 
+/** Opens as a titled dialog, and its cross gives focus back to the trigger. */
 export const OpensAndCloses: Story = {
   play: async ({ canvasElement }) => {
     const trigger = within(canvasElement).getByRole('button', {

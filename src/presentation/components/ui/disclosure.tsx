@@ -14,10 +14,12 @@ import './disclosure.sass'
 
 export type DisclosureProps = Omit<ReactAriaDisclosureProps, 'children'> & {
   children: React.ReactNode
+  /** The heading level of the entry in the page's outline (default: `3`). */
   level?: 2 | 3 | 4
   title: React.ReactNode
 }
 
+/** One entry of the rule booklet: a titled fold that opens on its details. */
 export const Disclosure: React.FC<DisclosureProps> = ({
   children,
   className,

@@ -19,6 +19,7 @@ import { ReplyCard } from './reply-card'
 
 import './contact-page.sass'
 
+/** The address printed as large as the lid allows, the reply card under it. */
 const Mailbox: React.FC = () => {
   const { locale, translate } = useI18n()
   const { cv, profile } = useContactData()

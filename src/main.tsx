@@ -20,6 +20,11 @@ if (hasPrerenderedPage) {
   await routerReadyToReplacePrerender()
 }
 
+/**
+ * `createRoot` over the prerendered markup rather than `hydrateRoot`: the
+ * document cannot know this device's theme, and hydrating would either
+ * mismatch on every load or push the theme into an effect, which is a flash.
+ */
 const root = createRoot(container)
 
 root.render(<App locale={locale} />)

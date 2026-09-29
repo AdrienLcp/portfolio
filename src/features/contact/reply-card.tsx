@@ -36,6 +36,7 @@ const fieldText = (data: FormData, name: string): string => {
   return typeof value === 'string' ? value.trim() : ''
 }
 
+/** The reply card slipped in every game box: fill it in, post it. */
 export const ReplyCard: React.FC = () => {
   const { translate } = useI18n()
   const [delivery, setDelivery] = useState<Delivery>({ status: 'writing' })

@@ -31,7 +31,9 @@ export const FoundationGroup: React.FC<FoundationGroupProps> = ({
 
 type SpecimenRowProps = {
   children: React.ReactNode
+  /** The custom property or mixin the row shows. */
   name: string
+  /** Read back from the rendered row, so it shows what the theme resolved. */
   token?: string
 }
 

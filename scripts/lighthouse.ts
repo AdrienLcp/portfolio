@@ -10,6 +10,20 @@ import lighthouse, {
 import desktopConfig from 'lighthouse/core/config/desktop-config.js'
 import { chromium } from 'playwright'
 
+/**
+ * Every page, on a phone and on a desktop, in daylight and at night, scores 100
+ * in every category but performance, which has its own floor, or the run
+ * fails. The CV says so, so it has to be true on every commit.
+ *
+ * Lighthouse drives a Chromium launched here, through its debugging port:
+ * `chrome-launcher` would make a profile it fails to delete on Windows. The
+ * night pass is a flag on that browser, because Lighthouse opens its own tab
+ * and no page-level emulation reaches it.
+ *
+ * `LIGHTHOUSE_BASE_URL` audits a deployment; otherwise the built `dist` is
+ * served by Pages' own runtime, the same one the end-to-end journeys use.
+ */
+
 const ROOT = join(import.meta.dirname, '..')
 const REPORT_DIR = join(ROOT, 'lighthouse-reports')
 const PAGES_RUNTIME_PORT = 8790
@@ -17,14 +31,28 @@ const PLAYWRIGHT_CHROMIUM_DEBUGGING_PORT = 9223
 
 const CATEGORIES = ['performance', 'accessibility', 'best-practices', 'seo']
 
+/**
+ * Printable copies marked `noindex` on purpose: SEO would rightly call them
+ * uncrawlable, so they answer to the three other categories only.
+ */
 const UNINDEXED_PATHS = ['/en/cv/plain', '/fr/cv/plain']
 
+/**
+ * Headroom over what the pages measure today, so a regression shows before the
+ * score moves. The app boots eagerly, controls live on the first paint, and the
+ * simulated LCP charges every script requested before it: the real LCP is about
+ * 200 ms, the mobile figure is Lantern's, not a visitor's.
+ */
 const BUDGETS_WITH_HEADROOM = {
   cumulativeLayoutShift: 0.01,
   largestContentfulPaintMs: { desktop: 1050, mobile: 4300 },
   scriptTransferBytes: 225_000
 }
 
+/**
+ * Performance follows the simulated LCP down; the other categories have no
+ * such excuse.
+ */
 const MIN_PERFORMANCE_UNDER_SIMULATED_LCP: Record<FormFactor, number> = {
   desktop: 90,
   mobile: 80
@@ -36,6 +64,10 @@ const minScoreFor = (category: string, formFactor: FormFactor): number =>
     ? MIN_PERFORMANCE_UNDER_SIMULATED_LCP[formFactor]
     : MIN_SCORE
 
+/**
+ * A score under 100 is measured twice more and judged on the median, the way
+ * `lhci` does.
+ */
 const RUNS_BEFORE_JUDGING_THE_MEDIAN = 3
 
 type FormFactor = 'desktop' | 'mobile'
@@ -191,6 +223,10 @@ const local = baseUrl === undefined ? await startLocalServer() : undefined
 const origin = baseUrl ?? local?.origin ?? ''
 const failures: string[] = []
 
+/**
+ * Pages serves every branch preview (`<branch>.<project>.pages.dev`) as
+ * `noindex`, whatever the page says.
+ */
 const isNoindexBranchPreview = /^[^.]+\.[^.]+\.pages\.dev$/.test(
   new URL(origin).hostname
 )

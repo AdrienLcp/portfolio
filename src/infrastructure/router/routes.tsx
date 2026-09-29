@@ -23,9 +23,14 @@ type LocalizedPath = (typeof localizedPaths)[keyof typeof localizedPaths]
 
 type LazyPage = {
   lazy: RouteObject['lazy']
+  /**
+   * How Vite's build manifest keys the chunk, which the prerender reads to inline
+   * its stylesheet.
+   */
   module: string
 }
 
+/** Keyed by path, so a path with no page fails to compile. */
 const pageFor = {
   [localizedPaths.about]: {
     lazy: async () => ({
@@ -79,9 +84,19 @@ const pageFor = {
 export const pageModuleFor = (path: LocalizedPath): string =>
   pageFor[path].module
 
+/**
+ * A path whose first segment is no locale still runs its loader before
+ * `LocalePrefixedRoutes` redirects it, so the loader needs a locale to use.
+ */
 const localeParam = ({ locale }: Params): Locale =>
   locale !== undefined && isLocale(locale) ? locale : DEFAULT_LOCALE
 
+/**
+ * Outside `lazy`, so the data starts downloading beside the page's chunk.
+ *
+ * Loaders hand back their promise unawaited: the navigation commits at once and
+ * only the region that reads it suspends.
+ */
 const loaderFor = {
   [localizedPaths.about]: ({ params }) => aboutLoader(localeParam(params)),
   [localizedPaths.contact]: ({ params }) => contactLoader(localeParam(params)),
@@ -93,6 +108,7 @@ const loaderFor = {
   [localizedPaths.projects]: ({ params }) => projectsLoader(localeParam(params))
 } satisfies Record<LocalizedPath, LoaderFunction>
 
+/** Pages printed bare, without the site's header and footer. */
 const BARE_PATHS: ReadonlySet<LocalizedPath> = new Set([localizedPaths.cvPlain])
 
 const routeFor = (path: LocalizedPath): RouteObject => ({
@@ -102,6 +118,7 @@ const routeFor = (path: LocalizedPath): RouteObject => ({
   path
 })
 
+/** The tree, not a router: the prerender mounts the same one. */
 export const routes: RouteObject[] = [
   {
     Component: RootRoute,

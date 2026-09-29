@@ -28,6 +28,10 @@ const waitForSheet = async (page: Page, selector: string): Promise<void> => {
   })
 }
 
+/**
+ * A CV is only worth sending on one sheet: overflow fails the run. The page
+ * is left under print media for `page.pdf`.
+ */
 const switchToPrintAndAssertOnePage = async (
   page: Page,
   url: string

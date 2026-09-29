@@ -15,6 +15,7 @@ export type TextLinkProps = Omit<ReactAriaLinkProps, 'children'> & {
   children: React.ReactNode
 }
 
+/** A link inside a sentence: underlined, never a token. */
 export const TextLink: React.FC<TextLinkProps> = ({
   children,
   className,

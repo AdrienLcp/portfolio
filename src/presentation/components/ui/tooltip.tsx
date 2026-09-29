@@ -15,6 +15,7 @@ export type TooltipProps = Omit<ReactAriaTooltipProps, 'children'> & {
   children: React.ReactNode
 }
 
+/** A slip of print ink tucked under the piece it explains. */
 export const Tooltip: React.FC<TooltipProps> = ({
   children,
   className,

@@ -8,6 +8,7 @@ const PUBLIC_DIR = join(import.meta.dirname, '..', 'public')
 
 const OPEN_GRAPH_SIZE_ANNOUNCED_IN_INDEX_HTML = { height: 630, width: 1200 }
 
+/** iOS rounds the corners itself, so the square is full-bleed. */
 const IOS_TOUCH_ICON_SIZE = 180
 
 const CONTROLS_HIDDEN_ON_A_SHARE_CARD =

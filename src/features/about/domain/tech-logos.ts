@@ -30,6 +30,12 @@ import {
   siVitest
 } from 'simple-icons'
 
+/**
+ * Matched by substring, first hit wins: a term reads differently in each
+ * locale ("MCP servers", "serveurs MCP"), so a longer name that contains a
+ * shorter one ("React Router", "Vitest") comes before it. `null` keeps a term
+ * that has no logo from matching the shorter one.
+ */
 const LOGOS_LONGER_NAMES_FIRST: readonly (readonly [
   string,
   SimpleIcon | null

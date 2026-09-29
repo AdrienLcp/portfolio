@@ -1,5 +1,11 @@
 import { defineConfig, devices } from '@playwright/test'
 
+/**
+ * Against the built `dist` served by Pages' own runtime, not `vite preview`:
+ * the clean URLs, the real 404 and the `_redirects` rewrite are Pages
+ * behaviour, and they are what a journey breaks first. `E2E_BASE_URL` points
+ * the same journeys at a deployment instead, and then no server is started.
+ */
 const PAGES_RUNTIME_PORT = 8789
 const PAGES_RUNTIME_URL = `http://127.0.0.1:${PAGES_RUNTIME_PORT}`
 const ACCESSIBLE_NAMES_LOCALE = 'en-US'

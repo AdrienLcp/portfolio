@@ -21,6 +21,7 @@ export const formatPeriod = ({
 }): string =>
   `${formatMonth(period.from, locale)} – ${period.to === undefined ? present : formatMonth(period.to, locale)}`
 
+/** A French reader dials the national form; anyone else needs the country code. */
 export const formatPhone = (phone: string, locale: Locale): string => {
   const digits = phone.replace(/^\+33/, '')
   const pairs = digits.slice(1).match(/\d{2}/g)?.join(' ') ?? ''
@@ -30,5 +31,6 @@ export const formatPhone = (phone: string, locale: Locale): string => {
     : `+33 ${digits[0]} ${pairs}`
 }
 
+/** A URL as printed on paper: what someone would type, nothing more. */
 export const displayUrl = (url: string): string =>
   url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')

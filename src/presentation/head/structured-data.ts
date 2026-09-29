@@ -6,6 +6,11 @@ export const personIdFor = (origin: string): string => `${origin}/#person`
 
 export const websiteIdFor = (origin: string): string => `${origin}/#website`
 
+/**
+ * Who the site is about, in the language of the document: a search engine
+ * reads it to tie the pages, the photo and the profiles to one person. A
+ * project document adds what the project is.
+ */
 export const structuredDataDocumentFor = ({
   locale,
   origin,

@@ -16,6 +16,7 @@ import { SocketDiagram } from './socket-diagram'
 import './box-contents.sass'
 
 type CompartmentProps = {
+  /** Names the compartment's slot in the tray. */
   area: string
   children?: React.ReactNode
   count: number
@@ -23,6 +24,10 @@ type CompartmentProps = {
   title: string
 }
 
+/**
+ * The count is part of the title: "1 realtime server" is one fact, read at
+ * once.
+ */
 const Compartment: React.FC<CompartmentProps> = ({
   area,
   children,
@@ -68,6 +73,7 @@ type BoxContentsProps = {
   titleRef: React.Ref<HTMLHeadingElement>
 }
 
+/** The board game's contents list: every piece counted, nothing missing. */
 export const BoxContents: React.FC<BoxContentsProps> = ({
   onCloseLid,
   titleRef

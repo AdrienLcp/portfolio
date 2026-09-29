@@ -24,12 +24,19 @@ import { LOCALES, type Locale } from '@/presentation/i18n/locale'
 
 export type PrerenderedPage = {
   locale: Locale
+  /** How Vite's build manifest keys the chunk this page renders. */
   module: string
+  /** What pairs a page with itself in the other language, for `hreflang`. */
   page: IndexedPage | `project:${string}`
+  /** Where the document is served, from the site root: `/fr/about`. */
   path: string
 }
 
 export type RenderedPage = PageHead & {
+  /**
+   * What goes inside `#root`, so there is something to paint before any script
+   * runs.
+   */
   html: string
 }
 
@@ -37,6 +44,10 @@ export { IMAGE_ALTS as imageAlts, openGraphLocaleFor }
 
 const PROJECT_PAGE_PREFIX = 'project:'
 
+/**
+ * The plain CV is left out on purpose: it is a printable copy of the CV page,
+ * marked `noindex`, and served by the SPA fallback.
+ */
 const pagesFor = (locale: Locale): PrerenderedPage[] => [
   ...INDEXED_PAGES.map(
     (page): PrerenderedPage => ({
@@ -56,6 +67,7 @@ const pagesFor = (locale: Locale): PrerenderedPage[] => [
   )
 ]
 
+/** Read off the data, so a project added there gets its own document. */
 export const prerenderedPages: PrerenderedPage[] = LOCALES.flatMap(pagesFor)
 
 const isProjectPage = (

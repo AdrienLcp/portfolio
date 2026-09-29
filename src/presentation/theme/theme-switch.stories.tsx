@@ -13,6 +13,10 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
 
+/**
+ * Night stamps `data-theme`; Auto removes it, handing the theme back to the
+ * system instead of pinning Day.
+ */
 export const StampsTheChoice: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)

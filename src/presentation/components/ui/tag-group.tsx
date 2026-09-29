@@ -12,6 +12,10 @@ import './tag-group.sass'
 
 export { TagGroup, type TagGroupProps } from 'react-aria-components'
 
+/**
+ * Stamps printed on the box, like the line "1 realtime server" in a contents
+ * list: flat, square, no shadow. They are read, never pressed.
+ */
 export const TagList = <T extends object>({
   className,
   ...props

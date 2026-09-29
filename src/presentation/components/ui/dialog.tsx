@@ -17,6 +17,10 @@ type DialogProps = {
   title: React.ReactNode
 }
 
+/**
+ * A printed sheet laid over the table, dismissable from its cross, from
+ * Escape, or from a press on the table around it.
+ */
 export const Dialog: React.FC<DialogProps> = ({ children, title }) => {
   const translate = useTranslate()
 

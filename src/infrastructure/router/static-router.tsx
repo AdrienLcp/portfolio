@@ -16,8 +16,14 @@ const WAIT_FOR_EVERY_BOUNDARY_IN_PLACE = {
   progressiveChunkSize: Number.POSITIVE_INFINITY
 }
 
+/** Every region that is still waiting paints one of these. */
 const PENDING_MARKERS = ['aria-busy="true"', '<template']
 
+/**
+ * `prerender` rather than `renderToStaticMarkup`: loaders hand back unawaited
+ * promises read with `use`, and only `prerender` waits for every Suspense
+ * boundary to resolve instead of writing its fallback into the document.
+ */
 export const prerenderPath = async ({
   locale,
   path
