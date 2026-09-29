@@ -1,3 +1,5 @@
+import { Result } from '@adrienlcp/result'
+
 export const preferredLocales = (): readonly string[] => navigator.languages
 
 export const servedPath = (): string => location.pathname
@@ -16,12 +18,14 @@ export const scrollToElement = (element: HTMLElement): void => {
   element.scrollIntoView({ behavior: scrollBehavior(), block: 'start' })
 }
 
-export const copyText = async (text: string): Promise<boolean> => {
+export const copyText = async (
+  text: string
+): Promise<Result<void, 'refused'>> => {
   try {
     await navigator.clipboard.writeText(text)
-    return true
+    return Result.success()
   } catch {
-    return false
+    return Result.failure('refused')
   }
 }
 

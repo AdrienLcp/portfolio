@@ -37,7 +37,9 @@ const Mailbox: React.FC = () => {
   const { links } = profileResult.data
 
   const copyAddress = async (): Promise<void> => {
-    if (await copyText(email)) {
+    const copied = await copyText(email)
+
+    if (copied.status === 'success') {
       showToast(translate('contact.copied'))
     } else if (addressRef.current !== null) {
       selectContents(addressRef.current)
