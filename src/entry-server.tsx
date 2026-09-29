@@ -29,16 +29,12 @@ import { LOCALES, type Locale } from '@/presentation/i18n/locale'
 
 export type PrerenderedPage = {
   locale: Locale
-  /** How Vite's build manifest keys the chunk this page renders. */
   module: string
-  /** What pairs a page with itself in the other language, for `hreflang`. */
   page: IndexedPage | `project:${string}`
-  /** Where the document is served, from the site root: `/fr/about`. */
   path: string
 }
 
 export type RenderedPage = PageHead & {
-  /** What goes inside `#root`, so there is something to paint before any script runs. */
   html: string
 }
 
@@ -46,13 +42,8 @@ export { IMAGE_ALTS as imageAlts, OPEN_GRAPH_LOCALES as openGraphLocales }
 
 const PROJECT_PAGE_PREFIX = 'project:'
 
-/** The keys of the heads, which are typed over the routes. */
 const INDEXED_PAGES = Object.keys(PAGE_HEADS.en) as IndexedPage[]
 
-/**
- * The plain CV is left out on purpose: it is a printable copy of the CV page,
- * marked `noindex`, and served by the SPA fallback.
- */
 const pagesFor = (locale: Locale): PrerenderedPage[] => [
   ...INDEXED_PAGES.map(
     (page): PrerenderedPage => ({
@@ -72,7 +63,6 @@ const pagesFor = (locale: Locale): PrerenderedPage[] => [
   )
 ]
 
-/** Read off the data, so a project added there gets its own document. */
 export const prerenderedPages: PrerenderedPage[] = LOCALES.flatMap(pagesFor)
 
 const isProjectPage = (
@@ -105,14 +95,12 @@ const headFor = async ({ locale, page }: PrerenderedPage): Promise<PageHead> =>
 
 const handler = createStaticHandler(routes)
 
-/** Every region that is still waiting paints one of these. */
+const WAIT_FOR_EVERY_BOUNDARY_IN_PLACE = {
+  progressiveChunkSize: Number.POSITIVE_INFINITY
+}
+
 const PENDING_MARKERS = ['aria-busy="true"', '<template']
 
-/**
- * `prerender` rather than `renderToStaticMarkup`: loaders hand back unawaited
- * promises read with `use`, and only `prerender` waits for every Suspense
- * boundary to resolve instead of writing its fallback into the document.
- */
 export const renderPage = async (
   prerendered: PrerenderedPage
 ): Promise<RenderedPage> => {
@@ -125,20 +113,16 @@ export const renderPage = async (
     )
   }
 
-  // `dataRoutes` is the tree `query` resolved every `lazy` into; handed the
-  // original, the router has no component to mount.
+  const lazyResolvedRoutes = handler.dataRoutes
   const { prelude } = await prerender(
     <AppProviders locale={locale}>
       <StaticRouterProvider
         context={context}
         hydrate={false}
-        router={createStaticRouter(handler.dataRoutes, context)}
+        router={createStaticRouter(lazyResolvedRoutes, context)}
       />
     </AppProviders>,
-    // Otherwise a boundary that resolves after the shell is written out of
-    // place, behind a `<template>` and an inline script that moves it: markup
-    // `createRoot` throws away, with the pending state standing in its spot.
-    { progressiveChunkSize: Number.POSITIVE_INFINITY }
+    WAIT_FOR_EVERY_BOUNDARY_IN_PLACE
   )
   const html = await new Response(prelude).text()
 
@@ -149,7 +133,6 @@ export const renderPage = async (
   return { ...(await headFor(prerendered)), html }
 }
 
-/** What a project page is about: the code, and the app it ships when it is live. */
 const projectNodeFor = ({
   locale,
   origin,
@@ -180,11 +163,6 @@ const projectNodeFor = ({
   url: `${origin}${path}`
 })
 
-/**
- * Who the site is about, in the language of the document: a search engine
- * reads it to tie the pages, the photo and the profiles to one person. A
- * project document adds what the project is.
- */
 export const structuredDataFor = async ({
   origin,
   page: { locale, page, path }

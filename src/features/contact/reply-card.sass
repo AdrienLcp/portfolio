@@ -2,7 +2,6 @@
 @use '../../presentation/styles/typography'
 
 @layer components
-  // A printed piece: it keeps its own inks in both themes, like a token.
   .reply-card
     --focus: var(--print-brick)
 
@@ -25,7 +24,6 @@
       background: var(--print-marigold)
       color: var(--print-ink)
 
-  // The perforation the card was torn along.
   .reply-heading
     @include typography.heading
 
@@ -98,7 +96,6 @@
     color: var(--print-brick)
     font-weight: 700
 
-  // Off the card entirely, never `display: none`: a bot skips what is not rendered.
   .reply-trap
     height: 1px
     left: -100vw
@@ -116,7 +113,6 @@
     align-items: flex-start
     gap: var(--space-m)
 
-  // The card is stamped as it leaves: the one moment on the page that moves.
   .posted-stamp
     @include typography.title
 

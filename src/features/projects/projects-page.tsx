@@ -15,7 +15,6 @@ import { apiErrorKey } from '@/presentation/i18n/translation'
 
 import './projects-page.sass'
 
-/** One box per project, each on its own shelf. */
 const Shelf: React.FC = () => {
   const { locale, translate } = useI18n()
   const { projects } = useProjectsData()

@@ -20,11 +20,9 @@ export type LocalizedPath = (typeof localizedPaths)[keyof typeof localizedPaths]
 
 type LazyPage = {
   lazy: RouteObject['lazy']
-  /** How Vite's build manifest keys the chunk, which the prerender reads to inline its stylesheet. */
   module: string
 }
 
-/** Keyed by path, so a path with no page fails to compile. */
 const pageFor = {
   [localizedPaths.about]: {
     lazy: async () => ({
@@ -74,7 +72,6 @@ const pageFor = {
 export const pageModuleFor = (path: LocalizedPath): string =>
   pageFor[path].module
 
-/** Outside `lazy`, so the data starts downloading beside the page's chunk. */
 const loaderFor = {
   [localizedPaths.about]: aboutLoader,
   [localizedPaths.contact]: cvLoader,
@@ -85,7 +82,6 @@ const loaderFor = {
   [localizedPaths.projects]: projectsLoader
 } satisfies Record<LocalizedPath, LoaderFunction>
 
-/** Pages printed bare, without the site's header and footer. */
 const BARE_PATHS: ReadonlySet<LocalizedPath> = new Set([localizedPaths.cvPlain])
 
 const routeFor = (path: LocalizedPath): RouteObject => ({
@@ -95,7 +91,6 @@ const routeFor = (path: LocalizedPath): RouteObject => ({
   path
 })
 
-/** The tree, not a router: the prerender mounts the same one. */
 export const routes: RouteObject[] = [
   {
     Component: RootRoute,

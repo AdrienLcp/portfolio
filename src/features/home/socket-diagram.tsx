@@ -2,7 +2,6 @@ import type React from 'react'
 
 const RACK_ROWS = [20, 75, 130] as const
 
-/** Phones on the left buzz in, the server broadcasts to the screens on the right. */
 export const SocketDiagram: React.FC = () => (
   <svg
     aria-hidden='true'

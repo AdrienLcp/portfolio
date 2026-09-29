@@ -24,8 +24,6 @@
 
       max-width: 42ch
 
-    // The cardboard insert: compartments cut into one sheet, the ink showing
-    // through every cut as a 3px rule.
     .tray
       background: var(--ink)
       border: var(--outline-thick) solid var(--ink)
@@ -51,7 +49,6 @@
       gap: var(--space-s)
       line-height: 1.1
 
-    // The count is a marigold piece lying in its compartment.
     .count
       align-items: center
       background: var(--print-marigold)
@@ -73,7 +70,6 @@
       color: var(--ink-soft)
       max-width: 48ch
 
-    // Zero pieces: the compartment is an empty slot, cut but never filled.
     .compartment.flash
       outline: var(--outline-thin) dashed var(--ink-soft)
       outline-offset: calc(var(--space-s) * -1)
@@ -123,7 +119,6 @@
       .led
         stroke: none
 
-      // The one moving part: buzzes flow in, the answer flows out.
       @media (prefers-reduced-motion: no-preference)
         .wire.inbound
           animation: wire-flow 1.4s linear infinite
@@ -138,7 +133,6 @@
       grid-template-columns: repeat(3, minmax(0, 1fr))
       padding-block: var(--space-s)
 
-    // Three game boxes on one shelf: printed pieces, each at its own slight angle.
     .game-card
       border: var(--outline-thin) solid var(--print-ink)
       border-radius: var(--radius-s)
@@ -179,7 +173,6 @@
       display: flex
       gap: var(--space-xs)
 
-    // Two swatches of the same print: paper by day, ink by night.
     .theme-chip
       @include typography.control
 
@@ -208,7 +201,6 @@
       .compartment
         padding: var(--space-l)
 
-      // From here the text lines up past the count disc.
       .compartment-line,
       .compartment > .stamp-list,
       .theme-chips

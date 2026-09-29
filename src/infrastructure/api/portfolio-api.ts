@@ -22,7 +22,6 @@ import { PROJECTS } from './data/projects'
 
 export type ApiError = 'invalid_content' | 'not_found'
 
-/** Development only, where it makes pending states visible; a prerendered page must not pay it. */
 const SIMULATED_LATENCY_MS = import.meta.env.DEV ? 300 : 0
 
 const simulateLatency = (): Promise<void> =>

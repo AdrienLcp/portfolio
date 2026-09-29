@@ -1,6 +1,5 @@
 export const preferredLocales = (): readonly string[] => navigator.languages
 
-/** Read without the router, which does not exist yet when `<html lang>` is set. */
 export const servedPath = (): string => location.pathname
 
 export const prefersReducedMotion = (): boolean =>
@@ -17,7 +16,6 @@ export const scrollToElement = (element: HTMLElement): void => {
   element.scrollIntoView({ behavior: scrollBehavior(), block: 'start' })
 }
 
-/** Resolves `false` where the clipboard is denied, as over plain HTTP. */
 export const copyText = async (text: string): Promise<boolean> => {
   try {
     await navigator.clipboard.writeText(text)
@@ -27,7 +25,6 @@ export const copyText = async (text: string): Promise<boolean> => {
   }
 }
 
-/** The fallback when copying fails: the text is selected, ready for a keystroke. */
 export const selectContents = (element: HTMLElement): void => {
   const selection = getSelection()
 

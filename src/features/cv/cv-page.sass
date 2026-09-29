@@ -20,8 +20,6 @@
     grid-template-columns: minmax(0, 1fr) auto
     padding: var(--space-2xl) var(--gutter) var(--space-xl)
 
-  // Too narrow to share a row with the portrait, the name would shrink to a
-  // caption: the portrait moves above it instead.
   @media (width < 34rem)
     .cv-cover
       align-items: start
@@ -56,8 +54,6 @@
 
     font-size: var(--text-body)
 
-  // A portrait punched out like a token: paper edge, ink rim, lying a touch
-  // askew on the lid.
   .cv-photo
     aspect-ratio: 1
     border: 5px solid var(--print-paper)
@@ -96,7 +92,6 @@
     flex-basis: 100%
     max-width: 36ch
 
-  // The strip of specs on the back of a game box: a few facts, ruled apart.
   .cv-specs
     border-bottom: var(--outline-thick) solid var(--ink)
 
@@ -200,7 +195,6 @@
       padding-inline-start: calc(8px + var(--space-s))
       position: relative
 
-      // The token's pip, printed as the list's bullet.
       &::before
         background: var(--active)
         border-radius: var(--radius-full)
@@ -247,7 +241,6 @@
       grid-template-columns: minmax(0, 65ch) minmax(16rem, 22rem)
       justify-content: space-between
 
-  // The designed PDF: this very sheet on one A4 page, day inks, no chrome.
   @media print
     @page
       margin: 0

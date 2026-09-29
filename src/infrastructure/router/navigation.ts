@@ -16,10 +16,6 @@ import type {
   projectsLoader
 } from './loaders'
 
-/**
- * Every indexable page names its language, because a search index keeps one
- * document per URL and never varies `Accept-Language`.
- */
 export const localizedPaths = {
   about: '/:locale/about',
   contact: '/:locale/contact',
@@ -30,16 +26,11 @@ export const localizedPaths = {
   projects: '/:locale/projects'
 } as const
 
-/** What `hreflang="x-default"` points at: it negotiates and redirects. */
 export const paths = {
   ...localizedPaths,
   root: '/'
 } as const
 
-/**
- * A record over `PathParam` rather than `generatePath`'s own params type, which
- * accepts any name in silence: a missing or misspelled param fails to compile.
- */
 const pathFor = <TPath extends string>(
   path: TPath,
   params: Record<PathParam<TPath>, string>
@@ -94,7 +85,6 @@ export const localeInPath = (pathname: string): Locale | null => {
   return segment !== undefined && isLocale(segment) ? segment : null
 }
 
-/** The same page in another language, or `null` on a path that names none. */
 export const pathInLocale = ({
   locale,
   pathname
@@ -111,7 +101,6 @@ export const pathInLocale = ({
 
 export const useCurrentPath = (): string => useLocation().pathname
 
-/** The route error flattened to one line, whatever was thrown. */
 export const useRouteFailure = (): string => {
   const error = useRouteError()
 

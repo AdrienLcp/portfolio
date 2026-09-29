@@ -5,7 +5,6 @@
   .about-page
     @include layout.page
 
-    // A disc is 48px wide: the rule of the track runs through its centre.
     --square-size: 48px
 
     .about-booklet
@@ -15,7 +14,6 @@
       gap: var(--space-xl)
       padding: var(--space-2xl) var(--gutter) var(--space-3xl)
 
-    // The credits of the box: a portrait printed flat, square-cornered.
     .author-card
       align-self: flex-start
       display: flex
@@ -69,7 +67,6 @@
       grid-template-columns: var(--square-size) minmax(0, 1fr)
       position: relative
 
-      // The path to the next square, from this disc's centre to the next disc.
       &:not(:last-child)::before
         background: var(--ink)
         bottom: calc(-1 * var(--space-l))
@@ -79,7 +76,6 @@
         top: calc(var(--square-size) / 2)
         width: var(--outline-thick)
 
-    // A numbered disc: a printed piece, so it keeps its inks in both themes.
     .square-number
       align-items: center
       background: var(--token)
@@ -98,7 +94,6 @@
       position: relative
       width: var(--square-size)
 
-    // Where the pawn stands today.
     .track-square:last-child .square-number
       background: var(--print-marigold)
       box-shadow: inset 0 0 0 2px var(--print-marigold), inset 0 0 0 3.5px color-mix(in oklab, var(--print-ink) 35%, transparent), 0 3px 7px var(--shadow)

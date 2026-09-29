@@ -23,10 +23,6 @@ declare module 'react-aria-components' {
   }
 }
 
-/**
- * A navigation superseded by the next one rejects with `AbortError`, more
- * often with view transitions on: expected control flow, not a failure.
- */
 const ignoreSupersededNavigation = (error: unknown): void => {
   if (error instanceof Error && error.name === 'AbortError') {
     return
@@ -37,32 +33,18 @@ const ignoreSupersededNavigation = (error: unknown): void => {
 
 const ABSOLUTE_URL = /^[a-z][a-z\d+.-]*:/i
 
-/**
- * react-router resolves every href against the current route, an external URL
- * included: `https://…` would come out as `/en/projects/https:/…`.
- */
 const useRouterHref = (href: string): string => {
   const routeHref = useHref(href)
 
   return ABSOLUTE_URL.test(href) ? href : routeHref
 }
 
-/**
- * react-aria's `RouterProvider` is what turns an `href` on any react-aria
- * `Link`, `MenuItem` or `ListBoxItem` into a client-side navigation.
- */
 const isBareHandle = (handle: unknown): boolean =>
   typeof handle === 'object' &&
   handle !== null &&
   'isBare' in handle &&
   handle.isBare === true
 
-/**
- * A client-side navigation leaves focus on the link that started it, in a
- * header that did not change: the new page is announced by nothing, and the
- * next Tab walks the header again. Focus moves to the new page instead; the
- * first render is a full load, where it starts at the top on its own.
- */
 const useFocusMainOnNavigation = (): void => {
   const { pathname } = useLocation()
   const previousPathname = useRef(pathname)

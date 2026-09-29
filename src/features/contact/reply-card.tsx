@@ -28,13 +28,14 @@ type Delivery =
 
 const emailSchema = z.email()
 
+const HONEYPOT_FIELD = 'botcheck'
+
 const fieldText = (data: FormData, name: string): string => {
   const value = data.get(name)
 
   return typeof value === 'string' ? value.trim() : ''
 }
 
-/** The reply card slipped in every game box: fill it in, post it. */
 export const ReplyCard: React.FC = () => {
   const { translate } = useI18n()
   const [delivery, setDelivery] = useState<Delivery>({ status: 'writing' })
@@ -57,8 +58,9 @@ export const ReplyCard: React.FC = () => {
 
     const data = new FormData(event.currentTarget)
 
-    // Only a bot fills a field nobody can see: it is told the card left.
-    if (data.get('botcheck') !== null) {
+    const isFilledByBot = data.get(HONEYPOT_FIELD) !== null
+
+    if (isFilledByBot) {
       setDelivery({ status: 'posted' })
       return
     }
@@ -164,7 +166,7 @@ export const ReplyCard: React.FC = () => {
           aria-hidden='true'
           autoComplete='off'
           className='reply-trap'
-          name='botcheck'
+          name={HONEYPOT_FIELD}
           tabIndex={-1}
           type='checkbox'
         />

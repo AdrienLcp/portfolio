@@ -8,16 +8,13 @@ import type { Locale } from '@/presentation/i18n/locale'
 
 const textSchema = z.string().trim().min(1)
 
-/** A year, or a year and a month: a CV rarely knows the day. */
 const monthSchema = z.string().regex(/^\d{4}(?:-(?:0[1-9]|1[0-2]))?$/)
 
-/** No `to`: still going on. */
 const periodSchema = z.strictObject({
   from: monthSchema,
   to: monthSchema.optional()
 })
 
-/** A tool name reads the same in every language; a phrase around it does not. */
 const termSchema = z.union([textSchema, localizedTextSchema])
 
 const missionSchema = z.strictObject({

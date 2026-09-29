@@ -2,14 +2,8 @@ import { isLocale, type Locale } from '@/presentation/i18n/locale'
 import { isTheme, type Theme } from '@/presentation/theme/theme'
 
 const LOCALE_KEY = 'portfolio:locale'
-/** Read again, raw, by the pre-paint script in `index.html`. */
 const THEME_KEY = 'portfolio:theme'
 
-/**
- * `null` means never chosen, which is not the default: the caller then follows
- * the browser. Every access is guarded because `localStorage` throws in a
- * Safari private window.
- */
 export const readStoredLocale = (): Locale | null => {
   const stored = read(LOCALE_KEY)
 
@@ -20,7 +14,6 @@ export const writeStoredLocale = (locale: Locale): void => {
   write(LOCALE_KEY, locale)
 }
 
-/** `null` means the system theme, which the stylesheet resolves on its own. */
 export const readStoredTheme = (): Theme | null => {
   const stored = read(THEME_KEY)
 

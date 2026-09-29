@@ -11,6 +11,5 @@ if (!parsed.success) {
 }
 
 export const env = {
-  /** Public by design: Web3Forms only ever forwards to the inbox this key belongs to. */
   web3formsKey: parsed.data.VITE_WEB3FORMS_KEY
 }

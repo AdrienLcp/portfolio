@@ -7,6 +7,7 @@ import {
   localizedPathFor
 } from '@/infrastructure/router/navigation'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
+import type { Locale } from '@/presentation/i18n/locale'
 
 export const NegotiatedLocaleRedirect: React.FC = () => {
   const { locale } = useI18n()
@@ -15,23 +16,21 @@ export const NegotiatedLocaleRedirect: React.FC = () => {
   return <Navigate replace to={localizedPathFor({ locale, pathname })} />
 }
 
-/**
- * The URL decides the language. `useLocation` rather than `useParams`: a
- * pathless layout has matched no param yet, and would read the locale as
- * absent and redirect forever.
- */
-export const LocalePrefixedRoutes: React.FC = () => {
-  const { pathname } = useLocation()
-  const localeInUrl = localeInPath(pathname)
+const useAdoptUrlLocaleBeforePaint = (localeInUrl: Locale | null): void => {
   const { locale, setLocale } = useI18n()
 
-  // Back across `/fr` → `/en` moves the URL without the switch that moved it;
-  // before paint, or the language just left shows for a frame.
   useLayoutEffect(() => {
     if (localeInUrl !== null && localeInUrl !== locale) {
       setLocale(localeInUrl)
     }
   }, [locale, localeInUrl, setLocale])
+}
+
+export const LocalePrefixedRoutes: React.FC = () => {
+  const { pathname } = useLocation()
+  const localeInUrl = localeInPath(pathname)
+
+  useAdoptUrlLocaleBeforePaint(localeInUrl)
 
   if (localeInUrl === null) {
     return <NegotiatedLocaleRedirect />
