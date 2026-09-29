@@ -1,6 +1,7 @@
 import { z } from 'zod'
 
 import { localizedTextSchema } from '@/features/content/localized-text'
+import { textSchema } from '@/features/content/text'
 import type { Locale } from '@/presentation/i18n/locale'
 
 export const PROFILE_PHOTO = {
@@ -13,7 +14,7 @@ export const profileSchema = z.strictObject({
     github: z.url(),
     linkedin: z.url()
   }),
-  name: z.string().trim().min(1),
+  name: textSchema,
   role: localizedTextSchema
 })
 

@@ -4,9 +4,8 @@ import {
   type LocalizedText,
   localizedTextSchema
 } from '@/features/content/localized-text'
+import { textSchema } from '@/features/content/text'
 import type { Locale } from '@/presentation/i18n/locale'
-
-const textSchema = z.string().trim().min(1)
 
 const monthSchema = z.string().regex(/^\d{4}(?:-(?:0[1-9]|1[0-2]))?$/)
 

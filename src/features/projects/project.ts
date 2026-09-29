@@ -1,6 +1,7 @@
 import { z } from 'zod'
 
 import { localizedTextSchema } from '@/features/content/localized-text'
+import { textSchema } from '@/features/content/text'
 import type { Locale } from '@/presentation/i18n/locale'
 
 export const projectSlugSchema = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
@@ -11,9 +12,9 @@ export const projectSchema = z.strictObject({
     live: z.url().optional(),
     repository: z.url()
   }),
-  name: z.string().trim().min(1),
+  name: textSchema,
   slug: projectSlugSchema,
-  stack: z.array(z.string().trim().min(1)).min(1),
+  stack: z.array(textSchema).min(1),
   summary: localizedTextSchema,
   tagline: localizedTextSchema
 })

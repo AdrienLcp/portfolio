@@ -1,8 +1,7 @@
 import { z } from 'zod'
 
+import { textSchema } from '@/features/content/text'
 import type { Locale } from '@/presentation/i18n/locale'
-
-const textSchema = z.string().trim().min(1)
 
 export const localizedTextSchema = z.strictObject({
   en: textSchema,
