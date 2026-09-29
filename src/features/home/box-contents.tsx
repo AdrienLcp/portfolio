@@ -8,6 +8,8 @@ import { Stamp, StampList } from '@/presentation/components/stamp'
 import { Button } from '@/presentation/components/ui/button'
 import { Link } from '@/presentation/components/ui/link'
 import { useI18n, useTranslate } from '@/presentation/i18n/i18n-provider'
+import { LOCALE_NAMES, LOCALES } from '@/presentation/i18n/locale'
+import { THEMES } from '@/presentation/theme/theme'
 
 import { SocketDiagram } from './socket-diagram'
 
@@ -116,18 +118,21 @@ export const BoxContents: React.FC<BoxContentsProps> = ({
         </Compartment>
         <Compartment
           area='languages'
-          count={2}
+          count={LOCALES.length}
           description={translate('home.contents.languages.description')}
           title={translate('home.contents.languages.title')}
         >
           <StampList>
-            <Stamp lang='en'>English</Stamp>
-            <Stamp lang='fr'>Français</Stamp>
+            {LOCALES.map((locale) => (
+              <Stamp key={locale} lang={locale}>
+                {LOCALE_NAMES[locale]}
+              </Stamp>
+            ))}
           </StampList>
         </Compartment>
         <Compartment
           area='themes'
-          count={2}
+          count={THEMES.length}
           description={translate('home.contents.themes.description')}
           title={translate('home.contents.themes.title')}
         >
