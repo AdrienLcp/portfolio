@@ -1,7 +1,5 @@
 @layer tokens
   \:root
-    color-scheme: light
-
     --paper: light-dark(oklch(95.73% 0.0058 153.77), oklch(19.78% 0.0171 195.85))
     --ink: light-dark(oklch(23.34% 0.0209 185.33), oklch(93.62% 0.0094 171.79))
     --ink-soft: color-mix(in oklab, var(--ink) 78%, var(--paper))
@@ -58,16 +56,3 @@
     --transition-base: 280ms
     --transition-slow: 560ms
     --timing: cubic-bezier(0.16, 1, 0.3, 1)
-
-  \:root[data-theme='dark']
-    color-scheme: dark
-
-  @media (prefers-color-scheme: dark)
-    \:root:not([data-theme='light'])
-      color-scheme: dark
-
-  @media (prefers-reduced-motion: reduce)
-    \:root
-      --transition-fast: 0ms
-      --transition-base: 0ms
-      --transition-slow: 0ms

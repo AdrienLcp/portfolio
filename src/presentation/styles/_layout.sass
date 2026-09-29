@@ -1,9 +1,4 @@
-/// A media query cannot read a custom property, so breakpoints are SASS values.
-$wide-screen: 900px
-
-@mixin wide
-  @media (width >= $wide-screen)
-    @content
+@forward '@adrienlcp/styles/breakpoints'
 
 /// A region printed in one flat colour, carrying the text and focus colours
 /// that survive on it. The active colour vanishes on both fields, so focus
