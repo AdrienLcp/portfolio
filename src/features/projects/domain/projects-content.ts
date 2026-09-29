@@ -73,7 +73,7 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
       packages: ['@adrienlcp/i18n', '@adrienlcp/result'],
       repository: 'https://github.com/AdrienLcp/packages'
     },
-    name: 'Result & i18n',
+    name: 'Packages',
     samples: [
       {
         code: `const EN = defineDictionary({ greeting: 'Hello {name}' })
@@ -116,12 +116,12 @@ result.data
       'GitHub Actions'
     ],
     summary: {
-      en: 'Two small TypeScript packages with no dependencies, published on npm. One translates, and knows at compile time what each message asks for; the other says whether something worked, without throwing and without null. Both were copied from project to project until they earned a repository of their own.',
-      fr: 'Deux petits paquets TypeScript sans dépendance, publiés sur npm. L’un traduit, et sait dès la compilation ce que chaque message attend ; l’autre dit si quelque chose a marché, sans exception et sans null. Tous deux passaient de projet en projet par copie, jusqu’à mériter un dépôt à eux.'
+      en: 'Small TypeScript packages with no dependencies, published on npm, each lifted out of a project once a second one needed it. The first two: one translates, and knows at compile time what each message asks for; the other says whether something worked, without throwing and without null.',
+      fr: 'Des petits paquets TypeScript sans dépendance, publiés sur npm, chacun sorti d’un projet dès qu’un deuxième en avait besoin. Les deux premiers : l’un traduit, et sait dès la compilation ce que chaque message attend ; l’autre dit si quelque chose a marché, sans exception et sans null.'
     },
     tagline: {
-      en: 'The two packages under this site and Taverla, typed as far as the compiler goes.',
-      fr: 'Les deux paquets sous ce site et sous Taverla, typés aussi loin que va le compilateur.'
+      en: 'The npm packages under this site and Taverla, typed as far as the compiler goes.',
+      fr: 'Les paquets npm sous ce site et sous Taverla, typés aussi loin que va le compilateur.'
     }
   }
 ]
