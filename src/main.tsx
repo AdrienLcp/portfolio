@@ -14,10 +14,12 @@ if (container === null) {
   throw new Error('Missing #root in index.html')
 }
 
-const hasPrerenderedPage = container.hasChildNodes()
+const hasPreRenderedPage = container.hasChildNodes()
 
-if (hasPrerenderedPage) {
+if (hasPreRenderedPage) {
   await routerReadyToReplacePrerender()
 }
 
-createRoot(container).render(<App locale={locale} />)
+const root = createRoot(container)
+
+root.render(<App locale={locale} />)
