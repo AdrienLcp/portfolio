@@ -4,9 +4,9 @@ import { join } from 'node:path'
 import { chromium } from 'playwright'
 import { createServer } from 'vite'
 
-const PUBLIC_DIR = join(import.meta.dirname, '..', 'public')
+import { OPEN_GRAPH_IMAGE_SIZE } from '../src/presentation/head/open-graph-image'
 
-const OPEN_GRAPH_SIZE_ANNOUNCED_IN_INDEX_HTML = { height: 630, width: 1200 }
+const PUBLIC_DIR = join(import.meta.dirname, '..', 'public')
 
 /** iOS rounds the corners itself, so the square is full-bleed. */
 const IOS_TOUCH_ICON_SIZE = 180
@@ -28,7 +28,7 @@ try {
   const context = await browser.newContext({
     colorScheme: 'light',
     reducedMotion: 'reduce',
-    viewport: OPEN_GRAPH_SIZE_ANNOUNCED_IN_INDEX_HTML
+    viewport: OPEN_GRAPH_IMAGE_SIZE
   })
   const page = await context.newPage()
 

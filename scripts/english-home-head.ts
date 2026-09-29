@@ -3,6 +3,7 @@ import { resolve } from 'node:path'
 import { normalizePath, type Plugin } from 'vite'
 
 import { IMAGE_ALTS, PAGE_HEADS } from '../src/presentation/head/document-head'
+import { OPEN_GRAPH_IMAGE_SIZE } from '../src/presentation/head/open-graph-image'
 import { setMeta, setTitle } from './head-tags'
 
 const APP_SHELL = normalizePath(
@@ -37,13 +38,25 @@ const writeEnglishHomeHead = (html: string): string => {
         html: next,
         identifyingAttribute: 'property="og:image:alt"',
         value: IMAGE_ALTS.en
+      }),
+    (next: string) =>
+      setMeta({
+        html: next,
+        identifyingAttribute: 'property="og:image:width"',
+        value: String(OPEN_GRAPH_IMAGE_SIZE.width)
+      }),
+    (next: string) =>
+      setMeta({
+        html: next,
+        identifyingAttribute: 'property="og:image:height"',
+        value: String(OPEN_GRAPH_IMAGE_SIZE.height)
       })
   ].reduce((next, write) => write(next), html)
 }
 
 /**
  * Fills the copy `index.html` leaves empty with the English home page's head,
- * read from `document-head.ts`, so the shell `pnpm dev` and the SPA fallback
+ * read from `document-head.ts`, and the share card's size, so the shell `pnpm dev` and the SPA fallback
  * serve cannot drift from it. The prerender then rewrites it per document.
  */
 export const englishHomeHead = (): Plugin => ({
