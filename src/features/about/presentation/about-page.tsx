@@ -1,8 +1,8 @@
 import type React from 'react'
 import { Suspense, use } from 'react'
 
-import type { Step } from '@/features/about/about'
-import { useAboutData } from '@/features/about/about-loader'
+import type { Step } from '@/features/about/domain/about'
+import { useAboutData } from '@/features/about/infrastructure/about-loader'
 import { PROFILE_PHOTO } from '@/features/profile/profile'
 import {
   contactPathFor,

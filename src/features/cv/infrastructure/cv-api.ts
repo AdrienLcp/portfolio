@@ -1,7 +1,7 @@
 import { Result } from '@adrienlcp/result'
 
-import { type Cv, cvSchema, localizeCv } from '@/features/cv/cv'
-import { CV } from '@/features/cv/cv-content'
+import { type Cv, cvSchema, localizeCv } from '@/features/cv/domain/cv'
+import { CV } from '@/features/cv/domain/cv-content'
 import { type ApiError, serveContent } from '@/infrastructure/api/portfolio-api'
 import type { Locale } from '@/presentation/i18n/locale'
 

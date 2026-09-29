@@ -1,7 +1,11 @@
 import { Result } from '@adrienlcp/result'
 
-import { type About, aboutSchema, localizeAbout } from '@/features/about/about'
-import { ABOUT } from '@/features/about/about-content'
+import {
+  type About,
+  aboutSchema,
+  localizeAbout
+} from '@/features/about/domain/about'
+import { ABOUT } from '@/features/about/domain/about-content'
 import { type ApiError, serveContent } from '@/infrastructure/api/portfolio-api'
 import type { Locale } from '@/presentation/i18n/locale'
 

@@ -1,8 +1,8 @@
 import { fetchProfile } from '@/features/profile/profile-api'
-import type { Project } from '@/features/projects/project'
-import { projectNodeFor } from '@/features/projects/project-structured-data'
-import { fetchProject } from '@/features/projects/projects-api'
-import { PROJECTS } from '@/features/projects/projects-content'
+import type { Project } from '@/features/projects/domain/project'
+import { PROJECTS } from '@/features/projects/domain/projects-content'
+import { fetchProject } from '@/features/projects/infrastructure/projects-api'
+import { projectNodeFor } from '@/features/projects/presentation/project-structured-data'
 import {
   localizedPaths,
   pagePathFor,

@@ -1,6 +1,6 @@
 import type { z } from 'zod'
 
-import type { cvSchema } from '@/features/cv/cv'
+import type { cvSchema } from '@/features/cv/domain/cv'
 
 export const CV: z.input<typeof cvSchema> = {
   contact: {

@@ -1,6 +1,6 @@
 import type { z } from 'zod'
 
-import type { aboutSchema } from '@/features/about/about'
+import type { aboutSchema } from '@/features/about/domain/about'
 
 export const ABOUT: z.input<typeof aboutSchema> = {
   steps: [

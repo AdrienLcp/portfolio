@@ -1,7 +1,7 @@
 import type React from 'react'
 import { Suspense, use } from 'react'
 
-import { useProjectsData } from '@/features/projects/projects-loader'
+import { useProjectsData } from '@/features/projects/infrastructure/projects-loader'
 import { projectPathFor } from '@/infrastructure/router/navigation'
 import { Lid } from '@/presentation/components/lid'
 import { Main } from '@/presentation/components/main'

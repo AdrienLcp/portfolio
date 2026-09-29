@@ -1,6 +1,6 @@
 import type { z } from 'zod'
 
-import type { projectsSchema } from '@/features/projects/project'
+import type { projectsSchema } from '@/features/projects/domain/project'
 
 export const PROJECTS: z.input<typeof projectsSchema> = [
   {

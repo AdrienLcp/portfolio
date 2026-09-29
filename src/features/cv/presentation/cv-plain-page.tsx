@@ -1,9 +1,13 @@
 import type React from 'react'
 import { Suspense, use } from 'react'
 
-import type { Cv } from '@/features/cv/cv'
-import { displayUrl, formatPeriod, formatPhone } from '@/features/cv/cv-format'
-import { useCvData } from '@/features/cv/cv-loader'
+import type { Cv } from '@/features/cv/domain/cv'
+import {
+  displayUrl,
+  formatPeriod,
+  formatPhone
+} from '@/features/cv/domain/cv-format'
+import { useCvData } from '@/features/cv/infrastructure/cv-loader'
 import type { Profile } from '@/features/profile/profile'
 import { Main } from '@/presentation/components/main'
 import { useIndexedPageTitle } from '@/presentation/head/use-document-title'

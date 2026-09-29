@@ -1,6 +1,6 @@
 import type React from 'react'
 
-import { logoFor } from './tech-logos'
+import { logoFor } from '@/features/about/domain/tech-logos'
 
 type TechLogoProps = {
   term: string
