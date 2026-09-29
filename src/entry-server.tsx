@@ -7,9 +7,10 @@ import {
 } from 'react-router'
 
 import { PROFILE_PHOTO } from '@/features/profile/profile'
+import { fetchProfile } from '@/features/profile/profile-api'
 import type { Project } from '@/features/projects/project'
-import { PROJECTS } from '@/infrastructure/api/data/projects'
-import { fetchProfile, fetchProject } from '@/infrastructure/api/portfolio-api'
+import { fetchProject } from '@/features/projects/projects-api'
+import { PROJECTS } from '@/features/projects/projects-content'
 import {
   homePathFor,
   localizedPaths,

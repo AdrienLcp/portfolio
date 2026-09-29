@@ -1,13 +1,8 @@
 import { describe, expect, it } from 'vitest'
 
-import {
-  fetchCv,
-  fetchProfile,
-  fetchProject,
-  fetchProjects
-} from './portfolio-api'
+import { fetchProject, fetchProjects } from './projects-api'
 
-describe('portfolio api', () => {
+describe('projects api', () => {
   it('[api] serves the embedded projects in the requested locale', async () => {
     const projects = await fetchProjects('fr')
 
@@ -30,21 +25,5 @@ describe('portfolio api', () => {
     await expect(
       fetchProject({ locale: 'en', slug: 'no-such-project' })
     ).resolves.toEqual({ error: 'not_found', status: 'failure' })
-  })
-
-  it('[api] serves the profile in the requested locale', async () => {
-    const profile = await fetchProfile('en')
-
-    expect(profile.status === 'success' && profile.data.role).toBe(
-      'Full-stack developer'
-    )
-  })
-
-  it('[api] serves the CV in the requested locale', async () => {
-    const cv = await fetchCv('fr')
-
-    expect(cv.status === 'success' && cv.data.title).toBe(
-      'Développeur full-stack'
-    )
   })
 })
