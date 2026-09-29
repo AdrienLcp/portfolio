@@ -10,6 +10,10 @@ export const EN_DICTIONARY = defineDictionary({
     toolbox: 'The toolbox',
     writeToMe: 'Write to me'
   },
+  common: {
+    github: 'GitHub',
+    linkedin: 'LinkedIn'
+  },
   contact: {
     copied: 'Address copied',
     copy: 'Copy the address',
@@ -46,6 +50,7 @@ export const EN_DICTIONARY = defineDictionary({
     download: 'Download the CV',
     downloadPlain: 'ATS version',
     email: 'Email',
+    labelSeparator: ': ',
     phone: 'Phone',
     photo: 'Adrien Lacourpaille, smiling, in a dark shirt',
     plainNote:

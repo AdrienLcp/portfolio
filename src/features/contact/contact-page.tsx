@@ -27,11 +27,20 @@ const Mailbox: React.FC = () => {
   const profileResult = use(profile)
   const addressRef = useRef<HTMLParagraphElement>(null)
 
-  if (cvResult.status === 'failure' || profileResult.status === 'failure') {
-    const error =
-      cvResult.status === 'failure' ? cvResult.error : 'invalid_content'
+  if (cvResult.status === 'failure') {
+    return (
+      <p className='contact-failure'>
+        {translate(apiErrorKey(cvResult.error))}
+      </p>
+    )
+  }
 
-    return <p className='contact-failure'>{translate(apiErrorKey(error))}</p>
+  if (profileResult.status === 'failure') {
+    return (
+      <p className='contact-failure'>
+        {translate(apiErrorKey(profileResult.error))}
+      </p>
+    )
   }
 
   const { email } = cvResult.data.contact
@@ -73,10 +82,10 @@ const Mailbox: React.FC = () => {
         </h2>
         <div className='elsewhere-links'>
           <Link href={links.github} target='_blank'>
-            GitHub
+            {translate('common.github')}
           </Link>
           <Link href={links.linkedin} target='_blank'>
-            LinkedIn
+            {translate('common.linkedin')}
           </Link>
           <Link href={cvPathFor(locale)}>{translate('header.cv')}</Link>
         </div>

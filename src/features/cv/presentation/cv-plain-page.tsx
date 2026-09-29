@@ -12,12 +12,8 @@ import type { Profile } from '@/features/profile/profile'
 import { Main } from '@/presentation/components/main'
 import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
-import type { Locale } from '@/presentation/i18n/locale'
 
 import './cv-plain-page.sass'
-
-/** French sets its colon apart with a no-break space. */
-const COLON: Record<Locale, string> = { en: ': ', fr: ' : ' }
 
 type CvPlainProps = {
   cv: Cv
@@ -31,7 +27,7 @@ type CvPlainProps = {
 const CvPlain: React.FC<CvPlainProps> = ({ cv, profile }) => {
   const { locale, translate } = useI18n()
   const present = translate('cv.present')
-  const colon = COLON[locale]
+  const labelSeparator = translate('cv.labelSeparator')
 
   return (
     <article className='cv-plain'>
@@ -100,7 +96,7 @@ const CvPlain: React.FC<CvPlainProps> = ({ cv, profile }) => {
         {cv.skills.map((skill) => (
           <li key={skill.group}>
             <strong>{skill.group}</strong>
-            {colon}
+            {labelSeparator}
             {skill.terms.join(', ')}
           </li>
         ))}
@@ -119,7 +115,7 @@ const CvPlain: React.FC<CvPlainProps> = ({ cv, profile }) => {
         {cv.specs.map((spec) => (
           <li key={spec.label}>
             {spec.label}
-            {colon}
+            {labelSeparator}
             {spec.value}
           </li>
         ))}

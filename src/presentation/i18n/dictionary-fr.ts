@@ -12,6 +12,10 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
     toolbox: 'La boîte à outils',
     writeToMe: 'M’écrire'
   },
+  common: {
+    github: 'GitHub',
+    linkedin: 'LinkedIn'
+  },
   contact: {
     copied: 'Adresse copiée',
     copy: 'Copier l’adresse',
@@ -47,6 +51,7 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
     download: 'Télécharger le CV',
     downloadPlain: 'Version ATS',
     email: 'E-mail',
+    labelSeparator: ' : ',
     phone: 'Téléphone',
     photo: 'Adrien Lacourpaille, souriant, en chemise sombre',
     plainNote:
