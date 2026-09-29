@@ -25,6 +25,7 @@
     "@vitest/browser": "^4.1.11",
     "@vitest/browser-playwright": "^4.1.11",
     "lighthouse": "^13.5.0",
+    "oxc-parser": "^0.151.0",
     "oxc-transform-react": "^0.151.0",
     "playwright": "~1.63.0",
     "sass": "^1.105.0",
@@ -47,6 +48,7 @@
     "build:client": "vite build",
     "build:pages": "pnpm build && storybook build --quiet --output-dir dist/storybook",
     "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-ssr",
+    "comments:check": "node --import tsx scripts/no-comments.ts",
     "cv:pdf": "node --import tsx scripts/cv-pdf.ts",
     "deps:upgrade": "corepack use pnpm@latest && pnpm -r up -L && biome migrate --write",
     "dev": "vite",
@@ -65,7 +67,7 @@
     "toolkit:check": "node --import tsx scripts/toolkit.ts --check",
     "toolkit:sync": "node --import tsx scripts/toolkit.ts",
     "typecheck": "tsc --noEmit",
-    "validate": "pnpm toolkit:check && pnpm build && pnpm lint:ci && pnpm test && pnpm test:components && pnpm test:e2e"
+    "validate": "pnpm toolkit:check && pnpm comments:check && pnpm build && pnpm lint:ci && pnpm test && pnpm test:components && pnpm test:e2e"
   },
   "type": "module",
   "version": "0.1.0"
