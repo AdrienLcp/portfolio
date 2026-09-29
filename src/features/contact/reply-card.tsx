@@ -14,7 +14,7 @@ import { z } from 'zod'
 import {
   type MessageError,
   sendMessage
-} from '@/infrastructure/api/message-api'
+} from '@/infrastructure/web3forms/web3forms-client'
 import { Button } from '@/presentation/components/ui/button'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 
