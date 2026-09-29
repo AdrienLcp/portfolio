@@ -61,7 +61,8 @@ const PACKAGES = [
   '@adrienlcp/react-aria',
   '@adrienlcp/styles',
   '@adrienlcp/tsconfig',
-  '@adrienlcp/biome-config'
+  '@adrienlcp/biome-config',
+  '@adrienlcp/react-router'
 ] as const
 
 type ProjectRulesLinkProps = {

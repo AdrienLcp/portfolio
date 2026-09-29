@@ -74,8 +74,8 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
         fr: 'Versionnés avec Changesets et publiés depuis GitHub Actions avec la provenance npm, jamais depuis un portable.'
       },
       {
-        en: 'This site, Taverla and Séance all install the ten from npm, down to their TypeScript and Biome configs.',
-        fr: 'Ce site, Taverla et Séance installent tous les trois les dix depuis npm, jusqu’à leurs configs TypeScript et Biome.'
+        en: 'This site, Taverla and Séance install them from npm, down to their TypeScript and Biome configs.',
+        fr: 'Ce site, Taverla et Séance les installent depuis npm, jusqu’à leurs configs TypeScript et Biome.'
       }
     ],
     kind: 'library',
@@ -90,7 +90,8 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
         '@adrienlcp/react-aria',
         '@adrienlcp/styles',
         '@adrienlcp/tsconfig',
-        '@adrienlcp/biome-config'
+        '@adrienlcp/biome-config',
+        '@adrienlcp/react-router'
       ],
       repository: 'https://github.com/AdrienLcp/packages'
     },
