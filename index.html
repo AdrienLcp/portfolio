@@ -3,20 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <!--
-      The lid's petrol field in each palette, because the lid is what the top of
-      the first page paints. They are `--field-dominant` in `_tokens.sass`: if
-      that token moves, these move with it.
-    -->
-    <meta content="#0f5257" data-scheme="light" media="(prefers-color-scheme: light)" name="theme-color" />
-    <meta content="#1b5a5e" data-scheme="dark" media="(prefers-color-scheme: dark)" name="theme-color" />
-    <!--
-      The stylesheet follows the system theme on its own, so only an explicit
-      choice is stamped, before the first paint rather than from React, which
-      runs after it. The key and its values are `preferences-storage.ts`'s.
-      The theme-color tags are media-scoped to the system preference, so an
-      explicit choice has to retarget them too.
-    -->
+    <meta content="#0f5257" data-scheme="light" data-token="--field-dominant" media="(prefers-color-scheme: light)" name="theme-color" />
+    <meta content="#1b5a5e" data-scheme="dark" data-token="--field-dominant" media="(prefers-color-scheme: dark)" name="theme-color" />
     <script>
       try {
         const theme = localStorage.getItem('portfolio:theme')
@@ -30,14 +18,6 @@
         }
       } catch {}
     </script>
-    <!--
-      Archivo is drawn at five widths, from 100% to 125%, so no metric-adjusted
-      fallback matches them all, and swapping it in reflows every heading, the
-      nav and the stamps; Literata swapping in rewraps every paragraph. The page
-      waits for both instead, at most a moment: the files are preloaded, and
-      past the cap they swap in as usual. The URLs and the descriptors are the
-      latin faces' in `_fonts.sass`.
-    -->
     <style>
       :root[data-fonts-pending] #root {
         visibility: hidden;
@@ -47,9 +27,10 @@
       if ('FontFace' in window) {
         const root = document.documentElement
         const reveal = () => delete root.dataset.fontsPending
+        const longestFontWaitMs = 800
 
         root.dataset.fontsPending = ''
-        setTimeout(reveal, 800)
+        setTimeout(reveal, longestFontWaitMs)
         Promise.all([
           new FontFace('Archivo', "url('/fonts/archivo-latin.woff2') format('woff2')", {
             stretch: '100% 125%',
@@ -62,21 +43,12 @@
       }
     </script>
     <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
-    <!-- iOS ignores an SVG icon, and a phone is where a page is added to a home screen. -->
     <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
-    <!--
-      This head is the English home page's. Every tag below that names a page
-      is rewritten per document by `scripts/prerender.ts`, which fails the build
-      if one stops matching; unrewritten, it is what `pnpm dev` and the SPA
-      fallback serve. The copy lives in `presentation/head/document-head.ts`:
-      these must be its `en.home` entry word for word.
-    -->
     <title>Adrien Lacourpaille — Full-stack developer</title>
     <meta
       content="Adrien Lacourpaille, full-stack developer in Nantes: websites, APIs and party games. Taverla, realtime party games built alone end to end, in two languages and two themes."
       name="description"
     />
-    <!-- The one place the host is written down: the prerender reads the origin from it. -->
     <link href="https://adrienlacourpaille.dev/" rel="canonical" />
     <meta content="website" property="og:type" />
     <meta content="Adrien Lacourpaille" property="og:site_name" />
@@ -93,23 +65,11 @@
     <meta content="en_US" property="og:locale" />
     <meta content="fr_FR" property="og:locale:alternate" />
     <meta content="summary_large_image" name="twitter:card" />
-    <!--
-      A layer's position is fixed where its name first appears, and Vite injects
-      stylesheets in module-graph order: declared here, the order cannot depend
-      on which component happened to be imported first.
-    -->
     <style>
       @layer reset, tokens, base, components;
     </style>
   </head>
   <body>
-<!--
-THESIS: Every piece of work is a published game box: the lid sells it, the contents list proves it, the numbered rule booklet explains it. It refuses the dark developer portfolio made of a name, a tagline and a grid of cards.
-OWN-WORLD: Four-colour box printing in petrol and tomato with marigold tokens on mint-grey paper; flat fields own whole regions, die-cut tokens, ink outlines, no gradient. Archivo stretched wide and black on the lid, Literata in the booklet.
-STORY: The visitor opens the box, reads what is inside (one realtime server, three games, two languages, two themes, zero flash) and leaves knowing Adrien ships finished, crafted, deeply engineered products.
-FIRST VIEWPORT: The lid, full-bleed: the name in wide black Archivo, a "Full-stack developer" badge, the illustrated lid art and the contents callout; Projects, About and Contact as tokens along the top; lifting the lid is the primary action.
-FORM: a game box and its rule booklet.
--->
     <div id="root"></div>
     <script src="/src/main.tsx" type="module"></script>
   </body>

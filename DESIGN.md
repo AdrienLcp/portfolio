@@ -227,3 +227,13 @@ Text selection is marigold with print ink; the caret is brick; the scrollbar is 
 - **Don't** set a sentence in Archivo below headline size, or a control label in Literata.
 - **Don't** put a small label above a heading; the heading carries itself.
 - **Don't** replace a token with a plain rectangle button.
+
+## Design brief
+
+```
+THESIS: Every piece of work is a published game box: the lid sells it, the contents list proves it, the numbered rule booklet explains it. It refuses the dark developer portfolio made of a name, a tagline and a grid of cards.
+OWN-WORLD: Four-colour box printing in petrol and tomato with marigold tokens on mint-grey paper; flat fields own whole regions, die-cut tokens, ink outlines, no gradient. Archivo stretched wide and black on the lid, Literata in the booklet.
+STORY: The visitor opens the box, reads what is inside (one realtime server, three games, two languages, two themes, zero flash) and leaves knowing Adrien ships finished, crafted, deeply engineered products.
+FIRST VIEWPORT: The lid, full-bleed: the name in wide black Archivo, a "Full-stack developer" badge, the illustrated lid art and the contents callout; Projects, About and Contact as tokens along the top; lifting the lid is the primary action.
+FORM: a game box and its rule booklet.
+```
