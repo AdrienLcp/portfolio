@@ -97,7 +97,7 @@ The world refuses the dark developer portfolio made of a name, a tagline and a g
 
 ## Colors
 
-A four-ink box print: one dominant cool field, one warm secondary field, one gold accent, on a faintly green paper. Every colour is a `light-dark()` pair; the night value sits beside the day value.
+A four-ink box print: one dominant cool field, one warm secondary field, one gold accent, on a faintly green paper. Every colour is a `light-dark()` pair; the night value sits beside the day value. Each value in `_tokens.sass` is an exact conversion of the palette's hex, and the theme itself is only `color-scheme`. The contrast ratios quoted below were measured, by day and by night.
 
 ### Primary
 - **Box Petrol** (`petrol`, night `petrol-night`): the dominant field. Paints the lid, the whole first viewport of the home page, and the broken box of the error screen. It is also the scrollbar thumb and the browser's theme colour. On-field text is paper (7.9:1 by day, 6.5:1 by night).
@@ -129,6 +129,13 @@ A four-ink box print: one dominant cool field, one warm secondary field, one gol
 
 **Character:** a wide, heavy grotesque printed on the lid against a bookish serif with a warm italic. Both are self-hosted variable files under the SIL Open Font License, split into latin and latin-ext subsets by `unicode-range`, with the latin Archivo and the latin Literata italic preloaded.
 
+### Font files
+Each file keeps only the stretch of its axes the stylesheets ask for, cut from the upstream variable fonts with fontTools' instancer (`fonttools varLib.instancer`):
+- **Archivo:** wght 600–900, wdth 100–125.
+- **Literata:** wght 400–700, opsz 10–36; the italic pinned at wght 500, for the lead.
+
+This halves what a phone downloads before the first paint. A weight or a width outside these ranges means cutting the files again from the upstream fonts; otherwise the browser silently draws the nearest one. The files live in `public/fonts/` under the names `_fonts.sass` declares, and those URLs are repeated by the font wait in `index.html`, the preloads in `scripts/prerender.ts` and `.storybook/preview-head.html`: rename a file in all four.
+
 ### Hierarchy
 - **Display** (900, width 125%, `min(6rem, 10cqi)`, line-height 0.88, uppercase): the name on the lid. Sized against its container so the longest word fits the narrowest lid, 320px included; capped at 12ch.
 - **Headline** (900, width 118%, `clamp(2rem, 1.2rem + 4vw, 4.5rem)`, line-height 1): the one sentence a field carries on the not-found and error pages; capped at 16 to 18ch, long paths break anywhere.
@@ -146,6 +153,13 @@ A four-ink box print: one dominant cool field, one warm secondary field, one gol
 One column, mobile first. Every page fills the viewport height (`100dvh`) and stacks full-bleed fields: a tall field that grows to take the remaining height, then a short band or footer strip under it. Content inside a field is pushed to its bottom edge, so the lettering sits on the lid's lower third and the empty field above is part of the composition.
 
 Horizontal padding is a single gutter (`clamp(16px, 4vw, 48px)`) on every field. Vertical rhythm uses the spacing scale: tall fields open with 112px above their content, bands take 20 to 32px, and from 900px wide the lid and its band gain one step of padding each. The only breakpoint is 900px; everything else scales fluidly with `clamp()` and container units. The page never scrolls horizontally.
+
+## Loading
+
+The first paint is already the final one: no theme flash, no font swap.
+- **Theme:** the stylesheet follows the system theme on its own, so only an explicit choice needs stamping. An inline script in `index.html` stamps it before the first paint, since React runs after it, and moves the `theme-color` tags to it, since they are media-scoped to the system preference.
+- **Fonts:** Archivo is drawn at five widths, from 100% to 125%, so no metric-adjusted fallback matches them all, and swapping it in reflows every heading, the nav and the stamps; Literata swapping in rewraps every paragraph. The page stays hidden until both latin faces load instead, at most `longestFontWaitMs` (800ms): the files are preloaded, and past the cap they swap in as usual. The `FontFace` descriptors in that script are the latin faces' in `_fonts.sass`.
+- **Home screen:** iOS ignores an SVG icon, and a phone is where a page is added to a home screen, so `apple-touch-icon.png` sits beside `favicon.svg`.
 
 ## Elevation & Depth
 
@@ -205,6 +219,12 @@ One family, drawn on a 24-unit grid: 2.75 stroke, square caps, mitred joins, siz
 
 ### Navigation
 A header strip printed on the lid's petrol field, so on the home page header and lid read as one field. At its left, the initials disc (a token with no pip, lettered in the lid's wide Archivo) leads home. At its right, the page tokens (Projects), then the locale token naming the other language in that language, then, from 900px, the theme rail. Below 900px the rail moves to the footer, a paper strip under a 3px ink rule that also carries the GitHub and LinkedIn tokens and a caption colophon. Page changes are view transitions.
+
+### Contact address
+The address on the contact page is 19 characters of wide black lettering, sized to its container (`7.6cqi`) so it holds on one line at 320px.
+
+### Plain CV
+The plain CV carries nothing of the printed world: recruitment software reads text in source order and stumbles on columns, colour and display type.
 
 ### Browser Surfaces
 Text selection is marigold with print ink; the caret is brick; the scrollbar is a petrol thumb on paper; link underlines are 2px thick, offset 0.22em.

@@ -1,3 +1,5 @@
+/// The lid lettering. Sized against its container rather than the viewport, so
+/// the longest word of the name fits the narrowest lid, 320px included.
 @mixin lid
   font-family: var(--font-display)
   font-size: min(6rem, 10cqi)
@@ -15,6 +17,7 @@
   letter-spacing: -0.025em
   line-height: 1
 
+/// The title of a sheet or a section: the headline's lettering, a size down.
 @mixin heading
   font-family: var(--font-display)
   font-size: clamp(1.375rem, 1.15rem + 1.1vw, 2rem)
@@ -37,6 +40,7 @@
   font-weight: 400
   line-height: 1.6
 
+/// A control's own label: a token, a button.
 @mixin control
   font-family: var(--font-display)
   font-size: var(--text-body)
