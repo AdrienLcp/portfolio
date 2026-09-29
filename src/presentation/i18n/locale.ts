@@ -8,7 +8,7 @@ export const LOCALE_NAMES = {
   fr: 'Français'
 } as const satisfies Record<Locale, string>
 
-export const DEFAULT_LOCALE: Locale = 'en'
+export const DEFAULT_LOCALE = 'en' satisfies Locale
 
 export const isLocale = (value: string): value is Locale =>
   LOCALES.some((locale) => locale === value)

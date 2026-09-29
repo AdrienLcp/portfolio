@@ -1,8 +1,6 @@
-import type { DictionaryFor } from '@adrienlcp/i18n'
+import { defineDictionary } from '@adrienlcp/i18n'
 
-import type { EN_DICTIONARY } from './dictionary-en'
-
-export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
+export const FR_DICTIONARY = defineDictionary({
   about: {
     credit: 'Un jeu d’Adrien Lacourpaille.',
     lead: 'J’ai rangé des pièces détachées pendant six ans. Maintenant, je range du code.',
@@ -183,4 +181,4 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
     close: 'Fermer',
     newTab: '(s’ouvre dans un nouvel onglet)'
   }
-}
+})
