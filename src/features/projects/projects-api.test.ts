@@ -10,7 +10,8 @@ describe('projects api', () => {
     if (projects.status === 'success') {
       expect(projects.data.map((project) => project.slug)).toEqual([
         'taverla',
-        'packages'
+        'packages',
+        'seance'
       ])
       expect(projects.data[0]?.tagline).toBe(
         'Des jeux de soirée sur tous les téléphones de la pièce, au même instant.'

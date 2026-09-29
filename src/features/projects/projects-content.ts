@@ -168,5 +168,57 @@ if (locale.status === 'failure') {
       en: 'The npm packages under this site and Taverla, typed as far as the compiler goes.',
       fr: 'Les paquets npm sous ce site et sous Taverla, typés aussi loin que va le compilateur.'
     }
+  },
+  {
+    highlights: [
+      {
+        en: 'Installable and fully offline: a hand-written Workbox service worker precaches the whole shell, and every route is served with the network cut, mid-session included.',
+        fr: 'Installable et entièrement hors ligne : un service worker Workbox écrit à la main met toute l’app en cache, et chaque route répond réseau coupé, séance en cours comprise.'
+      },
+      {
+        en: 'Reminders without a server: an in-app clock, Notification Triggers where they exist, and Periodic Background Sync reading the schedule from IndexedDB in the worker — and the settings screen says plainly what this browser can do.',
+        fr: 'Des rappels sans serveur : une horloge dans l’app, les Notification Triggers là où ils existent, et le Periodic Background Sync qui lit le planning dans IndexedDB depuis le worker — et l’écran de réglages dit franchement ce que ce navigateur sait faire.'
+      },
+      {
+        en: 'Progress charts drawn by hand in SVG and HTML: regularity counted in weeks, volume per week, waist and weight never on a shared axis, each walkable with an invisible native range input and backed by a table.',
+        fr: 'Des graphiques de progression dessinés à la main en SVG et HTML : régularité comptée en semaines, volume par semaine, tour de taille et poids jamais sur un même axe, chacun parcourable par un input range natif invisible et doublé d’un tableau.'
+      },
+      {
+        en: 'Every number stays on the device: a JSON backup carries it elsewhere, and a seeded specimen profile shows the charts full without ever touching the reader’s own data.',
+        fr: 'Chaque chiffre reste sur l’appareil : une sauvegarde JSON le transporte ailleurs, et un profil spécimen généré à graine montre les graphiques pleins sans jamais toucher aux données du lecteur.'
+      },
+      {
+        en: 'Thirty-seven animated figures drawn from joints, not paths: interpolation is polar and chained from the hip, so no bone stretches mid-movement.',
+        fr: 'Trente-sept figures animées dessinées à partir d’articulations, pas de tracés : l’interpolation est polaire et chaînée depuis la hanche, pour qu’aucun os ne s’étire en plein mouvement.'
+      }
+    ],
+    links: {
+      live: 'https://sport-buk.pages.dev/specimen',
+      repository: 'https://github.com/AdrienLcp/sport'
+    },
+    name: 'Séance',
+    samples: [
+      {
+        code: `export const isReminderOwed = ({
+  lastSessionDay, lastShownDay, now, schedule, today
+}) =>
+  schedule.isEnabled &&
+  schedule.days.some((day) => day === now.getDay()) &&
+  now.getTime() >= reminderOn(now, schedule.time).getTime() &&
+  lastShownDay !== today &&
+  lastSessionDay !== today`,
+        title: 'reminder-schedule.ts'
+      }
+    ],
+    slug: 'seance',
+    stack: ['TypeScript', 'React', 'PWA', 'Workbox', 'IndexedDB', 'Vitest'],
+    summary: {
+      en: 'A bodyweight training programme drawn as a gymnastics manual, one plate per movement. It guides a thirty-minute session, keeps a journal and draws the progress curves — installable, offline, with reminders, and with every number kept on the device.',
+      fr: 'Un programme au poids du corps dessiné comme un manuel de gymnastique, une planche par mouvement. Il guide une séance de trente minutes, tient un journal et trace les courbes de progrès — installable, hors ligne, avec des rappels, et chaque chiffre gardé sur l’appareil.'
+    },
+    tagline: {
+      en: 'A training manual that works offline and remembers everything, on the device alone.',
+      fr: 'Un manuel d’entraînement qui marche hors ligne et se souvient de tout, sur l’appareil seul.'
+    }
   }
 ]
