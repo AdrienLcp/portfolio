@@ -122,7 +122,7 @@ const CvPlain: React.FC<CvPlainProps> = ({ cv, profile }) => {
   )
 }
 
-const CvPlainContent: React.FC = () => {
+const CvPlainCase: React.FC = () => {
   const data = useCvData()
   const cv = use(data.cv)
   const profile = use(data.profile)
@@ -139,7 +139,7 @@ export const CvPlainPage: React.FC = () => {
     <Main className='cv-plain-page'>
       <meta content='noindex' name='robots' />
       <Suspense fallback={null}>
-        <CvPlainContent />
+        <CvPlainCase />
       </Suspense>
     </Main>
   )

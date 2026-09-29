@@ -227,7 +227,7 @@ const CvSheet: React.FC<CvSheetProps> = ({ cv, profile }) => {
   )
 }
 
-const CvContent: React.FC = () => {
+const CvCase: React.FC = () => {
   const { locale, translate } = useI18n()
   const data = useCvData()
   const cv = use(data.cv)
@@ -254,7 +254,7 @@ export const CvPage: React.FC = () => {
   return (
     <Main className='cv-page'>
       <Suspense fallback={<RouteFallback />}>
-        <CvContent />
+        <CvCase />
       </Suspense>
     </Main>
   )

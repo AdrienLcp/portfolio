@@ -49,9 +49,6 @@ export const contactPathFor = (locale: Locale): string =>
 export const cvPathFor = (locale: Locale): string =>
   pathFor(paths.cv, { locale })
 
-export const cvPlainPathFor = (locale: Locale): string =>
-  pathFor(paths.cvPlain, { locale })
-
 export const projectsPathFor = (locale: Locale): string =>
   pathFor(paths.projects, { locale })
 

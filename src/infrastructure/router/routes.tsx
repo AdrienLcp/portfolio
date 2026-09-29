@@ -19,7 +19,7 @@ import {
 } from '@/presentation/i18n/locale'
 import { RouteFallback } from '@/presentation/route-fallback'
 
-export type LocalizedPath = (typeof localizedPaths)[keyof typeof localizedPaths]
+type LocalizedPath = (typeof localizedPaths)[keyof typeof localizedPaths]
 
 type LazyPage = {
   lazy: RouteObject['lazy']

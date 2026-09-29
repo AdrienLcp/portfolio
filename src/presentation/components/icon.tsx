@@ -22,10 +22,6 @@ const ICON_PATHS = {
 
 export type IconName = keyof typeof ICON_PATHS
 
-export const ICON_NAMES = Object.keys(ICON_PATHS).filter(
-  (name): name is IconName => name in ICON_PATHS
-)
-
 type IconProps = {
   className?: string
   name: IconName

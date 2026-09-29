@@ -4,9 +4,9 @@ import { localizedTextSchema } from '@/features/content/localized-text'
 import { textSchema } from '@/features/content/text'
 import type { Locale } from '@/presentation/i18n/locale'
 
-export const projectSlugSchema = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
+const projectSlugSchema = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
 
-export const projectSchema = z.strictObject({
+const projectSchema = z.strictObject({
   highlights: z.array(localizedTextSchema).min(1),
   links: z.strictObject({
     live: z.url().optional(),

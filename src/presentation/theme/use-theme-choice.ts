@@ -12,9 +12,6 @@ export const THEME_CHOICES = ['auto', ...THEMES] as const
 
 export type ThemeChoice = (typeof THEME_CHOICES)[number]
 
-export const isThemeChoice = (value: string): value is ThemeChoice =>
-  THEME_CHOICES.some((choice) => choice === value)
-
 const themeFor = (choice: ThemeChoice): Theme | null =>
   isTheme(choice) ? choice : null
 

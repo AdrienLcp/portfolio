@@ -18,7 +18,7 @@ export const profileSchema = z.strictObject({
   role: localizedTextSchema
 })
 
-export type ProfileContent = z.infer<typeof profileSchema>
+type ProfileContent = z.infer<typeof profileSchema>
 
 export type Profile = Omit<ProfileContent, 'role'> & { role: string }
 

@@ -77,11 +77,11 @@ export const cvSchema = z.strictObject({
   title: localizedTextSchema
 })
 
-export type CvContent = z.infer<typeof cvSchema>
+type CvContent = z.infer<typeof cvSchema>
 
 export type Period = z.infer<typeof periodSchema>
 
-export type Mission = {
+type Mission = {
   period?: Period
   points: string[]
   summary: string

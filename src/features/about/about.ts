@@ -13,7 +13,7 @@ export const aboutSchema = z.strictObject({
   steps: z.array(stepSchema).min(1)
 })
 
-export type AboutContent = z.infer<typeof aboutSchema>
+type AboutContent = z.infer<typeof aboutSchema>
 
 export type Step = { mark: string; text: string; title: string }
 
