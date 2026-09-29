@@ -9,6 +9,16 @@ import { i18n } from './i18n'
 import type { Locale } from './locale'
 
 /**
+ * Storage that cannot be read, or holds a locale this version no longer knows,
+ * counts as no choice: the browser decides instead.
+ */
+const storedLocaleOrNone = (): Locale | null => {
+  const stored = readStoredLocale()
+
+  return stored.status === 'success' ? stored.data : null
+}
+
+/**
  * The URL first, because it is the only source somebody else can have chosen:
  * a link shared in French opens in French. Then this device's last choice, then
  * the browser. Stamped on `<html lang>` before the first render, or a browser
@@ -17,7 +27,7 @@ import type { Locale } from './locale'
 export const applyInitialLocale = (): Locale => {
   const inUrl = localeInPath(servedPath())
   const locale =
-    inUrl ?? readStoredLocale() ?? i18n.negotiate(preferredLocales())
+    inUrl ?? storedLocaleOrNone() ?? i18n.negotiate(preferredLocales())
 
   if (inUrl !== null) {
     writeStoredLocale(inUrl)

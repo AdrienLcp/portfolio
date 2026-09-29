@@ -20,8 +20,18 @@ const themeFor = (choice: ThemeChoice): Theme | null =>
 let currentChoice: ThemeChoice | null = null
 const listeners = new Set<() => void>()
 
+/**
+ * Storage that cannot be read, or holds a theme this version no longer knows,
+ * counts as no choice: the page follows the system.
+ */
+const storedChoiceOrAuto = (): ThemeChoice => {
+  const stored = readStoredTheme()
+
+  return stored.status === 'success' ? (stored.data ?? 'auto') : 'auto'
+}
+
 const readChoice = (): ThemeChoice => {
-  currentChoice ??= readStoredTheme() ?? 'auto'
+  currentChoice ??= storedChoiceOrAuto()
 
   return currentChoice
 }
