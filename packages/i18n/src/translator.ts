@@ -24,16 +24,6 @@ export type Translator<Reference> = {
     key: Key,
     values: Values
   ): string
-  /**
-   * The same message, cut at the spans it marks, each one handed to the
-   * function named after it. What comes back is the pieces in order — strings
-   * for the plain parts, whatever the functions returned for the marked ones —
-   * which a UI framework renders as a list and a string consumer joins.
-   *
-   * This is how a sentence keeps one key while still carrying a link or a bold
-   * word: splitting it into three keys instead would break the moment a
-   * language puts the words in another order.
-   */
   rich: <Key extends DotPath<Reference> & string, Node>(
     key: Key,
     values: RichValuesFor<LeafAt<Reference, Key>, Node>
@@ -45,25 +35,11 @@ type TranslatorOptions<Reference> = {
   locale: string
 }
 
-/**
- * The reference dictionary is the contract and every locale is an
- * implementation of it, so the keys and their values are typed from the
- * reference even when the strings being read are another language's.
- *
- * One translator holds one locale's dictionary and nothing else — no registry
- * of every language, no cascade from one to the next. Choosing the locale is
- * `negotiateLocale`'s job, and loading only the chosen dictionary is the
- * caller's, which is what lets an app `import()` it rather than bundle every
- * language it ships. There is no key-level fallback to another locale because
- * `DictionaryFor` makes a missing key fail to compile; a dictionary that fails
- * to *load* has no keys at all, and the caller answers that by keeping the
- * translator it already had.
- */
 export const createTranslator = <Reference>({
   dictionary,
   locale
 }: TranslatorOptions<Reference>): Translator<Reference> => {
-  const formatters = createFormatters(locale)
+  const formatters = createTranslatorScopedFormatters(locale)
 
   function translate<Key extends PlainKey<Reference>>(key: Key): string
   function translate<
@@ -106,10 +82,9 @@ export const createTranslator = <Reference>({
         ? ([translation, {}] as const)
         : translation
 
-    // The spans are cut before anything is substituted, so a value that itself
-    // reads `<b>` is written out as text rather than becoming a span — the same
-    // rule the placeholders follow, for the same reason.
-    return splitSpans(message).map((span) => {
+    const spansCutBeforeSubstitution = splitSpansWithoutNesting(message)
+
+    return spansCutBeforeSubstitution.map((span) => {
       const text = substitute({
         formatters,
         message: span.text,
@@ -134,13 +109,7 @@ const SPAN = /<(\w+)>([\s\S]*?)<\/\1>/g
 
 type Span = { tag: string | undefined; text: string }
 
-/**
- * A span cannot hold another span: the inner one would have to be rendered
- * before the outer function could be given a string, and a string is all a
- * function receives. Nesting is the price of that simplicity, and no sentence
- * has needed it yet.
- */
-const splitSpans = (message: string): Span[] => {
+const splitSpansWithoutNesting = (message: string): Span[] => {
   const spans: Span[] = []
   let cursor = 0
 
@@ -196,20 +165,6 @@ const PLACEHOLDER = /\{(\w+)(?::(\w+))?\}/g
 
 const FORMATTED_COUNT = '{?}'
 
-/**
- * One pass over the message, so a value that itself reads `{like this}` is
- * written out and never looked at again. Substituting argument by argument
- * would feed each result back to the next argument's turn.
- *
- * The one thing read twice is the alternative a placeholder resolved to — a
- * plural form, an enum member — which `expand` runs through a pass of its own.
- * That is dictionary text rather than a caller's value, so the rule above is
- * untouched.
- *
- * A value of the wrong type, or one the message never asked for, leaves its
- * placeholder standing rather than throwing: one bad value costs one word, not
- * the whole sentence.
- */
 const substitute = ({
   expanding = [],
   formatters,
@@ -296,21 +251,6 @@ const substitute = ({
     }
   })
 
-/**
- * A plural form and an enum member are dictionary text, so a placeholder one
- * carries is substituted like the rest of the sentence — `{?} messages from
- * {sender}` prints the sender rather than the word. `rich` already substitutes
- * inside the spans it cuts, and the two paths would otherwise disagree.
- *
- * Only the alternative the dictionary chose is read again, never a caller's
- * value: feeding a value back through is what prints a number of seconds inside
- * a player who named themselves `{seconds}`.
- *
- * `expanding` is the floor the recursion has none of otherwise. A form naming
- * the placeholder it was selected for — `other: '{count:plural} left'` under
- * `count` — would expand forever, so a name already being expanded leaves its
- * placeholder standing, which is what a value of the wrong type does too.
- */
 const expand = ({
   expanding,
   formatters,
@@ -338,11 +278,6 @@ const expand = ({
         values
       })
 
-/**
- * Neither English nor French has a CLDR `zero` category, so a `zero` form would
- * never be selected on its own — yet "nobody has answered" at 0 is the sentence
- * a screen actually wants. Declaring one opts into it.
- */
 const pluralize = ({
   count,
   formatters,
@@ -356,10 +291,10 @@ const pluralize = ({
     return String(count)
   }
 
-  const category =
-    count === 0 && forms.zero !== undefined
-      ? 'zero'
-      : formatters.plural({ type: forms.type }).select(count)
+  const optsIntoZeroForm = count === 0 && forms.zero !== undefined
+  const category = optsIntoZeroForm
+    ? 'zero'
+    : formatters.plural({ type: forms.type }).select(count)
 
   return (forms[category] ?? forms.other).replaceAll(
     FORMATTED_COUNT,
@@ -367,11 +302,6 @@ const pluralize = ({
   )
 }
 
-/**
- * A message declaring `{x:displayname}` must declare the kind of name it wants,
- * so the options are never absent — but the runtime shape stays loose, and
- * `Intl.DisplayNames` throws without a `type`. Nothing rather than a crash.
- */
 const displayName = ({
   formatters,
   of,
@@ -383,7 +313,6 @@ const displayName = ({
 }): string | undefined =>
   options === undefined ? undefined : formatters.displayname(options).of(of)
 
-/** Same reasoning: the unit is declared with the message, or there is none. */
 const relativeTime = ({
   count,
   formatters,
@@ -408,17 +337,7 @@ type Formatters = {
   ) => Intl.RelativeTimeFormat
 }
 
-/**
- * Building an `Intl` formatter costs far more than using one — it resolves the
- * locale data — and a message asks for the same one on every render. Held per
- * translator rather than in a module-level map, so the memory a locale takes
- * goes away with the translator that used it, and a test starts from nothing.
- *
- * Keyed on the options as written: two equivalent option objects whose keys are
- * in a different order get an entry each. They come from dictionary literals,
- * so there are as many entries as the dictionary has distinct formats.
- */
-const createFormatters = (locale: string): Formatters => {
+const createTranslatorScopedFormatters = (locale: string): Formatters => {
   const dates = new Map<string, Intl.DateTimeFormat>()
   const displayNames = new Map<string, Intl.DisplayNames>()
   const lists = new Map<string, Intl.ListFormat>()

@@ -1,6 +1,5 @@
 import { defineConfig } from 'vitest/config'
 
-// Pure TypeScript by construction: no browser, no server, no network.
 export default defineConfig({
   test: {
     coverage: {
