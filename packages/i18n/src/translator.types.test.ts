@@ -14,6 +14,17 @@ import {
   type WellFormed
 } from './dictionary'
 
+/**
+ * The half of this library that has no runtime to assert against. Every rule it
+ * enforces is a compile error at a call site, and a compile error cannot be
+ * caught by a test that has to compile — so each is written here as the type it
+ * resolves to instead. `never` is how this library says no.
+ *
+ * These assertions are checked by `tsc --noEmit`, not by the test run: a broken
+ * one fails the build.
+ */
+
+/** Assignability as a value, so that refusing it can be asserted too. */
 type Accepts<Target, Candidate> = Candidate extends Target ? true : false
 
 const REFERENCE = {
@@ -169,11 +180,13 @@ describe('what a second locale owes the reference', () => {
 })
 
 describe('what a second locale owes each message', () => {
+  /** Whether the candidate may be registered beside the reference at all. */
   type Registers<Reference, Candidate> = Accepts<
     MatchingDictionary<Reference, Candidate>,
     Candidate
   >
 
+  /** The same question about one message, asked inside a dictionary of one. */
   type Matches<Reference, Candidate> = Registers<
     { message: Reference },
     { message: Candidate }
