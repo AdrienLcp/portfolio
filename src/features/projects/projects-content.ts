@@ -65,19 +65,26 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
         fr: 'Un téléphone peint sa barre d’outils avec les balises theme-color, qui suivent le système, pas le visiteur. Le paquet de thème réécrit leur media query avant le premier rendu : un choix sombre sur un téléphone clair a aussi sa barre sombre.'
       },
       {
+        en: 'Safari’s private window once threw on every localStorage write; safe-storage returns a Result there instead, as for a full quota or a value an older version stored. browser copies to the clipboard even over plain HTTP, where the Clipboard API does not exist.',
+        fr: 'La fenêtre privée de Safari levait une exception à chaque écriture dans localStorage ; safe-storage y renvoie un Result, comme pour un quota plein ou une valeur rangée par une ancienne version. browser copie dans le presse-papiers même en HTTP simple, où l’API Clipboard n’existe pas.'
+      },
+      {
         en: 'Released with Changesets and published from GitHub Actions with npm provenance, never from a laptop.',
         fr: 'Versionnés avec Changesets et publiés depuis GitHub Actions avec la provenance npm, jamais depuis un portable.'
       },
       {
-        en: 'This site and Taverla both install them from npm.',
-        fr: 'Ce site et Taverla les installent tous deux depuis npm.'
+        en: 'This site installs all six from npm, and Taverla the first three.',
+        fr: 'Ce site installe les six depuis npm, et Taverla les trois premiers.'
       }
     ],
     links: {
       packages: [
         '@adrienlcp/i18n',
         '@adrienlcp/result',
-        '@adrienlcp/theme-preference'
+        '@adrienlcp/theme-preference',
+        '@adrienlcp/safe-storage',
+        '@adrienlcp/browser',
+        '@adrienlcp/react'
       ],
       repository: 'https://github.com/AdrienLcp/packages'
     },
@@ -126,11 +133,27 @@ themeStore.setPreference('dark')
 // dark theme-color  → media="all"
 // light theme-color → media="not all"`,
         title: '@adrienlcp/theme-preference'
+      },
+      {
+        code: `const locale = readRecognizedText({
+  key: 'app:locale',
+  isRecognized: isLocale
+})
+
+if (locale.status === 'failure') {
+  locale.error
+  // 'unavailable' | 'unrecognized'
+} else {
+  locale.data
+  // 'en' | 'fr' | null
+}`,
+        title: '@adrienlcp/safe-storage'
       }
     ],
     slug: 'packages',
     stack: [
       'TypeScript',
+      'React',
       'Intl',
       'Vitest',
       'Biome',
@@ -138,8 +161,8 @@ themeStore.setPreference('dark')
       'GitHub Actions'
     ],
     summary: {
-      en: 'Small TypeScript packages with no dependencies, published on npm, each lifted out of a project once a second one needed it. The first three: one translates, and knows at compile time what each message asks for; one says whether something worked, without throwing and without null; one keeps the chosen theme from flashing, down to the phone’s toolbar.',
-      fr: 'Des petits paquets TypeScript sans dépendance, publiés sur npm, chacun sorti d’un projet dès qu’un deuxième en avait besoin. Les trois premiers : l’un traduit, et sait dès la compilation ce que chaque message attend ; l’autre dit si quelque chose a marché, sans exception et sans null ; le dernier garde le thème choisi sans flash, jusqu’à la barre du téléphone.'
+      en: 'Small TypeScript packages with no third-party dependency, published on npm, each lifted out of a project once a second one needed it. One translates, and knows at compile time what each message asks for; one says whether something worked, without throwing and without null; the others keep the chosen theme from flashing, and take the throw out of localStorage and the clipboard.',
+      fr: 'Des petits paquets TypeScript sans dépendance tierce, publiés sur npm, chacun sorti d’un projet dès qu’un deuxième en avait besoin. L’un traduit, et sait dès la compilation ce que chaque message attend ; un autre dit si quelque chose a marché, sans exception et sans null ; les suivants gardent le thème choisi sans flash, et ôtent les exceptions de localStorage et du presse-papiers.'
     },
     tagline: {
       en: 'The npm packages under this site and Taverla, typed as far as the compiler goes.',
