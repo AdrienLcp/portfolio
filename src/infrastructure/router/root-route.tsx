@@ -1,14 +1,12 @@
 import { prefersReducedMotion } from '@adrienlcp/browser'
+import { AriaRouterProvider } from '@adrienlcp/react-router'
 import type React from 'react'
 import { useEffect, useRef } from 'react'
 import {
-  type NavigateOptions,
   Outlet,
   ScrollRestoration,
-  useHref,
   useLocation,
-  useMatches,
-  useNavigate
+  useMatches
 } from 'react-router'
 
 import { fetchProfile } from '@/features/profile/profile-api'
@@ -16,45 +14,14 @@ import { currentYear } from '@/infrastructure/clock'
 import { useRouteData } from '@/infrastructure/router/navigation'
 import { AppShell } from '@/presentation/app-shell'
 import { focusMain } from '@/presentation/components/main'
-import { RouterProvider } from '@/presentation/components/ui/router-provider'
 import type { Locale } from '@/presentation/i18n/locale'
 import { SiteFooter } from '@/presentation/site-footer'
 import { SiteHeader } from '@/presentation/site-header'
-
-declare module 'react-aria-components' {
-  interface RouterConfig {
-    routerOptions: NavigateOptions
-  }
-}
 
 /** What every page's frame shows, whichever page is inside it. */
 export const rootLoader = (locale: Locale) => ({
   profile: fetchProfile(locale)
 })
-
-/**
- * A navigation superseded by the next one rejects with `AbortError`, more
- * often with view transitions on: expected control flow, not a failure.
- */
-const ignoreSupersededNavigation = (error: unknown): void => {
-  if (error instanceof Error && error.name === 'AbortError') {
-    return
-  }
-
-  throw error
-}
-
-const ABSOLUTE_URL = /^[a-z][a-z\d+.-]*:/i
-
-/**
- * react-router resolves every href against the current route, an external URL
- * included: `https://…` would come out as `/en/projects/https:/…`.
- */
-const useRouterHref = (href: string): string => {
-  const routeHref = useHref(href)
-
-  return ABSOLUTE_URL.test(href) ? href : routeHref
-}
 
 const isBareHandle = (handle: unknown): boolean =>
   typeof handle === 'object' &&
@@ -82,27 +49,14 @@ const useFocusMainOnNavigation = (): void => {
   }, [pathname])
 }
 
-/**
- * react-aria's `RouterProvider` is what turns an `href` on any react-aria
- * `Link`, `MenuItem` or `ListBoxItem` into a client-side navigation.
- */
 export const RootRoute: React.FC = () => {
-  const navigate = useNavigate()
   useFocusMainOnNavigation()
   const isBare = useMatches().some((match) => isBareHandle(match.handle))
   const { profile } = useRouteData<typeof rootLoader>()
 
   return (
-    <RouterProvider
-      navigate={(path, options) => {
-        void Promise.resolve(
-          navigate(path, {
-            viewTransition: !prefersReducedMotion(),
-            ...options
-          })
-        ).catch(ignoreSupersededNavigation)
-      }}
-      useHref={useRouterHref}
+    <AriaRouterProvider
+      navigateDefaults={() => ({ viewTransition: !prefersReducedMotion() })}
     >
       <AppShell
         footer={
@@ -113,6 +67,6 @@ export const RootRoute: React.FC = () => {
         <Outlet />
       </AppShell>
       <ScrollRestoration />
-    </RouterProvider>
+    </AriaRouterProvider>
   )
 }
