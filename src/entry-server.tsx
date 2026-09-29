@@ -1,8 +1,7 @@
 import { fetchProfile } from '@/features/profile/profile-api'
-import type { Project } from '@/features/projects/domain/project'
-import { PROJECTS } from '@/features/projects/domain/projects-content'
-import { fetchProject } from '@/features/projects/infrastructure/projects-api'
-import { projectNodeFor } from '@/features/projects/presentation/project-structured-data'
+import type { Project } from '@/features/projects/project'
+import { fetchProject } from '@/features/projects/projects-api'
+import { PROJECTS } from '@/features/projects/projects-content'
 import {
   localizedPaths,
   pagePathFor,
@@ -18,6 +17,7 @@ import {
   type PageHead,
   projectHead
 } from '@/presentation/head/document-head'
+import { projectNodeFor } from '@/presentation/head/project-structured-data'
 import { structuredDataDocumentFor } from '@/presentation/head/structured-data'
 import { LOCALES, type Locale } from '@/presentation/i18n/locale'
 import { openGraphLocaleFor } from '@/presentation/i18n/regional-locales'

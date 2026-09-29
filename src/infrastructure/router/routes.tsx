@@ -2,15 +2,15 @@ import type { LoaderFunction, Params, RouteObject } from 'react-router'
 
 import { aboutLoader } from '@/features/about/infrastructure/about-loader'
 import { contactLoader } from '@/features/contact/contact-loader'
-import { cvLoader } from '@/features/cv/infrastructure/cv-loader'
+import { cvLoader } from '@/features/cv-pages/cv-loader'
 import { homeLoader } from '@/features/home/home-loader'
 import { NotFoundPage } from '@/features/not-found/not-found-page'
-import { projectLoader } from '@/features/projects/infrastructure/project-loader'
-import { projectsLoader } from '@/features/projects/infrastructure/projects-loader'
+import { projectLoader } from '@/features/project-pages/project-loader'
+import { projectsLoader } from '@/features/project-pages/projects-loader'
 import { LocalePrefixedRoutes } from '@/infrastructure/router/locale-prefixed-routes'
 import { localizedPaths } from '@/infrastructure/router/navigation'
 import { NegotiatedLocaleRedirect } from '@/infrastructure/router/negotiated-locale-redirect'
-import { RootRoute } from '@/infrastructure/router/root-route'
+import { RootRoute, rootLoader } from '@/infrastructure/router/root-route'
 import { ErrorScreen } from '@/presentation/error-screen'
 import {
   DEFAULT_LOCALE,
@@ -47,16 +47,15 @@ const pageFor = {
   },
   [localizedPaths.cv]: {
     lazy: async () => ({
-      Component: (await import('@/features/cv/presentation/cv-page')).CvPage
+      Component: (await import('@/features/cv-pages/cv-page')).CvPage
     }),
-    module: 'src/features/cv/presentation/cv-page.tsx'
+    module: 'src/features/cv-pages/cv-page.tsx'
   },
   [localizedPaths.cvPlain]: {
     lazy: async () => ({
-      Component: (await import('@/features/cv/presentation/cv-plain-page'))
-        .CvPlainPage
+      Component: (await import('@/features/cv-pages/cv-plain-page')).CvPlainPage
     }),
-    module: 'src/features/cv/presentation/cv-plain-page.tsx'
+    module: 'src/features/cv-pages/cv-plain-page.tsx'
   },
   [localizedPaths.home]: {
     lazy: async () => ({
@@ -66,18 +65,17 @@ const pageFor = {
   },
   [localizedPaths.project]: {
     lazy: async () => ({
-      Component: (await import('@/features/projects/presentation/project-page'))
+      Component: (await import('@/features/project-pages/project-page'))
         .ProjectPage
     }),
-    module: 'src/features/projects/presentation/project-page.tsx'
+    module: 'src/features/project-pages/project-page.tsx'
   },
   [localizedPaths.projects]: {
     lazy: async () => ({
-      Component: (
-        await import('@/features/projects/presentation/projects-page')
-      ).ProjectsPage
+      Component: (await import('@/features/project-pages/projects-page'))
+        .ProjectsPage
     }),
-    module: 'src/features/projects/presentation/projects-page.tsx'
+    module: 'src/features/project-pages/projects-page.tsx'
   }
 } satisfies Record<LocalizedPath, LazyPage>
 
@@ -131,6 +129,9 @@ export const routes: RouteObject[] = [
       { Component: NotFoundPage, path: '*' }
     ],
     ErrorBoundary: ErrorScreen,
-    HydrateFallback: RouteFallback
+    HydrateFallback: RouteFallback,
+    loader: ({ params }) => rootLoader(localeParam(params)),
+    shouldRevalidate: ({ currentParams, nextParams }) =>
+      currentParams.locale !== nextParams.locale
   }
 ]

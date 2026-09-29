@@ -1,4 +1,4 @@
-import type { Period } from '@/features/cv/domain/cv'
+import type { Period } from '@/features/cv/cv'
 import type { Locale } from '@/presentation/i18n/locale'
 
 const formatMonth = (month: string, locale: Locale): string =>

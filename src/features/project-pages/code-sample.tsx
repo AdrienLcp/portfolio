@@ -1,6 +1,6 @@
 import type React from 'react'
 
-import type { CodeSample } from '@/features/projects/domain/project'
+import type { CodeSample } from '@/features/projects/project'
 
 import './code-sample.sass'
 

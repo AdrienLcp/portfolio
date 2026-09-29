@@ -1,4 +1,4 @@
-import type { Project } from '@/features/projects/domain/project'
+import type { Project } from '@/features/projects/project'
 import { personIdFor, websiteIdFor } from '@/presentation/head/structured-data'
 import type { Locale } from '@/presentation/i18n/locale'
 

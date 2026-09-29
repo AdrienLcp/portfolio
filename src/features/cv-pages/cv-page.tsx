@@ -1,14 +1,10 @@
 import type React from 'react'
 import { Suspense, use } from 'react'
 
-import type { Cv } from '@/features/cv/domain/cv'
-import {
-  displayUrl,
-  formatPeriod,
-  formatPhone
-} from '@/features/cv/domain/cv-format'
-import { cvPdfPath } from '@/features/cv/domain/cv-pdf-path'
-import { useCvData } from '@/features/cv/infrastructure/cv-loader'
+import type { Cv } from '@/features/cv/cv'
+import { displayUrl, formatPeriod, formatPhone } from '@/features/cv/cv-format'
+import { cvPdfPath } from '@/features/cv/cv-pdf-path'
+import { useCvData } from '@/features/cv-pages/cv-loader'
 import { PROFILE_PHOTO, type Profile } from '@/features/profile/profile'
 import { homePathFor } from '@/infrastructure/router/navigation'
 import { Icon } from '@/presentation/components/icon'

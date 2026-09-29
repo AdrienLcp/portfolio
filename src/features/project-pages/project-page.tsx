@@ -1,9 +1,9 @@
 import type React from 'react'
 import { Suspense, use } from 'react'
 
-import { npmPageFor, type Project } from '@/features/projects/domain/project'
-import { useProjectData } from '@/features/projects/infrastructure/project-loader'
-import { CodeSampleCard } from '@/features/projects/presentation/code-sample'
+import { CodeSampleCard } from '@/features/project-pages/code-sample'
+import { useProjectData } from '@/features/project-pages/project-loader'
+import { npmPageFor, type Project } from '@/features/projects/project'
 import { projectsPathFor } from '@/infrastructure/router/navigation'
 import { Lid } from '@/presentation/components/lid'
 import { Main } from '@/presentation/components/main'

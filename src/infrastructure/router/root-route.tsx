@@ -10,11 +10,14 @@ import {
   useNavigate
 } from 'react-router'
 
+import { fetchProfile } from '@/features/profile/profile-api'
 import { prefersReducedMotion } from '@/infrastructure/browser'
 import { currentYear } from '@/infrastructure/clock'
+import { useRouteData } from '@/infrastructure/router/navigation'
 import { AppShell } from '@/presentation/app-shell'
 import { focusMain } from '@/presentation/components/main'
 import { RouterProvider } from '@/presentation/components/ui/router-provider'
+import type { Locale } from '@/presentation/i18n/locale'
 import { SiteFooter } from '@/presentation/site-footer'
 import { SiteHeader } from '@/presentation/site-header'
 
@@ -23,6 +26,11 @@ declare module 'react-aria-components' {
     routerOptions: NavigateOptions
   }
 }
+
+/** What every page's frame shows, whichever page is inside it. */
+export const rootLoader = (locale: Locale) => ({
+  profile: fetchProfile(locale)
+})
 
 /**
  * A navigation superseded by the next one rejects with `AbortError`, more
@@ -82,6 +90,7 @@ export const RootRoute: React.FC = () => {
   const navigate = useNavigate()
   useFocusMainOnNavigation()
   const isBare = useMatches().some((match) => isBareHandle(match.handle))
+  const { profile } = useRouteData<typeof rootLoader>()
 
   return (
     <RouterProvider
@@ -96,7 +105,9 @@ export const RootRoute: React.FC = () => {
       useHref={useRouterHref}
     >
       <AppShell
-        footer={isBare ? null : <SiteFooter year={currentYear()} />}
+        footer={
+          isBare ? null : <SiteFooter profile={profile} year={currentYear()} />
+        }
         header={isBare ? null : <SiteHeader />}
       >
         <Outlet />

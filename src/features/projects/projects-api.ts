@@ -4,8 +4,8 @@ import {
   localizeProject,
   type Project,
   projectsSchema
-} from '@/features/projects/domain/project'
-import { PROJECTS } from '@/features/projects/domain/projects-content'
+} from '@/features/projects/project'
+import { PROJECTS } from '@/features/projects/projects-content'
 import { type ApiError, serveContent } from '@/infrastructure/api/portfolio-api'
 import type { Locale } from '@/presentation/i18n/locale'
 
