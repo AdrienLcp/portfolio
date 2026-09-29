@@ -1,4 +1,4 @@
-import { composeClassName } from '@adrienlcp/react'
+import { composeClassName } from '@adrienlcp/react-aria'
 import {
   Group,
   Link as ReactAriaLink,

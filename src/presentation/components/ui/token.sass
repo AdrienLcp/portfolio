@@ -37,7 +37,7 @@
     &[aria-current='page']::before
       background: var(--print-brick)
 
-    @include focus.hovered
+    &[data-hovered]
       transform: translateY(-3px) rotate(-1.5deg)
 
       &::before

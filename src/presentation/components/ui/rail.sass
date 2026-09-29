@@ -47,7 +47,7 @@
         background: var(--print-brick)
         border-color: var(--print-brick)
 
-      @include focus.hovered
+      &[data-hovered]
         &:not([data-selected], [aria-current])::before
           border-color: var(--print-ink)
 

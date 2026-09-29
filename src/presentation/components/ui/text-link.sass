@@ -13,7 +13,7 @@
     text-underline-offset: 0.22em
     transition: text-decoration-color var(--transition-fast, 0) var(--timing, ease), text-underline-offset var(--transition-fast, 0) var(--timing, ease)
 
-    @include focus.hovered
+    &[data-hovered]
       text-decoration-color: var(--focus)
       text-underline-offset: 0.3em
 
