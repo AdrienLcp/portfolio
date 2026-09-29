@@ -1,6 +1,5 @@
 import type { localizedPaths } from '@/infrastructure/router/navigation'
 import type { Locale } from '@/presentation/i18n/locale'
-import { REGIONAL_LOCALES } from '@/presentation/i18n/regional-locales'
 
 /**
  * A page served as its own document, one per language, read off the routes: a
@@ -111,10 +110,3 @@ export const IMAGE_ALTS: Record<Locale, string> = {
   en: "The lid of Adrien Lacourpaille's portfolio: his name in wide marigold letters on a petrol field, over a tomato band.",
   fr: 'Le couvercle du portfolio d’Adrien Lacourpaille : son nom en larges lettres jaune souci sur un fond pétrole, au-dessus d’une bande tomate.'
 }
-
-/**
- * `og:locale` is a POSIX-style tag with an underscore, not the BCP-47 one
- * react-aria is handed: a crawler reading `en-US` here treats it as absent.
- */
-export const openGraphLocaleFor = (locale: Locale): string =>
-  REGIONAL_LOCALES[locale].replace('-', '_')

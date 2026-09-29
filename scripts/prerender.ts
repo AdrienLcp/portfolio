@@ -3,18 +3,9 @@ import { dirname, join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
 import type { PrerenderedPage, RenderedPage } from '../src/entry-server'
-import type { Locale } from '../src/presentation/i18n/locale'
+import { replaceOnce, setMeta, setTitle } from './head-tags'
 
-type EntryServer = {
-  imageAlts: Record<Locale, string>
-  openGraphLocaleFor: (locale: Locale) => string
-  prerenderedPages: PrerenderedPage[]
-  renderPage: (page: PrerenderedPage) => Promise<RenderedPage>
-  structuredDataFor: (args: {
-    origin: string
-    page: PrerenderedPage
-  }) => Promise<object>
-}
+type EntryServer = typeof import('../src/entry-server')
 
 const ROOT = resolve(import.meta.dirname, '..')
 const CLIENT_DIR = join(ROOT, 'dist')
@@ -31,64 +22,6 @@ type BuildChunk = {
   file: string
   imports?: string[]
 }
-
-/**
- * Every replacement must match exactly once. `index.html` stays a valid
- * standalone document, since `pnpm dev` and the SPA fallback serve it, so there
- * are no placeholders: a tag edited out of it fails the build instead of
- * leaving every document with the wrong head.
- */
-const replaceOnce = ({
-  html,
-  pattern,
-  replacement
-}: {
-  html: string
-  pattern: RegExp
-  replacement: string
-}): string => {
-  let matched = 0
-  const next = html.replace(
-    new RegExp(pattern.source, `${pattern.flags}g`),
-    () => {
-      matched += 1
-
-      return replacement
-    }
-  )
-
-  if (matched !== 1) {
-    throw new Error(
-      `prerender: ${String(pattern)} matched ${matched} times in index.html, expected 1`
-    )
-  }
-
-  return next
-}
-
-const escapeAttribute = (value: string): string =>
-  value.replaceAll('&', '&amp;').replaceAll('"', '&quot;')
-
-const escapeText = (value: string): string =>
-  value.replaceAll('&', '&amp;').replaceAll('<', '&lt;')
-
-const setMeta = ({
-  html,
-  identifyingAttribute,
-  value
-}: {
-  html: string
-  /** `name="description"`, `property="og:title"`. */
-  identifyingAttribute: string
-  value: string
-}): string =>
-  replaceOnce({
-    html,
-    pattern: new RegExp(
-      String.raw`<meta\s+content="[^"]*"\s+${identifyingAttribute}\s*/>`
-    ),
-    replacement: `<meta content="${escapeAttribute(value)}" ${identifyingAttribute} />`
-  })
 
 const CANONICAL = /<link\s+href="[^"]*"\s+rel="canonical"\s*\/>/
 
@@ -301,12 +234,7 @@ const documentFor = ({
         pattern: /<html lang="[^"]*">/,
         replacement: `<html lang="${page.locale}">`
       }),
-    (html: string) =>
-      replaceOnce({
-        html,
-        pattern: /<title>[^<]*<\/title>/,
-        replacement: `<title>${escapeText(rendered.title)}</title>`
-      }),
+    (html: string) => setTitle({ html, value: rendered.title }),
     (html: string) =>
       setMeta({
         html,

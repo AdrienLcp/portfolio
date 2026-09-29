@@ -14,13 +14,13 @@ import {
   IMAGE_ALTS,
   INDEXED_PAGES,
   type IndexedPage,
-  openGraphLocaleFor,
   PAGE_HEADS,
   type PageHead,
   projectHead
 } from '@/presentation/head/document-head'
 import { structuredDataDocumentFor } from '@/presentation/head/structured-data'
 import { LOCALES, type Locale } from '@/presentation/i18n/locale'
+import { openGraphLocaleFor } from '@/presentation/i18n/regional-locales'
 
 export type PrerenderedPage = {
   locale: Locale
