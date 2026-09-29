@@ -1,14 +1,5 @@
 import type React from 'react'
 import { useEffect, useRef, useState } from 'react'
-import {
-  FieldError,
-  Form,
-  Input,
-  Label,
-  Text,
-  TextArea,
-  TextField
-} from 'react-aria-components'
 import { z } from 'zod'
 
 import {
@@ -16,6 +7,15 @@ import {
   sendMessage
 } from '@/infrastructure/web3forms/web3forms-client'
 import { Button } from '@/presentation/components/ui/button'
+import { Form } from '@/presentation/components/ui/form'
+import {
+  FieldError,
+  Input,
+  Label,
+  Text,
+  TextArea,
+  TextField
+} from '@/presentation/components/ui/text-field'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 
 import './reply-card.sass'

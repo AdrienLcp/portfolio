@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { expect, screen, userEvent, waitFor, within } from 'storybook/test'
 
 import { Button } from './button'
-import { Dialog, DialogTrigger } from './dialog'
+import { Dialog } from './dialog'
+import { DialogTrigger } from './dialog-trigger'
 
 const meta = {
   args: {

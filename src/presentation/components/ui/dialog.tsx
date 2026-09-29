@@ -12,8 +12,6 @@ import { Button } from './button'
 
 import './dialog.sass'
 
-export { DialogTrigger } from 'react-aria-components'
-
 type DialogProps = {
   children: React.ReactNode
   title: React.ReactNode

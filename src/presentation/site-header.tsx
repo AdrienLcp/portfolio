@@ -1,6 +1,5 @@
 import type React from 'react'
 import { useState } from 'react'
-import { Dialog, DialogTrigger, Popover } from 'react-aria-components'
 
 import {
   aboutPathFor,
@@ -11,7 +10,9 @@ import {
   useCurrentPath
 } from '@/infrastructure/router/navigation'
 import { Button } from '@/presentation/components/ui/button'
+import { DialogTrigger } from '@/presentation/components/ui/dialog-trigger'
 import { Link } from '@/presentation/components/ui/link'
+import { Popover } from '@/presentation/components/ui/popover'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { LocaleSwitch } from '@/presentation/locale-switch'
 import { SkipLink } from '@/presentation/skip-link'
@@ -55,10 +56,14 @@ const MenuSheet: React.FC<Omit<PageLinksProps, 'onNavigate'>> = (props) => {
       <Button className='menu-button' icon='menu'>
         {translate('header.menu')}
       </Button>
-      <Popover className='menu-sheet' offset={10} placement='bottom end'>
-        <Dialog aria-label={translate('header.navigation')} className='menu'>
-          <PageLinks {...props} onNavigate={() => setIsOpen(false)} />
-        </Dialog>
+      <Popover
+        aria-label={translate('header.navigation')}
+        className='menu-sheet'
+        dialogClassName='menu'
+        offset={10}
+        placement='bottom end'
+      >
+        <PageLinks {...props} onNavigate={() => setIsOpen(false)} />
       </Popover>
     </DialogTrigger>
   )
