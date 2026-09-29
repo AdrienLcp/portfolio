@@ -1,4 +1,4 @@
-import type { DictionaryFor } from '@adrienlcp/i18n/dictionary'
+import type { DictionaryFor } from '@adrienlcp/i18n'
 
 import type { EN_DICTIONARY } from './dictionary-en'
 

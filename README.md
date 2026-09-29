@@ -35,9 +35,6 @@ pnpm validate    # everything CI runs, lighthouse aside
   staged files and stages what it repaired; `pnpm install` points
   `core.hooksPath` at it. It runs in batches because Windows caps a command line
   at about 8 KB, well below what `xargs` assumes.
-- **Toolkit check.** `pnpm toolkit:check` compares the vendored packages with a
-  local toolkit checkout. Nothing here is published and CI clones this
-  repository alone, so it is a local guard, skipped when no toolkit is found.
 - **Lighthouse.** `pnpm lighthouse` audits every page on the built `dist`;
   `pnpm lighthouse /en /fr/about` audits those paths only, while iterating.
 

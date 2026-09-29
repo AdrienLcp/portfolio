@@ -1,8 +1,8 @@
 {
   "author": "Adrien Lacourpaille",
   "dependencies": {
-    "@adrienlcp/i18n": "workspace:*",
-    "@adrienlcp/result": "workspace:*",
+    "@adrienlcp/i18n": "^0.1.0",
+    "@adrienlcp/result": "^0.1.0",
     "react": "19.3.0",
     "react-aria-components": "1.21.1",
     "react-dom": "19.3.0",
@@ -62,10 +62,8 @@
     "test:components": "vitest run --project stories",
     "test:e2e": "tsc --noEmit -p e2e && playwright test -c e2e",
     "test:watch": "vitest --project unit",
-    "toolkit:check": "node --import tsx scripts/toolkit.ts --check",
-    "toolkit:sync": "node --import tsx scripts/toolkit.ts",
     "typecheck": "tsc --noEmit",
-    "validate": "pnpm toolkit:check && pnpm build && pnpm lint:ci && pnpm test && pnpm test:components && pnpm test:e2e"
+    "validate": "pnpm build && pnpm lint:ci && pnpm test && pnpm test:components && pnpm test:e2e"
   },
   "type": "module",
   "version": "0.1.0"

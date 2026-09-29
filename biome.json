@@ -27,14 +27,7 @@
     }
   },
   "files": {
-    "includes": [
-      "**",
-      "!**/dist",
-      "!**/*.svg",
-      "!.claude/skills",
-      "!packages/i18n/src",
-      "!packages/result/src"
-    ]
+    "includes": ["**", "!**/dist", "!**/*.svg", "!.claude/skills"]
   },
   "formatter": {
     "indentStyle": "space"

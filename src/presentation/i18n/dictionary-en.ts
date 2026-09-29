@@ -1,4 +1,4 @@
-import { defineDictionary } from '@adrienlcp/i18n/dictionary'
+import { defineDictionary } from '@adrienlcp/i18n'
 
 export const EN_DICTIONARY = defineDictionary({
   about: {

@@ -1,5 +1,4 @@
-import { createI18n } from '@adrienlcp/i18n/create-i18n'
-import type { Dictionary } from '@adrienlcp/i18n/dictionary'
+import { createI18n, type Dictionary } from '@adrienlcp/i18n'
 
 import { EN_DICTIONARY } from './dictionary-en'
 import { FR_DICTIONARY } from './dictionary-fr'

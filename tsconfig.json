@@ -18,9 +18,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "@adrienlcp/i18n/*": ["./packages/i18n/src/*"],
-      "@adrienlcp/result": ["./packages/result/src/result.ts"]
+      "@/*": ["./src/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
