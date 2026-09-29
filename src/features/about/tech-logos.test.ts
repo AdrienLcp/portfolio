@@ -1,7 +1,7 @@
 import { siReact, siReactrouter, siVite, siVitest } from 'simple-icons'
 import { describe, expect, it } from 'vitest'
 
-import { logoFor } from './tech-logo'
+import { logoFor } from './tech-logos'
 
 describe('logoFor', () => {
   it('prefers the longer name that contains a shorter one', () => {

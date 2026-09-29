@@ -4,7 +4,7 @@ import { join } from 'node:path'
 import { chromium, type Page } from 'playwright'
 import { createServer } from 'vite'
 
-import { cvPdfPath } from '../src/features/cv/cv-format'
+import { cvPdfPath } from '../src/features/cv/cv-pdf-path'
 import { LOCALES } from '../src/presentation/i18n/locale'
 
 const CHROMIUM_PRINT_DPI = 96

@@ -32,11 +32,3 @@ export const formatPhone = (phone: string, locale: Locale): string => {
 
 export const displayUrl = (url: string): string =>
   url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')
-
-export const cvPdfPath = ({
-  isPlain,
-  locale
-}: {
-  isPlain: boolean
-  locale: Locale
-}): string => `/cv/adrien-lacourpaille-cv${isPlain ? '-ats' : ''}-${locale}.pdf`
