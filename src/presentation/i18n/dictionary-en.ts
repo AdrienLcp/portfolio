@@ -104,7 +104,6 @@ export const EN_DICTIONARY = defineDictionary({
         buzzer: 'Buzzer',
         description:
           'One shelf sharing one room, one QR code and every screen in it.',
-        open: 'Read the rules of {name}',
         quiz: 'Quiz',
         title: 'Party games'
       },
@@ -125,6 +124,7 @@ export const EN_DICTIONARY = defineDictionary({
       },
       packages: {
         description: 'Written for my own projects, reused in each of them.',
+        open: 'Read their rules',
         title: 'House packages'
       },
       primitives: {
@@ -160,7 +160,9 @@ export const EN_DICTIONARY = defineDictionary({
     allProjects: 'All projects',
     highlights: 'In the box',
     live: 'Play it',
+    package: '{name} on npm',
     repository: 'Read the code',
+    samples: 'How it plays',
     stack: 'Stack'
   },
   projects: {

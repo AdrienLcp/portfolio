@@ -105,7 +105,6 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
         buzzer: 'Buzzer',
         description:
           'Une étagère qui partage une salle, un QR code et tous ses écrans.',
-        open: 'Lire les règles de {name}',
         quiz: 'Quiz',
         title: 'Jeux de soirée'
       },
@@ -128,6 +127,7 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
       packages: {
         description:
           'Écrits pour mes propres projets, réutilisés dans chacun d’eux.',
+        open: 'Lire leurs règles',
         title: 'Paquets maison'
       },
       primitives: {
@@ -163,7 +163,9 @@ export const FR_DICTIONARY: DictionaryFor<typeof EN_DICTIONARY> = {
     allProjects: 'Tous les projets',
     highlights: 'Dans la boîte',
     live: 'Y jouer',
+    package: '{name} sur npm',
     repository: 'Lire le code',
+    samples: 'Comment ça se joue',
     stack: 'Stack technique'
   },
   projects: {

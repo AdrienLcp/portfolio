@@ -50,7 +50,14 @@ const GAMES = [
   { face: 'quiz', icon: 'question', key: 'quiz' }
 ] as const satisfies readonly { face: string; icon: IconName; key: string }[]
 
-const FeaturedProjectLink: React.FC = () => {
+type ProjectRulesLinkProps = {
+  /** Replaces the default label, which names the project. */
+  label?: string
+  slug: string
+}
+
+/** Leads to a project's page, and prints nothing while that project is absent. */
+const ProjectRulesLink: React.FC<ProjectRulesLinkProps> = ({ label, slug }) => {
   const { locale, translate } = useI18n()
   const { projects } = useHomeData()
   const result = use(projects)
@@ -59,11 +66,11 @@ const FeaturedProjectLink: React.FC = () => {
     return null
   }
 
-  const [project] = result.data
+  const project = result.data.find((candidate) => candidate.slug === slug)
 
   return project === undefined ? null : (
     <Link href={projectPathFor({ locale, slug: project.slug })}>
-      {translate('home.contents.games.open', { name: project.name })}
+      {label ?? translate('projects.open', { name: project.name })}
     </Link>
   )
 }
@@ -116,9 +123,9 @@ export const BoxContents: React.FC<BoxContentsProps> = ({
               </li>
             ))}
           </ul>
-          <div className='featured-project'>
+          <div className='project-link'>
             <Suspense fallback={null}>
-              <FeaturedProjectLink />
+              <ProjectRulesLink slug='taverla' />
             </Suspense>
           </div>
         </Compartment>
@@ -163,6 +170,14 @@ export const BoxContents: React.FC<BoxContentsProps> = ({
             <Stamp isCode>@adrienlcp/i18n</Stamp>
             <Stamp isCode>@adrienlcp/result</Stamp>
           </StampList>
+          <div className='project-link'>
+            <Suspense fallback={null}>
+              <ProjectRulesLink
+                label={translate('home.contents.packages.open')}
+                slug='packages'
+              />
+            </Suspense>
+          </div>
         </Compartment>
         <Compartment
           area='lint'

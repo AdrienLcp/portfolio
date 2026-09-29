@@ -1,8 +1,9 @@
 import type React from 'react'
 import { Suspense, use } from 'react'
 
-import type { Project } from '@/features/projects/domain/project'
+import { npmPageFor, type Project } from '@/features/projects/domain/project'
 import { useProjectData } from '@/features/projects/infrastructure/project-loader'
+import { CodeSampleCard } from '@/features/projects/presentation/code-sample'
 import { projectsPathFor } from '@/infrastructure/router/navigation'
 import { Lid } from '@/presentation/components/lid'
 import { Main } from '@/presentation/components/main'
@@ -32,6 +33,18 @@ const RuleBooklet: React.FC<RuleBookletProps> = ({ project }) => {
       <div className='rule-booklet'>
         <div className='booklet-text'>
           <p className='booklet-summary'>{project.summary}</p>
+          {project.samples !== undefined && (
+            <section aria-labelledby='how-it-plays' className='booklet-section'>
+              <h2 className='booklet-heading' id='how-it-plays'>
+                {translate('project.samples')}
+              </h2>
+              <div className='samples'>
+                {project.samples.map((sample) => (
+                  <CodeSampleCard key={sample.title} sample={sample} />
+                ))}
+              </div>
+            </section>
+          )}
           <section aria-labelledby='in-the-box' className='booklet-section'>
             <h2 className='booklet-heading' id='in-the-box'>
               {translate('project.highlights')}
@@ -67,6 +80,15 @@ const RuleBooklet: React.FC<RuleBookletProps> = ({ project }) => {
                 {translate('project.live')}
               </Link>
             )}
+            {project.links.packages?.map((packageName) => (
+              <Link
+                href={npmPageFor(packageName)}
+                key={packageName}
+                target='_blank'
+              >
+                {translate('project.package', { name: packageName })}
+              </Link>
+            ))}
             <Link href={projectsPathFor(locale)}>
               {translate('project.allProjects')}
             </Link>

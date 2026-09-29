@@ -40,6 +40,25 @@ describe('projectsSchema', () => {
     ).toBe(false)
   })
 
+  it('[content] accepts npm packages and code samples', () => {
+    expect(
+      accepts({
+        ...project,
+        links: { ...project.links, packages: ['@scope/name', 'plain'] },
+        samples: [{ code: 'run()', title: 'Example' }]
+      })
+    ).toBe(true)
+  })
+
+  it('[content] rejects a package name npm would refuse', () => {
+    expect(
+      accepts({
+        ...project,
+        links: { ...project.links, packages: ['Not A Name'] }
+      })
+    ).toBe(false)
+  })
+
   it('[content] rejects a field the model does not know', () => {
     expect(accepts({ ...project, year: 2026 })).toBe(false)
   })
