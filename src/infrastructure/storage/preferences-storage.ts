@@ -1,11 +1,8 @@
 import { Result } from '@adrienlcp/result'
 
 import { isLocale, type Locale } from '@/presentation/i18n/locale'
-import { isTheme, type Theme } from '@/presentation/theme/theme'
 
 const LOCALE_KEY = 'portfolio:locale'
-/** Read again, raw, by the pre-paint script in `index.html`. */
-const THEME_KEY = 'portfolio:theme'
 
 /**
  * - `'unavailable'` — `localStorage` threw, as it does in a Safari private window
@@ -27,18 +24,6 @@ export const readStoredLocale = (): Result<
 export const writeStoredLocale = (
   locale: Locale
 ): Result<void, PreferenceWriteError> => write(LOCALE_KEY, locale)
-
-/**
- * Succeeds with `null` for the system theme, which the stylesheet resolves on
- * its own.
- */
-export const readStoredTheme = (): Result<Theme | null, PreferenceReadError> =>
-  readRecognized({ isRecognized: isTheme, key: THEME_KEY })
-
-export const writeStoredTheme = (
-  theme: Theme | null
-): Result<void, PreferenceWriteError> =>
-  theme === null ? remove(THEME_KEY) : write(THEME_KEY, theme)
 
 const readRecognized = <Value extends string>({
   isRecognized,
@@ -73,15 +58,6 @@ const read = (key: string): Result<string | null, 'unavailable'> => {
 const write = (key: string, value: string): Result<void, 'unavailable'> => {
   try {
     localStorage.setItem(key, value)
-    return Result.success()
-  } catch {
-    return Result.failure('unavailable')
-  }
-}
-
-const remove = (key: string): Result<void, 'unavailable'> => {
-  try {
-    localStorage.removeItem(key)
     return Result.success()
   } catch {
     return Result.failure('unavailable')

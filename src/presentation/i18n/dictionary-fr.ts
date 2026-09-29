@@ -172,10 +172,10 @@ export const FR_DICTIONARY = defineDictionary({
     title: 'Projets'
   },
   theme: {
-    auto: 'Auto',
     dark: 'Nuit',
     label: 'Thème',
-    light: 'Jour'
+    light: 'Jour',
+    system: 'Auto'
   },
   ui: {
     close: 'Fermer',

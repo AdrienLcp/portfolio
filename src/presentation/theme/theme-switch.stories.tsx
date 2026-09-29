@@ -14,7 +14,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {}
 
 /**
- * Night stamps `data-theme`; Auto removes it, handing the theme back to the
+ * Night stamps `data-theme`; Auto (system) removes it, handing the theme back to the
  * system instead of pinning Day.
  */
 export const StampsTheChoice: Story = {

@@ -1,11 +1,13 @@
 import { resolve } from 'node:path'
 
+import { themePreferencePlugin } from '@adrienlcp/theme-preference/vite'
 import optimizeLocales from '@react-aria/optimize-locales-plugin'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 import { englishHomeHead } from './scripts/english-home-head'
 import { REGIONAL_LOCALES } from './src/presentation/i18n/regional-locales'
+import { themeStore } from './src/presentation/theme/theme-store'
 
 export default defineConfig({
   build: {
@@ -13,6 +15,7 @@ export default defineConfig({
   },
   plugins: [
     englishHomeHead(),
+    themePreferencePlugin(themeStore),
     react({ compiler: { logDiagnostics: true } }),
     {
       ...optimizeLocales.vite({ locales: Object.values(REGIONAL_LOCALES) }),

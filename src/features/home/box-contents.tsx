@@ -1,3 +1,4 @@
+import { COLOR_SCHEMES } from '@adrienlcp/theme-preference'
 import type React from 'react'
 import { Suspense, use } from 'react'
 
@@ -9,7 +10,6 @@ import { Button } from '@/presentation/components/ui/button'
 import { Link } from '@/presentation/components/ui/link'
 import { useI18n, useTranslate } from '@/presentation/i18n/i18n-provider'
 import { LOCALE_NAMES, LOCALES } from '@/presentation/i18n/locale'
-import { THEMES } from '@/presentation/theme/theme'
 
 import { SocketDiagram } from './socket-diagram'
 
@@ -145,7 +145,7 @@ export const BoxContents: React.FC<BoxContentsProps> = ({
         </Compartment>
         <Compartment
           area='themes'
-          count={THEMES.length}
+          count={COLOR_SCHEMES.length}
           description={translate('home.contents.themes.description')}
           title={translate('home.contents.themes.title')}
         >

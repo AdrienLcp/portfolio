@@ -172,6 +172,9 @@ importers:
       '@adrienlcp/result':
         specifier: ^0.1.0
         version: 0.1.0
+      '@adrienlcp/theme-preference':
+        specifier: ^0.1.0
+        version: 0.1.0(react@19.3.0)
       react:
         specifier: 19.3.0
         version: 19.3.0
@@ -268,6 +271,14 @@ packages:
 
   '@adrienlcp/result@0.1.0':
     resolution: {integrity: sha512-2LmABvoBLgB9bm+c0PKZApz4GXuyesb4m7zvZs+jn0efbdxxPc9ICFWXcDptiuy1LiBLxM6m/5WbenQx346GUA==}
+
+  '@adrienlcp/theme-preference@0.1.0':
+    resolution: {integrity: sha512-zrlfheDPFtv+tCt69R33cQKeSl6T6/h44ZNhIahD5LbJR35enQxGnsCtEzDvwvAPGzJLE0KP2Hl172eT7MB0Qg==}
+    peerDependencies:
+      react: '>=18'
+    peerDependenciesMeta:
+      react:
+        optional: true
 
   '@babel/code-frame@7.29.7':
     resolution: {integrity: sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==}
@@ -2629,6 +2640,10 @@ snapshots:
   '@adrienlcp/i18n@0.1.0': {}
 
   '@adrienlcp/result@0.1.0': {}
+
+  '@adrienlcp/theme-preference@0.1.0(react@19.3.0)':
+    optionalDependencies:
+      react: 19.3.0
 
   '@babel/code-frame@7.29.7':
     dependencies:

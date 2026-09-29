@@ -157,7 +157,7 @@ Horizontal padding is a single gutter (`clamp(16px, 4vw, 48px)`) on every field.
 ## Loading
 
 The first paint is already the final one: no theme flash, no font swap.
-- **Theme:** the stylesheet follows the system theme on its own, so only an explicit choice needs stamping. An inline script in `index.html` stamps it before the first paint, since React runs after it, and moves the `theme-color` tags to it, since they are media-scoped to the system preference.
+- **Theme:** the stylesheet follows the system theme on its own, so only an explicit choice needs stamping. `@adrienlcp/theme-preference` stamps it: its Vite plugin appends a pre-paint script to `<head>`, since React runs after the first paint, and that script moves the `theme-color` tags to the choice, since they are media-scoped to the system preference.
 - **Fonts:** Archivo is drawn at five widths, from 100% to 125%, so no metric-adjusted fallback matches them all, and swapping it in reflows every heading, the nav and the stamps; Literata swapping in rewraps every paragraph. The page stays hidden until both latin faces load instead, at most `longestFontWaitMs` (800ms): the files are preloaded, and past the cap they swap in as usual. The `FontFace` descriptors in that script are the latin faces' in `_fonts.sass`.
 - **Home screen:** iOS ignores an SVG icon, and a phone is where a page is added to a home screen, so `apple-touch-icon.png` sits beside `favicon.svg`.
 

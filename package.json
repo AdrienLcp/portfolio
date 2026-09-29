@@ -3,6 +3,7 @@
   "dependencies": {
     "@adrienlcp/i18n": "^0.1.0",
     "@adrienlcp/result": "^0.1.0",
+    "@adrienlcp/theme-preference": "^0.1.0",
     "react": "19.3.0",
     "react-aria-components": "1.21.1",
     "react-dom": "19.3.0",
