@@ -6,7 +6,7 @@
   },
   "extends": "@adrienlcp/tsconfig/web-app.json",
   "include": [
-    ".storybook",
+    ".storybook/**/*",
     "scripts",
     "src",
     "vite.config.ts",
