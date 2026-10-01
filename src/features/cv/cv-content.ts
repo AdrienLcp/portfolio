@@ -115,11 +115,11 @@ export const CV: z.input<typeof cvSchema> = {
       year: '2026'
     },
     {
-      link: 'https://github.com/AdrienLcp/portfolio',
-      name: 'Portfolio',
+      link: 'https://on-record-203.pages.dev',
+      name: 'on-record',
       summary: {
-        en: 'Accessible design system (React Aria), Storybook, in-browser tests, a Lighthouse CI gate at 100/100 on every page.',
-        fr: 'Design system accessible (React Aria), Storybook, tests en navigateur, CI Lighthouse bloquante à 100/100 sur chaque page.'
+        en: 'French deputies’ public votes, explained and sourced, with no server: nightly open-data ingest in GitHub Actions, ~750 prerendered pages on Cloudflare Pages.',
+        fr: 'Les votes publics des députés, expliqués et sourcés, sans serveur : ingestion nocturne de l’open data en GitHub Actions, ~750 pages prérendues sur Cloudflare Pages.'
       },
       year: '2026'
     },
@@ -136,8 +136,8 @@ export const CV: z.input<typeof cvSchema> = {
       link: 'https://github.com/AdrienLcp/packages',
       name: '@adrienlcp/*',
       summary: {
-        en: 'Eleven tested TypeScript packages on npm, released from GitHub Actions with provenance, used by three apps.',
-        fr: 'Onze paquets TypeScript testés, publiés sur npm par la CI avec provenance, dans trois apps.'
+        en: 'Eleven tested TypeScript packages on npm, released from GitHub Actions with provenance, used by four apps.',
+        fr: 'Onze paquets TypeScript testés, publiés sur npm par la CI avec provenance, dans quatre apps.'
       },
       year: '2026'
     }

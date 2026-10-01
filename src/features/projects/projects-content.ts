@@ -46,6 +46,73 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
   {
     highlights: [
       {
+        en: 'Every public vote of every deputy, with the group they sat in on the day of the vote. No ranking and no score: every figure links to the votes it counts, and every page cites its official source.',
+        fr: 'Chaque scrutin public de chaque député, avec le groupe où il siégeait le jour du vote. Ni classement ni note : chaque chiffre renvoie aux votes qu’il compte, et chaque page cite sa source officielle.'
+      },
+      {
+        en: 'No server and no database: a nightly GitHub Actions job asks the Assemblée’s open data whether anything changed, rebuilds only what did and deploys. A night without a new vote downloads nothing and deploys nothing.',
+        fr: 'Ni serveur ni base de données : chaque nuit, un job GitHub Actions demande à l’open data de l’Assemblée si quelque chose a changé, ne reconstruit que ce qui a bougé et déploie. Une nuit sans nouveau vote ne télécharge rien et ne déploie rien.'
+      },
+      {
+        en: 'The host publishes 20,000 files per deployment, and there are over 8,000 votes: they ship in blocks, one file per deputy, small indexes for lists and search, and the build checks its whole output against a budget.',
+        fr: 'L’hébergeur publie 20 000 fichiers par déploiement, et il y a plus de 8 000 scrutins : ils partent en blocs, un fichier par député, de petits index pour les listes et la recherche, et le build vérifie toute sa sortie contre un budget.'
+      },
+      {
+        en: 'About 750 pages prerendered by the very loaders the browser runs, a fake fetch answering their data during the build, each with its own head tags and a place in the sitemap.',
+        fr: 'Environ 750 pages prérendues par les loaders mêmes que le navigateur exécute, un faux fetch leur servant les données pendant le build, chacune avec ses propres balises head et sa place dans le sitemap.'
+      },
+      {
+        en: 'Find your deputy from your commune or your address, in French, light and dark.',
+        fr: 'Trouver son député depuis sa commune ou son adresse, en français, en clair comme en sombre.'
+      }
+    ],
+    kind: 'app',
+    links: {
+      live: 'https://on-record-203.pages.dev',
+      repository: 'https://github.com/AdrienLcp/on-record'
+    },
+    name: 'on-record',
+    samples: [
+      {
+        code: `export const isNewerVersion = ({
+  cached,
+  downloaded
+}: {
+  cached: SourceValidators | null
+  downloaded: SourceValidators
+}): boolean => {
+  if (cached?.lastModified == null || downloaded.lastModified === null) {
+    return true
+  }
+  return (
+    Date.parse(downloaded.lastModified) >
+    Date.parse(cached.lastModified)
+  )
+}`,
+        title: 'source-version.ts'
+      }
+    ],
+    slug: 'on-record',
+    stack: [
+      'TypeScript',
+      'React',
+      'Zod',
+      'GitHub Actions',
+      'Cloudflare Pages',
+      'Vitest'
+    ],
+    summary: {
+      en: 'How French deputies actually vote, vote by vote. Every public vote of the Assemblée nationale, explained in plain French for readers who never followed a session, each figure traced back to the official record.',
+      fr: 'Comment votent vraiment les députés, scrutin par scrutin. Chaque vote public de l’Assemblée nationale, expliqué en clair pour qui n’a jamais suivi une séance, chaque chiffre ramené au compte rendu officiel.'
+    },
+    tagline: {
+      en: 'What French deputies actually do, on the record, not what they say.',
+      fr: 'Ce que font vraiment les députés, pièces à l’appui, pas ce qu’ils disent.'
+    }
+  },
+  {
+    highlights: [
+      {
         en: 'A message’s arguments are read off the message itself: leave out {name} and the call does not compile. No code generation, no build plugin.',
         fr: 'Les arguments d’un message se lisent dans le message lui-même : oubliez {name} et l’appel ne compile pas. Ni génération de code, ni plugin de build.'
       },
@@ -74,8 +141,8 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
         fr: 'Versionnés avec Changesets et publiés depuis GitHub Actions avec la provenance npm, jamais depuis un portable.'
       },
       {
-        en: 'This site, Taverla and Séance install them from npm, down to their TypeScript and Biome configs.',
-        fr: 'Ce site, Taverla et Séance les installent depuis npm, jusqu’à leurs configs TypeScript et Biome.'
+        en: 'This site, Taverla, Séance and on-record install them from npm, down to their TypeScript and Biome configs.',
+        fr: 'Ce site, Taverla, Séance et on-record les installent depuis npm, jusqu’à leurs configs TypeScript et Biome.'
       }
     ],
     kind: 'library',
@@ -172,8 +239,8 @@ if (locale.status === 'failure') {
       fr: 'Des petits paquets TypeScript sans dépendance tierce à l’exécution, publiés sur npm, chacun sorti d’un projet dès qu’un deuxième en avait besoin. L’un traduit, et sait dès la compilation ce que chaque message attend ; un autre dit si quelque chose a marché, sans exception et sans null ; les suivants gardent le thème choisi sans flash, ôtent les exceptions de localStorage et du presse-papiers, et partagent le reset, l’anneau de focus et les réglages du compilateur et du linter dont part chaque projet.'
     },
     tagline: {
-      en: 'The npm packages under this site, Taverla and Séance, typed as far as the compiler goes.',
-      fr: 'Les paquets npm sous ce site, sous Taverla et sous Séance, typés aussi loin que va le compilateur.'
+      en: 'The npm packages under this site, Taverla, Séance and on-record, typed as far as the compiler goes.',
+      fr: 'Les paquets npm sous ce site, sous Taverla, sous Séance et sous on-record, typés aussi loin que va le compilateur.'
     }
   },
   {

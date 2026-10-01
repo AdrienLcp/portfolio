@@ -10,6 +10,7 @@ describe('projects api', () => {
     if (projects.status === 'success') {
       expect(projects.data.map((project) => project.slug)).toEqual([
         'taverla',
+        'on-record',
         'packages',
         'seance'
       ])

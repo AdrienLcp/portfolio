@@ -116,7 +116,7 @@ export const FR_DICTIONARY = defineDictionary({
       },
       packages: {
         description:
-          'Testés, publiés depuis la CI avec la provenance npm, et installés par ce site, Taverla et Séance.',
+          'Testés, publiés depuis la CI avec la provenance npm, et installés par ce site, Taverla, Séance et on-record.',
         open: 'Voir ce qu’ils font',
         title: 'Paquets publiés sur npm'
       },

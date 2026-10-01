@@ -18,7 +18,8 @@ language: it negotiates from the browser's and redirects, which is what
 - [Home](https://adrienlacourpaille.dev/en): who he is, and what is in the box.
 - [Projects](https://adrienlacourpaille.dev/en/projects)
 - [Taverla](https://adrienlacourpaille.dev/en/projects/taverla): party games on every phone in the room, on the same instant.
-- [Packages](https://adrienlacourpaille.dev/en/projects/packages): the npm packages under this site, Taverla and Séance, typed as far as the compiler goes.
+- [on-record](https://adrienlacourpaille.dev/en/projects/on-record): what French deputies actually do, on the record, not what they say.
+- [Packages](https://adrienlacourpaille.dev/en/projects/packages): the npm packages under this site, Taverla, Séance and on-record, typed as far as the compiler goes.
 - [Séance](https://adrienlacourpaille.dev/en/projects/seance): a training manual that works offline and remembers everything, on the device alone.
 - [About](https://adrienlacourpaille.dev/en/about): the path into development, and the toolbox.
 - [CV](https://adrienlacourpaille.dev/en/cv), also as a [designed PDF](https://adrienlacourpaille.dev/cv/adrien-lacourpaille-cv-en.pdf) and a [plain-text PDF](https://adrienlacourpaille.dev/cv/adrien-lacourpaille-cv-ats-en.pdf) that parses cleanly.
