@@ -82,7 +82,8 @@
         color: var(--ink)
 
     .socket-diagram,
-    .offline-diagram
+    .offline-diagram,
+    .record-diagram
       align-self: center
       max-width: 26rem
       padding-block: var(--space-m)
@@ -133,8 +134,33 @@
         stroke: var(--ink-soft)
         stroke-dasharray: 6 6
 
+      .figure
+        fill: var(--print-ink)
+        font-family: var(--font-display)
+        font-size: 22px
+        font-stretch: 125%
+        font-weight: 900
+
+      .sheet
+        fill: var(--print-paper)
+        stroke: var(--print-ink)
+        stroke-width: 3
+
+      .sheet.under
+        fill: color-mix(in oklab, var(--print-paper) 82%, var(--print-ink))
+
+      .ballot
+        stroke: var(--print-ink)
+        stroke-width: 2
+
+      .trace
+        fill: none
+        stroke: var(--active)
+        stroke-width: 3
+
       @media (prefers-reduced-motion: no-preference)
-        .wire.inbound
+        .wire.inbound,
+        .wire.flow
           animation: wire-flow 1.4s linear infinite
 
         .wire.outbound
@@ -208,19 +234,34 @@
 
     @include layout.wide
       .tray
-        grid-template-areas: 'taverla taverla taverla taverla taverla taverla taverla seance seance seance seance seance' 'packages packages packages packages packages packages packages packages packages packages packages packages' 'languages languages languages themes themes themes flash flash flash hover hover hover' 'primitives primitives primitives primitives primitives primitives lint lint lint lint lint lint'
+        grid-template-areas: 'taverla taverla taverla taverla taverla taverla taverla seance seance seance seance seance' 'on-record on-record on-record on-record on-record on-record on-record on-record on-record on-record on-record on-record' 'packages packages packages packages packages packages packages packages packages packages packages packages' 'languages languages languages themes themes themes flash flash flash hover hover hover' 'primitives primitives primitives primitives primitives primitives lint lint lint lint lint lint'
         grid-template-columns: repeat(12, minmax(0, 1fr))
 
-      @each $area in taverla, seance, packages, languages, themes, flash, hover, primitives, lint
+      @each $area in taverla, seance, on-record, packages, languages, themes, flash, hover, primitives, lint
         .compartment.#{$area}
           grid-area: $area
 
       .compartment
         padding: var(--space-l)
 
+      .compartment.on-record
+        align-items: center
+        column-gap: var(--space-xl)
+        display: grid
+        grid-template-columns: minmax(0, 1fr) minmax(0, 26rem)
+
+        > *
+          grid-column: 1
+
+        > .record-diagram
+          grid-column: 2
+          grid-row: 1 / span 3
+          padding-block: 0
+
       .compartment-line,
       .compartment > .stamp-list,
       .seance > .project-link,
+      .on-record > .project-link,
       .packages > .project-link,
       .theme-chips
         padding-inline-start: calc(48px + var(--space-s))

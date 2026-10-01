@@ -114,6 +114,11 @@ export const FR_DICTIONARY = defineDictionary({
           'Des règles sur mesure et une boîte à outils de conventions partagée.',
         title: 'Jeu de règles de lint'
       },
+      onRecord: {
+        description:
+          'Chaque scrutin public de l’Assemblée, reconstruit la nuit depuis son open data, là seulement où quelque chose a changé. Chaque chiffre renvoie à son compte rendu officiel.',
+        title: 'Job de nuit, sans serveur'
+      },
       packages: {
         description:
           'Testés, publiés depuis la CI avec la provenance npm, et installés par ce site, Taverla, Séance et on-record.',

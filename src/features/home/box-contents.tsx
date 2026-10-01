@@ -12,6 +12,7 @@ import { useI18n, useTranslate } from '@/presentation/i18n/i18n-provider'
 import { LOCALE_NAMES, LOCALES } from '@/presentation/i18n/locale'
 
 import { OfflineDiagram } from './offline-diagram'
+import { RecordDiagram } from './record-diagram'
 import { SocketDiagram } from './socket-diagram'
 
 import './box-contents.sass'
@@ -148,6 +149,19 @@ export const BoxContents: React.FC<BoxContentsProps> = ({
           <div className='project-link'>
             <Suspense fallback={null}>
               <ProjectRulesLink slug='seance' />
+            </Suspense>
+          </div>
+        </Compartment>
+        <Compartment
+          area='on-record'
+          count={1}
+          description={translate('home.contents.onRecord.description')}
+          title={translate('home.contents.onRecord.title')}
+        >
+          <RecordDiagram />
+          <div className='project-link'>
+            <Suspense fallback={null}>
+              <ProjectRulesLink slug='on-record' />
             </Suspense>
           </div>
         </Compartment>

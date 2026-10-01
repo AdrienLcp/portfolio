@@ -114,6 +114,11 @@ export const EN_DICTIONARY = defineDictionary({
         description: 'Custom rules and a shared toolkit of conventions.',
         title: 'Set of lint rules'
       },
+      onRecord: {
+        description:
+          'Every public vote of the Assemblée, rebuilt overnight from its open data, only where something changed. Each figure leads back to its official record.',
+        title: 'Night job, no server'
+      },
       packages: {
         description:
           'Tested, released from CI with npm provenance, and installed by this site, Taverla, Séance and on-record.',
