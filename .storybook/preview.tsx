@@ -4,8 +4,8 @@ import {
 } from '@adrienlcp/theme-preference'
 import type { Decorator, Preview } from '@storybook/react-vite'
 import { useEffect } from 'react'
+import { RouterProvider } from 'react-aria-components'
 
-import { RouterProvider } from '@/presentation/components/ui/router-provider'
 import { ToastRegion } from '@/presentation/components/ui/toast'
 import { I18nProvider } from '@/presentation/i18n/i18n-provider'
 import { isLocale } from '@/presentation/i18n/locale'
