@@ -336,6 +336,7 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
       repository: 'https://github.com/AdrienLcp/packages'
     },
     name: 'Packages',
+    // cspell:ignore greting
     samples: [
       {
         code: `const EN = defineDictionary({ greeting: 'Hello {name}' })

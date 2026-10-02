@@ -45,7 +45,7 @@ export const PAGE_HEADS: Record<Locale, Record<IndexedPage, PageHead>> = {
     },
     cv: {
       description:
-        "Adrien Lacourpaille's CV: full-stack developer in Nantes, TypeScript and React. Downloadable as a PDF, in English and in French.",
+        'Adrien Lacourpaille’s CV: full-stack developer in Nantes, TypeScript and React. Downloadable as a PDF, in English and in French.',
       title: titled('CV')
     },
     home: {

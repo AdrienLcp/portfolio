@@ -218,6 +218,9 @@ importers:
       '@biomejs/biome':
         specifier: 2.5.14
         version: 2.5.14
+      '@cspell/dict-fr-fr':
+        specifier: ^2.3.2
+        version: 2.3.2
       '@playwright/test':
         specifier: ~1.63.0
         version: 1.63.0
@@ -490,6 +493,9 @@ packages:
 
   '@blazediff/core@1.9.1':
     resolution: {integrity: sha512-ehg3jIkYKulZh+8om/O25vkvSsXXwC+skXmyA87FFx6A/45eqOkZsBltMw/TVteb0mloiGT8oGRTcjRAz66zaA==}
+
+  '@cspell/dict-fr-fr@2.3.2':
+    resolution: {integrity: sha512-cPNjlavSiMfH/bB/Zl5GEF+94s6C77mdvghvVsclco1Ly0VWN3EpH5L9EE3bDGLDpE7m9EnYfRs8TOfZugGrUg==}
 
   '@emnapi/core@1.11.0':
     resolution: {integrity: sha512-l9Oo58x0HOP5znGzVhYW9U3e5wVuA4LAZU2AGezTmkhO1CgQRFDhDg4nneHsu/t3WniXg9QrG2nIXL/ZS8ln8Q==}
@@ -2941,6 +2947,8 @@ snapshots:
     optional: true
 
   '@blazediff/core@1.9.1': {}
+
+  '@cspell/dict-fr-fr@2.3.2': {}
 
   '@emnapi/core@1.11.0':
     dependencies:
