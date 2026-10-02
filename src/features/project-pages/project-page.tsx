@@ -4,15 +4,14 @@ import { Suspense, use } from 'react'
 import type { HousePackageName } from '@/features/packages/house-package'
 import type { Project } from '@/features/projects/project'
 import { NextEntry } from '@/features/register/next-entry'
-import { StampInk } from '@/features/register/release-stamp'
 import { isRegistered } from '@/features/register/this-site'
 import { homePathFor, projectPathFor } from '@/infrastructure/router/navigation'
+import { BlankEntry } from '@/presentation/blank-entry'
 import { Main } from '@/presentation/components/main'
 import { notFoundTitle, projectHead } from '@/presentation/head/document-head'
 import { useDocumentTitle } from '@/presentation/head/use-document-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { apiErrorKey } from '@/presentation/i18n/translation'
-import { MissingPiece } from '@/presentation/missing-piece'
 import { RouteFallback } from '@/presentation/route-fallback'
 
 import { AppEntryPage } from './app-entry-page'
@@ -60,10 +59,16 @@ const ProjectEntry: React.FC = () => {
     housePackages.status === 'failure'
   ) {
     return (
-      <MissingPiece
+      <BlankEntry
         backHref={homePathFor(locale)}
         backLabel={translate('project.breadcrumb')}
-        message={translate(apiErrorKey(failure ?? 'invalid_content'))}
+        note={translate(apiErrorKey(failure ?? 'invalid_content'))}
+        stamp={translate(
+          failure === 'not_found' ? 'notFound.stamp' : 'error.stamp'
+        )}
+        title={translate(
+          failure === 'not_found' ? 'notFound.title' : 'error.title'
+        )}
       />
     )
   }
@@ -103,10 +108,12 @@ const ProjectEntry: React.FC = () => {
 
   if (!isRegistered(entry)) {
     return (
-      <MissingPiece
+      <BlankEntry
         backHref={homePathFor(locale)}
         backLabel={translate('project.breadcrumb')}
-        message={translate(apiErrorKey('not_found'))}
+        note={translate(apiErrorKey('not_found'))}
+        stamp={translate('notFound.stamp')}
+        title={translate('notFound.title')}
       />
     )
   }
@@ -126,7 +133,6 @@ const ProjectEntry: React.FC = () => {
 /** A register entry unfolded to its own page. */
 export const ProjectPage: React.FC = () => (
   <Main className='project-page'>
-    <StampInk />
     <Suspense fallback={<RouteFallback />}>
       <ProjectEntry />
     </Suspense>

@@ -75,8 +75,9 @@ export const FR_DICTIONARY = defineDictionary({
         'Ce contenu n’a pas passé ses propres contrôles et ne peut pas s’afficher.',
       not_found: 'Rien à cette adresse.'
     },
-    note: 'Recharger remet en général chaque pièce à sa place.',
+    note: 'Recharger la page remet en général tout d’aplomb.',
     reload: 'Recharger la page',
+    stamp: 'Coquille',
     title: 'Quelque chose a cassé sur cette page.'
   },
   footer: {
@@ -196,9 +197,11 @@ export const FR_DICTIONARY = defineDictionary({
     label: 'Langue'
   },
   notFound: {
-    backHome: 'Retour à l’accueil',
-    message: 'Aucune page à l’adresse {path}.',
-    note: 'Cette pièce n’est pas dans la boîte.'
+    address: 'Adresse demandée : {path}',
+    backHome: 'Retour au registre',
+    note: 'Le registre n’a aucune entrée à cette adresse. Le lien est peut-être ancien, ou mal tapé.',
+    stamp: 'Aucune entrée',
+    title: 'Absent du registre'
   },
   project: {
     above: 'Au-dessus dans le registre',
@@ -207,6 +210,9 @@ export const FR_DICTIONARY = defineDictionary({
     code: 'Code : {title}',
     commits: 'Commits',
     commitsNote: 'sur main, lus le {date}',
+    coverage: 'Couverture',
+    coverageNote: 'des lignes, par {scope}, lue le {date}',
+    coverageValue: '{percent} %',
     entered: 'Inscrit',
     excerpts: 'Tel que le compilateur le lit',
     excerptsLead:

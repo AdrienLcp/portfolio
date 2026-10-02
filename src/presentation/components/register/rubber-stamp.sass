@@ -4,7 +4,7 @@
     position: absolute
     width: 0
 
-  .release-stamp
+  .rubber-stamp
     border: 2.5px solid var(--violet)
     border-radius: 3px
     color: var(--violet)
@@ -48,11 +48,11 @@
         animation: stamp-press 900ms var(--timing) 450ms both
 
   // Multiply sinks the ink into light paper; on dark paper it would vanish.
-  \:root[data-theme='dark'] .release-stamp
+  \:root[data-theme='dark'] .rubber-stamp
     mix-blend-mode: normal
 
   @media (prefers-color-scheme: dark)
-    \:root:not([data-theme='light']) .release-stamp
+    \:root:not([data-theme='light']) .rubber-stamp
       mix-blend-mode: normal
 
   @keyframes stamp-press

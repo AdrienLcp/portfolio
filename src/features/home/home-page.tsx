@@ -3,7 +3,6 @@ import { Suspense, use } from 'react'
 
 import { NextEntry } from '@/features/register/next-entry'
 import { registerSpanOf } from '@/features/register/register-dates'
-import { StampInk } from '@/features/register/release-stamp'
 import { SITE_OPENED } from '@/features/register/this-site'
 import { Main } from '@/presentation/components/main'
 import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
@@ -83,7 +82,6 @@ export const HomePage: React.FC = () => {
 
   return (
     <Main className='home-page'>
-      <StampInk />
       <Suspense fallback={null}>
         <Register />
       </Suspense>

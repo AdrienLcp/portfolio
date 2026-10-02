@@ -1,7 +1,7 @@
 @use '../../presentation/styles/focus'
 @use '../../presentation/styles/layout'
 @use '../../presentation/styles/typography'
-@use '../register/register-media' as media
+@use '../../presentation/styles/register-media' as media
 
 // The entry's columns line up with the register's: the date column first,
 // then the text, so a page reads as the row it unfolds from.
@@ -130,7 +130,7 @@ $column-gap: 1.25rem
     padding: 0.5rem 0.5rem 0 0
 
     @include media.two-columns
-      .release-stamp
+      .rubber-stamp
         padding: 0.5rem 0.85rem 0.55rem
 
         b

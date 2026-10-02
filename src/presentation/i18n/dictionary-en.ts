@@ -76,8 +76,9 @@ export const EN_DICTIONARY = defineDictionary({
         'This content failed its own checks and cannot be shown.',
       not_found: 'Nothing lives at this address.'
     },
-    note: 'Reloading usually puts every piece back in its place.',
+    note: 'Reloading the page usually sets it straight.',
     reload: 'Reload the page',
+    stamp: 'Misprint',
     title: 'Something broke on this page.'
   },
   footer: {
@@ -196,9 +197,11 @@ export const EN_DICTIONARY = defineDictionary({
     label: 'Language'
   },
   notFound: {
-    backHome: 'Back to the home page',
-    message: 'No page lives at {path}.',
-    note: 'This piece is not in the box.'
+    address: 'Address asked for: {path}',
+    backHome: 'Back to the register',
+    note: 'The register holds no entry at this address. The link may be old, or mistyped.',
+    stamp: 'No entry',
+    title: 'Not in the register'
   },
   project: {
     above: 'Above in the register',
@@ -207,6 +210,9 @@ export const EN_DICTIONARY = defineDictionary({
     code: 'Code: {title}',
     commits: 'Commits',
     commitsNote: 'on main, read {date}',
+    coverage: 'Coverage',
+    coverageNote: 'of lines run by {scope}, read {date}',
+    coverageValue: '{percent}%',
     entered: 'Entered',
     excerpts: 'As the compiler reads it',
     excerptsLead:

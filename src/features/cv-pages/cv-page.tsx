@@ -7,6 +7,7 @@ import { cvPdfPath } from '@/features/cv/cv-pdf-path'
 import { useCvData } from '@/features/cv-pages/cv-loader'
 import { PROFILE_PHOTO, type Profile } from '@/features/profile/profile'
 import { homePathFor } from '@/infrastructure/router/navigation'
+import { BlankEntry } from '@/presentation/blank-entry'
 import { Icon } from '@/presentation/components/icon'
 import { Main } from '@/presentation/components/main'
 import { Link } from '@/presentation/components/ui/link'
@@ -15,7 +16,6 @@ import { VisuallyHidden } from '@/presentation/components/ui/visually-hidden'
 import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { apiErrorKey } from '@/presentation/i18n/translation'
-import { MissingPiece } from '@/presentation/missing-piece'
 import { RouteFallback } from '@/presentation/route-fallback'
 
 import './cv-page.sass'
@@ -244,10 +244,16 @@ const CvCase: React.FC = () => {
   const error = cv.status === 'failure' ? cv.error : 'invalid_content'
 
   return (
-    <MissingPiece
+    <BlankEntry
       backHref={homePathFor(locale)}
       backLabel={translate('notFound.backHome')}
-      message={translate(apiErrorKey(error))}
+      note={translate(apiErrorKey(error))}
+      stamp={translate(
+        error === 'not_found' ? 'notFound.stamp' : 'error.stamp'
+      )}
+      title={translate(
+        error === 'not_found' ? 'notFound.title' : 'error.title'
+      )}
     />
   )
 }

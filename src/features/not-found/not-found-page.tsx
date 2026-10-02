@@ -1,26 +1,27 @@
 import type React from 'react'
 
 import { homePathFor, useCurrentPath } from '@/infrastructure/router/navigation'
+import { BlankEntry } from '@/presentation/blank-entry'
 import { Main } from '@/presentation/components/main'
 import { notFoundTitle } from '@/presentation/head/document-head'
 import { useDocumentTitle } from '@/presentation/head/use-document-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
-import { MissingPiece } from '@/presentation/missing-piece'
-
-import './not-found-page.sass'
 
 export const NotFoundPage: React.FC = () => {
   const { locale, translate } = useI18n()
   const path = useCurrentPath()
 
-  useDocumentTitle(notFoundTitle(translate('notFound.note')))
+  useDocumentTitle(notFoundTitle(translate('notFound.title')))
 
   return (
-    <Main className='not-found-page'>
-      <MissingPiece
+    <Main className='blank-entry-page'>
+      <BlankEntry
         backHref={homePathFor(locale)}
         backLabel={translate('notFound.backHome')}
-        message={translate('notFound.message', { path })}
+        detail={translate('notFound.address', { path })}
+        note={translate('notFound.note')}
+        stamp={translate('notFound.stamp')}
+        title={translate('notFound.title')}
       />
     </Main>
   )

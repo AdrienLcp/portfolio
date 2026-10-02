@@ -113,8 +113,8 @@ export const CodeSpecimen: React.FC<CodeSpecimenProps> = ({
           aria-label={translate('project.verdict.stamp', { errors, verdict })}
           className={
             refusalCount === 0
-              ? 'release-stamp small verdict'
-              : 'release-stamp small verdict refused'
+              ? 'rubber-stamp small verdict'
+              : 'rubber-stamp small verdict refused'
           }
           role='img'
         >

@@ -1,5 +1,7 @@
 import type React from 'react'
 
+import { StampInk } from '@/presentation/components/register/rubber-stamp'
+
 import './app-shell.sass'
 
 type AppShellProps = {
@@ -18,6 +20,7 @@ export const AppShell: React.FC<AppShellProps> = ({
   header
 }) => (
   <div className='app-shell'>
+    <StampInk />
     {header}
     {children}
     {footer}
