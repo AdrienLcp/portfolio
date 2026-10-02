@@ -10,7 +10,7 @@ import {
   contactPathFor,
   cvPathFor,
   homePathFor,
-  projectsPathFor,
+  registerPathFor,
   useCurrentPath
 } from '@/infrastructure/router/navigation'
 import { DialogTrigger } from '@/presentation/components/ui/dialog-trigger'
@@ -80,7 +80,7 @@ export const SiteHeader: React.FC = () => {
   const currentPath = useCurrentPath()
   const homePath = homePathFor(locale)
   const pages: Page[] = [
-    { label: translate('header.projects'), path: projectsPathFor(locale) },
+    { label: translate('header.register'), path: registerPathFor(locale) },
     { label: translate('header.about'), path: aboutPathFor(locale) },
     { label: translate('header.contact'), path: contactPathFor(locale) },
     { label: translate('header.cv'), path: cvPathFor(locale) }

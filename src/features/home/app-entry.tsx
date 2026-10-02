@@ -7,55 +7,17 @@ import {
   type HousePackageName
 } from '@/features/packages/house-package'
 import type { Project, RegisterEntry } from '@/features/projects/project'
+import {
+  appsReference,
+  packageReference
+} from '@/features/register/cross-reference'
+import { platesFor } from '@/features/register/plates'
+import { ReleaseStamp } from '@/features/register/release-stamp'
+import { useDrawnWhenSeen } from '@/features/register/use-drawn-when-seen'
 import { projectPathFor } from '@/infrastructure/router/navigation'
 import { Icon } from '@/presentation/components/icon'
 import { RegisterLink } from '@/presentation/components/register/register-link'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
-import type { Translate } from '@/presentation/i18n/translation'
-
-import { appsReference, packageReference } from './cross-reference'
-import {
-  AnalyticsDrawing,
-  AnalyticsMechanism
-} from './drawings/analytics-drawings'
-import {
-  OnRecordDrawing,
-  OnRecordMechanism
-} from './drawings/on-record-drawings'
-import { SeanceDrawing, SeanceMechanism } from './drawings/seance-drawings'
-import { TaverlaDrawing, TaverlaMechanism } from './drawings/taverla-drawings'
-import { ReleaseStamp } from './release-stamp'
-import { useDrawnWhenSeen } from './use-drawn-when-seen'
-
-type Plates = {
-  Drawing: React.FC
-  Mechanism: React.FC
-  mechanismTitle: (translate: Translate) => string
-}
-
-/** The drawings made for each app's row, by slug. */
-const PLATES: Record<string, Plates> = {
-  analytics: {
-    Drawing: AnalyticsDrawing,
-    Mechanism: AnalyticsMechanism,
-    mechanismTitle: (translate) => translate('home.mechanisms.analytics')
-  },
-  'on-record': {
-    Drawing: OnRecordDrawing,
-    Mechanism: OnRecordMechanism,
-    mechanismTitle: (translate) => translate('home.mechanisms.onRecord')
-  },
-  seance: {
-    Drawing: SeanceDrawing,
-    Mechanism: SeanceMechanism,
-    mechanismTitle: (translate) => translate('home.mechanisms.seance')
-  },
-  taverla: {
-    Drawing: TaverlaDrawing,
-    Mechanism: TaverlaMechanism,
-    mechanismTitle: (translate) => translate('home.mechanisms.taverla')
-  }
-}
 
 /** Another row of the register this one points at. */
 export type RowReference = {
@@ -184,7 +146,7 @@ export const AppEntry: React.FC<AppEntryProps> = ({
   const mechanismRef = useRef<HTMLDivElement>(null)
   const isDrawn = useDrawnWhenSeen(mechanismRef, isOpen)
   const { register, slug } = project
-  const plates = PLATES[slug]
+  const plates = platesFor(slug)
 
   return (
     <li
@@ -294,7 +256,9 @@ export const AppEntry: React.FC<AppEntryProps> = ({
             {plates !== undefined && (
               <div
                 className={
-                  isDrawn ? 'drawer-mechanism drawn' : 'drawer-mechanism'
+                  isDrawn
+                    ? 'drawer-mechanism mechanism-plate drawn'
+                    : 'drawer-mechanism mechanism-plate'
                 }
                 ref={mechanismRef}
               >

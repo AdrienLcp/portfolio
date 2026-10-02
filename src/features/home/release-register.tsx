@@ -2,23 +2,25 @@ import type React from 'react'
 import { useState } from 'react'
 
 import type { HousePackage } from '@/features/packages/house-package'
-import type { Project, RegisterEntry } from '@/features/projects/project'
-import { projectPathFor } from '@/infrastructure/router/navigation'
-import { useI18n } from '@/presentation/i18n/i18n-provider'
-
-import { AppEntry, type RowReference } from './app-entry'
+import type { Project } from '@/features/projects/project'
 import {
   type CrossReference,
   crossReferenceAt,
   isAppLit
-} from './cross-reference'
-import { type LedgerColumn, PackageLedger } from './package-ledger'
-import { SITE_INSTALLS, SITE_SLUG, SiteEntry } from './site-entry'
+} from '@/features/register/cross-reference'
+import { PackageLedger } from '@/features/register/package-ledger'
+import {
+  isRegistered,
+  ledgerColumnsOf,
+  type RegisteredProject,
+  SITE_INSTALLS,
+  SITE_SLUG
+} from '@/features/register/this-site'
+import { projectPathFor } from '@/infrastructure/router/navigation'
+import { useI18n } from '@/presentation/i18n/i18n-provider'
 
-type RegisteredProject = Project & { register: RegisterEntry }
-
-const isRegistered = (project: Project): project is RegisteredProject =>
-  project.register !== undefined
+import { AppEntry, type RowReference } from './app-entry'
+import { SiteEntry } from './site-entry'
 
 const hasFinePointer = (): boolean =>
   window.matchMedia('(hover: hover) and (pointer: fine)').matches
@@ -64,20 +66,11 @@ export const ReleaseRegister: React.FC<ReleaseRegisterProps> = ({
     undefined
   )
   const litPackage = reference?.kind === 'package' ? reference.name : null
-  const columns: LedgerColumn[] = [
-    ...apps.map((app) => ({
-      installs: app.register.installs,
-      name: app.name,
-      shortName: app.register.shortName,
-      slug: app.slug
-    })),
-    {
-      installs: SITE_INSTALLS,
-      name: siteName,
-      shortName: translate('home.site.short'),
-      slug: SITE_SLUG
-    }
-  ]
+  const columns = ledgerColumnsOf({
+    apps,
+    siteName,
+    siteShortName: translate('home.site.short')
+  })
   const packagesProject = projects.find((project) => project.kind === 'library')
 
   const pointAt = (target: EventTarget | null): void => {

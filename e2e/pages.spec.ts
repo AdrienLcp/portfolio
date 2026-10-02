@@ -22,42 +22,42 @@ test('[e2e] an entry of the register unfolds in place and folds back', async ({
   ).toBeHidden()
 })
 
-test('[e2e] from the shelf to a project and back', async ({ page }) => {
+test('[e2e] from the register to an entry and back', async ({ page }) => {
   await page.goto('/en')
 
-  await mainNavigation(page).getByRole('link', { name: 'Projects' }).click()
-  await expect(page).toHaveURL('/en/projects')
-
-  await page.getByRole('link', { name: 'Read the rules of Taverla' }).click()
+  await page
+    .getByRole('article', { name: 'Taverla' })
+    .getByRole('link', { name: 'Full entry' })
+    .click()
   await expect(page).toHaveURL('/en/projects/taverla')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Taverla')
+  await expect(page.getByRole('heading', { name: 'History' })).toBeVisible()
 
-  await page.getByRole('link', { name: 'All projects' }).click()
-  await expect(page).toHaveURL('/en/projects')
+  await page
+    .getByRole('main')
+    .getByRole('link', { exact: true, name: 'Register' })
+    .click()
+  await expect(page).toHaveURL('/en#taverla')
 })
 
-test('[e2e] each project page is worded after what the project is', async ({
+test('[e2e] each entry page is built after what the project is', async ({
   page
 }) => {
-  await page.goto('/en/projects')
-  await page.getByRole('link', { name: 'Read about Séance' }).click()
-  await expect(page).toHaveURL('/en/projects/seance')
+  await page.goto('/en/projects/seance')
   await expect(
     page.getByRole('heading', { name: 'How it works' })
   ).toBeVisible()
-  await expect(page.getByRole('link', { name: /^Open it/ })).toBeVisible()
-  await expect(page.getByText('How it plays')).toHaveCount(0)
+  await expect(page.getByRole('link', { name: /^Open live/ })).toBeVisible()
 
   await page.goto('/fr/projects/packages')
   await expect(
-    page.getByRole('heading', { name: 'Comment on s’en sert' })
+    page.getByRole('heading', { name: 'Tel que le compilateur le lit' })
   ).toBeVisible()
-  await expect(page.getByText('Comment ça se joue')).toHaveCount(0)
+  await expect(
+    page.getByRole('img', { name: 'Refusé : 3 erreurs' })
+  ).toBeVisible()
 })
-
-test('[e2e] the about page leads to the projects and to contact', async ({
-  page
-}) => {
+test('[e2e] the about page leads to contact', async ({ page }) => {
   await page.goto('/en')
 
   await mainNavigation(page).getByRole('link', { name: 'About' }).click()
@@ -81,9 +81,9 @@ test('[e2e] the keyboard skips the header and lands on each new page', async ({
   await page.keyboard.press('Tab')
   await expect(page.getByRole('link', { name: 'Write to me' })).toBeFocused()
 
-  await mainNavigation(page).getByRole('link', { name: 'Projects' }).focus()
+  await mainNavigation(page).getByRole('link', { name: 'Contact' }).focus()
   await page.keyboard.press('Enter')
-  await expect(page).toHaveURL('/en/projects')
+  await expect(page).toHaveURL('/en/contact')
   await expect(page.getByRole('main')).toBeFocused()
 })
 

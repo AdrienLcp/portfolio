@@ -26,6 +26,63 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
         fr: 'En anglais et en français, clair et sombre, sur un téléphone ou un portable.'
       }
     ],
+    history: {
+      commits: 347,
+      lines: [
+        { date: '2026-10-01', subject: 'Count page views with analytics' },
+        {
+          date: '2026-09-29',
+          subject: 'Take the router provider from @adrienlcp/react-router'
+        },
+        {
+          date: '2026-09-24',
+          subject:
+            "Serve a wall: the room's own screen, paired by the host's device"
+        },
+        {
+          date: '2026-09-21',
+          subject:
+            'Let a Result succeed with nothing, rather than succeed with undefined'
+        },
+        {
+          date: '2026-09-12',
+          subject:
+            "Turn a held floor's buzzer into its dial, and take BUZZ off a dead circle"
+        },
+        {
+          date: '2026-09-09',
+          subject: 'Freeze the round on the server, not only on the phone'
+        },
+        {
+          date: '2026-09-09',
+          subject: 'Offer the room back to the device holding its key'
+        },
+        {
+          date: '2026-09-03',
+          subject:
+            'Hide the QR code from a reader who cannot point a camera at it'
+        },
+        {
+          date: '2026-08-15',
+          subject: 'Let a room hold two consoles without losing its round'
+        },
+        {
+          date: '2026-08-11',
+          subject:
+            'Make the bare buzzer a game rather than a source of questions'
+        },
+        {
+          date: '2026-08-10',
+          subject: 'Give Taverla a front door, and the blind test its own'
+        },
+        {
+          date: '2026-08-09',
+          subject: 'Make the blind test playable end to end'
+        },
+        { date: '2026-08-08', subject: 'Bootstrap the blind test monorepo' }
+      ],
+      readOn: '2026-10-02'
+    },
     kind: 'game',
     links: {
       live: 'https://taverla.onrender.com/',
@@ -86,6 +143,32 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
         fr: 'Trouver son député depuis sa commune ou son adresse, en français, en clair comme en sombre.'
       }
     ],
+    history: {
+      commits: 28,
+      lines: [
+        {
+          date: '2026-10-02',
+          subject:
+            'Link scrutins to their legislative file from the files dataset'
+        },
+        {
+          date: '2026-10-01',
+          subject: 'Show who votes with whom on the compare page'
+        },
+        {
+          date: '2026-10-01',
+          subject: 'Find my deputy from a commune or an address'
+        },
+        {
+          date: '2026-10-01',
+          subject: 'Prerender pages with their head, sitemap and share card'
+        },
+        { date: '2026-10-01', subject: 'Nightly refresh and deploy workflow' },
+        { date: '2026-10-01', subject: 'Ingest Assembly votes into datasets' },
+        { date: '2026-10-01', subject: 'Project docs and build plan' }
+      ],
+      readOn: '2026-10-02'
+    },
     kind: 'app',
     links: {
       live: 'https://on-record-203.pages.dev',
@@ -153,10 +236,6 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
   {
     highlights: [
       {
-        en: 'A message’s arguments are read off the message itself: leave out {name} and the call does not compile. No code generation, no build plugin.',
-        fr: 'Les arguments d’un message se lisent dans le message lui-même : oubliez {name} et l’appel ne compile pas. Ni génération de code, ni plugin de build.'
-      },
-      {
         en: 'The French dictionary is typed against the English one, down to each placeholder: a missing key or a {nom} written for {name} fails the build instead of showing on screen.',
         fr: 'Le dictionnaire français est typé contre l’anglais, jusqu’à chaque paramètre : une clé oubliée ou un {nom} écrit à la place de {name} casse le build au lieu de s’afficher à l’écran.'
       },
@@ -165,16 +244,8 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
         fr: 'Chaque règle qu’elle impose est une erreur de compilation : ces tests-là s’écrivent en types et c’est tsc qui les vérifie.'
       },
       {
-        en: 'Result fits in thirty lines. A success that carries nothing has no data key at all, so nobody reads undefined off it.',
-        fr: 'Result tient en trente lignes. Un succès qui ne porte rien n’a pas de clé data du tout : personne n’y lit undefined.'
-      },
-      {
-        en: 'A phone paints its toolbar from the theme-color tags, which follow the system, not the visitor. The theme package rewrites their media query before the first paint, so a dark choice on a light phone gets a dark toolbar too.',
-        fr: 'Un téléphone peint sa barre d’outils avec les balises theme-color, qui suivent le système, pas le visiteur. Le paquet de thème réécrit leur media query avant le premier rendu : un choix sombre sur un téléphone clair a aussi sa barre sombre.'
-      },
-      {
-        en: 'Safari’s private window once threw on every localStorage write; safe-storage returns a Result there instead, as for a full quota or a value an older version stored. browser copies to the clipboard even over plain HTTP, where the Clipboard API does not exist.',
-        fr: 'La fenêtre privée de Safari levait une exception à chaque écriture dans localStorage ; safe-storage y renvoie un Result, comme pour un quota plein ou une valeur rangée par une ancienne version. browser copie dans le presse-papiers même en HTTP simple, où l’API Clipboard n’existe pas.'
+        en: 'browser copies to the clipboard even over plain HTTP, where the Clipboard API does not exist.',
+        fr: 'browser copie dans le presse-papiers même en HTTP simple, où l’API Clipboard n’existe pas.'
       },
       {
         en: 'Released with Changesets and published from GitHub Actions with npm provenance, never from a laptop.',
@@ -185,6 +256,46 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
         fr: 'Ce site, Taverla, Séance et on-record les installent depuis npm, jusqu’à leurs configs TypeScript et Biome.'
       }
     ],
+    history: {
+      commits: 32,
+      lines: [
+        {
+          date: '2026-10-01',
+          subject:
+            'Hold back a package npm has never seen instead of failing the release'
+        },
+        {
+          date: '2026-09-29',
+          subject:
+            'Add @adrienlcp/react-router: react-aria links that navigate through react-router'
+        },
+        {
+          date: '2026-09-29',
+          subject:
+            'Leave the placeholder of a value the locale cannot print instead of throwing'
+        },
+        {
+          date: '2026-09-29',
+          subject:
+            "Build theme-preference on safe-storage and Vite's Plugin type"
+        },
+        {
+          date: '2026-09-29',
+          subject: 'Add @adrienlcp/tsconfig and @adrienlcp/biome-config'
+        },
+        {
+          date: '2026-09-29',
+          subject:
+            'Keep a modal dialog open when the selection copy runs inside it'
+        },
+        {
+          date: '2026-09-29',
+          subject: 'Refuse a default locale typed as a union of locales'
+        },
+        { date: '2026-09-29', subject: 'Publish the i18n and result packages' }
+      ],
+      readOn: '2026-10-02'
+    },
     kind: 'library',
     links: {
       packages: [
@@ -217,6 +328,12 @@ translate('greeting', { nom: 'Ada' })
 
 translate('greting', { name: 'Ada' })
 // ✗ not assignable to '"greeting"'`,
+        notes: [
+          {
+            en: 'A message’s arguments are read off the message itself: leave out {name} and the call does not compile. No code generation, no build plugin.',
+            fr: 'Les arguments d’un message se lisent dans le message lui-même : oubliez {name} et l’appel ne compile pas. Ni génération de code, ni plugin de build.'
+          }
+        ],
         title: '@adrienlcp/i18n'
       },
       {
@@ -229,9 +346,15 @@ translate('greting', { name: 'Ada' })
 
 const result = parse(raw)
 if (result.status === 'failure') return result.error
-// 'not_a_number'
+// → 'not_a_number'
 result.data
-// number`,
+// → number`,
+        notes: [
+          {
+            en: 'Result fits in thirty lines. A success that carries nothing has no data key at all, so nobody reads undefined off it.',
+            fr: 'Result tient en trente lignes. Un succès qui ne porte rien n’a pas de clé data du tout : personne n’y lit undefined.'
+          }
+        ],
         title: '@adrienlcp/result'
       },
       {
@@ -243,9 +366,15 @@ result.data
 plugins: [themePreferencePlugin(themeStore)]
 
 themeStore.setPreference('dark')
-// <html data-theme="dark">
-// dark theme-color  → media="all"
-// light theme-color → media="not all"`,
+// → <html data-theme="dark">
+// → dark theme-color: media="all"
+// → light theme-color: media="not all"`,
+        notes: [
+          {
+            en: 'A phone paints its toolbar from the theme-color tags, which follow the system, not the visitor. The theme package rewrites their media query before the first paint, so a dark choice on a light phone gets a dark toolbar too.',
+            fr: 'Un téléphone peint sa barre d’outils avec les balises theme-color, qui suivent le système, pas le visiteur. Le paquet de thème réécrit leur media query avant le premier rendu : un choix sombre sur un téléphone clair a aussi sa barre sombre.'
+          }
+        ],
         title: '@adrienlcp/theme-preference'
       },
       {
@@ -256,11 +385,17 @@ themeStore.setPreference('dark')
 
 if (locale.status === 'failure') {
   locale.error
-  // 'unavailable' | 'unrecognized'
+  // → 'unavailable' | 'unrecognized'
 } else {
   locale.data
-  // 'en' | 'fr' | null
+  // → 'en' | 'fr' | null
 }`,
+        notes: [
+          {
+            en: 'Safari’s private window once threw on every localStorage write; safe-storage returns a Result there instead, as for a full quota or a value an older version stored.',
+            fr: 'La fenêtre privée de Safari levait une exception à chaque écriture dans localStorage ; safe-storage y renvoie un Result, comme pour un quota plein ou une valeur rangée par une ancienne version.'
+          }
+        ],
         title: '@adrienlcp/safe-storage'
       }
     ],
@@ -306,6 +441,31 @@ if (locale.status === 'failure') {
         fr: 'Trente-sept figures animées dessinées à partir d’articulations, pas de tracés : l’interpolation est polaire et chaînée depuis la hanche, pour qu’aucun os ne s’étire en plein mouvement.'
       }
     ],
+    history: {
+      commits: 4,
+      lines: [
+        {
+          date: '2026-10-01',
+          subject: 'Deploy the public demo from CI on every push to main'
+        },
+        {
+          date: '2026-09-30',
+          subject:
+            'Deploy the public demo to Cloudflare Pages from a clean clone'
+        },
+        {
+          date: '2026-09-30',
+          subject:
+            'Deploy the private build to Netlify on push to main, drop Cloudflare Pages'
+        },
+        {
+          date: '2026-09-30',
+          subject:
+            'Séance, a bodyweight training PWA drawn as a gymnastics manual'
+        }
+      ],
+      readOn: '2026-10-02'
+    },
     kind: 'app',
     links: {
       live: 'https://sport-buk.pages.dev/specimen',
@@ -380,6 +540,33 @@ if (locale.status === 'failure') {
         fr: 'Ajouter ?analytics=off à une URL arrête de compter ce navigateur.'
       }
     ],
+    history: {
+      commits: 9,
+      lines: [
+        {
+          date: '2026-10-02',
+          subject: 'Show Web Vitals as speed credits on the dashboard'
+        },
+        {
+          date: '2026-10-02',
+          subject: 'Collect Core Web Vitals as bucketed counts'
+        },
+        { date: '2026-10-01', subject: 'Accept page views from on-record' },
+        {
+          date: '2026-10-01',
+          subject: 'Serve a public dashboard from the Worker'
+        },
+        {
+          date: '2026-10-01',
+          subject: 'Migrate and deploy the Worker from CI on every push to main'
+        },
+        {
+          date: '2026-09-30',
+          subject: 'Collect page views and serve site stats on Workers and D1'
+        }
+      ],
+      readOn: '2026-10-02'
+    },
     kind: 'app',
     links: {
       live: 'https://analytics.adrienlcp.workers.dev',

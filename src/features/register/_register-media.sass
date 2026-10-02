@@ -1,0 +1,17 @@
+/// Wide enough for the register's four columns: date, text, drawing, state.
+$two-columns: 960px
+
+/// Wide enough for the package ledger's one column per app.
+$matrix: 1120px
+
+@mixin two-columns
+  @media (width >= $two-columns)
+    @content
+
+@mixin matrix
+  @media (width >= $matrix)
+    @content
+
+@mixin narrow-matrix
+  @media (width < $matrix)
+    @content

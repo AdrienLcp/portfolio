@@ -53,6 +53,8 @@ type ReleaseStampProps = {
   /** Pressed onto the page as it loads: the register's newest entry. */
   isFresh?: boolean
   isSmall?: boolean
+  /** Printed in place of the state's own word. */
+  label?: string
   state: ReleaseState
 }
 
@@ -61,10 +63,11 @@ export const ReleaseStamp: React.FC<ReleaseStampProps> = ({
   entered,
   isFresh = false,
   isSmall = false,
+  label,
   state
 }) => {
   const translate = useTranslate()
-  const stateLabel = translate(`home.state.${state}`)
+  const stateLabel = label ?? translate(`home.state.${state}`)
   const className = ['release-stamp', isSmall && 'small', isFresh && 'fresh']
     .filter(Boolean)
     .join(' ')

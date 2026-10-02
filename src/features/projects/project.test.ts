@@ -4,6 +4,11 @@ import { localizeProject, type ProjectContent, projectsSchema } from './project'
 
 const project: ProjectContent = {
   highlights: [{ en: 'Buzzers', fr: 'Des buzzers' }],
+  history: {
+    commits: 1,
+    lines: [{ date: '2026-08-08', subject: 'Bootstrap the project' }],
+    readOn: '2026-10-02'
+  },
   kind: 'game',
   links: { repository: 'https://example.com/repository' },
   name: 'Example',
@@ -81,6 +86,7 @@ describe('localizeProject', () => {
   it('[content] keeps only the requested locale', () => {
     expect(localizeProject(project, 'fr')).toEqual({
       highlights: ['Des buzzers'],
+      history: project.history,
       kind: 'game',
       links: { repository: 'https://example.com/repository' },
       name: 'Example',

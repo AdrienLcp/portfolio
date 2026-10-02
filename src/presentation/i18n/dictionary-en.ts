@@ -92,7 +92,7 @@ export const EN_DICTIONARY = defineDictionary({
     menu: 'Menu',
     name: 'Adrien Lacourpaille',
     navigation: 'Main',
-    projects: 'Projects',
+    register: 'Register',
     skip: 'Skip to content'
   },
   home: {
@@ -201,30 +201,56 @@ export const EN_DICTIONARY = defineDictionary({
     note: 'This piece is not in the box.'
   },
   project: {
-    allProjects: 'All projects',
-    highlights: 'In the box',
-    live: {
-      app: 'Open it',
-      game: 'Play it',
-      library: 'Try them'
+    above: 'Above in the register',
+    below: 'Below in the register',
+    breadcrumb: 'Register',
+    code: 'Code: {title}',
+    commits: 'Commits',
+    commitsNote: 'on main, read {date}',
+    entered: 'Entered',
+    excerpts: 'As the compiler reads it',
+    excerptsLead:
+      'Set the way an editor shows it: a wavy line is a build that refuses, a violet line is what the compiler works out on its own.',
+    facts: 'Entry facts',
+    firstCommit: 'First commit',
+    history: 'History',
+    historyLead:
+      'Straight from the git log, abridged: {shown} of {commits} commits, newest first.',
+    housePackages: 'House packages',
+    housePackagesCount: '{count} of {total}',
+    housePackagesNote: 'installed from npm',
+    installs: 'Installs',
+    installsLead:
+      '{count} of the {total} house packages, from npm, down to the compiler and linter settings.',
+    mechanism: 'How it works',
+    neighbours: 'Neighbouring entries',
+    packages: {
+      count: 'Packages',
+      countNote: 'under @adrienlcp',
+      installedBy: 'Installed by',
+      installedByCount: '{count} apps',
+      kind: 'Library · TypeScript · npm',
+      kindStamp: 'Published',
+      latest: 'Latest release',
+      latestNote: 'to npm, with provenance',
+      ledger: 'The {count}',
+      ledgerLead: 'Each at its version on npm, and which app installs it.',
+      toLedger: 'The {count} packages'
     },
-    package: '{name} on npm',
-    repository: 'Read the code',
-    samples: {
-      app: 'How it works',
-      game: 'How it plays',
-      library: 'How they are used'
-    },
-    stack: 'Stack'
-  },
-  projects: {
-    lead: 'What I code in the evening, once the workday is done.',
-    open: {
-      app: 'Read about {name}',
-      game: 'Read the rules of {name}',
-      library: 'Read about {name}'
-    },
-    title: 'Projects'
+    refusal: 'Refused by the compiler',
+    result: 'Worked out by the compiler',
+    shipped: 'What shipped',
+    source: 'Source',
+    stack: 'Stack',
+    state: 'State',
+    verdict: {
+      compiles: 'Compiles',
+      errors: '{count} errors',
+      noErrors: '0 errors',
+      oneError: '1 error',
+      refused: 'Refused',
+      stamp: '{verdict}: {errors}'
+    }
   },
   theme: {
     dark: 'Dark',

@@ -1,10 +1,12 @@
 import type React from 'react'
 import { useId } from 'react'
 
+import type { HousePackageName } from '@/features/packages/house-package'
 import {
-  HOUSE_PACKAGE_NAMES,
-  type HousePackageName
-} from '@/features/packages/house-package'
+  SITE_INSTALLS,
+  SITE_OPENED,
+  SITE_SLUG
+} from '@/features/register/this-site'
 import { useTranslate } from '@/presentation/i18n/i18n-provider'
 import { LOCALES } from '@/presentation/i18n/locale'
 
@@ -14,15 +16,6 @@ import {
   ReportsLine,
   type RowReference
 } from './app-entry'
-
-/** The day this site's repository was opened. */
-export const SITE_OPENED = '2026-09-24'
-
-/** The slug the site's own row answers to, as an anchor and a reference. */
-export const SITE_SLUG = 'this-site'
-
-/** Every house package, down to the compiler and linter settings. */
-export const SITE_INSTALLS: readonly HousePackageName[] = HOUSE_PACKAGE_NAMES
 
 type SiteEntryProps = {
   countedBy: RowReference | null

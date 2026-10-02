@@ -52,11 +52,6 @@ export const PAGE_HEADS: Record<Locale, Record<IndexedPage, PageHead>> = {
       description:
         'Adrien Lacourpaille, full-stack developer in Nantes: websites, APIs and party games. Taverla, realtime party games on every phone in the room; on-record, every public vote of French deputies, explained and sourced; Séance, a training app that works offline with no server; and eleven TypeScript packages published on npm.',
       title: `${SITE_NAME} — Full-stack developer`
-    },
-    projects: {
-      description:
-        'What Adrien Lacourpaille codes in the evening, once the workday is done: Taverla, party games on every phone in the room; on-record, how French deputies actually vote; Séance, a training manual that works offline; and the npm packages under them.',
-      title: titled('Projects')
     }
   },
   fr: {
@@ -79,11 +74,6 @@ export const PAGE_HEADS: Record<Locale, Record<IndexedPage, PageHead>> = {
       description:
         'Adrien Lacourpaille, développeur full-stack à Nantes : sites, API et jeux de soirée. Taverla, des jeux de soirée en temps réel sur tous les téléphones de la pièce ; on-record, chaque vote public des députés, expliqué et sourcé ; Séance, une app d’entraînement qui marche hors ligne sans serveur ; et onze paquets TypeScript publiés sur npm.',
       title: `${SITE_NAME} — Développeur full-stack`
-    },
-    projects: {
-      description:
-        'Ce qu’Adrien Lacourpaille code le soir, une fois la journée finie : Taverla, des jeux de soirée sur tous les téléphones de la pièce ; on-record, comment votent vraiment les députés ; Séance, un manuel d’entraînement qui marche hors ligne ; et les paquets npm dessous.',
-      title: titled('Projets')
     }
   }
 }

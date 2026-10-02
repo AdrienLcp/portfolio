@@ -19,8 +19,7 @@ export const localizedPaths = {
   cv: '/:locale/cv',
   cvPlain: '/:locale/cv/plain',
   home: '/:locale',
-  project: '/:locale/projects/:slug',
-  projects: '/:locale/projects'
+  project: '/:locale/projects/:slug'
 } as const
 
 export const paths = {
@@ -58,8 +57,9 @@ export const contactPathFor = (locale: Locale): string =>
 export const cvPathFor = (locale: Locale): string =>
   pathFor(paths.cv, { locale })
 
-export const projectsPathFor = (locale: Locale): string =>
-  pathFor(paths.projects, { locale })
+/** The register on the home page, where every project has its row. */
+export const registerPathFor = (locale: Locale): string =>
+  `${homePathFor(locale)}#register`
 
 export const projectPathFor = ({
   locale,

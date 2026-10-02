@@ -6,7 +6,7 @@ import { useAboutData } from '@/features/about/infrastructure/about-loader'
 import { PROFILE_PHOTO } from '@/features/profile/profile'
 import {
   contactPathFor,
-  projectsPathFor
+  registerPathFor
 } from '@/infrastructure/router/navigation'
 import { Lid } from '@/presentation/components/lid'
 import { Main } from '@/presentation/components/main'
@@ -125,7 +125,7 @@ export const AboutPage: React.FC = () => {
             <Link href={contactPathFor(locale)} variant='accent'>
               {translate('about.writeToMe')}
             </Link>
-            <Link href={projectsPathFor(locale)}>
+            <Link href={registerPathFor(locale)}>
               {translate('about.seeProjects')}
             </Link>
           </div>

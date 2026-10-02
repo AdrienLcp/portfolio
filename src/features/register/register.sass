@@ -1,0 +1,425 @@
+@use '../../presentation/styles/focus'
+@use '../../presentation/styles/layout'
+@use '../../presentation/styles/typography'
+@use 'register-media' as media
+
+// Pieces every page of the register prints the same way: dates, chips, the
+// drawn diagrams, the package ledger and the blank line left for the reader.
+@layer components
+  .register-cap,
+  .ledger-head
+    @include typography.label
+
+    color: var(--ink-soft)
+
+    b
+      color: var(--ink)
+
+    .wide-head
+      display: none
+
+    .narrow-head
+      align-items: center
+      display: flex
+      gap: 1rem
+      justify-content: space-between
+      min-height: 2.25rem
+
+  .column-state
+    text-align: right
+
+  .register-rows,
+  .package-rows
+    list-style: none
+    margin: 0
+    padding: 0
+
+  .register-row
+    @include layout.sheet
+
+    border-bottom: 1px solid var(--rule)
+    position: relative
+    transition: opacity 220ms var(--timing)
+
+  .entry-date
+    @include typography.figures
+
+    font-size: 1.0625rem
+    font-weight: 600
+    white-space: nowrap
+
+    small
+      display: block
+      font-size: 0.8125rem
+      font-weight: 500
+      letter-spacing: 0.06em
+      opacity: 0.8
+      text-transform: uppercase
+
+  .entry-kind
+    @include typography.label
+
+    font-size: 0.875rem
+    font-weight: 600
+    margin-bottom: 0.5rem
+
+  .entry-label
+    @include typography.label
+
+    margin-bottom: 0.45rem
+
+  .installs
+    margin-top: 1.35rem
+
+  .chips
+    display: flex
+    flex-wrap: wrap
+    gap: 0.35rem
+    list-style: none
+    margin: 0
+    padding: 0
+
+  .chip
+    @include focus.ring
+
+    align-items: center
+    border: 1px solid var(--rule)
+    border-radius: 2px
+    color: var(--ink)
+    display: inline-flex
+    font-family: var(--font-letter)
+    font-size: 0.9375rem
+    font-weight: 600
+    min-height: 2rem
+    padding: 0 0.55rem
+    text-decoration: none
+    transition: background-color 140ms var(--timing), color 140ms var(--timing), border-color 140ms var(--timing)
+
+    &.lit
+      background: var(--violet)
+      border-color: var(--violet)
+      color: var(--on-violet)
+
+    @media (hover: hover) and (pointer: fine)
+      &:hover
+        border-color: currentColor
+
+  .screen
+    display: block
+    height: auto
+    width: 100%
+
+  .shipped-list
+    counter-reset: shipped
+    list-style: none
+    margin: 0
+    padding: 0
+
+    li
+      border-top: 1px solid var(--rule)
+      display: grid
+      gap: 0.5rem
+      grid-template-columns: 1.75rem minmax(0, 1fr)
+      max-width: 40rem
+      padding: 0.6rem 0
+
+      &::before
+        @include typography.figures
+
+        content: counter(shipped, decimal-leading-zero)
+        counter-increment: shipped
+        font-weight: 700
+        opacity: 0.7
+
+  .diagram
+    display: block
+    height: auto
+    overflow: visible
+    width: 100%
+
+    text
+      fill: currentColor
+      font-family: var(--font-letter)
+      font-size: 13px
+      letter-spacing: 0.04em
+
+    .lbl-strong
+      font-size: 14px
+      font-weight: 700
+      letter-spacing: 0.08em
+      text-transform: uppercase
+
+    .soft
+      opacity: 0.72
+
+    .struck tspan
+      fill: currentColor
+
+  .struck
+    fill: var(--violet)
+    text-decoration: line-through
+    text-decoration-thickness: 1.6px
+
+  .screen .struck
+    text-decoration-thickness: 2px
+
+    tspan
+      fill: var(--ink)
+
+  @media (prefers-reduced-motion: no-preference)
+    .drawer-mechanism
+      .diagram .draw
+        stroke-dasharray: 1
+        stroke-dashoffset: 1
+
+      .diagram .fade
+        opacity: 0
+
+      &.drawn
+        .diagram .draw
+          stroke-dashoffset: 0
+          transition: stroke-dashoffset 1100ms var(--timing) calc(var(--d, 0) * 110ms)
+
+        .diagram .fade
+          opacity: 1
+          transition: opacity 500ms var(--timing) calc(300ms + var(--d, 0) * 110ms)
+
+        .diagram .fade.soft
+          opacity: 0.72
+
+  // ---------- the packages ----------
+
+  .package-block
+    margin-top: clamp(2.5rem, 5vw, 4rem)
+
+  .package-cap
+    @include layout.sheet
+    @include typography.label
+
+    align-items: center
+    background: var(--paper-sunk)
+    border-bottom: 1px solid var(--rule)
+    border-top: 2px solid var(--rule-strong)
+    color: var(--ink-soft)
+    display: flex
+    flex-wrap: wrap
+    gap: 0.25rem 1rem
+    justify-content: space-between
+    min-height: 2.25rem
+    padding-inline: 0.75rem
+
+    .cap-links
+      display: flex
+      flex-wrap: wrap
+      gap: 0.25rem 1.25rem
+
+      .register-link
+        align-items: center
+        color: var(--ink)
+        display: inline-flex
+        gap: 0.3em
+        min-height: 2.25rem
+        text-decoration: underline
+
+  .ledger-head
+    @include layout.sheet
+
+    background: var(--paper)
+    border-bottom: 1px solid var(--rule-strong)
+    color: var(--ink)
+    position: sticky
+    top: 0
+    z-index: 5
+
+    @include media.matrix
+      .wide-head
+        align-items: center
+        display: grid
+        min-height: 2.25rem
+
+      .narrow-head
+        display: none
+
+      .column-app
+        text-align: center
+
+  .ledger-columns
+    column-gap: 1.25rem
+    display: grid
+
+    @include media.matrix
+      grid-template-columns: 6.5rem minmax(11rem, 14rem) minmax(0, 1fr) 4.5rem repeat(var(--app-columns, 5), 2.75rem) 7.5rem
+
+  .package-row
+    isolation: isolate
+
+    &::before
+      background: color-mix(in srgb, var(--violet) 8%, var(--paper))
+      content: ''
+      inset: 0 -0.75rem
+      opacity: 0
+      position: absolute
+      transition: opacity 160ms var(--timing)
+      z-index: -1
+
+    &.lit::before
+      opacity: 1
+
+  .package-entry
+    align-items: baseline
+    padding-block: 0.8rem
+    position: relative
+
+  .package-date
+    @include typography.figures
+
+    color: var(--ink-soft)
+    font-size: 0.9375rem
+
+  .package-name
+    font-family: var(--font-letter)
+    font-size: 1.1875rem
+    font-weight: 700
+    line-height: 1.2
+
+    .register-link
+      align-items: center
+      display: inline-flex
+      text-decoration: none
+      white-space: nowrap
+
+      &[data-hovered]
+        text-decoration: underline
+
+      .register-link-icon
+        margin-inline-start: 0.25em
+
+    mark
+      background: transparent
+      border-radius: 1px
+      color: inherit
+      margin: 0 -0.15em
+      padding: 0 0.15em
+      transition: background-color 160ms, color 160ms
+
+    .scope
+      color: var(--ink-soft)
+      font-weight: 500
+
+  .package-row.lit .package-name mark
+    background: var(--violet)
+    color: var(--on-violet)
+
+    .scope
+      color: var(--on-violet-soft)
+
+  .package-job
+    color: var(--ink-soft)
+    font-size: 1rem
+    line-height: 1.4
+
+  .package-version
+    @include typography.figures
+
+    font-size: 1.0625rem
+    font-weight: 700
+
+  .tick
+    display: flex
+    justify-content: center
+
+    .tick-icon
+      height: 1.1rem
+      width: 1.1rem
+
+    .tick-none
+      color: var(--rule)
+      font-weight: 700
+
+  .package-row.lit .tick-icon
+    color: var(--violet)
+
+  .used-text
+    display: none
+
+  .package-state
+    display: flex
+    justify-content: flex-end
+
+  @include media.narrow-matrix
+    .package-entry
+      grid-template-areas: 'name version' 'job job' 'used state'
+      grid-template-columns: minmax(0, 1fr) auto
+      padding-block: 0.9rem
+      row-gap: 0.25rem
+
+    .package-date,
+    .tick
+      display: none
+
+    .package-name
+      grid-area: name
+
+    .package-version
+      grid-area: version
+
+    .package-job
+      grid-area: job
+
+    .used-text
+      align-self: center
+      color: var(--ink-soft)
+      display: block
+      font-family: var(--font-letter)
+      font-size: 0.875rem
+      grid-area: used
+
+    .package-state
+      align-self: center
+      grid-area: state
+
+
+  .section-label
+    @include typography.label
+
+    font-size: 0.875rem
+
+  .next-entry
+    @include layout.sheet
+
+    display: grid
+    gap: 1.5rem
+    padding-block: clamp(2.5rem, 6vw, 4.5rem)
+
+    .next-line
+      font-family: var(--font-letter)
+      font-size: clamp(2.2rem, 7vw, 5rem)
+      font-weight: 800
+      letter-spacing: -0.02em
+      line-height: 0.9
+      max-width: 14ch
+      text-transform: uppercase
+
+    .blank
+      border-bottom: 3px solid var(--ink)
+      display: inline-block
+      min-width: 3ch
+
+    .next-note
+      color: var(--ink-soft)
+      margin-top: 1rem
+      max-width: 38rem
+
+    .next-actions
+      display: flex
+      flex-wrap: wrap
+      gap: 0.75rem
+
+    @include media.two-columns
+      align-items: end
+      column-gap: 1.25rem
+      grid-template-columns: 6.5rem minmax(0, 1fr) auto
+
+      .section-label
+        align-self: start
+        padding-top: 0.8rem

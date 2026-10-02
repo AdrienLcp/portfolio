@@ -1,123 +1,135 @@
 import type React from 'react'
 import { Suspense, use } from 'react'
 
-import { CodeSampleCard } from '@/features/project-pages/code-sample'
-import { useProjectData } from '@/features/project-pages/project-loader'
-import { npmPageFor, type Project } from '@/features/projects/project'
-import { projectsPathFor } from '@/infrastructure/router/navigation'
-import { Lid } from '@/presentation/components/lid'
+import type { HousePackageName } from '@/features/packages/house-package'
+import type { Project } from '@/features/projects/project'
+import { NextEntry } from '@/features/register/next-entry'
+import { StampInk } from '@/features/register/release-stamp'
+import { isRegistered } from '@/features/register/this-site'
+import { homePathFor, projectPathFor } from '@/infrastructure/router/navigation'
 import { Main } from '@/presentation/components/main'
-import { Stamp, StampList } from '@/presentation/components/stamp'
-import { Link } from '@/presentation/components/ui/link'
-import { projectHead } from '@/presentation/head/document-head'
+import { notFoundTitle, projectHead } from '@/presentation/head/document-head'
 import { useDocumentTitle } from '@/presentation/head/use-document-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { apiErrorKey } from '@/presentation/i18n/translation'
 import { MissingPiece } from '@/presentation/missing-piece'
 import { RouteFallback } from '@/presentation/route-fallback'
 
+import { AppEntryPage } from './app-entry-page'
+import type { Neighbour } from './neighbour-entries'
+import { PackagesEntryPage } from './packages-entry-page'
+import { useProjectData } from './project-loader'
+
+import '@/features/register/register.sass'
 import './project-page.sass'
 
-type RuleBookletProps = {
-  project: Project
-}
+const isPackagesEntry = (project: Project): boolean =>
+  project.kind === 'library'
 
-/** The case study, printed as the game's rule booklet. */
-const RuleBooklet: React.FC<RuleBookletProps> = ({ project }) => {
+/** The register's order: the apps as the home page lists them, then the packages. */
+const registerOrderOf = (projects: readonly Project[]): Project[] => [
+  ...projects.filter(isRegistered),
+  ...projects.filter(isPackagesEntry)
+]
+
+const ProjectEntry: React.FC = () => {
   const { locale, translate } = useI18n()
-  useDocumentTitle(projectHead(project).title)
+  const data = useProjectData()
+  const project = use(data.project)
+  const projects = use(data.projects)
+  const housePackages = use(data.housePackages)
+  useDocumentTitle(
+    project.status === 'success'
+      ? projectHead(project.data).title
+      : notFoundTitle(translate(apiErrorKey(project.error)))
+  )
+
+  const failure =
+    project.status === 'failure'
+      ? project.error
+      : projects.status === 'failure'
+        ? projects.error
+        : housePackages.status === 'failure'
+          ? housePackages.error
+          : null
+
+  if (
+    failure !== null ||
+    project.status === 'failure' ||
+    projects.status === 'failure' ||
+    housePackages.status === 'failure'
+  ) {
+    return (
+      <MissingPiece
+        backHref={homePathFor(locale)}
+        backLabel={translate('project.breadcrumb')}
+        message={translate(apiErrorKey(failure ?? 'invalid_content'))}
+      />
+    )
+  }
+
+  const entry = project.data
+  const order = registerOrderOf(projects.data)
+  const index = order.findIndex((candidate) => candidate.slug === entry.slug)
+  const neighbourAt = (at: number): Neighbour | null => {
+    const neighbour = index === -1 ? undefined : order[at]
+
+    return neighbour === undefined
+      ? null
+      : {
+          href: projectPathFor({ locale, slug: neighbour.slug }),
+          name: neighbour.name
+        }
+  }
+  const registerHref = `${homePathFor(locale)}#${isPackagesEntry(entry) ? 'register' : entry.slug}`
+  const packagesProject = projects.data.find(isPackagesEntry)
+  const packageRowHref =
+    packagesProject === undefined
+      ? null
+      : (name: HousePackageName) =>
+          `${projectPathFor({ locale, slug: packagesProject.slug })}#package-${name}`
+
+  if (isPackagesEntry(entry)) {
+    return (
+      <PackagesEntryPage
+        above={neighbourAt(index - 1)}
+        apps={projects.data.filter(isRegistered)}
+        housePackages={housePackages.data}
+        project={entry}
+        registerHref={registerHref}
+      />
+    )
+  }
+
+  if (!isRegistered(entry)) {
+    return (
+      <MissingPiece
+        backHref={homePathFor(locale)}
+        backLabel={translate('project.breadcrumb')}
+        message={translate(apiErrorKey('not_found'))}
+      />
+    )
+  }
 
   return (
-    <>
-      <Lid band={<p>{project.tagline}</p>} title={project.name} />
-      <div className='rule-booklet'>
-        <div className='booklet-text'>
-          <p className='booklet-summary'>{project.summary}</p>
-          {project.samples !== undefined && (
-            <section aria-labelledby='samples' className='booklet-section'>
-              <h2 className='booklet-heading' id='samples'>
-                {translate(`project.samples.${project.kind}`)}
-              </h2>
-              <div className='samples'>
-                {project.samples.map((sample) => (
-                  <CodeSampleCard key={sample.title} sample={sample} />
-                ))}
-              </div>
-            </section>
-          )}
-          <section aria-labelledby='in-the-box' className='booklet-section'>
-            <h2 className='booklet-heading' id='in-the-box'>
-              {translate('project.highlights')}
-            </h2>
-            <ul className='highlights'>
-              {project.highlights.map((highlight) => (
-                <li key={highlight}>{highlight}</li>
-              ))}
-            </ul>
-          </section>
-        </div>
-        <aside className='booklet-aside'>
-          <section aria-labelledby='stack' className='booklet-section'>
-            <h2 className='booklet-heading' id='stack'>
-              {translate('project.stack')}
-            </h2>
-            <StampList>
-              {project.stack.map((technology) => (
-                <Stamp key={technology}>{technology}</Stamp>
-              ))}
-            </StampList>
-          </section>
-          <div className='booklet-links'>
-            <Link
-              href={project.links.repository}
-              target='_blank'
-              variant='accent'
-            >
-              {translate('project.repository')}
-            </Link>
-            {project.links.live !== undefined && (
-              <Link href={project.links.live} target='_blank'>
-                {translate(`project.live.${project.kind}`)}
-              </Link>
-            )}
-            {project.links.packages?.map((packageName) => (
-              <Link
-                href={npmPageFor(packageName)}
-                key={packageName}
-                target='_blank'
-              >
-                {translate('project.package', { name: packageName })}
-              </Link>
-            ))}
-            <Link href={projectsPathFor(locale)}>
-              {translate('project.allProjects')}
-            </Link>
-          </div>
-        </aside>
-      </div>
-    </>
-  )
-}
-
-const ProjectCase: React.FC = () => {
-  const { locale, translate } = useI18n()
-  const result = use(useProjectData().project)
-
-  return result.status === 'failure' ? (
-    <MissingPiece
-      backHref={projectsPathFor(locale)}
-      backLabel={translate('project.allProjects')}
-      message={translate(apiErrorKey(result.error))}
+    <AppEntryPage
+      above={neighbourAt(index - 1)}
+      below={neighbourAt(index + 1)}
+      housePackages={housePackages.data}
+      packageRowHref={packageRowHref}
+      project={entry}
+      registerHref={registerHref}
     />
-  ) : (
-    <RuleBooklet project={result.data} />
   )
 }
 
+/** A register entry unfolded to its own page. */
 export const ProjectPage: React.FC = () => (
   <Main className='project-page'>
+    <StampInk />
     <Suspense fallback={<RouteFallback />}>
-      <ProjectCase />
+      <ProjectEntry />
     </Suspense>
+    <NextEntry />
   </Main>
 )

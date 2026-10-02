@@ -1,69 +1,579 @@
+@use '../../presentation/styles/focus'
 @use '../../presentation/styles/layout'
 @use '../../presentation/styles/typography'
+@use '../register/register-media' as media
+
+// The entry's columns line up with the register's: the date column first,
+// then the text, so a page reads as the row it unfolds from.
+$date-column: 6.5rem
+$column-gap: 1.25rem
+
+@mixin under-text-column
+  @include media.two-columns
+    padding-inline-start: calc(#{$date-column} + #{$column-gap})
 
 @layer components
   .project-page
     @include layout.page
 
-    .rule-booklet
+  .entry-page
+    display: flex
+    flex-direction: column
+
+  // ---------- the head ----------
+
+  .entry-head
+    @include layout.sheet
+
+    padding-block: 0.75rem clamp(2rem, 4vw, 3rem)
+
+  .entry-crumb
+    margin-inline-start: -0.4rem
+
+    .register-link-icon
+      height: 1rem
+      width: 1rem
+
+  .entry-head-grid
+    display: grid
+    gap: 1.5rem
+    grid-template-areas: 'dates stamp' 'text text'
+    grid-template-columns: minmax(0, 1fr) auto
+    margin-top: 0.75rem
+
+    @include media.two-columns
+      align-items: start
+      column-gap: $column-gap
+      grid-template-areas: 'dates text stamp'
+      grid-template-columns: $date-column minmax(0, 1fr) auto
+      margin-top: 1.5rem
+
+  .entry-head-dates
+    @include typography.figures
+
+    display: flex
+    flex-wrap: wrap
+    gap: 0.75rem 1.5rem
+    grid-area: dates
+    margin: 0
+
+    dt
+      @include typography.label
+
+      color: var(--ink-soft)
+      font-size: 0.75rem
+      font-weight: 600
+      letter-spacing: 0.06em
+
+    dd
+      font-size: 1.0625rem
+      font-weight: 600
+      margin: 0.1rem 0 0
+
+    @include media.two-columns
       display: grid
-      flex: 1
-      gap: var(--space-2xl)
-      padding: var(--space-2xl) var(--gutter) var(--space-3xl)
+      gap: 1rem
+      padding-top: 0.35rem
 
-    .booklet-text,
-    .booklet-aside
-      align-content: start
+  .entry-head-text
+    grid-area: text
+    min-width: 0
+
+  .entry-title
+    font-family: var(--font-letter)
+    font-size: clamp(3.25rem, 12vw, 6rem)
+    font-weight: 900
+    letter-spacing: -0.025em
+    line-height: 0.86
+    overflow-wrap: anywhere
+    text-transform: uppercase
+    text-wrap: balance
+
+  .entry-head-tagline
+    font-size: clamp(1.2rem, 2.2vw, 1.5rem)
+    font-weight: 500
+    line-height: 1.35
+    margin-top: 1rem
+    max-width: 34rem
+    text-wrap: pretty
+
+  .entry-head-summary
+    color: var(--ink-soft)
+    margin-top: 0.85rem
+    max-width: 40rem
+    text-wrap: pretty
+
+  .stack-line
+    display: flex
+    flex-wrap: wrap
+    font-family: var(--font-letter)
+    font-weight: 600
+    gap: 0.15rem 0.7rem
+    letter-spacing: 0.04em
+    list-style: none
+    margin: 1.25rem 0 0
+    padding: 0
+
+    li + li::before
+      color: var(--ink-soft)
+      content: '/'
+      margin-inline-end: 0.7rem
+
+  .entry-head-actions
+    display: flex
+    flex-wrap: wrap
+    gap: 0.75rem
+    margin-top: 1.5rem
+
+  .entry-head-stamp
+    grid-area: stamp
+    padding: 0.5rem 0.5rem 0 0
+
+    @include media.two-columns
+      .release-stamp
+        padding: 0.5rem 0.85rem 0.55rem
+
+        b
+          font-size: 1.9rem
+
+        span
+          font-size: 0.875rem
+
+  .entry-scene
+    @include under-text-column
+
+    margin: 2rem 0 0
+
+    .screen
+      max-width: 50rem
+
+    figcaption
+      @include typography.label
+
+      color: var(--ink-soft)
+      font-weight: 500
+      letter-spacing: 0.06em
+      margin-top: 0.6rem
+
+  // ---------- the figures ----------
+
+  .entry-facts
+    border-bottom: 1px solid var(--rule)
+    border-top: 2px solid var(--rule-strong)
+
+    dl
+      @include layout.sheet
+
       display: grid
-      gap: var(--space-2xl)
+      grid-template-columns: repeat(2, minmax(0, 1fr))
 
-    .booklet-summary
-      @include typography.lead
+      @include media.two-columns
+        grid-template-columns: repeat(var(--fact-count, 4), minmax(0, 1fr))
 
-      font-style: normal
-      max-width: var(--measure)
+    div
+      border-bottom: 1px solid var(--rule)
+      min-width: 0
+      padding: 0.9rem 0.75rem 1rem 0
 
-    .booklet-section
+      @include media.two-columns
+        border-bottom: 0
+        padding: 1.1rem 1rem 1.2rem
+
+        &:first-child
+          padding-inline-start: 0
+
+        & + div
+          border-inline-start: 1px solid var(--rule)
+
+    // Two to a line on a phone: the last line keeps no rule under it.
+    div:nth-last-child(-n + 2):nth-child(odd),
+    div:last-child
+      border-bottom: 0
+
+    dt
+      @include typography.label
+
+      color: var(--ink-soft)
+
+    dd
+      @include typography.figures
+
+      font-size: 1.35rem
+      font-weight: 700
+      line-height: 1.2
+      margin: 0.2rem 0 0
+
+      small
+        color: var(--ink-soft)
+        display: block
+        font-family: var(--font-prose)
+        font-size: 0.875rem
+        font-weight: 400
+        letter-spacing: 0
+        line-height: 1.35
+        margin-top: 0.25rem
+
+  // ---------- the blocks ----------
+
+  .entry-block
+    @include layout.sheet
+
+    padding-top: clamp(2.5rem, 6vw, 4.5rem)
+    scroll-margin-top: 1rem
+
+  .block-head
+    display: grid
+    gap: 0.4rem
+    margin-bottom: 1.25rem
+
+    h2
+      font-family: var(--font-letter)
+      font-size: clamp(1.8rem, 3.6vw, 2.6rem)
+      font-weight: 800
+      letter-spacing: -0.01em
+      line-height: 0.95
+      text-transform: uppercase
+      text-wrap: balance
+
+    p
+      color: var(--ink-soft)
+      max-width: 42rem
+      text-wrap: pretty
+
+      &::first-letter
+        text-transform: uppercase
+
+    @include media.two-columns
+      column-gap: $column-gap
+      grid-template-columns: $date-column minmax(0, 1fr)
+
+      > *
+        grid-column: 2
+
+  .shipped-lines,
+  .history-lines,
+  .install-lines,
+  .specimens
+    border-top: 2px solid var(--rule-strong)
+    list-style: none
+    margin: 0
+    padding: 0
+
+  .shipped-lines
+    counter-reset: shipped
+
+    li
+      align-items: baseline
+      border-bottom: 1px solid var(--rule)
       display: grid
-      gap: var(--space-m)
+      font-size: 1.125rem
+      gap: 0.5rem 1.25rem
+      grid-template-columns: 2.5rem minmax(0, 1fr)
+      padding: 1rem 0
+      text-wrap: pretty
 
-    .booklet-heading
-      @include typography.heading
+      &::before
+        @include typography.figures
 
-      border-top: var(--outline-thick) solid var(--ink)
-      padding-block-start: var(--space-s)
+        color: var(--violet)
+        content: counter(shipped, decimal-leading-zero)
+        counter-increment: shipped
+        font-size: 1.1rem
+        font-weight: 800
 
-    .samples
+      @include media.two-columns
+        font-size: 1.25rem
+        grid-template-columns: $date-column minmax(0, 46rem)
+        padding: 1.15rem 0
+
+  .entry-mechanism
+    @include under-text-column
+
+    .diagram
+      max-width: 52rem
+
+  // ---------- excerpts ----------
+
+  .specimens
+    border-top: 0
+    display: grid
+    gap: clamp(2rem, 4vw, 3rem)
+
+  .specimen
+    display: grid
+    gap: 1rem
+
+    @include media.two-columns
+      align-items: start
+      column-gap: 2rem
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr)
+      padding-inline-start: calc(#{$date-column} + #{$column-gap})
+
+  .specimen-notes
+    display: grid
+    gap: 0.75rem
+    max-width: 34rem
+
+    p
+      border-top: 1px solid var(--rule)
+      padding-top: 0.75rem
+      text-wrap: pretty
+
+  .code-specimen
+    border: 1px solid var(--rule-strong)
+    border-radius: 2px
+    margin: 0
+    min-width: 0
+
+  .specimen-bar
+    align-items: center
+    border-bottom: 1px solid var(--rule)
+    display: flex
+    gap: 1rem
+    justify-content: space-between
+    min-height: 3.25rem
+    padding: 0.35rem 0.6rem 0.35rem 0.9rem
+
+  .specimen-title
+    font-family: var(--font-letter)
+    font-size: 1.0625rem
+    font-weight: 700
+
+    a
+      @include focus.ring
+
+      text-decoration: none
+
+      @media (hover: hover) and (pointer: fine)
+        &:hover
+          text-decoration: underline
+
+  .verdict
+    color: var(--ink)
+    outline-color: var(--ink)
+    border-color: var(--ink)
+    mix-blend-mode: normal
+
+    span
+      font-size: 0.6875rem
+
+    &.refused
+      border-color: var(--violet)
+      color: var(--violet)
+      outline-color: var(--violet)
+
+  .specimen-scroll
+    @include focus.ring
+
+    background: var(--paper-sunk)
+    overflow-x: auto
+
+  .specimen-code
+    @include typography.code
+
+    font-size: 0.875rem
+    line-height: 1.65
+    margin: 0
+    padding: 1rem 1.1rem 1.1rem
+    width: max-content
+    min-width: 100%
+    tab-size: 2
+
+    code
+      font: inherit
+
+  .token-keyword
+    color: var(--violet)
+    font-weight: 600
+
+  .token-string
+    color: var(--ink-soft)
+
+  .token-call
+    font-weight: 700
+
+  .token-type
+    font-style: italic
+
+  .token-comment
+    color: var(--ink-soft)
+    font-style: italic
+
+  .squiggle
+    text-decoration: underline wavy var(--violet)
+    text-decoration-skip-ink: none
+    text-decoration-thickness: 1.5px
+    text-underline-offset: 0.3em
+
+  .code-note
+    display: block
+    font-family: var(--font-letter)
+    font-size: 0.9375rem
+    font-weight: 600
+    letter-spacing: 0.01em
+    white-space: pre
+
+  .code-note-icon
+    display: inline-block
+    fill: none
+    height: 0.95em
+    margin-inline-end: 0.4em
+    stroke: currentColor
+    stroke-width: 2.2
+    translate: 0 0.12em
+    width: 0.95em
+
+  .code-note.refusal
+    color: var(--violet)
+
+  .code-note.result
+    color: var(--violet)
+    font-style: italic
+
+  .entry-hero-specimen
+    @include under-text-column
+
+    display: grid
+    gap: 1rem
+    margin-top: 2rem
+
+    @include media.two-columns
+      align-items: start
+      column-gap: 2rem
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr)
+
+  // ---------- history ----------
+
+  .history-lines
+    li
+      align-items: baseline
+      border-bottom: 1px solid var(--rule)
       display: grid
-      gap: var(--space-m)
-      max-width: var(--measure)
+      gap: 0.15rem $column-gap
+      grid-template-columns: minmax(0, 1fr)
+      padding: 0.7rem 0
 
-    .highlights
+      @include media.two-columns
+        grid-template-columns: $date-column minmax(0, 1fr)
+
+    time
+      @include typography.figures
+
+      color: var(--ink-soft)
+      font-weight: 600
+
+    .history-subject
+      font-size: 1.0625rem
+      text-wrap: pretty
+
+      .register-link
+        color: var(--violet)
+        font-weight: 600
+        text-decoration-thickness: 1px
+        text-underline-offset: 0.2em
+
+    .newest .history-subject
+      font-weight: 600
+
+    .first-mark
+      @include typography.label
+
+      color: var(--violet)
+      margin-inline-start: 0.6rem
+
+  // ---------- installs ----------
+
+  .install-lines
+    li
+      align-items: baseline
+      border-bottom: 1px solid var(--rule)
       display: grid
-      gap: var(--space-s)
-      max-width: var(--measure)
+      gap: 0.15rem 1rem
+      grid-template-areas: 'name version' 'job job'
+      grid-template-columns: minmax(0, 1fr) auto
+      padding: 0.75rem 0
 
-      li
-        padding-inline-start: calc(12px + var(--space-s))
-        position: relative
+      @include media.two-columns
+        column-gap: $column-gap
+        grid-template-areas: 'gap name job version'
+        grid-template-columns: $date-column minmax(12rem, 16rem) minmax(0, 1fr) 6rem
 
-        &::before
-          background: var(--active)
-          border-radius: var(--radius-full)
-          content: ''
-          height: 12px
-          inset-inline-start: 0
-          position: absolute
-          top: 0.55em
-          width: 12px
+  .install-name
+    font-family: var(--font-letter)
+    font-size: 1.1875rem
+    font-weight: 700
+    grid-area: name
 
-    .booklet-links
-      align-items: flex-start
-      display: flex
-      flex-direction: column
-      gap: var(--space-s)
+    .register-link
+      text-decoration: none
 
-    @include layout.wide
-      .rule-booklet
-        grid-template-columns: minmax(0, 65ch) minmax(16rem, 22rem)
-        justify-content: space-between
+      &[data-hovered]
+        color: var(--violet)
+
+        .scope
+          color: inherit
+
+    .scope
+      color: var(--ink-soft)
+      font-weight: 500
+
+  .install-job
+    color: var(--ink-soft)
+    grid-area: job
+
+  .install-version
+    @include typography.figures
+
+    font-weight: 700
+    grid-area: version
+    text-align: right
+
+  // ---------- the packages' ledger, inside a block ----------
+
+  .entry-ledger
+    .package-block
+      margin-top: 0
+
+    .package-cap,
+    .ledger-head,
+    .register-row
+      width: 100%
+
+  // ---------- neighbours ----------
+
+  .neighbours
+    @include layout.sheet
+
+    border-bottom: 1px solid var(--rule)
+    border-top: 2px solid var(--rule-strong)
+    display: grid
+    grid-template-columns: 1fr 1fr
+    margin-top: clamp(3rem, 7vw, 5rem)
+
+    .neighbour
+      display: grid
+      gap: 0.2rem
+      min-height: 5rem
+      padding: 1.1rem 0
+      text-decoration: none
+
+      &.below
+        border-inline-start: 1px solid var(--rule)
+        padding-inline-start: 1rem
+        text-align: right
+
+      small
+        @include typography.label
+
+        color: var(--ink-soft)
+
+      strong
+        font-family: var(--font-letter)
+        font-size: clamp(1.4rem, 3vw, 2.2rem)
+        font-weight: 800
+        line-height: 1
+        text-transform: uppercase
+        transition: color 160ms var(--timing)
+
+      &[data-hovered] strong
+        color: var(--violet)

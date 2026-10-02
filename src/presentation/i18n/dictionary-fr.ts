@@ -92,7 +92,7 @@ export const FR_DICTIONARY = defineDictionary({
     menu: 'Menu',
     name: 'Adrien Lacourpaille',
     navigation: 'Principale',
-    projects: 'Projets',
+    register: 'Registre',
     skip: 'Aller au contenu'
   },
   home: {
@@ -201,30 +201,56 @@ export const FR_DICTIONARY = defineDictionary({
     note: 'Cette pièce n’est pas dans la boîte.'
   },
   project: {
-    allProjects: 'Tous les projets',
-    highlights: 'Dans la boîte',
-    live: {
-      app: 'L’ouvrir',
-      game: 'Y jouer',
-      library: 'Les essayer'
+    above: 'Au-dessus dans le registre',
+    below: 'En dessous dans le registre',
+    breadcrumb: 'Registre',
+    code: 'Code : {title}',
+    commits: 'Commits',
+    commitsNote: 'sur main, lus le {date}',
+    entered: 'Inscrit',
+    excerpts: 'Tel que le compilateur le lit',
+    excerptsLead:
+      'Mis en page comme dans un éditeur : une ligne ondulée est un build qui refuse, une ligne violette est ce que le compilateur déduit tout seul.',
+    facts: 'Faits de l’entrée',
+    firstCommit: 'Premier commit',
+    history: 'Historique',
+    historyLead:
+      'Tiré du git log, abrégé, et laissé dans sa langue : {shown} commits sur {commits}, du plus récent au plus ancien.',
+    housePackages: 'Paquets maison',
+    housePackagesCount: '{count} sur {total}',
+    housePackagesNote: 'installés depuis npm',
+    installs: 'Installe',
+    installsLead:
+      '{count} des {total} paquets maison, depuis npm, jusqu’aux réglages du compilateur et du linter.',
+    mechanism: 'Comment ça marche',
+    neighbours: 'Entrées voisines',
+    packages: {
+      count: 'Paquets',
+      countNote: 'sous @adrienlcp',
+      installedBy: 'Installés par',
+      installedByCount: '{count} apps',
+      kind: 'Bibliothèque · TypeScript · npm',
+      kindStamp: 'Publié',
+      latest: 'Dernière version',
+      latestNote: 'sur npm, avec provenance',
+      ledger: 'Les {count}',
+      ledgerLead: 'Chacun à sa version sur npm, et quelle app l’installe.',
+      toLedger: 'Les {count} paquets'
     },
-    package: '{name} sur npm',
-    repository: 'Lire le code',
-    samples: {
-      app: 'Comment ça marche',
-      game: 'Comment ça se joue',
-      library: 'Comment on s’en sert'
-    },
-    stack: 'Stack technique'
-  },
-  projects: {
-    lead: 'Ce que je code le soir, une fois le travail fini.',
-    open: {
-      app: 'Découvrir {name}',
-      game: 'Lire les règles de {name}',
-      library: 'Découvrir {name}'
-    },
-    title: 'Projets'
+    refusal: 'Refusé par le compilateur',
+    result: 'Déduit par le compilateur',
+    shipped: 'Ce qui est livré',
+    source: 'Code source',
+    stack: 'Stack technique',
+    state: 'État',
+    verdict: {
+      compiles: 'Compile',
+      errors: '{count} erreurs',
+      noErrors: '0 erreur',
+      oneError: '1 erreur',
+      refused: 'Refusé',
+      stamp: '{verdict} : {errors}'
+    }
   },
   theme: {
     dark: 'Sombre',

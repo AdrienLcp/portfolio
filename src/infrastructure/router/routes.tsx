@@ -6,7 +6,6 @@ import { cvLoader } from '@/features/cv-pages/cv-loader'
 import { homeLoader } from '@/features/home/home-loader'
 import { NotFoundPage } from '@/features/not-found/not-found-page'
 import { projectLoader } from '@/features/project-pages/project-loader'
-import { projectsLoader } from '@/features/project-pages/projects-loader'
 import { LocalePrefixedRoutes } from '@/infrastructure/router/locale-prefixed-routes'
 import { localizedPaths } from '@/infrastructure/router/navigation'
 import { NegotiatedLocaleRedirect } from '@/infrastructure/router/negotiated-locale-redirect'
@@ -69,13 +68,6 @@ const pageFor = {
         .ProjectPage
     }),
     module: 'src/features/project-pages/project-page.tsx'
-  },
-  [localizedPaths.projects]: {
-    lazy: async () => ({
-      Component: (await import('@/features/project-pages/projects-page'))
-        .ProjectsPage
-    }),
-    module: 'src/features/project-pages/projects-page.tsx'
   }
 } satisfies Record<LocalizedPath, LazyPage>
 
@@ -102,8 +94,7 @@ const loaderFor = {
   [localizedPaths.cvPlain]: ({ params }) => cvLoader(localeParam(params)),
   [localizedPaths.home]: ({ params }) => homeLoader(localeParam(params)),
   [localizedPaths.project]: ({ params }) =>
-    projectLoader({ locale: localeParam(params), slug: params.slug ?? '' }),
-  [localizedPaths.projects]: ({ params }) => projectsLoader(localeParam(params))
+    projectLoader({ locale: localeParam(params), slug: params.slug ?? '' })
 } satisfies Record<LocalizedPath, LoaderFunction>
 
 /** Pages printed bare, without the site's header and footer. */

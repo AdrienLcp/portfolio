@@ -11,10 +11,32 @@ const npmPackageNameSchema = z
   .string()
   .regex(/^(?:@[a-z0-9-~][a-z0-9-._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/)
 
-/** A snippet printed in the booklet, titled with what it is taken from. */
+/**
+ * An excerpt set the way an editor shows it, titled with what it is taken
+ * from. A line `// ✗ message` is the compiler refusing the line above it; a
+ * line `// → text` is what the compiler infers for the line above, or what
+ * that line produces.
+ */
 const codeSampleSchema = z.strictObject({
   code: textSchema,
+  /** What the excerpt proves, printed beside it. */
+  notes: z.array(localizedTextSchema).min(1).optional(),
   title: textSchema
+})
+
+const historyLineSchema = z.strictObject({
+  date: z.iso.date(),
+  /** The commit's subject, as written in the log. */
+  subject: textSchema
+})
+
+/** The project's git log, abridged by hand, counted on the day it was read. */
+const historySchema = z.strictObject({
+  /** Commits on the main branch on `readOn`. */
+  commits: z.number().int().positive(),
+  /** Newest first; the last line is the first commit. */
+  lines: z.array(historyLineSchema).min(1),
+  readOn: z.iso.date()
 })
 
 /** What the project is, which decides how its page talks about it. */
@@ -38,6 +60,7 @@ const registerEntrySchema = z.strictObject({
 
 const projectSchema = z.strictObject({
   highlights: z.array(localizedTextSchema).min(1),
+  history: historySchema,
   kind: projectKindSchema,
   links: z.strictObject({
     live: z.url().optional(),
@@ -65,7 +88,13 @@ export type ProjectKind = z.infer<typeof projectKindSchema>
 
 export type ReleaseState = z.infer<typeof releaseStateSchema>
 
-export type CodeSample = z.infer<typeof codeSampleSchema>
+type CodeSampleContent = z.infer<typeof codeSampleSchema>
+
+export type CodeSample = Omit<CodeSampleContent, 'notes'> & {
+  notes: string[]
+}
+
+export type ProjectHistory = z.infer<typeof historySchema>
 
 export type ProjectContent = z.infer<typeof projectSchema>
 
@@ -77,22 +106,29 @@ export type RegisterEntry = Omit<RegisterEntryContent, 'category'> & {
 
 export type Project = Omit<
   ProjectContent,
-  'highlights' | 'register' | 'summary' | 'tagline'
+  'highlights' | 'register' | 'samples' | 'summary' | 'tagline'
 > & {
   highlights: string[]
   register?: RegisterEntry
+  samples?: CodeSample[]
   summary: string
   tagline: string
 }
 
 export const localizeProject = (
-  { register, ...project }: ProjectContent,
+  { register, samples, ...project }: ProjectContent,
   locale: Locale
 ): Project => ({
   ...project,
   highlights: project.highlights.map((highlight) => highlight[locale]),
   ...(register !== undefined && {
     register: { ...register, category: register.category[locale] }
+  }),
+  ...(samples !== undefined && {
+    samples: samples.map(({ notes, ...sample }) => ({
+      ...sample,
+      notes: notes?.map((note) => note[locale]) ?? []
+    }))
   }),
   summary: project.summary[locale],
   tagline: project.tagline[locale]

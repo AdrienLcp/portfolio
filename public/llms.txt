@@ -16,7 +16,6 @@ language: it negotiates from the browser's and redirects, which is what
 `hreflang="x-default"` points at.
 
 - [Home](https://adrienlacourpaille.dev/en): who he is, and what is in the box.
-- [Projects](https://adrienlacourpaille.dev/en/projects)
 - [Taverla](https://adrienlacourpaille.dev/en/projects/taverla): party games on every phone in the room, on the same instant.
 - [on-record](https://adrienlacourpaille.dev/en/projects/on-record): what French deputies actually do, on the record, not what they say.
 - [Packages](https://adrienlacourpaille.dev/en/projects/packages): the npm packages under this site, Taverla, Séance and on-record, typed as far as the compiler goes.
