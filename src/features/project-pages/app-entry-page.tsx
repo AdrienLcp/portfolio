@@ -9,6 +9,7 @@ import { useDrawnWhenSeen } from '@/features/register/use-drawn-when-seen'
 import { RegisterLink } from '@/presentation/components/register/register-link'
 import { useTranslate } from '@/presentation/i18n/i18n-provider'
 
+import { coverageFact } from './coverage-fact'
 import { EntryBlock, ShippedLines } from './entry-block'
 import { EntryFacts } from './entry-facts'
 import { EntryHead } from './entry-head'
@@ -150,6 +151,7 @@ export const AppEntryPage: React.FC<AppEntryPageProps> = ({
             note: translate('project.commitsNote', { date: history.readOn }),
             value: String(history.commits)
           },
+          coverageFact(project.coverage, translate),
           {
             label: translate('project.housePackages'),
             note: translate('project.housePackagesNote'),

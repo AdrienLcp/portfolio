@@ -1,9 +1,17 @@
 import type { z } from 'zod'
 
 import type { projectsSchema } from '@/features/projects/project'
+import { TEST_COVERAGE_FIGURES } from '@/features/projects/test-coverage-figures'
 
 export const PROJECTS: z.input<typeof projectsSchema> = [
   {
+    coverage: {
+      ...TEST_COVERAGE_FIGURES.taverla,
+      scope: {
+        en: 'the server and game-rule tests',
+        fr: 'les tests du serveur et des règles du jeu'
+      }
+    },
     highlights: [
       {
         en: 'Three games on one shelf: blind test, buzzer and quiz.',
@@ -121,6 +129,13 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
     }
   },
   {
+    coverage: {
+      ...TEST_COVERAGE_FIGURES['on-record'],
+      scope: {
+        en: 'the ingest, web and protocol tests',
+        fr: 'les tests de l’ingestion, du site et du protocole'
+      }
+    },
     highlights: [
       {
         en: 'Every public vote of every deputy, with the group they sat in on the day of the vote. No ranking and no score: every figure links to the votes it counts, and every page cites its official source.',
@@ -234,6 +249,13 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
     }
   },
   {
+    coverage: {
+      ...TEST_COVERAGE_FIGURES.packages,
+      scope: {
+        en: 'the tests of every package',
+        fr: 'les tests de chaque paquet'
+      }
+    },
     highlights: [
       {
         en: 'The French dictionary is typed against the English one, down to each placeholder: a missing key or a {nom} written for {name} fails the build instead of showing on screen.',
@@ -419,6 +441,13 @@ if (locale.status === 'failure') {
     }
   },
   {
+    coverage: {
+      ...TEST_COVERAGE_FIGURES.seance,
+      scope: {
+        en: 'the app’s unit tests',
+        fr: 'les tests unitaires de l’app'
+      }
+    },
     highlights: [
       {
         en: 'Installable and fully offline: a hand-written Workbox service worker precaches the whole shell, and every route is served with the network cut, mid-session included.',
@@ -518,6 +547,13 @@ if (locale.status === 'failure') {
     }
   },
   {
+    coverage: {
+      ...TEST_COVERAGE_FIGURES.analytics,
+      scope: {
+        en: 'the tests run outside the Worker',
+        fr: 'les tests lancés hors du Worker'
+      }
+    },
     highlights: [
       {
         en: 'No cookie, no IP, no user agent, no fingerprint and no hash stored: a row holds a path, a referrer host, a country, a locale, a theme and a device class.',

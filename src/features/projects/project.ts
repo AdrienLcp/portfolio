@@ -39,6 +39,17 @@ const historySchema = z.strictObject({
   readOn: z.iso.date()
 })
 
+/**
+ * The share of source lines the unit tests run, measured in the project's
+ * repository by `pnpm coverage:read`.
+ */
+const coverageSchema = z.strictObject({
+  lines: z.number().min(0).max(100),
+  readOn: z.iso.date(),
+  /** What the figure measures ("unit tests, server and game rules"). */
+  scope: localizedTextSchema
+})
+
 /** What the project is, which decides how its page talks about it. */
 const projectKindSchema = z.enum(['app', 'game', 'library'])
 
@@ -59,6 +70,7 @@ const registerEntrySchema = z.strictObject({
 })
 
 const projectSchema = z.strictObject({
+  coverage: coverageSchema,
   highlights: z.array(localizedTextSchema).min(1),
   history: historySchema,
   kind: projectKindSchema,
@@ -104,10 +116,15 @@ export type RegisterEntry = Omit<RegisterEntryContent, 'category'> & {
   category: string
 }
 
+type CoverageContent = z.infer<typeof coverageSchema>
+
+export type Coverage = Omit<CoverageContent, 'scope'> & { scope: string }
+
 export type Project = Omit<
   ProjectContent,
-  'highlights' | 'register' | 'samples' | 'summary' | 'tagline'
+  'coverage' | 'highlights' | 'register' | 'samples' | 'summary' | 'tagline'
 > & {
+  coverage: Coverage
   highlights: string[]
   register?: RegisterEntry
   samples?: CodeSample[]
@@ -116,10 +133,11 @@ export type Project = Omit<
 }
 
 export const localizeProject = (
-  { register, samples, ...project }: ProjectContent,
+  { coverage, register, samples, ...project }: ProjectContent,
   locale: Locale
 ): Project => ({
   ...project,
+  coverage: { ...coverage, scope: coverage.scope[locale] },
   highlights: project.highlights.map((highlight) => highlight[locale]),
   ...(register !== undefined && {
     register: { ...register, category: register.category[locale] }

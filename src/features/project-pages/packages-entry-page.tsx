@@ -17,6 +17,7 @@ import { RegisterLink } from '@/presentation/components/register/register-link'
 import { useTranslate } from '@/presentation/i18n/i18n-provider'
 
 import { CodeSpecimen } from './code-specimen'
+import { coverageFact } from './coverage-fact'
 import { EntryBlock, ShippedLines } from './entry-block'
 import { EntryFacts } from './entry-facts'
 import { EntryHead } from './entry-head'
@@ -156,6 +157,7 @@ export const PackagesEntryPage: React.FC<PackagesEntryPageProps> = ({
             note: translate('project.commitsNote', { date: history.readOn }),
             value: String(history.commits)
           },
+          coverageFact(project.coverage, translate),
           {
             label: translate('project.packages.installedBy'),
             note: columns.map((column) => column.name).join(', '),

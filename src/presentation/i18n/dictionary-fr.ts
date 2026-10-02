@@ -211,7 +211,7 @@ export const FR_DICTIONARY = defineDictionary({
     commits: 'Commits',
     commitsNote: 'sur main, lus le {date}',
     coverage: 'Couverture',
-    coverageNote: 'des lignes, par {scope}, lue le {date}',
+    coverageNote: 'lignes exécutées par {scope}, lues le {date}',
     coverageValue: '{percent} %',
     entered: 'Inscrit',
     excerpts: 'Tel que le compilateur le lit',

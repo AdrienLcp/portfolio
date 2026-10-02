@@ -3,6 +3,11 @@ import { describe, expect, it } from 'vitest'
 import { localizeProject, type ProjectContent, projectsSchema } from './project'
 
 const project: ProjectContent = {
+  coverage: {
+    lines: 87.5,
+    readOn: '2026-10-02',
+    scope: { en: 'the unit tests', fr: 'les tests unitaires' }
+  },
   highlights: [{ en: 'Buzzers', fr: 'Des buzzers' }],
   history: {
     commits: 1,
@@ -73,6 +78,12 @@ describe('projectsSchema', () => {
     expect(accepts({ ...project, year: 2026 })).toBe(false)
   })
 
+  it('[content] rejects a coverage above a hundred percent', () => {
+    expect(
+      accepts({ ...project, coverage: { ...project.coverage, lines: 101 } })
+    ).toBe(false)
+  })
+
   it('[content] rejects two projects sharing a slug', () => {
     expect(projectsSchema.safeParse([project, project]).success).toBe(false)
   })
@@ -85,6 +96,11 @@ describe('projectsSchema', () => {
 describe('localizeProject', () => {
   it('[content] keeps only the requested locale', () => {
     expect(localizeProject(project, 'fr')).toEqual({
+      coverage: {
+        lines: 87.5,
+        readOn: '2026-10-02',
+        scope: 'les tests unitaires'
+      },
       highlights: ['Des buzzers'],
       history: project.history,
       kind: 'game',

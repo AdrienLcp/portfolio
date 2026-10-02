@@ -57,6 +57,13 @@ $column-gap: 1.25rem
     grid-area: dates
     margin: 0
 
+    // An odd fact out on a phone spans the line rather than leave a hole.
+    div:last-child:nth-child(odd)
+      grid-column: 1 / -1
+
+      @include media.two-columns
+        grid-column: auto
+
     dt
       @include typography.label
 

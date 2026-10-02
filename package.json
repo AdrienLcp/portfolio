@@ -57,6 +57,7 @@
     "build:client": "vite build",
     "build:pages": "pnpm build && storybook build --quiet --output-dir dist/storybook",
     "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-ssr",
+    "coverage:read": "node --import tsx scripts/read-test-coverage.ts",
     "cv:pdf": "node --import tsx scripts/cv-pdf.ts",
     "deps:upgrade": "corepack use pnpm@latest && pnpm -r up -L && biome migrate --write",
     "dev": "vite",
