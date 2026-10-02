@@ -116,6 +116,7 @@ const PathStep: React.FC<PathStepProps> = ({ index, step }) => {
               isFresh
               label={translate('about.state.current')}
               note={translate('about.state.since', { date: step.mark })}
+              size='large'
             />
           ) : (
             <p className='path-state-word'>

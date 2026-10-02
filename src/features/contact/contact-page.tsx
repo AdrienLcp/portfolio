@@ -106,6 +106,7 @@ const Address: React.FC<AddressProps> = ({ email }) => {
           isFresh
           label={translate('home.head.openToWork')}
           note={translate('home.head.place')}
+          size='large'
         />
       </div>
     </section>

@@ -42,26 +42,33 @@ export const StampInk: React.FC = () => (
   </svg>
 )
 
+export type StampSize = 'small' | 'medium' | 'large'
+
 type RubberStampProps = {
   /** What the stamp says once read aloud, when the printed words are not enough. */
   description?: string
   /** Pressed onto the page as it loads: the one moment the page is for. */
   isFresh?: boolean
-  isSmall?: boolean
   label: string
   /** Printed small under the label: a date, most of the time. */
   note?: string
+  /** Small inside a ledger row, large as a page's one stamp. */
+  size?: StampSize
 }
 
 /** A rubber stamp in violet ink, pressed slightly askew. */
 export const RubberStamp: React.FC<RubberStampProps> = ({
   description,
   isFresh = false,
-  isSmall = false,
   label,
-  note
+  note,
+  size = 'medium'
 }) => {
-  const className = ['rubber-stamp', isSmall && 'small', isFresh && 'fresh']
+  const className = [
+    'rubber-stamp',
+    size !== 'medium' && size,
+    isFresh && 'fresh'
+  ]
     .filter(Boolean)
     .join(' ')
 

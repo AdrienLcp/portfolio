@@ -12,27 +12,25 @@
     @include layout.sheet
 
     display: grid
-    gap: 1.5rem
-    padding-block: clamp(2.25rem, 7vw, 5.5rem) clamp(2.5rem, 6vw, 4.5rem)
+    gap: var(--space-l)
+    padding-block: clamp(2.25rem, 7vw, 5.5rem) var(--space-section)
 
   .contact-lead
+    @include typography.lead
+
     font-size: clamp(1.25rem, 2.4vw, 1.75rem)
-    font-weight: 500
-    letter-spacing: -0.005em
-    line-height: 1.3
     max-width: 30rem
     text-wrap: pretty
 
   .contact-address
-    font-family: var(--font-letter)
+    @include typography.display
+
     font-size: clamp(2rem, 10.4vw, 10rem)
-    font-weight: 800
-    letter-spacing: -0.025em
-    line-height: 0.86
     overflow-wrap: anywhere
+    text-transform: none
 
     a
-      border-radius: 2px
+      border-radius: var(--radius-s)
       color: var(--ink)
       text-decoration: none
 
@@ -49,21 +47,21 @@
 
   .contact-act
     display: grid
-    gap: 0.5rem
+    gap: var(--space-2xs)
     justify-items: start
 
   .contact-actions
     display: flex
     flex-wrap: wrap
-    gap: 0.75rem
+    gap: var(--space-xs)
 
   .copy-status
     align-items: center
     display: inline-flex
     font-family: var(--font-letter)
-    font-size: 1rem
+    font-size: var(--text-base)
     font-weight: 700
-    gap: 0.4rem
+    gap: var(--space-2xs)
     letter-spacing: 0.04em
     min-height: 1.6em
 
@@ -73,15 +71,15 @@
 
   .contact-standing
     align-items: center
-    border-top: 1px solid var(--rule)
+    border-top: var(--hairline)
     display: grid
-    gap: 1rem 1.5rem
+    gap: var(--space-s) var(--space-l)
     justify-items: start
-    padding-top: 1.25rem
+    padding-top: var(--space-m)
 
     p
       color: var(--ink-soft)
-      max-width: 34rem
+      max-width: var(--measure-lead)
 
     b
       color: var(--ink)
@@ -92,21 +90,17 @@
       text-underline-offset: 0.2em
 
     .rubber-stamp
-      margin-right: 0.5rem
+      margin-right: var(--space-2xs)
 
       b
         color: inherit
-        font-size: 1.15rem
+        font-size: var(--text-l)
 
     @media (width >= 720px)
       grid-template-columns: minmax(0, 1fr) auto
 
-      .rubber-stamp
-        b
-          font-size: 1.5rem
-
-        span
-          font-size: 0.875rem
+      .rubber-stamp span
+        font-size: var(--text-s)
 
   // ---------- elsewhere, as a ledger ----------
 
@@ -114,38 +108,38 @@
     @include layout.sheet
 
     display: grid
-    gap: 1rem
-    padding-bottom: clamp(2.5rem, 6vw, 4.5rem)
+    gap: var(--space-s)
+    padding-bottom: var(--space-section)
 
     @include media.two-columns
-      column-gap: clamp(2rem, 5vw, 5rem)
+      column-gap: var(--space-columns)
       grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr)
 
       .section-label
-        padding-top: 1rem
+        padding-top: var(--space-s)
 
   .contact-elsewhere .section-label
     @include typography.label
 
-    font-size: 0.875rem
+    font-size: var(--text-s)
 
   .contact-ledger
-    border-top: 1px solid var(--rule-strong)
+    border-top: var(--hairline-strong)
     list-style: none
     margin: 0
-    max-width: 46rem
+    max-width: var(--measure-form)
     padding: 0
 
     li
-      border-bottom: 1px solid var(--rule)
+      border-bottom: var(--hairline)
 
     .register-link
       align-items: baseline
       display: grid
-      gap: 0 1rem
+      gap: 0 var(--space-s)
       grid-template-columns: 5.5rem minmax(0, 1fr) auto
-      min-height: 3.25rem
-      padding-block: 0.75rem
+      min-height: var(--control-l)
+      padding-block: var(--space-xs)
       text-decoration: none
 
       @media (width >= 720px)
@@ -160,17 +154,15 @@
       &[data-hovered]
         .ledger-line
           text-decoration: underline
-          text-decoration-thickness: 1.5px
+          text-decoration-thickness: var(--stroke-thin)
 
         .register-link-icon
           translate: 2px -2px
 
     .ledger-label
-      @include typography.label
+      @include typography.label-large
 
       color: var(--ink)
-      font-size: 1rem
-      letter-spacing: 0.08em
 
     .ledger-line
       line-height: 1.35
@@ -179,4 +171,4 @@
       small
         color: var(--ink-soft)
         display: block
-        font-size: 0.9375rem
+        font-size: var(--text-m)

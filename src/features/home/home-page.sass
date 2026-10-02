@@ -19,32 +19,28 @@
     .register-failure
       @include layout.sheet
 
-      padding-block: var(--space-xl)
+      padding-block: var(--space-3xl)
 
   // ---------- the head: who keeps the register ----------
 
   .register-head
     @include layout.sheet
-
-    display: grid
-    gap: 1.5rem
-    padding-block: clamp(1.25rem, 3vw, 2rem) clamp(1.75rem, 3.5vw, 2.75rem)
+    @include layout.masthead
 
     .head-rule
-      border-bottom: 1px solid var(--rule)
+      border-bottom: var(--hairline)
       display: flex
       flex-wrap: wrap
-      gap: 0.5rem 2rem
+      gap: var(--space-2xs) var(--space-xl)
       justify-content: space-between
-      padding-bottom: 0.9rem
+      padding-bottom: var(--space-s)
 
     .head-role
+      @include typography.role
+
       align-items: baseline
       display: flex
       flex-wrap: wrap
-      font-family: var(--font-letter)
-      font-size: clamp(1.15rem, 2.2vw, 1.5rem)
-      font-weight: 500
       gap: 0 0.6em
 
       .dot
@@ -67,8 +63,8 @@
       color: var(--ink-soft)
       display: flex
       flex-wrap: wrap
-      font-size: 0.9375rem
-      gap: 0.35rem 1.5rem
+      font-size: var(--text-m)
+      gap: var(--space-3xs) var(--space-l)
 
       b,
       time
@@ -76,23 +72,20 @@
         font-weight: 700
 
     .head-name
-      font-family: var(--font-letter)
+      @include typography.display
+
       font-size: clamp(2.9rem, 9.5vw, 6rem)
-      font-weight: 800
-      letter-spacing: -0.025em
-      line-height: 0.86
-      margin-top: 0.6rem
-      text-transform: uppercase
+      margin-top: var(--space-2xs)
       text-wrap: balance
 
     .head-aside
       display: grid
-      gap: 1.25rem
+      gap: var(--space-m)
 
     .head-lead
       font-size: clamp(1.0625rem, 1.5vw, 1.25rem)
       line-height: 1.5
-      max-width: 34rem
+      max-width: var(--measure-lead)
       text-wrap: pretty
 
       span
@@ -101,13 +94,10 @@
     .head-actions
       display: flex
       flex-wrap: wrap
-      gap: 0.75rem
+      gap: var(--space-xs)
 
     @include media.two-columns
-      column-gap: 3rem
       grid-template-columns: minmax(0, 1fr) minmax(0, 30rem)
-      padding-top: clamp(2.5rem, 7vh, 5rem)
-      row-gap: clamp(1.5rem, 3vh, 2.5rem)
 
       .head-rule
         grid-column: 1 / -1
@@ -118,14 +108,14 @@
 
       .head-aside
         align-self: end
-        gap: 1.5rem
+        gap: var(--space-l)
 
   // ---------- the register's columns ----------
 
   .app-columns,
   .app-entry
     @include media.two-columns
-      column-gap: 1.25rem
+      column-gap: var(--space-m)
       grid-template-columns: 6.5rem minmax(0, 1fr) minmax(0, 1.08fr) 7.5rem
 
   .release-register.lit .register-row:not(.lit)
@@ -135,10 +125,10 @@
 
   .app-entry
     display: grid
-    gap: 1.25rem
+    gap: var(--space-m)
     grid-template-areas: 'date state' 'text text' 'figure figure'
     grid-template-columns: minmax(0, 1fr) auto
-    padding-block: 1.5rem 1.75rem
+    padding-block: var(--space-l) var(--space-xl)
 
     .entry-date
       grid-area: date
@@ -157,21 +147,18 @@
       align-items: start
       grid-template-areas: 'date text figure state'
       grid-template-columns: 6.5rem minmax(0, 1fr) minmax(0, 1.08fr) 7.5rem
-      padding-block: 2.25rem 2.5rem
+      padding-block: var(--space-2xl)
 
       .entry-state
         justify-content: flex-end
 
 
   .entry-name
-    font-family: var(--font-letter)
+    @include typography.heading
+
     font-size: clamp(2.4rem, 5vw, 3.6rem)
-    font-weight: 800
-    letter-spacing: -0.02em
-    line-height: 0.9
     overflow-wrap: anywhere
-    text-transform: uppercase
-    transition: color 160ms var(--timing)
+    transition: color var(--transition-fast) var(--timing)
 
   .app-row.lit .entry-name
     color: var(--violet)
@@ -182,21 +169,21 @@
     text-transform: none
 
   .entry-tagline
-    font-size: 1.1875rem
-    font-weight: 500
-    line-height: 1.4
-    margin-top: 0.85rem
-    max-width: 34rem
+    @include typography.lead
+
+    font-size: var(--text-l)
+    margin-top: var(--space-xs)
+    max-width: var(--measure-lead)
 
   .entry-summary
     color: var(--ink-soft)
-    margin-top: 0.75rem
-    max-width: 36rem
+    margin-top: var(--space-xs)
+    max-width: var(--measure-text)
 
   .app-chip
     border-color: currentColor
     font-weight: 700
-    gap: 0.3rem
+    gap: var(--space-3xs)
 
     .chip-icon
       height: 0.75rem
@@ -207,35 +194,33 @@
     align-items: center
     display: flex
     flex-wrap: wrap
-    gap: 0.35rem 0.45rem
-    margin-top: 0.9rem
+    gap: var(--space-3xs) var(--space-2xs)
+    margin-top: var(--space-s)
 
     .entry-label
-      margin: 0 0.35rem 0 0
+      margin: 0 var(--space-3xs) 0 0
 
   .entry-actions
     align-items: center
     display: flex
     flex-wrap: wrap
-    gap: 0.6rem
-    margin-top: 1.5rem
+    gap: var(--space-2xs)
+    margin-top: var(--space-l)
 
   .open-entry
-    @include typography.label
+    @include typography.label-large
     @include focus.ring
 
     align-items: center
     background: transparent
-    border: 1.5px solid currentColor
-    border-radius: 2px
+    border: var(--stroke-thin) solid currentColor
+    border-radius: var(--radius-s)
     color: inherit
     cursor: pointer
     display: inline-flex
-    font-size: 1rem
-    gap: 0.55rem
-    letter-spacing: 0.05em
-    min-height: 2.75rem
-    padding: 0 1rem
+    gap: var(--space-2xs)
+    min-height: var(--control-touch)
+    padding: 0 var(--space-s)
 
     .open-entry-icon
       height: 0.9rem
@@ -254,12 +239,9 @@
     margin: 0
 
     figcaption
-      @include typography.label
+      @include typography.caption
 
-      font-size: 0.8125rem
-      font-weight: 500
-      letter-spacing: 0.06em
-      margin-top: 0.5rem
+      margin-top: var(--space-2xs)
       opacity: 0.85
 
   .entry-state
@@ -270,8 +252,8 @@
 
   .site-row::after
     background: linear-gradient(225deg, var(--paper) 50%, var(--paper-sunk) 50%)
-    border-bottom: 1px solid var(--rule)
-    border-left: 1px solid var(--rule)
+    border-bottom: var(--hairline)
+    border-left: var(--hairline)
     box-shadow: -2px 3px 5px color-mix(in srgb, var(--ink) 10%, transparent)
     content: ''
     height: 2.25rem
@@ -287,14 +269,14 @@
     margin: 0
 
     div
-      border-top: 1px solid var(--rule)
+      border-top: var(--hairline)
       display: flex
-      gap: 1rem
+      gap: var(--space-s)
       justify-content: space-between
-      padding: 0.55rem 0
+      padding: var(--space-2xs) 0
 
       &:last-child
-        border-bottom: 1px solid var(--rule)
+        border-bottom: var(--hairline)
 
     dt
       @include typography.label
@@ -310,8 +292,8 @@
 
     align-items: center
     display: inline-grid
-    font-size: 0.875rem
-    gap: 0.4rem
+    font-size: var(--text-s)
+    gap: var(--space-2xs)
     grid-auto-flow: column
 
     svg
@@ -339,12 +321,12 @@
   .drawer-body
     background: repeating-linear-gradient(90deg, currentColor 0 4px, transparent 4px 8px) top / 100% 1px no-repeat
     display: grid
-    gap: 2rem
-    margin-top: 0.25rem
-    padding-block: 0.5rem 2.25rem
+    gap: var(--space-xl)
+    margin-top: var(--space-3xs)
+    padding-block: var(--space-2xs) var(--space-2xl)
 
     @include media.two-columns
-      column-gap: 1.25rem
+      column-gap: var(--space-m)
       grid-template-columns: 6.5rem minmax(0, 1fr) minmax(0, 1.08fr) 7.5rem
 
       .drawer-text
@@ -356,8 +338,8 @@
   .drawer-title
     @include typography.label
 
-    font-size: 0.875rem
-    margin: 1.25rem 0 0.75rem
+    font-size: var(--text-s)
+    margin: var(--space-m) 0 var(--space-xs)
 
 
   // ---------- about and the next entry ----------
@@ -365,16 +347,15 @@
   .about-note
     @include layout.sheet
 
-    border-bottom: 1px solid var(--rule)
+    border-bottom: var(--hairline)
     display: grid
-    gap: 1.25rem
+    gap: var(--space-m)
     padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2rem, 5vw, 3.5rem)
 
     p
+      @include typography.lead
+
       font-size: clamp(1.3rem, 2.6vw, 1.9rem)
-      font-weight: 500
-      letter-spacing: -0.005em
-      line-height: 1.3
       max-width: 44rem
       text-wrap: pretty
 
@@ -383,8 +364,8 @@
       font-style: normal
 
     @include media.two-columns
-      column-gap: 1.25rem
+      column-gap: var(--space-m)
       grid-template-columns: 6.5rem minmax(0, 1fr)
 
       .section-label
-        padding-top: 0.6rem
+        padding-top: var(--space-2xs)

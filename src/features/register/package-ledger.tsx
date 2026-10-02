@@ -105,7 +105,7 @@ const PackageRow: React.FC<PackageRowProps> = ({
         )}
         <UsedBy columns={columns} name={name} />
         <span className='package-state'>
-          <ReleaseStamp isSmall state='shipped' />
+          <ReleaseStamp size='small' state='shipped' />
         </span>
       </div>
     </li>

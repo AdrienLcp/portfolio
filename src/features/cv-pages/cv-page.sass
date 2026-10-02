@@ -18,12 +18,12 @@ $body-points: 8.7
     @include layout.sheet
 
     display: grid
-    gap: 1.25rem
+    gap: var(--space-m)
     padding-block: clamp(1.75rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.25rem)
 
     @include media.two-columns
       align-items: end
-      column-gap: 1.25rem
+      column-gap: var(--space-m)
       grid-template-columns: minmax(0, 1fr) auto
 
       .cv-tools
@@ -31,37 +31,34 @@ $body-points: 8.7
         text-align: right
 
   .cv-title
-    font-family: var(--font-letter)
+    @include typography.display
+
     font-size: clamp(3rem, 10vw, 6.5rem)
-    font-weight: 800
-    letter-spacing: -0.025em
-    line-height: 0.86
-    text-transform: uppercase
 
   .cv-tools
     display: grid
-    gap: 0.75rem
+    gap: var(--space-xs)
 
   .cv-downloads
     display: flex
     flex-wrap: wrap
-    gap: 0.75rem
+    gap: var(--space-xs)
 
   .cv-tools-note
     color: var(--ink-soft)
-    max-width: 34rem
+    max-width: var(--measure-lead)
 
   // ---------- the sheet: phone reflow first ----------
 
   .cv-desk
-    border-top: 2px solid var(--rule-strong)
+    border-top: var(--heavy-rule)
     flex: 1
 
   .cv-sheet
     background: var(--paper)
-    font-size: 1rem
+    font-size: var(--text-base)
     line-height: 1.45
-    padding: 1.5rem var(--sheet-gutter) 2.5rem
+    padding: var(--space-l) var(--sheet-gutter) var(--space-2xl)
 
     ul
       list-style: none
@@ -78,18 +75,15 @@ $body-points: 8.7
           text-decoration: underline
 
   .cv-top
-    border-bottom: 1px solid var(--rule)
+    border-bottom: var(--hairline)
     display: grid
     gap: 0.35em
     padding-bottom: 0.9em
 
   .cv-name
-    font-family: var(--font-letter)
+    @include typography.heading
+
     font-size: 2.5em
-    font-weight: 800
-    letter-spacing: -0.02em
-    line-height: 0.9
-    text-transform: uppercase
 
   .cv-role
     align-items: baseline
@@ -134,7 +128,7 @@ $body-points: 8.7
 
   .cv-photo
     aspect-ratio: 1
-    border-radius: 1px
+    border-radius: var(--radius-hair)
     display: block
     height: auto
     object-fit: cover
@@ -143,7 +137,7 @@ $body-points: 8.7
   .cv-heading
     @include typography.label
 
-    border-top: 2px solid var(--rule-strong)
+    border-top: var(--heavy-rule)
     color: var(--ink)
     font-size: 1.05em
     font-weight: 800
@@ -180,7 +174,7 @@ $body-points: 8.7
     @media screen
       a
         display: inline-block
-        padding-block: 4px
+        padding-block: var(--space-3xs)
 
   .cv-inline
     dt,
@@ -228,7 +222,7 @@ $body-points: 8.7
     white-space: nowrap
 
   .cv-mission
-    border-top: 1px solid var(--rule)
+    border-top: var(--hairline)
     margin-top: 0.55em
     padding-top: 0.45em
 
@@ -255,7 +249,7 @@ $body-points: 8.7
         width: 0.4em
 
   .cv-projects li
-    border-bottom: 1px solid var(--rule)
+    border-bottom: var(--hairline)
     padding-block: 0.4em
 
     &:first-child
@@ -273,12 +267,12 @@ $body-points: 8.7
   @media screen and (width >= media.$two-columns), print
     .cv-desk
       background: var(--paper-sunk)
-      padding: 3rem var(--sheet-gutter) 4rem
+      padding: var(--space-3xl) var(--sheet-gutter) 4rem
 
     .cv-sheet
       --sheet-width: 210mm
 
-      border: 1px solid var(--rule)
+      border: var(--hairline)
       font-size: calc(var(--sheet-width) * #{$body-points} / #{$a4-points})
       line-height: 1.3
       margin-inline: auto

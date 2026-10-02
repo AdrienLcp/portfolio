@@ -11,13 +11,13 @@
     display: inline-grid
     filter: url(#ink-bleed)
     font-family: var(--font-letter)
-    gap: 0.1rem
+    gap: var(--space-4xs)
     justify-items: center
     line-height: 1
     mix-blend-mode: multiply
     outline: 1px solid var(--violet)
     outline-offset: 2px
-    padding: 0.35rem 0.6rem 0.4rem
+    padding: var(--space-3xs) var(--space-2xs) var(--space-2xs)
     rotate: -7deg
     text-transform: uppercase
     user-select: none
@@ -28,20 +28,23 @@
       letter-spacing: 0.12em
 
     span
-      font-size: 0.75rem
+      font-size: var(--text-2xs)
       font-variant-numeric: tabular-nums
       font-weight: 700
       letter-spacing: 0.08em
 
     &.small
-      border-width: 1.5px
+      border-width: var(--stroke-thin)
       outline-offset: 1.5px
-      padding: 0.15rem 0.35rem 0.2rem
+      padding: var(--space-4xs) var(--space-3xs) var(--space-3xs)
       rotate: -4deg
 
       b
-        font-size: 0.8125rem
+        font-size: var(--text-xs)
         letter-spacing: 0.1em
+
+    &.large b
+      font-size: 1.5rem
 
     @media (prefers-reduced-motion: no-preference)
       &.fresh

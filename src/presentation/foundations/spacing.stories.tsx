@@ -10,6 +10,8 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const SPACES = [
+  '--space-4xs',
+  '--space-3xs',
   '--space-2xs',
   '--space-xs',
   '--space-s',
@@ -18,6 +20,11 @@ const SPACES = [
   '--space-xl',
   '--space-2xl',
   '--space-3xl',
+  '--space-4xl',
+  '--space-5xl',
+  '--space-block',
+  '--space-section',
+  '--space-columns',
   '--gutter'
 ] as const
 

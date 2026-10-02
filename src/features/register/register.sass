@@ -21,21 +21,21 @@
     .narrow-head
       align-items: center
       display: flex
-      gap: 1rem
+      gap: var(--space-s)
       justify-content: space-between
-      min-height: 2.25rem
+      min-height: var(--control-m)
 
   .register-cap
     @include layout.sheet
 
-    border-bottom: 1px solid var(--rule)
-    border-top: 2px solid var(--rule-strong)
+    border-bottom: var(--hairline)
+    border-top: var(--heavy-rule)
 
     @include media.two-columns
       .wide-head
         align-items: center
         display: grid
-        min-height: 2.25rem
+        min-height: var(--control-m)
 
       .narrow-head
         display: none
@@ -52,39 +52,37 @@
   .register-row
     @include layout.sheet
 
-    border-bottom: 1px solid var(--rule)
+    border-bottom: var(--hairline)
     position: relative
     transition: opacity 220ms var(--timing)
 
   .entry-date
     @include typography.figures
 
-    font-size: 1.0625rem
+    font-size: var(--text-body)
     font-weight: 600
     white-space: nowrap
 
     small
+      @include typography.caption
+
       display: block
-      font-size: 0.8125rem
-      font-weight: 500
-      letter-spacing: 0.06em
       opacity: 0.8
-      text-transform: uppercase
 
   .entry-kind
     @include typography.label
 
-    font-size: 0.875rem
+    font-size: var(--text-s)
     font-weight: 600
-    margin-top: 0.7rem
+    margin-top: var(--space-xs)
 
   .entry-label
     @include typography.label
 
-    margin-bottom: 0.45rem
+    margin-bottom: var(--space-2xs)
 
   .installs
-    margin-top: 1.35rem
+    margin-top: var(--space-m)
 
   .installs-all
     @include focus.ring
@@ -94,7 +92,7 @@
     color: var(--ink)
     display: inline-flex
     gap: 0.3em
-    min-height: 2rem
+    min-height: var(--control-s)
     text-decoration: underline
     text-underline-offset: 0.2em
 
@@ -106,7 +104,7 @@
   .chips
     display: flex
     flex-wrap: wrap
-    gap: 0.35rem
+    gap: var(--space-3xs)
     list-style: none
     margin: 0
     padding: 0
@@ -115,15 +113,15 @@
     @include focus.ring
 
     align-items: center
-    border: 1px solid var(--rule)
-    border-radius: 2px
+    border: var(--hairline)
+    border-radius: var(--radius-s)
     color: var(--ink)
     display: inline-flex
     font-family: var(--font-letter)
-    font-size: 0.9375rem
+    font-size: var(--text-m)
     font-weight: 600
-    min-height: 2rem
-    padding: 0 0.55rem
+    min-height: var(--control-s)
+    padding: 0 var(--space-2xs)
     text-decoration: none
     transition: background-color 140ms var(--timing), color 140ms var(--timing), border-color 140ms var(--timing)
 
@@ -148,12 +146,12 @@
     padding: 0
 
     li
-      border-top: 1px solid var(--rule)
+      border-top: var(--hairline)
       display: grid
-      gap: 0.5rem
+      gap: var(--space-2xs)
       grid-template-columns: 1.75rem minmax(0, 1fr)
-      max-width: 40rem
-      padding: 0.6rem 0
+      max-width: var(--measure-wide)
+      padding: var(--space-2xs) 0
 
       &::before
         @include typography.figures
@@ -191,25 +189,25 @@
     display: none
 
     @include media.small-diagram
-      border-top: 1px solid var(--rule)
+      border-top: var(--hairline)
       display: grid
-      gap: 0.75rem
-      margin-top: 1rem
-      padding-top: 0.85rem
+      gap: var(--space-xs)
+      margin-top: var(--space-s)
+      padding-top: var(--space-xs)
 
       dl
         display: grid
-        gap: 0.6rem
+        gap: var(--space-2xs)
 
       dt
         @include typography.label
 
-        font-size: 0.875rem
+        font-size: var(--text-s)
 
       dd,
       p
         color: var(--ink-soft)
-        font-size: 0.9375rem
+        font-size: var(--text-m)
         line-height: 1.4
 
   @include media.small-diagram
@@ -219,10 +217,10 @@
   .struck
     fill: var(--violet)
     text-decoration: line-through
-    text-decoration-thickness: 1.6px
+    text-decoration-thickness: var(--stroke-thin)
 
   .screen .struck
-    text-decoration-thickness: 2px
+    text-decoration-thickness: var(--stroke-bold)
 
     tspan
       fill: var(--ink)
@@ -259,34 +257,34 @@
 
     align-items: center
     background: var(--paper-sunk)
-    border-bottom: 1px solid var(--rule)
-    border-top: 2px solid var(--rule-strong)
+    border-bottom: var(--hairline)
+    border-top: var(--heavy-rule)
     color: var(--ink-soft)
     display: flex
     flex-wrap: wrap
-    gap: 0.25rem 1rem
+    gap: var(--space-3xs) var(--space-s)
     justify-content: space-between
-    min-height: 2.25rem
-    padding-inline: 0.75rem
+    min-height: var(--control-m)
+    padding-inline: var(--space-xs)
 
     .cap-links
       display: flex
       flex-wrap: wrap
-      gap: 0.25rem 1.25rem
+      gap: var(--space-3xs) var(--space-m)
 
       .register-link
         align-items: center
         color: var(--ink)
         display: inline-flex
         gap: 0.3em
-        min-height: 2.25rem
+        min-height: var(--control-m)
         text-decoration: underline
 
   .ledger-head
     @include layout.sheet
 
     background: var(--paper)
-    border-bottom: 1px solid var(--rule-strong)
+    border-bottom: var(--hairline-strong)
     color: var(--ink)
     position: sticky
     top: 0
@@ -296,7 +294,7 @@
       .wide-head
         align-items: center
         display: grid
-        min-height: 2.25rem
+        min-height: var(--control-m)
 
       .narrow-head
         display: none
@@ -305,7 +303,7 @@
         text-align: center
 
   .ledger-columns
-    column-gap: 1.25rem
+    column-gap: var(--space-m)
     display: grid
 
     @include media.matrix
@@ -328,18 +326,18 @@
 
   .package-entry
     align-items: baseline
-    padding-block: 0.8rem
+    padding-block: var(--space-xs)
     position: relative
 
   .package-date
     @include typography.figures
 
     color: var(--ink-soft)
-    font-size: 0.9375rem
+    font-size: var(--text-m)
 
   .package-name
     font-family: var(--font-letter)
-    font-size: 1.1875rem
+    font-size: var(--text-l)
     font-weight: 700
     line-height: 1.2
 
@@ -357,7 +355,7 @@
 
     mark
       background: transparent
-      border-radius: 1px
+      border-radius: var(--radius-hair)
       color: inherit
       margin: 0 -0.15em
       padding: 0 0.15em
@@ -376,13 +374,13 @@
 
   .package-job
     color: var(--ink-soft)
-    font-size: 1rem
+    font-size: var(--text-base)
     line-height: 1.4
 
   .package-version
     @include typography.figures
 
-    font-size: 1.0625rem
+    font-size: var(--text-body)
     font-weight: 700
 
   .tick
@@ -411,8 +409,8 @@
     .package-entry
       grid-template-areas: 'name version' 'job job' 'used state'
       grid-template-columns: minmax(0, 1fr) auto
-      padding-block: 0.9rem
-      row-gap: 0.25rem
+      padding-block: var(--space-s)
+      row-gap: var(--space-3xs)
 
     .package-date,
     .tick
@@ -432,7 +430,7 @@
       color: var(--ink-soft)
       display: block
       font-family: var(--font-letter)
-      font-size: 0.875rem
+      font-size: var(--text-s)
       grid-area: used
 
     .package-state
@@ -443,23 +441,20 @@
   .section-label
     @include typography.label
 
-    font-size: 0.875rem
+    font-size: var(--text-s)
 
   .next-entry
     @include layout.sheet
 
     display: grid
-    gap: 1.5rem
-    padding-block: clamp(2.5rem, 6vw, 4.5rem)
+    gap: var(--space-l)
+    padding-block: var(--space-section)
 
     .next-line
-      font-family: var(--font-letter)
+      @include typography.heading
+
       font-size: clamp(2.2rem, 7vw, 5rem)
-      font-weight: 800
-      letter-spacing: -0.02em
-      line-height: 0.9
       max-width: 14ch
-      text-transform: uppercase
 
     .blank
       border-bottom: 3px solid var(--ink)
@@ -468,19 +463,19 @@
 
     .next-note
       color: var(--ink-soft)
-      margin-top: 1rem
+      margin-top: var(--space-s)
       max-width: 38rem
 
     .next-actions
       display: flex
       flex-wrap: wrap
-      gap: 0.75rem
+      gap: var(--space-xs)
 
     @include media.two-columns
       align-items: end
-      column-gap: 1.25rem
+      column-gap: var(--space-m)
       grid-template-columns: 6.5rem minmax(0, 1fr) auto
 
       .section-label
         align-self: start
-        padding-top: 0.8rem
+        padding-top: var(--space-xs)

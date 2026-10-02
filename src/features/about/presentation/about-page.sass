@@ -14,16 +14,10 @@ $plate-width: 17rem
 
   .about-head
     @include layout.sheet
-
-    display: grid
-    gap: 1.5rem
-    padding-block: clamp(1.25rem, 3vw, 2rem) clamp(2rem, 4vw, 3rem)
+    @include layout.masthead
 
     @include media.two-columns
-      column-gap: 3rem
       grid-template-columns: minmax(0, 1fr) $plate-width
-      padding-top: clamp(2.5rem, 7vh, 5rem)
-      row-gap: clamp(1.5rem, 3vh, 2.5rem)
 
       .about-head-rule
         grid-column: 1 / -1
@@ -38,20 +32,19 @@ $plate-width: 17rem
         grid-row: 2
 
   .about-head-rule
-    border-bottom: 1px solid var(--rule)
+    border-bottom: var(--hairline)
     display: flex
     flex-wrap: wrap
-    gap: 0.5rem 2rem
+    gap: var(--space-2xs) var(--space-xl)
     justify-content: space-between
-    padding-bottom: 0.9rem
+    padding-bottom: var(--space-s)
 
   .about-role
+    @include typography.role
+
     align-items: baseline
     display: flex
     flex-wrap: wrap
-    font-family: var(--font-letter)
-    font-size: clamp(1.15rem, 2.2vw, 1.5rem)
-    font-weight: 500
     gap: 0 0.6em
 
     .dot
@@ -72,21 +65,18 @@ $plate-width: 17rem
     align-self: center
     color: var(--ink-soft)
     font-family: var(--font-letter)
-    font-size: 0.9375rem
+    font-size: var(--text-m)
 
   .about-head-text
     align-content: end
     display: grid
-    gap: 1.5rem
+    gap: var(--space-l)
 
   .about-name
-    font-family: var(--font-letter)
+    @include typography.display
+
     font-size: clamp(2.9rem, 13vw, 4.5rem)
-    font-weight: 800
-    letter-spacing: -0.025em
-    line-height: 0.86
-    margin-top: 0.4rem
-    text-transform: uppercase
+    margin-top: var(--space-2xs)
 
     @include media.two-columns
       font-size: clamp(4.5rem, 9vw, 8rem)
@@ -94,7 +84,7 @@ $plate-width: 17rem
   .about-lead
     font-size: clamp(1.125rem, 1.7vw, 1.375rem)
     line-height: 1.45
-    max-width: 36rem
+    max-width: var(--measure-text)
     text-wrap: pretty
 
     span
@@ -116,35 +106,35 @@ $plate-width: 17rem
     figcaption
       @include typography.label
 
-      border-top: 2px solid var(--rule-strong)
+      border-top: var(--heavy-rule)
       color: var(--ink-soft)
       display: flex
-      gap: 1rem
+      gap: var(--space-s)
       justify-content: space-between
-      margin-top: 0.5rem
-      padding-top: 0.45rem
+      margin-top: var(--space-2xs)
+      padding-top: var(--space-2xs)
       letter-spacing: 0.08em
 
   // ---------- the path, set as register rows ----------
 
   .path-columns
     @include media.two-columns
-      column-gap: 1.25rem
+      column-gap: var(--space-m)
       grid-template-columns: $date-column minmax(0, 1fr) minmax(0, 1.08fr) $state-column
 
   .path-entry
     display: grid
-    gap: 0.9rem
+    gap: var(--space-s)
     grid-template-areas: 'date state' 'title title' 'body body'
     grid-template-columns: minmax(0, 1fr) auto
-    padding-block: 1.35rem 1.5rem
+    padding-block: var(--space-m) var(--space-l)
 
     @include media.two-columns
       align-items: start
-      column-gap: 1.25rem
+      column-gap: var(--space-m)
       grid-template-areas: 'date title body state'
       grid-template-columns: $date-column minmax(0, 1fr) minmax(0, 1.08fr) $state-column
-      padding-block: 1.75rem 1.9rem
+      padding-block: var(--space-xl)
 
   .path-date
     grid-area: date
@@ -156,7 +146,7 @@ $plate-width: 17rem
     grid-area: body
 
     @include media.two-columns
-      padding-top: 0.2rem
+      padding-top: var(--space-3xs)
 
   .path-state
     display: flex
@@ -164,24 +154,21 @@ $plate-width: 17rem
     justify-content: flex-end
 
   .path-name
-    font-family: var(--font-letter)
+    @include typography.heading
+
     font-size: clamp(1.7rem, 3.4vw, 2.3rem)
-    font-weight: 800
-    letter-spacing: -0.015em
-    line-height: 0.92
     overflow-wrap: anywhere
-    text-transform: uppercase
 
   .path-where
     color: var(--ink-soft)
     font-family: var(--font-letter)
-    font-size: 1rem
+    font-size: var(--text-base)
     font-weight: 500
-    margin-top: 0.45rem
+    margin-top: var(--space-2xs)
 
   .path-text
     color: var(--ink-soft)
-    max-width: 36rem
+    max-width: var(--measure-text)
     text-wrap: pretty
 
   .path-state-word
@@ -190,7 +177,7 @@ $plate-width: 17rem
     align-items: center
     color: var(--ink-soft)
     display: inline-flex
-    gap: 0.35rem
+    gap: var(--space-3xs)
 
     .path-state-icon
       height: 0.9rem
@@ -204,19 +191,19 @@ $plate-width: 17rem
         color: var(--ink-soft)
 
     &.current
-      border-bottom: 2px solid var(--rule-strong)
+      border-bottom: var(--heavy-rule)
 
       .path-entry
-        padding-block: 2rem 2.25rem
+        padding-block: var(--space-xl) var(--space-2xl)
 
         @include media.two-columns
-          padding-block: 2.75rem 3rem
+          padding-block: var(--space-3xl)
 
       .path-state
         min-height: 3.5rem
 
         @include media.two-columns
-          padding: 0.4rem 0.5rem 0 0
+          padding: var(--space-2xs) var(--space-2xs) 0 0
 
       .path-name
         font-size: clamp(2.4rem, 5vw, 3.6rem)
@@ -224,59 +211,56 @@ $plate-width: 17rem
         line-height: 0.9
 
       .path-text
+        @include typography.lead
+
         color: var(--ink)
-        font-size: 1.1875rem
-        font-weight: 500
-        line-height: 1.45
+        font-size: var(--text-l)
 
         & + .path-text
           color: var(--ink-soft)
-          font-size: 1.0625rem
+          font-size: var(--text-body)
           font-weight: 400
-          margin-top: 0.75rem
-
-      .rubber-stamp b
-        font-size: 1.5rem
+          margin-top: var(--space-xs)
 
   // ---------- where the evenings went ----------
 
   .about-evenings
     @include layout.sheet
 
-    border-bottom: 1px solid var(--rule)
+    border-bottom: var(--hairline)
     display: grid
-    gap: 1.25rem
+    gap: var(--space-m)
     padding-block: clamp(2rem, 5vw, 3rem)
 
     > *
-      max-width: 40rem
+      max-width: var(--measure-wide)
       text-wrap: pretty
 
     @include media.two-columns
-      column-gap: 1.25rem
+      column-gap: var(--space-m)
       grid-template-columns: $date-column minmax(0, 1fr) minmax(0, 1.08fr) $state-column
 
       > *
         grid-column: 2 / 4
 
   .evenings-bridge
+    @include typography.lead
+
     font-size: clamp(1.2rem, 2.2vw, 1.5rem)
-    font-weight: 500
-    line-height: 1.35
 
   .evenings-links
     align-items: center
     display: flex
     flex-wrap: wrap
-    gap: 0.5rem 0.75rem
+    gap: var(--space-2xs) var(--space-xs)
 
     .entry-label
-      margin: 0 0.25rem 0 0
+      margin: 0 var(--space-3xs) 0 0
 
     .app-chip
       border-color: currentColor
       font-weight: 700
-      gap: 0.3rem
+      gap: var(--space-3xs)
 
       .chip-icon
         height: 0.75rem
@@ -295,7 +279,7 @@ $plate-width: 17rem
     font-family: var(--font-letter)
     font-weight: 600
     gap: 0.3em
-    min-height: 2rem
+    min-height: var(--control-s)
     text-underline-offset: 0.2em
 
   .evenings-off

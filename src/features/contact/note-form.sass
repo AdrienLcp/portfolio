@@ -7,71 +7,66 @@
   .note-section
     @include layout.sheet
 
-    border-top: 2px solid var(--rule-strong)
+    border-top: var(--heavy-rule)
     display: grid
-    gap: 1.75rem
-    padding-block: clamp(2.25rem, 5vw, 3.75rem) clamp(2.5rem, 6vw, 4.5rem)
+    gap: var(--space-xl)
+    padding-block: clamp(2.25rem, 5vw, 3.75rem) var(--space-section)
 
     @include media.two-columns
-      column-gap: clamp(2rem, 5vw, 5rem)
+      column-gap: var(--space-columns)
       grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr)
 
   .note-title
-    font-family: var(--font-letter)
+    @include typography.heading
+
     font-size: clamp(1.9rem, 4vw, 2.75rem)
-    font-weight: 800
-    letter-spacing: -0.015em
-    line-height: 0.95
-    text-transform: uppercase
     text-wrap: balance
 
   .note-intro p
     color: var(--ink-soft)
-    margin-top: 0.75rem
+    margin-top: var(--space-xs)
     max-width: 24rem
 
   .note-form
     display: grid
-    gap: 1.5rem
-    max-width: 46rem
+    gap: var(--space-l)
+    max-width: var(--measure-form)
 
   .note-pair
     display: grid
-    gap: 1.5rem
+    gap: var(--space-l)
 
     @media (width >= 720px)
       align-items: start
-      column-gap: 1.25rem
+      column-gap: var(--space-m)
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr)
 
   .note-field
     display: grid
-    gap: 0.4rem
+    gap: var(--space-2xs)
     min-width: 0
 
     label
-      @include typography.label
+      @include typography.label-large
 
       color: var(--ink)
-      font-size: 1rem
-      letter-spacing: 0.06em
 
   .note-hint
     color: var(--ink-soft)
-    font-size: 0.9375rem
+    font-size: var(--text-m)
 
   .note-box
     @include focus.ring
 
     background: var(--paper)
-    border: 1.5px solid var(--ink-soft)
-    border-radius: 2px
+    border: var(--stroke-thin) solid var(--ink-soft)
+    border-radius: var(--radius-s)
     caret-color: var(--violet)
     color: var(--ink)
     font: inherit
-    font-size: 1.0625rem
+    font-size: var(--text-body)
     min-height: 3.1rem
-    padding: 0.55rem 0.8rem
+    padding: var(--space-2xs) var(--space-xs)
     transition: border-color 140ms var(--timing)
     width: 100%
 
@@ -80,7 +75,7 @@
 
     &[data-invalid]
       border: 4px double var(--ink)
-      padding: 0.45rem 0.7rem
+      padding: var(--space-2xs) var(--space-xs)
 
   textarea.note-box
     line-height: 1.55
@@ -92,19 +87,19 @@
     align-items: flex-start
     display: flex
     font-weight: 700
-    gap: 0.45rem
+    gap: var(--space-2xs)
     line-height: 1.35
 
     .note-error-icon
       height: 1.05rem
-      margin-top: 0.12rem
+      margin-top: var(--space-4xs)
       width: 1.05rem
 
   .note-error
-    font-size: 0.9875rem
+    font-size: var(--text-base)
 
   .note-failure
-    max-width: 36rem
+    max-width: var(--measure-text)
 
   .note-trap
     height: 1px
@@ -117,30 +112,29 @@
     align-items: center
     display: flex
     flex-wrap: wrap
-    gap: 0.75rem 1.25rem
+    gap: var(--space-xs) var(--space-m)
 
   .note-sent
     align-items: start
     align-self: start
-    border-bottom: 1px solid var(--rule)
-    border-top: 1px solid var(--rule-strong)
+    border-bottom: var(--hairline)
+    border-top: var(--hairline-strong)
     display: grid
-    gap: 0.75rem
+    gap: var(--space-xs)
     grid-template-columns: auto minmax(0, 1fr)
-    max-width: 36rem
-    padding-block: 1.25rem
+    max-width: var(--measure-text)
+    padding-block: var(--space-m)
 
     .note-sent-icon
       height: 1.5rem
-      margin-top: 0.15rem
+      margin-top: var(--space-4xs)
       width: 1.5rem
 
     p
+      @include typography.lead
       @include focus.ring
 
       font-size: clamp(1.1875rem, 2vw, 1.4rem)
-      font-weight: 500
-      line-height: 1.4
 
     .register-link
       grid-column: 2
