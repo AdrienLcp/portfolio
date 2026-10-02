@@ -275,6 +275,12 @@
     min-height: var(--control-m)
     padding-inline: var(--space-xs)
 
+    .cap-title
+      @include typography.cap-box
+
+      display: flow-root
+      padding-block: calc((var(--control-m) - 1cap) / 2)
+
     .cap-link-label
       @include typography.cap-box
 

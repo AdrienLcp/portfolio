@@ -142,7 +142,7 @@ export const PackageLedger: React.FC<PackageLedgerProps> = ({
       style={{ '--app-columns': columns.length }}
     >
       <div className='package-cap'>
-        <span>
+        <span className='cap-title'>
           {first !== undefined && `${first.released} · `}
           {translate('home.packages.cap', {
             count: String(housePackages.length)
