@@ -11,6 +11,16 @@ export default mergeConfig(
   viteConfig,
   defineConfig({
     test: {
+      coverage: {
+        exclude: [
+          'src/**/*.test.{ts,tsx}',
+          'src/**/*.stories.{ts,tsx}',
+          'src/**/*.d.ts'
+        ],
+        include: ['src/**/*.{ts,tsx}'],
+        provider: 'v8',
+        reporter: ['text', 'html', 'json-summary']
+      },
       projects: [
         {
           extends: true,

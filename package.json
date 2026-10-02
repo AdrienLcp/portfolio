@@ -33,6 +33,7 @@
     "@vitejs/plugin-react": "^6.1.1",
     "@vitest/browser": "^4.1.11",
     "@vitest/browser-playwright": "^4.1.11",
+    "@vitest/coverage-v8": "4.1.11",
     "lighthouse": "^13.5.0",
     "oxc-transform-react": "^0.151.0",
     "playwright": "~1.63.0",
@@ -69,10 +70,11 @@
     "storybook": "storybook dev -p 6006",
     "test": "vitest run --project unit",
     "test:components": "vitest run --project stories",
+    "test:coverage": "vitest run --project unit --coverage",
     "test:e2e": "tsc --noEmit -p e2e && playwright test -c e2e",
     "test:watch": "vitest --project unit",
     "typecheck": "tsc --noEmit",
-    "validate": "pnpm build && pnpm lint:ci && pnpm test && pnpm test:components && pnpm test:e2e"
+    "validate": "pnpm build && pnpm lint:ci && pnpm test:coverage && pnpm test:components && pnpm test:e2e"
   },
   "type": "module",
   "version": "0.1.0"
