@@ -224,7 +224,7 @@
 
     .open-entry-icon
       height: 0.9rem
-      transition: rotate 320ms var(--timing)
+      transition: rotate var(--transition-base) var(--timing)
       width: 0.9rem
 
     &[aria-expanded='true'] .open-entry-icon
@@ -305,7 +305,7 @@
   .entry-drawer
     display: grid
     grid-template-rows: 0fr
-    transition: grid-template-rows 520ms var(--timing)
+    transition: grid-template-rows var(--transition-slow) var(--timing)
 
     &.open
       grid-template-rows: 1fr
@@ -315,7 +315,7 @@
       overflow: hidden
 
     &:not(.open) .drawer-clip
-      transition: visibility 0s 520ms
+      transition: visibility 0s var(--transition-slow)
       visibility: hidden
 
   .drawer-body
