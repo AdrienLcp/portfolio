@@ -13,7 +13,7 @@ export type MessageError = 'refused' | 'unreachable'
 
 const ENDPOINT = 'https://api.web3forms.com/submit'
 
-const replySchema = z.object({ success: z.boolean() })
+const acceptedReplySchema = z.object({ success: z.literal(true) })
 
 export const sendMessage = async (
   message: Message
@@ -35,11 +35,11 @@ export const sendMessage = async (
       },
       method: 'POST'
     })
-    const reply = replySchema.safeParse(await response.json())
+    const isAccepted = acceptedReplySchema.safeParse(
+      await response.json()
+    ).success
 
-    return reply.success && reply.data.success
-      ? Result.success()
-      : Result.failure('refused')
+    return isAccepted ? Result.success() : Result.failure('refused')
   } catch {
     return Result.failure('unreachable')
   }

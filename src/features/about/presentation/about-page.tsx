@@ -210,10 +210,14 @@ const Evenings: React.FC<EveningsProps> = ({ firstEntry }) => {
 
 const AboutCase: React.FC = () => {
   const { locale, translate } = useI18n()
-  const data = useAboutData()
-  const about = use(data.about)
-  const cv = use(data.cv)
-  const projects = use(data.projects)
+  const {
+    about: aboutRequest,
+    cv: cvRequest,
+    projects: projectsRequest
+  } = useAboutData()
+  const about = use(aboutRequest)
+  const cv = use(cvRequest)
+  const projects = use(projectsRequest)
 
   if (
     about.status === 'failure' ||

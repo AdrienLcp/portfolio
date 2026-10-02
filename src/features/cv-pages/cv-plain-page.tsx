@@ -124,9 +124,9 @@ const CvPlain: React.FC<CvPlainProps> = ({ cv, profile }) => {
 }
 
 const CvPlainCase: React.FC = () => {
-  const data = useCvData()
-  const cv = use(data.cv)
-  const profile = use(data.profile)
+  const { cv: cvRequest, profile: profileRequest } = useCvData()
+  const cv = use(cvRequest)
+  const profile = use(profileRequest)
 
   return cv.status === 'success' && profile.status === 'success' ? (
     <CvPlain cv={cv.data} profile={profile.data} />

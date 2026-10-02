@@ -287,9 +287,9 @@ const CvSheet: React.FC<CvSheetProps> = ({ cv, profile }) => {
 
 const CvCase: React.FC = () => {
   const { locale, translate } = useI18n()
-  const data = useCvData()
-  const cv = use(data.cv)
-  const profile = use(data.profile)
+  const { cv: cvRequest, profile: profileRequest } = useCvData()
+  const cv = use(cvRequest)
+  const profile = use(profileRequest)
 
   if (cv.status === 'success' && profile.status === 'success') {
     return (

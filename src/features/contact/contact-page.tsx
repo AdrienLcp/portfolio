@@ -170,9 +170,9 @@ const Elsewhere: React.FC<ElsewhereProps> = ({ links }) => {
 
 const ContactCase: React.FC = () => {
   const { locale, translate } = useI18n()
-  const data = useContactData()
-  const cv = use(data.cv)
-  const profile = use(data.profile)
+  const { cv: cvRequest, profile: profileRequest } = useContactData()
+  const cv = use(cvRequest)
+  const profile = use(profileRequest)
 
   if (cv.status === 'failure' || profile.status === 'failure') {
     const error =

@@ -33,11 +33,16 @@ const registerOrderOf = (projects: readonly Project[]): Project[] => [
 
 const ProjectEntry: React.FC = () => {
   const { locale, translate } = useI18n()
-  const data = useProjectData()
-  const project = use(data.project)
-  const projects = use(data.projects)
-  const housePackages = use(data.housePackages)
-  const plates = use(data.plates)
+  const {
+    project: projectRequest,
+    projects: projectsRequest,
+    housePackages: housePackagesRequest,
+    plates: platesRequest
+  } = useProjectData()
+  const project = use(projectRequest)
+  const projects = use(projectsRequest)
+  const housePackages = use(housePackagesRequest)
+  const plates = use(platesRequest)
   useDocumentTitle(
     project.status === 'success'
       ? projectHead(project.data).title

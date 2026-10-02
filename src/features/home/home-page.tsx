@@ -19,10 +19,14 @@ import './home-page.sass'
 /** The head and the register read the same content, once it has arrived. */
 const Register: React.FC = () => {
   const { translate } = useI18n()
-  const data = useHomeData()
-  const projects = use(data.projects)
-  const housePackages = use(data.housePackages)
-  const plates = use(data.plates)
+  const {
+    projects: projectsRequest,
+    housePackages: housePackagesRequest,
+    plates: platesRequest
+  } = useHomeData()
+  const projects = use(projectsRequest)
+  const housePackages = use(housePackagesRequest)
+  const plates = use(platesRequest)
 
   if (projects.status === 'failure' || housePackages.status === 'failure') {
     const error =
