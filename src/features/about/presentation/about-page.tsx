@@ -49,7 +49,7 @@ const AboutHead: React.FC<AboutHeadProps> = ({ stack }) => {
             <svg aria-hidden='true' focusable='false' viewBox='0 0 10 10'>
               <circle cx='5' cy='5' fill='currentColor' r='4' />
             </svg>
-            {translate('home.head.openToWork')}
+            <span>{translate('home.head.openToWork')}</span>
           </span>
         </p>
         <p className='about-stack'>{stack}</p>

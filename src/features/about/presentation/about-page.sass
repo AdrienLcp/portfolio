@@ -32,12 +32,21 @@ $plate-width: 17rem
         grid-row: 2
 
   .about-head-rule
+    align-items: last baseline
     border-bottom: var(--hairline)
     display: flex
     flex-wrap: wrap
     gap: var(--space-2xs) var(--space-xl)
     justify-content: space-between
     padding-bottom: var(--space-s)
+
+    @supports (text-box: trim-both cap alphabetic)
+      padding-bottom: var(--space-l)
+
+    .about-role > span,
+    .open-mark > span,
+    .about-stack
+      @include typography.baseline-bottom
 
   .about-role
     @include typography.role
@@ -51,18 +60,17 @@ $plate-width: 17rem
       color: var(--rule)
 
     .open-mark
-      align-items: center
+      align-items: baseline
       color: var(--violet)
       display: inline-flex
       font-weight: 700
       gap: 0.4em
 
       svg
-        height: 0.8em
-        width: 0.8em
+        height: 1cap
+        width: 1cap
 
   .about-stack
-    align-self: center
     color: var(--ink-soft)
     font-family: var(--font-letter)
     font-size: var(--text-m)
@@ -114,6 +122,12 @@ $plate-width: 17rem
       margin-top: var(--space-2xs)
       padding-top: var(--space-2xs)
       letter-spacing: 0.08em
+
+      @supports (text-box: trim-both cap alphabetic)
+        padding-top: var(--space-xs)
+
+      span
+        @include typography.cap-top
 
   // ---------- the path, set as register rows ----------
 

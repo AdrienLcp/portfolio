@@ -80,6 +80,13 @@ $body-points: 8.7
     gap: 0.35em
     padding-bottom: 0.9em
 
+    @supports (text-box: trim-both cap alphabetic)
+      padding-bottom: 1.35em
+
+    .cv-role > span,
+    .cv-open > span
+      @include typography.baseline-bottom
+
   .cv-name
     @include typography.heading
 
@@ -104,7 +111,7 @@ $body-points: 8.7
   .cv-open
     @include typography.label
 
-    align-items: center
+    align-items: baseline
     color: var(--violet)
     display: inline-flex
     font-size: 0.85em
@@ -112,8 +119,8 @@ $body-points: 8.7
     letter-spacing: 0.06em
 
     svg
-      height: 0.75em
-      width: 0.75em
+      height: 1cap
+      width: 1cap
 
   .cv-columns
     display: grid
@@ -136,6 +143,7 @@ $body-points: 8.7
 
   .cv-heading
     @include typography.label
+    @include typography.cap-top
 
     border-top: var(--heavy-rule)
     color: var(--ink)
@@ -144,6 +152,9 @@ $body-points: 8.7
     letter-spacing: 0.08em
     margin-bottom: 0.45em
     padding-top: 0.35em
+
+    @supports (text-box: trim-both cap alphabetic)
+      padding-top: 0.6em
 
   .cv-list
     display: grid
@@ -225,6 +236,13 @@ $body-points: 8.7
     border-top: var(--hairline)
     margin-top: 0.55em
     padding-top: 0.45em
+
+    @supports (text-box: trim-both cap alphabetic)
+      padding-top: 0.65em
+
+    .cv-mission-title,
+    .cv-when
+      @include typography.cap-top
 
   .cv-mission-title
     font-family: var(--font-letter)

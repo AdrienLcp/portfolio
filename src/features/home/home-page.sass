@@ -28,12 +28,21 @@
     @include layout.masthead
 
     .head-rule
+      align-items: last baseline
       border-bottom: var(--hairline)
       display: flex
       flex-wrap: wrap
       gap: var(--space-2xs) var(--space-xl)
       justify-content: space-between
       padding-bottom: var(--space-s)
+
+      @supports (text-box: trim-both cap alphabetic)
+        padding-bottom: var(--space-l)
+
+      .head-role > span,
+      .open-mark > span,
+      .head-ledger > span
+        @include typography.baseline-bottom
 
     .head-role
       @include typography.role
@@ -47,15 +56,15 @@
         color: var(--rule)
 
     .open-mark
-      align-items: center
+      align-items: baseline
       color: var(--violet)
       display: inline-flex
       font-weight: 700
       gap: 0.4em
 
       svg
-        height: 0.8em
-        width: 0.8em
+        height: 1cap
+        width: 1cap
 
     .head-ledger
       @include typography.figures
@@ -272,21 +281,28 @@
     margin: 0
 
     div
+      align-items: baseline
       border-top: var(--hairline)
       display: flex
       gap: var(--space-s)
       justify-content: space-between
       padding: var(--space-2xs) 0
 
+      @supports (text-box: trim-both cap alphabetic)
+        padding-block: var(--space-s)
+
       &:last-child
         border-bottom: var(--hairline)
 
     dt
       @include typography.label
+      @include typography.cap-box
 
       color: var(--ink-soft)
 
     dd
+      @include typography.cap-box
+
       font-weight: 700
       margin: 0
 

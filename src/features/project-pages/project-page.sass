@@ -180,6 +180,9 @@ $column-gap: 1.25rem
       min-width: 0
       padding: var(--space-s) var(--space-xs) var(--space-s) 0
 
+      @supports (text-box: trim-both cap alphabetic)
+        padding-top: var(--space-m)
+
       @include media.two-columns
         border-bottom: 0
         padding: var(--space-s) var(--space-s) var(--space-m)
@@ -190,6 +193,9 @@ $column-gap: 1.25rem
         & + div
           border-inline-start: var(--hairline)
 
+        @supports (text-box: trim-both cap alphabetic)
+          padding-top: var(--space-m)
+
     // Two to a line on a phone: the last line keeps no rule under it.
     div:nth-last-child(-n + 2):nth-child(odd),
     div:last-child
@@ -197,6 +203,7 @@ $column-gap: 1.25rem
 
     dt
       @include typography.label
+      @include typography.cap-top
 
       color: var(--ink-soft)
 
@@ -552,11 +559,15 @@ $column-gap: 1.25rem
     margin-top: clamp(3rem, 7vw, 5rem)
 
     .neighbour
+      align-content: space-between
       display: grid
       gap: var(--space-3xs)
       min-height: 5rem
       padding: var(--space-s) 0
       text-decoration: none
+
+      @supports (text-box: trim-both cap alphabetic)
+        padding-block: var(--space-m)
 
       &.below
         border-inline-start: var(--hairline)
@@ -565,11 +576,13 @@ $column-gap: 1.25rem
 
       small
         @include typography.label
+        @include typography.cap-top
 
         color: var(--ink-soft)
 
       strong
         @include typography.heading
+        @include typography.cap-box
 
         font-size: clamp(1.4rem, 3vw, 2.2rem)
         transition: color var(--transition-fast) var(--timing)
