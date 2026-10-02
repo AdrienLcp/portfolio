@@ -4,13 +4,34 @@ import { DRAWINGS_EN } from './drawings-en'
 
 export const EN_DICTIONARY = defineDictionary({
   about: {
-    credit: 'A game by Adrien Lacourpaille.',
-    lead: 'I spent six years putting spare parts in their place. Now I do it with code.',
-    path: 'How I got here',
-    seeProjects: 'See the projects',
-    title: 'About',
-    toolbox: 'The toolbox',
-    writeToMe: 'Write to me'
+    after: {
+      bridge:
+        'The evenings still go to code. Every app in the register was born from a real need and shipped finished.',
+      firstEntry: 'First entry',
+      off: 'Off the clock: cinema, and table tennis.',
+      title: 'Where the evenings went',
+      wholeRegister: 'The whole register'
+    },
+    lead: 'I did not come in through a school. I came in through a stockroom, a supermarket at 5 a.m. and a remote course,',
+    leadSoft:
+      'and the whole route is below, one row per step, the way the register keeps everything else.',
+    path: {
+      count: '{count} steps, oldest first',
+      happened: 'What happened',
+      narrow: 'The path',
+      state: 'State',
+      step: 'Step',
+      title: 'The path, oldest step first',
+      when: 'When'
+    },
+    plate: 'Adrien',
+    state: {
+      closed: 'Closed',
+      current: 'Current',
+      currentSince: 'Current, since {date}',
+      paused: 'Paused',
+      since: 'since {date}'
+    }
   },
   common: {
     github: 'GitHub',
@@ -19,32 +40,46 @@ export const EN_DICTIONARY = defineDictionary({
   contact: {
     copied: 'Address copied',
     copy: 'Copy the address',
-    elsewhere: 'Elsewhere',
+    copyFailed:
+      'Copy did not work here: the address is selected, copy it by hand.',
+    elsewhere: {
+      cv: 'Designed and plain',
+      cvNote: 'One for people, one for applicant tracking systems',
+      github: 'Every app and package, in the open',
+      linkedin: 'The professional version of hello',
+      title: 'Elsewhere'
+    },
     form: {
-      again: 'Write another',
-      email: 'Your email',
+      again: 'Write another note',
+      email: 'Email',
       emailHint: 'Only used to reply to you.',
       emailInvalid:
         'This address looks incomplete: something like name@example.com.',
       emailMissing: 'An address, so I can write back.',
       failure: {
         refused:
-          'The mail service turned the card down. Try again, or write to the address above.',
+          'The mail service turned the note down. Try again, or write to the address above.',
         unreachable:
-          'The card could not leave: the connection seems down. Try again in a moment, or write to the address above.'
+          'The note could not leave: the connection seems down. Try again in a moment, or write to the address above.'
       },
-      message: 'Your message',
-      messageMissing: 'The card is still blank.',
-      name: 'Your name',
+      intro:
+        'It lands in the same inbox. No account, no newsletter, just your words and an address to reply to.',
+      message: 'Message',
+      messageMissing: 'The message is still blank.',
+      name: 'Name',
       nameMissing: 'Tell me who is writing.',
-      posted: 'Posted',
-      postedNote:
-        'Thanks for writing. I read everything, and I reply from my own inbox.',
-      send: 'Send the card',
-      sending: 'Sending the card',
-      title: 'Or fill in the reply card'
+      send: 'Send the note',
+      sending: 'Sending the note',
+      sent: 'Thanks for writing. I read everything, and I reply from my own inbox.',
+      title: 'Or leave a note here'
     },
     lead: 'A question, an idea, or just saying hello: my inbox is open.',
+    standing: {
+      cv: 'CV',
+      lookingAfter: 'has the whole record.',
+      lookingBefore: 'Looking for the team I ship with next. The',
+      role: 'Full-stack developer, based in Couëron, next to Nantes.'
+    },
     title: 'Contact',
     write: 'Write an email'
   },
@@ -53,6 +88,7 @@ export const EN_DICTIONARY = defineDictionary({
     downloadPlain: 'ATS version',
     email: 'Email',
     labelSeparator: ': ',
+    location: 'Location',
     phone: 'Phone',
     photo: 'Adrien Lacourpaille, smiling, in a dark shirt',
     plainNote:
@@ -63,6 +99,7 @@ export const EN_DICTIONARY = defineDictionary({
       education: 'Education',
       experience: 'Experience',
       extras: 'More',
+      interests: 'Languages and interests',
       projects: 'Personal projects',
       skills: 'Skills',
       specs: 'At a glance',

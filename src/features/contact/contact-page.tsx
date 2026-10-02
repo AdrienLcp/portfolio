@@ -1,114 +1,214 @@
 import { copyText, selectContents } from '@adrienlcp/browser'
 import type React from 'react'
-import { Suspense, use, useRef } from 'react'
+import { Suspense, use, useEffect, useRef, useState } from 'react'
 
 import { useContactData } from '@/features/contact/contact-loader'
-import { cvPathFor } from '@/infrastructure/router/navigation'
+import type { Profile } from '@/features/profile/profile'
+import { cvPathFor, homePathFor } from '@/infrastructure/router/navigation'
+import { BlankEntry } from '@/presentation/blank-entry'
 import { Icon } from '@/presentation/components/icon'
-import { Lid } from '@/presentation/components/lid'
 import { Main } from '@/presentation/components/main'
-import { Button } from '@/presentation/components/ui/button'
-import { Link } from '@/presentation/components/ui/link'
-import { showToast } from '@/presentation/components/ui/toast'
-import { VisuallyHidden } from '@/presentation/components/ui/visually-hidden'
+import { RegisterButton } from '@/presentation/components/register/register-button'
+import { RegisterLink } from '@/presentation/components/register/register-link'
+import { RubberStamp } from '@/presentation/components/register/rubber-stamp'
 import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { apiErrorKey } from '@/presentation/i18n/translation'
+import { RouteFallback } from '@/presentation/route-fallback'
 
-import { ReplyCard } from './reply-card'
+import { NoteForm } from './note-form'
 
 import './contact-page.sass'
 
-/** The address printed as large as the lid allows, the reply card under it. */
-const Mailbox: React.FC = () => {
+const COPY_STATUS_MS = 3200
+
+type CopyStatus = 'copied' | 'failed' | 'idle'
+
+/** The last segment of a profile URL: the handle someone would search for. */
+const handleOf = (url: string): string =>
+  new URL(url).pathname.split('/').filter(Boolean).at(-1) ?? url
+
+type AddressProps = {
+  email: string
+}
+
+/** The address is the page: printed as large as the sheet allows. */
+const Address: React.FC<AddressProps> = ({ email }) => {
   const { locale, translate } = useI18n()
-  const { cv, profile } = useContactData()
-  const cvResult = use(cv)
-  const profileResult = use(profile)
-  const addressRef = useRef<HTMLParagraphElement>(null)
+  const addressRef = useRef<HTMLAnchorElement>(null)
+  const [copyStatus, setCopyStatus] = useState<CopyStatus>('idle')
+  const [mailbox, domain] = email.split('@')
 
-  if (cvResult.status === 'failure') {
-    return (
-      <p className='contact-failure'>
-        {translate(apiErrorKey(cvResult.error))}
-      </p>
-    )
-  }
+  useEffect(() => {
+    if (copyStatus === 'idle') {
+      return
+    }
 
-  if (profileResult.status === 'failure') {
-    return (
-      <p className='contact-failure'>
-        {translate(apiErrorKey(profileResult.error))}
-      </p>
-    )
-  }
+    const timer = window.setTimeout(() => setCopyStatus('idle'), COPY_STATUS_MS)
 
-  const { email } = cvResult.data.contact
-  const { links } = profileResult.data
+    return () => window.clearTimeout(timer)
+  }, [copyStatus])
 
   const copyAddress = async (): Promise<void> => {
     const copied = await copyText(email)
 
-    if (copied.status === 'success') {
-      showToast(translate('contact.copied'))
-    } else if (addressRef.current !== null) {
+    if (copied.status === 'failure' && addressRef.current !== null) {
       selectContents(addressRef.current)
     }
+
+    setCopyStatus(copied.status === 'success' ? 'copied' : 'failed')
+  }
+
+  return (
+    <section aria-labelledby='contact-title' className='contact-hero'>
+      <h1 className='contact-lead' id='contact-title'>
+        {translate('contact.lead')}
+      </h1>
+      <p className='contact-address'>
+        <a href={`mailto:${email}`} ref={addressRef}>
+          {mailbox}@<wbr />
+          {domain}
+        </a>
+      </p>
+      <div className='contact-act'>
+        <div className='contact-actions'>
+          <RegisterLink href={`mailto:${email}`} icon='mail' variant='ink'>
+            {translate('contact.write')}
+          </RegisterLink>
+          <RegisterButton
+            icon='copy'
+            onPress={() => void copyAddress()}
+            variant='line'
+          >
+            {translate('contact.copy')}
+          </RegisterButton>
+        </div>
+        <p className='copy-status' role='status'>
+          {copyStatus === 'copied' && (
+            <>
+              <Icon className='copy-status-icon' name='check' />
+              {translate('contact.copied')}
+            </>
+          )}
+          {copyStatus === 'failed' && translate('contact.copyFailed')}
+        </p>
+      </div>
+      <div className='contact-standing'>
+        <p>
+          <b>{translate('contact.standing.role')}</b>{' '}
+          {translate('contact.standing.lookingBefore')}{' '}
+          <RegisterLink href={cvPathFor(locale)}>
+            {translate('contact.standing.cv')}
+          </RegisterLink>{' '}
+          {translate('contact.standing.lookingAfter')}
+        </p>
+        <RubberStamp
+          isFresh
+          label={translate('home.head.openToWork')}
+          note={translate('home.head.place')}
+        />
+      </div>
+    </section>
+  )
+}
+
+type ElsewhereProps = {
+  links: Profile['links']
+}
+
+const Elsewhere: React.FC<ElsewhereProps> = ({ links }) => {
+  const { locale, translate } = useI18n()
+  const rows = [
+    {
+      href: links.github,
+      label: translate('common.github'),
+      line: handleOf(links.github),
+      note: translate('contact.elsewhere.github'),
+      target: '_blank'
+    },
+    {
+      href: links.linkedin,
+      label: translate('common.linkedin'),
+      line: handleOf(links.linkedin),
+      note: translate('contact.elsewhere.linkedin'),
+      target: '_blank'
+    },
+    {
+      href: cvPathFor(locale),
+      label: translate('header.cv'),
+      line: translate('contact.elsewhere.cv'),
+      note: translate('contact.elsewhere.cvNote'),
+      target: undefined
+    }
+  ]
+
+  return (
+    <section aria-labelledby='elsewhere-title' className='contact-elsewhere'>
+      <h2 className='section-label' id='elsewhere-title'>
+        {translate('contact.elsewhere.title')}
+      </h2>
+      <ul className='contact-ledger'>
+        {rows.map((row) => (
+          <li key={row.href}>
+            <RegisterLink href={row.href} target={row.target}>
+              <span className='ledger-label'>{row.label}</span>
+              <span className='ledger-line'>
+                {row.line}
+                <small>{row.note}</small>
+              </span>
+              {row.target === undefined && (
+                <Icon className='register-link-icon' name='forward' />
+              )}
+            </RegisterLink>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+const ContactCase: React.FC = () => {
+  const { locale, translate } = useI18n()
+  const data = useContactData()
+  const cv = use(data.cv)
+  const profile = use(data.profile)
+
+  if (cv.status === 'failure' || profile.status === 'failure') {
+    const error =
+      cv.status === 'failure'
+        ? cv.error
+        : profile.status === 'failure'
+          ? profile.error
+          : 'invalid_content'
+
+    return (
+      <BlankEntry
+        backHref={homePathFor(locale)}
+        backLabel={translate('notFound.backHome')}
+        note={translate(apiErrorKey(error))}
+        stamp={translate('error.stamp')}
+        title={translate('error.title')}
+      />
+    )
   }
 
   return (
     <>
-      <section aria-labelledby='contact-mail' className='mail-slot'>
-        <VisuallyHidden elementType='h2' id='contact-mail'>
-          {translate('cv.email')}
-        </VisuallyHidden>
-        <p className='contact-address' ref={addressRef}>
-          {email}
-        </p>
-        <div className='contact-actions'>
-          <Link href={`mailto:${email}`} variant='accent'>
-            {translate('contact.write')}
-            <Icon className='token-icon' name='mail' />
-          </Link>
-          <Button icon='copy' onPress={() => void copyAddress()}>
-            {translate('contact.copy')}
-          </Button>
-        </div>
-      </section>
-      <ReplyCard />
-      <section aria-labelledby='contact-elsewhere' className='elsewhere'>
-        <h2 className='elsewhere-heading' id='contact-elsewhere'>
-          {translate('contact.elsewhere')}
-        </h2>
-        <div className='elsewhere-links'>
-          <Link href={links.github} target='_blank'>
-            {translate('common.github')}
-          </Link>
-          <Link href={links.linkedin} target='_blank'>
-            {translate('common.linkedin')}
-          </Link>
-          <Link href={cvPathFor(locale)}>{translate('header.cv')}</Link>
-        </div>
-      </section>
+      <Address email={cv.data.contact.email} />
+      <NoteForm />
+      <Elsewhere links={profile.data.links} />
     </>
   )
 }
 
 export const ContactPage: React.FC = () => {
-  const { translate } = useI18n()
   useIndexedPageTitle('contact')
 
   return (
     <Main className='contact-page'>
-      <Lid
-        band={<p>{translate('contact.lead')}</p>}
-        title={translate('contact.title')}
-      />
-      <div className='contact-sheet'>
-        <Suspense fallback={<div aria-busy='true' className='pending' />}>
-          <Mailbox />
-        </Suspense>
-      </div>
+      <Suspense fallback={<RouteFallback />}>
+        <ContactCase />
+      </Suspense>
     </Main>
   )
 }

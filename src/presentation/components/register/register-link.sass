@@ -54,3 +54,46 @@
       &[data-hovered]
         text-decoration: underline
         text-decoration-thickness: 2px
+
+  button.register-link
+    background: none
+    border: 0
+    cursor: pointer
+    font: inherit
+    padding: 0
+
+    &.plain
+      text-decoration: underline
+      text-decoration-thickness: 1.5px
+      text-underline-offset: 0.2em
+
+    &[data-pending]
+      cursor: progress
+      opacity: 0.75
+
+  .register-progress
+    display: inline-flex
+    gap: 0.2rem
+
+    i
+      background: currentColor
+      display: block
+      height: 0.3rem
+      width: 0.3rem
+
+    @media (prefers-reduced-motion: no-preference)
+      i
+        animation: register-progress-blink 900ms steps(2, jump-none) infinite
+
+        &:nth-child(2)
+          animation-delay: 150ms
+
+        &:nth-child(3)
+          animation-delay: 300ms
+
+  @keyframes register-progress-blink
+    0%
+      opacity: 0.2
+
+    100%
+      opacity: 1

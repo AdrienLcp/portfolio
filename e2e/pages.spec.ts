@@ -11,10 +11,14 @@ test('[e2e] an entry of the register unfolds in place and folds back', async ({
   await page.goto('/en')
 
   const taverla = page.getByRole('article', { name: 'Taverla' })
-  await taverla.getByRole('button', { name: 'Open entry' }).click()
-  await expect(
-    page.getByRole('heading', { name: 'What shipped' }).first()
-  ).toBeVisible()
+  // The prerendered button is on screen before React hydrates it: a click
+  // that lands first does nothing, so it is pressed until the entry opens.
+  await expect(async () => {
+    await taverla.getByRole('button', { name: 'Open entry' }).click()
+    await expect(
+      page.getByRole('heading', { name: 'What shipped' }).first()
+    ).toBeVisible({ timeout: 1000 })
+  }).toPass()
 
   await taverla.getByRole('button', { name: 'Close entry' }).click()
   await expect(
@@ -61,7 +65,9 @@ test('[e2e] the about page leads to contact', async ({ page }) => {
   await page.goto('/en')
 
   await mainNavigation(page).getByRole('link', { name: 'About' }).click()
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('About')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    'Adrien Lacourpaille'
+  )
 
   await page.getByRole('link', { name: 'Write to me' }).click()
   await expect(page).toHaveURL('/en/contact')
@@ -79,7 +85,7 @@ test('[e2e] the keyboard skips the header and lands on each new page', async ({
   await page.keyboard.press('Enter')
   await expect(page.getByRole('main')).toBeFocused()
   await page.keyboard.press('Tab')
-  await expect(page.getByRole('link', { name: 'Write to me' })).toBeFocused()
+  await expect(page.getByRole('link', { name: 'Taverla' })).toBeFocused()
 
   await mainNavigation(page).getByRole('link', { name: 'Contact' }).focus()
   await page.keyboard.press('Enter')
@@ -112,54 +118,54 @@ test('[e2e] the plain CV is served but kept out of the index', async ({
   await expect(page.getByRole('banner')).toHaveCount(0)
 })
 
-test('[e2e] a blank reply card says what is missing', async ({ page }) => {
+test('[e2e] a blank note says what is missing', async ({ page }) => {
   await page.goto('/en/contact')
 
-  await page.getByRole('button', { name: 'Send the card' }).click()
+  await page.getByRole('button', { name: 'Send the note' }).click()
 
   await expect(page.getByText('Tell me who is writing.')).toBeVisible()
   await expect(page.getByText('An address, so I can write back.')).toBeVisible()
-  await expect(page.getByText('The card is still blank.')).toBeVisible()
+  await expect(page.getByText('The message is still blank.')).toBeVisible()
 })
 
-test.describe('the reply card, never posted for real', () => {
-  const fillCard = async (page: Page): Promise<void> => {
+test.describe('the note, never sent for real', () => {
+  const fillNote = async (page: Page): Promise<void> => {
     await page.goto('/en/contact')
-    await page.getByRole('textbox', { name: 'Your name' }).fill('Ada')
-    await page
-      .getByRole('textbox', { name: 'Your email' })
-      .fill('ada@example.com')
-    await page.getByRole('textbox', { name: 'Your message' }).fill('Hello')
-    await page.getByRole('button', { name: 'Send the card' }).click()
+    await page.getByRole('textbox', { name: 'Name' }).fill('Ada')
+    await page.getByRole('textbox', { name: 'Email' }).fill('ada@example.com')
+    await page.getByRole('textbox', { name: 'Message' }).fill('Hello')
+    await page.getByRole('button', { name: 'Send the note' }).click()
   }
 
-  test('[e2e] a posted card is stamped and can be written again', async ({
+  test('[e2e] a sent note is thanked and another can be written', async ({
     page
   }) => {
     await page.route(MAIL_ENDPOINT, (route) =>
       route.fulfill({ json: { success: true } })
     )
 
-    await fillCard(page)
+    await fillNote(page)
 
-    await expect(page.getByRole('heading', { name: 'Posted' })).toBeFocused()
-    await page.getByRole('button', { name: 'Write another' }).click()
-    await expect(page.getByRole('textbox', { name: 'Your name' })).toBeEmpty()
+    await expect(
+      page.getByText('Thanks for writing.', { exact: false })
+    ).toBeFocused()
+    await page.getByRole('button', { name: 'Write another note' }).click()
+    await expect(page.getByRole('textbox', { name: 'Name' })).toBeEmpty()
   })
 
-  test('[e2e] a refused card says so and keeps the text', async ({ page }) => {
+  test('[e2e] a refused note says so and keeps the text', async ({ page }) => {
     await page.route(MAIL_ENDPOINT, (route) =>
       route.fulfill({ json: { success: false }, status: 400 })
     )
 
-    await fillCard(page)
+    await fillNote(page)
 
     await expect(
-      page.getByText('The mail service turned the card down.', { exact: false })
+      page.getByText('The mail service turned the note down.', { exact: false })
     ).toBeVisible()
-    await expect(
-      page.getByRole('textbox', { name: 'Your message' })
-    ).toHaveValue('Hello')
+    await expect(page.getByRole('textbox', { name: 'Message' })).toHaveValue(
+      'Hello'
+    )
   })
 })
 

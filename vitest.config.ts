@@ -2,7 +2,7 @@ import { storybookTest } from '@storybook/addon-vitest/vitest-plugin'
 import { playwright } from '@vitest/browser-playwright'
 import { defineConfig, mergeConfig } from 'vitest/config'
 
-import viteConfig from './vite.config'
+import viteConfig from './vite.config.ts'
 
 const PLAYWRIGHT_SPECS = 'e2e/**'
 const WITHOUT_INDEX_HTML_FALLBACK = 'custom'

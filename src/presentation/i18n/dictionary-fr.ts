@@ -4,13 +4,34 @@ import { DRAWINGS_FR } from './drawings-fr'
 
 export const FR_DICTIONARY = defineDictionary({
   about: {
-    credit: 'Un jeu d’Adrien Lacourpaille.',
-    lead: 'J’ai rangé des pièces détachées pendant six ans. Maintenant, je range du code.',
-    path: 'Comment j’en suis arrivé là',
-    seeProjects: 'Voir les projets',
-    title: 'À propos',
-    toolbox: 'La boîte à outils',
-    writeToMe: 'M’écrire'
+    after: {
+      bridge:
+        'Les soirées vont toujours au code. Chaque appli du registre est née d’un vrai besoin, et a été livrée finie.',
+      firstEntry: 'Première ligne',
+      off: 'Hors du clavier : le cinéma, et le tennis de table.',
+      title: 'Où passent les soirées',
+      wholeRegister: 'Tout le registre'
+    },
+    lead: 'Je ne suis pas entré par une école. Je suis entré par une réserve, un supermarché à 5 h du matin et une formation à distance,',
+    leadSoft:
+      'et tout le chemin est ci-dessous, une ligne par étape, comme le registre tient tout le reste.',
+    path: {
+      count: '{count} étapes, la plus ancienne d’abord',
+      happened: 'Ce qui s’est passé',
+      narrow: 'Le chemin',
+      state: 'État',
+      step: 'Étape',
+      title: 'Le chemin, de la plus ancienne étape à la plus récente',
+      when: 'Quand'
+    },
+    plate: 'Adrien',
+    state: {
+      closed: 'Clos',
+      current: 'En cours',
+      currentSince: 'En cours, depuis {date}',
+      paused: 'En pause',
+      since: 'depuis {date}'
+    }
   },
   common: {
     github: 'GitHub',
@@ -19,31 +40,45 @@ export const FR_DICTIONARY = defineDictionary({
   contact: {
     copied: 'Adresse copiée',
     copy: 'Copier l’adresse',
-    elsewhere: 'Ailleurs',
+    copyFailed:
+      'La copie n’a pas marché ici : l’adresse est sélectionnée, copiez-la à la main.',
+    elsewhere: {
+      cv: 'Mis en page, et sobre',
+      cvNote: 'L’un pour les gens, l’autre pour les logiciels de recrutement',
+      github: 'Chaque appli et chaque package, en clair',
+      linkedin: 'La version professionnelle du bonjour',
+      title: 'Ailleurs'
+    },
     form: {
-      again: 'En écrire une autre',
-      email: 'Votre e-mail',
+      again: 'Écrire un autre mot',
+      email: 'E-mail',
       emailHint: 'Uniquement pour vous répondre.',
       emailInvalid: 'Cette adresse semble incomplète : du type nom@exemple.fr.',
       emailMissing: 'Une adresse, pour que je puisse répondre.',
       failure: {
         refused:
-          'Le service d’envoi a refusé la carte. Réessayez, ou écrivez à l’adresse ci-dessus.',
+          'Le service d’envoi a refusé le mot. Réessayez, ou écrivez à l’adresse ci-dessus.',
         unreachable:
-          'La carte n’a pas pu partir : la connexion semble coupée. Réessayez dans un instant, ou écrivez à l’adresse ci-dessus.'
+          'Le mot n’a pas pu partir : la connexion semble coupée. Réessayez dans un instant, ou écrivez à l’adresse ci-dessus.'
       },
-      message: 'Votre message',
-      messageMissing: 'La carte est encore vierge.',
-      name: 'Votre nom',
+      intro:
+        'Il arrive dans la même boîte. Pas de compte, pas de newsletter, juste vos mots et une adresse pour vous répondre.',
+      message: 'Message',
+      messageMissing: 'Le message est encore vide.',
+      name: 'Nom',
       nameMissing: 'Dites-moi qui écrit.',
-      posted: 'Postée',
-      postedNote:
-        'Merci d’avoir écrit. Je lis tout, et je réponds depuis ma propre boîte.',
-      send: 'Envoyer la carte',
-      sending: 'Envoi de la carte',
-      title: 'Ou remplissez la carte-réponse'
+      send: 'Envoyer le mot',
+      sending: 'Envoi du mot',
+      sent: 'Merci d’avoir écrit. Je lis tout, et je réponds depuis ma propre boîte.',
+      title: 'Ou laissez un mot ici'
     },
     lead: 'Une question, une idée, ou juste envie de dire bonjour : ma boîte mail est ouverte.',
+    standing: {
+      cv: 'CV',
+      lookingAfter: 'dit tout le reste.',
+      lookingBefore: 'Je cherche l’équipe avec qui livrer la suite. Le',
+      role: 'Développeur full-stack, basé à Couëron, à côté de Nantes.'
+    },
     title: 'Contact',
     write: 'Écrire un e-mail'
   },
@@ -52,6 +87,7 @@ export const FR_DICTIONARY = defineDictionary({
     downloadPlain: 'Version ATS',
     email: 'E-mail',
     labelSeparator: ' : ',
+    location: 'Localisation',
     phone: 'Téléphone',
     photo: 'Adrien Lacourpaille, souriant, en chemise sombre',
     plainNote:
@@ -62,6 +98,7 @@ export const FR_DICTIONARY = defineDictionary({
       education: 'Formation',
       experience: 'Expérience',
       extras: 'Divers',
+      interests: 'Langues et centres d’intérêt',
       projects: 'Projets personnels',
       skills: 'Compétences',
       specs: 'En bref',

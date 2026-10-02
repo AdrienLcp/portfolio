@@ -1,0 +1,147 @@
+@use '../../presentation/styles/focus'
+@use '../../presentation/styles/layout'
+@use '../../presentation/styles/typography'
+@use '../../presentation/styles/register-media' as media
+
+@layer components
+  .note-section
+    @include layout.sheet
+
+    border-top: 2px solid var(--rule-strong)
+    display: grid
+    gap: 1.75rem
+    padding-block: clamp(2.25rem, 5vw, 3.75rem) clamp(2.5rem, 6vw, 4.5rem)
+
+    @include media.two-columns
+      column-gap: clamp(2rem, 5vw, 5rem)
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr)
+
+  .note-title
+    font-family: var(--font-letter)
+    font-size: clamp(1.9rem, 4vw, 2.75rem)
+    font-weight: 800
+    letter-spacing: -0.015em
+    line-height: 0.95
+    text-transform: uppercase
+    text-wrap: balance
+
+  .note-intro p
+    color: var(--ink-soft)
+    margin-top: 0.75rem
+    max-width: 24rem
+
+  .note-form
+    display: grid
+    gap: 1.5rem
+    max-width: 46rem
+
+  .note-pair
+    display: grid
+    gap: 1.5rem
+
+    @media (width >= 720px)
+      align-items: start
+      column-gap: 1.25rem
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr)
+
+  .note-field
+    display: grid
+    gap: 0.4rem
+    min-width: 0
+
+    label
+      @include typography.label
+
+      color: var(--ink)
+      font-size: 1rem
+      letter-spacing: 0.06em
+
+  .note-hint
+    color: var(--ink-soft)
+    font-size: 0.9375rem
+
+  .note-box
+    @include focus.ring
+
+    background: var(--paper)
+    border: 1.5px solid var(--ink-soft)
+    border-radius: 2px
+    caret-color: var(--violet)
+    color: var(--ink)
+    font: inherit
+    font-size: 1.0625rem
+    min-height: 3.1rem
+    padding: 0.55rem 0.8rem
+    transition: border-color 140ms var(--timing)
+    width: 100%
+
+    &[data-focused]
+      border-color: var(--ink)
+
+    &[data-invalid]
+      border: 4px double var(--ink)
+      padding: 0.45rem 0.7rem
+
+  textarea.note-box
+    line-height: 1.55
+    min-height: 11rem
+    resize: vertical
+
+  .note-error,
+  .note-failure
+    align-items: flex-start
+    display: flex
+    font-weight: 700
+    gap: 0.45rem
+    line-height: 1.35
+
+    .note-error-icon
+      height: 1.05rem
+      margin-top: 0.12rem
+      width: 1.05rem
+
+  .note-error
+    font-size: 0.9875rem
+
+  .note-failure
+    max-width: 36rem
+
+  .note-trap
+    height: 1px
+    left: -10000px
+    overflow: hidden
+    position: absolute
+    width: 1px
+
+  .note-send
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    gap: 0.75rem 1.25rem
+
+  .note-sent
+    align-items: start
+    align-self: start
+    border-bottom: 1px solid var(--rule)
+    border-top: 1px solid var(--rule-strong)
+    display: grid
+    gap: 0.75rem
+    grid-template-columns: auto minmax(0, 1fr)
+    max-width: 36rem
+    padding-block: 1.25rem
+
+    .note-sent-icon
+      height: 1.5rem
+      margin-top: 0.15rem
+      width: 1.5rem
+
+    p
+      @include focus.ring
+
+      font-size: clamp(1.1875rem, 2vw, 1.4rem)
+      font-weight: 500
+      line-height: 1.4
+
+    .register-link
+      grid-column: 2
+      justify-self: start

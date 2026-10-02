@@ -120,22 +120,7 @@
         align-self: end
         gap: 1.5rem
 
-  // ---------- the register's column heads ----------
-
-  .register-cap
-    @include layout.sheet
-
-    border-bottom: 1px solid var(--rule)
-    border-top: 2px solid var(--rule-strong)
-
-    @include media.two-columns
-      .wide-head
-        align-items: center
-        display: grid
-        min-height: 2.25rem
-
-      .narrow-head
-        display: none
+  // ---------- the register's columns ----------
 
   .app-columns,
   .app-entry

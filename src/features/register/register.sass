@@ -25,6 +25,21 @@
       justify-content: space-between
       min-height: 2.25rem
 
+  .register-cap
+    @include layout.sheet
+
+    border-bottom: 1px solid var(--rule)
+    border-top: 2px solid var(--rule-strong)
+
+    @include media.two-columns
+      .wide-head
+        align-items: center
+        display: grid
+        min-height: 2.25rem
+
+      .narrow-head
+        display: none
+
   .column-state
     text-align: right
 
