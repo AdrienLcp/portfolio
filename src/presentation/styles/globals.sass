@@ -9,13 +9,13 @@
   html
     background: var(--paper)
     scroll-padding-block-start: max(var(--gutter), var(--space-l))
-    scrollbar-color: var(--field-dominant) var(--paper)
+    scrollbar-color: var(--ink-soft) var(--paper)
 
   body
     @include typography.body
 
     background: var(--paper)
-    caret-color: var(--active)
+    caret-color: var(--violet)
     color: var(--ink)
     overflow-x: clip
 
@@ -25,12 +25,12 @@
     min-height: 100dvh
 
   a
-    text-decoration-thickness: 2px
+    text-decoration-thickness: 1px
     text-underline-offset: 0.22em
 
   code
     @include typography.code
 
   ::selection
-    background: var(--accent)
-    color: var(--on-accent)
+    background: var(--violet)
+    color: var(--on-violet)

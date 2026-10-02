@@ -12,7 +12,8 @@ describe('projects api', () => {
         'taverla',
         'on-record',
         'packages',
-        'seance'
+        'seance',
+        'analytics'
       ])
       expect(projects.data[0]?.tagline).toBe(
         'Des jeux de soirée sur tous les téléphones de la pièce, au même instant.'

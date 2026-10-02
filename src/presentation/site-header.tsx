@@ -1,5 +1,9 @@
 import type React from 'react'
 import { useState } from 'react'
+import {
+  Button as ReactAriaButton,
+  Link as ReactAriaLink
+} from 'react-aria-components'
 
 import {
   aboutPathFor,
@@ -9,9 +13,8 @@ import {
   projectsPathFor,
   useCurrentPath
 } from '@/infrastructure/router/navigation'
-import { Button } from '@/presentation/components/ui/button'
 import { DialogTrigger } from '@/presentation/components/ui/dialog-trigger'
-import { Link } from '@/presentation/components/ui/link'
+import { ariaCurrentLeftOutOfLinkProps } from '@/presentation/components/ui/link-quirks'
 import { Popover } from '@/presentation/components/ui/popover'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { LocaleSwitch } from '@/presentation/locale-switch'
@@ -37,31 +40,32 @@ const PageLinks: React.FC<PageLinksProps> = ({
   pages
 }) =>
   pages.map((page) => (
-    <Link
+    <ReactAriaLink
+      {...ariaCurrentLeftOutOfLinkProps(currentPath === page.path, 'page')}
+      className='running-link'
       href={page.path}
-      isCurrent={currentPath === page.path}
       key={page.path}
       onPress={onNavigate}
     >
       {page.label}
-    </Link>
+    </ReactAriaLink>
   ))
 
-/** Below 900px the page tokens fold into a sheet slid out of the header. */
+/** Below 900px the page links fold into a sheet dropped from the header. */
 const MenuSheet: React.FC<Omit<PageLinksProps, 'onNavigate'>> = (props) => {
   const { translate } = useI18n()
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <DialogTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
-      <Button className='menu-button' icon='menu'>
+      <ReactAriaButton className='running-button menu-button'>
         {translate('header.menu')}
-      </Button>
+      </ReactAriaButton>
       <Popover
         aria-label={translate('header.navigation')}
         className='menu-sheet'
         dialogClassName='menu'
-        offset={10}
+        offset={8}
         placement='bottom end'
       >
         <PageLinks {...props} onNavigate={() => setIsOpen(false)} />
@@ -70,7 +74,7 @@ const MenuSheet: React.FC<Omit<PageLinksProps, 'onNavigate'>> = (props) => {
   )
 }
 
-/** Printed on the lid's own field, so on the home page the two read as one. */
+/** The running head of the register: who keeps it, and where else to go. */
 export const SiteHeader: React.FC = () => {
   const { locale, translate } = useI18n()
   const currentPath = useCurrentPath()
@@ -85,22 +89,24 @@ export const SiteHeader: React.FC = () => {
   return (
     <header className='site-header'>
       <SkipLink />
-      <Link
-        aria-label={translate('header.home')}
-        className='monogram'
-        href={homePath}
-        isCurrent={currentPath === homePath}
-      >
-        AL
-      </Link>
-      <nav aria-label={translate('header.navigation')} className='site-nav'>
-        <div className='page-links'>
-          <PageLinks currentPath={currentPath} pages={pages} />
-        </div>
-        <LocaleSwitch />
-        <MenuSheet currentPath={currentPath} pages={pages} />
-      </nav>
-      <ThemeSwitch />
+      <div className='running'>
+        <ReactAriaLink
+          {...ariaCurrentLeftOutOfLinkProps(currentPath === homePath, 'page')}
+          aria-label={translate('header.home')}
+          className='running-link running-home'
+          href={homePath}
+        >
+          {translate('header.name')}
+        </ReactAriaLink>
+        <nav aria-label={translate('header.navigation')} className='site-nav'>
+          <div className='page-links'>
+            <PageLinks currentPath={currentPath} pages={pages} />
+          </div>
+          <LocaleSwitch />
+          <MenuSheet currentPath={currentPath} pages={pages} />
+        </nav>
+        <ThemeSwitch />
+      </div>
     </header>
   )
 }

@@ -1,5 +1,7 @@
 import { defineDictionary } from '@adrienlcp/i18n'
 
+import { DRAWINGS_FR } from './drawings-fr'
+
 export const FR_DICTIONARY = defineDictionary({
   about: {
     credit: 'Un jeu d’Adrien Lacourpaille.',
@@ -78,7 +80,9 @@ export const FR_DICTIONARY = defineDictionary({
     title: 'Quelque chose a cassé sur cette page.'
   },
   footer: {
-    colophon: 'Adrien Lacourpaille, {year}. Imprimé en pétrole et tomate.'
+    colophon:
+      '{year}. Composé en Sofia Sans ; chaque écran est dessiné, pas capturé.',
+    keeper: 'Adrien Lacourpaille · Nantes'
   },
   header: {
     about: 'À propos',
@@ -86,72 +90,106 @@ export const FR_DICTIONARY = defineDictionary({
     cv: 'CV',
     home: 'Adrien Lacourpaille, page d’accueil',
     menu: 'Menu',
+    name: 'Adrien Lacourpaille',
     navigation: 'Principale',
     projects: 'Projets',
     skip: 'Aller au contenu'
   },
   home: {
-    closeLid: 'Refermer le couvercle',
-    contents: {
-      flash: {
-        description:
-          'Emplacement vide, et c’est voulu : le bon thème est posé avant le premier affichage.',
-        title: 'Flash au chargement'
-      },
-      hover: {
-        description:
-          'Réservé aux vrais pointeurs : rien ne reste collé après un tap sur un téléphone.',
-        title: 'Survol honnête'
-      },
-      languages: {
-        description:
-          'Anglais et français, servis par @adrienlcp/i18n, ma version de l’approche de Web Dev Simplified.',
-        title: 'Langues'
-      },
-      lead: 'Tout est rangé, rien ne manque. Vérifiez avant la première partie.',
-      lint: {
-        description:
-          'Des règles sur mesure et une boîte à outils de conventions partagée.',
-        title: 'Jeu de règles de lint'
-      },
-      onRecord: {
-        description:
-          'Chaque scrutin public de l’Assemblée, reconstruit la nuit depuis son open data, là seulement où quelque chose a changé. Chaque chiffre renvoie à son compte rendu officiel.',
-        title: 'Job de nuit, sans serveur'
-      },
-      packages: {
-        description:
-          'Testés, publiés depuis la CI avec la provenance npm, et installés par ce site, Taverla, Séance et on-record.',
-        open: 'Voir ce qu’ils font',
-        title: 'Paquets publiés sur npm'
-      },
-      primitives: {
-        description:
-          'Bâties sur react-aria : clavier, lecteurs d’écran, focus visible.',
-        title: 'Jeu de primitives accessibles'
-      },
-      seance: {
-        description:
-          'Séance s’installe, tourne réseau coupé et garde chaque chiffre sur l’appareil.',
-        title: 'Serveur à joindre'
-      },
-      taverla: {
-        blindTest: 'Blind test',
-        buzzer: 'Buzzer',
-        description:
-          'Un serveur temps réel, une salle, un QR code : tous les téléphones de la pièce buzzent au même instant.',
-        quiz: 'Quiz',
-        title: 'Jeux de soirée sur un serveur temps réel'
-      },
-      themes: {
-        description:
-          'Jour et nuit, selon votre système ou votre choix sur le rail.',
-        title: 'Thèmes'
-      },
-      title: 'Contenu de la boîte'
+    about: {
+      after:
+        'd’une plateforme multi-écrans en production. Je tiens à une architecture saine, des monorepos aux API typées de bout en bout, à l’accessibilité et aux tests, et je garde mes projets sur les dernières versions de leur écosystème.',
+      before: 'Depuis 2023, je suis au travail le',
+      emphasis: 'seul développeur',
+      title: 'À propos'
     },
-    openBox: 'Ouvrir la boîte',
-    role: 'Développeur full-stack à Nantes. Des sites, des API, des jeux de soirée.',
+    drawings: DRAWINGS_FR,
+    entry: {
+      close: 'Refermer l’entrée',
+      countsFrom: 'Compte les visites de',
+      drawn: 'Dessiné pour ce registre, pas une capture',
+      entered: 'Inscrit',
+      full: 'Entrée complète',
+      installs: 'Installe',
+      installsAll: 'les {total} paquets maison',
+      installsAllBut: '{count} paquets maison, tous sauf {missing}',
+      installsSome: '{count} paquets maison',
+      mechanism: 'Mécanisme',
+      open: 'Ouvrir l’entrée',
+      openApp: 'Ouvrir en ligne',
+      openGame: 'Jouer en ligne',
+      pageViewsTo: 'Envoie ses visites à',
+      shipped: 'Ce qui est livré',
+      source: 'Code source'
+    },
+    head: {
+      inProgress: 'en cours',
+      keptSince: 'Tenu depuis le',
+      lastEntry: 'Dernière entrée',
+      lead: 'Ce que je code le soir, une fois la journée finie, une ligne datée par projet :',
+      leadAfter: 'Je cherche mon prochain poste.',
+      leadSoft: 'les apps d’abord, puis les paquets qu’elles partagent.',
+      openToWork: 'Ouvert aux offres',
+      packages: 'paquets',
+      place: 'Nantes',
+      released: 'apps publiées',
+      role: 'Développeur full-stack'
+    },
+    mechanisms: {
+      analytics: 'trois apps envoient, un Worker écrit une ligne',
+      onRecord: 'pas de serveur, un job de nuit demande ce qui a changé',
+      seance: 'zéro serveur, tout en cache sur l’appareil',
+      taverla: 'un serveur, un socket vers chaque écran'
+    },
+    next: {
+      cvAts: 'CV · ATS',
+      cvPdf: 'CV · PDF',
+      line: 'Votre équipe,',
+      note: 'Je cherche mon prochain poste. Écrivez-moi, ou prenez le CV : un mis en page, et un sobre pour les logiciels de recrutement.',
+      title: 'Prochaine entrée',
+      write: 'M’écrire'
+    },
+    packages: {
+      cap: '{count} paquets publiés sur npm, avec provenance',
+      open: 'Ouvrir l’entrée des paquets',
+      package: 'Paquet',
+      unused: 'Pas utilisé par {app}',
+      used: 'Utilisé par {app}',
+      usedBy: 'utilisé par',
+      usedByAll: 'Les {count} apps',
+      usedByAllBut: 'Toutes sauf {missing}',
+      version: 'Version'
+    },
+    register: {
+      app: 'App',
+      apps: 'Apps',
+      appsThenPackages: '{apps} apps, puis {packages} paquets',
+      date: 'Date',
+      drawing: 'Dessin',
+      packagesBelow: 'paquets plus bas',
+      state: 'État',
+      title: 'Registre des sorties, les apps puis les paquets'
+    },
+    site: {
+      category: 'Ce site · en cours',
+      hosting: 'Hébergement',
+      hostingValue: 'Cloudflare Pages',
+      lighthouse: 'Lighthouse',
+      lighthouseValue: 'Vérifié en CI',
+      locales: 'Langues',
+      name: 'adrienlacourpaille.dev',
+      opened: 'Ouvert',
+      short: 'Site',
+      summary:
+        'Le registre que vous lisez. React 19, prérendu par langue, en anglais et en français, clair et sombre sans flash, des primitives accessibles signées react-aria, et un score Lighthouse vérifié en CI.',
+      title: 'Ce site'
+    },
+    state: {
+      inProgress: 'En cours',
+      live: 'En ligne',
+      shipped: 'Livré',
+      stamp: '{state}, inscrit le {date}'
+    },
     title: 'Adrien Lacourpaille'
   },
   locale: {
@@ -189,9 +227,9 @@ export const FR_DICTIONARY = defineDictionary({
     title: 'Projets'
   },
   theme: {
-    dark: 'Nuit',
+    dark: 'Sombre',
     label: 'Thème',
-    light: 'Jour',
+    light: 'Clair',
     system: 'Auto'
   },
   ui: {

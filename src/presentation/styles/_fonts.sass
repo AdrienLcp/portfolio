@@ -1,6 +1,10 @@
 @use '@adrienlcp/styles/fonts'
 
 @layer base
+  @include fonts.font-face('Sofia Sans', '/fonts/sofia-sans-latin.woff2', fonts.$latin, $weight: 300 800)
+  @include fonts.font-face('Sofia Sans', '/fonts/sofia-sans-latin-ext.woff2', fonts.$latin-ext, $weight: 300 800)
+  @include fonts.font-face('Sofia Sans Condensed', '/fonts/sofia-sans-condensed-latin.woff2', fonts.$latin, $weight: 300 900)
+  @include fonts.font-face('Sofia Sans Condensed', '/fonts/sofia-sans-condensed-latin-ext.woff2', fonts.$latin-ext, $weight: 300 900)
   @include fonts.font-face('Archivo', '/fonts/archivo-latin.woff2', fonts.$latin, $weight: 600 900, $stretch: 100% 125%)
   @include fonts.font-face('Archivo', '/fonts/archivo-latin-ext.woff2', fonts.$latin-ext, $weight: 600 900, $stretch: 100% 125%)
   @include fonts.font-face('Literata', '/fonts/literata-latin.woff2', fonts.$latin, $weight: 400 700)

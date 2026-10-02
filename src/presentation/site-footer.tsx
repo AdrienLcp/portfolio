@@ -5,7 +5,7 @@ import { Suspense, use } from 'react'
 import type { Profile } from '@/features/profile/profile'
 import type { ApiError } from '@/infrastructure/api/portfolio-api'
 import { cvPathFor } from '@/infrastructure/router/navigation'
-import { Link } from '@/presentation/components/ui/link'
+import { RegisterLink } from '@/presentation/components/register/register-link'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { ThemeSwitch } from '@/presentation/theme/theme-switch'
 
@@ -33,29 +33,43 @@ const NetworkLinks: React.FC<{ profile: ProfileResult }> = ({ profile }) => {
 
   return (
     <>
-      <Link href={links.github} target='_blank'>
-        {translate('common.github')}
-      </Link>
-      <Link href={links.linkedin} target='_blank'>
-        {translate('common.linkedin')}
-      </Link>
+      <li>
+        <RegisterLink href={links.github} target='_blank'>
+          {translate('common.github')}
+        </RegisterLink>
+      </li>
+      <li>
+        <RegisterLink href={links.linkedin} target='_blank'>
+          {translate('common.linkedin')}
+        </RegisterLink>
+      </li>
     </>
   )
 }
 
+/** The register's closing rule: who keeps it, where else to find him. */
 export const SiteFooter: React.FC<SiteFooterProps> = ({ profile, year }) => {
   const { locale, translate } = useI18n()
 
   return (
     <footer className='site-footer'>
-      <ThemeSwitch />
-      <Link href={cvPathFor(locale)}>{translate('header.cv')}</Link>
-      <Suspense fallback={null}>
-        <NetworkLinks profile={profile} />
-      </Suspense>
-      <p className='colophon'>
-        {translate('footer.colophon', { year: String(year) })}
-      </p>
+      <div className='footer-sheet'>
+        <p className='keeper'>{translate('footer.keeper')}</p>
+        <ul className='footer-links'>
+          <li>
+            <RegisterLink href={cvPathFor(locale)}>
+              {translate('header.cv')}
+            </RegisterLink>
+          </li>
+          <Suspense fallback={null}>
+            <NetworkLinks profile={profile} />
+          </Suspense>
+        </ul>
+        <ThemeSwitch />
+        <p className='colophon'>
+          {translate('footer.colophon', { year: String(year) })}
+        </p>
+      </div>
     </footer>
   )
 }

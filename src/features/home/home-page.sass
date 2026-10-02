@@ -1,5 +1,833 @@
+@use '../../presentation/styles/focus'
 @use '../../presentation/styles/layout'
+@use '../../presentation/styles/typography'
+
+$two-columns: 960px
+$matrix: 1120px
+
+@mixin two-columns
+  @media (width >= $two-columns)
+    @content
+
+@mixin matrix
+  @media (width >= $matrix)
+    @content
+
+@mixin narrow-matrix
+  @media (width < $matrix)
+    @content
 
 @layer components
   .home-page
     @include layout.page
+
+    .visually-hidden
+      clip-path: inset(50%)
+      height: 1px
+      overflow: hidden
+      position: absolute
+      white-space: nowrap
+      width: 1px
+
+    .register-failure
+      @include layout.sheet
+
+      padding-block: var(--space-xl)
+
+  // ---------- the head: who keeps the register ----------
+
+  .register-head
+    @include layout.sheet
+
+    display: grid
+    gap: 1.5rem
+    padding-block: clamp(1.25rem, 3vw, 2rem) clamp(1.75rem, 3.5vw, 2.75rem)
+
+    .head-rule
+      border-bottom: 1px solid var(--rule)
+      display: flex
+      flex-wrap: wrap
+      gap: 0.5rem 2rem
+      justify-content: space-between
+      padding-bottom: 0.9rem
+
+    .head-role
+      align-items: baseline
+      display: flex
+      flex-wrap: wrap
+      font-family: var(--font-letter)
+      font-size: clamp(1.15rem, 2.2vw, 1.5rem)
+      font-weight: 500
+      gap: 0 0.6em
+
+      .dot
+        color: var(--rule)
+
+    .open-mark
+      align-items: center
+      color: var(--violet)
+      display: inline-flex
+      font-weight: 700
+      gap: 0.4em
+
+      svg
+        height: 0.8em
+        width: 0.8em
+
+    .head-ledger
+      @include typography.figures
+
+      color: var(--ink-soft)
+      display: flex
+      flex-wrap: wrap
+      font-size: 0.9375rem
+      gap: 0.35rem 1.5rem
+
+      b,
+      time
+        color: var(--ink)
+        font-weight: 700
+
+    .head-name
+      font-family: var(--font-letter)
+      font-size: clamp(2.9rem, 9.5vw, 6rem)
+      font-weight: 800
+      letter-spacing: -0.025em
+      line-height: 0.86
+      margin-top: 0.6rem
+      text-transform: uppercase
+      text-wrap: balance
+
+    .head-aside
+      display: grid
+      gap: 1.25rem
+
+    .head-lead
+      font-size: clamp(1.0625rem, 1.5vw, 1.25rem)
+      line-height: 1.5
+      max-width: 34rem
+      text-wrap: pretty
+
+      span
+        color: var(--ink-soft)
+
+    .head-actions
+      display: flex
+      flex-wrap: wrap
+      gap: 0.75rem
+
+    @include two-columns
+      column-gap: 3rem
+      grid-template-columns: minmax(0, 1fr) minmax(0, 30rem)
+      padding-top: clamp(2.5rem, 7vh, 5rem)
+      row-gap: clamp(1.5rem, 3vh, 2.5rem)
+
+      .head-rule
+        grid-column: 1 / -1
+
+      .head-name
+        align-self: end
+        font-size: clamp(4.5rem, 16.25vw - 5.25rem, 9.5rem)
+
+      .head-aside
+        align-self: end
+        gap: 1.5rem
+
+  // ---------- the register's column heads ----------
+
+  .register-cap,
+  .ledger-head
+    @include typography.label
+
+    color: var(--ink-soft)
+
+    b
+      color: var(--ink)
+
+    .wide-head
+      display: none
+
+    .narrow-head
+      align-items: center
+      display: flex
+      gap: 1rem
+      justify-content: space-between
+      min-height: 2.25rem
+
+  .register-cap
+    @include layout.sheet
+
+    border-bottom: 1px solid var(--rule)
+    border-top: 2px solid var(--rule-strong)
+
+    @include two-columns
+      .wide-head
+        align-items: center
+        display: grid
+        min-height: 2.25rem
+
+      .narrow-head
+        display: none
+
+  .app-columns,
+  .app-entry
+    @include two-columns
+      column-gap: 1.25rem
+      grid-template-columns: 6.5rem minmax(0, 1fr) minmax(0, 1.08fr) 7.5rem
+
+  .column-state
+    text-align: right
+
+  .register-rows,
+  .package-rows
+    list-style: none
+    margin: 0
+    padding: 0
+
+  .register-row
+    @include layout.sheet
+
+    border-bottom: 1px solid var(--rule)
+    position: relative
+    transition: opacity 220ms var(--timing)
+
+  .release-register.lit .register-row:not(.lit)
+    opacity: 0.38
+
+  // ---------- an app's row ----------
+
+  .app-entry
+    display: grid
+    gap: 1.25rem
+    grid-template-areas: 'date state' 'text text' 'figure figure'
+    grid-template-columns: minmax(0, 1fr) auto
+    padding-block: 1.5rem 1.75rem
+
+    .entry-date
+      grid-area: date
+
+    .entry-text
+      grid-area: text
+
+    .entry-figure,
+    .site-measures
+      grid-area: figure
+
+    .entry-state
+      grid-area: state
+
+    @include two-columns
+      align-items: start
+      grid-template-areas: 'date text figure state'
+      grid-template-columns: 6.5rem minmax(0, 1fr) minmax(0, 1.08fr) 7.5rem
+      padding-block: 2.25rem 2.5rem
+
+      .entry-state
+        justify-content: flex-end
+
+  .entry-date
+    @include typography.figures
+
+    font-size: 1.0625rem
+    font-weight: 600
+    white-space: nowrap
+
+    small
+      display: block
+      font-size: 0.8125rem
+      font-weight: 500
+      letter-spacing: 0.06em
+      opacity: 0.8
+      text-transform: uppercase
+
+  .entry-kind
+    @include typography.label
+
+    font-size: 0.875rem
+    font-weight: 600
+    margin-bottom: 0.5rem
+
+  .entry-name
+    font-family: var(--font-letter)
+    font-size: clamp(2.4rem, 5vw, 3.6rem)
+    font-weight: 800
+    letter-spacing: -0.02em
+    line-height: 0.9
+    overflow-wrap: anywhere
+    text-transform: uppercase
+    transition: color 160ms var(--timing)
+
+  .app-row.lit .entry-name
+    color: var(--violet)
+
+  .site-row .entry-name
+    font-size: clamp(1.7rem, 3.6vw, 2.6rem)
+    letter-spacing: -0.01em
+    text-transform: none
+
+  .entry-tagline
+    font-size: 1.1875rem
+    font-weight: 500
+    line-height: 1.4
+    margin-top: 0.85rem
+    max-width: 34rem
+
+  .entry-summary
+    color: var(--ink-soft)
+    margin-top: 0.75rem
+    max-width: 36rem
+
+  .entry-label
+    @include typography.label
+
+    margin-bottom: 0.45rem
+
+  .installs
+    margin-top: 1.35rem
+
+  .chips
+    display: flex
+    flex-wrap: wrap
+    gap: 0.35rem
+    list-style: none
+    margin: 0
+    padding: 0
+
+  .chip
+    @include focus.ring
+
+    align-items: center
+    border: 1px solid var(--rule)
+    border-radius: 2px
+    color: var(--ink)
+    display: inline-flex
+    font-family: var(--font-letter)
+    font-size: 0.9375rem
+    font-weight: 600
+    min-height: 2rem
+    padding: 0 0.55rem
+    text-decoration: none
+    transition: background-color 140ms var(--timing), color 140ms var(--timing), border-color 140ms var(--timing)
+
+    &.lit
+      background: var(--violet)
+      border-color: var(--violet)
+      color: var(--on-violet)
+
+    @media (hover: hover) and (pointer: fine)
+      &:hover
+        border-color: currentColor
+
+  .app-chip
+    border-color: currentColor
+    font-weight: 700
+    gap: 0.3rem
+
+    .chip-icon
+      height: 0.75rem
+      stroke-width: 2.6
+      width: 0.75rem
+
+  .reports-line
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    gap: 0.35rem 0.45rem
+    margin-top: 0.9rem
+
+    .entry-label
+      margin: 0 0.35rem 0 0
+
+  .entry-actions
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    gap: 0.6rem
+    margin-top: 1.5rem
+
+  .open-entry
+    @include typography.label
+    @include focus.ring
+
+    align-items: center
+    background: transparent
+    border: 1.5px solid currentColor
+    border-radius: 2px
+    color: inherit
+    cursor: pointer
+    display: inline-flex
+    font-size: 1rem
+    gap: 0.55rem
+    letter-spacing: 0.05em
+    min-height: 2.75rem
+    padding: 0 1rem
+
+    .open-entry-icon
+      height: 0.9rem
+      transition: rotate 320ms var(--timing)
+      width: 0.9rem
+
+    &[aria-expanded='true'] .open-entry-icon
+      rotate: 45deg
+
+    &[data-hovered]
+      background: var(--ink)
+      border-color: var(--ink)
+      color: var(--paper)
+
+  .entry-figure
+    margin: 0
+
+    figcaption
+      @include typography.label
+
+      font-size: 0.8125rem
+      font-weight: 500
+      letter-spacing: 0.06em
+      margin-top: 0.5rem
+      opacity: 0.85
+
+  .screen
+    display: block
+    height: auto
+    width: 100%
+
+  .entry-state
+    align-items: flex-start
+    display: flex
+
+  // ---------- the site's own row ----------
+
+  .site-row::after
+    background: linear-gradient(225deg, var(--paper) 50%, var(--paper-sunk) 50%)
+    border-bottom: 1px solid var(--rule)
+    border-left: 1px solid var(--rule)
+    box-shadow: -2px 3px 5px color-mix(in srgb, var(--ink) 10%, transparent)
+    content: ''
+    height: 2.25rem
+    position: absolute
+    right: 0
+    top: 0
+    width: 2.25rem
+
+  .site-measures
+    align-self: start
+    display: grid
+    font-family: var(--font-letter)
+    margin: 0
+
+    div
+      border-top: 1px solid var(--rule)
+      display: flex
+      gap: 1rem
+      justify-content: space-between
+      padding: 0.55rem 0
+
+      &:last-child
+        border-bottom: 1px solid var(--rule)
+
+    dt
+      @include typography.label
+
+      color: var(--ink-soft)
+
+    dd
+      font-weight: 700
+      margin: 0
+
+  .in-progress-flag
+    @include typography.label
+
+    align-items: center
+    display: inline-grid
+    font-size: 0.875rem
+    gap: 0.4rem
+    grid-auto-flow: column
+
+    svg
+      height: 2.4rem
+      width: 1.9rem
+
+  // ---------- an entry unfolded in place ----------
+
+  .entry-drawer
+    display: grid
+    grid-template-rows: 0fr
+    transition: grid-template-rows 520ms var(--timing)
+
+    &.open
+      grid-template-rows: 1fr
+
+    .drawer-clip
+      min-height: 0
+      overflow: hidden
+
+    &:not(.open) .drawer-clip
+      transition: visibility 0s 520ms
+      visibility: hidden
+
+  .drawer-body
+    background: repeating-linear-gradient(90deg, currentColor 0 4px, transparent 4px 8px) top / 100% 1px no-repeat
+    display: grid
+    gap: 2rem
+    margin-top: 0.25rem
+    padding-block: 0.5rem 2.25rem
+
+    @include two-columns
+      column-gap: 1.25rem
+      grid-template-columns: 6.5rem minmax(0, 1fr) minmax(0, 1.08fr) 7.5rem
+
+      .drawer-text
+        grid-column: 2
+
+      .drawer-mechanism
+        grid-column: 3 / 5
+
+  .drawer-title
+    @include typography.label
+
+    font-size: 0.875rem
+    margin: 1.25rem 0 0.75rem
+
+  .shipped-list
+    counter-reset: shipped
+    list-style: none
+    margin: 0
+    padding: 0
+
+    li
+      border-top: 1px solid var(--rule)
+      display: grid
+      gap: 0.5rem
+      grid-template-columns: 1.75rem minmax(0, 1fr)
+      max-width: 40rem
+      padding: 0.6rem 0
+
+      &::before
+        @include typography.figures
+
+        content: counter(shipped, decimal-leading-zero)
+        counter-increment: shipped
+        font-weight: 700
+        opacity: 0.7
+
+  .diagram
+    display: block
+    height: auto
+    overflow: visible
+    width: 100%
+
+    text
+      fill: currentColor
+      font-family: var(--font-letter)
+      font-size: 13px
+      letter-spacing: 0.04em
+
+    .lbl-strong
+      font-size: 14px
+      font-weight: 700
+      letter-spacing: 0.08em
+      text-transform: uppercase
+
+    .soft
+      opacity: 0.72
+
+    .struck tspan
+      fill: currentColor
+
+  .struck
+    fill: var(--violet)
+    text-decoration: line-through
+    text-decoration-thickness: 1.6px
+
+  .screen .struck
+    text-decoration-thickness: 2px
+
+    tspan
+      fill: var(--ink)
+
+  @media (prefers-reduced-motion: no-preference)
+    .drawer-mechanism
+      .diagram .draw
+        stroke-dasharray: 1
+        stroke-dashoffset: 1
+
+      .diagram .fade
+        opacity: 0
+
+      &.drawn
+        .diagram .draw
+          stroke-dashoffset: 0
+          transition: stroke-dashoffset 1100ms var(--timing) calc(var(--d, 0) * 110ms)
+
+        .diagram .fade
+          opacity: 1
+          transition: opacity 500ms var(--timing) calc(300ms + var(--d, 0) * 110ms)
+
+        .diagram .fade.soft
+          opacity: 0.72
+
+  // ---------- the packages ----------
+
+  .package-block
+    margin-top: clamp(2.5rem, 5vw, 4rem)
+
+  .package-cap
+    @include layout.sheet
+    @include typography.label
+
+    align-items: center
+    background: var(--paper-sunk)
+    border-bottom: 1px solid var(--rule)
+    border-top: 2px solid var(--rule-strong)
+    color: var(--ink-soft)
+    display: flex
+    flex-wrap: wrap
+    gap: 0.25rem 1rem
+    justify-content: space-between
+    min-height: 2.25rem
+    padding-inline: 0.75rem
+
+    .cap-links
+      display: flex
+      flex-wrap: wrap
+      gap: 0.25rem 1.25rem
+
+      .register-link
+        align-items: center
+        color: var(--ink)
+        display: inline-flex
+        gap: 0.3em
+        min-height: 2.25rem
+        text-decoration: underline
+
+  .ledger-head
+    @include layout.sheet
+
+    background: var(--paper)
+    border-bottom: 1px solid var(--rule-strong)
+    color: var(--ink)
+    position: sticky
+    top: 0
+    z-index: 5
+
+    @include matrix
+      .wide-head
+        align-items: center
+        display: grid
+        min-height: 2.25rem
+
+      .narrow-head
+        display: none
+
+      .column-app
+        text-align: center
+
+  .ledger-columns
+    column-gap: 1.25rem
+    display: grid
+
+    @include matrix
+      grid-template-columns: 6.5rem minmax(11rem, 14rem) minmax(0, 1fr) 4.5rem repeat(var(--app-columns, 5), 2.75rem) 7.5rem
+
+  .package-row
+    isolation: isolate
+
+    &::before
+      background: color-mix(in srgb, var(--violet) 8%, var(--paper))
+      content: ''
+      inset: 0 -0.75rem
+      opacity: 0
+      position: absolute
+      transition: opacity 160ms var(--timing)
+      z-index: -1
+
+    &.lit::before
+      opacity: 1
+
+  .package-entry
+    align-items: baseline
+    padding-block: 0.8rem
+    position: relative
+
+  .package-date
+    @include typography.figures
+
+    color: var(--ink-soft)
+    font-size: 0.9375rem
+
+  .package-name
+    font-family: var(--font-letter)
+    font-size: 1.1875rem
+    font-weight: 700
+    line-height: 1.2
+
+    .register-link
+      align-items: center
+      display: inline-flex
+      text-decoration: none
+      white-space: nowrap
+
+      &[data-hovered]
+        text-decoration: underline
+
+      .register-link-icon
+        margin-inline-start: 0.25em
+
+    mark
+      background: transparent
+      border-radius: 1px
+      color: inherit
+      margin: 0 -0.15em
+      padding: 0 0.15em
+      transition: background-color 160ms, color 160ms
+
+    .scope
+      color: var(--ink-soft)
+      font-weight: 500
+
+  .package-row.lit .package-name mark
+    background: var(--violet)
+    color: var(--on-violet)
+
+    .scope
+      color: var(--on-violet-soft)
+
+  .package-job
+    color: var(--ink-soft)
+    font-size: 1rem
+    line-height: 1.4
+
+  .package-version
+    @include typography.figures
+
+    font-size: 1.0625rem
+    font-weight: 700
+
+  .tick
+    display: flex
+    justify-content: center
+
+    .tick-icon
+      height: 1.1rem
+      width: 1.1rem
+
+    .tick-none
+      color: var(--rule)
+      font-weight: 700
+
+  .package-row.lit .tick-icon
+    color: var(--violet)
+
+  .used-text
+    display: none
+
+  .package-state
+    display: flex
+    justify-content: flex-end
+
+  @include narrow-matrix
+    .package-entry
+      grid-template-areas: 'name version' 'job job' 'used state'
+      grid-template-columns: minmax(0, 1fr) auto
+      padding-block: 0.9rem
+      row-gap: 0.25rem
+
+    .package-date,
+    .tick
+      display: none
+
+    .package-name
+      grid-area: name
+
+    .package-version
+      grid-area: version
+
+    .package-job
+      grid-area: job
+
+    .used-text
+      align-self: center
+      color: var(--ink-soft)
+      display: block
+      font-family: var(--font-letter)
+      font-size: 0.875rem
+      grid-area: used
+
+    .package-state
+      align-self: center
+      grid-area: state
+
+  // ---------- about and the next entry ----------
+
+  .section-label
+    @include typography.label
+
+    font-size: 0.875rem
+
+  .about-note,
+  .next-entry
+    @include layout.sheet
+
+    display: grid
+    gap: 1.25rem
+
+    @include two-columns
+      column-gap: 1.25rem
+      grid-template-columns: 6.5rem minmax(0, 1fr)
+
+  .about-note
+    border-bottom: 1px solid var(--rule)
+    padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2rem, 5vw, 3.5rem)
+
+    p
+      font-size: clamp(1.3rem, 2.6vw, 1.9rem)
+      font-weight: 500
+      letter-spacing: -0.005em
+      line-height: 1.3
+      max-width: 44rem
+      text-wrap: pretty
+
+    em
+      color: var(--violet)
+      font-style: normal
+
+    @include two-columns
+      .section-label
+        padding-top: 0.6rem
+
+  .next-entry
+    gap: 1.5rem
+    padding-block: clamp(2.5rem, 6vw, 4.5rem)
+
+    .next-line
+      font-family: var(--font-letter)
+      font-size: clamp(2.2rem, 7vw, 5rem)
+      font-weight: 800
+      letter-spacing: -0.02em
+      line-height: 0.9
+      max-width: 14ch
+      text-transform: uppercase
+
+    .blank
+      border-bottom: 3px solid var(--ink)
+      display: inline-block
+      min-width: 3ch
+
+    .next-note
+      color: var(--ink-soft)
+      margin-top: 1rem
+      max-width: 38rem
+
+    .next-actions
+      display: flex
+      flex-wrap: wrap
+      gap: 0.75rem
+
+    @include two-columns
+      align-items: end
+      grid-template-columns: 6.5rem minmax(0, 1fr) auto
+
+      .section-label
+        align-self: start
+        padding-top: 0.8rem

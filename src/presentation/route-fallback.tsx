@@ -3,8 +3,8 @@ import type React from 'react'
 import './route-fallback.sass'
 
 /**
- * Paints the lid's field while the first page's chunk downloads, so a cold
- * load goes from petrol to petrol instead of through an empty paper frame.
+ * Holds the page's place on the paper while the first page's chunk downloads,
+ * so the footer does not jump up under the header in the meantime.
  */
 export const RouteFallback: React.FC = () => (
   <div aria-busy='true' className='route-fallback' />

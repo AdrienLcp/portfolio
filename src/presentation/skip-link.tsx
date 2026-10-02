@@ -14,7 +14,7 @@ export const SkipLink: React.FC = () => {
 
   return (
     <a
-      className='token skip-link'
+      className='skip-link'
       href={MAIN_HREF}
       onClick={(event) => {
         event.preventDefault()

@@ -1,0 +1,78 @@
+@layer components
+  .stamp-ink
+    height: 0
+    position: absolute
+    width: 0
+
+  .release-stamp
+    border: 2.5px solid var(--violet)
+    border-radius: 3px
+    color: var(--violet)
+    display: inline-grid
+    filter: url(#ink-bleed)
+    font-family: var(--font-letter)
+    gap: 0.1rem
+    justify-items: center
+    line-height: 1
+    mix-blend-mode: multiply
+    outline: 1px solid var(--violet)
+    outline-offset: 2px
+    padding: 0.35rem 0.6rem 0.4rem
+    rotate: -7deg
+    text-transform: uppercase
+    user-select: none
+
+    b
+      font-size: 1.35rem
+      font-weight: 900
+      letter-spacing: 0.12em
+
+    span
+      font-size: 0.75rem
+      font-variant-numeric: tabular-nums
+      font-weight: 700
+      letter-spacing: 0.08em
+
+    &.small
+      border-width: 1.5px
+      outline-offset: 1.5px
+      padding: 0.15rem 0.35rem 0.2rem
+      rotate: -4deg
+
+      b
+        font-size: 0.8125rem
+        letter-spacing: 0.1em
+
+    @media (prefers-reduced-motion: no-preference)
+      &.fresh
+        animation: stamp-press 900ms var(--timing) 450ms both
+
+  // Multiply sinks the ink into light paper; on dark paper it would vanish.
+  \:root[data-theme='dark'] .release-stamp
+    mix-blend-mode: normal
+
+  @media (prefers-color-scheme: dark)
+    \:root:not([data-theme='light']) .release-stamp
+      mix-blend-mode: normal
+
+  @keyframes stamp-press
+    0%
+      filter: url(#ink-bleed) blur(3px)
+      opacity: 0
+      rotate: -12deg
+      scale: 1.9
+
+    38%
+      filter: url(#ink-bleed) blur(0)
+      opacity: 1
+      rotate: -7deg
+      scale: 0.94
+
+    56%
+      scale: 1.03
+
+    100%
+      filter: url(#ink-bleed)
+      opacity: 1
+      rotate: -7deg
+      scale: 1

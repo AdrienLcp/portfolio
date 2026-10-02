@@ -56,8 +56,8 @@ type ChoiceRailProps<TId extends string> = RailProps & {
 }
 
 /**
- * A row of slots cut into the board, one pawn on it: the pawn sits on the
- * choice in play and slides to the next one picked.
+ * A row of slots with one inked: the ink sits on the choice in play and slides
+ * to the next one picked.
  */
 export const ChoiceRail = <TId extends string>({
   className,
@@ -106,8 +106,8 @@ type LinkRailProps<TId extends string> = RailProps &
   }
 
 /**
- * The same rail with a link in each slot, for choices that are places: the
- * pawn marks the one on screen and slides when another is reached.
+ * The same rail with a link in each slot, for choices that are places: the ink
+ * marks the one on screen and slides when another is reached.
  */
 export const LinkRail = <TId extends string>({
   className,

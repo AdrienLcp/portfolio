@@ -17,6 +17,12 @@
   background: var(--field-secondary)
   color: var(--on-secondary)
 
+/// The register's sheet: the column every rule of the page is drawn across,
+/// set in from the window's edge and capped on a wide screen.
+@mixin sheet
+  margin-inline: auto
+  width: min(100% - 2 * var(--sheet-gutter), var(--frame) - 2 * var(--sheet-gutter))
+
 /// A page is one column of the app shell, and fills it.
 @mixin page
   display: flex

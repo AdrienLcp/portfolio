@@ -1,0 +1,56 @@
+@use '../../styles/focus'
+@use '../../styles/typography'
+
+@layer components
+  .register-link
+    @include focus.ring
+
+    color: inherit
+    transition: background-color var(--transition-fast, 0) var(--timing, ease), color var(--transition-fast, 0) var(--timing, ease), border-color var(--transition-fast, 0) var(--timing, ease)
+
+    .register-link-icon
+      height: 0.9em
+      stroke-width: 2.4
+      width: 0.9em
+
+    &.ink,
+    &.line,
+    &.caps
+      @include typography.label
+
+      align-items: center
+      display: inline-flex
+      font-size: 1rem
+      gap: 0.5rem
+      letter-spacing: 0.05em
+      min-height: 2.75rem
+      text-decoration: none
+
+    &.ink,
+    &.line
+      border: 1.5px solid var(--ink)
+      border-radius: 2px
+      padding: 0 1.1rem
+
+    &.ink
+      background: var(--ink)
+      color: var(--paper)
+
+      &[data-hovered]
+        background: var(--violet)
+        border-color: var(--violet)
+        color: var(--on-violet)
+
+    &.line
+      color: var(--ink)
+
+      &[data-hovered]
+        background: var(--ink)
+        color: var(--paper)
+
+    &.caps
+      padding: 0 0.4rem
+
+      &[data-hovered]
+        text-decoration: underline
+        text-decoration-thickness: 2px

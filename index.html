@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="#0f5257" data-scheme="light" data-token="--field-dominant" media="(prefers-color-scheme: light)" name="theme-color" />
-    <meta content="#1b5a5e" data-scheme="dark" data-token="--field-dominant" media="(prefers-color-scheme: dark)" name="theme-color" />
+    <meta content="#f7f8fa" data-scheme="light" data-token="--paper" media="(prefers-color-scheme: light)" name="theme-color" />
+    <meta content="#101115" data-scheme="dark" data-token="--paper" media="(prefers-color-scheme: dark)" name="theme-color" />
     <style>
       :root[data-fonts-pending] #root {
         visibility: hidden;
@@ -19,12 +19,11 @@
         root.dataset.fontsPending = ''
         setTimeout(reveal, longestFontWaitMs)
         Promise.all([
-          new FontFace('Archivo', "url('/fonts/archivo-latin.woff2') format('woff2')", {
-            stretch: '100% 125%',
-            weight: '600 900'
+          new FontFace('Sofia Sans Condensed', "url('/fonts/sofia-sans-condensed-latin.woff2') format('woff2')", {
+            weight: '300 900'
           }).load(),
-          new FontFace('Literata', "url('/fonts/literata-latin.woff2') format('woff2')", {
-            weight: '400 700'
+          new FontFace('Sofia Sans', "url('/fonts/sofia-sans-latin.woff2') format('woff2')", {
+            weight: '300 800'
           }).load()
         ]).then(reveal, reveal)
       }
@@ -52,6 +51,14 @@
     <script data-site="portfolio" defer src="https://analytics.adrienlcp.workers.dev/tracker.js"></script>
   </head>
   <body>
+    <!-- DIRECTION CONTRACT
+    THESIS: The site is a register of releases: one dated row per app, then the house packages they share. Refuses the name-tagline-card-grid portfolio.
+    OWN-WORLD: Cool paper and ink, one stamp violet (#4b2fd6 / night #8d79ff) used only as ink: rubber stamps, the open-to-work mark, lit package cross-references. Sofia Sans Condensed for lettering and numerals, Sofia Sans for prose. Hairline rules inside a contained sheet, drawn schematics instead of screenshots, chips for packages.
+    STORY: The visitor sees finished, dated apps in curated order (Taverla first), sees every app install the same packages, believes the depth is real, and writes.
+    FIRST VIEWPORT: Running header; role, place, open-to-work and ledger counts on one rule; the name huge at left, lead and Contact/CV at right; the Taverla row starts above the fold.
+    FORM: The Release Register, index 6 of the direction roll, seed 27f11629.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+    -->
     <div id="root"></div>
     <script src="/src/main.tsx" type="module"></script>
   </body>

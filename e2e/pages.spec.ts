@@ -5,18 +5,21 @@ const MAIL_ENDPOINT = 'https://api.web3forms.com/submit'
 const mainNavigation = (page: Page) =>
   page.getByRole('navigation', { name: 'Main' })
 
-test('[e2e] the lid opens on the box and closes back', async ({ page }) => {
+test('[e2e] an entry of the register unfolds in place and folds back', async ({
+  page
+}) => {
   await page.goto('/en')
 
-  await page.getByRole('button', { name: 'Open the box' }).click()
+  const taverla = page.getByRole('article', { name: 'Taverla' })
+  await taverla.getByRole('button', { name: 'Open entry' }).click()
   await expect(
-    page.getByRole('heading', { name: 'Contents of the box' })
-  ).toBeFocused()
+    page.getByRole('heading', { name: 'What shipped' }).first()
+  ).toBeVisible()
 
-  await page.getByRole('button', { name: 'Close the lid' }).click()
+  await taverla.getByRole('button', { name: 'Close entry' }).click()
   await expect(
-    page.getByRole('heading', { level: 1, name: 'Adrien Lacourpaille' })
-  ).toBeFocused()
+    page.getByRole('heading', { name: 'What shipped' }).first()
+  ).toBeHidden()
 })
 
 test('[e2e] from the shelf to a project and back', async ({ page }) => {
@@ -164,10 +167,10 @@ test('[e2e] a theme picked on the rail survives a reload', async ({ page }) => {
   await page.goto('/en')
   const root = page.locator('html')
 
-  await page.getByRole('radio', { name: 'Night' }).check()
+  await page.getByRole('radio', { name: 'Dark' }).check()
   await expect(root).toHaveAttribute('data-theme', 'dark')
 
   await page.reload()
   await expect(root).toHaveAttribute('data-theme', 'dark')
-  await expect(page.getByRole('radio', { name: 'Night' })).toBeChecked()
+  await expect(page.getByRole('radio', { name: 'Dark' })).toBeChecked()
 })

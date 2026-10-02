@@ -1,8 +1,16 @@
 @layer tokens
   \:root
-    --paper: light-dark(oklch(95.73% 0.0058 153.77), oklch(19.78% 0.0171 195.85))
-    --ink: light-dark(oklch(23.34% 0.0209 185.33), oklch(93.62% 0.0094 171.79))
-    --ink-soft: color-mix(in oklab, var(--ink) 78%, var(--paper))
+    --paper: light-dark(#f7f8fa, #101115)
+    --paper-sunk: light-dark(#eceef3, #17181d)
+    --ink: light-dark(#15161a, #eceef3)
+    --ink-soft: light-dark(#4d505b, #a4a8b4)
+    --rule: light-dark(#c9ccd6, #2c2f38)
+    --rule-strong: var(--ink)
+    --screen: light-dark(#ffffff, #1b1c22)
+
+    --violet: light-dark(#4b2fd6, #8d79ff)
+    --on-violet: light-dark(#f7f8fa, #101115)
+    --on-violet-soft: light-dark(#dcd6ff, #1f1757)
 
     --field-dominant: light-dark(oklch(40.18% 0.0630 202.63), oklch(43.03% 0.0625 201.17))
     --on-dominant: light-dark(oklch(95.73% 0.0058 153.77), oklch(93.62% 0.0094 171.79))
@@ -21,9 +29,11 @@
     --on-token: var(--print-ink)
 
     --outline: var(--ink)
-    --focus: var(--active)
+    --focus: var(--ink)
     --shadow: light-dark(color-mix(in oklab, var(--print-ink) 30%, transparent), color-mix(in oklab, black 62%, transparent))
 
+    --font-letter: 'Sofia Sans Condensed', 'Sofia Sans', system-ui, sans-serif
+    --font-prose: 'Sofia Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif
     --font-display: 'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif
     --font-read: 'Literata', Georgia, 'Times New Roman', serif
     --font-code: ui-monospace, 'Cascadia Code', Consolas, monospace
@@ -44,6 +54,7 @@
     --space-3xl: 112px
     --frame: 90rem
     --gutter: max(clamp(16px, 4vw, 48px), (100vw - var(--frame)) / 2)
+    --sheet-gutter: 16px
     --measure: 65ch
 
     --radius-s: 4px
@@ -56,3 +67,11 @@
     --transition-base: 280ms
     --transition-slow: 560ms
     --timing: cubic-bezier(0.16, 1, 0.3, 1)
+
+  @media (width >= 720px)
+    \:root
+      --sheet-gutter: 32px
+
+  @media (width >= 1200px)
+    \:root
+      --sheet-gutter: 48px

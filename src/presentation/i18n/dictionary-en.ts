@@ -1,5 +1,7 @@
 import { defineDictionary } from '@adrienlcp/i18n'
 
+import { DRAWINGS_EN } from './drawings-en'
+
 export const EN_DICTIONARY = defineDictionary({
   about: {
     credit: 'A game by Adrien Lacourpaille.',
@@ -79,7 +81,8 @@ export const EN_DICTIONARY = defineDictionary({
     title: 'Something broke on this page.'
   },
   footer: {
-    colophon: 'Adrien Lacourpaille, {year}. Printed in petrol and tomato.'
+    colophon: '{year}. Set in Sofia Sans; every screen is drawn, not captured.',
+    keeper: 'Adrien Lacourpaille · Nantes'
   },
   header: {
     about: 'About',
@@ -87,71 +90,106 @@ export const EN_DICTIONARY = defineDictionary({
     cv: 'CV',
     home: 'Adrien Lacourpaille, home page',
     menu: 'Menu',
+    name: 'Adrien Lacourpaille',
     navigation: 'Main',
     projects: 'Projects',
     skip: 'Skip to content'
   },
   home: {
-    closeLid: 'Close the lid',
-    contents: {
-      flash: {
-        description:
-          'Empty slot, on purpose: the right theme is set before the first paint.',
-        title: 'Flash on load'
-      },
-      hover: {
-        description:
-          'Kept for real pointers: nothing stays stuck after a tap on a phone.',
-        title: 'Honest hover'
-      },
-      languages: {
-        description:
-          'English and French, served by @adrienlcp/i18n, my own take on Web Dev Simplified’s approach.',
-        title: 'Languages'
-      },
-      lead: 'Everything is in its place, nothing is missing. Check before the first game.',
-      lint: {
-        description: 'Custom rules and a shared toolkit of conventions.',
-        title: 'Set of lint rules'
-      },
-      onRecord: {
-        description:
-          'Every public vote of the Assemblée, rebuilt overnight from its open data, only where something changed. Each figure leads back to its official record.',
-        title: 'Night job, no server'
-      },
-      packages: {
-        description:
-          'Tested, released from CI with npm provenance, and installed by this site, Taverla, Séance and on-record.',
-        open: 'See what they do',
-        title: 'Packages published on npm'
-      },
-      primitives: {
-        description:
-          'Built on react-aria: keyboard, screen readers, visible focus.',
-        title: 'Set of accessible primitives'
-      },
-      seance: {
-        description:
-          'Séance installs, runs with the network cut and keeps every number on the device.',
-        title: 'Servers to reach'
-      },
-      taverla: {
-        blindTest: 'Blind test',
-        buzzer: 'Buzzer',
-        description:
-          'One realtime server, one room, one QR code: every phone in it buzzes on the same instant.',
-        quiz: 'Quiz',
-        title: 'Party games on one realtime server'
-      },
-      themes: {
-        description:
-          'Day and night, following your system or your pick on the rail.',
-        title: 'Themes'
-      },
-      title: 'Contents of the box'
+    about: {
+      after:
+        'of a multi-screen platform in production. I care about sound architecture, from monorepos to APIs typed end to end, about accessibility and tests, and I keep my projects on the latest versions of their ecosystem.',
+      before: 'Since 2023 I have been, at work, the',
+      emphasis: 'sole developer',
+      title: 'About'
     },
-    openBox: 'Open the box',
-    role: 'Full-stack developer in Nantes. Websites, APIs, party games.',
+    drawings: DRAWINGS_EN,
+    entry: {
+      close: 'Close entry',
+      countsFrom: 'Counts page views from',
+      drawn: 'Drawn for this register, not a screenshot',
+      entered: 'Entered',
+      full: 'Full entry',
+      installs: 'Installs',
+      installsAll: 'all {total} house packages',
+      installsAllBut: '{count} house packages, all but {missing}',
+      installsSome: '{count} house packages',
+      mechanism: 'Mechanism',
+      open: 'Open entry',
+      openApp: 'Open live',
+      openGame: 'Play live',
+      pageViewsTo: 'Page views go to',
+      shipped: 'What shipped',
+      source: 'Source'
+    },
+    head: {
+      inProgress: 'in progress',
+      keptSince: 'Kept since',
+      lastEntry: 'Last entry',
+      lead: 'What I code in the evening, once the workday is done, one dated row each:',
+      leadAfter: 'I am looking for my next job.',
+      leadSoft: 'the apps first, then the packages they share.',
+      openToWork: 'Open to work',
+      packages: 'packages',
+      place: 'Nantes',
+      released: 'apps released',
+      role: 'Full-stack developer'
+    },
+    mechanisms: {
+      analytics: 'three apps report, one Worker writes a row',
+      onRecord: 'no server, a nightly job asks what changed',
+      seance: 'zero server, everything cached on the device',
+      taverla: 'one server, a socket to every screen'
+    },
+    next: {
+      cvAts: 'CV · ATS',
+      cvPdf: 'CV · PDF',
+      line: 'Your team,',
+      note: 'I am looking for my next job. Write to me, or take the CV: a designed one, and a plain one for applicant tracking systems.',
+      title: 'Next entry',
+      write: 'Write to me'
+    },
+    packages: {
+      cap: '{count} packages released to npm, with provenance',
+      open: 'Open the packages entry',
+      package: 'Package',
+      unused: 'Not used by {app}',
+      used: 'Used by {app}',
+      usedBy: 'used by',
+      usedByAll: 'All {count} apps',
+      usedByAllBut: 'All but {missing}',
+      version: 'Version'
+    },
+    register: {
+      app: 'App',
+      apps: 'Apps',
+      appsThenPackages: '{apps} apps, then {packages} packages',
+      date: 'Date',
+      drawing: 'Drawing',
+      packagesBelow: 'packages below',
+      state: 'State',
+      title: 'Register of releases, apps then packages'
+    },
+    site: {
+      category: 'This site · in progress',
+      hosting: 'Hosting',
+      hostingValue: 'Cloudflare Pages',
+      lighthouse: 'Lighthouse',
+      lighthouseValue: 'Gated in CI',
+      locales: 'Locales',
+      name: 'adrienlacourpaille.dev',
+      opened: 'Opened',
+      short: 'Site',
+      summary:
+        'The register you are reading. React 19, prerendered per locale, English and French, light and dark with no flash, accessible primitives from react-aria, and a Lighthouse score gated in CI.',
+      title: 'This site'
+    },
+    state: {
+      inProgress: 'In progress',
+      live: 'Live',
+      shipped: 'Shipped',
+      stamp: '{state}, entered {date}'
+    },
     title: 'Adrien Lacourpaille'
   },
   locale: {
@@ -189,9 +227,9 @@ export const EN_DICTIONARY = defineDictionary({
     title: 'Projects'
   },
   theme: {
-    dark: 'Night',
+    dark: 'Dark',
     label: 'Theme',
-    light: 'Day',
+    light: 'Light',
     system: 'Auto'
   },
   ui: {

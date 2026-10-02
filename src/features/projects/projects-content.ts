@@ -32,6 +32,26 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
       repository: 'https://github.com/AdrienLcp/taverla'
     },
     name: 'Taverla',
+    register: {
+      category: { en: 'party games · live', fr: 'jeux de soirée · en ligne' },
+      countedBy: 'analytics',
+      entered: '2026-09-29',
+      installs: [
+        'biome-config',
+        'browser',
+        'i18n',
+        'react',
+        'react-aria',
+        'react-router',
+        'result',
+        'safe-storage',
+        'styles',
+        'theme-preference',
+        'tsconfig'
+      ],
+      shortName: 'Tav.',
+      state: 'shipped'
+    },
     slug: 'taverla',
     stack: ['TypeScript', 'React', 'Hono', 'WebSocket', 'Zod', 'Playwright'],
     summary: {
@@ -72,6 +92,26 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
       repository: 'https://github.com/AdrienLcp/on-record'
     },
     name: 'on-record',
+    register: {
+      category: { en: 'public record · live', fr: 'vie publique · en ligne' },
+      countedBy: 'analytics',
+      entered: '2026-10-01',
+      installs: [
+        'biome-config',
+        'browser',
+        'i18n',
+        'react',
+        'react-aria',
+        'react-router',
+        'result',
+        'safe-storage',
+        'styles',
+        'theme-preference',
+        'tsconfig'
+      ],
+      shortName: 'Rec.',
+      state: 'live'
+    },
     samples: [
       {
         code: `export const isNewerVersion = ({
@@ -272,6 +312,27 @@ if (locale.status === 'failure') {
       repository: 'https://github.com/AdrienLcp/sport'
     },
     name: 'Séance',
+    register: {
+      category: {
+        en: 'training · installable, offline',
+        fr: 'entraînement · installable, hors ligne'
+      },
+      entered: '2026-09-29',
+      installs: [
+        'biome-config',
+        'browser',
+        'i18n',
+        'react',
+        'react-router',
+        'result',
+        'safe-storage',
+        'styles',
+        'theme-preference',
+        'tsconfig'
+      ],
+      shortName: 'Séa.',
+      state: 'shipped'
+    },
     samples: [
       {
         code: `export const isReminderOwed = ({
@@ -294,6 +355,72 @@ if (locale.status === 'failure') {
     tagline: {
       en: 'A training manual that works offline and remembers everything, on the device alone.',
       fr: 'Un manuel d’entraînement qui marche hors ligne et se souvient de tout, sur l’appareil seul.'
+    }
+  },
+  {
+    highlights: [
+      {
+        en: 'No cookie, no IP, no user agent, no fingerprint and no hash stored: a row holds a path, a referrer host, a country, a locale, a theme and a device class.',
+        fr: 'Ni cookie, ni IP, ni user agent, ni empreinte, ni hash stockés : une ligne tient un chemin, un domaine référent, un pays, une langue, un thème et un type d’appareil.'
+      },
+      {
+        en: 'No consent banner, because there is nothing to consent to.',
+        fr: 'Pas de bandeau de consentement : il n’y a rien à consentir.'
+      },
+      {
+        en: 'A page view reached from another page of the same site continues a visit; anything else starts one.',
+        fr: 'Une page vue atteinte depuis une autre page du même site prolonge une visite ; tout le reste en commence une.'
+      },
+      {
+        en: 'tracker.js weighs under 1 kB gzipped, follows single-page navigation, and never runs on localhost or in an automated browser.',
+        fr: 'tracker.js pèse moins de 1 ko compressé, suit la navigation des applications monopages, et ne tourne jamais sur localhost ni dans un navigateur automatisé.'
+      },
+      {
+        en: 'Adding ?analytics=off to a URL stops counting that browser.',
+        fr: 'Ajouter ?analytics=off à une URL arrête de compter ce navigateur.'
+      }
+    ],
+    kind: 'app',
+    links: {
+      live: 'https://analytics.adrienlcp.workers.dev',
+      repository: 'https://github.com/AdrienLcp/analytics'
+    },
+    name: 'Analytics',
+    register: {
+      category: {
+        en: 'analytics · public dashboard',
+        fr: 'mesure d’audience · tableau de bord public'
+      },
+      entered: '2026-09-30',
+      installs: [
+        'biome-config',
+        'i18n',
+        'react',
+        'react-aria',
+        'result',
+        'safe-storage',
+        'styles',
+        'tsconfig'
+      ],
+      shortName: 'Anl.',
+      state: 'live'
+    },
+    slug: 'analytics',
+    stack: [
+      'TypeScript',
+      'Hono',
+      'Cloudflare Workers',
+      'D1',
+      'React',
+      'Vitest'
+    ],
+    summary: {
+      en: 'Hono on Cloudflare Workers, D1 and Core Web Vitals, with a public dashboard. A row holds a path, a referrer host, a country, a locale, a theme and a device class, and there is no consent banner because there is nothing to consent to.',
+      fr: 'Hono sur Cloudflare Workers, D1 et les Core Web Vitals, avec un tableau de bord public. Une ligne tient un chemin, un domaine référent, un pays, une langue, un thème et un type d’appareil, et il n’y a pas de bandeau de consentement : il n’y a rien à consentir.'
+    },
+    tagline: {
+      en: 'Cookie-free analytics that cannot tell two visitors apart.',
+      fr: 'Une mesure d’audience sans cookie, incapable de distinguer deux visiteurs.'
     }
   }
 ]

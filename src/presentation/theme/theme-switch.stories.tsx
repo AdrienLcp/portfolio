@@ -22,9 +22,9 @@ export const StampsTheChoice: Story = {
     const canvas = within(canvasElement)
     const root = document.documentElement
 
-    await userEvent.click(canvas.getByRole('radio', { name: 'Night' }))
+    await userEvent.click(canvas.getByRole('radio', { name: 'Dark' }))
     await expect(root).toHaveAttribute('data-theme', 'dark')
-    await expect(canvas.getByRole('radio', { name: 'Night' })).toBeChecked()
+    await expect(canvas.getByRole('radio', { name: 'Dark' })).toBeChecked()
 
     await userEvent.click(canvas.getByRole('radio', { name: 'Auto' }))
     await expect(root).not.toHaveAttribute('data-theme')

@@ -3,21 +3,44 @@
 
 @layer components
   .site-footer
-    align-items: center
-    border-top: var(--outline-thick) solid var(--ink)
-    display: flex
-    flex-wrap: wrap
-    gap: var(--space-m) var(--space-l)
-    padding: var(--space-l) var(--gutter) var(--space-xl)
+    .footer-sheet
+      @include layout.sheet
 
-    .token,
+      align-items: center
+      border-top: 2px solid var(--rule-strong)
+      color: var(--ink-soft)
+      display: flex
+      flex-wrap: wrap
+      font-family: var(--font-letter)
+      font-size: 0.9375rem
+      gap: var(--space-s) var(--space-l)
+      padding-block: var(--space-m) var(--space-l)
+
+    .keeper
+      color: var(--ink)
+
+    .footer-links
+      display: flex
+      flex-wrap: wrap
+      gap: var(--space-2xs) var(--space-m)
+      list-style: none
+      margin: 0
+      padding: 0
+
+      .register-link
+        align-items: center
+        color: var(--ink)
+        display: inline-flex
+        gap: 0.3em
+        min-height: 2.75rem
+
+        &[data-hovered]
+          color: var(--violet)
+
     .theme-switch
       align-self: auto
 
     .colophon
-      @include typography.caption
-
-      color: var(--ink-soft)
       flex-basis: 100%
 
     @include layout.wide

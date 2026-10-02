@@ -177,9 +177,8 @@ const lazyPageChunkPreloadsFor = (module: string): string =>
  * run, and a font preloaded there sits unused while the browser warns about it.
  */
 const PRERENDERED_ONLY_FONT_PRELOADS = [
-  'archivo-latin',
-  'literata-latin',
-  'literata-latin-italic'
+  'sofia-sans-condensed-latin',
+  'sofia-sans-latin'
 ]
   .map(
     (face) =>
