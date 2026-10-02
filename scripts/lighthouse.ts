@@ -38,7 +38,7 @@ const CATEGORIES = ['performance', 'accessibility', 'best-practices', 'seo']
 const UNINDEXED_PATHS = ['/en/cv/plain', '/fr/cv/plain']
 
 /**
- * The pre-push pass: one locale, one screen, one theme. Script weight and
+ * The quick pass: one locale, one screen, one theme. Script weight and
  * accessibility read the same in all of them; the full matrix stays in CI.
  */
 const QUICK_FLAG = '--quick'

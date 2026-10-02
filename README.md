@@ -31,10 +31,6 @@ pnpm validate    # everything CI runs, lighthouse aside
 - **Supply chain.** `minimumReleaseAge` in `pnpm-workspace.yaml` keeps pnpm from
   installing a release younger than a day: most hijacked npm versions are pulled
   within hours.
-- **Pre-commit hook.** `.githooks/pre-commit` runs `biome check --write` on the
-  staged files and stages what it repaired; `pnpm install` points
-  `core.hooksPath` at it. It runs in batches because Windows caps a command line
-  at about 8 KB, well below what `xargs` assumes.
 - **Lighthouse.** `pnpm lighthouse` audits every page on the built `dist`;
   `pnpm lighthouse /en /fr/about` audits those paths only, while iterating.
 
