@@ -65,6 +65,15 @@ const LOAD_PLATES: Record<string, () => Promise<Plates>> = {
 
 export const DRAWN_SLUGS = Object.keys(LOAD_PLATES)
 
+/**
+ * How Vite's build manifest keys each app's drawings, so the prerender can
+ * preload the chunk a page's loader is about to import.
+ */
+export const plateModuleFor = (slug: string): string | null =>
+  slug in LOAD_PLATES
+    ? `src/features/register/drawings/${slug}-drawings.tsx`
+    : null
+
 export const loadPlates = async (
   slugs: readonly string[]
 ): Promise<PlatesBySlug> =>

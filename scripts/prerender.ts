@@ -158,17 +158,22 @@ const entryScriptOf = (html: string): string => {
 }
 
 /**
- * The page's own chunk, which the router only reaches through a dynamic import
- * once the entry has run: named here, it downloads with everything else.
+ * The page's own chunk and the ones its loader imports, which the router only
+ * reaches through dynamic imports once the entry has run: named here, they
+ * download with everything else.
  */
-const lazyPageChunkPreloadsFor = (module: string): string =>
-  chunkAfterItsStaticImports({ module, seen: new Set() })
+const lazyPageChunkPreloadsFor = (modules: string[]): string => {
+  const seen = new Set<string>()
+
+  return modules
+    .flatMap((module) => chunkAfterItsStaticImports({ module, seen }))
     .map((chunk) => `/${chunk.file}`)
     .filter((href) => !alreadyRequested.has(href))
     .map(
       (href) => `\n    <link rel="modulepreload" crossorigin href="${href}">`
     )
     .join('')
+}
 
 /**
  * The faces a prerendered page paints before any script runs. Kept out of
@@ -391,7 +396,7 @@ for (const page of prerenderedPages) {
     documentFor({
       everyLanguageVersion: everyLanguageVersionOf(page),
       page,
-      preloads: lazyPageChunkPreloadsFor(page.module),
+      preloads: lazyPageChunkPreloadsFor([page.module, ...page.dataModules]),
       rendered: await renderPage(page),
       structuredData: await structuredDataFor({ origin, page }),
       styles: await templateAndPageChunkStylesFor(page.module)

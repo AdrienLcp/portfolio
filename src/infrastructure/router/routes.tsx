@@ -22,6 +22,8 @@ type LazyPage = {
    * its stylesheet.
    */
   module: string
+  /** The loader's own module, imported on demand beside the page's chunk. */
+  loaderModule: string
 }
 
 /** Keyed by path, so a path with no page fails to compile. */
@@ -31,30 +33,35 @@ const pageFor = {
       Component: (await import('@/features/about/presentation/about-page'))
         .AboutPage
     }),
+    loaderModule: 'src/features/about/infrastructure/about-loader.ts',
     module: 'src/features/about/presentation/about-page.tsx'
   },
   [localizedPaths.contact]: {
     lazy: async () => ({
       Component: (await import('@/features/contact/contact-page')).ContactPage
     }),
+    loaderModule: 'src/features/contact/contact-loader.ts',
     module: 'src/features/contact/contact-page.tsx'
   },
   [localizedPaths.cv]: {
     lazy: async () => ({
       Component: (await import('@/features/cv-pages/cv-page')).CvPage
     }),
+    loaderModule: 'src/features/cv-pages/cv-loader.ts',
     module: 'src/features/cv-pages/cv-page.tsx'
   },
   [localizedPaths.cvPlain]: {
     lazy: async () => ({
       Component: (await import('@/features/cv-pages/cv-plain-page')).CvPlainPage
     }),
+    loaderModule: 'src/features/cv-pages/cv-loader.ts',
     module: 'src/features/cv-pages/cv-plain-page.tsx'
   },
   [localizedPaths.home]: {
     lazy: async () => ({
       Component: (await import('@/features/home/home-page')).HomePage
     }),
+    loaderModule: 'src/features/home/home-loader.ts',
     module: 'src/features/home/home-page.tsx'
   },
   [localizedPaths.project]: {
@@ -62,12 +69,16 @@ const pageFor = {
       Component: (await import('@/features/project-pages/project-page'))
         .ProjectPage
     }),
+    loaderModule: 'src/features/project-pages/project-loader.ts',
     module: 'src/features/project-pages/project-page.tsx'
   }
 } satisfies Record<LocalizedPath, LazyPage>
 
 export const pageModuleFor = (path: LocalizedPath): string =>
   pageFor[path].module
+
+export const loaderModuleFor = (path: LocalizedPath): string =>
+  pageFor[path].loaderModule
 
 /**
  * A path whose first segment is no locale still runs its loader before

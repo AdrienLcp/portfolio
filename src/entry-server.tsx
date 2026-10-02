@@ -2,12 +2,13 @@ import { fetchProfile } from '@/features/profile/profile-api'
 import type { Project } from '@/features/projects/project'
 import { fetchProject } from '@/features/projects/projects-api'
 import { PROJECTS } from '@/features/projects/projects-content'
+import { DRAWN_SLUGS, plateModuleFor } from '@/features/register/plates'
 import {
   localizedPaths,
   pagePathFor,
   projectPathFor
 } from '@/infrastructure/router/navigation'
-import { pageModuleFor } from '@/infrastructure/router/routes'
+import { loaderModuleFor, pageModuleFor } from '@/infrastructure/router/routes'
 import { prerenderPath } from '@/infrastructure/router/static-router'
 import {
   IMAGE_ALTS,
@@ -26,6 +27,11 @@ export type PrerenderedPage = {
   locale: Locale
   /** How Vite's build manifest keys the chunk this page renders. */
   module: string
+  /**
+   * The modules its loader imports on demand, preloaded so the app takes over
+   * the prerendered page without another round trip.
+   */
+  dataModules: string[]
   /** What pairs a page with itself in the other language, for `hreflang`. */
   page: IndexedPage | `project:${string}`
   /** Where the document is served, from the site root: `/fr/about`. */
@@ -44,6 +50,9 @@ export { IMAGE_ALTS as imageAlts, openGraphLocaleFor }
 
 const PROJECT_PAGE_PREFIX = 'project:'
 
+const platesModulesFor = (slugs: readonly string[]): string[] =>
+  slugs.flatMap((slug) => plateModuleFor(slug) ?? [])
+
 /**
  * The plain CV is left out on purpose: it is a printable copy of the CV page,
  * marked `noindex`, and served by the SPA fallback.
@@ -51,6 +60,10 @@ const PROJECT_PAGE_PREFIX = 'project:'
 const pagesFor = (locale: Locale): PrerenderedPage[] => [
   ...INDEXED_PAGES.map(
     (page): PrerenderedPage => ({
+      dataModules: [
+        loaderModuleFor(localizedPaths[page]),
+        ...(page === 'home' ? platesModulesFor(DRAWN_SLUGS) : [])
+      ],
       locale,
       module: pageModuleFor(localizedPaths[page]),
       page,
@@ -59,6 +72,10 @@ const pagesFor = (locale: Locale): PrerenderedPage[] => [
   ),
   ...PROJECTS.map(
     ({ slug }): PrerenderedPage => ({
+      dataModules: [
+        loaderModuleFor(localizedPaths.project),
+        ...platesModulesFor([slug])
+      ],
       locale,
       module: pageModuleFor(localizedPaths.project),
       page: `${PROJECT_PAGE_PREFIX}${slug}`,
