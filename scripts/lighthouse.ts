@@ -42,11 +42,15 @@ const UNINDEXED_PATHS = ['/en/cv/plain', '/fr/cv/plain']
  * score moves. The app boots eagerly, controls live on the first paint, and the
  * simulated LCP charges every script requested before it: the real LCP is about
  * 200 ms, the mobile figure is Lantern's, not a visitor's.
+ *
+ * The script budget sits over the home page, the heaviest: its register draws
+ * every app twice, screens and mechanism, about 20 kB of SVG and their words
+ * that no other page downloads.
  */
 const BUDGETS_WITH_HEADROOM = {
   cumulativeLayoutShift: 0.01,
   largestContentfulPaintMs: { desktop: 1050, mobile: 4300 },
-  scriptTransferBytes: 225_000
+  scriptTransferBytes: 235_000
 }
 
 /**
