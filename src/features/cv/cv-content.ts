@@ -50,10 +50,6 @@ export const CV: z.input<typeof cvSchema> = {
             {
               en: 'Tested with Vitest, Playwright and Testcontainers; accessible design system in Storybook.',
               fr: 'Tests Vitest, Playwright et Testcontainers ; design system accessible dans Storybook.'
-            },
-            {
-              en: 'Regular major upgrades (React 19, Express 5, TypeScript 6, Vite 8), adopting the new APIs as they land.',
-              fr: 'Montées de version régulières (React 19, Express 5, TypeScript 6, Vite 8) en adoptant les nouvelles API.'
             }
           ],
           summary: {
@@ -75,17 +71,6 @@ export const CV: z.input<typeof cvSchema> = {
           title: {
             en: 'Music data analytics application',
             fr: 'Application d’analyse de données musicales'
-          }
-        },
-        {
-          points: [],
-          summary: {
-            en: 'Built in JavaScript on Shaka Player.',
-            fr: 'Développé en JavaScript sur Shaka Player.'
-          },
-          title: {
-            en: 'Streaming video player',
-            fr: 'Lecteur vidéo de streaming'
           }
         }
       ],
@@ -120,6 +105,15 @@ export const CV: z.input<typeof cvSchema> = {
       summary: {
         en: 'French deputies’ public votes, explained and sourced, with no server: nightly open-data ingest in GitHub Actions, ~750 prerendered pages on Cloudflare Pages.',
         fr: 'Les votes publics des députés, expliqués et sourcés, sans serveur : ingestion nocturne de l’open data en GitHub Actions, ~750 pages prérendues sur Cloudflare Pages.'
+      },
+      year: '2026'
+    },
+    {
+      link: 'https://analytics.adrienlcp.workers.dev',
+      name: 'Analytics',
+      summary: {
+        en: 'Cookie-free analytics that cannot tell two visitors apart: Hono on Cloudflare Workers, D1, Core Web Vitals, public dashboard.',
+        fr: 'Mesure d’audience sans cookie, incapable de distinguer deux visiteurs : Hono sur Cloudflare Workers, D1, Core Web Vitals, dashboard public.'
       },
       year: '2026'
     },
