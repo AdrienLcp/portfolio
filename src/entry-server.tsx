@@ -50,6 +50,9 @@ export { IMAGE_ALTS as imageAlts, openGraphLocaleFor }
 
 const PROJECT_PAGE_PREFIX = 'project:'
 
+/** A prerender reads each page once; nothing ever supersedes it. */
+const UNSUPERSEDED = new AbortController().signal
+
 const platesModulesFor = (slugs: readonly string[]): string[] =>
   slugs.flatMap((slug) => plateModuleFor(slug) ?? [])
 
@@ -100,6 +103,7 @@ const projectOf = async ({
 }): Promise<Project> => {
   const project = await fetchProject({
     locale,
+    signal: UNSUPERSEDED,
     slug: page.slice(PROJECT_PAGE_PREFIX.length)
   })
 
@@ -130,7 +134,7 @@ export const structuredDataFor = async ({
   origin: string
   page: PrerenderedPage
 }): Promise<object> => {
-  const profile = await fetchProfile(locale)
+  const profile = await fetchProfile({ locale, signal: UNSUPERSEDED })
 
   if (profile.status === 'failure') {
     throw new Error(`The profile could not be read: ${profile.error}`)

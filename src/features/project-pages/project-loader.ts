@@ -7,15 +7,17 @@ import type { Locale } from '@/presentation/i18n/locale'
 /** The entry, its drawings, and the rest of the register it is read against. */
 export const projectLoader = ({
   locale,
+  signal,
   slug
 }: {
   locale: Locale
+  signal: AbortSignal
   slug: string
 }) => ({
-  housePackages: fetchHousePackages(locale),
+  housePackages: fetchHousePackages({ locale, signal }),
   plates: loadPlates([slug]),
-  project: fetchProject({ locale, slug }),
-  projects: fetchProjects(locale)
+  project: fetchProject({ locale, signal, slug }),
+  projects: fetchProjects({ locale, signal })
 })
 
 export const useProjectData = () => useRouteData<typeof projectLoader>()

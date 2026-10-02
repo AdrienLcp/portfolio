@@ -9,10 +9,18 @@ import { PROFILE } from '@/features/profile/profile-content'
 import { type ApiError, serveContent } from '@/infrastructure/api/portfolio-api'
 import type { Locale } from '@/presentation/i18n/locale'
 
-export const fetchProfile = async (
+export const fetchProfile = async ({
+  locale,
+  signal
+}: {
   locale: Locale
-): Promise<Result<Profile, ApiError>> => {
-  const profile = await serveContent(profileSchema, PROFILE)
+  signal: AbortSignal
+}): Promise<Result<Profile, ApiError>> => {
+  const profile = await serveContent({
+    content: PROFILE,
+    schema: profileSchema,
+    signal
+  })
 
   return profile.status === 'failure'
     ? profile

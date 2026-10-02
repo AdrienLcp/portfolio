@@ -19,8 +19,14 @@ import { SiteFooter } from '@/presentation/site-footer'
 import { SiteHeader } from '@/presentation/site-header'
 
 /** What every page's frame shows, whichever page is inside it. */
-export const rootLoader = (locale: Locale) => ({
-  profile: fetchProfile(locale)
+export const rootLoader = ({
+  locale,
+  signal
+}: {
+  locale: Locale
+  signal: AbortSignal
+}) => ({
+  profile: fetchProfile({ locale, signal })
 })
 
 const isBareHandle = (handle: unknown): boolean =>

@@ -9,10 +9,18 @@ import { PROJECTS } from '@/features/projects/projects-content'
 import { type ApiError, serveContent } from '@/infrastructure/api/portfolio-api'
 import type { Locale } from '@/presentation/i18n/locale'
 
-export const fetchProjects = async (
+export const fetchProjects = async ({
+  locale,
+  signal
+}: {
   locale: Locale
-): Promise<Result<Project[], ApiError>> => {
-  const projects = await serveContent(projectsSchema, PROJECTS)
+  signal: AbortSignal
+}): Promise<Result<Project[], ApiError>> => {
+  const projects = await serveContent({
+    content: PROJECTS,
+    schema: projectsSchema,
+    signal
+  })
 
   return projects.status === 'failure'
     ? projects
@@ -23,12 +31,18 @@ export const fetchProjects = async (
 
 export const fetchProject = async ({
   locale,
+  signal,
   slug
 }: {
   locale: Locale
+  signal: AbortSignal
   slug: string
 }): Promise<Result<Project, ApiError>> => {
-  const projects = await serveContent(projectsSchema, PROJECTS)
+  const projects = await serveContent({
+    content: PROJECTS,
+    schema: projectsSchema,
+    signal
+  })
 
   if (projects.status === 'failure') {
     return projects

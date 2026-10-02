@@ -4,7 +4,10 @@ import { fetchCv } from './cv-api'
 
 describe('cv api', () => {
   it('[api] serves the CV in the requested locale', async () => {
-    const cv = await fetchCv('fr')
+    const cv = await fetchCv({
+      locale: 'fr',
+      signal: new AbortController().signal
+    })
 
     expect(cv.status === 'success' && cv.data.title).toBe(
       'Développeur full-stack'

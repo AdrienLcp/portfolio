@@ -9,10 +9,18 @@ import { ABOUT } from '@/features/about/domain/about-content'
 import { type ApiError, serveContent } from '@/infrastructure/api/portfolio-api'
 import type { Locale } from '@/presentation/i18n/locale'
 
-export const fetchAbout = async (
+export const fetchAbout = async ({
+  locale,
+  signal
+}: {
   locale: Locale
-): Promise<Result<About, ApiError>> => {
-  const about = await serveContent(aboutSchema, ABOUT)
+  signal: AbortSignal
+}): Promise<Result<About, ApiError>> => {
+  const about = await serveContent({
+    content: ABOUT,
+    schema: aboutSchema,
+    signal
+  })
 
   return about.status === 'failure'
     ? about

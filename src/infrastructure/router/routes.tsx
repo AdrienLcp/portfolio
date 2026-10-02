@@ -96,29 +96,35 @@ const localeParam = ({ locale }: Params): Locale =>
  * only the region that reads it suspends.
  */
 const loaderFor = {
-  [localizedPaths.about]: async ({ params }) =>
-    (await import('@/features/about/infrastructure/about-loader')).aboutLoader(
-      localeParam(params)
-    ),
-  [localizedPaths.contact]: async ({ params }) =>
-    (await import('@/features/contact/contact-loader')).contactLoader(
-      localeParam(params)
-    ),
-  [localizedPaths.cv]: async ({ params }) =>
-    (await import('@/features/cv-pages/cv-loader')).cvLoader(
-      localeParam(params)
-    ),
-  [localizedPaths.cvPlain]: async ({ params }) =>
-    (await import('@/features/cv-pages/cv-loader')).cvLoader(
-      localeParam(params)
-    ),
-  [localizedPaths.home]: async ({ params }) =>
-    (await import('@/features/home/home-loader')).homeLoader(
-      localeParam(params)
-    ),
-  [localizedPaths.project]: async ({ params }) =>
+  [localizedPaths.about]: async ({ params, request }) =>
+    (await import('@/features/about/infrastructure/about-loader')).aboutLoader({
+      locale: localeParam(params),
+      signal: request.signal
+    }),
+  [localizedPaths.contact]: async ({ params, request }) =>
+    (await import('@/features/contact/contact-loader')).contactLoader({
+      locale: localeParam(params),
+      signal: request.signal
+    }),
+  [localizedPaths.cv]: async ({ params, request }) =>
+    (await import('@/features/cv-pages/cv-loader')).cvLoader({
+      locale: localeParam(params),
+      signal: request.signal
+    }),
+  [localizedPaths.cvPlain]: async ({ params, request }) =>
+    (await import('@/features/cv-pages/cv-loader')).cvLoader({
+      locale: localeParam(params),
+      signal: request.signal
+    }),
+  [localizedPaths.home]: async ({ params, request }) =>
+    (await import('@/features/home/home-loader')).homeLoader({
+      locale: localeParam(params),
+      signal: request.signal
+    }),
+  [localizedPaths.project]: async ({ params, request }) =>
     (await import('@/features/project-pages/project-loader')).projectLoader({
       locale: localeParam(params),
+      signal: request.signal,
       slug: params.slug ?? ''
     })
 } satisfies Record<LocalizedPath, LoaderFunction>
@@ -147,7 +153,8 @@ export const routes: RouteObject[] = [
     ],
     ErrorBoundary: ErrorScreen,
     HydrateFallback: RouteFallback,
-    loader: ({ params }) => rootLoader(localeParam(params)),
+    loader: ({ params, request }) =>
+      rootLoader({ locale: localeParam(params), signal: request.signal }),
     shouldRevalidate: ({ currentParams, nextParams }) =>
       currentParams.locale !== nextParams.locale
   }
