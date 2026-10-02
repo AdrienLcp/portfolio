@@ -61,6 +61,7 @@
     "deps:upgrade": "corepack use pnpm@latest && pnpm -r up -L && biome migrate --write",
     "dev": "vite",
     "lighthouse": "node --import tsx scripts/lighthouse.ts",
+    "lighthouse:quick": "node --import tsx scripts/lighthouse.ts --quick",
     "lint": "biome check --write",
     "lint:ci": "biome ci",
     "preinstall": "git config core.hooksPath .githooks || true",

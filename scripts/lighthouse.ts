@@ -38,6 +38,13 @@ const CATEGORIES = ['performance', 'accessibility', 'best-practices', 'seo']
 const UNINDEXED_PATHS = ['/en/cv/plain', '/fr/cv/plain']
 
 /**
+ * The pre-push pass: one locale, one screen, one theme. Script weight and
+ * accessibility read the same in all of them; the full matrix stays in CI.
+ */
+const QUICK_FLAG = '--quick'
+const QUICK_LOCALE_PREFIX = '/en'
+
+/**
  * Headroom over what the pages measure today, so a regression shows before the
  * score moves. The app boots eagerly, controls live on the first paint, and the
  * simulated LCP charges every script requested before it: the real LCP is about
@@ -226,6 +233,9 @@ const baseUrl = process.env.LIGHTHOUSE_BASE_URL
 const local = baseUrl === undefined ? await startLocalServer() : undefined
 const origin = baseUrl ?? local?.origin ?? ''
 const failures: string[] = []
+const quick = process.argv.includes(QUICK_FLAG)
+const schemes: Scheme[] = quick ? ['light'] : ['light', 'dark']
+const formFactors: FormFactor[] = quick ? ['desktop'] : ['mobile', 'desktop']
 
 /**
  * Pages serves every branch preview (`<branch>.<project>.pages.dev`) as
@@ -238,12 +248,16 @@ const indexed = (path: string): boolean =>
   !isNoindexBranchPreview && !UNINDEXED_PATHS.includes(path)
 
 try {
-  const pathsNamedOnTheCommandLine = process.argv.slice(2)
-  const paths = [...(await pathsFrom(origin)), ...UNINDEXED_PATHS].filter(
-    (path) =>
-      pathsNamedOnTheCommandLine.length === 0 ||
-      pathsNamedOnTheCommandLine.includes(path)
-  )
+  const pathsNamedOnTheCommandLine = process.argv
+    .slice(2)
+    .filter((arg) => arg !== QUICK_FLAG)
+  const paths = [...(await pathsFrom(origin)), ...UNINDEXED_PATHS]
+    .filter(
+      (path) =>
+        pathsNamedOnTheCommandLine.length === 0 ||
+        pathsNamedOnTheCommandLine.includes(path)
+    )
+    .filter((path) => !quick || path.startsWith(QUICK_LOCALE_PREFIX))
 
   if (paths.length === 0) {
     throw new Error(
@@ -252,7 +266,7 @@ try {
   }
   await mkdir(REPORT_DIR, { recursive: true })
 
-  for (const scheme of ['light', 'dark'] satisfies Scheme[]) {
+  for (const scheme of schemes) {
     const browser = await chromium.launch({
       args: [
         `--remote-debugging-port=${PLAYWRIGHT_CHROMIUM_DEBUGGING_PORT}`,
@@ -261,7 +275,7 @@ try {
     })
 
     try {
-      for (const formFactor of ['mobile', 'desktop'] satisfies FormFactor[]) {
+      for (const formFactor of formFactors) {
         for (const path of paths) {
           const categories = !indexed(path)
             ? CATEGORIES.filter((id) => id !== 'seo')
