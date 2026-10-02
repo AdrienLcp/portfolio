@@ -34,7 +34,8 @@ jobs:
         run: pnpm validate
 
       - name: Coverage summary
-        run: node -p "'Line coverage: ' + require('./coverage/coverage-summary.json').total.lines.pct + '%'" >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          node -p "'Line coverage: ' + require('./coverage/coverage-summary.json').total.lines.pct + '%'" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Lighthouse
         run: pnpm lighthouse
