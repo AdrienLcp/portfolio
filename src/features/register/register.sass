@@ -76,7 +76,7 @@
 
     font-size: 0.875rem
     font-weight: 600
-    margin-bottom: 0.5rem
+    margin-top: 0.7rem
 
   .entry-label
     @include typography.label
@@ -85,6 +85,23 @@
 
   .installs
     margin-top: 1.35rem
+
+  .installs-all
+    @include focus.ring
+    @include typography.label
+
+    align-items: center
+    color: var(--ink)
+    display: inline-flex
+    gap: 0.3em
+    min-height: 2rem
+    text-decoration: underline
+    text-underline-offset: 0.2em
+
+    .installs-all-icon
+      height: 1.1em
+      rotate: 90deg
+      width: 1.1em
 
   .chips
     display: flex
@@ -169,6 +186,35 @@
 
     .struck tspan
       fill: currentColor
+
+  .mechanism-key
+    display: none
+
+    @include media.small-diagram
+      border-top: 1px solid var(--rule)
+      display: grid
+      gap: 0.75rem
+      margin-top: 1rem
+      padding-top: 0.85rem
+
+      dl
+        display: grid
+        gap: 0.6rem
+
+      dt
+        @include typography.label
+
+        font-size: 0.875rem
+
+      dd,
+      p
+        color: var(--ink-soft)
+        font-size: 0.9375rem
+        line-height: 1.4
+
+  @include media.small-diagram
+    .diagram text.soft
+      display: none
 
   .struck
     fill: var(--violet)

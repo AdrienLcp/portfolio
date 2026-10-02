@@ -15,3 +15,10 @@ $matrix: 1120px
 @mixin narrow-matrix
   @media (width < $matrix)
     @content
+
+/// Below it a mechanism diagram shrinks past reading size: its words move to a key.
+$readable-diagram: 600px
+
+@mixin small-diagram
+  @media (width < $readable-diagram)
+    @content

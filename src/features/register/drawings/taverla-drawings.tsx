@@ -2,6 +2,7 @@ import type React from 'react'
 import { useId } from 'react'
 
 import { useDrawingText } from './drawing-text'
+import { MechanismKey } from './mechanism-key'
 
 const QR_SIZE = 21
 const QR_CELL = 6
@@ -241,180 +242,190 @@ export const TaverlaMechanism: React.FC = () => {
   const titleId = useId()
 
   return (
-    <svg
-      aria-labelledby={titleId}
-      className='diagram'
-      role='img'
-      viewBox='0 0 560 300'
-    >
-      <title id={titleId}>{text.mechanismTitle}</title>
-      <g fill='none' stroke='currentColor' strokeWidth='1.6'>
+    <>
+      <svg
+        aria-labelledby={titleId}
+        className='diagram'
+        role='img'
+        viewBox='0 0 560 300'
+      >
+        <title id={titleId}>{text.mechanismTitle}</title>
+        <g fill='none' stroke='currentColor' strokeWidth='1.6'>
+          <rect
+            className='draw'
+            height='76'
+            pathLength={1}
+            style={{ '--d': 0 }}
+            width='148'
+            x='206'
+            y='112'
+          />
+          <rect
+            className='draw'
+            height='84'
+            pathLength={1}
+            style={{ '--d': 1 }}
+            width='140'
+            x='20'
+            y='20'
+          />
+          <path
+            className='draw'
+            d='M206 138 C 170 138, 160 90, 160 72'
+            pathLength={1}
+            strokeDasharray='1'
+            style={{ '--d': 2 }}
+          />
+          <path
+            className='draw'
+            d='M354 132 C 400 132, 410 38, 452 38'
+            pathLength={1}
+            style={{ '--d': 3 }}
+          />
+          <path
+            className='draw'
+            d='M354 144 C 410 144, 420 108, 452 108'
+            pathLength={1}
+            style={{ '--d': 4 }}
+          />
+          <path
+            className='draw'
+            d='M354 156 C 410 156, 420 178, 452 178'
+            pathLength={1}
+            style={{ '--d': 5 }}
+          />
+          <path
+            className='draw'
+            d='M354 168 C 400 168, 410 248, 452 248'
+            pathLength={1}
+            style={{ '--d': 6 }}
+          />
+          <rect
+            className='draw'
+            height='44'
+            pathLength={1}
+            rx='5'
+            style={{ '--d': 4 }}
+            width='28'
+            x='452'
+            y='18'
+          />
+          <rect
+            className='draw'
+            height='44'
+            pathLength={1}
+            rx='5'
+            style={{ '--d': 5 }}
+            width='28'
+            x='452'
+            y='88'
+          />
+          <rect
+            className='draw'
+            height='44'
+            pathLength={1}
+            rx='5'
+            style={{ '--d': 6 }}
+            width='28'
+            x='452'
+            y='158'
+          />
+          <rect
+            className='draw'
+            height='44'
+            pathLength={1}
+            rx='5'
+            style={{ '--d': 7 }}
+            width='28'
+            x='452'
+            y='228'
+          />
+        </g>
         <rect
-          className='draw'
-          height='76'
-          pathLength={1}
-          style={{ '--d': 0 }}
-          width='148'
-          x='206'
-          y='112'
-        />
-        <rect
-          className='draw'
-          height='84'
-          pathLength={1}
-          style={{ '--d': 1 }}
-          width='140'
-          x='20'
-          y='20'
-        />
-        <path
-          className='draw'
-          d='M206 138 C 170 138, 160 90, 160 72'
-          pathLength={1}
-          strokeDasharray='1'
-          style={{ '--d': 2 }}
-        />
-        <path
-          className='draw'
-          d='M354 132 C 400 132, 410 38, 452 38'
-          pathLength={1}
-          style={{ '--d': 3 }}
-        />
-        <path
-          className='draw'
-          d='M354 144 C 410 144, 420 108, 452 108'
-          pathLength={1}
-          style={{ '--d': 4 }}
-        />
-        <path
-          className='draw'
-          d='M354 156 C 410 156, 420 178, 452 178'
-          pathLength={1}
-          style={{ '--d': 5 }}
-        />
-        <path
-          className='draw'
-          d='M354 168 C 400 168, 410 248, 452 248'
-          pathLength={1}
-          style={{ '--d': 6 }}
-        />
-        <rect
-          className='draw'
+          className='fade'
+          fill='currentColor'
           height='44'
-          pathLength={1}
           rx='5'
-          style={{ '--d': 4 }}
+          style={{ '--d': 8 }}
           width='28'
           x='452'
           y='18'
         />
-        <rect
-          className='draw'
-          height='44'
-          pathLength={1}
-          rx='5'
+        <text
+          className='lbl-strong fade'
+          style={{ '--d': 1 }}
+          textAnchor='middle'
+          x='280'
+          y='146'
+        >
+          {text.server}
+        </text>
+        <text
+          className='fade soft'
+          style={{ '--d': 1 }}
+          textAnchor='middle'
+          x='280'
+          y='166'
+        >
+          {text.serverDetail}
+        </text>
+        <text
+          className='lbl-strong fade'
+          style={{ '--d': 2 }}
+          textAnchor='middle'
+          x='90'
+          y='58'
+        >
+          {text.host}
+        </text>
+        <text
+          className='fade soft'
+          style={{ '--d': 2 }}
+          textAnchor='middle'
+          x='90'
+          y='78'
+        >
+          {text.hostDetail}
+        </text>
+        <text className='fade' style={{ '--d': 8 }} x='492' y='45'>
+          {text.firstBuzz}
+        </text>
+        <text className='fade soft' style={{ '--d': 8 }} x='492' y='115'>
+          {text.secondBuzz}
+        </text>
+        <text className='fade soft' style={{ '--d': 8 }} x='492' y='185'>
+          {text.thirdBuzz}
+        </text>
+        <text className='fade soft' style={{ '--d': 8 }} x='492' y='255'>
+          —
+        </text>
+        <text
+          className='fade soft'
           style={{ '--d': 5 }}
-          width='28'
-          x='452'
-          y='88'
-        />
-        <rect
-          className='draw'
-          height='44'
-          pathLength={1}
-          rx='5'
-          style={{ '--d': 6 }}
-          width='28'
-          x='452'
-          y='158'
-        />
-        <rect
-          className='draw'
-          height='44'
-          pathLength={1}
-          rx='5'
-          style={{ '--d': 7 }}
-          width='28'
-          x='452'
-          y='228'
-        />
-      </g>
-      <rect
-        className='fade'
-        fill='currentColor'
-        height='44'
-        rx='5'
-        style={{ '--d': 8 }}
-        width='28'
-        x='452'
-        y='18'
+          textAnchor='middle'
+          x='390'
+          y='292'
+        >
+          {text.socketToPhones}
+        </text>
+        <text className='fade soft' style={{ '--d': 6 }} x='20' y='232'>
+          {text.orderLine1}
+        </text>
+        <text className='fade soft' style={{ '--d': 6 }} x='20' y='250'>
+          {text.orderLine2}
+        </text>
+        <text className='fade soft' style={{ '--d': 6 }} x='20' y='268'>
+          {text.orderLine3}
+        </text>
+      </svg>
+      <MechanismKey
+        note={[text.orderLine1, text.orderLine2, text.orderLine3].join(' ')}
+        parts={[
+          { detail: text.hostDetail, name: text.host },
+          { detail: text.serverDetail, name: text.server },
+          { detail: text.firstBuzz, name: text.socketToPhones }
+        ]}
       />
-      <text
-        className='lbl-strong fade'
-        style={{ '--d': 1 }}
-        textAnchor='middle'
-        x='280'
-        y='146'
-      >
-        {text.server}
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 1 }}
-        textAnchor='middle'
-        x='280'
-        y='166'
-      >
-        {text.serverDetail}
-      </text>
-      <text
-        className='lbl-strong fade'
-        style={{ '--d': 2 }}
-        textAnchor='middle'
-        x='90'
-        y='58'
-      >
-        {text.host}
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 2 }}
-        textAnchor='middle'
-        x='90'
-        y='78'
-      >
-        {text.hostDetail}
-      </text>
-      <text className='fade' style={{ '--d': 8 }} x='492' y='45'>
-        {text.firstBuzz}
-      </text>
-      <text className='fade soft' style={{ '--d': 8 }} x='492' y='115'>
-        {text.secondBuzz}
-      </text>
-      <text className='fade soft' style={{ '--d': 8 }} x='492' y='185'>
-        {text.thirdBuzz}
-      </text>
-      <text className='fade soft' style={{ '--d': 8 }} x='492' y='255'>
-        —
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 5 }}
-        textAnchor='middle'
-        x='390'
-        y='292'
-      >
-        {text.socketToPhones}
-      </text>
-      <text className='fade soft' style={{ '--d': 6 }} x='20' y='232'>
-        {text.orderLine1}
-      </text>
-      <text className='fade soft' style={{ '--d': 6 }} x='20' y='250'>
-        {text.orderLine2}
-      </text>
-      <text className='fade soft' style={{ '--d': 6 }} x='20' y='268'>
-        {text.orderLine3}
-      </text>
-    </svg>
+    </>
   )
 }

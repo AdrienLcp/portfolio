@@ -2,6 +2,7 @@ import type React from 'react'
 import { useId } from 'react'
 
 import { useDrawingText } from './drawing-text'
+import { MechanismKey } from './mechanism-key'
 
 /** `counted` is the one ballot the deputy figure points at: it is drawn on top, in violet. */
 type Ballot = 'for' | 'against' | 'absent' | 'counted'
@@ -317,197 +318,215 @@ export const OnRecordMechanism: React.FC = () => {
   const titleId = useId()
 
   return (
-    <svg
-      aria-labelledby={titleId}
-      className='diagram'
-      role='img'
-      viewBox='0 0 560 300'
-    >
-      <title id={titleId}>{text.mechanismTitle}</title>
-      <g fill='none' stroke='currentColor' strokeWidth='1.6'>
-        <rect
-          className='draw'
-          height='76'
-          pathLength={1}
+    <>
+      <svg
+        aria-labelledby={titleId}
+        className='diagram'
+        role='img'
+        viewBox='0 0 560 300'
+      >
+        <title id={titleId}>{text.mechanismTitle}</title>
+        <g fill='none' stroke='currentColor' strokeWidth='1.6'>
+          <rect
+            className='draw'
+            height='76'
+            pathLength={1}
+            style={{ '--d': 0 }}
+            width='140'
+            x='16'
+            y='112'
+          />
+          <path
+            className='draw'
+            d='M156 150 H 210'
+            pathLength={1}
+            style={{ '--d': 1 }}
+          />
+          <rect
+            className='draw'
+            height='76'
+            pathLength={1}
+            style={{ '--d': 1 }}
+            width='140'
+            x='210'
+            y='112'
+          />
+          <path
+            className='draw'
+            d='M350 132 C 382 132, 378 56, 404 56'
+            pathLength={1}
+            style={{ '--d': 2 }}
+          />
+          <rect
+            className='draw'
+            height='64'
+            pathLength={1}
+            style={{ '--d': 3 }}
+            width='140'
+            x='404'
+            y='24'
+          />
+          <path
+            className='draw'
+            d='M474 88 V 120'
+            pathLength={1}
+            style={{ '--d': 4 }}
+          />
+          <rect
+            className='draw'
+            height='64'
+            pathLength={1}
+            style={{ '--d': 4 }}
+            width='140'
+            x='404'
+            y='120'
+          />
+          <path
+            className='draw'
+            d='M350 168 C 382 168, 378 252, 404 252'
+            pathLength={1}
+            strokeDasharray='4 5'
+            style={{ '--d': 3 }}
+          />
+          <rect
+            className='draw'
+            height='56'
+            pathLength={1}
+            strokeDasharray='4 4'
+            style={{ '--d': 5 }}
+            width='140'
+            x='404'
+            y='224'
+          />
+        </g>
+        <text
+          className='lbl-strong fade'
           style={{ '--d': 0 }}
-          width='140'
-          x='16'
-          y='112'
-        />
-        <path
-          className='draw'
-          d='M156 150 H 210'
-          pathLength={1}
+          textAnchor='middle'
+          x='86'
+          y='146'
+        >
+          {text.nightly}
+        </text>
+        <text
+          className='fade soft'
+          style={{ '--d': 0 }}
+          textAnchor='middle'
+          x='86'
+          y='166'
+        >
+          GitHub Actions
+        </text>
+        <text
+          className='lbl-strong fade'
           style={{ '--d': 1 }}
-        />
-        <rect
-          className='draw'
-          height='76'
-          pathLength={1}
+          textAnchor='middle'
+          x='280'
+          y='146'
+        >
+          {text.openData}
+        </text>
+        <text
+          className='fade soft'
           style={{ '--d': 1 }}
-          width='140'
-          x='210'
-          y='112'
-        />
-        <path
-          className='draw'
-          d='M350 132 C 382 132, 378 56, 404 56'
-          pathLength={1}
+          textAnchor='middle'
+          x='280'
+          y='166'
+        >
+          {text.anythingChanged}
+        </text>
+        <text
+          className='fade soft'
           style={{ '--d': 2 }}
-        />
-        <rect
-          className='draw'
-          height='64'
-          pathLength={1}
+          textAnchor='end'
+          x='398'
+          y='40'
+        >
+          {text.newVote}
+        </text>
+        <text
+          className='lbl-strong fade'
           style={{ '--d': 3 }}
-          width='140'
-          x='404'
-          y='24'
-        />
-        <path
-          className='draw'
-          d='M474 88 V 120'
-          pathLength={1}
-          style={{ '--d': 4 }}
-        />
-        <rect
-          className='draw'
-          height='64'
-          pathLength={1}
-          style={{ '--d': 4 }}
-          width='140'
-          x='404'
-          y='120'
-        />
-        <path
-          className='draw'
-          d='M350 168 C 382 168, 378 252, 404 252'
-          pathLength={1}
-          strokeDasharray='4 5'
+          textAnchor='middle'
+          x='474'
+          y='52'
+        >
+          {text.rebuild}
+        </text>
+        <text
+          className='fade soft'
           style={{ '--d': 3 }}
-        />
-        <rect
-          className='draw'
-          height='56'
-          pathLength={1}
-          strokeDasharray='4 4'
+          textAnchor='middle'
+          x='474'
+          y='72'
+        >
+          {text.onlyWhatChanged}
+        </text>
+        <text
+          className='lbl-strong fade'
+          style={{ '--d': 4 }}
+          textAnchor='middle'
+          x='474'
+          y='148'
+        >
+          {text.deploy}
+        </text>
+        <text
+          className='fade soft'
+          style={{ '--d': 4 }}
+          textAnchor='middle'
+          x='474'
+          y='168'
+        >
+          Cloudflare Pages
+        </text>
+        <text className='fade soft' style={{ '--d': 3 }} x='356' y='216'>
+          {text.noNewVote}
+        </text>
+        <text
+          className='lbl-strong fade'
           style={{ '--d': 5 }}
-          width='140'
-          x='404'
-          y='224'
-        />
-      </g>
-      <text
-        className='lbl-strong fade'
-        style={{ '--d': 0 }}
-        textAnchor='middle'
-        x='86'
-        y='146'
-      >
-        {text.nightly}
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 0 }}
-        textAnchor='middle'
-        x='86'
-        y='166'
-      >
-        GitHub Actions
-      </text>
-      <text
-        className='lbl-strong fade'
-        style={{ '--d': 1 }}
-        textAnchor='middle'
-        x='280'
-        y='146'
-      >
-        {text.openData}
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 1 }}
-        textAnchor='middle'
-        x='280'
-        y='166'
-      >
-        {text.anythingChanged}
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 2 }}
-        textAnchor='end'
-        x='398'
-        y='40'
-      >
-        {text.newVote}
-      </text>
-      <text
-        className='lbl-strong fade'
-        style={{ '--d': 3 }}
-        textAnchor='middle'
-        x='474'
-        y='52'
-      >
-        {text.rebuild}
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 3 }}
-        textAnchor='middle'
-        x='474'
-        y='72'
-      >
-        {text.onlyWhatChanged}
-      </text>
-      <text
-        className='lbl-strong fade'
-        style={{ '--d': 4 }}
-        textAnchor='middle'
-        x='474'
-        y='148'
-      >
-        {text.deploy}
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 4 }}
-        textAnchor='middle'
-        x='474'
-        y='168'
-      >
-        Cloudflare Pages
-      </text>
-      <text className='fade soft' style={{ '--d': 3 }} x='356' y='216'>
-        {text.noNewVote}
-      </text>
-      <text
-        className='lbl-strong fade'
-        style={{ '--d': 5 }}
-        textAnchor='middle'
-        x='474'
-        y='248'
-      >
-        {text.quietNight}
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 5 }}
-        textAnchor='middle'
-        x='474'
-        y='268'
-      >
-        {text.nothingDeployed}
-      </text>
-      <text className='fade soft' style={{ '--d': 6 }} x='16' y='232'>
-        {text.budgetLine1}
-      </text>
-      <text className='fade soft' style={{ '--d': 6 }} x='16' y='250'>
-        {text.budgetLine2}
-      </text>
-      <text className='fade soft' style={{ '--d': 6 }} x='16' y='268'>
-        {text.budgetLine3}
-      </text>
-    </svg>
+          textAnchor='middle'
+          x='474'
+          y='248'
+        >
+          {text.quietNight}
+        </text>
+        <text
+          className='fade soft'
+          style={{ '--d': 5 }}
+          textAnchor='middle'
+          x='474'
+          y='268'
+        >
+          {text.nothingDeployed}
+        </text>
+        <text className='fade soft' style={{ '--d': 6 }} x='16' y='232'>
+          {text.budgetLine1}
+        </text>
+        <text className='fade soft' style={{ '--d': 6 }} x='16' y='250'>
+          {text.budgetLine2}
+        </text>
+        <text className='fade soft' style={{ '--d': 6 }} x='16' y='268'>
+          {text.budgetLine3}
+        </text>
+      </svg>
+      <MechanismKey
+        note={[text.budgetLine1, text.budgetLine2, text.budgetLine3].join(' ')}
+        parts={[
+          { detail: 'GitHub Actions', name: text.nightly },
+          { detail: text.anythingChanged, name: text.openData },
+          {
+            detail: `${text.newVote} · ${text.onlyWhatChanged}`,
+            name: text.rebuild
+          },
+          { detail: 'Cloudflare Pages', name: text.deploy },
+          {
+            detail: `${text.noNewVote} · ${text.nothingDeployed}`,
+            name: text.quietNight
+          }
+        ]}
+      />
+    </>
   )
 }

@@ -11,6 +11,7 @@ import {
   appsReference,
   packageReference
 } from '@/features/register/cross-reference'
+import { PACKAGE_LEDGER_ID } from '@/features/register/package-ledger'
 import type { Plates } from '@/features/register/plates'
 import { ReleaseStamp } from '@/features/register/release-stamp'
 import { useDrawnWhenSeen } from '@/features/register/use-drawn-when-seen'
@@ -31,25 +32,39 @@ type InstallsProps = {
   litPackage: HousePackageName | null
 }
 
+/** A row that installs every house package says so once, pointing at the ledger. */
+const InstallsAll: React.FC = () => {
+  const { translate } = useI18n()
+
+  return (
+    <p className='installs'>
+      <span className='entry-label'>{translate('home.entry.installs')}</span>{' '}
+      <a className='installs-all' href={`#${PACKAGE_LEDGER_ID}`}>
+        {translate('home.entry.installsAll', {
+          total: String(HOUSE_PACKAGE_NAMES.length)
+        })}
+        <Icon className='installs-all-icon' name='forward' />
+      </a>
+    </p>
+  )
+}
+
 const InstallsLine: React.FC<{ installs: readonly HousePackageName[] }> = ({
   installs
 }) => {
   const { translate } = useI18n()
-  const total = HOUSE_PACKAGE_NAMES.length
   const missing = HOUSE_PACKAGE_NAMES.filter((name) => !installs.includes(name))
   const [onlyMissing] = missing
 
   const count =
-    missing.length === 0
-      ? translate('home.entry.installsAll', { total: String(total) })
-      : missing.length === 1 && onlyMissing !== undefined
-        ? translate('home.entry.installsAllBut', {
-            count: String(installs.length),
-            missing: onlyMissing
-          })
-        : translate('home.entry.installsSome', {
-            count: String(installs.length)
-          })
+    missing.length === 1 && onlyMissing !== undefined
+      ? translate('home.entry.installsAllBut', {
+          count: String(installs.length),
+          missing: onlyMissing
+        })
+      : translate('home.entry.installsSome', {
+          count: String(installs.length)
+        })
 
   return (
     <p className='entry-label'>
@@ -58,25 +73,31 @@ const InstallsLine: React.FC<{ installs: readonly HousePackageName[] }> = ({
   )
 }
 
-/** Each chip leads down to its package's row, and lights it on the way. */
-export const Installs: React.FC<InstallsProps> = ({ installs, litPackage }) => (
-  <div className='installs'>
-    <InstallsLine installs={installs} />
-    <ul className='chips'>
-      {installs.map((name) => (
-        <li key={name}>
-          <a
-            {...packageReference(name)}
-            className={name === litPackage ? 'chip lit' : 'chip'}
-            href={`#package-${name}`}
-          >
-            {name}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
-)
+/**
+ * A row that differs from the rest lists its packages: each chip leads down to
+ * its package's row, and lights it on the way.
+ */
+export const Installs: React.FC<InstallsProps> = ({ installs, litPackage }) =>
+  installs.length === HOUSE_PACKAGE_NAMES.length ? (
+    <InstallsAll />
+  ) : (
+    <div className='installs'>
+      <InstallsLine installs={installs} />
+      <ul className='chips'>
+        {installs.map((name) => (
+          <li key={name}>
+            <a
+              {...packageReference(name)}
+              className={name === litPackage ? 'chip lit' : 'chip'}
+              href={`#package-${name}`}
+            >
+              {name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 
 type ReportsLineProps = {
   label: string
@@ -160,12 +181,12 @@ export const AppEntry: React.FC<AppEntryProps> = ({
           label={translate('home.entry.entered')}
         />
         <div className='entry-text'>
-          <p className='entry-kind'>
-            {translate('home.register.app')} · {register.category}
-          </p>
           <h2 className='entry-name' id={titleId}>
             {project.name}
           </h2>
+          <p className='entry-kind'>
+            {translate('home.register.app')} · {register.category}
+          </p>
           <p className='entry-tagline'>{project.tagline}</p>
           <p className='entry-summary'>{project.summary}</p>
           <Installs installs={register.installs} litPackage={litPackage} />

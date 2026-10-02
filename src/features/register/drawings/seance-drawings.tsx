@@ -2,6 +2,7 @@ import type React from 'react'
 import { useId } from 'react'
 
 import { useDrawingText } from './drawing-text'
+import { MechanismKey } from './mechanism-key'
 
 /** Hand-drawn Séance screen: a phone showing one movement plate, offline and saved on the device. */
 export const SeanceDrawing: React.FC = () => {
@@ -158,181 +159,193 @@ export const SeanceMechanism: React.FC = () => {
   const titleId = useId()
 
   return (
-    <svg
-      aria-labelledby={titleId}
-      className='diagram'
-      role='img'
-      viewBox='0 0 560 300'
-    >
-      <title id={titleId}>{text.mechanismTitle}</title>
-      <g fill='none' stroke='currentColor' strokeWidth='1.6'>
-        <rect
-          className='draw'
-          height='268'
-          pathLength={1}
-          rx='18'
-          style={{ '--d': 0 }}
-          width='360'
-          x='16'
-          y='16'
-        />
-        <rect
-          className='draw'
-          height='64'
-          pathLength={1}
+    <>
+      <svg
+        aria-labelledby={titleId}
+        className='diagram'
+        role='img'
+        viewBox='0 0 560 300'
+      >
+        <title id={titleId}>{text.mechanismTitle}</title>
+        <g fill='none' stroke='currentColor' strokeWidth='1.6'>
+          <rect
+            className='draw'
+            height='268'
+            pathLength={1}
+            rx='18'
+            style={{ '--d': 0 }}
+            width='360'
+            x='16'
+            y='16'
+          />
+          <rect
+            className='draw'
+            height='64'
+            pathLength={1}
+            style={{ '--d': 1 }}
+            width='136'
+            x='44'
+            y='52'
+          />
+          <rect
+            className='draw'
+            height='64'
+            pathLength={1}
+            style={{ '--d': 2 }}
+            width='136'
+            x='212'
+            y='52'
+          />
+          <rect
+            className='draw'
+            height='64'
+            pathLength={1}
+            style={{ '--d': 3 }}
+            width='136'
+            x='128'
+            y='176'
+          />
+          <path
+            className='draw'
+            d='M180 84 H 212'
+            pathLength={1}
+            style={{ '--d': 2 }}
+          />
+          <path
+            className='draw'
+            d='M280 116 L 230 176'
+            pathLength={1}
+            style={{ '--d': 3 }}
+          />
+          <path
+            className='draw'
+            d='M112 116 L 162 176'
+            pathLength={1}
+            style={{ '--d': 3 }}
+          />
+          <path
+            className='draw'
+            d='M376 150 H 420'
+            pathLength={1}
+            style={{ '--d': 4 }}
+          />
+          <path
+            className='draw'
+            d='M448 150 H 480'
+            pathLength={1}
+            strokeDasharray='4 5'
+            style={{ '--d': 5 }}
+          />
+          <path
+            className='draw'
+            d='M426 140 l 16 20 M 442 140 l -16 20'
+            pathLength={1}
+            strokeWidth='2.4'
+            style={{ '--d': 6 }}
+          />
+          <rect
+            className='draw'
+            height='56'
+            pathLength={1}
+            strokeDasharray='4 4'
+            style={{ '--d': 5 }}
+            width='72'
+            x='480'
+            y='122'
+          />
+          <path
+            className='draw'
+            d='M264 208 C 330 208, 360 250, 420 262'
+            pathLength={1}
+            style={{ '--d': 6 }}
+          />
+        </g>
+        <text className='lbl-strong fade' style={{ '--d': 0 }} x='36' y='40'>
+          {text.device}
+        </text>
+        <text
+          className='lbl-strong fade'
           style={{ '--d': 1 }}
-          width='136'
-          x='44'
-          y='52'
-        />
-        <rect
-          className='draw'
-          height='64'
-          pathLength={1}
+          textAnchor='middle'
+          x='112'
+          y='82'
+        >
+          {text.appShell}
+        </text>
+        <text
+          className='fade soft'
+          style={{ '--d': 1 }}
+          textAnchor='middle'
+          x='112'
+          y='100'
+        >
+          {text.precached}
+        </text>
+        <text
+          className='lbl-strong fade'
           style={{ '--d': 2 }}
-          width='136'
-          x='212'
-          y='52'
-        />
-        <rect
-          className='draw'
-          height='64'
-          pathLength={1}
-          style={{ '--d': 3 }}
-          width='136'
-          x='128'
-          y='176'
-        />
-        <path
-          className='draw'
-          d='M180 84 H 212'
-          pathLength={1}
+          textAnchor='middle'
+          x='280'
+          y='82'
+        >
+          {text.serviceWorker}
+        </text>
+        <text
+          className='fade soft'
           style={{ '--d': 2 }}
-        />
-        <path
-          className='draw'
-          d='M280 116 L 230 176'
-          pathLength={1}
+          textAnchor='middle'
+          x='280'
+          y='100'
+        >
+          {text.workerDetail}
+        </text>
+        <text
+          className='lbl-strong fade'
           style={{ '--d': 3 }}
-        />
-        <path
-          className='draw'
-          d='M112 116 L 162 176'
-          pathLength={1}
+          textAnchor='middle'
+          x='196'
+          y='206'
+        >
+          IndexedDB
+        </text>
+        <text
+          className='fade soft'
           style={{ '--d': 3 }}
-        />
-        <path
-          className='draw'
-          d='M376 150 H 420'
-          pathLength={1}
-          style={{ '--d': 4 }}
-        />
-        <path
-          className='draw'
-          d='M448 150 H 480'
-          pathLength={1}
-          strokeDasharray='4 5'
-          style={{ '--d': 5 }}
-        />
-        <path
-          className='draw'
-          d='M426 140 l 16 20 M 442 140 l -16 20'
-          pathLength={1}
-          strokeWidth='2.4'
+          textAnchor='middle'
+          x='196'
+          y='224'
+        >
+          {text.everyNumber}
+        </text>
+        <text
+          className='fade'
           style={{ '--d': 6 }}
-        />
-        <rect
-          className='draw'
-          height='56'
-          pathLength={1}
-          strokeDasharray='4 4'
-          style={{ '--d': 5 }}
-          width='72'
-          x='480'
-          y='122'
-        />
-        <path
-          className='draw'
-          d='M264 208 C 330 208, 360 250, 420 262'
-          pathLength={1}
-          style={{ '--d': 6 }}
-        />
-      </g>
-      <text className='lbl-strong fade' style={{ '--d': 0 }} x='36' y='40'>
-        {text.device}
-      </text>
-      <text
-        className='lbl-strong fade'
-        style={{ '--d': 1 }}
-        textAnchor='middle'
-        x='112'
-        y='82'
-      >
-        {text.appShell}
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 1 }}
-        textAnchor='middle'
-        x='112'
-        y='100'
-      >
-        {text.precached}
-      </text>
-      <text
-        className='lbl-strong fade'
-        style={{ '--d': 2 }}
-        textAnchor='middle'
-        x='280'
-        y='82'
-      >
-        {text.serviceWorker}
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 2 }}
-        textAnchor='middle'
-        x='280'
-        y='100'
-      >
-        {text.workerDetail}
-      </text>
-      <text
-        className='lbl-strong fade'
-        style={{ '--d': 3 }}
-        textAnchor='middle'
-        x='196'
-        y='206'
-      >
-        IndexedDB
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 3 }}
-        textAnchor='middle'
-        x='196'
-        y='224'
-      >
-        {text.everyNumber}
-      </text>
-      <text
-        className='fade'
-        style={{ '--d': 6 }}
-        textAnchor='middle'
-        x='516'
-        y='155'
-      >
-        {text.noServer}
-      </text>
-      <text className='fade soft' style={{ '--d': 6 }} x='428' y='192'>
-        {text.networkCut}
-      </text>
-      <text className='fade' style={{ '--d': 7 }} x='428' y='266'>
-        {text.backup}
-      </text>
-      <text className='fade soft' style={{ '--d': 7 }} x='428' y='284'>
-        {text.onlyWayOut}
-      </text>
-    </svg>
+          textAnchor='middle'
+          x='516'
+          y='155'
+        >
+          {text.noServer}
+        </text>
+        <text className='fade soft' style={{ '--d': 6 }} x='428' y='192'>
+          {text.networkCut}
+        </text>
+        <text className='fade' style={{ '--d': 7 }} x='428' y='266'>
+          {text.backup}
+        </text>
+        <text className='fade soft' style={{ '--d': 7 }} x='428' y='284'>
+          {text.onlyWayOut}
+        </text>
+      </svg>
+      <MechanismKey
+        parts={[
+          { name: text.device },
+          { detail: text.precached, name: text.appShell },
+          { detail: text.workerDetail, name: text.serviceWorker },
+          { detail: text.everyNumber, name: 'IndexedDB' },
+          { detail: text.networkCut, name: text.noServer },
+          { detail: text.onlyWayOut, name: text.backup }
+        ]}
+      />
+    </>
   )
 }

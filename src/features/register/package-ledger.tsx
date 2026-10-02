@@ -121,6 +121,9 @@ type PackageLedgerProps = {
   repository: string | null
 }
 
+/** The ledger's anchor, for the rows that install every package. */
+export const PACKAGE_LEDGER_ID = 'packages'
+
 /** The packages every app installs, one row each, with who uses which. */
 export const PackageLedger: React.FC<PackageLedgerProps> = ({
   columns,
@@ -133,7 +136,11 @@ export const PackageLedger: React.FC<PackageLedgerProps> = ({
   const [first] = housePackages
 
   return (
-    <li className='package-block' style={{ '--app-columns': columns.length }}>
+    <li
+      className='package-block'
+      id={PACKAGE_LEDGER_ID}
+      style={{ '--app-columns': columns.length }}
+    >
       <div className='package-cap'>
         <span>
           {first !== undefined && `${first.released} · `}

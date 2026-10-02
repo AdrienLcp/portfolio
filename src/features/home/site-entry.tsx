@@ -64,10 +64,10 @@ export const SiteEntry: React.FC<SiteEntryProps> = ({
       <article aria-labelledby={titleId} className='app-entry'>
         <EnteredDate date={SITE_OPENED} label={translate('home.site.opened')} />
         <div className='entry-text'>
-          <p className='entry-kind'>{translate('home.site.category')}</p>
           <h2 className='entry-name' id={titleId}>
             {translate('home.site.name')}
           </h2>
+          <p className='entry-kind'>{translate('home.site.category')}</p>
           <p className='entry-summary'>{translate('home.site.summary')}</p>
           <Installs installs={SITE_INSTALLS} litPackage={litPackage} />
           {countedBy !== null && (

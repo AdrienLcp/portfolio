@@ -2,6 +2,7 @@ import type React from 'react'
 import { useId } from 'react'
 
 import { useDrawingText } from './drawing-text'
+import { MechanismKey } from './mechanism-key'
 
 const BAR_BASELINE = 168
 const BAR_LEFT = 38
@@ -246,222 +247,249 @@ export const AnalyticsMechanism: React.FC = () => {
   const titleId = useId()
 
   return (
-    <svg
-      aria-labelledby={titleId}
-      className='diagram'
-      role='img'
-      viewBox='0 0 560 300'
-    >
-      <title id={titleId}>{text.mechanismTitle}</title>
-      <g fill='none' stroke='currentColor' strokeWidth='1.6'>
-        <rect
-          className='draw'
-          height='48'
-          pathLength={1}
+    <>
+      <svg
+        aria-labelledby={titleId}
+        className='diagram'
+        role='img'
+        viewBox='0 0 560 300'
+      >
+        <title id={titleId}>{text.mechanismTitle}</title>
+        <g fill='none' stroke='currentColor' strokeWidth='1.6'>
+          <rect
+            className='draw'
+            height='48'
+            pathLength={1}
+            style={{ '--d': 0 }}
+            width='124'
+            x='16'
+            y='20'
+          />
+          <rect
+            className='draw'
+            height='48'
+            pathLength={1}
+            style={{ '--d': 1 }}
+            width='124'
+            x='16'
+            y='126'
+          />
+          <rect
+            className='draw'
+            height='48'
+            pathLength={1}
+            style={{ '--d': 2 }}
+            width='124'
+            x='16'
+            y='232'
+          />
+          <path
+            className='draw'
+            d='M140 44 C 176 44, 168 130, 196 130'
+            pathLength={1}
+            style={{ '--d': 2 }}
+          />
+          <path
+            className='draw'
+            d='M140 150 H 196'
+            pathLength={1}
+            style={{ '--d': 3 }}
+          />
+          <path
+            className='draw'
+            d='M140 256 C 176 256, 168 170, 196 170'
+            pathLength={1}
+            style={{ '--d': 4 }}
+          />
+          <rect
+            className='draw'
+            height='80'
+            pathLength={1}
+            style={{ '--d': 3 }}
+            width='136'
+            x='196'
+            y='110'
+          />
+          <path
+            className='draw'
+            d='M332 140 C 356 140, 356 92, 380 92'
+            pathLength={1}
+            style={{ '--d': 5 }}
+          />
+          <rect
+            className='draw'
+            height='150'
+            pathLength={1}
+            style={{ '--d': 5 }}
+            width='164'
+            x='380'
+            y='16'
+          />
+          <path
+            className='draw'
+            d='M380 150 C 352 150, 360 258, 332 258'
+            pathLength={1}
+            style={{ '--d': 6 }}
+          />
+          <rect
+            className='draw'
+            height='48'
+            pathLength={1}
+            style={{ '--d': 6 }}
+            width='136'
+            x='196'
+            y='234'
+          />
+        </g>
+        <g opacity='0.4' stroke='currentColor'>
+          <path d='M392 62.5 H 532 M392 80.5 H 532 M392 98.5 H 532 M392 116.5 H 532 M392 134.5 H 532' />
+        </g>
+        <text
+          className='lbl-strong fade'
           style={{ '--d': 0 }}
-          width='124'
-          x='16'
-          y='20'
-        />
-        <rect
-          className='draw'
-          height='48'
-          pathLength={1}
+          textAnchor='middle'
+          x='78'
+          y='42'
+        >
+          {text.thisSite}
+        </text>
+        <text
+          className='fade soft'
+          style={{ '--d': 0 }}
+          textAnchor='middle'
+          x='78'
+          y='60'
+        >
+          tracker.js
+        </text>
+        <text
+          className='lbl-strong fade'
           style={{ '--d': 1 }}
-          width='124'
-          x='16'
-          y='126'
-        />
-        <rect
-          className='draw'
-          height='48'
-          pathLength={1}
+          textAnchor='middle'
+          x='78'
+          y='148'
+        >
+          Taverla
+        </text>
+        <text
+          className='fade soft'
+          style={{ '--d': 1 }}
+          textAnchor='middle'
+          x='78'
+          y='166'
+        >
+          tracker.js
+        </text>
+        <text
+          className='lbl-strong fade'
           style={{ '--d': 2 }}
-          width='124'
-          x='16'
-          y='232'
-        />
-        <path
-          className='draw'
-          d='M140 44 C 176 44, 168 130, 196 130'
-          pathLength={1}
+          textAnchor='middle'
+          x='78'
+          y='254'
+        >
+          on-record
+        </text>
+        <text
+          className='fade soft'
           style={{ '--d': 2 }}
-        />
-        <path
-          className='draw'
-          d='M140 150 H 196'
-          pathLength={1}
+          textAnchor='middle'
+          x='78'
+          y='272'
+        >
+          tracker.js
+        </text>
+        <text
+          className='lbl-strong fade'
           style={{ '--d': 3 }}
-        />
-        <path
-          className='draw'
-          d='M140 256 C 176 256, 168 170, 196 170'
-          pathLength={1}
-          style={{ '--d': 4 }}
-        />
-        <rect
-          className='draw'
-          height='80'
-          pathLength={1}
+          textAnchor='middle'
+          x='264'
+          y='146'
+        >
+          {text.oneWorker}
+        </text>
+        <text
+          className='fade soft'
           style={{ '--d': 3 }}
-          width='136'
-          x='196'
-          y='110'
-        />
-        <path
-          className='draw'
-          d='M332 140 C 356 140, 356 92, 380 92'
-          pathLength={1}
-          style={{ '--d': 5 }}
-        />
-        <rect
-          className='draw'
-          height='150'
-          pathLength={1}
-          style={{ '--d': 5 }}
-          width='164'
-          x='380'
-          y='16'
-        />
-        <path
-          className='draw'
-          d='M380 150 C 352 150, 360 258, 332 258'
-          pathLength={1}
+          textAnchor='middle'
+          x='264'
+          y='166'
+        >
+          Hono · Cloudflare
+        </text>
+        <text className='lbl-strong fade' style={{ '--d': 5 }} x='392' y='40'>
+          {text.oneRow}
+        </text>
+        <text className='fade' style={{ '--d': 5 }} x='392' y='58'>
+          {text.pathField}
+        </text>
+        <text className='fade' style={{ '--d': 5 }} x='392' y='76'>
+          {text.referrerField}
+        </text>
+        <text className='fade' style={{ '--d': 5 }} x='392' y='94'>
+          {text.countryField}
+        </text>
+        <text className='fade' style={{ '--d': 5 }} x='392' y='112'>
+          {text.localeField}
+        </text>
+        <text className='fade' style={{ '--d': 5 }} x='392' y='130'>
+          {text.themeField}
+        </text>
+        <text className='fade' style={{ '--d': 5 }} x='392' y='148'>
+          {text.deviceField}
+        </text>
+        <text
+          className='lbl-strong fade'
           style={{ '--d': 6 }}
-        />
-        <rect
-          className='draw'
-          height='48'
-          pathLength={1}
+          textAnchor='middle'
+          x='264'
+          y='256'
+        >
+          {text.dashboard}
+        </text>
+        <text
+          className='fade soft'
           style={{ '--d': 6 }}
-          width='136'
-          x='196'
-          y='234'
-        />
-      </g>
-      <g opacity='0.4' stroke='currentColor'>
-        <path d='M392 62.5 H 532 M392 80.5 H 532 M392 98.5 H 532 M392 116.5 H 532 M392 134.5 H 532' />
-      </g>
-      <text
-        className='lbl-strong fade'
-        style={{ '--d': 0 }}
-        textAnchor='middle'
-        x='78'
-        y='42'
-      >
-        {text.thisSite}
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 0 }}
-        textAnchor='middle'
-        x='78'
-        y='60'
-      >
-        tracker.js
-      </text>
-      <text
-        className='lbl-strong fade'
-        style={{ '--d': 1 }}
-        textAnchor='middle'
-        x='78'
-        y='148'
-      >
-        Taverla
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 1 }}
-        textAnchor='middle'
-        x='78'
-        y='166'
-      >
-        tracker.js
-      </text>
-      <text
-        className='lbl-strong fade'
-        style={{ '--d': 2 }}
-        textAnchor='middle'
-        x='78'
-        y='254'
-      >
-        on-record
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 2 }}
-        textAnchor='middle'
-        x='78'
-        y='272'
-      >
-        tracker.js
-      </text>
-      <text
-        className='lbl-strong fade'
-        style={{ '--d': 3 }}
-        textAnchor='middle'
-        x='264'
-        y='146'
-      >
-        {text.oneWorker}
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 3 }}
-        textAnchor='middle'
-        x='264'
-        y='166'
-      >
-        Hono · Cloudflare
-      </text>
-      <text className='lbl-strong fade' style={{ '--d': 5 }} x='392' y='40'>
-        {text.oneRow}
-      </text>
-      <text className='fade' style={{ '--d': 5 }} x='392' y='58'>
-        {text.pathField}
-      </text>
-      <text className='fade' style={{ '--d': 5 }} x='392' y='76'>
-        {text.referrerField}
-      </text>
-      <text className='fade' style={{ '--d': 5 }} x='392' y='94'>
-        {text.countryField}
-      </text>
-      <text className='fade' style={{ '--d': 5 }} x='392' y='112'>
-        {text.localeField}
-      </text>
-      <text className='fade' style={{ '--d': 5 }} x='392' y='130'>
-        {text.themeField}
-      </text>
-      <text className='fade' style={{ '--d': 5 }} x='392' y='148'>
-        {text.deviceField}
-      </text>
-      <text
-        className='lbl-strong fade'
-        style={{ '--d': 6 }}
-        textAnchor='middle'
-        x='264'
-        y='256'
-      >
-        {text.dashboard}
-      </text>
-      <text
-        className='fade soft'
-        style={{ '--d': 6 }}
-        textAnchor='middle'
-        x='264'
-        y='274'
-      >
-        {text.dashboardDetail}
-      </text>
-      <text className='lbl-strong fade' style={{ '--d': 7 }} x='392' y='206'>
-        {text.neverStored}
-      </text>
-      <text className='fade soft struck' style={{ '--d': 7 }} x='392' y='232'>
-        <tspan>{text.neverStoredLine1}</tspan>
-      </text>
-      <text className='fade soft struck' style={{ '--d': 7 }} x='392' y='250'>
-        <tspan>{text.neverStoredLine2}</tspan>
-      </text>
-    </svg>
+          textAnchor='middle'
+          x='264'
+          y='274'
+        >
+          {text.dashboardDetail}
+        </text>
+        <text className='lbl-strong fade' style={{ '--d': 7 }} x='392' y='206'>
+          {text.neverStored}
+        </text>
+        <text className='fade soft struck' style={{ '--d': 7 }} x='392' y='232'>
+          <tspan>{text.neverStoredLine1}</tspan>
+        </text>
+        <text className='fade soft struck' style={{ '--d': 7 }} x='392' y='250'>
+          <tspan>{text.neverStoredLine2}</tspan>
+        </text>
+      </svg>
+      <MechanismKey
+        parts={[
+          {
+            detail: 'tracker.js',
+            name: `${text.thisSite} · Taverla · on-record`
+          },
+          { detail: 'Hono · Cloudflare', name: text.oneWorker },
+          {
+            detail: [
+              text.pathField,
+              text.referrerField,
+              text.countryField,
+              text.localeField,
+              text.themeField,
+              text.deviceField
+            ].join(' · '),
+            name: text.oneRow
+          },
+          { detail: text.dashboardDetail, name: text.dashboard },
+          {
+            detail: `${text.neverStoredLine1} · ${text.neverStoredLine2}`,
+            name: text.neverStored
+          }
+        ]}
+      />
+    </>
   )
 }
