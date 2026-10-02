@@ -1,11 +1,11 @@
 import type React from 'react'
 import { useId } from 'react'
 
-import { useTranslate } from '@/presentation/i18n/i18n-provider'
+import { useDrawingText } from './drawing-text'
 
 /** Hand-drawn Séance screen: a phone showing one movement plate, offline and saved on the device. */
 export const SeanceDrawing: React.FC = () => {
-  const translate = useTranslate()
+  const text = useDrawingText('seance')
   const titleId = useId()
 
   return (
@@ -15,7 +15,7 @@ export const SeanceDrawing: React.FC = () => {
       role='img'
       viewBox='0 0 560 380'
     >
-      <title id={titleId}>{translate('home.drawings.seance.title')}</title>
+      <title id={titleId}>{text.title}</title>
       <g transform='translate(200 20)'>
         <rect fill='var(--ink)' height='340' rx='26' width='180' x='0' y='0' />
         <rect
@@ -36,10 +36,10 @@ export const SeanceDrawing: React.FC = () => {
             x='24'
             y='54'
           >
-            {translate('home.drawings.seance.plate')}
+            {text.plate}
           </text>
           <text fontSize='22' fontWeight='800' x='24' y='78'>
-            {translate('home.drawings.seance.pushUp')}
+            {text.pushUp}
           </text>
           <rect
             fill='none'
@@ -73,7 +73,7 @@ export const SeanceDrawing: React.FC = () => {
           <circle cx='66' cy='172' fill='var(--violet)' r='2.6' />
           <circle cx='116' cy='172' fill='var(--violet)' r='2.6' />
           <text fill='var(--ink-soft)' fontSize='12' x='24' y='236'>
-            {translate('home.drawings.seance.set')}
+            {text.set}
           </text>
           <text
             fill='var(--ink-soft)'
@@ -82,7 +82,7 @@ export const SeanceDrawing: React.FC = () => {
             x='156'
             y='236'
           >
-            {translate('home.drawings.seance.rest')}
+            {text.rest}
           </text>
           <rect
             fill='var(--paper-sunk)'
@@ -109,7 +109,7 @@ export const SeanceDrawing: React.FC = () => {
             x='90'
             y='288'
           >
-            {translate('home.drawings.seance.nextMovement')}
+            {text.nextMovement}
           </text>
         </g>
       </g>
@@ -117,18 +117,18 @@ export const SeanceDrawing: React.FC = () => {
         <path d='M384 96 H 432' stroke='var(--ink)' strokeWidth='1' />
         <circle cx='384' cy='96' fill='var(--ink)' r='3' />
         <text fontWeight='700' letterSpacing='1' x='440' y='92'>
-          {translate('home.drawings.seance.offline')}
+          {text.offline}
         </text>
         <text fill='var(--ink-soft)' x='440' y='108'>
-          {translate('home.drawings.seance.everyRoute')}
+          {text.everyRoute}
         </text>
         <path d='M384 254 H 432' stroke='var(--ink)' strokeWidth='1' />
         <circle cx='384' cy='254' fill='var(--ink)' r='3' />
         <text fontWeight='700' letterSpacing='1' x='440' y='250'>
-          {translate('home.drawings.seance.onDevice')}
+          {text.onDevice}
         </text>
         <text fill='var(--ink-soft)' x='440' y='266'>
-          {translate('home.drawings.seance.nowhereElse')}
+          {text.nowhereElse}
         </text>
         <path d='M196 170 H 150' stroke='var(--ink)' strokeWidth='1' />
         <circle cx='196' cy='170' fill='var(--ink)' r='3' />
@@ -139,13 +139,13 @@ export const SeanceDrawing: React.FC = () => {
           x='142'
           y='166'
         >
-          {translate('home.drawings.seance.joints')}
+          {text.joints}
         </text>
         <text fill='var(--ink-soft)' textAnchor='end' x='142' y='182'>
-          {translate('home.drawings.seance.figuresChained')}
+          {text.figuresChained}
         </text>
         <text fill='var(--ink-soft)' textAnchor='end' x='142' y='198'>
-          {translate('home.drawings.seance.fromTheHip')}
+          {text.fromTheHip}
         </text>
       </g>
     </svg>
@@ -154,7 +154,7 @@ export const SeanceDrawing: React.FC = () => {
 
 /** Séance mechanism: everything is cached on the device, the network is cut and there is no server. */
 export const SeanceMechanism: React.FC = () => {
-  const translate = useTranslate()
+  const text = useDrawingText('seance')
   const titleId = useId()
 
   return (
@@ -164,9 +164,7 @@ export const SeanceMechanism: React.FC = () => {
       role='img'
       viewBox='0 0 560 300'
     >
-      <title id={titleId}>
-        {translate('home.drawings.seance.mechanismTitle')}
-      </title>
+      <title id={titleId}>{text.mechanismTitle}</title>
       <g fill='none' stroke='currentColor' strokeWidth='1.6'>
         <rect
           className='draw'
@@ -261,7 +259,7 @@ export const SeanceMechanism: React.FC = () => {
         />
       </g>
       <text className='lbl-strong fade' style={{ '--d': 0 }} x='36' y='40'>
-        {translate('home.drawings.seance.device')}
+        {text.device}
       </text>
       <text
         className='lbl-strong fade'
@@ -270,7 +268,7 @@ export const SeanceMechanism: React.FC = () => {
         x='112'
         y='82'
       >
-        {translate('home.drawings.seance.appShell')}
+        {text.appShell}
       </text>
       <text
         className='fade soft'
@@ -279,7 +277,7 @@ export const SeanceMechanism: React.FC = () => {
         x='112'
         y='100'
       >
-        {translate('home.drawings.seance.precached')}
+        {text.precached}
       </text>
       <text
         className='lbl-strong fade'
@@ -288,7 +286,7 @@ export const SeanceMechanism: React.FC = () => {
         x='280'
         y='82'
       >
-        {translate('home.drawings.seance.serviceWorker')}
+        {text.serviceWorker}
       </text>
       <text
         className='fade soft'
@@ -297,7 +295,7 @@ export const SeanceMechanism: React.FC = () => {
         x='280'
         y='100'
       >
-        {translate('home.drawings.seance.workerDetail')}
+        {text.workerDetail}
       </text>
       <text
         className='lbl-strong fade'
@@ -315,7 +313,7 @@ export const SeanceMechanism: React.FC = () => {
         x='196'
         y='224'
       >
-        {translate('home.drawings.seance.everyNumber')}
+        {text.everyNumber}
       </text>
       <text
         className='fade'
@@ -324,16 +322,16 @@ export const SeanceMechanism: React.FC = () => {
         x='516'
         y='155'
       >
-        {translate('home.drawings.seance.noServer')}
+        {text.noServer}
       </text>
       <text className='fade soft' style={{ '--d': 6 }} x='428' y='192'>
-        {translate('home.drawings.seance.networkCut')}
+        {text.networkCut}
       </text>
       <text className='fade' style={{ '--d': 7 }} x='428' y='266'>
-        {translate('home.drawings.seance.backup')}
+        {text.backup}
       </text>
       <text className='fade soft' style={{ '--d': 7 }} x='428' y='284'>
-        {translate('home.drawings.seance.onlyWayOut')}
+        {text.onlyWayOut}
       </text>
     </svg>
   )

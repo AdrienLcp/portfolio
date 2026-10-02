@@ -9,6 +9,7 @@ import {
   isAppLit
 } from '@/features/register/cross-reference'
 import { PackageLedger } from '@/features/register/package-ledger'
+import type { PlatesBySlug } from '@/features/register/plates'
 import {
   isRegistered,
   ledgerColumnsOf,
@@ -27,6 +28,7 @@ const hasFinePointer = (): boolean =>
 
 type ReleaseRegisterProps = {
   housePackages: readonly HousePackage[]
+  plates: PlatesBySlug
   projects: readonly Project[]
 }
 
@@ -37,6 +39,7 @@ type ReleaseRegisterProps = {
  */
 export const ReleaseRegister: React.FC<ReleaseRegisterProps> = ({
   housePackages,
+  plates,
   projects
 }) => {
   const { locale, translate } = useI18n()
@@ -134,6 +137,7 @@ export const ReleaseRegister: React.FC<ReleaseRegisterProps> = ({
             })}
             key={app.slug}
             litPackage={litPackage}
+            plates={plates[app.slug]}
             project={app}
             reporters={reportersOf(app.slug)}
           />

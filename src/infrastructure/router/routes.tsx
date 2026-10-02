@@ -1,11 +1,6 @@
 import type { LoaderFunction, Params, RouteObject } from 'react-router'
 
-import { aboutLoader } from '@/features/about/infrastructure/about-loader'
-import { contactLoader } from '@/features/contact/contact-loader'
-import { cvLoader } from '@/features/cv-pages/cv-loader'
-import { homeLoader } from '@/features/home/home-loader'
 import { NotFoundPage } from '@/features/not-found/not-found-page'
-import { projectLoader } from '@/features/project-pages/project-loader'
 import { LocalePrefixedRoutes } from '@/infrastructure/router/locale-prefixed-routes'
 import { localizedPaths } from '@/infrastructure/router/navigation'
 import { NegotiatedLocaleRedirect } from '@/infrastructure/router/negotiated-locale-redirect'
@@ -83,18 +78,38 @@ const localeParam = ({ locale }: Params): Locale =>
 
 /**
  * Outside `lazy`, so the data starts downloading beside the page's chunk.
+ * Imported on demand rather than at the top, so each page downloads its own
+ * content and not every other page's.
  *
  * Loaders hand back their promise unawaited: the navigation commits at once and
  * only the region that reads it suspends.
  */
 const loaderFor = {
-  [localizedPaths.about]: ({ params }) => aboutLoader(localeParam(params)),
-  [localizedPaths.contact]: ({ params }) => contactLoader(localeParam(params)),
-  [localizedPaths.cv]: ({ params }) => cvLoader(localeParam(params)),
-  [localizedPaths.cvPlain]: ({ params }) => cvLoader(localeParam(params)),
-  [localizedPaths.home]: ({ params }) => homeLoader(localeParam(params)),
-  [localizedPaths.project]: ({ params }) =>
-    projectLoader({ locale: localeParam(params), slug: params.slug ?? '' })
+  [localizedPaths.about]: async ({ params }) =>
+    (await import('@/features/about/infrastructure/about-loader')).aboutLoader(
+      localeParam(params)
+    ),
+  [localizedPaths.contact]: async ({ params }) =>
+    (await import('@/features/contact/contact-loader')).contactLoader(
+      localeParam(params)
+    ),
+  [localizedPaths.cv]: async ({ params }) =>
+    (await import('@/features/cv-pages/cv-loader')).cvLoader(
+      localeParam(params)
+    ),
+  [localizedPaths.cvPlain]: async ({ params }) =>
+    (await import('@/features/cv-pages/cv-loader')).cvLoader(
+      localeParam(params)
+    ),
+  [localizedPaths.home]: async ({ params }) =>
+    (await import('@/features/home/home-loader')).homeLoader(
+      localeParam(params)
+    ),
+  [localizedPaths.project]: async ({ params }) =>
+    (await import('@/features/project-pages/project-loader')).projectLoader({
+      locale: localeParam(params),
+      slug: params.slug ?? ''
+    })
 } satisfies Record<LocalizedPath, LoaderFunction>
 
 /** Pages printed bare, without the site's header and footer. */

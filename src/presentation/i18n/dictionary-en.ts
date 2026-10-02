@@ -1,7 +1,5 @@
 import { defineDictionary } from '@adrienlcp/i18n'
 
-import { DRAWINGS_EN } from './drawings-en'
-
 export const EN_DICTIONARY = defineDictionary({
   about: {
     after: {
@@ -141,7 +139,6 @@ export const EN_DICTIONARY = defineDictionary({
       emphasis: 'sole developer',
       title: 'About'
     },
-    drawings: DRAWINGS_EN,
     entry: {
       close: 'Close entry',
       countsFrom: 'Counts page views from',

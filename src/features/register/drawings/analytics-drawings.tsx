@@ -1,7 +1,7 @@
 import type React from 'react'
 import { useId } from 'react'
 
-import { useTranslate } from '@/presentation/i18n/i18n-provider'
+import { useDrawingText } from './drawing-text'
 
 const BAR_BASELINE = 168
 const BAR_LEFT = 38
@@ -40,7 +40,7 @@ const PageViewBars: React.FC = () => (
 
 /** Hand-drawn Analytics screen: the public dashboard beside a slip listing what is never stored. */
 export const AnalyticsDrawing: React.FC = () => {
-  const translate = useTranslate()
+  const text = useDrawingText('analytics')
   const titleId = useId()
 
   return (
@@ -50,7 +50,7 @@ export const AnalyticsDrawing: React.FC = () => {
       role='img'
       viewBox='0 0 560 380'
     >
-      <title id={titleId}>{translate('home.drawings.analytics.title')}</title>
+      <title id={titleId}>{text.title}</title>
       <g>
         <rect fill='var(--ink)' height='248' rx='10' width='396' x='6' y='18' />
         <rect
@@ -72,7 +72,7 @@ export const AnalyticsDrawing: React.FC = () => {
           x='38'
           y='62'
         >
-          {translate('home.drawings.analytics.pageViews')}
+          {text.pageViews}
         </text>
         <text
           fill='var(--ink-soft)'
@@ -81,7 +81,7 @@ export const AnalyticsDrawing: React.FC = () => {
           x='38'
           y='80'
         >
-          {translate('home.drawings.analytics.publicDashboard')}
+          {text.publicDashboard}
         </text>
         <PageViewBars />
         <line stroke='var(--ink)' x1='34' x2='262' y1='168.5' y2='168.5' />
@@ -124,19 +124,19 @@ export const AnalyticsDrawing: React.FC = () => {
             letterSpacing='1.1'
           >
             <text x='38' y='196'>
-              {translate('home.drawings.analytics.pathColumn')}
+              {text.pathColumn}
             </text>
             <text x='122' y='196'>
-              {translate('home.drawings.analytics.referrerColumn')}
+              {text.referrerColumn}
             </text>
             <text x='200' y='196'>
-              {translate('home.drawings.analytics.countryColumn')}
+              {text.countryColumn}
             </text>
             <text x='262' y='196'>
-              {translate('home.drawings.analytics.themeColumn')}
+              {text.themeColumn}
             </text>
             <text x='318' y='196'>
-              {translate('home.drawings.analytics.deviceColumn')}
+              {text.deviceColumn}
             </text>
           </g>
           <line stroke='var(--ink)' x1='38' x2='372' y1='203' y2='203' />
@@ -151,10 +151,10 @@ export const AnalyticsDrawing: React.FC = () => {
               FR
             </text>
             <text x='262' y='222'>
-              {translate('home.drawings.analytics.dark')}
+              {text.dark}
             </text>
             <text x='318' y='222'>
-              {translate('home.drawings.analytics.mobile')}
+              {text.mobile}
             </text>
             <line stroke='var(--rule)' x1='38' x2='372' y1='230' y2='230' />
             <text x='38' y='246'>
@@ -167,10 +167,10 @@ export const AnalyticsDrawing: React.FC = () => {
               BE
             </text>
             <text x='262' y='246'>
-              {translate('home.drawings.analytics.light')}
+              {text.light}
             </text>
             <text x='318' y='246'>
-              {translate('home.drawings.analytics.desktop')}
+              {text.desktop}
             </text>
           </g>
         </g>
@@ -193,7 +193,7 @@ export const AnalyticsDrawing: React.FC = () => {
             x='436'
             y='88'
           >
-            {translate('home.drawings.analytics.neverStoredSlip')}
+            {text.neverStoredSlip}
           </text>
           <line
             stroke='var(--ink)'
@@ -205,19 +205,19 @@ export const AnalyticsDrawing: React.FC = () => {
           />
           <g fontSize='14'>
             <text className='struck' x='436' y='128'>
-              <tspan>{translate('home.drawings.analytics.cookie')}</tspan>
+              <tspan>{text.cookie}</tspan>
             </text>
             <text className='struck' x='436' y='156'>
-              <tspan>{translate('home.drawings.analytics.ip')}</tspan>
+              <tspan>{text.ip}</tspan>
             </text>
             <text className='struck' x='436' y='184'>
-              <tspan>{translate('home.drawings.analytics.userAgent')}</tspan>
+              <tspan>{text.userAgent}</tspan>
             </text>
             <text className='struck' x='436' y='212'>
-              <tspan>{translate('home.drawings.analytics.fingerprint')}</tspan>
+              <tspan>{text.fingerprint}</tspan>
             </text>
             <text className='struck' x='436' y='240'>
-              <tspan>{translate('home.drawings.analytics.hash')}</tspan>
+              <tspan>{text.hash}</tspan>
             </text>
           </g>
         </g>
@@ -227,13 +227,13 @@ export const AnalyticsDrawing: React.FC = () => {
           TRACKER.JS
         </text>
         <text fill='var(--ink-soft)' x='420' y='312'>
-          {translate('home.drawings.analytics.trackerSize')}
+          {text.trackerSize}
         </text>
         <text fontWeight='700' letterSpacing='1' x='6' y='336'>
-          {translate('home.drawings.analytics.fedBy')}
+          {text.fedBy}
         </text>
         <text fill='var(--ink-soft)' x='6' y='352'>
-          {translate('home.drawings.analytics.noConsent')}
+          {text.noConsent}
         </text>
       </g>
     </svg>
@@ -242,7 +242,7 @@ export const AnalyticsDrawing: React.FC = () => {
 
 /** Analytics mechanism: three apps report to one Worker, which writes a six-field row to D1. */
 export const AnalyticsMechanism: React.FC = () => {
-  const translate = useTranslate()
+  const text = useDrawingText('analytics')
   const titleId = useId()
 
   return (
@@ -252,9 +252,7 @@ export const AnalyticsMechanism: React.FC = () => {
       role='img'
       viewBox='0 0 560 300'
     >
-      <title id={titleId}>
-        {translate('home.drawings.analytics.mechanismTitle')}
-      </title>
+      <title id={titleId}>{text.mechanismTitle}</title>
       <g fill='none' stroke='currentColor' strokeWidth='1.6'>
         <rect
           className='draw'
@@ -351,7 +349,7 @@ export const AnalyticsMechanism: React.FC = () => {
         x='78'
         y='42'
       >
-        {translate('home.drawings.analytics.thisSite')}
+        {text.thisSite}
       </text>
       <text
         className='fade soft'
@@ -405,7 +403,7 @@ export const AnalyticsMechanism: React.FC = () => {
         x='264'
         y='146'
       >
-        {translate('home.drawings.analytics.oneWorker')}
+        {text.oneWorker}
       </text>
       <text
         className='fade soft'
@@ -417,25 +415,25 @@ export const AnalyticsMechanism: React.FC = () => {
         Hono · Cloudflare
       </text>
       <text className='lbl-strong fade' style={{ '--d': 5 }} x='392' y='40'>
-        {translate('home.drawings.analytics.oneRow')}
+        {text.oneRow}
       </text>
       <text className='fade' style={{ '--d': 5 }} x='392' y='58'>
-        {translate('home.drawings.analytics.pathField')}
+        {text.pathField}
       </text>
       <text className='fade' style={{ '--d': 5 }} x='392' y='76'>
-        {translate('home.drawings.analytics.referrerField')}
+        {text.referrerField}
       </text>
       <text className='fade' style={{ '--d': 5 }} x='392' y='94'>
-        {translate('home.drawings.analytics.countryField')}
+        {text.countryField}
       </text>
       <text className='fade' style={{ '--d': 5 }} x='392' y='112'>
-        {translate('home.drawings.analytics.localeField')}
+        {text.localeField}
       </text>
       <text className='fade' style={{ '--d': 5 }} x='392' y='130'>
-        {translate('home.drawings.analytics.themeField')}
+        {text.themeField}
       </text>
       <text className='fade' style={{ '--d': 5 }} x='392' y='148'>
-        {translate('home.drawings.analytics.deviceField')}
+        {text.deviceField}
       </text>
       <text
         className='lbl-strong fade'
@@ -444,7 +442,7 @@ export const AnalyticsMechanism: React.FC = () => {
         x='264'
         y='256'
       >
-        {translate('home.drawings.analytics.dashboard')}
+        {text.dashboard}
       </text>
       <text
         className='fade soft'
@@ -453,16 +451,16 @@ export const AnalyticsMechanism: React.FC = () => {
         x='264'
         y='274'
       >
-        {translate('home.drawings.analytics.dashboardDetail')}
+        {text.dashboardDetail}
       </text>
       <text className='lbl-strong fade' style={{ '--d': 7 }} x='392' y='206'>
-        {translate('home.drawings.analytics.neverStored')}
+        {text.neverStored}
       </text>
       <text className='fade soft struck' style={{ '--d': 7 }} x='392' y='232'>
-        <tspan>{translate('home.drawings.analytics.neverStoredLine1')}</tspan>
+        <tspan>{text.neverStoredLine1}</tspan>
       </text>
       <text className='fade soft struck' style={{ '--d': 7 }} x='392' y='250'>
-        <tspan>{translate('home.drawings.analytics.neverStoredLine2')}</tspan>
+        <tspan>{text.neverStoredLine2}</tspan>
       </text>
     </svg>
   )

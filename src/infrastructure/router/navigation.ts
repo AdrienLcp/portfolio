@@ -69,8 +69,14 @@ export const projectPathFor = ({
   slug: string
 }): string => pathFor(paths.project, { locale, slug })
 
-export const useRouteData = <TLoader extends (...args: never[]) => unknown>() =>
-  useLoaderData<TLoader>()
+/**
+ * The loader's own return, components included: React Router types it as if
+ * serialized, but this site hands it over in memory, on the client and in the
+ * prerender alike.
+ */
+export const useRouteData = <
+  TLoader extends (...args: never[]) => unknown
+>(): ReturnType<TLoader> => useLoaderData() as ReturnType<TLoader>
 
 export const localizedPathFor = ({
   locale,

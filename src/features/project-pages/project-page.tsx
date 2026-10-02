@@ -37,6 +37,7 @@ const ProjectEntry: React.FC = () => {
   const project = use(data.project)
   const projects = use(data.projects)
   const housePackages = use(data.housePackages)
+  const plates = use(data.plates)
   useDocumentTitle(
     project.status === 'success'
       ? projectHead(project.data).title
@@ -124,6 +125,7 @@ const ProjectEntry: React.FC = () => {
       below={neighbourAt(index + 1)}
       housePackages={housePackages.data}
       packageRowHref={packageRowHref}
+      plates={plates[entry.slug]}
       project={entry}
       registerHref={registerHref}
     />

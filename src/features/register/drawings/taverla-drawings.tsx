@@ -1,7 +1,7 @@
 import type React from 'react'
 import { useId } from 'react'
 
-import { useTranslate } from '@/presentation/i18n/i18n-provider'
+import { useDrawingText } from './drawing-text'
 
 const QR_SIZE = 21
 const QR_CELL = 6
@@ -61,7 +61,7 @@ const QrCode: React.FC = () => (
 
 /** Hand-drawn Taverla screen: the host screen with the room QR code and a phone buzzer. */
 export const TaverlaDrawing: React.FC = () => {
-  const translate = useTranslate()
+  const text = useDrawingText('taverla')
   const titleId = useId()
 
   return (
@@ -71,7 +71,7 @@ export const TaverlaDrawing: React.FC = () => {
       role='img'
       viewBox='0 0 560 380'
     >
-      <title id={titleId}>{translate('home.drawings.taverla.title')}</title>
+      <title id={titleId}>{text.title}</title>
       <g>
         <rect fill='var(--ink)' height='248' rx='10' width='396' x='6' y='18' />
         <rect
@@ -93,7 +93,7 @@ export const TaverlaDrawing: React.FC = () => {
           x='38'
           y='62'
         >
-          {translate('home.drawings.taverla.buzzer')}
+          {text.buzzer}
         </text>
         <text
           fill='var(--ink-soft)'
@@ -102,7 +102,7 @@ export const TaverlaDrawing: React.FC = () => {
           x='38'
           y='80'
         >
-          {translate('home.drawings.taverla.scanToJoin')}
+          {text.scanToJoin}
         </text>
         <g transform='translate(38 92)'>
           <rect
@@ -124,7 +124,7 @@ export const TaverlaDrawing: React.FC = () => {
           x='224'
           y='62'
         >
-          {translate('home.drawings.taverla.seated')}
+          {text.seated}
         </text>
         <g fill='var(--ink)' fontFamily='Sofia Sans Condensed' fontSize='15'>
           <rect fill='var(--violet)' height='30' width='148' x='224' y='74' />
@@ -138,7 +138,7 @@ export const TaverlaDrawing: React.FC = () => {
             x='362'
             y='94'
           >
-            {translate('home.drawings.taverla.first')}
+            {text.first}
           </text>
           <line stroke='var(--rule)' x1='224' x2='372' y1='112' y2='112' />
           <text x='234' y='132'>
@@ -154,7 +154,7 @@ export const TaverlaDrawing: React.FC = () => {
           </text>
           <line stroke='var(--rule)' x1='224' x2='372' y1='202' y2='202' />
           <text fill='var(--ink-soft)' fontSize='12' x='234' y='228'>
-            {translate('home.drawings.taverla.waiting')}
+            {text.waiting}
           </text>
         </g>
       </g>
@@ -178,7 +178,7 @@ export const TaverlaDrawing: React.FC = () => {
           x='22'
           y='52'
         >
-          {translate('home.drawings.taverla.roomBuzzer')}
+          {text.roomBuzzer}
         </text>
         <text
           fill='var(--ink)'
@@ -218,7 +218,7 @@ export const TaverlaDrawing: React.FC = () => {
           x='80'
           y='174'
         >
-          {translate('home.drawings.taverla.buzz')}
+          {text.buzz}
         </text>
         <text
           fill='var(--ink-soft)'
@@ -228,7 +228,7 @@ export const TaverlaDrawing: React.FC = () => {
           x='80'
           y='262'
         >
-          {translate('home.drawings.taverla.firstTakesRound')}
+          {text.firstTakesRound}
         </text>
       </g>
     </svg>
@@ -237,7 +237,7 @@ export const TaverlaDrawing: React.FC = () => {
 
 /** Taverla mechanism: one server holds a socket to every screen and stamps each buzz. */
 export const TaverlaMechanism: React.FC = () => {
-  const translate = useTranslate()
+  const text = useDrawingText('taverla')
   const titleId = useId()
 
   return (
@@ -247,9 +247,7 @@ export const TaverlaMechanism: React.FC = () => {
       role='img'
       viewBox='0 0 560 300'
     >
-      <title id={titleId}>
-        {translate('home.drawings.taverla.mechanismTitle')}
-      </title>
+      <title id={titleId}>{text.mechanismTitle}</title>
       <g fill='none' stroke='currentColor' strokeWidth='1.6'>
         <rect
           className='draw'
@@ -358,7 +356,7 @@ export const TaverlaMechanism: React.FC = () => {
         x='280'
         y='146'
       >
-        {translate('home.drawings.taverla.server')}
+        {text.server}
       </text>
       <text
         className='fade soft'
@@ -367,7 +365,7 @@ export const TaverlaMechanism: React.FC = () => {
         x='280'
         y='166'
       >
-        {translate('home.drawings.taverla.serverDetail')}
+        {text.serverDetail}
       </text>
       <text
         className='lbl-strong fade'
@@ -376,7 +374,7 @@ export const TaverlaMechanism: React.FC = () => {
         x='90'
         y='58'
       >
-        {translate('home.drawings.taverla.host')}
+        {text.host}
       </text>
       <text
         className='fade soft'
@@ -385,16 +383,16 @@ export const TaverlaMechanism: React.FC = () => {
         x='90'
         y='78'
       >
-        {translate('home.drawings.taverla.hostDetail')}
+        {text.hostDetail}
       </text>
       <text className='fade' style={{ '--d': 8 }} x='492' y='45'>
-        {translate('home.drawings.taverla.firstBuzz')}
+        {text.firstBuzz}
       </text>
       <text className='fade soft' style={{ '--d': 8 }} x='492' y='115'>
-        {translate('home.drawings.taverla.secondBuzz')}
+        {text.secondBuzz}
       </text>
       <text className='fade soft' style={{ '--d': 8 }} x='492' y='185'>
-        {translate('home.drawings.taverla.thirdBuzz')}
+        {text.thirdBuzz}
       </text>
       <text className='fade soft' style={{ '--d': 8 }} x='492' y='255'>
         —
@@ -406,16 +404,16 @@ export const TaverlaMechanism: React.FC = () => {
         x='390'
         y='292'
       >
-        {translate('home.drawings.taverla.socketToPhones')}
+        {text.socketToPhones}
       </text>
       <text className='fade soft' style={{ '--d': 6 }} x='20' y='232'>
-        {translate('home.drawings.taverla.orderLine1')}
+        {text.orderLine1}
       </text>
       <text className='fade soft' style={{ '--d': 6 }} x='20' y='250'>
-        {translate('home.drawings.taverla.orderLine2')}
+        {text.orderLine2}
       </text>
       <text className='fade soft' style={{ '--d': 6 }} x='20' y='268'>
-        {translate('home.drawings.taverla.orderLine3')}
+        {text.orderLine3}
       </text>
     </svg>
   )

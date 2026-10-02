@@ -1,5 +1,5 @@
 /** English texts of the hand-drawn app figures and mechanism diagrams on the home page. */
-export const DRAWINGS_EN = {
+export const DRAWING_TEXT_EN = {
   analytics: {
     cookie: 'cookie',
     countryColumn: 'COUNTRY',

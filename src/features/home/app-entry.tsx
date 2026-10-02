@@ -11,7 +11,7 @@ import {
   appsReference,
   packageReference
 } from '@/features/register/cross-reference'
-import { platesFor } from '@/features/register/plates'
+import type { Plates } from '@/features/register/plates'
 import { ReleaseStamp } from '@/features/register/release-stamp'
 import { useDrawnWhenSeen } from '@/features/register/use-drawn-when-seen'
 import { projectPathFor } from '@/infrastructure/router/navigation'
@@ -125,6 +125,7 @@ type AppEntryProps = {
   isFresh: boolean
   isLit: boolean
   litPackage: HousePackageName | null
+  plates: Plates | undefined
   project: Project & { register: RegisterEntry }
   /** The rows that send their page views to this one. */
   reporters: readonly RowReference[]
@@ -136,6 +137,7 @@ export const AppEntry: React.FC<AppEntryProps> = ({
   isFresh,
   isLit,
   litPackage,
+  plates,
   project,
   reporters
 }) => {
@@ -146,7 +148,6 @@ export const AppEntry: React.FC<AppEntryProps> = ({
   const mechanismRef = useRef<HTMLDivElement>(null)
   const isDrawn = useDrawnWhenSeen(mechanismRef, isOpen)
   const { register, slug } = project
-  const plates = platesFor(slug)
 
   return (
     <li

@@ -2,7 +2,7 @@ import type React from 'react'
 import { useId, useRef } from 'react'
 
 import type { HousePackage } from '@/features/packages/house-package'
-import { platesFor } from '@/features/register/plates'
+import type { Plates } from '@/features/register/plates'
 import { ReleaseStamp } from '@/features/register/release-stamp'
 import type { RegisteredProject } from '@/features/register/this-site'
 import { useDrawnWhenSeen } from '@/features/register/use-drawn-when-seen'
@@ -50,6 +50,7 @@ type AppEntryPageProps = {
   below: Neighbour | null
   housePackages: readonly HousePackage[]
   packageRowHref: PackageRowHref | null
+  plates: Plates | undefined
   project: RegisteredProject
   registerHref: string
 }
@@ -60,13 +61,13 @@ export const AppEntryPage: React.FC<AppEntryPageProps> = ({
   below,
   housePackages,
   packageRowHref,
+  plates,
   project,
   registerHref
 }) => {
   const translate = useTranslate()
   const titleId = useId()
   const { history, register } = project
-  const plates = platesFor(project.slug)
   const firstCommit = history.lines.at(-1)
   const stateLabel = translate(`home.state.${register.state}`)
 

@@ -1,7 +1,7 @@
 import type React from 'react'
 import { useId } from 'react'
 
-import { useTranslate } from '@/presentation/i18n/i18n-provider'
+import { useDrawingText } from './drawing-text'
 
 /** `counted` is the one ballot the deputy figure points at: it is drawn on top, in violet. */
 type Ballot = 'for' | 'against' | 'absent' | 'counted'
@@ -169,7 +169,7 @@ const VoteSheetRows: React.FC = () => (
 
 /** Hand-drawn on-record screen: one figure about a deputy, wired to the ballot it counts on the official vote sheets. */
 export const OnRecordDrawing: React.FC = () => {
-  const translate = useTranslate()
+  const text = useDrawingText('onRecord')
   const titleId = useId()
 
   return (
@@ -179,7 +179,7 @@ export const OnRecordDrawing: React.FC = () => {
       role='img'
       viewBox='0 0 560 380'
     >
-      <title id={titleId}>{translate('home.drawings.onRecord.title')}</title>
+      <title id={titleId}>{text.title}</title>
       <g stroke='var(--ink)' strokeWidth='1.5'>
         <rect
           fill='var(--paper-sunk)'
@@ -206,7 +206,7 @@ export const OnRecordDrawing: React.FC = () => {
           x='280'
           y='62'
         >
-          {translate('home.drawings.onRecord.assembly')}
+          {text.assembly}
         </text>
         <text
           fill='var(--ink)'
@@ -216,7 +216,7 @@ export const OnRecordDrawing: React.FC = () => {
           x='280'
           y='86'
         >
-          {translate('home.drawings.onRecord.publicVotes')}
+          {text.publicVotes}
         </text>
         <line
           stroke='var(--ink)'
@@ -271,7 +271,7 @@ export const OnRecordDrawing: React.FC = () => {
             x='40'
             y='152'
           >
-            {translate('home.drawings.onRecord.oneFigure')}
+            {text.oneFigure}
           </text>
           <text
             fill='var(--violet)'
@@ -281,10 +281,10 @@ export const OnRecordDrawing: React.FC = () => {
             x='40'
             y='198'
           >
-            {translate('home.drawings.onRecord.for')}
+            {text.for}
           </text>
           <text fill='var(--ink-soft)' fontSize='12' x='40' y='228'>
-            {translate('home.drawings.onRecord.withGroup')}
+            {text.withGroup}
           </text>
         </g>
       </g>
@@ -292,19 +292,19 @@ export const OnRecordDrawing: React.FC = () => {
         <path d='M216 62 H 262' stroke='currentColor' strokeWidth='1' />
         <circle cx='216' cy='62' r='3' />
         <text fontWeight='700' letterSpacing='1' x='24' y='58'>
-          {translate('home.drawings.onRecord.officialRecord')}
+          {text.officialRecord}
         </text>
         <text opacity='0.82' x='24' y='74'>
-          {translate('home.drawings.onRecord.citesSource')}
+          {text.citesSource}
         </text>
         <text fontWeight='700' letterSpacing='1' x='24' y='292'>
-          {translate('home.drawings.onRecord.everyFigure')}
+          {text.everyFigure}
         </text>
         <text opacity='0.82' x='24' y='308'>
-          {translate('home.drawings.onRecord.linksVotes')}
+          {text.linksVotes}
         </text>
         <text fontWeight='700' letterSpacing='1' x='24' y='340'>
-          {translate('home.drawings.onRecord.noRanking')}
+          {text.noRanking}
         </text>
       </g>
     </svg>
@@ -313,7 +313,7 @@ export const OnRecordDrawing: React.FC = () => {
 
 /** on-record mechanism: a nightly job asks the open data what changed, then rebuilds and deploys only that. */
 export const OnRecordMechanism: React.FC = () => {
-  const translate = useTranslate()
+  const text = useDrawingText('onRecord')
   const titleId = useId()
 
   return (
@@ -323,9 +323,7 @@ export const OnRecordMechanism: React.FC = () => {
       role='img'
       viewBox='0 0 560 300'
     >
-      <title id={titleId}>
-        {translate('home.drawings.onRecord.mechanismTitle')}
-      </title>
+      <title id={titleId}>{text.mechanismTitle}</title>
       <g fill='none' stroke='currentColor' strokeWidth='1.6'>
         <rect
           className='draw'
@@ -406,7 +404,7 @@ export const OnRecordMechanism: React.FC = () => {
         x='86'
         y='146'
       >
-        {translate('home.drawings.onRecord.nightly')}
+        {text.nightly}
       </text>
       <text
         className='fade soft'
@@ -424,7 +422,7 @@ export const OnRecordMechanism: React.FC = () => {
         x='280'
         y='146'
       >
-        {translate('home.drawings.onRecord.openData')}
+        {text.openData}
       </text>
       <text
         className='fade soft'
@@ -433,7 +431,7 @@ export const OnRecordMechanism: React.FC = () => {
         x='280'
         y='166'
       >
-        {translate('home.drawings.onRecord.anythingChanged')}
+        {text.anythingChanged}
       </text>
       <text
         className='fade soft'
@@ -442,7 +440,7 @@ export const OnRecordMechanism: React.FC = () => {
         x='398'
         y='40'
       >
-        {translate('home.drawings.onRecord.newVote')}
+        {text.newVote}
       </text>
       <text
         className='lbl-strong fade'
@@ -451,7 +449,7 @@ export const OnRecordMechanism: React.FC = () => {
         x='474'
         y='52'
       >
-        {translate('home.drawings.onRecord.rebuild')}
+        {text.rebuild}
       </text>
       <text
         className='fade soft'
@@ -460,7 +458,7 @@ export const OnRecordMechanism: React.FC = () => {
         x='474'
         y='72'
       >
-        {translate('home.drawings.onRecord.onlyWhatChanged')}
+        {text.onlyWhatChanged}
       </text>
       <text
         className='lbl-strong fade'
@@ -469,7 +467,7 @@ export const OnRecordMechanism: React.FC = () => {
         x='474'
         y='148'
       >
-        {translate('home.drawings.onRecord.deploy')}
+        {text.deploy}
       </text>
       <text
         className='fade soft'
@@ -481,7 +479,7 @@ export const OnRecordMechanism: React.FC = () => {
         Cloudflare Pages
       </text>
       <text className='fade soft' style={{ '--d': 3 }} x='356' y='216'>
-        {translate('home.drawings.onRecord.noNewVote')}
+        {text.noNewVote}
       </text>
       <text
         className='lbl-strong fade'
@@ -490,7 +488,7 @@ export const OnRecordMechanism: React.FC = () => {
         x='474'
         y='248'
       >
-        {translate('home.drawings.onRecord.quietNight')}
+        {text.quietNight}
       </text>
       <text
         className='fade soft'
@@ -499,16 +497,16 @@ export const OnRecordMechanism: React.FC = () => {
         x='474'
         y='268'
       >
-        {translate('home.drawings.onRecord.nothingDeployed')}
+        {text.nothingDeployed}
       </text>
       <text className='fade soft' style={{ '--d': 6 }} x='16' y='232'>
-        {translate('home.drawings.onRecord.budgetLine1')}
+        {text.budgetLine1}
       </text>
       <text className='fade soft' style={{ '--d': 6 }} x='16' y='250'>
-        {translate('home.drawings.onRecord.budgetLine2')}
+        {text.budgetLine2}
       </text>
       <text className='fade soft' style={{ '--d': 6 }} x='16' y='268'>
-        {translate('home.drawings.onRecord.budgetLine3')}
+        {text.budgetLine3}
       </text>
     </svg>
   )

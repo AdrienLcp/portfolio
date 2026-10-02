@@ -22,6 +22,7 @@ const Register: React.FC = () => {
   const data = useHomeData()
   const projects = use(data.projects)
   const housePackages = use(data.housePackages)
+  const plates = use(data.plates)
 
   if (projects.status === 'failure' || housePackages.status === 'failure') {
     const error =
@@ -53,6 +54,7 @@ const Register: React.FC = () => {
       />
       <ReleaseRegister
         housePackages={housePackages.data}
+        plates={plates}
         projects={projects.data}
       />
     </>
