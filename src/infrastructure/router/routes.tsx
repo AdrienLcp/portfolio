@@ -95,6 +95,21 @@ const localeParam = ({ locale }: Params): Locale =>
  * Loaders hand back their promise unawaited: the navigation commits at once and
  * only the region that reads it suspends.
  */
+/**
+ * A superseded navigation's requests reject with its abort, and react-router
+ * drops its data unread: without a handler, each rejection would be reported
+ * as unhandled. The page that does read a request still sees how it settled.
+ */
+const settledUnread = <TRequests extends Record<string, Promise<unknown>>>(
+  requests: TRequests
+): TRequests => {
+  for (const request of Object.values(requests)) {
+    request.catch(() => undefined)
+  }
+
+  return requests
+}
+
 const loaderFor = {
   [localizedPaths.about]: async ({ params, request }) =>
     (await import('@/features/about/infrastructure/about-loader')).aboutLoader({
@@ -135,7 +150,7 @@ const BARE_PATHS: ReadonlySet<LocalizedPath> = new Set([localizedPaths.cvPlain])
 const routeFor = (path: LocalizedPath): RouteObject => ({
   handle: { isBare: BARE_PATHS.has(path) },
   lazy: pageFor[path].lazy,
-  loader: loaderFor[path],
+  loader: async (args) => settledUnread(await loaderFor[path](args)),
   path
 })
 
@@ -154,7 +169,9 @@ export const routes: RouteObject[] = [
     ErrorBoundary: ErrorScreen,
     HydrateFallback: RouteFallback,
     loader: ({ params, request }) =>
-      rootLoader({ locale: localeParam(params), signal: request.signal }),
+      settledUnread(
+        rootLoader({ locale: localeParam(params), signal: request.signal })
+      ),
     shouldRevalidate: ({ currentParams, nextParams }) =>
       currentParams.locale !== nextParams.locale
   }
