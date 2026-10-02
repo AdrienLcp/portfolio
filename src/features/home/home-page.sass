@@ -354,6 +354,7 @@
 
     p
       @include typography.lead
+      @include typography.cap-top
 
       font-size: clamp(1.3rem, 2.6vw, 1.9rem)
       max-width: 44rem
@@ -366,6 +367,3 @@
     @include media.two-columns
       column-gap: var(--space-m)
       grid-template-columns: 6.5rem minmax(0, 1fr)
-
-      .section-label
-        padding-top: var(--space-2xs)

@@ -1,3 +1,5 @@
+@use '../../styles/typography'
+
 @layer components
   .stamp-ink
     height: 0
@@ -22,12 +24,22 @@
     text-transform: uppercase
     user-select: none
 
+    @supports (text-box: trim-both cap alphabetic)
+      padding: var(--space-2xs)
+
     b
+      @include typography.cap-top
+
       font-size: 1.35rem
       font-weight: 900
       letter-spacing: 0.12em
 
+      &:only-child
+        @include typography.cap-box
+
     span
+      @include typography.baseline-bottom
+
       font-size: var(--text-2xs)
       font-variant-numeric: tabular-nums
       font-weight: 700
@@ -38,6 +50,9 @@
       outline-offset: 1.5px
       padding: var(--space-4xs) var(--space-3xs) var(--space-3xs)
       rotate: -4deg
+
+      @supports (text-box: trim-both cap alphabetic)
+        padding: var(--space-3xs)
 
       b
         font-size: var(--text-xs)

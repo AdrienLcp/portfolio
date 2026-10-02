@@ -145,9 +145,6 @@ $plate-width: 17rem
   .path-body
     grid-area: body
 
-    @include media.two-columns
-      padding-top: var(--space-3xs)
-
   .path-state
     display: flex
     grid-area: state
@@ -167,6 +164,8 @@ $plate-width: 17rem
     margin-top: var(--space-2xs)
 
   .path-text
+    @include typography.cap-top
+
     color: var(--ink-soft)
     max-width: var(--measure-text)
     text-wrap: pretty
@@ -208,7 +207,6 @@ $plate-width: 17rem
       .path-name
         font-size: clamp(2.4rem, 5vw, 3.6rem)
         letter-spacing: -0.02em
-        line-height: 0.9
 
       .path-text
         @include typography.lead

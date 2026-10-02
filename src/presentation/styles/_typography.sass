@@ -1,3 +1,18 @@
+/// Trims the space above the first line's capitals, so the box's top edge is
+/// the text's: a neighbour aligned to the same top meets it cap to cap.
+@mixin cap-top
+  text-box: trim-start cap alphabetic
+
+/// Trims the space under the last line's baseline, so text sits on the box's
+/// bottom edge: a rule drawn there underlines it.
+@mixin baseline-bottom
+  text-box: trim-end cap alphabetic
+
+/// Trims a one-line label to its capitals and baseline, so equal padding
+/// centres it optically.
+@mixin cap-box
+  text-box: trim-both cap alphabetic
+
 @mixin body
   font-family: var(--font-prose)
   font-size: var(--text-body)
@@ -30,6 +45,8 @@
 
 /// A page's title, set as large as the page allows.
 @mixin display
+  @include cap-top
+
   font-family: var(--font-letter)
   font-weight: 800
   letter-spacing: -0.025em
@@ -38,6 +55,8 @@
 
 /// A title inside the page: an entry, a section, a step.
 @mixin heading
+  @include cap-top
+
   font-family: var(--font-letter)
   font-weight: 800
   letter-spacing: -0.02em
