@@ -192,6 +192,22 @@ const withoutScriptClosingTags = (json: string): string =>
 const jsonLd = (data: object): string =>
   `<script type="application/ld+json">${withoutScriptClosingTags(JSON.stringify(data))}</script>`
 
+/**
+ * React writes the resources a page asks for, such as an image preload, at the
+ * front of what it renders. They belong in the head: the browser finds them
+ * sooner there, and the app, which puts them in the head too, then paints the
+ * same tree under `#root` as the prerender, which focus restoration counts on.
+ */
+const LEADING_RESOURCES = /^(?:<link\s[^>]*>)+/
+
+const splitLeadingResources = (
+  html: string
+): { markup: string; resources: string } => {
+  const resources = LEADING_RESOURCES.exec(html)?.[0] ?? ''
+
+  return { markup: html.slice(resources.length), resources }
+}
+
 const documentFor = ({
   page,
   preloads,
@@ -209,6 +225,7 @@ const documentFor = ({
   styles: string
 }): string => {
   const url = `${origin}${page.path}`
+  const { markup, resources } = splitLeadingResources(rendered.html)
 
   const alternates = [
     ...everyLanguageVersion.map(
@@ -283,7 +300,7 @@ const documentFor = ({
       replaceOnce({
         html,
         pattern: PRELOADED_MODULES,
-        replacement: `${PRERENDERED_ONLY_FONT_PRELOADS}${preloadedModules}${preloads}`
+        replacement: `${PRERENDERED_ONLY_FONT_PRELOADS}${preloadedModules}${preloads}${resources}`
       }),
     (html: string) =>
       replaceOnce({
@@ -301,7 +318,7 @@ const documentFor = ({
       replaceOnce({
         html,
         pattern: /<div id="root"><\/div>/,
-        replacement: `<div id="root">${rendered.html}</div>`
+        replacement: `<div id="root">${markup}</div>`
       })
   ].reduce((html, step) => step(html), template)
 }
