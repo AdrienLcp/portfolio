@@ -12,7 +12,7 @@ const PUBLIC_DIR = join(import.meta.dirname, '..', 'public')
 const IOS_TOUCH_ICON_SIZE = 180
 
 const CONTROLS_HIDDEN_ON_A_SHARE_CARD =
-  '.site-nav, .theme-switch, .lid-band button'
+  '.site-nav, .menu-button, .locale-switch, .theme-switch'
 
 const server = await createServer({ logLevel: 'error', server: { port: 0 } })
 await server.listen()
@@ -33,7 +33,7 @@ try {
   const page = await context.newPage()
 
   await page.goto(`${origin}/en`)
-  await page.locator('.lid').first().waitFor()
+  await page.locator('.home-page h1').waitFor()
   await page.addStyleTag({
     content: `${CONTROLS_HIDDEN_ON_A_SHARE_CARD} { visibility: hidden }`
   })
@@ -46,12 +46,10 @@ try {
     width: IOS_TOUCH_ICON_SIZE
   })
   await page.setContent(
-    `<body style="margin:0">${favicon
-      .replace(
-        '<svg ',
-        `<svg width="${IOS_TOUCH_ICON_SIZE}" height="${IOS_TOUCH_ICON_SIZE}" `
-      )
-      .replace(' clip-path="url(#lid)"', '')}</body>`
+    `<body style="margin:0">${favicon.replace(
+      '<svg ',
+      `<svg width="${IOS_TOUCH_ICON_SIZE}" height="${IOS_TOUCH_ICON_SIZE}" `
+    )}</body>`
   )
   await page.screenshot({ path: join(PUBLIC_DIR, 'apple-touch-icon.png') })
 

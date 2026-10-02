@@ -97,6 +97,6 @@ export const notFoundTitle = (message: string): string => titled(message)
 
 /** The share image is the same on every page, so its alt text is the site's. */
 export const IMAGE_ALTS: Record<Locale, string> = {
-  en: "The lid of Adrien Lacourpaille's portfolio: his name in wide marigold letters on a petrol field, over a tomato band.",
-  fr: 'Le couvercle du portfolio d’Adrien Lacourpaille : son nom en larges lettres jaune souci sur un fond pétrole, au-dessus d’une bande tomate.'
+  en: 'The top of Adrien Lacourpaille\'s release register: his name in black condensed capitals, "Full-stack developer, Nantes, open to work", over its first row, Taverla, stamped Shipped in violet.',
+  fr: 'Le haut du registre de sorties d’Adrien Lacourpaille : son nom en capitales noires étroites, son métier, sa ville et sa disponibilité, au-dessus de sa première ligne, Taverla, frappée du tampon violet « Shipped ».'
 }
