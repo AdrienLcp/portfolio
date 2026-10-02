@@ -39,7 +39,7 @@ const readLineCoverage = async (repositoryDir: string): Promise<number> => {
   return summary.total.lines.pct
 }
 
-const readOn = new Date().toISOString().slice(0, 10)
+const readOn = Temporal.Now.plainDateISO('Europe/Paris').toString()
 const figures: string[] = []
 
 for (const { links, slug } of PROJECTS) {
