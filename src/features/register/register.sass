@@ -15,6 +15,10 @@
     b
       color: var(--ink)
 
+    .wide-head > span,
+    .narrow-head > span
+      @include typography.cap-box
+
     .wide-head
       display: none
 
@@ -125,6 +129,9 @@
     padding: 0 var(--space-2xs)
     text-decoration: none
     transition: background-color var(--transition-fast) var(--timing), color var(--transition-fast) var(--timing), border-color var(--transition-fast) var(--timing)
+
+    .chip-label
+      @include typography.cap-box
 
     &.lit
       background: var(--violet)
@@ -256,7 +263,7 @@
     @include layout.sheet
     @include typography.label
 
-    align-items: center
+    align-items: baseline
     background: var(--paper-sunk)
     border-bottom: var(--hairline)
     border-top: var(--heavy-rule)
@@ -267,6 +274,9 @@
     justify-content: space-between
     min-height: var(--control-m)
     padding-inline: var(--space-xs)
+
+    .cap-link-label
+      @include typography.cap-box
 
     .cap-links
       display: flex

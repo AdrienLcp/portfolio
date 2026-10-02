@@ -120,7 +120,7 @@ export const ReportsLine: React.FC<ReportsLineProps> = ({
         href={`#${reference.slug}`}
         key={reference.slug}
       >
-        {reference.name}
+        <span className='chip-label'>{reference.name}</span>
         <Icon className='chip-icon' name='newTab' />
       </a>
     ))}
@@ -212,7 +212,9 @@ export const AppEntry: React.FC<AppEntryProps> = ({
               onPress={() => setIsOpen((wasOpen) => !wasOpen)}
             >
               <Icon className='open-entry-icon' name='plus' />
-              {translate(isOpen ? 'home.entry.close' : 'home.entry.open')}
+              <span className='open-entry-label'>
+                {translate(isOpen ? 'home.entry.close' : 'home.entry.open')}
+              </span>
             </Button>
             <RegisterLink
               href={projectPathFor({ locale, slug })}

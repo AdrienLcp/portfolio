@@ -151,12 +151,16 @@ export const PackageLedger: React.FC<PackageLedgerProps> = ({
         <span className='cap-links'>
           {packagesPath !== null && (
             <RegisterLink href={packagesPath}>
-              {translate('home.packages.open')}
+              <span className='cap-link-label'>
+                {translate('home.packages.open')}
+              </span>
             </RegisterLink>
           )}
           {repository !== null && (
             <RegisterLink href={repository} target='_blank'>
-              {repository.replace('https://', '')}
+              <span className='cap-link-label'>
+                {repository.replace('https://', '')}
+              </span>
             </RegisterLink>
           )}
         </span>

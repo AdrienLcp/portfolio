@@ -47,7 +47,11 @@ export const RegisterButton: React.FC<RegisterButtonProps> = ({
     isPending={isPending}
   >
     {icon !== undefined && <Icon className='register-link-icon' name={icon} />}
-    {children}
+    {variant === 'plain' ? (
+      children
+    ) : (
+      <span className='register-link-label'>{children}</span>
+    )}
     {isPending === true && (
       <ProgressBar
         aria-label={pendingLabel}

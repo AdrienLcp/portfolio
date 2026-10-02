@@ -44,7 +44,11 @@ export const RegisterLink: React.FC<RegisterLinkProps> = ({
     target={target}
   >
     {icon !== undefined && <Icon className='register-link-icon' name={icon} />}
-    {children}
+    {variant === 'plain' ? (
+      children
+    ) : (
+      <span className='register-link-label'>{children}</span>
+    )}
     {target === '_blank' && <NewTabMark iconClassName='register-link-icon' />}
   </ReactAriaLink>
 )

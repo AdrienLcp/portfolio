@@ -190,7 +190,7 @@ const Evenings: React.FC<EveningsProps> = ({ firstEntry }) => {
               className='chip app-chip'
               href={projectPathFor({ locale, slug: firstEntry.slug })}
             >
-              {firstEntry.name}
+              <span className='chip-label'>{firstEntry.name}</span>
               <Icon className='chip-icon' name='forward' />
             </RegisterLink>
           </>
