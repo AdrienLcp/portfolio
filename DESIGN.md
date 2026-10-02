@@ -1,259 +1,268 @@
 ---
 name: Adrien Lacourpaille
-description: A developer portfolio printed as a board-game box and its rule booklet.
+description: A developer portfolio kept as a release register, one dated row per thing shipped.
 colors:
-  petrol: "oklch(40.18% 0.0630 202.63)"
-  petrol-night: "oklch(43.03% 0.0625 201.17)"
-  tomato: "oklch(65.86% 0.1559 35.67)"
-  tomato-night: "oklch(69.61% 0.1448 36.52)"
-  marigold: "oklch(77.71% 0.1420 76.82)"
-  marigold-night: "oklch(80.86% 0.1388 79.19)"
-  brick: "oklch(54.67% 0.1523 34.72)"
-  coral-night: "oklch(78.37% 0.1295 38.34)"
-  mint-paper: "oklch(95.73% 0.0058 153.77)"
-  night-paper: "oklch(19.78% 0.0171 195.85)"
-  print-ink: "oklch(23.34% 0.0209 185.33)"
-  night-ink: "oklch(93.62% 0.0094 171.79)"
+  violet: "#4b2fd6"
+  violet-night: "#8d79ff"
+  on-violet: "#f7f8fa"
+  on-violet-soft: "#dcd6ff"
+  paper: "#f7f8fa"
+  paper-night: "#101115"
+  paper-sunk: "#eceef3"
+  paper-sunk-night: "#17181d"
+  screen: "#ffffff"
+  screen-night: "#1b1c22"
+  ink: "#15161a"
+  ink-night: "#eceef3"
+  ink-soft: "#4d505b"
+  ink-soft-night: "#a4a8b4"
+  rule: "#c9ccd6"
+  rule-night: "#2c2f38"
 typography:
   display:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "min(6rem, 10cqi)"
-    fontWeight: 900
-    lineHeight: 0.88
-    letterSpacing: "-0.035em"
-    fontVariation: "'wdth' 125"
-  headline:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "clamp(2rem, 1.2rem + 4vw, 4.5rem)"
-    fontWeight: 900
-    lineHeight: 1
+    fontFamily: "Sofia Sans Condensed, Sofia Sans, system-ui, sans-serif"
+    fontSize: "clamp(2.9rem, 9.5vw, 6rem)"
+    fontWeight: 800
+    lineHeight: 0.86
     letterSpacing: "-0.025em"
-    fontVariation: "'wdth' 118"
+  heading:
+    fontFamily: "Sofia Sans Condensed, Sofia Sans, system-ui, sans-serif"
+    fontSize: "clamp(2.4rem, 5vw, 3.6rem)"
+    fontWeight: 800
+    lineHeight: 0.9
+    letterSpacing: "-0.02em"
   lead:
-    fontFamily: "Literata, Georgia, serif"
-    fontSize: "clamp(1.125rem, 1rem + 0.6vw, 1.5rem)"
+    fontFamily: "Sofia Sans, system-ui, sans-serif"
+    fontSize: "clamp(1.2rem, 2.2vw, 1.5rem)"
     fontWeight: 500
     lineHeight: 1.35
   body:
-    fontFamily: "Literata, Georgia, serif"
-    fontSize: "clamp(1rem, 0.96rem + 0.2vw, 1.125rem)"
+    fontFamily: "Sofia Sans, system-ui, sans-serif"
+    fontSize: "1.0625rem"
     fontWeight: 400
-    lineHeight: 1.6
+    lineHeight: 1.55
   label:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "clamp(1rem, 0.96rem + 0.2vw, 1.125rem)"
-    fontWeight: 800
+    fontFamily: "Sofia Sans Condensed, Sofia Sans, system-ui, sans-serif"
+    fontSize: "0.8125rem"
+    fontWeight: 700
     lineHeight: 1.2
-    fontVariation: "'wdth' 100"
+    letterSpacing: "0.1em"
+  label-large:
+    fontFamily: "Sofia Sans Condensed, Sofia Sans, system-ui, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: "0.06em"
+  caption:
+    fontFamily: "Sofia Sans Condensed, Sofia Sans, system-ui, sans-serif"
+    fontSize: "0.8125rem"
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: "0.06em"
+  figures:
+    fontFamily: "Sofia Sans Condensed, Sofia Sans, system-ui, sans-serif"
+    fontSize: "1.0625rem"
+    fontWeight: 600
+    letterSpacing: "0.01em"
+    fontFeature: "tnum, lnum"
+  code:
+    fontFamily: "ui-monospace, Cascadia Code, Consolas, monospace"
+    fontSize: "0.9em"
 rounded:
-  s: "4px"
+  hair: "1px"
+  s: "2px"
   full: "999px"
 spacing:
-  xs: "8px"
-  s: "12px"
-  m: "20px"
-  l: "32px"
-  xl: "48px"
-  2xl: "72px"
-  3xl: "112px"
-  gutter: "clamp(16px, 4vw, 48px)"
+  4xs: "0.125rem"
+  3xs: "0.25rem"
+  2xs: "0.5rem"
+  xs: "0.75rem"
+  s: "1rem"
+  m: "1.25rem"
+  l: "1.5rem"
+  xl: "2rem"
+  2xl: "2.5rem"
+  3xl: "3rem"
+  4xl: "4.5rem"
+  5xl: "7rem"
+  block: "clamp(2rem, 4vw, 3rem)"
+  section: "clamp(2.5rem, 6vw, 4.5rem)"
+  columns: "clamp(2rem, 5vw, 5rem)"
 components:
-  token:
-    backgroundColor: "{colors.mint-paper}"
-    textColor: "{colors.print-ink}"
+  button-ink:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+    typography: "{typography.label-large}"
+    rounded: "{rounded.s}"
+    padding: "0 1rem"
+    height: "2.75rem"
+  button-ink-hover:
+    backgroundColor: "{colors.violet}"
+    textColor: "{colors.on-violet}"
+  button-line:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
+    typography: "{typography.label-large}"
+    rounded: "{rounded.s}"
+    padding: "0 1rem"
+    height: "2.75rem"
+  button-line-hover:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+  chip:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.s}"
+    padding: "0 0.5rem"
+    height: "2rem"
+  chip-lit:
+    backgroundColor: "{colors.violet}"
+    textColor: "{colors.on-violet}"
+  rail-slot:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink-soft}"
     typography: "{typography.label}"
-    rounded: "{rounded.full}"
-    padding: "0 20px 0 12px"
-    height: "44px"
-  lid:
-    backgroundColor: "{colors.petrol}"
-    textColor: "{colors.mint-paper}"
-    padding: "20px {spacing.gutter} 48px"
-  lid-band:
-    backgroundColor: "{colors.tomato}"
-    textColor: "{colors.print-ink}"
-    typography: "{typography.lead}"
-    padding: "20px {spacing.gutter} 32px"
+    rounded: "{rounded.hair}"
+    padding: "0 0.5rem"
+    height: "2rem"
+  rail-slot-selected:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+  field:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body}"
+    rounded: "{rounded.s}"
+    padding: "0.5rem 0.75rem"
+  rubber-stamp:
+    backgroundColor: "transparent"
+    textColor: "{colors.violet}"
+    rounded: "3px"
+    padding: "0.25rem 0.5rem 0.5rem"
 ---
 
 # Design System: Adrien Lacourpaille
 
 ## Overview
 
-**Creative North Star: "The Game Box and Its Rule Booklet"**
+**Creative North Star: "The Release Register"**
 
-Every piece of work is presented as a published board game. The lid sells it, the contents list proves it, the rule booklet explains it. The site is printed, not rendered: four-colour box printing in petrol and tomato, marigold for the pieces that matter, mint-grey paper underneath. Flat fields own whole regions of the screen, edge to edge, and meet at a hard ink rule. Links are die-cut cardboard tokens that lift off the table when a real pointer reaches them.
+The site is a ledger kept by hand: every app and every package is one dated row, ruled off from the next, and the site grows by a row each time something ships. Nothing is a card, nothing floats. Rows sit on one sheet, drawn edge to edge across a single column, and the eye reads down the dates the way it would read a logbook.
 
-Two voices carry the type. Archivo, stretched wide and set black, is the lettering printed on the box. Literata is the booklet: anything read as a sentence. The voice is warm and a little playful, but the play lives in the objects (a token that tilts, a pip that lights up), never in decoration laid over them.
+The voice of the page is in its lettering. Condensed capitals name, date and label everything; a plain humanist sans carries the sentences between. Colour is almost absent: cool paper, near-black ink, grey rules, and one violet reserved for the ink of a rubber stamp and for what is lit. Each page has one authored moment, the stamp pressed onto its newest entry, and everything else stays quiet so that moment lands.
 
-The world refuses the dark developer portfolio made of a name, a tagline and a grid of cards. It also refuses gradients: a printed box has no airbrush.
+The frame never borrows a project's domain. A party game, a training app and a public-records site each enter as a row with its own drawing; the register around them does not change.
 
 **Key Characteristics:**
-- Flat colour fields that fill whole regions, full-bleed, with no gradient and no texture overlay.
-- Wide, black, uppercase display lettering sized to its container, not to the viewport.
-- Die-cut pill tokens with an ink edge and a coloured pip as the only link and button shape.
-- A 3px print-ink rule where two fields meet.
-- Light and dark themes resolved in CSS; printed pieces keep their own inks in both.
+- One column (the sheet), ruled across its full width, capped at 90rem.
+- Dates and versions in tabular condensed figures, left of every entry.
+- Drawings of each app's screens, never screenshots.
+- Violet only as stamp ink and as the lit state.
+- Flat throughout: depth comes from rules and a sunk paper tone, never shadow.
 
 ## Colors
 
-A four-ink box print: one dominant cool field, one warm secondary field, one gold accent, on a faintly green paper. Every colour is a `light-dark()` pair; the night value sits beside the day value. Each value in `_tokens.sass` is an exact conversion of the palette's hex, and the theme itself is only `color-scheme`. The contrast ratios quoted below were measured, by day and by night.
+A cool, nearly monochrome paper-and-ink palette with a single saturated violet. Every colour is a `light-dark()` pair; the night values are the same roles, not a separate palette.
 
 ### Primary
-- **Box Petrol** (`petrol`, night `petrol-night`): the dominant field. Paints the lid, the whole first viewport of the home page, and the broken box of the error screen. It is also the scrollbar thumb and the browser's theme colour. On-field text is paper (7.9:1 by day, 6.5:1 by night).
-
-### Secondary
-- **Tomato Print** (`tomato`, night `tomato-night`): the secondary field. Paints the band under the lid and the whole missing-piece field of the not-found page. Text on it is always print ink (5.0:1 by day, 5.8:1 by night), never paper.
-
-### Tertiary
-- **Marigold Token** (`marigold`, night `marigold-night`): the accent. The name on the lid, the error title, text selection, and the focus ring on petrol. It reaches only 4.3:1 on petrol, so it is reserved for display type and tokens there, never for small text.
-- **Brick** (`brick`, night `coral-night`): the active colour. The caret, the lit pip of a hovered or current token, and the focus ring on paper (4.7:1 by day, 8.8:1 by night).
+- **Stamp Violet** (violet / violet-night): the ink of the rubber stamp, the lit chip, the hovered solid button and the caret. Text set on it uses **Violet Paper** (on-violet), and its quieter lines **Pale Violet** (on-violet-soft).
 
 ### Neutral
-- **Mint-Grey Paper** (`mint-paper`, night `night-paper`): the page background and the table every field is laid on.
-- **Print Ink** (`print-ink`, night `night-ink`): body text on paper (14.7:1 by day, 15.1:1 by night). Its day value is also the fixed ink of every printed piece.
-- **Soft ink**: ink mixed 78% into paper, for secondary text on paper.
+- **Cool Paper** (paper / paper-night): the page itself.
+- **Sunk Paper** (paper-sunk / paper-sunk-night): a surface set below the sheet, such as the CV desk and the ledger's capital row.
+- **Screen White** (screen / screen-night): the inside of a drawn device screen, never a page surface.
+- **Register Ink** (ink / ink-night): text, the heavy rule, solid buttons, the selected rail slot.
+- **Faded Ink** (ink-soft / ink-soft-night): secondary text, dates' captions, unselected controls, field borders at rest.
+- **Ruling Grey** (rule / rule-night): hairlines between rows and around quiet controls.
 
 ### Named Rules
-**The Flat Field Rule.** A region is one colour, edge to edge. No gradients, no tints fading into each other, no noise over a field.
+**The One Ink Rule.** Violet is stamp ink or the lit state, nothing else: no violet headings, no violet backgrounds behind sections, no violet flood.
 
-**The Printed Piece Rule.** A token, a sticker, anything that is cardboard lying on the table keeps its print inks (print ink on print paper) in both themes. Only the paper, the ink and the fields change with the theme.
-
-**The Night Lift Rule.** At night the fields lift slightly (petrol and tomato gain a few points of lightness) so they still read as printed colour against the near-black paper instead of sinking into it.
+**The Rule Is Ink Rule.** A strong rule is drawn in Register Ink (`--rule-strong` is `--ink`), so it reads as part of the writing, not as a border.
 
 ## Typography
 
-**Display Font:** Archivo (with system-ui, Segoe UI, Roboto, sans-serif)
-**Body Font:** Literata (with Georgia, Times New Roman, serif)
-**Label Font:** Archivo at its normal width
+**Display Font:** Sofia Sans Condensed (with Sofia Sans, system-ui)
+**Body Font:** Sofia Sans (with system-ui, Segoe UI, Roboto)
+**Label/Mono Font:** Sofia Sans Condensed for labels and figures; ui-monospace (Cascadia Code, Consolas) for code
 
-**Character:** a wide, heavy grotesque printed on the lid against a bookish serif with a warm italic. Both are self-hosted variable files under the SIL Open Font License, split into latin and latin-ext subsets by `unicode-range`, with the latin Archivo and the latin Literata italic preloaded.
-
-### Font files
-Each file keeps only the stretch of its axes the stylesheets ask for, cut from the upstream variable fonts with fontTools' instancer (`fonttools varLib.instancer`):
-- **Archivo:** wght 600–900, wdth 100–125.
-- **Literata:** wght 400–700, opsz 10–36; the italic pinned at wght 500, for the lead.
-
-This halves what a phone downloads before the first paint. A weight or a width outside these ranges means cutting the files again from the upstream fonts; otherwise the browser silently draws the nearest one. The files live in `public/fonts/` under the names `_fonts.sass` declares, and those URLs are repeated by the font wait in `index.html`, the preloads in `scripts/prerender.ts` and `.storybook/preview-head.html`: rename a file in all four.
+**Character:** A register's lettering: tall condensed capitals stamped at the head of each entry, and a calm, open sans for the sentences a reader actually reads.
 
 ### Hierarchy
-- **Display** (900, width 125%, `min(6rem, 10cqi)`, line-height 0.88, uppercase): the name on the lid. Sized against its container so the longest word fits the narrowest lid, 320px included; capped at 12ch.
-- **Headline** (900, width 118%, `clamp(2rem, 1.2rem + 4vw, 4.5rem)`, line-height 1): the one sentence a field carries on the not-found and error pages; capped at 16 to 18ch, long paths break anywhere.
-- **Lead** (Literata italic 500, `clamp(1.125rem, 1rem + 0.6vw, 1.5rem)`, line-height 1.35): the line printed on the band under the lid.
-- **Body** (Literata 400, `clamp(1rem, 0.96rem + 0.2vw, 1.125rem)`, line-height 1.6): all running text; measure capped at 65ch.
-- **Label** (Archivo 800, width 100%, body size, line-height 1.2): the text of a token.
+- **Display** (800, fluid per page, 0.86, -0.025em, capitals): the page's title, as large as the page allows: the name on the home page, a project's title, the 404's line.
+- **Heading** (800, fluid per section, 0.9, -0.02em, capitals): a title inside the page: an entry's name, a section, a step of the path.
+- **Lead** (500, fluid, 1.35): the sentence after a title that says what it is about.
+- **Body** (400, 1.0625rem, 1.55): running text, held to a reading measure (34 to 40rem).
+- **Label** (700, 0.8125rem, 0.1em, capitals): column heads, kinds, controls. **Label large** (1rem, 0.06em) for button text and field names; **Caption** (500, 0.06em) under figures.
+- **Figures** (condensed, tabular and lining numerals): every date and version, so columns of them align.
+
+Fixed sizes come from one step scale: 0.75, 0.8125, 0.875, 0.9375, 1, 1.0625 and 1.1875rem (`--text-2xs` to `--text-l`). Fluid sizes belong to display, heading and lead only, set per page.
 
 ### Named Rules
-**The Two Voices Rule.** Archivo is what the box prints and what a hand presses; Literata is what a person reads as a sentence. A sentence is never set in Archivo below headline size, and a control is never set in Literata.
-
-**The Wide Only On The Lid Rule.** The 125% width is for the lid lettering. Headlines step down to 118%; labels stay at 100%.
+**The Capitals Name, Sentences Explain Rule.** Condensed capitals for anything that names, dates or labels; the prose sans for anything that explains. A sentence is never set in capitals.
 
 ## Layout
 
-One column, mobile first. Every page fills the viewport height (`100dvh`) and stacks full-bleed fields: a tall field that grows to take the remaining height, then a short band or footer strip under it. Content inside a field is pushed to its bottom edge, so the lettering sits on the lid's lower third and the empty field above is part of the composition.
+Everything sits on **the sheet**: one column inset from the window by a sheet gutter (16px, 32px from 720px, 48px from 1200px) and capped at 90rem. Rules run the full width of the sheet; content inside a row sits on the register's columns.
 
-Horizontal padding is a single gutter (`clamp(16px, 4vw, 48px)`) on every field. Vertical rhythm uses the spacing scale: tall fields open with 112px above their content, bands take 20 to 32px, and from 900px wide the lid and its band gain one step of padding each. The only breakpoint is 900px; everything else scales fluidly with `clamp()` and container units. The page never scrolls horizontally.
+The register has four columns once the screen reaches 960px: date (6.5rem), text, drawing, state (7.5rem), with a 1.25rem column gap. Below that, the date and state fold above and beside the text and the drawing drops under it. The package ledger gains one column per app from 1120px. Below 600px a mechanism diagram moves its words into a key rather than shrinking past reading size.
 
-## Loading
+Spacing comes from one rem scale on a 4px grid (`--space-4xs` 2px to `--space-5xl` 112px), plus three fluid steps: **block** (between a page head and what follows), **section** (above and below a section) and **columns** (between side-by-side columns). Controls have fixed heights: 2rem (chip, rail), 2.25rem (row heads), 2.75rem (the touch target of every button and link control), 3.25rem (a specimen's bar).
 
-The first paint is already the final one: no theme flash, no font swap.
-- **Theme:** the stylesheet follows the system theme on its own, so only an explicit choice needs stamping. `@adrienlcp/theme-preference` stamps it: its Vite plugin appends a pre-paint script to `<head>`, since React runs after the first paint, and that script moves the `theme-color` tags to the choice, since they are media-scoped to the system preference.
-- **Fonts:** Archivo is drawn at five widths, from 100% to 125%, so no metric-adjusted fallback matches them all, and swapping it in reflows every heading, the nav and the stamps; Literata swapping in rewraps every paragraph. The page stays hidden until both latin faces load instead, at most `longestFontWaitMs` (800ms): the files are preloaded, and past the cap they swap in as usual. The `FontFace` descriptors in that script are the latin faces' in `_fonts.sass`.
-- **Home screen:** iOS ignores an SVG icon, and a phone is where a page is added to a home screen, so `apple-touch-icon.png` sits beside `favicon.svg`.
+### Named Rules
+**The Sheet Rule.** Nothing escapes the sheet except a sunk surface boundary; no element sets its own page width.
 
 ## Elevation & Depth
 
-The system is flat. Fields have no shadow and no layering; they are printed side by side and separated by a 3px ink rule. Depth belongs only to physical pieces lying on the print: a token casts one short soft shadow, and its edge is drawn with two inset rings (a paper-coloured bevel and a faint ink line) that read as a die-cut cardboard rim.
-
-### Shadow Vocabulary
-- **Token rest** (`box-shadow: inset 0 0 0 2px var(--token), inset 0 0 0 3.5px color-mix(in oklab, var(--print-ink) 35%, transparent), 0 3px 7px var(--shadow)`): every token. The shadow colour is print ink at 30% by day and black at 62% by night.
+The system is flat. There are no shadows anywhere. Depth is said by ruling and tone: a hairline (1px Ruling Grey) between rows, a heavy rule (2px Register Ink) above a section or a ledger, and Sunk Paper for a surface set below the sheet. The only thing that rises off the page is the rubber stamp, and it does so with ink texture and a slight tilt, not with shadow.
 
 ### Named Rules
-**The Only Pieces Cast Shadows Rule.** A field never casts a shadow. Only a movable piece does, and only a short, soft one.
+**The Ruled Not Raised Rule.** If something needs separating, draw a rule or sink the surface. Never lift it.
 
 ## Shapes
 
-Two shapes. Fields are hard-edged rectangles running to the viewport edges, with no rounding. Pieces are full pills (999px radius) with a 2px print-ink border. Things printed flat on the box (a stamp, a sheet, a tooltip slip) are square-cornered like the fields. A small inline chip (4px radius) is used only for a monospace error detail on the error screen and for the focus ring of an inline link. Where two fields meet, a 3px ink rule marks the fold.
+Corners are nearly square: 2px on buttons, chips, rails and fields, 1px on the rail's moving slot and highlight marks. Full rounding is kept for dots and swatches. Strokes come in three weights, 1px (hairline), 1.5px (control edge, underlines) and 2px (heavy rule, bold underline). An invalid field changes its stroke to a 4px double rule instead of turning red.
+
+The rubber stamp is the one tilted shape (-7deg, -4deg when small): a 2.5px violet border with a 1px outline offset outside it, roughened by an ink-bleed filter.
 
 ## Components
 
-### Token
-The single link and button shape: a die-cut cardboard disc stretched into a pill, lying on whatever field it sits on.
-- **Shape:** full pill (999px), 2px print-ink border, 44px minimum height, 12px left and 20px right padding, 8px gap to its pip.
-- **Colour:** print paper (lightened toward white by day) with print ink text, identical on every field and in both themes.
-- **Pip:** a 12px ink disc before the label. It turns brick (the fixed print brick, whatever the theme) when the token marks the current page or is hovered.
-- **Accent:** a marigold token (fixed print marigold, print ink text) for the one action a screen is for. Never more than one per screen.
-- **Played:** a selected tab is a token pressed flat into the board: print ink face, paper text, marigold pip, no shadow, no lift.
-- **Pending:** the pip turns into a rolling open ring; the token keeps its width and stays focusable.
-- **Disabled:** the shadow goes, the text fades to 55% ink; the token neither lifts nor tilts.
-- **Icon:** an icon after the label (a new-tab arrow, a copy mark). An icon-only token is a 44px disc with no pip, always named by an `aria-label`.
-- **Hover:** only under a real pointer (`hover: hover` and `pointer: fine`): the token lifts 3px and tilts 1.5 degrees, over 280ms on `cubic-bezier(0.16, 1, 0.3, 1)`. Pressed, it sinks 1px.
-- **Focus:** a 3px outline offset by 3px, drawn only on keyboard focus, in the focus colour of the field underneath.
-- **Reduced motion:** all transition durations drop to zero.
+### Buttons
+- **Shape:** near-square corners (2px), 1.5px Register Ink edge, 2.75rem tall, label-large lettering, 1rem side padding.
+- **Ink (primary):** Register Ink fill, Cool Paper text. On hover it turns Stamp Violet.
+- **Line (secondary):** transparent with an ink edge. On hover it fills with ink.
+- **Caps (tertiary):** label-large text with no box; hover draws a 2px underline.
+- **Focus:** a 2px ink ring from the shared focus module, on every control.
 
-### Text link
-A link inside a sentence stays text: inherited colour, a 2px underline at 45% of the text colour, offset 0.22em. Under a pointer the underline takes the field's focus colour (brick on paper, marigold on petrol, ink on tomato) and drops to 0.3em. A link opening a new tab carries a small arrow and says so in its accessible name.
+### Chips
+- **Style:** hairline border, 2px corners, condensed 600 at 0.9375rem, 2rem tall.
+- **State:** a lit chip (the app being looked at) fills with Stamp Violet; hover on a fine pointer darkens the border.
 
-### Theme rail
-A three-slot rail cut into the board (Auto, Day, Night) with one pawn on it. The rail is a printed piece: print paper darkened 16% toward ink, 2px ink edge, an inset shadow for the groove. Each slot shows an empty 10px hole; the pawn (a token face, ink edge, short shadow) sits under the slot in play and slides to the next one over 280ms. The chosen slot's hole is filled brick. Auto is an explicit choice, not the absence of one.
-
-### Stamp
-A tag in a contents list (the stack of a project): uppercase Archivo 700 at caption size, tracked 0.06em, a 2px border in the current text colour, square corners, no shadow. Read, never pressed.
-
-### Booklet entry
-A disclosure is one entry of the rule booklet: a 2px rule above each entry (and below the last), the title in Archivo 800 at lead size and 110% width, and at the end of the line a 36px token disc holding a plus that turns 45 degrees into a cross when open. The panel keeps the 65ch measure and fades in 6px from above.
-
-### Sheet
-A dialog is a printed sheet laid on the table: paper, a 3px ink border, square corners, one short soft shadow (it is a lifted piece), 44rem at most. The table shows through print ink at 72%, never blurred. It drops in from 18px above with a 1 degree tilt. Its title uses the heading step (Archivo 900, 112% width); its close control is an icon-only token.
-
-### Slips
-- **Tooltip:** a square slip of print ink with paper caption text and a small arrow, 28ch at most, sliding 4px into place.
-- **Toast:** a marigold pill of print (ink edge, ink text, one short shadow) at the bottom centre, with a check mark and an icon-only close token. One at a time, four seconds, paused while hovered or focused.
-
-### Icons
-One family, drawn on a 24-unit grid: 2.75 stroke, square caps, mitred joins, sized 1.125em, so they sit beside Archivo 800. Decorative only; the control that holds one carries the name.
-
-### Fields
-- **Lid (dominant field):** petrol, paper text, marigold display lettering, focus ring in marigold.
-- **Band / missing piece (secondary field):** tomato, print-ink text, focus ring in print ink, a 3px ink rule on the edge it shares with the next field.
+### Inputs / Fields
+- **Style:** Cool Paper fill, 1.5px Faded Ink edge, 2px corners, body text.
+- **Focus:** the edge darkens to Register Ink; the caret is violet.
+- **Error:** a 4px double ink rule and a bold message with an icon beside the field, never colour alone.
 
 ### Navigation
-A header strip printed on the lid's petrol field, so on the home page header and lid read as one field. At its left, the initials disc (a token with no pip, lettered in the lid's wide Archivo) leads home. At its right, the page tokens (Projects), then the locale token naming the other language in that language, then, from 900px, the theme rail. Below 900px the rail moves to the footer, a paper strip under a 3px ink rule that also carries the GitHub and LinkedIn tokens and a caption colophon. Page changes are view transitions.
+- **Style:** a running header of condensed capital links over a heavy rule; the current page is underlined. Language and theme are rails: a hairline box holding label slots, with an ink pawn that slides under the selected one.
+- **Mobile:** the links fold into a menu button that opens a popover sheet.
 
-### Contact address
-The address on the contact page is 19 characters of wide black lettering, sized to its container (`7.6cqi`) so it holds on one line at 320px.
+### Rubber Stamp
+The register's signature. A violet stamp states an entry's release state (shipped, live, in progress) with its date beneath in tabular figures. It comes small inside a ledger row, medium on an entry, large as a page's one stamp. The newest entry's stamp is pressed onto the page as it loads; with reduced motion it simply appears. On dark paper it drops the multiply blend so the ink stays visible.
 
-### Plain CV
-The plain CV carries nothing of the printed world: recruitment software reads text in source order and stumbles on columns, colour and display type.
-
-### Browser Surfaces
-Text selection is marigold with print ink; the caret is brick; the scrollbar is a petrol thumb on paper; link underlines are 2px thick, offset 0.22em.
+### Register Row
+A dated entry: its date in figures on the left, the entry's heading, kind line, lead and summary in the text column, a drawing of its screens, and its stamp on the right. Rows are separated by hairlines and unfold in place to show more.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** fill a region with one flat field from edge to edge, and mark the meeting of two fields with a 3px print-ink rule.
-- **Do** use a token for every link and button, with its pip, its ink edge and its short soft shadow.
-- **Do** switch the focus colour with the field: marigold on petrol, print ink on tomato, brick on paper.
-- **Do** keep marigold on petrol to display type and tokens (4.3:1); small text on petrol is paper.
-- **Do** put print ink, not paper, on tomato.
-- **Do** size lid lettering against its container so the full name fits at 320px.
-- **Do** gate every hover effect behind `(hover: hover) and (pointer: fine)`.
+- **Do** pick every margin, padding and gap from `--space-*`, every rule from `--hairline`, `--hairline-strong` or `--heavy-rule`, and every fixed text size from `--text-*`.
+- **Do** set dates and versions in tabular figures so columns align.
+- **Do** draw a new project's screens for its row rather than screenshot them.
+- **Do** keep each page to one pressed stamp; smaller row stamps are register vocabulary, not moments.
 
 ### Don't:
-- **Don't** use gradients, glass or blur on any surface.
-- **Don't** set a shadow on a field; only pieces cast one.
-- **Don't** repaint a printed piece for the dark theme.
-- **Don't** set a sentence in Archivo below headline size, or a control label in Literata.
-- **Don't** put a small label above a heading; the heading carries itself.
-- **Don't** replace a token with a plain rectangle button.
-
-## Design brief
-
-```
-THESIS: Every piece of work is a published game box: the lid sells it, the contents list proves it, the numbered rule booklet explains it. It refuses the dark developer portfolio made of a name, a tagline and a grid of cards.
-OWN-WORLD: Four-colour box printing in petrol and tomato with marigold tokens on mint-grey paper; flat fields own whole regions, die-cut tokens, ink outlines, no gradient. Archivo stretched wide and black on the lid, Literata in the booklet.
-STORY: The visitor opens the box, reads what is inside (one realtime server, three games, two languages, two themes, zero flash) and leaves knowing Adrien ships finished, crafted, deeply engineered products.
-FIRST VIEWPORT: The lid, full-bleed: the name in wide black Archivo, a "Full-stack developer" badge, the illustrated lid art and the contents callout; Projects, About and Contact as tokens along the top; lifting the lid is the primary action.
-FORM: a game box and its rule booklet.
-```
+- **Don't** use violet for anything but stamp ink and the lit state.
+- **Don't** add shadows, soft gradients or rounded cards; separate with rules. A hard two-tone split (a folded corner) is the only gradient.
+- **Don't** let a project's subject restyle the frame: a game does not make the register playful, a sport app does not make it athletic.
+- **Don't** set sentences in condensed capitals.
