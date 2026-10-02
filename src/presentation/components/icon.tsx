@@ -4,7 +4,7 @@ import './icon.sass'
 
 /**
  * Drawn on a 24-unit grid with the stroke of the lettering: square ends and
- * mitred corners, heavy enough to sit beside Archivo at 800.
+ * mitred corners.
  */
 const ICON_PATHS = {
   back: 'M20 12H5M11 5.5L4.5 12l6.5 6.5',

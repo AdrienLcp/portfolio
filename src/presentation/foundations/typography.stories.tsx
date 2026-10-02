@@ -10,28 +10,23 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const SCALE = [
-  { mixin: 'title', sample: 'No page lives at /en/rules.' },
-  { mixin: 'heading', sample: 'The lobby, on the host screen' },
-  { mixin: 'lead', sample: 'Three party games, one realtime server.' },
+  { mixin: 'label', sample: 'Entry · Released · Status' },
+  { mixin: 'figures', sample: '2026-10-02 · v1.4.0 · 98.2%' },
   {
     mixin: 'body',
     sample:
       'Every phone in the room buzzes on the same instant: the server keeps the clock, and each phone corrects its own drift against it before the round starts.'
   },
-  { mixin: 'control', sample: 'Open the box' },
-  { mixin: 'caption', sample: 'React 19 · react-aria · Sass' }
+  { mixin: 'code', sample: 'pnpm add @adrienlcp/result' }
 ] as const
 
 export const Scale: Story = {
   render: () => (
     <Foundation>
       <FoundationGroup
-        note='Archivo is what the box prints and what a hand presses; Literata is what a person reads as a sentence.'
-        title='Two voices'
+        note='Sofia Sans Condensed letters the register; Sofia Sans carries every sentence.'
+        title='One family, two widths'
       >
-        <div className='lid-sample'>
-          <p className='type-lid'>Adrien Lacourpaille</p>
-        </div>
         {SCALE.map(({ mixin, sample }) => (
           <SpecimenRow key={mixin} name={`typography.${mixin}`}>
             <p className={`type-${mixin}`}>{sample}</p>

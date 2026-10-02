@@ -6,12 +6,10 @@ import type { Decorator, Preview } from '@storybook/react-vite'
 import { useEffect } from 'react'
 import { RouterProvider } from 'react-aria-components'
 
-import { ToastRegion } from '@/presentation/components/ui/toast'
 import { I18nProvider } from '@/presentation/i18n/i18n-provider'
 import { isLocale } from '@/presentation/i18n/locale'
 
 import '@/presentation/styles/globals.sass'
-import './preview.sass'
 
 /**
  * The toolbar paints the document without touching the stored preference, so
@@ -33,7 +31,6 @@ const withLocale: Decorator = (Story, { globals }) => {
   return (
     <I18nProvider key={locale} locale={isLocale(locale) ? locale : 'en'}>
       <Story />
-      <ToastRegion />
     </I18nProvider>
   )
 }

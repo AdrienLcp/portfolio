@@ -11,7 +11,9 @@
       gap: var(--space-s)
 
     .foundation-title
-      @include typography.heading
+      @include typography.label
+
+      font-size: 1.25rem
 
     .foundation-note
       color: var(--ink-soft)
@@ -31,7 +33,7 @@
         grid-template-columns: 14rem 1fr
 
     .specimen-name
-      @include typography.caption
+      @include typography.label
 
       display: grid
       gap: var(--space-2xs)
@@ -48,7 +50,7 @@
       max-width: 16rem
 
     .bar
-      background: var(--field-dominant)
+      background: var(--ink)
       height: 16px
       width: var(--bar)
 
@@ -61,44 +63,26 @@
 
     .motion-dot
       animation: motion-run var(--duration) var(--timing) infinite alternate
-      background: var(--active)
+      background: var(--violet)
       border-radius: var(--radius-full)
       height: 16px
       left: 0
       position: absolute
       width: 16px
 
-    .type-lid
-      @include typography.lid
+    .type-label
+      @include typography.label
 
-      color: var(--accent)
-      container-type: inline-size
-
-    .type-title
-      @include typography.title
-
-    .type-heading
-      @include typography.heading
-
-    .type-lead
-      @include typography.lead
+    .type-figures
+      @include typography.figures
 
     .type-body
       @include typography.body
 
       max-width: var(--measure)
 
-    .type-control
-      @include typography.control
-
-    .type-caption
-      @include typography.caption
-
-    .lid-sample
-      @include layout.field-dominant
-
-      container-type: inline-size
-      padding: var(--space-l) var(--gutter)
+    .type-code
+      @include typography.code
 
   @keyframes motion-run
     to

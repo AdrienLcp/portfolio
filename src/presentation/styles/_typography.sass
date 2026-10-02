@@ -1,39 +1,3 @@
-/// The lid lettering. Sized against its container rather than the viewport, so
-/// the longest word of the name fits the narrowest lid, 320px included.
-@mixin lid
-  font-family: var(--font-display)
-  font-size: min(6rem, 10cqi)
-  font-stretch: 125%
-  font-weight: 900
-  letter-spacing: -0.035em
-  line-height: 0.88
-  text-transform: uppercase
-
-@mixin title
-  font-family: var(--font-display)
-  font-size: var(--text-title)
-  font-stretch: 118%
-  font-weight: 900
-  letter-spacing: -0.025em
-  line-height: 1
-
-/// The title of a sheet or a section: the headline's lettering, a size down.
-@mixin heading
-  font-family: var(--font-display)
-  font-size: clamp(1.375rem, 1.15rem + 1.1vw, 2rem)
-  font-stretch: 112%
-  font-weight: 900
-  letter-spacing: -0.02em
-  line-height: 1.05
-  text-wrap: balance
-
-@mixin lead
-  font-family: var(--font-read)
-  font-size: var(--text-lead)
-  font-style: italic
-  font-weight: 500
-  line-height: 1.35
-
 @mixin body
   font-family: var(--font-prose)
   font-size: 1.0625rem
@@ -55,21 +19,6 @@
   font-family: var(--font-letter)
   font-variant-numeric: tabular-nums lining-nums
   letter-spacing: 0.01em
-
-/// A control's own label: a token, a button.
-@mixin control
-  font-family: var(--font-display)
-  font-size: var(--text-body)
-  font-stretch: 100%
-  font-weight: 800
-  line-height: 1.2
-
-@mixin caption
-  font-family: var(--font-display)
-  font-size: var(--text-caption)
-  font-stretch: 100%
-  font-weight: 600
-  line-height: 1.35
 
 @mixin code
   font-family: var(--font-code)

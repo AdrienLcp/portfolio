@@ -13,28 +13,17 @@ const GROUPS = [
   {
     note: 'Each is a light-dark() pair: switch the theme in the toolbar.',
     title: 'Paper and ink',
-    tokens: ['--paper', '--ink', '--ink-soft']
+    tokens: ['--paper', '--paper-sunk', '--screen', '--ink', '--ink-soft']
   },
   {
-    note: 'Flat fields, edge to edge. At night they lift a few points of lightness.',
-    title: 'Fields',
-    tokens: ['--field-dominant', '--field-secondary']
+    note: 'The register is drawn in rules: hairlines between rows, ink under heads.',
+    title: 'Rules',
+    tokens: ['--rule', '--rule-strong']
   },
   {
-    note: 'Marigold is for display type and tokens on petrol, never small text.',
-    title: 'Accent and active',
-    tokens: ['--accent', '--active', '--focus']
-  },
-  {
-    note: 'A printed piece keeps these inks in both themes.',
-    title: 'Print inks',
-    tokens: [
-      '--print-ink',
-      '--print-paper',
-      '--print-marigold',
-      '--print-brick',
-      '--token'
-    ]
+    note: 'One violet, kept for the stamp press and the live state, never a flood.',
+    title: 'Violet',
+    tokens: ['--violet', '--on-violet', '--on-violet-soft']
   }
 ] as const
 

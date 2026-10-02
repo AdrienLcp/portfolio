@@ -1,22 +1,5 @@
 @forward '@adrienlcp/styles/breakpoints'
 
-/// A region printed in one flat colour, carrying the text and focus colours
-/// that survive on it. The active colour vanishes on both fields, so focus
-/// takes the accent on the dominant one and the print ink on the secondary.
-@mixin field-dominant
-  --focus: var(--accent)
-  --outline: var(--on-dominant)
-
-  background: var(--field-dominant)
-  color: var(--on-dominant)
-
-@mixin field-secondary
-  --focus: var(--print-ink)
-  --outline: var(--print-ink)
-
-  background: var(--field-secondary)
-  color: var(--on-secondary)
-
 /// The register's sheet: the column every rule of the page is drawn across,
 /// set in from the window's edge and capped on a wide screen.
 @mixin sheet
