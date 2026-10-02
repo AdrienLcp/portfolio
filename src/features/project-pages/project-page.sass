@@ -96,6 +96,9 @@ $column-gap: 1.25rem
     text-transform: uppercase
     text-wrap: balance
 
+  .entry-head-text .entry-kind
+    margin: 0.85rem 0 0
+
   .entry-head-tagline
     font-size: clamp(1.2rem, 2.2vw, 1.5rem)
     font-weight: 500
@@ -165,11 +168,11 @@ $column-gap: 1.25rem
   // ---------- the figures ----------
 
   .entry-facts
-    border-bottom: 1px solid var(--rule)
-    border-top: 2px solid var(--rule-strong)
-
     dl
       @include layout.sheet
+
+      border-bottom: 1px solid var(--rule)
+      border-top: 2px solid var(--rule-strong)
 
       display: grid
       grid-template-columns: repeat(2, minmax(0, 1fr))
@@ -267,8 +270,6 @@ $column-gap: 1.25rem
     padding: 0
 
   .shipped-lines
-    counter-reset: shipped
-
     li
       align-items: baseline
       border-bottom: 1px solid var(--rule)
@@ -280,13 +281,12 @@ $column-gap: 1.25rem
       text-wrap: pretty
 
       &::before
-        @include typography.figures
-
-        color: var(--violet)
-        content: counter(shipped, decimal-leading-zero)
-        counter-increment: shipped
-        font-size: 1.1rem
-        font-weight: 800
+        align-self: start
+        background: var(--ink)
+        block-size: 1px
+        content: ''
+        inline-size: 1.25rem
+        margin-top: 0.8em
 
       @include media.two-columns
         font-size: 1.25rem

@@ -62,10 +62,10 @@ export const EntryHead: React.FC<EntryHeadProps> = ({
           ))}
         </dl>
         <div className='entry-head-text'>
-          <p className='entry-kind'>{kind}</p>
           <h1 className='entry-title' id={titleId}>
             {name}
           </h1>
+          <p className='entry-kind'>{kind}</p>
           <p className='entry-head-tagline'>{tagline}</p>
           <p className='entry-head-summary'>{summary}</p>
           <ul aria-label={translate('project.stack')} className='stack-line'>
