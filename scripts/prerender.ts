@@ -2,8 +2,11 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
+import { z } from 'zod'
+
 import type { PrerenderedPage, RenderedPage } from '../src/entry-server'
 import { replaceOnce, setMeta, setTitle } from './head-tags'
+import { readJsonFile } from './read-json-file'
 
 type EntryServer = typeof import('../src/entry-server')
 
@@ -17,11 +20,13 @@ const SERVER_ENTRY = join(ROOT, 'dist-ssr', 'entry-server.js')
  */
 const VITE_MANIFEST_FILE = '.vite/manifest.json'
 
-type BuildChunk = {
-  css?: string[]
-  file: string
-  imports?: string[]
-}
+const buildChunkSchema = z.object({
+  css: z.array(z.string()).optional(),
+  file: z.string(),
+  imports: z.array(z.string()).optional()
+})
+
+type BuildChunk = z.infer<typeof buildChunkSchema>
 
 const CANONICAL = /<link\s+href="[^"]*"\s+rel="canonical"\s*\/>/
 
@@ -372,8 +377,9 @@ const alreadyRequested = new Set([
   )
 ])
 
-const buildManifest: Record<string, BuildChunk> = JSON.parse(
-  await readFile(join(CLIENT_DIR, VITE_MANIFEST_FILE), 'utf8')
+const buildManifest = await readJsonFile(
+  join(CLIENT_DIR, VITE_MANIFEST_FILE),
+  z.record(z.string(), buildChunkSchema)
 )
 
 const {

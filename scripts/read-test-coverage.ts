@@ -1,9 +1,12 @@
 import { spawnSync } from 'node:child_process'
-import { readFile, writeFile } from 'node:fs/promises'
+import { writeFile } from 'node:fs/promises'
 import { basename, join } from 'node:path'
+
+import { z } from 'zod'
 
 import { PROJECTS } from '../src/features/projects/projects-content'
 import { today } from '../src/infrastructure/clock'
+import { readJsonFile } from './read-json-file'
 
 /** Every project's repository is cloned beside this one, under its own name. */
 const REPOSITORIES_DIR = join(import.meta.dirname, '..', '..')
@@ -17,7 +20,9 @@ const FIGURES_FILE = join(
   'test-coverage-figures.ts'
 )
 
-type CoverageSummary = { total: { lines: { pct: number } } }
+const coverageSummarySchema = z.object({
+  total: z.object({ lines: z.object({ pct: z.number() }) })
+})
 
 const readLineCoverage = async (repositoryDir: string): Promise<number> => {
   const run = spawnSync('pnpm', ['test:coverage'], {
@@ -30,11 +35,9 @@ const readLineCoverage = async (repositoryDir: string): Promise<number> => {
     throw new Error(`pnpm test:coverage failed in ${repositoryDir}`)
   }
 
-  const summary: CoverageSummary = JSON.parse(
-    await readFile(
-      join(repositoryDir, 'coverage', 'coverage-summary.json'),
-      'utf8'
-    )
+  const summary = await readJsonFile(
+    join(repositoryDir, 'coverage', 'coverage-summary.json'),
+    coverageSummarySchema
   )
 
   return summary.total.lines.pct
