@@ -1,9 +1,9 @@
-import { copyText, selectContents } from '@adrienlcp/browser'
 import type React from 'react'
 import { Suspense, use, useEffect, useRef, useState } from 'react'
 
 import { useContactData } from '@/features/contact/contact-loader'
 import type { Profile } from '@/features/profile/profile'
+import { copyText, selectContents } from '@/infrastructure/browser'
 import { cvPathFor, homePathFor } from '@/infrastructure/router/navigation'
 import { BlankEntry } from '@/presentation/blank-entry'
 import { Icon } from '@/presentation/components/icon'

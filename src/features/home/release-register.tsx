@@ -17,14 +17,12 @@ import {
   SITE_INSTALLS,
   SITE_SLUG
 } from '@/features/register/this-site'
+import { hasFinePointer } from '@/infrastructure/browser'
 import { projectPathFor } from '@/infrastructure/router/navigation'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 
 import { AppEntry, type RowReference } from './app-entry'
 import { SiteEntry } from './site-entry'
-
-const hasFinePointer = (): boolean =>
-  window.matchMedia('(hover: hover) and (pointer: fine)').matches
 
 type ReleaseRegisterProps = {
   housePackages: readonly HousePackage[]
