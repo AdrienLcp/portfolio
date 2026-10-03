@@ -130,8 +130,8 @@ export const CV: z.input<typeof cvSchema> = {
       link: 'https://github.com/AdrienLcp/packages',
       name: '@adrienlcp/*',
       summary: {
-        en: 'Eleven tested TypeScript packages on npm, released from GitHub Actions with provenance, used by four apps.',
-        fr: 'Onze paquets TypeScript testés, publiés sur npm par la CI avec provenance, dans quatre apps.'
+        en: 'Eleven tested TypeScript packages on npm, released from GitHub Actions with provenance, used by five apps.',
+        fr: 'Onze paquets TypeScript testés, publiés sur npm par la CI avec provenance, dans cinq apps.'
       },
       year: '2026'
     }
