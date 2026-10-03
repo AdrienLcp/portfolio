@@ -5,14 +5,6 @@
 ::view-transition-new(.page-in)
   animation: page-in var(--transition-base) var(--timing) var(--transition-fast) both
 
-// React starts a view transition whatever the reader's preference: the page
-// then changes at once.
-@media (prefers-reduced-motion: reduce)
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*)
-    animation: none
-
 @keyframes page-out
   to
     opacity: 0

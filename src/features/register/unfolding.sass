@@ -2,13 +2,12 @@
 // drawing (see `Unfolds`): the row is drawn out into a sheet the size of the
 // page, its parts travel to their place on it, and it all folds back on the
 // way home.
-$unfold: 560ms
 
 ::view-transition-group(.unfold-sheet),
 ::view-transition-group(.unfold-name),
 ::view-transition-group(.unfold-dates),
 ::view-transition-group(.unfold-figure)
-  animation-duration: $unfold * 0.8
+  animation-duration: calc(var(--transition-slow) * 0.8)
   animation-timing-function: var(--timing)
 
 // The sheet is drawn as a plain sunk surface under a heavy rule: stretching
@@ -18,7 +17,7 @@ $unfold: 560ms
   display: none
 
 ::view-transition-image-pair(.unfold-sheet)
-  animation: unfold-sheet $unfold linear both
+  animation: unfold-sheet var(--transition-slow) linear both
   background: var(--paper-sunk)
   border-top: var(--heavy-rule)
 
@@ -28,7 +27,7 @@ $unfold: 560ms
 ::view-transition-new(.unfold-dates),
 ::view-transition-old(.unfold-figure),
 ::view-transition-new(.unfold-figure)
-  animation-duration: $unfold * 0.6
+  animation-duration: calc(var(--transition-slow) * 0.6)
   animation-timing-function: var(--timing)
 
 @keyframes unfold-sheet
