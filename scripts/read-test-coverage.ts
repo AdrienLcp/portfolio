@@ -3,6 +3,7 @@ import { readFile, writeFile } from 'node:fs/promises'
 import { basename, join } from 'node:path'
 
 import { PROJECTS } from '../src/features/projects/projects-content'
+import { today } from '../src/infrastructure/clock'
 
 /** Every project's repository is cloned beside this one, under its own name. */
 const REPOSITORIES_DIR = join(import.meta.dirname, '..', '..')
@@ -39,7 +40,7 @@ const readLineCoverage = async (repositoryDir: string): Promise<number> => {
   return summary.total.lines.pct
 }
 
-const readOn = Temporal.Now.plainDateISO('Europe/Paris').toString()
+const readOn = today('Europe/Paris').toString()
 const figures: string[] = []
 
 for (const { links, slug } of PROJECTS) {

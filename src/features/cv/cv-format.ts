@@ -1,4 +1,5 @@
 import type { Period } from '@/features/cv/cv'
+import { monthToDate } from '@/infrastructure/dates'
 import type { Locale } from '@/presentation/i18n/locale'
 
 const formatMonth = (month: string, locale: Locale): string =>
@@ -8,7 +9,7 @@ const formatMonth = (month: string, locale: Locale): string =>
         month: 'long',
         timeZone: 'UTC',
         year: 'numeric'
-      }).format(new Date(`${month}-01T00:00:00Z`))
+      }).format(monthToDate(month))
 
 export const formatPeriod = ({
   locale,
