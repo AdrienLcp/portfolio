@@ -77,7 +77,7 @@
     "test:e2e": "tsc --noEmit -p e2e && playwright test -c e2e",
     "test:watch": "vitest --project unit",
     "typecheck": "tsc --noEmit",
-    "validate": "pnpm build && pnpm lint:ci && pnpm spell && pnpm test:coverage && pnpm test:components && pnpm test:e2e"
+    "validate": "pnpm lint:ci && pnpm spell && pnpm build && pnpm test:coverage && pnpm test:components && pnpm test:e2e"
   },
   "type": "module",
   "version": "0.1.0"
