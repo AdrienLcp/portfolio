@@ -5,6 +5,7 @@ import { LocalePrefixedRoutes } from '@/infrastructure/router/locale-prefixed-ro
 import { localizedPaths } from '@/infrastructure/router/navigation'
 import { NegotiatedLocaleRedirect } from '@/infrastructure/router/negotiated-locale-redirect'
 import { RootRoute, rootLoader } from '@/infrastructure/router/root-route'
+import { markAsSettledForReactUse } from '@/infrastructure/router/settled-for-react-use'
 import { ErrorScreen } from '@/presentation/error-screen'
 import {
   DEFAULT_LOCALE,
@@ -147,10 +148,35 @@ const loaderFor = {
 /** Pages printed bare, without the site's header and footer. */
 const BARE_PATHS: ReadonlySet<LocalizedPath> = new Set([localizedPaths.cvPlain])
 
+/**
+ * A register row unfolds into its entry's page and folds back into the home
+ * page: the view transition captures the page it lands on as soon as the
+ * navigation commits, so these two wait for their requests instead of
+ * suspending.
+ */
+const UNFOLDING_PATHS: ReadonlySet<LocalizedPath> = new Set([
+  localizedPaths.home,
+  localizedPaths.project
+])
+
+const settledBeforeCommit = async <
+  TRequests extends Record<string, Promise<unknown>>
+>(
+  requests: TRequests
+): Promise<TRequests> => {
+  await Promise.all(Object.values(requests).map(markAsSettledForReactUse))
+
+  return requests
+}
+
 const routeFor = (path: LocalizedPath): RouteObject => ({
   handle: { isBare: BARE_PATHS.has(path) },
   lazy: pageFor[path].lazy,
-  loader: async (args) => settledUnread(await loaderFor[path](args)),
+  loader: async (args) => {
+    const requests = settledUnread(await loaderFor[path](args))
+
+    return UNFOLDING_PATHS.has(path) ? settledBeforeCommit(requests) : requests
+  },
   path
 })
 

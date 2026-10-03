@@ -19,6 +19,11 @@
     translate: 0 calc(-100% - var(--space-m))
     z-index: 30
 
+    // Parked above the viewport, yet a view transition's picture of the page
+    // still shows it.
+    :root:active-view-transition &
+      visibility: hidden
+
     &:focus-visible
       outline: var(--outline-thin) solid var(--ink)
       outline-offset: 3px

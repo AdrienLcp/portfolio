@@ -4,7 +4,7 @@ import {
   selectContents
 } from '@adrienlcp/browser'
 
-export { copyText, prefersReducedMotion, selectContents }
+export { copyText, selectContents }
 
 export const preferredLocales = (): readonly string[] => navigator.languages
 

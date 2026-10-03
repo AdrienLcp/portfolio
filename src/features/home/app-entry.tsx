@@ -14,6 +14,7 @@ import {
 import { PACKAGE_LEDGER_ID } from '@/features/register/package-ledger'
 import type { Plates } from '@/features/register/plates'
 import { ReleaseStamp } from '@/features/register/release-stamp'
+import { Unfolds } from '@/features/register/unfolds'
 import { useDrawnWhenSeen } from '@/features/register/use-drawn-when-seen'
 import { projectPathFor } from '@/infrastructure/router/navigation'
 import { Icon } from '@/presentation/components/icon'
@@ -169,88 +170,94 @@ export const AppEntry: React.FC<AppEntryProps> = ({
   const mechanismRef = useRef<HTMLDivElement>(null)
   const isDrawn = useDrawnWhenSeen(mechanismRef, isOpen)
   const { register, slug } = project
+  const entryPath = projectPathFor({ locale, slug })
 
   return (
     <li
       className={isLit ? 'register-row app-row lit' : 'register-row app-row'}
       id={slug}
     >
-      <article aria-labelledby={titleId} className='app-entry'>
-        <EnteredDate
-          date={register.entered}
-          label={translate('home.entry.entered')}
-        />
-        <div className='entry-text'>
-          <h2 className='entry-name' id={titleId}>
-            {project.name}
-          </h2>
-          <p className='entry-kind'>
-            {translate('home.register.app')} · {register.category}
-          </p>
-          <p className='entry-tagline'>{project.tagline}</p>
-          <p className='entry-summary'>{project.summary}</p>
-          <Installs installs={register.installs} litPackage={litPackage} />
-          {countedBy !== null && (
-            <ReportsLine
-              label={translate('home.entry.pageViewsTo')}
-              references={[countedBy]}
-              slug={slug}
+      <Unfolds part='sheet' slug={slug}>
+        <article aria-labelledby={titleId} className='app-entry'>
+          <Unfolds part='dates' slug={slug}>
+            <EnteredDate
+              date={register.entered}
+              label={translate('home.entry.entered')}
             />
-          )}
-          {reporters.length > 0 && (
-            <ReportsLine
-              label={translate('home.entry.countsFrom')}
-              references={reporters}
-              slug={slug}
-            />
-          )}
-          <div className='entry-actions'>
-            <Button
-              aria-controls={drawerId}
-              aria-expanded={isOpen}
-              className='open-entry'
-              onPress={() => setIsOpen((wasOpen) => !wasOpen)}
-            >
-              <Icon className='open-entry-icon' name='plus' />
-              <span className='open-entry-label'>
-                {translate(isOpen ? 'home.entry.close' : 'home.entry.open')}
-              </span>
-            </Button>
-            <RegisterLink
-              href={projectPathFor({ locale, slug })}
-              variant='caps'
-            >
-              {translate('home.entry.full')}
-            </RegisterLink>
-            {project.links.live !== undefined && (
-              <RegisterLink
-                href={project.links.live}
-                target='_blank'
-                variant='caps'
-              >
-                {translate(
-                  project.kind === 'game'
-                    ? 'home.entry.openGame'
-                    : 'home.entry.openApp'
-                )}
-              </RegisterLink>
+          </Unfolds>
+          <div className='entry-text'>
+            <Unfolds part='name' slug={slug}>
+              <h2 className='entry-name' id={titleId}>
+                {project.name}
+              </h2>
+            </Unfolds>
+            <p className='entry-kind'>
+              {translate('home.register.app')} · {register.category}
+            </p>
+            <p className='entry-tagline'>{project.tagline}</p>
+            <p className='entry-summary'>{project.summary}</p>
+            <Installs installs={register.installs} litPackage={litPackage} />
+            {countedBy !== null && (
+              <ReportsLine
+                label={translate('home.entry.pageViewsTo')}
+                references={[countedBy]}
+                slug={slug}
+              />
             )}
+            {reporters.length > 0 && (
+              <ReportsLine
+                label={translate('home.entry.countsFrom')}
+                references={reporters}
+                slug={slug}
+              />
+            )}
+            <div className='entry-actions'>
+              <Button
+                aria-controls={drawerId}
+                aria-expanded={isOpen}
+                className='open-entry'
+                onPress={() => setIsOpen((wasOpen) => !wasOpen)}
+              >
+                <Icon className='open-entry-icon' name='plus' />
+                <span className='open-entry-label'>
+                  {translate(isOpen ? 'home.entry.close' : 'home.entry.open')}
+                </span>
+              </Button>
+              <RegisterLink href={entryPath} variant='caps'>
+                {translate('home.entry.full')}
+              </RegisterLink>
+              {project.links.live !== undefined && (
+                <RegisterLink
+                  href={project.links.live}
+                  target='_blank'
+                  variant='caps'
+                >
+                  {translate(
+                    project.kind === 'game'
+                      ? 'home.entry.openGame'
+                      : 'home.entry.openApp'
+                  )}
+                </RegisterLink>
+              )}
+            </div>
           </div>
-        </div>
-        {plates !== undefined && (
-          <figure className='entry-figure'>
-            <plates.Drawing />
-            <figcaption>{translate('home.entry.drawn')}</figcaption>
-          </figure>
-        )}
-        <div className='entry-state'>
-          <ReleaseStamp
-            entered={register.entered}
-            isFresh={isFresh}
-            state={register.state}
-          />
-        </div>
-      </article>
+          {plates !== undefined && (
+            <Unfolds part='figure' slug={slug}>
+              <figure className='entry-figure'>
+                <plates.Drawing />
+                <figcaption>{translate('home.entry.drawn')}</figcaption>
+              </figure>
+            </Unfolds>
+          )}
+          <div className='entry-state'>
+            <ReleaseStamp
+              entered={register.entered}
+              isFresh={isFresh}
+              state={register.state}
+            />
+          </div>
+        </article>
+      </Unfolds>
       <div
         className={isOpen ? 'entry-drawer open' : 'entry-drawer'}
         id={drawerId}

@@ -1,5 +1,6 @@
 import type React from 'react'
 
+import { Unfolds } from '@/features/register/unfolds'
 import { RegisterLink } from '@/presentation/components/register/register-link'
 import { useTranslate } from '@/presentation/i18n/i18n-provider'
 
@@ -19,6 +20,8 @@ type EntryHeadProps = {
   registerHref: string
   kind: string
   name: string
+  /** The entry's slug, which its register row unfolds under. */
+  slug: string
   stack: readonly string[]
   stamp: React.ReactNode
   summary: string
@@ -34,6 +37,7 @@ export const EntryHead: React.FC<EntryHeadProps> = ({
   kind,
   name,
   registerHref,
+  slug,
   stack,
   stamp,
   summary,
@@ -53,18 +57,22 @@ export const EntryHead: React.FC<EntryHeadProps> = ({
         {translate('project.breadcrumb')}
       </RegisterLink>
       <div className='entry-head-grid'>
-        <dl className='entry-head-dates'>
-          {dates.map((date) => (
-            <div key={date.label}>
-              <dt>{date.label}</dt>
-              <dd>{date.value}</dd>
-            </div>
-          ))}
-        </dl>
+        <Unfolds part='dates' slug={slug}>
+          <dl className='entry-head-dates'>
+            {dates.map((date) => (
+              <div key={date.label}>
+                <dt>{date.label}</dt>
+                <dd>{date.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </Unfolds>
         <div className='entry-head-text'>
-          <h1 className='entry-title' id={titleId}>
-            {name}
-          </h1>
+          <Unfolds part='name' slug={slug}>
+            <h1 className='entry-title' id={titleId}>
+              {name}
+            </h1>
+          </Unfolds>
           <p className='entry-kind'>{kind}</p>
           <p className='entry-head-tagline'>{tagline}</p>
           <p className='entry-head-summary'>{summary}</p>

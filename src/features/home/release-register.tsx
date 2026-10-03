@@ -18,8 +18,7 @@ import {
   SITE_SLUG
 } from '@/features/register/this-site'
 import { hasFinePointer } from '@/infrastructure/browser'
-import { projectPathFor } from '@/infrastructure/router/navigation'
-import { useI18n } from '@/presentation/i18n/i18n-provider'
+import { useTranslate } from '@/presentation/i18n/i18n-provider'
 
 import { AppEntry, type RowReference } from './app-entry'
 import { SiteEntry } from './site-entry'
@@ -40,7 +39,7 @@ export const ReleaseRegister: React.FC<ReleaseRegisterProps> = ({
   plates,
   projects
 }) => {
-  const { locale, translate } = useI18n()
+  const translate = useTranslate()
   const [reference, setReference] = useState<CrossReference | null>(null)
   const apps = projects.filter(isRegistered)
   const siteName = translate('home.site.title')
@@ -155,11 +154,7 @@ export const ReleaseRegister: React.FC<ReleaseRegisterProps> = ({
           columns={columns}
           housePackages={housePackages}
           litPackage={litPackage}
-          packagesPath={
-            packagesProject === undefined
-              ? null
-              : projectPathFor({ locale, slug: packagesProject.slug })
-          }
+          packagesSlug={packagesProject?.slug ?? null}
           repository={packagesProject?.links.repository ?? null}
         />
       </ol>

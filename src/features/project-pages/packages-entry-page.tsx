@@ -13,6 +13,7 @@ import {
   ledgerColumnsOf,
   type RegisteredProject
 } from '@/features/register/this-site'
+import { Unfolds } from '@/features/register/unfolds'
 import { RegisterLink } from '@/presentation/components/register/register-link'
 import { useTranslate } from '@/presentation/i18n/i18n-provider'
 
@@ -74,129 +75,134 @@ export const PackagesEntryPage: React.FC<PackagesEntryPageProps> = ({
   }
 
   return (
-    <article aria-labelledby={titleId} className='entry-page packages-entry'>
-      <EntryHead
-        actions={
-          <>
-            <RegisterLink
-              href={project.links.repository}
-              target='_blank'
-              variant='ink'
-            >
-              {translate('project.source')}
-            </RegisterLink>
-            <RegisterLink href={`#${LEDGER_ID}`} variant='line'>
-              {translate('project.packages.toLedger', {
-                count: String(housePackages.length)
-              })}
-            </RegisterLink>
-          </>
-        }
-        dates={[
-          ...(latest === undefined
-            ? []
-            : [{ label: translate('project.packages.latest'), value: latest }]),
-          ...(firstCommit === undefined
-            ? []
-            : [
-                {
-                  label: translate('project.firstCommit'),
-                  value: firstCommit.date
-                }
-              ])
-        ]}
-        kind={translate('project.packages.kind')}
-        name={project.name}
-        registerHref={registerHref}
-        stack={project.stack}
-        stamp={
-          <ReleaseStamp
-            entered={latest}
-            isFresh
-            label={translate('project.packages.kindStamp')}
-            state='shipped'
-          />
-        }
-        summary={project.summary}
-        tagline={project.tagline}
-        titleId={titleId}
-      >
-        {heroSample !== undefined && (
-          <div className='entry-hero-specimen'>
-            <CodeSpecimen
-              code={heroSample.code}
-              href={hrefOfSample(heroSample)}
-              title={heroSample.title}
-            />
-            <div className='specimen-notes'>
-              {heroSample.notes.map((note) => (
-                <p key={note}>{note}</p>
-              ))}
-            </div>
-          </div>
-        )}
-      </EntryHead>
-      <EntryFacts
-        facts={[
-          {
-            label: translate('project.packages.count'),
-            note: translate('project.packages.countNote'),
-            value: String(housePackages.length)
-          },
-          ...(latest === undefined
-            ? []
-            : [
-                {
-                  label: translate('project.packages.latest'),
-                  note: translate('project.packages.latestNote'),
-                  value: latest
-                }
-              ]),
-          {
-            label: translate('project.commits'),
-            note: translate('project.commitsNote', { date: history.readOn }),
-            value: String(history.commits)
-          },
-          coverageFact(project.coverage, translate),
-          {
-            label: translate('project.packages.installedBy'),
-            note: columns.map((column) => column.name).join(', '),
-            value: translate('project.packages.installedByCount', {
-              count: String(columns.length)
-            })
+    <Unfolds part='sheet' slug={project.slug}>
+      <article aria-labelledby={titleId} className='entry-page packages-entry'>
+        <EntryHead
+          actions={
+            <>
+              <RegisterLink
+                href={project.links.repository}
+                target='_blank'
+                variant='ink'
+              >
+                {translate('project.source')}
+              </RegisterLink>
+              <RegisterLink href={`#${LEDGER_ID}`} variant='line'>
+                {translate('project.packages.toLedger', {
+                  count: String(housePackages.length)
+                })}
+              </RegisterLink>
+            </>
           }
-        ]}
-      />
-      {otherSamples.length > 0 && (
-        <EntryBlock
-          lead={translate('project.excerptsLead')}
-          title={translate('project.excerpts')}
+          dates={[
+            ...(latest === undefined
+              ? []
+              : [
+                  { label: translate('project.packages.latest'), value: latest }
+                ]),
+            ...(firstCommit === undefined
+              ? []
+              : [
+                  {
+                    label: translate('project.firstCommit'),
+                    value: firstCommit.date
+                  }
+                ])
+          ]}
+          kind={translate('project.packages.kind')}
+          name={project.name}
+          registerHref={registerHref}
+          slug={project.slug}
+          stack={project.stack}
+          stamp={
+            <ReleaseStamp
+              entered={latest}
+              isFresh
+              label={translate('project.packages.kindStamp')}
+              state='shipped'
+            />
+          }
+          summary={project.summary}
+          tagline={project.tagline}
+          titleId={titleId}
         >
-          <SpecimenList hrefFor={hrefOfSample} samples={otherSamples} />
+          {heroSample !== undefined && (
+            <div className='entry-hero-specimen'>
+              <CodeSpecimen
+                code={heroSample.code}
+                href={hrefOfSample(heroSample)}
+                title={heroSample.title}
+              />
+              <div className='specimen-notes'>
+                {heroSample.notes.map((note) => (
+                  <p key={note}>{note}</p>
+                ))}
+              </div>
+            </div>
+          )}
+        </EntryHead>
+        <EntryFacts
+          facts={[
+            {
+              label: translate('project.packages.count'),
+              note: translate('project.packages.countNote'),
+              value: String(housePackages.length)
+            },
+            ...(latest === undefined
+              ? []
+              : [
+                  {
+                    label: translate('project.packages.latest'),
+                    note: translate('project.packages.latestNote'),
+                    value: latest
+                  }
+                ]),
+            {
+              label: translate('project.commits'),
+              note: translate('project.commitsNote', { date: history.readOn }),
+              value: String(history.commits)
+            },
+            coverageFact(project.coverage, translate),
+            {
+              label: translate('project.packages.installedBy'),
+              note: columns.map((column) => column.name).join(', '),
+              value: translate('project.packages.installedByCount', {
+                count: String(columns.length)
+              })
+            }
+          ]}
+        />
+        {otherSamples.length > 0 && (
+          <EntryBlock
+            lead={translate('project.excerptsLead')}
+            title={translate('project.excerpts')}
+          >
+            <SpecimenList hrefFor={hrefOfSample} samples={otherSamples} />
+          </EntryBlock>
+        )}
+        <EntryBlock title={translate('project.shipped')}>
+          <ShippedLines lines={project.highlights} />
         </EntryBlock>
-      )}
-      <EntryBlock title={translate('project.shipped')}>
-        <ShippedLines lines={project.highlights} />
-      </EntryBlock>
-      <EntryBlock
-        id={LEDGER_ID}
-        lead={translate('project.packages.ledgerLead')}
-        title={translate('project.packages.ledger', {
-          count: String(housePackages.length)
-        })}
-      >
-        <ol className='register-rows entry-ledger'>
-          <PackageLedger
-            columns={columns}
-            housePackages={housePackages}
-            litPackage={null}
-            packagesPath={null}
-            repository={project.links.repository}
-          />
-        </ol>
-      </EntryBlock>
-      <EntryHistory history={history} packageRowHref={packageRowHref} />
-      <NeighbourEntries above={above} below={null} />
-    </article>
+        <EntryBlock
+          id={LEDGER_ID}
+          lead={translate('project.packages.ledgerLead')}
+          title={translate('project.packages.ledger', {
+            count: String(housePackages.length)
+          })}
+        >
+          <ol className='register-rows entry-ledger'>
+            <PackageLedger
+              columns={columns}
+              housePackages={housePackages}
+              litPackage={null}
+              packagesSlug={null}
+              repository={project.links.repository}
+            />
+          </ol>
+        </EntryBlock>
+        <EntryHistory history={history} packageRowHref={packageRowHref} />
+        <NeighbourEntries above={above} below={null} />
+      </article>
+    </Unfolds>
   )
 }

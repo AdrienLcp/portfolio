@@ -9,12 +9,12 @@ import {
 } from 'react-router'
 
 import { fetchProfile } from '@/features/profile/profile-api'
-import { prefersReducedMotion } from '@/infrastructure/browser'
 import { currentYear } from '@/infrastructure/clock'
 import { useRouteData } from '@/infrastructure/router/navigation'
 import { AppShell } from '@/presentation/app-shell'
 import { focusMain } from '@/presentation/components/main'
 import type { Locale } from '@/presentation/i18n/locale'
+import { PageTransition } from '@/presentation/page-transition'
 import { SiteFooter } from '@/presentation/site-footer'
 import { SiteHeader } from '@/presentation/site-header'
 
@@ -61,16 +61,16 @@ export const RootRoute: React.FC = () => {
   const { profile } = useRouteData<typeof rootLoader>()
 
   return (
-    <AriaRouterProvider
-      navigateDefaults={() => ({ viewTransition: !prefersReducedMotion() })}
-    >
+    <AriaRouterProvider>
       <AppShell
         footer={
           isBare ? null : <SiteFooter profile={profile} year={currentYear()} />
         }
         header={isBare ? null : <SiteHeader />}
       >
-        <Outlet />
+        <PageTransition>
+          <Outlet />
+        </PageTransition>
       </AppShell>
       <ScrollRestoration />
     </AriaRouterProvider>

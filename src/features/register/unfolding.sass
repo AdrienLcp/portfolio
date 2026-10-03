@@ -1,0 +1,44 @@
+// A register row and its entry's page share their sheet, name, dates and
+// drawing (see `Unfolds`): the row is drawn out into a sheet the size of the
+// page, its parts travel to their place on it, and it all folds back on the
+// way home.
+$unfold: 560ms
+
+::view-transition-group(.unfold-sheet),
+::view-transition-group(.unfold-name),
+::view-transition-group(.unfold-dates),
+::view-transition-group(.unfold-figure)
+  animation-duration: $unfold * 0.8
+  animation-timing-function: var(--timing)
+
+// The sheet is drawn as a plain sunk surface under a heavy rule: stretching
+// either page's picture to the other's box would only distort it.
+::view-transition-old(.unfold-sheet),
+::view-transition-new(.unfold-sheet)
+  display: none
+
+::view-transition-image-pair(.unfold-sheet)
+  animation: unfold-sheet $unfold linear both
+  background: var(--paper-sunk)
+  border-top: var(--heavy-rule)
+
+::view-transition-old(.unfold-name),
+::view-transition-new(.unfold-name),
+::view-transition-old(.unfold-dates),
+::view-transition-new(.unfold-dates),
+::view-transition-old(.unfold-figure),
+::view-transition-new(.unfold-figure)
+  animation-duration: $unfold * 0.6
+  animation-timing-function: var(--timing)
+
+@keyframes unfold-sheet
+  0%
+    opacity: 0
+
+  10%,
+  35%
+    opacity: 1
+
+  80%,
+  100%
+    opacity: 0

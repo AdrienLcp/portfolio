@@ -7,13 +7,15 @@ import {
   scopedNameOf
 } from '@/features/packages/house-package'
 import { npmPageFor } from '@/features/projects/project'
+import { projectPathFor } from '@/infrastructure/router/navigation'
 import { Icon } from '@/presentation/components/icon'
 import { RegisterLink } from '@/presentation/components/register/register-link'
 import { VisuallyHidden } from '@/presentation/components/ui/visually-hidden'
-import { useTranslate } from '@/presentation/i18n/i18n-provider'
+import { useI18n, useTranslate } from '@/presentation/i18n/i18n-provider'
 
 import { packageReference } from './cross-reference'
 import { ReleaseStamp } from './release-stamp'
+import { Unfolds } from './unfolds'
 
 /** One column of the package matrix: an app and what it installs. */
 export type LedgerColumn = {
@@ -116,8 +118,8 @@ type PackageLedgerProps = {
   columns: readonly LedgerColumn[]
   housePackages: readonly HousePackage[]
   litPackage: HousePackageName | null
-  /** The packages' own page, when its project exists. */
-  packagesPath: string | null
+  /** The packages' own entry, when its project exists. */
+  packagesSlug: string | null
   repository: string | null
 }
 
@@ -129,78 +131,88 @@ export const PackageLedger: React.FC<PackageLedgerProps> = ({
   columns,
   housePackages,
   litPackage,
-  packagesPath,
+  packagesSlug,
   repository
 }) => {
-  const translate = useTranslate()
+  const { locale, translate } = useI18n()
   const [first] = housePackages
 
   return (
-    <li
-      className='package-block'
-      id={PACKAGE_LEDGER_ID}
-      style={{ '--app-columns': columns.length }}
-    >
-      <div className='package-cap'>
-        <span className='cap-title'>
-          {first !== undefined && `${first.released} · `}
-          {translate('home.packages.cap', {
-            count: String(housePackages.length)
-          })}
-        </span>
-        <span className='cap-links'>
-          {packagesPath !== null && (
-            <RegisterLink href={packagesPath}>
-              <span className='cap-link-label'>
-                {translate('home.packages.open')}
-              </span>
-            </RegisterLink>
-          )}
-          {repository !== null && (
-            <RegisterLink href={repository} target='_blank'>
-              <span className='cap-link-label'>
-                {repository.replace('https://', '')}
-              </span>
-            </RegisterLink>
-          )}
-        </span>
-      </div>
-      <div aria-hidden='true' className='ledger-head'>
-        <div className='ledger-columns wide-head'>
-          <span>{translate('home.register.date')}</span>
-          <span>{translate('home.packages.package')}</span>
-          <span />
-          <span>{translate('home.packages.version')}</span>
-          {columns.map((column) => (
-            <span className='column-app' key={column.slug} title={column.name}>
-              {column.shortName}
+    <Unfolds part='sheet' slug={packagesSlug}>
+      <li
+        className='package-block'
+        id={PACKAGE_LEDGER_ID}
+        style={{ '--app-columns': columns.length }}
+      >
+        <div className='package-cap'>
+          <Unfolds part='name' slug={packagesSlug}>
+            <span className='cap-title'>
+              {first !== undefined && `${first.released} · `}
+              {translate('home.packages.cap', {
+                count: String(housePackages.length)
+              })}
             </span>
+          </Unfolds>
+          <span className='cap-links'>
+            {packagesSlug !== null && (
+              <RegisterLink
+                href={projectPathFor({ locale, slug: packagesSlug })}
+              >
+                <span className='cap-link-label'>
+                  {translate('home.packages.open')}
+                </span>
+              </RegisterLink>
+            )}
+            {repository !== null && (
+              <RegisterLink href={repository} target='_blank'>
+                <span className='cap-link-label'>
+                  {repository.replace('https://', '')}
+                </span>
+              </RegisterLink>
+            )}
+          </span>
+        </div>
+        <div aria-hidden='true' className='ledger-head'>
+          <div className='ledger-columns wide-head'>
+            <span>{translate('home.register.date')}</span>
+            <span>{translate('home.packages.package')}</span>
+            <span />
+            <span>{translate('home.packages.version')}</span>
+            {columns.map((column) => (
+              <span
+                className='column-app'
+                key={column.slug}
+                title={column.name}
+              >
+                {column.shortName}
+              </span>
+            ))}
+            <span className='column-state'>
+              {translate('home.register.state')}
+            </span>
+          </div>
+          <div className='narrow-head'>
+            <span>
+              {translate('home.packages.package')} ·{' '}
+              {translate('home.packages.usedBy')}
+            </span>
+            <span>
+              {translate('home.packages.version')} ·{' '}
+              {translate('home.register.state')}
+            </span>
+          </div>
+        </div>
+        <ol className='package-rows'>
+          {housePackages.map((housePackage) => (
+            <PackageRow
+              columns={columns}
+              housePackage={housePackage}
+              isLit={litPackage === housePackage.name}
+              key={housePackage.name}
+            />
           ))}
-          <span className='column-state'>
-            {translate('home.register.state')}
-          </span>
-        </div>
-        <div className='narrow-head'>
-          <span>
-            {translate('home.packages.package')} ·{' '}
-            {translate('home.packages.usedBy')}
-          </span>
-          <span>
-            {translate('home.packages.version')} ·{' '}
-            {translate('home.register.state')}
-          </span>
-        </div>
-      </div>
-      <ol className='package-rows'>
-        {housePackages.map((housePackage) => (
-          <PackageRow
-            columns={columns}
-            housePackage={housePackage}
-            isLit={litPackage === housePackage.name}
-            key={housePackage.name}
-          />
-        ))}
-      </ol>
-    </li>
+        </ol>
+      </li>
+    </Unfolds>
   )
 }

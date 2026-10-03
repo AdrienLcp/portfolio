@@ -5,6 +5,7 @@ import type { HousePackage } from '@/features/packages/house-package'
 import type { Plates } from '@/features/register/plates'
 import { ReleaseStamp } from '@/features/register/release-stamp'
 import type { RegisteredProject } from '@/features/register/this-site'
+import { Unfolds } from '@/features/register/unfolds'
 import { useDrawnWhenSeen } from '@/features/register/use-drawn-when-seen'
 import { RegisterLink } from '@/presentation/components/register/register-link'
 import { useTranslate } from '@/presentation/i18n/i18n-provider'
@@ -72,121 +73,126 @@ export const AppEntryPage: React.FC<AppEntryPageProps> = ({
   const stateLabel = translate(`home.state.${register.state}`)
 
   return (
-    <article aria-labelledby={titleId} className='entry-page'>
-      <EntryHead
-        actions={
-          <>
-            {project.links.live !== undefined && (
+    <Unfolds part='sheet' slug={project.slug}>
+      <article aria-labelledby={titleId} className='entry-page'>
+        <EntryHead
+          actions={
+            <>
+              {project.links.live !== undefined && (
+                <RegisterLink
+                  href={project.links.live}
+                  target='_blank'
+                  variant='ink'
+                >
+                  {translate(
+                    project.kind === 'game'
+                      ? 'home.entry.openGame'
+                      : 'home.entry.openApp'
+                  )}
+                </RegisterLink>
+              )}
               <RegisterLink
-                href={project.links.live}
+                href={project.links.repository}
                 target='_blank'
-                variant='ink'
+                variant='line'
               >
-                {translate(
-                  project.kind === 'game'
-                    ? 'home.entry.openGame'
-                    : 'home.entry.openApp'
-                )}
+                {translate('project.source')}
               </RegisterLink>
-            )}
-            <RegisterLink
-              href={project.links.repository}
-              target='_blank'
-              variant='line'
-            >
-              {translate('project.source')}
-            </RegisterLink>
-          </>
-        }
-        dates={[
-          { label: translate('project.entered'), value: register.entered },
-          ...(firstCommit === undefined
-            ? []
-            : [
-                {
-                  label: translate('project.firstCommit'),
-                  value: firstCommit.date
-                }
-              ])
-        ]}
-        kind={`${translate('home.register.app')} · ${register.category}`}
-        name={project.name}
-        registerHref={registerHref}
-        stack={project.stack}
-        stamp={
-          <ReleaseStamp
-            entered={register.entered}
-            isFresh
-            state={register.state}
-          />
-        }
-        summary={project.summary}
-        tagline={project.tagline}
-        titleId={titleId}
-      >
-        {plates !== undefined && (
-          <figure className='entry-scene'>
-            <plates.Drawing />
-            <figcaption>{translate('home.entry.drawn')}</figcaption>
-          </figure>
-        )}
-      </EntryHead>
-      <EntryFacts
-        facts={[
-          {
-            label: translate('project.entered'),
-            note: stateLabel,
-            value: register.entered
-          },
-          ...(firstCommit === undefined
-            ? []
-            : [
-                {
-                  label: translate('project.firstCommit'),
-                  note: firstCommit.subject,
-                  value: firstCommit.date
-                }
-              ]),
-          {
-            label: translate('project.commits'),
-            note: translate('project.commitsNote', { date: history.readOn }),
-            value: String(history.commits)
-          },
-          coverageFact(project.coverage, translate),
-          {
-            label: translate('project.housePackages'),
-            note: translate('project.housePackagesNote'),
-            value: translate('project.housePackagesCount', {
-              count: String(register.installs.length),
-              total: String(housePackages.length)
-            })
+            </>
           }
-        ]}
-      />
-      <EntryBlock title={translate('project.shipped')}>
-        <ShippedLines lines={project.highlights} />
-      </EntryBlock>
-      {plates !== undefined && (
-        <MechanismBlock
-          Mechanism={plates.Mechanism}
-          title={plates.mechanismTitle(translate)}
-        />
-      )}
-      {project.samples !== undefined && (
-        <EntryBlock
-          lead={translate('project.excerptsLead')}
-          title={translate('project.excerpts')}
+          dates={[
+            { label: translate('project.entered'), value: register.entered },
+            ...(firstCommit === undefined
+              ? []
+              : [
+                  {
+                    label: translate('project.firstCommit'),
+                    value: firstCommit.date
+                  }
+                ])
+          ]}
+          kind={`${translate('home.register.app')} · ${register.category}`}
+          name={project.name}
+          registerHref={registerHref}
+          slug={project.slug}
+          stack={project.stack}
+          stamp={
+            <ReleaseStamp
+              entered={register.entered}
+              isFresh
+              state={register.state}
+            />
+          }
+          summary={project.summary}
+          tagline={project.tagline}
+          titleId={titleId}
         >
-          <SpecimenList samples={project.samples} />
+          {plates !== undefined && (
+            <Unfolds part='figure' slug={project.slug}>
+              <figure className='entry-scene'>
+                <plates.Drawing />
+                <figcaption>{translate('home.entry.drawn')}</figcaption>
+              </figure>
+            </Unfolds>
+          )}
+        </EntryHead>
+        <EntryFacts
+          facts={[
+            {
+              label: translate('project.entered'),
+              note: stateLabel,
+              value: register.entered
+            },
+            ...(firstCommit === undefined
+              ? []
+              : [
+                  {
+                    label: translate('project.firstCommit'),
+                    note: firstCommit.subject,
+                    value: firstCommit.date
+                  }
+                ]),
+            {
+              label: translate('project.commits'),
+              note: translate('project.commitsNote', { date: history.readOn }),
+              value: String(history.commits)
+            },
+            coverageFact(project.coverage, translate),
+            {
+              label: translate('project.housePackages'),
+              note: translate('project.housePackagesNote'),
+              value: translate('project.housePackagesCount', {
+                count: String(register.installs.length),
+                total: String(housePackages.length)
+              })
+            }
+          ]}
+        />
+        <EntryBlock title={translate('project.shipped')}>
+          <ShippedLines lines={project.highlights} />
         </EntryBlock>
-      )}
-      <EntryHistory history={history} packageRowHref={packageRowHref} />
-      <EntryInstalls
-        housePackages={housePackages}
-        installs={register.installs}
-        packageRowHref={packageRowHref}
-      />
-      <NeighbourEntries above={above} below={below} />
-    </article>
+        {plates !== undefined && (
+          <MechanismBlock
+            Mechanism={plates.Mechanism}
+            title={plates.mechanismTitle(translate)}
+          />
+        )}
+        {project.samples !== undefined && (
+          <EntryBlock
+            lead={translate('project.excerptsLead')}
+            title={translate('project.excerpts')}
+          >
+            <SpecimenList samples={project.samples} />
+          </EntryBlock>
+        )}
+        <EntryHistory history={history} packageRowHref={packageRowHref} />
+        <EntryInstalls
+          housePackages={housePackages}
+          installs={register.installs}
+          packageRowHref={packageRowHref}
+        />
+        <NeighbourEntries above={above} below={below} />
+      </article>
+    </Unfolds>
   )
 }
