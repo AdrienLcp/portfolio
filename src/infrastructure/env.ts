@@ -11,6 +11,7 @@ if (!parsed.success) {
 }
 
 export const env = {
+  isDevelopment: import.meta.env.DEV,
   /**
    * Public by design: Web3Forms only ever forwards to the inbox this key
    * belongs to.

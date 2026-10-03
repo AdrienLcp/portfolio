@@ -1,13 +1,15 @@
 import { Result } from '@adrienlcp/result'
 import type { z } from 'zod'
 
+import { env } from '@/infrastructure/env'
+
 export type ApiError = 'invalid_content' | 'not_found'
 
 /**
  * Development only, where it makes pending states visible; a prerendered page
  * must not pay it.
  */
-const SIMULATED_LATENCY_MS = import.meta.env.DEV ? 300 : 0
+const SIMULATED_LATENCY_MS = env.isDevelopment ? 300 : 0
 
 /** Settles like `fetch`: an aborted wait rejects with the signal's reason. */
 const simulateLatency = (signal: AbortSignal): Promise<void> =>
