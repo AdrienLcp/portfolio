@@ -9,7 +9,7 @@ import { homePathFor, projectPathFor } from '@/infrastructure/router/navigation'
 import { BlankEntry } from '@/presentation/blank-entry'
 import { Main } from '@/presentation/components/main'
 import { notFoundTitle, projectHead } from '@/presentation/head/document-head'
-import { useDocumentTitle } from '@/presentation/head/use-document-title'
+import { DocumentTitle } from '@/presentation/head/document-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { apiErrorKey } from '@/presentation/i18n/translation'
 import { RouteFallback } from '@/presentation/route-fallback'
@@ -31,6 +31,19 @@ const registerOrderOf = (projects: readonly Project[]): Project[] => [
   ...projects.filter(isPackagesEntry)
 ]
 
+const ProjectTitle: React.FC = () => {
+  const { translate } = useI18n()
+  const project = use(useProjectData().project)
+
+  return (
+    <DocumentTitle>
+      {project.status === 'success'
+        ? projectHead(project.data).title
+        : notFoundTitle(translate(apiErrorKey(project.error)))}
+    </DocumentTitle>
+  )
+}
+
 const ProjectEntry: React.FC = () => {
   const { locale, translate } = useI18n()
   const {
@@ -43,11 +56,6 @@ const ProjectEntry: React.FC = () => {
   const projects = use(projectsRequest)
   const housePackages = use(housePackagesRequest)
   const plates = use(platesRequest)
-  useDocumentTitle(
-    project.status === 'success'
-      ? projectHead(project.data).title
-      : notFoundTitle(translate(apiErrorKey(project.error)))
-  )
 
   const failure =
     project.status === 'failure'
@@ -141,6 +149,7 @@ const ProjectEntry: React.FC = () => {
 export const ProjectPage: React.FC = () => (
   <Main className='project-page'>
     <Suspense fallback={<RouteFallback />}>
+      <ProjectTitle />
       <ProjectEntry />
     </Suspense>
     <NextEntry />

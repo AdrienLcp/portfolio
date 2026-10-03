@@ -10,7 +10,7 @@ import { homePathFor } from '@/infrastructure/router/navigation'
 import { BlankEntry } from '@/presentation/blank-entry'
 import { Main } from '@/presentation/components/main'
 import { RegisterLink } from '@/presentation/components/register/register-link'
-import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
+import { IndexedPageTitle } from '@/presentation/head/indexed-page-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { apiErrorKey } from '@/presentation/i18n/translation'
 import { RouteFallback } from '@/presentation/route-fallback'
@@ -320,10 +320,9 @@ const CvCase: React.FC = () => {
 }
 
 export const CvPage: React.FC = () => {
-  useIndexedPageTitle('cv')
-
   return (
     <Main className='cv-page'>
+      <IndexedPageTitle page='cv' />
       <Suspense fallback={<RouteFallback />}>
         <CvCase />
       </Suspense>

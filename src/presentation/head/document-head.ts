@@ -28,8 +28,8 @@ const titled = (page: string): string => `${page} — ${SITE_NAME}`
  * somebody with no page in front of them, so it says who this is where the
  * page itself says what to look at.
  *
- * Read twice: the prerender writes it into each document, and
- * `useIndexedPageTitle` writes the tab after an in-app navigation.
+ * Each page renders its title as a `<title>`, which the prerender reads back
+ * out of the markup; the prerender writes the description itself.
  */
 export const PAGE_HEADS: Record<Locale, Record<IndexedPage, PageHead>> = {
   en: {

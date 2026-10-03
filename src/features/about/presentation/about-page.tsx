@@ -18,7 +18,7 @@ import { Main } from '@/presentation/components/main'
 import { RegisterLink } from '@/presentation/components/register/register-link'
 import { RubberStamp } from '@/presentation/components/register/rubber-stamp'
 import { VisuallyHidden } from '@/presentation/components/ui/visually-hidden'
-import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
+import { IndexedPageTitle } from '@/presentation/head/indexed-page-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { apiErrorKey } from '@/presentation/i18n/translation'
 import { RouteFallback } from '@/presentation/route-fallback'
@@ -256,10 +256,9 @@ const AboutCase: React.FC = () => {
 
 /** The full path, from the stockroom to the job, kept the way the register keeps apps. */
 export const AboutPage: React.FC = () => {
-  useIndexedPageTitle('about')
-
   return (
     <Main className='about-page'>
+      <IndexedPageTitle page='about' />
       <Suspense fallback={<RouteFallback />}>
         <AboutCase />
       </Suspense>

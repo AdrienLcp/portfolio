@@ -203,19 +203,61 @@ const jsonLd = (data: object): string =>
   `<script type="application/ld+json">${withoutScriptClosingTags(JSON.stringify(data))}</script>`
 
 /**
- * React writes the resources a page asks for, such as an image preload, at the
- * front of what it renders. They belong in the head: the browser finds them
- * sooner there, and the app, which puts them in the head too, then paints the
- * same tree under `#root` as the prerender, which focus restoration counts on.
+ * React writes the page's `<title>` and the resources it asks for, such as an
+ * image preload, at the front of what it renders. They belong in the head: the
+ * browser finds them sooner there, and the app, which puts them in the head
+ * too, then paints the same tree under `#root` as the prerender, which focus
+ * restoration counts on.
  */
-const LEADING_RESOURCES = /^(?:<link\s[^>]*>)+/
+const LEADING_HEAD_TAGS = /^(?:<link\s[^>]*>|<title>[^<]*<\/title>)+/
 
-const splitLeadingResources = (
+/** A drawing's `<title>` carries the id its `<svg>` is labelled by. */
+const DOCUMENT_TITLE = /<title>([^<]*)<\/title>/g
+
+const REACT_TEXT_ESCAPES: Record<string, string> = {
+  '&#x27;': "'",
+  '&amp;': '&',
+  '&gt;': '>',
+  '&lt;': '<',
+  '&quot;': '"'
+}
+
+/** Back to plain text, which `setTitle` and `setMeta` escape for their tag. */
+const unescapeReactText = (text: string): string =>
+  text.replaceAll(
+    /&(?:#x27|amp|gt|lt|quot);/g,
+    (entity) => REACT_TEXT_ESCAPES[entity] ?? entity
+  )
+
+const splitRenderedHead = ({
+  html,
+  path
+}: {
   html: string
-): { markup: string; resources: string } => {
-  const resources = LEADING_RESOURCES.exec(html)?.[0] ?? ''
+  path: string
+}): { markup: string; resources: string; title: string } => {
+  const titles = [...html.matchAll(DOCUMENT_TITLE)]
+  const [onlyTitle] = titles
 
-  return { markup: html.slice(resources.length), resources }
+  if (titles.length !== 1 || onlyTitle === undefined) {
+    throw new Error(
+      `prerender: ${path} rendered ${titles.length} <title> elements, expected 1`
+    )
+  }
+
+  const headTags = LEADING_HEAD_TAGS.exec(html)?.[0] ?? ''
+
+  if (!headTags.includes(onlyTitle[0])) {
+    throw new Error(
+      `prerender: ${path} rendered its <title> inside the page rather than ahead of it`
+    )
+  }
+
+  return {
+    markup: html.slice(headTags.length),
+    resources: headTags.replace(DOCUMENT_TITLE, ''),
+    title: unescapeReactText(onlyTitle[1] ?? '')
+  }
 }
 
 const documentFor = ({
@@ -235,7 +277,10 @@ const documentFor = ({
   styles: string
 }): string => {
   const url = `${origin}${page.path}`
-  const { markup, resources } = splitLeadingResources(rendered.html)
+  const { markup, resources, title } = splitRenderedHead({
+    html: rendered.html,
+    path: page.path
+  })
 
   const alternates = [
     ...everyLanguageVersion.map(
@@ -260,7 +305,7 @@ const documentFor = ({
         pattern: /<html lang="[^"]*">/,
         replacement: `<html lang="${page.locale}">`
       }),
-    (html: string) => setTitle({ html, value: rendered.title }),
+    (html: string) => setTitle({ html, value: title }),
     (html: string) =>
       setMeta({
         html,
@@ -277,7 +322,7 @@ const documentFor = ({
       setMeta({
         html,
         identifyingAttribute: 'property="og:title"',
-        value: rendered.title
+        value: title
       }),
     (html: string) =>
       setMeta({

@@ -5,7 +5,7 @@ import { NextEntry } from '@/features/register/next-entry'
 import { registerSpanOf } from '@/features/register/register-dates'
 import { SITE_OPENED } from '@/features/register/this-site'
 import { Main } from '@/presentation/components/main'
-import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
+import { IndexedPageTitle } from '@/presentation/head/indexed-page-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { apiErrorKey } from '@/presentation/i18n/translation'
 
@@ -84,10 +84,9 @@ const AboutNote: React.FC = () => {
 
 /** A register of releases: one dated row per app, then the house packages. */
 export const HomePage: React.FC = () => {
-  useIndexedPageTitle('home')
-
   return (
     <Main className='home-page'>
+      <IndexedPageTitle page='home' />
       <Suspense fallback={null}>
         <Register />
       </Suspense>

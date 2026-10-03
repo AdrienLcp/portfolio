@@ -6,7 +6,7 @@ import { displayUrl, formatPeriod, formatPhone } from '@/features/cv/cv-format'
 import { useCvData } from '@/features/cv-pages/cv-loader'
 import type { Profile } from '@/features/profile/profile'
 import { Main } from '@/presentation/components/main'
-import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
+import { IndexedPageTitle } from '@/presentation/head/indexed-page-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 
 import './cv-plain-page.sass'
@@ -134,10 +134,9 @@ const CvPlainCase: React.FC = () => {
 }
 
 export const CvPlainPage: React.FC = () => {
-  useIndexedPageTitle('cv')
-
   return (
     <Main className='cv-plain-page'>
+      <IndexedPageTitle page='cv' />
       <meta content='noindex' name='robots' />
       <Suspense fallback={null}>
         <CvPlainCase />

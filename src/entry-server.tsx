@@ -15,7 +15,6 @@ import {
   INDEXED_PAGES,
   type IndexedPage,
   PAGE_HEADS,
-  type PageHead,
   projectHead
 } from '@/presentation/head/document-head'
 import { projectNodeFor } from '@/presentation/head/project-structured-data'
@@ -38,10 +37,13 @@ export type PrerenderedPage = {
   path: string
 }
 
-export type RenderedPage = PageHead & {
+export type RenderedPage = {
+  /** The search snippet, and the line a link unfurls with. */
+  description: string
   /**
-   * What goes inside `#root`, so there is something to paint before any script
-   * runs.
+   * What React rendered: the page's `<title>` and the resources it asks for
+   * first, then what goes inside `#root`, so there is something to paint before
+   * any script runs.
    */
   html: string
 }
@@ -114,17 +116,20 @@ const projectOf = async ({
   return project.data
 }
 
-const headFor = async ({ locale, page }: PrerenderedPage): Promise<PageHead> =>
+const descriptionFor = async ({
+  locale,
+  page
+}: PrerenderedPage): Promise<string> =>
   isProjectPage(page)
-    ? projectHead(await projectOf({ locale, page }))
-    : PAGE_HEADS[locale][page]
+    ? projectHead(await projectOf({ locale, page })).description
+    : PAGE_HEADS[locale][page].description
 
 export const renderPage = async (
   prerendered: PrerenderedPage
 ): Promise<RenderedPage> => {
   const html = await prerenderPath(prerendered)
 
-  return { ...(await headFor(prerendered)), html }
+  return { description: await descriptionFor(prerendered), html }
 }
 
 export const structuredDataFor = async ({

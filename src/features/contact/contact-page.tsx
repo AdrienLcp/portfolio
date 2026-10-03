@@ -11,7 +11,7 @@ import { Main } from '@/presentation/components/main'
 import { RegisterButton } from '@/presentation/components/register/register-button'
 import { RegisterLink } from '@/presentation/components/register/register-link'
 import { RubberStamp } from '@/presentation/components/register/rubber-stamp'
-import { useIndexedPageTitle } from '@/presentation/head/use-document-title'
+import { IndexedPageTitle } from '@/presentation/head/indexed-page-title'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { apiErrorKey } from '@/presentation/i18n/translation'
 import { RouteFallback } from '@/presentation/route-fallback'
@@ -203,10 +203,9 @@ const ContactCase: React.FC = () => {
 }
 
 export const ContactPage: React.FC = () => {
-  useIndexedPageTitle('contact')
-
   return (
     <Main className='contact-page'>
+      <IndexedPageTitle page='contact' />
       <Suspense fallback={<RouteFallback />}>
         <ContactCase />
       </Suspense>
