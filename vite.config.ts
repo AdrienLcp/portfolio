@@ -26,7 +26,8 @@ export default defineConfig({
           groups: [{ name: 'shell', test: SHELL_MODULES }]
         }
       }
-    }
+    },
+    sourcemap: true
   },
   plugins: [
     englishHomeHead(),
