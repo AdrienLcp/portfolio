@@ -15,7 +15,7 @@ import {
 } from '@/features/register/this-site'
 import { Unfolds } from '@/features/register/unfolds'
 import { RegisterLink } from '@/presentation/components/register/register-link'
-import { useTranslate } from '@/presentation/i18n/i18n-provider'
+import { useI18n } from '@/presentation/i18n/i18n-provider'
 
 import { CodeSpecimen } from './code-specimen'
 import { coverageFact } from './coverage-fact'
@@ -50,7 +50,7 @@ export const PackagesEntryPage: React.FC<PackagesEntryPageProps> = ({
   project,
   registerHref
 }) => {
-  const translate = useTranslate()
+  const { locale, translate } = useI18n()
   const titleId = useId()
   const { history } = project
   const [heroSample, ...otherSamples] = project.samples ?? []
@@ -80,10 +80,21 @@ export const PackagesEntryPage: React.FC<PackagesEntryPageProps> = ({
         <EntryHead
           actions={
             <>
+              {project.links.documentation !== undefined && (
+                <RegisterLink
+                  href={project.links.documentation[locale]}
+                  target='_blank'
+                  variant='ink'
+                >
+                  {translate('project.documentation')}
+                </RegisterLink>
+              )}
               <RegisterLink
                 href={project.links.repository}
                 target='_blank'
-                variant='ink'
+                variant={
+                  project.links.documentation === undefined ? 'ink' : 'line'
+                }
               >
                 {translate('project.source')}
               </RegisterLink>
@@ -193,6 +204,7 @@ export const PackagesEntryPage: React.FC<PackagesEntryPageProps> = ({
           <ol className='register-rows entry-ledger'>
             <PackageLedger
               columns={columns}
+              documentation={project.links.documentation?.[locale] ?? null}
               housePackages={housePackages}
               litPackage={null}
               packagesSlug={null}

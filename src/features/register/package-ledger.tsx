@@ -116,6 +116,8 @@ const PackageRow: React.FC<PackageRowProps> = ({
 
 type PackageLedgerProps = {
   columns: readonly LedgerColumn[]
+  /** The documentation site, in the visitor's locale. */
+  documentation: string | null
   housePackages: readonly HousePackage[]
   litPackage: HousePackageName | null
   /** The packages' own entry, when its project exists. */
@@ -129,6 +131,7 @@ export const PACKAGE_LEDGER_ID = 'packages'
 /** The packages every app installs, one row each, with who uses which. */
 export const PackageLedger: React.FC<PackageLedgerProps> = ({
   columns,
+  documentation,
   housePackages,
   litPackage,
   packagesSlug,
@@ -160,6 +163,13 @@ export const PackageLedger: React.FC<PackageLedgerProps> = ({
               >
                 <span className='cap-link-label'>
                   {translate('home.packages.open')}
+                </span>
+              </RegisterLink>
+            )}
+            {documentation !== null && (
+              <RegisterLink href={documentation} target='_blank'>
+                <span className='cap-link-label'>
+                  {translate('project.documentation')}
                 </span>
               </RegisterLink>
             )}

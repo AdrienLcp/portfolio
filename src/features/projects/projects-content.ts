@@ -320,6 +320,10 @@ export const PROJECTS: z.input<typeof projectsSchema> = [
     },
     kind: 'library',
     links: {
+      documentation: {
+        en: 'https://adrienlcp-packages.pages.dev',
+        fr: 'https://adrienlcp-packages.pages.dev/fr'
+      },
       packages: [
         '@adrienlcp/i18n',
         '@adrienlcp/result',

@@ -70,6 +70,18 @@ describe('projectsSchema', () => {
     ).toBe(false)
   })
 
+  it('[content] rejects a documentation site missing a locale', () => {
+    expect(
+      accepts({
+        ...project,
+        links: {
+          ...project.links,
+          documentation: { en: 'https://example.com/docs' }
+        }
+      })
+    ).toBe(false)
+  })
+
   it('[content] rejects a kind the pages cannot word', () => {
     expect(accepts({ ...project, kind: 'toy' })).toBe(false)
   })

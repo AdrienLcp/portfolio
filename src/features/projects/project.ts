@@ -5,6 +5,12 @@ import { textSchema } from '@/features/content/text'
 import { housePackageNameSchema } from '@/features/packages/house-package'
 import type { Locale } from '@/presentation/i18n/locale'
 
+/** A page per locale, for a site that has one in each. */
+const localizedUrlSchema = z.strictObject({
+  en: z.url(),
+  fr: z.url()
+}) satisfies z.ZodType<Record<Locale, string>>
+
 const projectSlugSchema = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
 
 const npmPackageNameSchema = z
@@ -75,6 +81,8 @@ const projectSchema = z.strictObject({
   history: historySchema,
   kind: projectKindSchema,
   links: z.strictObject({
+    /** The reference site that documents what the project ships. */
+    documentation: localizedUrlSchema.optional(),
     live: z.url().optional(),
     packages: z.array(npmPackageNameSchema).min(1).optional(),
     repository: z.url()

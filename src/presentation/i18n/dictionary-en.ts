@@ -247,6 +247,7 @@ export const EN_DICTIONARY = defineDictionary({
     coverage: 'Coverage',
     coverageNote: 'lines run by {scope}, read {date}',
     coverageValue: '{percent}%',
+    documentation: 'Documentation',
     entered: 'Entered',
     excerpts: 'As the compiler reads it',
     excerptsLead:
