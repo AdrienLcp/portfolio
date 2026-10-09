@@ -1,0 +1,40 @@
+@use '../../presentation/styles/layout'
+@use '../../presentation/styles/typography'
+
+@layer components
+  .contact-invite
+    @include layout.sheet
+
+    padding-block: var(--space-section)
+
+  .invite-card
+    background: var(--surface)
+    border-radius: var(--radius-l)
+    padding: var(--space-card)
+
+  .invite-title
+    @include typography.invitation
+
+    font-size: var(--text-index)
+
+    span
+      color: var(--violet)
+
+  .invite-note
+    color: var(--ink-soft)
+    font-size: var(--text-l)
+    margin-top: var(--space-m)
+    max-width: var(--measure-invite)
+
+  .invite-actions
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-xs)
+    margin-top: var(--space-xl)
+
+    .site-link.line
+      background: var(--paper)
+
+      &[data-hovered],
+      &[data-pressed]
+        background: var(--surface-strong)

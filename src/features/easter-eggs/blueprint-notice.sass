@@ -1,0 +1,39 @@
+@use '../../presentation/styles/typography'
+
+@layer components
+  .blueprint-notice
+    bottom: max(var(--gutter), var(--safe-area-bottom))
+    display: flex
+    justify-content: flex-end
+    left: var(--gutter-left)
+    pointer-events: none
+    position: fixed
+    right: var(--gutter-right)
+    z-index: 10
+
+  .blueprint-notice-card
+    background: var(--screen)
+    border-radius: var(--radius-l)
+    box-shadow: var(--shadow-lifted)
+    display: grid
+    gap: var(--space-2xs)
+    max-width: 22rem
+    animation: blueprint-notice-in var(--transition-slow) var(--ease-out) both
+    padding: var(--space-l)
+
+    p
+      @include typography.leading-note
+
+      color: var(--ink-soft)
+
+  .blueprint-notice-card .blueprint-notice-title
+    @include typography.heading
+
+    color: var(--violet)
+    font-size: var(--text-2xl)
+    margin-bottom: var(--space-3xs)
+
+  @keyframes blueprint-notice-in
+    from
+      opacity: 0
+      translate: 0 1rem

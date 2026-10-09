@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 380">
+  <g stroke="var(--ink)" stroke-width="1.5">
+    <rect fill="var(--paper-sunk)" height="300" width="278" x="278" y="52"/>
+    <rect fill="var(--paper-sunk)" height="300" width="278" x="270" y="44"/>
+    <rect fill="var(--screen)" height="300" width="278" x="262" y="36"/>
+  </g>
+  <g>
+    <line stroke="var(--ink)" stroke-width="1.5" x1="280" x2="524" y1="98" y2="98"/>
+    <g>
+      <g>
+        <rect fill="var(--rule)" height="5" width="56" x="280" y="116"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="352.75" y="112.75"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="369.75" y="112.75"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="386.75" y="112.75"/>
+        <rect fill="var(--ink)" height="12" width="12" x="403" y="112"/>
+        <rect fill="var(--ink)" height="12" width="12" x="420" y="112"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="437.75" y="112.75"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="454.75" y="112.75"/>
+        <rect fill="var(--ink)" height="12" width="12" x="471" y="112"/>
+        <rect fill="var(--rule)" height="12" width="12" x="488" y="112"/>
+        <rect fill="var(--ink)" height="12" width="12" x="505" y="112"/>
+        <line stroke="var(--rule)" x1="280" x2="524" y1="131.5" y2="131.5"/>
+      </g>
+      <g>
+        <rect fill="var(--rule)" height="5" width="56" x="280" y="143"/>
+        <rect fill="var(--ink)" height="12" width="12" x="352" y="139"/>
+        <rect fill="var(--ink)" height="12" width="12" x="369" y="139"/>
+        <rect fill="var(--rule)" height="12" width="12" x="386" y="139"/>
+        <rect fill="var(--ink)" height="12" width="12" x="403" y="139"/>
+        <rect fill="var(--ink)" height="12" width="12" x="420" y="139"/>
+        <rect fill="var(--rule)" height="12" width="12" x="437" y="139"/>
+        <rect fill="var(--ink)" height="12" width="12" x="454" y="139"/>
+        <rect fill="var(--rule)" height="12" width="12" x="471" y="139"/>
+        <rect fill="var(--ink)" height="12" width="12" x="488" y="139"/>
+        <rect fill="var(--ink)" height="12" width="12" x="505" y="139"/>
+        <line stroke="var(--rule)" x1="280" x2="524" y1="158.5" y2="158.5"/>
+      </g>
+      <g>
+        <rect fill="var(--rule)" height="5" width="56" x="280" y="170"/>
+        <rect fill="var(--ink)" height="12" width="12" x="352" y="166"/>
+        <rect fill="var(--ink)" height="12" width="12" x="369" y="166"/>
+        <rect fill="var(--ink)" height="12" width="12" x="386" y="166"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="403.75" y="166.75"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="420.75" y="166.75"/>
+        <rect fill="var(--ink)" height="12" width="12" x="437" y="166"/>
+        <rect fill="var(--ink)" height="12" width="12" x="454" y="166"/>
+        <rect fill="var(--rule)" height="12" width="12" x="471" y="166"/>
+        <rect fill="var(--rule)" height="12" width="12" x="488" y="166"/>
+        <rect fill="var(--ink)" height="12" width="12" x="505" y="166"/>
+        <line stroke="var(--rule)" x1="280" x2="524" y1="185.5" y2="185.5"/>
+      </g>
+      <g>
+        <rect fill="var(--rule)" height="5" width="56" x="280" y="197"/>
+        <rect fill="var(--ink)" height="12" width="12" x="352" y="193"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="369.75" y="193.75"/>
+        <rect fill="var(--rule)" height="12" width="12" x="386" y="193"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="403.75" y="193.75"/>
+        <rect fill="var(--ink)" height="12" width="12" x="420" y="193"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="437.75" y="193.75"/>
+        <rect fill="var(--ink)" height="12" width="12" x="471" y="193"/>
+        <rect fill="var(--ink)" height="12" width="12" x="488" y="193"/>
+        <rect fill="var(--rule)" height="12" width="12" x="505" y="193"/>
+        <line stroke="var(--rule)" x1="280" x2="524" y1="212.5" y2="212.5"/>
+      </g>
+      <g>
+        <rect fill="var(--rule)" height="5" width="56" x="280" y="224"/>
+        <rect fill="var(--ink)" height="12" width="12" x="352" y="220"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="369.75" y="220.75"/>
+        <rect fill="var(--rule)" height="12" width="12" x="386" y="220"/>
+        <rect fill="var(--ink)" height="12" width="12" x="403" y="220"/>
+        <rect fill="var(--ink)" height="12" width="12" x="420" y="220"/>
+        <rect fill="var(--ink)" height="12" width="12" x="437" y="220"/>
+        <rect fill="var(--ink)" height="12" width="12" x="454" y="220"/>
+        <rect fill="var(--ink)" height="12" width="12" x="471" y="220"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="488.75" y="220.75"/>
+        <rect fill="var(--rule)" height="12" width="12" x="505" y="220"/>
+        <line stroke="var(--rule)" x1="280" x2="524" y1="239.5" y2="239.5"/>
+      </g>
+      <g>
+        <rect fill="var(--rule)" height="5" width="56" x="280" y="251"/>
+        <rect fill="var(--ink)" height="12" width="12" x="352" y="247"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="369.75" y="247.75"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="386.75" y="247.75"/>
+        <rect fill="var(--ink)" height="12" width="12" x="403" y="247"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="420.75" y="247.75"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="437.75" y="247.75"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="454.75" y="247.75"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="471.75" y="247.75"/>
+        <rect fill="var(--rule)" height="12" width="12" x="488" y="247"/>
+        <rect fill="var(--ink)" height="12" width="12" x="505" y="247"/>
+        <line stroke="var(--rule)" x1="280" x2="524" y1="266.5" y2="266.5"/>
+      </g>
+      <g>
+        <rect fill="var(--rule)" height="5" width="56" x="280" y="278"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="352.75" y="274.75"/>
+        <rect fill="var(--rule)" height="12" width="12" x="369" y="274"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="386.75" y="274.75"/>
+        <rect fill="var(--ink)" height="12" width="12" x="403" y="274"/>
+        <rect fill="var(--ink)" height="12" width="12" x="420" y="274"/>
+        <rect fill="var(--ink)" height="12" width="12" x="437" y="274"/>
+        <rect fill="var(--ink)" height="12" width="12" x="454" y="274"/>
+        <rect fill="var(--ink)" height="12" width="12" x="471" y="274"/>
+        <rect fill="none" height="10.5" stroke="var(--ink)" stroke-width="1.5" width="10.5" x="488.75" y="274.75"/>
+        <rect fill="var(--rule)" height="12" width="12" x="505" y="274"/>
+        <line stroke="var(--rule)" x1="280" x2="524" y1="293.5" y2="293.5"/>
+      </g>
+      <g>
+        <rect fill="var(--rule)" height="5" width="56" x="280" y="305"/>
+        <rect fill="var(--ink)" height="12" width="12" x="352" y="301"/>
+        <rect fill="var(--ink)" height="12" width="12" x="369" y="301"/>
+        <rect fill="var(--ink)" height="12" width="12" x="386" y="301"/>
+        <rect fill="var(--rule)" height="12" width="12" x="403" y="301"/>
+        <rect fill="var(--ink)" height="12" width="12" x="420" y="301"/>
+        <rect fill="var(--ink)" height="12" width="12" x="437" y="301"/>
+        <rect fill="var(--rule)" height="12" width="12" x="454" y="301"/>
+        <rect fill="var(--ink)" height="12" width="12" x="471" y="301"/>
+        <rect fill="var(--ink)" height="12" width="12" x="488" y="301"/>
+        <rect fill="var(--rule)" height="12" width="12" x="505" y="301"/>
+        <line stroke="var(--rule)" x1="280" x2="524" y1="320.5" y2="320.5"/>
+      </g>
+    </g>
+    <rect fill="var(--violet)" height="12" width="12" x="454" y="193"/>
+    <rect fill="none" height="21" stroke="var(--violet)" stroke-width="1.5" width="21" x="449.5" y="188.5"/>
+  </g>
+  <path d="M208 188 C 300 188, 460 150, 460 188" fill="none" stroke="var(--screen)" stroke-linecap="round" stroke-width="6"/>
+  <path d="M208 188 C 300 188, 460 150, 460 188" fill="none" stroke="var(--ink)" stroke-width="2"/>
+  <g>
+    <rect fill="var(--screen)" height="120" stroke="var(--ink)" stroke-width="2" width="184" x="24" y="128"/>
+    <circle cx="208" cy="188" fill="var(--ink)" r="4"/>
+  </g>
+  <g fill="currentColor">
+    <path d="M216 62 H 262" stroke="currentColor" stroke-width="1"/>
+    <circle cx="216" cy="62" r="3"/>
+  </g>
+</svg>

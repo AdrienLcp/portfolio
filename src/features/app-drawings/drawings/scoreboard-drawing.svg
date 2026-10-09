@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 380">
+  <g fill="var(--ink)" font-family="var(--font-letter)">
+    <g transform="translate(16 28)">
+      <rect height="224" rx="8" width="356" x="0" y="0"/>
+      <rect fill="var(--screen)" height="208" rx="3" width="340" x="8" y="8"/>
+      <rect height="18" width="40" x="158" y="224"/>
+      <rect height="6" rx="3" width="120" x="118" y="242"/>
+      <circle cx="26" cy="25" fill="var(--violet)" r="3.5"/>
+      <g transform="translate(22 42)">
+        <rect fill="none" height="120" stroke="var(--rule)" width="150" x="0" y="0"/>
+        <line stroke="var(--rule)" x1="10" x2="140" y1="72" y2="72"/>
+        <g>
+          <text font-size="15" x="20" y="56">Henry</text>
+          <text fill="var(--ink-soft)" font-size="13" x="90" y="56">0</text>
+          <text font-size="30" font-weight="800" text-anchor="end" x="140" y="62">10</text>
+        </g>
+        <g>
+          <circle cx="12" cy="97" fill="var(--violet)" r="3"/>
+          <text font-size="15" x="20" y="102">Lopez</text>
+          <text fill="var(--ink-soft)" font-size="13" x="90" y="102">1</text>
+          <text font-size="30" font-weight="800" text-anchor="end" x="140" y="108">8</text>
+        </g>
+      </g>
+      <g transform="translate(184 42)">
+        <rect fill="none" height="120" stroke="var(--rule)" width="150" x="0" y="0"/>
+        <line stroke="var(--rule)" x1="10" x2="140" y1="72" y2="72"/>
+        <g>
+          <circle cx="12" cy="51" fill="var(--violet)" r="3"/>
+          <text font-size="15" x="20" y="56">Roche</text>
+          <text fill="var(--ink-soft)" font-size="13" x="90" y="56">2</text>
+          <text font-size="30" font-weight="800" text-anchor="end" x="140" y="62">9</text>
+        </g>
+        <g>
+          <text font-size="15" x="20" y="102">Vidal</text>
+          <text fill="var(--ink-soft)" font-size="13" x="90" y="102">1</text>
+          <text font-size="30" font-weight="800" text-anchor="end" x="140" y="108">7</text>
+        </g>
+      </g>
+      <line stroke="var(--rule)" x1="22" x2="334" y1="174" y2="174"/>
+    </g>
+    <g transform="translate(394 88)">
+      <rect height="268" rx="22" width="140" x="0" y="0"/>
+      <rect fill="var(--screen)" height="248" rx="14" width="124" x="8" y="10"/>
+      <rect height="6" rx="3" width="40" x="50" y="16"/>
+      <text font-size="13" font-weight="700" x="18" y="66">Roche</text>
+      <circle cx="117" cy="62" fill="var(--violet)" r="3"/>
+      <text font-size="30" font-weight="800" x="18" y="98">9</text>
+      <text font-size="13" font-weight="700" x="18" y="152">Vidal</text>
+      <text font-size="30" font-weight="800" x="18" y="184">7</text>
+      <rect height="26" rx="3" width="104" x="18" y="106"/>
+      <rect height="26" rx="3" width="104" x="18" y="192"/>
+      <g fill="var(--paper)" font-size="14" font-weight="700" text-anchor="middle">
+        <text x="70" y="124">+1</text>
+        <text x="70" y="210">+1</text>
+      </g>
+      <rect fill="none" height="24" rx="3" stroke="var(--ink)" width="104" x="18" y="226"/>
+    </g>
+    <path d="M412 207 C 386 207, 384 128, 352 124" fill="none" stroke="var(--ink)" stroke-dasharray="3 4" stroke-width="1"/>
+    <circle cx="412" cy="207" r="3"/>
+    <g>
+      <path d="M60 252 V 282" stroke="var(--ink)" stroke-width="1"/>
+      <circle cx="60" cy="252" r="3"/>
+      <path d="M394 338 H 352" stroke="var(--ink)" stroke-width="1"/>
+      <circle cx="394" cy="338" r="3"/>
+    </g>
+  </g>
+</svg>

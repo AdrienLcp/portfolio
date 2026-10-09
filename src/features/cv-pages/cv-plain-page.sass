@@ -1,0 +1,58 @@
+@use '../../presentation/styles/typography'
+
+@layer components
+  \:root:has(.cv-plain-page)
+    background: oklch(1 0 0)
+    color-scheme: light
+
+    body
+      background: oklch(1 0 0)
+      color: oklch(0 0 0)
+
+  .cv-plain-page
+    padding: max(8mm, var(--safe-area-top)) max(14mm, var(--safe-area-right)) max(8mm, var(--safe-area-bottom)) max(14mm, var(--safe-area-left))
+
+  .cv-plain
+    --text-plain-body: 9.5pt
+    --text-plain-name: 18pt
+    --text-plain-heading: 11pt
+    --text-plain-entry: 10.5pt
+
+    @include typography.leading-dense
+
+    display: grid
+    font-family: Arial, Helvetica, sans-serif
+    font-size: var(--text-plain-body)
+    gap: 1.2mm
+    max-width: 180mm
+
+    h1
+      font-size: var(--text-plain-name)
+
+    h2
+      border-bottom: var(--stroke-hair) solid oklch(0 0 0)
+      font-size: var(--text-plain-heading)
+      margin-block-start: 1.5mm
+      text-transform: uppercase
+
+    h3
+      font-size: var(--text-plain-entry)
+
+    ul
+      display: grid
+      gap: 0.6mm
+      list-style: disc
+      padding-inline-start: 5mm
+
+    section,
+    .cv-plain-mission
+      display: grid
+      gap: 1.2mm
+
+  .cv-plain-title
+    @include typography.bold
+
+  @media print
+    @page
+      margin: 0
+      size: A4

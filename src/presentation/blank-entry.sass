@@ -1,0 +1,58 @@
+@use './styles/layout'
+@use './styles/sizes'
+@use './styles/typography'
+
+$room: sizes.fluid(2.4rem, 6rem, $to: 85.5rem)
+
+@layer components
+  .blank-entry-page
+    @include layout.page
+
+  .blank-entry
+    @include layout.sheet
+
+    flex: 1
+    padding-block: $room
+
+  // Without the site's header and footer, the page reaches the top and bottom
+  // edges itself.
+  .without-chrome .blank-entry
+    padding-block: max(#{$room}, var(--safe-area-top)) max(#{$room}, var(--safe-area-bottom))
+
+  .blank-entry-card
+    background: var(--surface)
+    border-radius: var(--radius-l)
+    padding: var(--space-card)
+
+  .blank-entry-title
+    @include typography.display
+
+    font-size: var(--text-error-title)
+    max-width: var(--measure-error-title)
+    overflow-wrap: anywhere
+
+  .blank-entry-note
+    @include typography.lead
+
+    color: var(--ink-soft)
+    margin-top: var(--space-m)
+    max-width: var(--measure-apology)
+
+  .blank-entry-detail
+    color: var(--ink-soft)
+    margin-top: var(--space-xs)
+    max-width: var(--measure-wide)
+    overflow-wrap: anywhere
+
+    code
+      @include typography.code
+
+      background: var(--paper)
+      border-radius: var(--radius-s)
+      padding: 0.1em 0.4em
+
+  .blank-entry-actions
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-xs)
+    margin-top: var(--space-xl)

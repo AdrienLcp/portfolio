@@ -1,0 +1,415 @@
+@use '../../presentation/styles/layout'
+@use '../../presentation/styles/sizes'
+@use '../../presentation/styles/typography'
+
+/// Where a pointer can hover and the window leaves room beside the names, the
+/// index previews; anywhere else the names stand on their own.
+@mixin previews
+  @media (hover: hover) and (pointer: fine) and (width > 48rem)
+    @content
+
+@mixin touch-or-narrow
+  @media (hover: none), (pointer: coarse), (width <= 48rem)
+    @content
+
+@layer components
+  .home-page
+    @include layout.page
+
+  .home-hero,
+  .home-section
+    @include layout.sheet
+
+  .home-section
+    padding-block: var(--space-chapter)
+
+  .section-title
+    @include typography.heading
+
+    font-size: var(--text-heading)
+
+  .section-intro
+    color: var(--ink-soft)
+    margin-top: var(--space-xs)
+    max-width: var(--measure-intro)
+
+  .section-actions
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-xs)
+    margin-top: var(--space-l)
+
+  .home-failure
+    @include layout.sheet
+
+    color: var(--ink-soft)
+    padding-block: var(--space-section)
+
+  // The first viewport: the name as large as the page allows, then the night
+  // shift, then a face and the one status that matters.
+  .home-hero
+    padding-block: sizes.fluid(3.2rem, 8rem) sizes.fluid(4rem, 8rem)
+
+  .hero-title
+    @include typography.display
+
+    font-size: var(--text-display)
+
+  .hero-role
+    @include typography.medium
+
+    color: var(--ink-soft)
+    display: block
+    margin-top: 0.08em
+
+  .hero-lead
+    @include typography.lead
+
+    margin-top: var(--space-lead)
+    max-width: var(--measure-sentence)
+
+  .hero-status
+    align-items: center
+    display: flex
+    gap: var(--space-s)
+    margin-top: var(--space-xl)
+
+    p
+      @include typography.leading-snug
+
+      color: var(--ink-soft)
+
+    strong
+      @include typography.bold
+
+      align-items: center
+      color: var(--ink)
+      display: flex
+      gap: var(--space-2xs)
+
+  .hero-photo
+    border-radius: 50%
+    height: 3.5rem
+    object-fit: cover
+    object-position: 50% 20%
+    width: 3.5rem
+
+  .open-dot
+    background: var(--violet)
+    border-radius: 50%
+    height: 0.55rem
+    animation: open-dot-pulse var(--transition-pulse) var(--ease-out) infinite
+    width: 0.55rem
+
+  @keyframes open-dot-pulse
+    0%
+      box-shadow: 0 0 0 0 color-mix(in oklab, var(--violet) 55%, transparent)
+
+    80%,
+    100%
+      box-shadow: 0 0 0 0.6rem transparent
+
+  // The project index: names set as large as the hero, each one a toggle.
+  .project-list
+    list-style: none
+    margin: var(--space-opening) 0 0
+    padding: 0
+
+  .project-row
+    h3
+      font: inherit
+
+    & + .project-row
+      margin-top: sizes.fluid(0.3rem, 0.75rem, $to: 75rem)
+
+  .project-toggle
+    align-items: baseline
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-3xs) sizes.fluid(1rem, 2rem)
+    padding: var(--space-3xs) 0
+    text-align: start
+    width: 100%
+
+  .project-name
+    @include typography.index-name
+
+    font-size: var(--text-index)
+    transition: color var(--transition-base) var(--ease-out)
+
+  .project-tagline
+    @include typography.leading-note
+
+    color: var(--ink-soft)
+    max-width: var(--measure-tagline)
+    transition: color var(--transition-base) var(--ease-out)
+
+  .project-plus
+    align-self: center
+    background: var(--surface)
+    border-radius: 50%
+    color: var(--ink)
+    display: grid
+    flex: none
+    height: 2.5rem
+    margin-inline-start: auto
+    place-items: center
+    transition: rotate var(--transition-slow) var(--ease-out), background-color var(--transition-fast) var(--ease-out), color var(--transition-fast) var(--ease-out), scale var(--transition-fast) var(--ease-out)
+    width: 2.5rem
+
+  .project-toggle[data-hovered] .project-name,
+  .project-toggle[data-pressed] .project-name,
+  .project-toggle[aria-expanded='true'] .project-name,
+  .project-list.previewing .project-row:not(.dimmed) .project-name
+    color: var(--violet)
+
+  .project-toggle[data-pressed] .project-plus
+    scale: var(--pressed-scale)
+
+  .project-toggle[aria-expanded='true'] .project-plus
+    background: var(--ink)
+    color: var(--paper)
+    rotate: 45deg
+
+  .project-row.dimmed
+    .project-name,
+    .project-tagline
+      color: var(--ink-faded)
+
+  .project-panel
+    display: grid
+    grid-template-rows: 0fr
+    transition: grid-template-rows var(--transition-slow) var(--ease-out)
+
+    &[data-open]
+      grid-template-rows: 1fr
+
+  // Once folded, the contents leave the page too, so find-in-page skips them;
+  // the delay lets the fold finish before they go.
+  .project-panel-clip
+    min-height: 0
+    overflow: hidden
+    overflow-clip-margin: layout.$focus-ring-room
+    transition: visibility 0s var(--transition-slow)
+    visibility: hidden
+
+    [data-open] > &
+      transition-delay: 0s
+      visibility: visible
+
+  .project-panel-body
+    display: grid
+    gap: sizes.fluid(1.6rem, 4rem, $to: 100rem)
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr)
+    padding: var(--space-title) 0 sizes.fluid(2.5rem, 4rem)
+
+    p
+      max-width: var(--measure-intro)
+
+  .project-facts
+    color: var(--ink-soft)
+    display: grid
+    gap: 0.6rem
+    list-style: none
+    margin: var(--space-m) 0 0
+    padding: 0
+
+    li
+      display: flex
+      gap: var(--space-xs)
+
+      &::before
+        background: var(--violet)
+        border-radius: 50%
+        content: ''
+        flex: none
+        height: 0.4rem
+        margin-top: 0.6em
+        width: 0.4rem
+
+  .project-actions
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-xs)
+    margin-top: var(--space-xl)
+
+  .project-screenshot
+    aspect-ratio: 16 / 10
+    background: var(--surface)
+    border-radius: var(--radius-m)
+    box-shadow: var(--shadow-lifted)
+    margin: 0
+    overflow: hidden
+
+    img
+      height: 100%
+      object-fit: cover
+      object-position: top
+      width: 100%
+
+  // The picture that trails the pointer over the names.
+  .project-preview
+    aspect-ratio: 16 / 10
+    background: var(--surface)
+    border-radius: var(--radius-m)
+    box-shadow: var(--shadow-lifted)
+    display: none
+    left: 0
+    opacity: 0
+    overflow: hidden
+    pointer-events: none
+    position: fixed
+    scale: 0.9
+    top: 0
+    transition: opacity var(--transition-base) var(--ease-out), scale var(--transition-slow) var(--ease-out)
+    width: clamp(18rem, 26vw, 24rem)
+    will-change: transform
+    z-index: 5
+
+    &.shown
+      opacity: 1
+      scale: 1
+
+    img
+      height: 100%
+      inset: 0
+      object-fit: cover
+      object-position: top
+      opacity: 0
+      position: absolute
+      transition: opacity var(--transition-base)
+      width: 100%
+
+      &.current
+        opacity: 1
+
+  @include previews
+    .project-preview
+      display: block
+
+    .project-text
+      display: contents
+
+  @include touch-or-narrow
+    .project-toggle
+      align-items: center
+      flex-wrap: nowrap
+      gap: var(--space-s)
+
+    .project-text
+      display: flex
+      flex-direction: column
+      gap: 0.35rem
+      min-width: 0
+
+    .project-row + .project-row
+      margin-top: var(--space-l)
+
+  @container (width <= 48rem)
+    .project-panel-body
+      grid-template-columns: 1fr
+
+    .project-screenshot
+      order: -1
+
+  // The packages: one sentence, then their names as a single run.
+  .shelf-lead
+    @include typography.lead
+
+    margin-top: var(--space-l)
+    max-width: 60rem
+
+  .shelf-list
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-3xs) var(--space-2xs)
+    list-style: none
+    margin: var(--space-l) 0 0
+    max-width: 64rem
+    padding: 0
+
+  .shelf-name
+    @include typography.shelf-name
+
+    color: var(--ink)
+    display: inline-block
+    font-size: var(--text-shelf)
+    padding: 0.15rem 0.1rem
+    text-decoration: none
+    transition: color var(--transition-base)
+
+    .shelf-scope
+      @include typography.medium
+
+      color: var(--ink-faded)
+      transition: color var(--transition-base)
+
+    &.pointed,
+    &.pointed .shelf-scope,
+    &[data-pressed],
+    &[data-pressed] .shelf-scope
+      color: var(--violet)
+
+  .shelf-job
+    display: none
+
+  .shelf-pointed-job
+    color: var(--ink-soft)
+    margin-top: var(--space-s)
+    max-width: var(--measure-intro)
+    min-height: 3.2em
+
+    strong
+      color: var(--ink)
+
+  .shelf-hint
+    color: var(--ink-soft)
+
+  @include previews
+    .shelf-list li:not(:last-child)::after
+      @include typography.bold
+      @include typography.leading-entry
+
+      color: var(--ink-faded)
+      content: ','
+      font-family: var(--font-letter)
+      font-size: var(--text-shelf)
+
+  @include touch-or-narrow
+    .shelf-list
+      flex-direction: column
+      gap: var(--space-s)
+
+    .shelf-name
+      font-size: var(--text-xl)
+
+    .shelf-job
+      color: var(--ink-soft)
+      display: block
+      margin-top: 0.15rem
+
+    .shelf-pointed-job
+      display: none
+
+  // About, in brief: the heading on the left, the three sentences beside it.
+  .about-brief
+    align-items: start
+    display: grid
+    gap: var(--space-columns)
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr)
+
+    @container (width <= 48rem)
+      grid-template-columns: 1fr
+
+  .about-brief-text
+    display: grid
+    gap: var(--space-m)
+    justify-items: start
+    max-width: var(--measure-prose)
+
+    p:first-child
+      @include typography.lead
+
+    p:not(:first-child)
+      color: var(--ink-soft)

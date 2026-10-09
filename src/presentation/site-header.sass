@@ -1,0 +1,77 @@
+@use './styles/layout'
+@use './styles/typography'
+
+@layer components
+  .site-header
+    view-transition-name: site-header
+
+  .site-header-bar
+    @include layout.sheet
+
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-xs) var(--space-xl)
+    padding-block: max(var(--space-l), var(--safe-area-top)) var(--space-l)
+
+  .site-brand
+    @include typography.brand
+
+    color: var(--ink)
+    margin-inline-end: auto
+    text-decoration: none
+
+    &[data-hovered],
+    &[data-pressed]
+      color: var(--violet)
+
+  .site-nav
+    ul
+      display: flex
+      gap: var(--space-l)
+      list-style: none
+      margin: 0
+      padding: 0
+
+  .site-nav-link
+    @include typography.leading-solid
+    @include typography.semibold
+
+    color: var(--ink-soft)
+    display: inline-block
+    padding-block: var(--space-xs)
+    text-decoration: none
+    transition: color var(--transition-fast, 0s) var(--ease-out, ease)
+
+    &[data-hovered]
+      color: var(--ink)
+
+    &[aria-current]
+      color: var(--ink)
+
+    &[data-pressed]
+      color: var(--violet)
+
+  .site-controls
+    display: flex
+    gap: var(--space-2xs)
+
+  // Too narrow for one line: the name shares the first with the language, the
+  // pages take the second, and the theme moves down to the footer.
+  @media (width < 40rem)
+    .site-header-bar
+      gap: var(--space-2xs) var(--space-s)
+      padding-block: max(var(--space-s), var(--safe-area-top)) var(--space-2xs)
+
+    .site-nav
+      order: 3
+      width: 100%
+
+      ul
+        gap: var(--space-l)
+
+    .site-nav-link
+      white-space: nowrap
+
+    .site-controls .theme-switch
+      display: none

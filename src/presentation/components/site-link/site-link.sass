@@ -1,0 +1,96 @@
+@use '../../styles/typography'
+
+@layer components
+  .site-link
+    transition: background-color var(--transition-fast, 0s) var(--ease-out, ease), color var(--transition-fast, 0s) var(--ease-out, ease), scale var(--transition-fast, 0s) var(--ease-out, ease)
+
+    .site-link-icon
+      display: inline-block
+      height: 1.15em
+      vertical-align: -0.2em
+      width: 1.15em
+
+    &.ink,
+    &.line,
+    &.caps
+      @include typography.label-large
+
+      align-items: center
+      display: inline-flex
+      gap: var(--space-2xs)
+      min-height: var(--control-height)
+      text-decoration: none
+
+      .site-link-label
+        @include typography.cap-box
+
+    &.ink,
+    &.line
+      border-radius: var(--radius-full)
+      padding: 0 1.1rem
+
+      &[data-pressed]
+        scale: var(--pressed-scale)
+
+    &.ink
+      background: var(--ink)
+      color: var(--paper)
+
+      &[data-hovered],
+      &[data-pressed]
+        background: var(--violet)
+        color: var(--on-violet)
+
+    &.line
+      background: var(--surface)
+      color: var(--ink)
+
+      &[data-hovered],
+      &[data-pressed]
+        background: var(--surface-strong)
+
+    &.caps
+      padding: 0 var(--space-3xs)
+
+      &[data-hovered],
+      &[data-pressed]
+        color: var(--violet)
+
+    &.plain[data-pressed]
+      color: var(--violet)
+
+  button.site-link
+    &.plain
+      text-decoration: underline
+      text-decoration-thickness: var(--stroke-thin)
+      text-underline-offset: var(--underline-offset)
+
+    &[data-pending]
+      cursor: progress
+      opacity: 0.75
+
+  .site-button-progress
+    --blink-cycle: calc(var(--transition-fast) * 7.5)
+
+    display: inline-flex
+    gap: var(--space-3xs)
+
+    i
+      animation: site-button-progress-blink var(--blink-cycle) steps(2, jump-none) infinite
+      background: currentColor
+      display: block
+      height: 0.3rem
+      width: 0.3rem
+
+      &:nth-child(2)
+        animation-delay: calc(var(--blink-cycle) / 6)
+
+      &:nth-child(3)
+        animation-delay: calc(var(--blink-cycle) / 3)
+
+  @keyframes site-button-progress-blink
+    0%
+      opacity: 0.2
+
+    100%
+      opacity: 1

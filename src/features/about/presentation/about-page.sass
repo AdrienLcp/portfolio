@@ -1,0 +1,218 @@
+@use '../../../presentation/styles/layout'
+@use '../../../presentation/styles/sizes'
+@use '../../../presentation/styles/typography'
+
+$hero-gap: sizes.fluid(2rem, 4rem)
+
+@layer components
+  .about-page
+    @include layout.page
+
+  .about-hero,
+  .about-section
+    @include layout.sheet
+
+  .about-section
+    padding-block: var(--space-chapter)
+
+  .about-section-title
+    @include typography.heading
+
+    font-size: var(--text-heading)
+
+  .about-open-dot
+    background: var(--violet)
+    border-radius: 50%
+    display: inline-block
+    flex: none
+    height: 0.55rem
+    width: 0.55rem
+
+  .about-hero
+    align-items: end
+    display: grid
+    gap: $hero-gap
+    padding-block: var(--space-masthead) $hero-gap
+
+    @include layout.two-columns
+      grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem)
+
+  .about-name
+    @include typography.display
+
+    font-size: var(--text-display)
+
+  .about-role
+    @include typography.role-large
+
+    color: var(--ink-soft)
+    font-size: var(--text-about-role)
+    margin-top: var(--space-2xs)
+
+  .about-lead
+    @include typography.lead
+
+    margin-top: var(--space-lead)
+    max-width: var(--measure-sentence)
+
+  .about-status
+    display: grid
+    gap: var(--space-3xs)
+    margin-top: var(--space-xl)
+
+    p
+      @include typography.leading-note
+
+      color: var(--ink-soft)
+
+    p:first-child
+      align-items: center
+      display: flex
+      flex-wrap: wrap
+      gap: var(--space-2xs) var(--space-xs)
+
+    strong
+      @include typography.bold
+
+      align-items: center
+      color: var(--ink)
+      display: inline-flex
+      gap: var(--space-2xs)
+
+    .about-open-dot
+      animation: about-open-pulse var(--transition-pulse) var(--ease-out) infinite
+
+  .about-stack
+    font-size: var(--text-xs)
+
+  @keyframes about-open-pulse
+    0%
+      box-shadow: 0 0 0 0 color-mix(in oklab, var(--violet) 55%, transparent)
+
+    80%,
+    100%
+      box-shadow: 0 0 0 0.6rem transparent
+
+  .about-photo
+    aspect-ratio: 4 / 5
+    background: var(--surface)
+    border-radius: var(--radius-m)
+    box-shadow: var(--shadow-lifted)
+    display: block
+    height: auto
+    object-fit: cover
+    object-position: 50% 30%
+    width: min(100%, 16rem)
+
+    @include layout.two-columns
+      width: min(100%, 22rem)
+
+  // The road: one step after another, set apart by space, the current one on
+  // a soft surface with the violet mark.
+  .path-steps
+    display: grid
+    gap: var(--space-2xs)
+    list-style: none
+    margin: var(--space-opening) 0 0
+    padding: 0
+
+    @include layout.two-columns
+      margin-inline: calc(-1 * var(--space-step))
+
+  .path-step-body
+    border-radius: var(--radius-l)
+    display: grid
+    gap: var(--space-s)
+    padding: var(--space-step) 0
+
+    @include layout.two-columns
+      align-items: start
+      column-gap: sizes.fluid(1.5rem, 3.5rem, $to: 87.5rem)
+      grid-template-columns: 10rem minmax(0, 1fr) minmax(0, 1.3fr)
+      padding: var(--space-step)
+
+  .path-step.current .path-step-body
+    background: var(--surface)
+    padding-inline: var(--space-step)
+
+  .path-when
+    @include typography.bold
+    @include typography.figures
+
+    align-items: baseline
+    color: var(--ink-soft)
+    display: flex
+    font-size: var(--text-l)
+    gap: var(--space-2xs)
+
+    small
+      @include typography.medium
+
+      color: var(--ink-soft)
+      display: block
+      font-size: var(--text-xs)
+
+    @include layout.two-columns
+      padding-top: 0.2em
+
+  .path-step.current .path-when
+    align-items: center
+    color: var(--violet)
+
+  .path-name
+    @include typography.heading
+
+    font-size: var(--text-step)
+    overflow-wrap: anywhere
+
+  .path-where
+    @include typography.role
+
+    color: var(--ink-soft)
+    font-size: var(--text-l)
+    margin-top: var(--space-2xs)
+
+  .path-story
+    display: grid
+    gap: var(--space-xs)
+    max-width: var(--measure-prose)
+
+    p
+      color: var(--ink-soft)
+      text-wrap: pretty
+
+    @include layout.two-columns
+      padding-top: 0.3em
+
+  .path-step.current .path-story p:first-child
+    @include typography.lead
+
+    color: var(--ink)
+    font-size: var(--text-l)
+
+  // Where the evenings go: the heading on the left, the sentences beside it.
+  .about-evenings
+    align-items: start
+    display: grid
+    gap: var(--space-columns)
+
+    @include layout.two-columns
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr)
+
+  .evenings-text
+    display: grid
+    gap: var(--space-m)
+    max-width: var(--measure-prose)
+
+  .evenings-bridge
+    @include typography.lead
+
+  .evenings-off
+    color: var(--ink-soft)
+
+  .evenings-actions
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-xs)
+    margin-top: var(--space-xs)

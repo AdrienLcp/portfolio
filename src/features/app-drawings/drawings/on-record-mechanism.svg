@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300">
+  <g fill="none" stroke="currentColor" stroke-width="1.6">
+    <rect class="draw" height="76" pathLength="1" style="--d:0" width="140" x="16" y="112"/>
+    <path class="draw" d="M156 150 H 210" pathLength="1" style="--d:1"/>
+    <rect class="draw" height="76" pathLength="1" style="--d:1" width="140" x="210" y="112"/>
+    <path class="draw" d="M350 132 C 382 132, 378 56, 404 56" pathLength="1" style="--d:2"/>
+    <rect class="draw" height="64" pathLength="1" style="--d:3" width="140" x="404" y="24"/>
+    <path class="draw" d="M474 88 V 120" pathLength="1" style="--d:4"/>
+    <rect class="draw" height="64" pathLength="1" style="--d:4" width="140" x="404" y="120"/>
+    <path class="draw" d="M350 168 C 382 168, 378 252, 404 252" pathLength="1" stroke-dasharray="4 5" style="--d:3"/>
+    <rect class="draw" height="56" pathLength="1" stroke-dasharray="4 4" style="--d:5" width="140" x="404" y="224"/>
+  </g>
+  <text class="fade soft" style="--d:0" text-anchor="middle" x="86" y="166">GitHub Actions</text>
+  <text class="fade soft" style="--d:4" text-anchor="middle" x="474" y="168">Cloudflare Pages</text>
+</svg>

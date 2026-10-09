@@ -1,0 +1,36 @@
+@use './styles/typography'
+
+@layer components
+  .skip-link
+    --focus: var(--ink)
+
+    @include typography.label
+
+    align-items: center
+    background: var(--ink)
+    border-radius: var(--radius-s)
+    color: var(--paper)
+    display: inline-flex
+    left: var(--gutter-left)
+    min-height: var(--control-height)
+    padding: 0 var(--space-s)
+    position: fixed
+    text-decoration: none
+    top: max(var(--space-2xs), var(--safe-area-top))
+    transition: translate var(--transition-base, 0s) var(--ease-out, ease), scale var(--transition-fast, 0s) var(--ease-out, ease)
+    translate: 0 calc(-100% - var(--space-m) - var(--safe-area-top))
+    z-index: 30
+
+    .skip-link-label
+      @include typography.cap-box
+
+    // Parked above the viewport, yet a view transition's picture of the page
+    // still shows it.
+    :root:active-view-transition &
+      visibility: hidden
+
+    &:focus-visible
+      translate: 0
+
+    &:active
+      scale: var(--pressed-scale)

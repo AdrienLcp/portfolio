@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300">
+  <g fill="none" stroke="currentColor" stroke-width="1.6">
+    <rect class="draw" height="48" pathLength="1" style="--d:0" width="124" x="16" y="16"/>
+    <rect class="draw" height="48" pathLength="1" style="--d:1" width="124" x="16" y="92"/>
+    <rect class="draw" height="48" pathLength="1" style="--d:2" width="124" x="16" y="168"/>
+    <rect class="draw" height="48" pathLength="1" style="--d:3" width="124" x="16" y="244"/>
+    <path class="draw" d="M140 40 C 176 40, 168 126, 196 126" pathLength="1" style="--d:2"/>
+    <path class="draw" d="M140 116 C 168 116, 168 142, 196 142" pathLength="1" style="--d:3"/>
+    <path class="draw" d="M140 192 C 168 192, 168 158, 196 158" pathLength="1" style="--d:4"/>
+    <path class="draw" d="M140 268 C 176 268, 168 174, 196 174" pathLength="1" style="--d:5"/>
+    <rect class="draw" height="80" pathLength="1" style="--d:3" width="136" x="196" y="110"/>
+    <path class="draw" d="M332 140 C 356 140, 356 92, 380 92" pathLength="1" style="--d:5"/>
+    <rect class="draw" height="150" pathLength="1" style="--d:5" width="164" x="380" y="16"/>
+    <path class="draw" d="M380 150 C 352 150, 360 258, 332 258" pathLength="1" style="--d:6"/>
+    <rect class="draw" height="48" pathLength="1" style="--d:6" width="136" x="196" y="234"/>
+  </g>
+  <g opacity="0.4" stroke="currentColor">
+    <path d="M392 62.5 H 532 M392 80.5 H 532 M392 98.5 H 532 M392 116.5 H 532 M392 134.5 H 532"/>
+  </g>
+  <text class="fade soft" style="--d:0" text-anchor="middle" x="78" y="56">tracker.js</text>
+  <text class="lbl-strong fade" style="--d:1" text-anchor="middle" x="78" y="114">Taverla</text>
+  <text class="fade soft" style="--d:1" text-anchor="middle" x="78" y="132">tracker.js</text>
+  <text class="lbl-strong fade" style="--d:2" text-anchor="middle" x="78" y="190">on-record</text>
+  <text class="fade soft" style="--d:2" text-anchor="middle" x="78" y="208">tracker.js</text>
+  <text class="lbl-strong fade" style="--d:3" text-anchor="middle" x="78" y="266">Scoreboard</text>
+  <text class="fade soft" style="--d:3" text-anchor="middle" x="78" y="284">tracker.js</text>
+  <text class="fade soft" style="--d:3" text-anchor="middle" x="264" y="166">Hono · Cloudflare</text>
+</svg>

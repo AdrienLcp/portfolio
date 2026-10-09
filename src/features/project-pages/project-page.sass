@@ -1,0 +1,467 @@
+@use '../../presentation/styles/layout'
+@use '../../presentation/styles/sizes'
+@use '../../presentation/styles/typography'
+
+/// Wide enough to set an excerpt and its notes side by side.
+@mixin beside
+  @include layout.container-wide(60rem)
+    @content
+
+@layer components
+  .project-page
+    @include layout.page
+
+  .project-detail
+    display: flex
+    flex-direction: column
+
+  // ---------- the head ----------
+
+  .detail-head
+    @include layout.sheet
+
+    padding-block: var(--space-opening) 0
+
+  .detail-crumb
+    margin-inline-start: calc(-1 * var(--space-3xs))
+
+  .detail-name
+    align-items: center
+    display: flex
+    gap: 0.9rem
+    margin-top: var(--space-opening)
+
+  .detail-icon
+    block-size: calc(0.7 * var(--text-project-title))
+    border-radius: 22.5%
+    box-shadow: var(--shadow-raised)
+    flex: none
+    inline-size: calc(0.7 * var(--text-project-title))
+
+  .detail-title
+    @include typography.display
+
+    font-size: var(--text-project-title)
+    min-width: 0
+    overflow-wrap: anywhere
+
+  .detail-kind
+    @include typography.role
+
+    color: var(--ink-soft)
+    font-size: var(--text-l)
+    margin-top: var(--space-s)
+
+    &::first-letter
+      text-transform: uppercase
+
+  .detail-tagline
+    @include typography.lead
+
+    margin-top: var(--space-title)
+    max-width: var(--measure-sentence)
+
+  .detail-summary
+    color: var(--ink-soft)
+    margin-top: var(--space-s)
+    max-width: var(--measure-summary)
+    text-wrap: pretty
+
+  .detail-stack
+    @include typography.semibold
+
+    color: var(--ink-soft)
+    display: flex
+    flex-wrap: wrap
+    font-family: var(--font-letter)
+    gap: var(--space-4xs) var(--space-2xs)
+    list-style: none
+    margin: var(--space-l) 0 0
+    padding: 0
+
+    li + li::before
+      color: var(--violet)
+      content: '·'
+      margin-inline-end: var(--space-2xs)
+
+  .detail-actions
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-xs)
+    margin-top: var(--space-xl)
+
+  .detail-scene
+    background: var(--surface)
+    border-radius: var(--radius-l)
+    margin: var(--space-section) 0 0
+    padding: sizes.fluid(1.6rem, 4rem)
+
+    .screen
+      margin-inline: auto
+      max-width: 52rem
+
+  // ---------- the figures ----------
+
+  .detail-figures
+    @include layout.sheet
+
+    margin-top: var(--space-section)
+
+    dl
+      display: grid
+      gap: var(--space-xl) var(--space-l)
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr))
+      margin: 0
+
+  .figure
+    display: flex
+    flex-direction: column
+    gap: var(--space-3xs)
+    min-width: 0
+
+    dt
+      @include typography.semibold
+
+      color: var(--ink)
+      order: 1
+
+    .figure-value
+      @include typography.key-figure
+
+      font-size: var(--text-figure)
+      margin: 0 0 var(--space-2xs)
+      order: 0
+
+    .figure-note
+      @include typography.leading-note
+
+      color: var(--ink-soft)
+      font-size: var(--text-2xs)
+      margin: 0
+      order: 2
+      text-wrap: pretty
+
+  // ---------- the sections ----------
+
+  .detail-section
+    @include layout.sheet
+
+    padding-top: var(--space-chapter)
+
+  .detail-section-title
+    @include typography.heading
+
+    font-size: var(--text-heading)
+
+  .detail-section-lead
+    color: var(--ink-soft)
+    margin-top: var(--space-xs)
+    max-width: var(--measure-prose)
+    text-wrap: pretty
+
+    &::first-letter
+      text-transform: uppercase
+
+  .detail-section-body
+    margin-top: var(--space-title)
+
+  .dot-list
+    display: grid
+    gap: var(--space-s)
+    list-style: none
+    margin: 0
+    max-width: var(--measure-summary)
+    padding: 0
+
+    li
+      @include typography.leading-item
+
+      display: flex
+      font-size: var(--text-l)
+      gap: var(--space-s)
+      text-wrap: pretty
+
+      &::before
+        background: var(--violet)
+        border-radius: 50%
+        content: ''
+        flex: none
+        height: 0.45rem
+        margin-top: 0.6em
+        width: 0.45rem
+
+  .mechanism-figure .diagram
+    max-width: 56rem
+
+  // ---------- excerpts ----------
+
+  .specimens
+    display: grid
+    gap: sizes.fluid(2rem, 3.5rem, $to: 70rem)
+    list-style: none
+    margin: 0
+    padding: 0
+
+  .specimen,
+  .hero-specimen
+    display: grid
+    gap: var(--space-m)
+
+    @include beside
+      align-items: start
+      column-gap: var(--space-2xl)
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr)
+
+  .hero-specimen
+    margin-top: var(--space-section)
+
+  .specimen-notes
+    color: var(--ink-soft)
+    display: grid
+    gap: var(--space-s)
+    max-width: var(--measure-notes)
+
+    p
+      text-wrap: pretty
+
+  .code-specimen
+    background: var(--surface)
+    border-radius: var(--radius-m)
+    margin: 0
+    min-width: 0
+    overflow: hidden
+
+  .specimen-bar
+    align-items: center
+    display: flex
+    gap: var(--space-s)
+    justify-content: space-between
+    min-height: 3.25rem
+    padding: var(--space-2xs) var(--space-xs) 0 var(--space-m)
+
+  .specimen-title
+    @include typography.bold
+    @include typography.cap-box
+
+    font-family: var(--font-letter)
+    font-size: var(--text-m)
+
+    a
+      color: var(--ink)
+      text-decoration: none
+
+      &[data-hovered],
+      &[data-pressed]
+        color: var(--violet)
+
+  .verdict
+    align-items: center
+    background: var(--paper)
+    border-radius: var(--radius-full)
+    color: var(--ink-soft)
+    display: inline-flex
+    flex: none
+    font-family: var(--font-letter)
+    font-size: var(--text-2xs)
+    gap: var(--space-2xs)
+    min-height: 2rem
+    padding: 0 var(--space-xs)
+
+    b
+      @include typography.bold
+
+      color: var(--ink)
+
+    &.refused
+      background: var(--violet)
+      color: var(--on-violet-soft)
+
+      b
+        color: var(--on-violet)
+
+  .specimen-scroll
+    overflow-x: auto
+
+  .specimen-code
+    @include typography.code-block
+
+    font-size: var(--text-2xs)
+    margin: 0
+    min-width: 100%
+    padding: var(--space-s) var(--space-m) var(--space-m)
+    tab-size: 2
+    width: max-content
+
+    code
+      font: inherit
+
+  .token-keyword
+    @include typography.semibold
+
+    color: var(--violet)
+
+  .token-string,
+  .token-comment
+    color: var(--ink-soft)
+
+  .token-call
+    @include typography.bold
+
+  .token-type,
+  .token-comment
+    font-style: italic
+
+  .squiggle
+    text-decoration: underline wavy var(--violet)
+    text-decoration-skip-ink: none
+    text-decoration-thickness: var(--stroke-thin)
+    text-underline-offset: 0.3em
+
+  .code-note
+    @include typography.code-note
+
+    color: var(--violet)
+    display: block
+    font-size: var(--text-xs)
+    white-space: pre
+
+    &.result
+      font-style: italic
+
+  .code-note-icon
+    display: inline-block
+    fill: none
+    height: 0.95em
+    margin-inline-end: 0.4em
+    stroke: currentColor
+    stroke-width: 2.2
+    translate: 0 0.12em
+    width: 0.95em
+
+  // ---------- packages ----------
+
+  .package-lines
+    list-style: none
+    margin: 0
+    padding: 0
+
+    li
+      padding-block: var(--space-s)
+
+      & + li
+        border-top: var(--hairline)
+
+  .package-lines li
+    display: grid
+    gap: var(--space-4xs) var(--space-l)
+    grid-template-areas: 'name version' 'job job'
+    grid-template-columns: minmax(0, 1fr) auto
+
+    @include layout.container-wide(48rem)
+      align-items: baseline
+      grid-template-areas: 'name job version'
+      grid-template-columns: minmax(12rem, 18rem) minmax(0, 1fr) 5rem
+
+  .package-table li
+    grid-template-areas: 'name version' 'job job' 'used used'
+
+    @include layout.container-wide(48rem)
+      grid-template-areas: 'name job version' 'name used version'
+
+  .package-name
+    @include typography.bold
+
+    font-family: var(--font-letter)
+    font-size: var(--text-l)
+    grid-area: name
+
+    .site-link
+      text-decoration: none
+
+      &[data-hovered],
+      &[data-pressed]
+        color: var(--violet)
+
+        .scope
+          color: inherit
+
+    .scope
+      @include typography.medium
+
+      color: var(--ink-soft)
+
+  .package-job
+    color: var(--ink-soft)
+    grid-area: job
+    text-wrap: pretty
+
+  .package-version
+    @include typography.bold
+    @include typography.figures
+    grid-area: version
+    text-align: end
+
+  .package-used
+    color: var(--ink-soft)
+    font-size: var(--text-2xs)
+    grid-area: used
+
+  .package-used-label
+    @include typography.semibold
+
+    color: var(--ink)
+
+    &::first-letter
+      text-transform: uppercase
+
+  // ---------- neighbours ----------
+
+  .neighbours
+    @include layout.sheet
+
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-xl) var(--space-2xl)
+    justify-content: space-between
+    padding-top: sizes.fluid(4rem, 7rem, $to: 78rem)
+
+  .neighbour
+    display: grid
+    gap: var(--space-2xs)
+    text-decoration: none
+
+    &.next
+      justify-items: end
+      margin-inline-start: auto
+      text-align: end
+
+  .neighbour-direction
+    @include typography.semibold
+
+    align-items: center
+    color: var(--ink-soft)
+    display: inline-flex
+    gap: var(--space-2xs)
+
+  .neighbour-icon
+    height: 1.1em
+    transition: translate var(--transition-base) var(--ease-out)
+    width: 1.1em
+
+  .neighbour-name
+    @include typography.index-name
+
+    font-size: var(--text-neighbour)
+    transition: color var(--transition-base) var(--ease-out)
+
+  .neighbour[data-hovered],
+  .neighbour[data-pressed]
+    .neighbour-name
+      color: var(--violet)
+
+    &.previous .neighbour-icon
+      translate: -0.25rem 0
+
+    &.next .neighbour-icon
+      translate: 0.25rem 0

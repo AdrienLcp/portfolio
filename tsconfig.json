@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "exclude": ["src/**/*.excerpt.ts"],
+  "extends": "@adrienlcp/tsconfig/web-app.json",
+  "include": [
+    ".storybook/**/*",
+    "scripts",
+    "src",
+    "vite.config.ts",
+    "vitest.config.ts",
+    "vitest.setup.ts"
+  ]
+}

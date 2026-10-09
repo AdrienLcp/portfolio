@@ -1,0 +1,18 @@
+@use '@adrienlcp/styles/fonts'
+
+/// Both Sofia Sans cuts: 900 and 300 of 1000 units, capitals at 655.
+$sofia-metrics: (ascent: 0.9, descent: 0.3, cap-height: 0.655)
+
+@layer base
+  @include fonts.font-face('Sofia Sans', '/fonts/sofia-sans-latin.woff2', fonts.$latin, $weight: 300 800)
+  @include fonts.font-face('Sofia Sans', '/fonts/sofia-sans-latin-ext.woff2', fonts.$latin-ext, $weight: 300 800)
+  @include fonts.font-face('Sofia Sans Condensed', '/fonts/sofia-sans-condensed-latin.woff2', fonts.$latin, $weight: 300 900)
+  @include fonts.font-face('Sofia Sans Condensed', '/fonts/sofia-sans-condensed-latin-ext.woff2', fonts.$latin-ext, $weight: 300 900)
+
+  // fontaine's size-adjust for each file, from its average character width;
+  // each width ratio is Arial's over Sofia Sans's at that band's weight,
+  // measured by measure-font on the latin file over the text of every page in
+  // both languages. The condensed cut's digits are set tabular and lining, so
+  // their own ratio is measured with --figures over tnum and lnum.
+  @include fonts.fallback-faces('Sofia Sans', $sofia-metrics, 0.964556, (300 449: 1.0091, 450 549: 1.0038, 550 649: 1.0012, 650 749: 1.0637, 750 800: 1.0523))
+  @include fonts.fallback-faces('Sofia Sans Condensed', $sofia-metrics, 0.749214, (300 449: 1.0115, 450 549: 0.9942, 550 649: 0.9774, 650 749: 1.0231, 750 900: 0.9977), $trimmed-to-capitals: true, $figures: (300 449: 0.7922, 450 549: 0.7922, 550 649: 0.7922, 650 749: 0.7922, 750 900: 0.7922))

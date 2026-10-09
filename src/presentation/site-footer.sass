@@ -1,0 +1,54 @@
+@use './styles/layout'
+@use './styles/typography'
+
+@layer components
+  .site-footer
+    .footer-sheet
+      @include layout.sheet
+
+      color: var(--ink-soft)
+      display: flex
+      flex-wrap: wrap
+      font-size: var(--text-xs)
+      gap: var(--space-2xs) var(--space-xl)
+      padding-block: var(--space-2xl) max(var(--space-3xl), var(--safe-area-bottom))
+
+    .footer-links
+      display: flex
+      flex-wrap: wrap
+      gap: var(--space-l)
+      list-style: none
+      margin: 0
+      padding: 0
+
+      .site-link
+        @include typography.semibold
+
+        align-items: center
+        color: var(--ink)
+        display: inline-flex
+        gap: var(--space-2xs)
+        text-decoration: none
+
+        &[data-hovered],
+        &[data-pressed]
+          color: var(--violet)
+
+    .colophon
+      .site-link
+        white-space: nowrap
+
+        &[data-hovered],
+        &[data-pressed]
+          color: var(--violet)
+
+    .theme-switch
+      flex-basis: auto
+
+    @media (width >= 40rem)
+      .theme-switch
+        display: none
+
+    @include layout.wide
+      .colophon
+        margin-inline-start: auto

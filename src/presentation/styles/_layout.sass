@@ -1,0 +1,55 @@
+@forward '@adrienlcp/styles/breakpoints'
+@forward '@adrienlcp/styles/containers'
+
+@use '@adrienlcp/styles/containers'
+
+/// Wide enough to set two columns side by side.
+$two-columns: 60rem
+
+/// Below it a mechanism diagram shrinks past reading size: its words move to a key.
+$readable-diagram: 37.5rem
+
+@mixin two-columns
+  @include containers.container-wide($two-columns)
+    @content
+
+@mixin small-diagram
+  @include containers.container-narrow($readable-diagram)
+    @content
+
+/// The page's sheet: the column every rule of the page is drawn across,
+/// set in from the window's edge and capped on a wide screen. Each side keeps
+/// clear of the notch and the rounded corners: the larger of the gutter and
+/// that side's inset, never the sum.
+@mixin sheet
+  $centred: calc((100% - var(--frame)) / 2 + var(--gutter))
+  $left: max(var(--gutter-left), #{$centred})
+  $right: max(var(--gutter-right), #{$centred})
+
+  margin-left: $left
+  margin-right: $right
+  width: calc(100% - #{$left} - #{$right})
+
+/// A page is one column of the app shell, and fills it.
+@mixin page
+  display: flex
+  flex: 1
+  flex-direction: column
+
+/// Skips the block's style, layout and paint while it sits far off screen,
+/// which is most of a long page's first-load work on a phone. Until the block
+/// has been rendered once, it stands `$narrow` tall, or `$wide` from two
+/// columns up: close to its real height, so the scrollbar does not jump.
+/// The room a focus ring needs past its control's edge (2px wide, 3px out).
+/// A bare length: Chrome drops `overflow-clip-margin` when given a `calc()`.
+$focus-ring-room: 0.5rem
+
+/// Paint is contained, so only a focus ring may overflow the block: the clip
+/// margin leaves it room at the block's edge.
+@mixin rendered-when-near($narrow, $wide)
+  contain-intrinsic-block-size: auto $narrow
+  content-visibility: auto
+  overflow-clip-margin: $focus-ring-room
+
+  @include two-columns
+    contain-intrinsic-block-size: auto $wide

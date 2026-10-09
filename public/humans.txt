@@ -1,0 +1,22 @@
+/* TEAM */
+Developer, designer, copywriter and release manager: Adrien Lacourpaille
+Site: https://adrienlcp.com
+GitHub: https://github.com/AdrienLcp
+LinkedIn: https://www.linkedin.com/in/adrien-lacourpaille/
+From: Nantes, France
+Status: open to work, https://adrienlcp.com/en/contact
+
+/* THANKS */
+The Site du Zéro, for the first lines of code.
+Six years of warehouse shifts, for knowing what "shipped" means.
+
+/* SITE */
+Language: English, French
+Standards: HTML, Sass, TypeScript
+Components: React 19, react-router, react-aria-components, zod, the @adrienlcp packages
+Software: Vite, Biome, Vitest, Playwright, Storybook
+Hosting: Cloudflare Pages
+Source: https://github.com/AdrienLcp/portfolio
+
+/* FOR THE CURIOUS */
+The theme switch remembers how fast you click it. Try ten in a row.

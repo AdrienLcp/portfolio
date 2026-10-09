@@ -1,0 +1,27 @@
+// The drafting table: blueprint paper, white pencil, an amber marker in place
+// of the violet. Fixed colours, whatever the system scheme.
+@layer tokens
+  \:root[data-blueprint]
+    --paper: oklch(0.357 0.098 255.2)
+    --paper-sunk: oklch(0.322 0.09 255.6)
+    --surface: oklch(0.322 0.09 255.6)
+    --surface-strong: oklch(0.285 0.079 255.2)
+    --screen: oklch(0.391 0.1 253)
+    --ink: oklch(0.972 0.009 258.3)
+    --ink-soft: oklch(0.836 0.044 255.9)
+    --ink-faded: oklch(0.733 0.062 255.5)
+    --rule: oklch(0.507 0.098 254.1)
+    --violet: oklch(0.876 0.142 86.6)
+    --on-violet: oklch(0.322 0.09 255.6)
+    --on-violet-soft: oklch(0.36 0.069 86.3)
+    --selection: oklch(0.47 0.1 254.1)
+
+@layer base
+  \:root[data-blueprint] body
+    background-image: linear-gradient(color-mix(in oklab, var(--ink) 7%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklab, var(--ink) 7%, transparent) 1px, transparent 1px)
+    background-size: 1.5rem 1.5rem
+
+// Outranks the rule that sets `color-scheme` from `data-theme`, which
+// loads after this one.
+html:root[data-blueprint]
+  color-scheme: dark

@@ -1,0 +1,194 @@
+@use '../../presentation/styles/layout'
+@use '../../presentation/styles/typography'
+
+@layer components
+  .contact-page
+    @include layout.page
+
+  .contact-section-title
+    @include typography.heading
+
+    font-size: var(--text-heading)
+
+  // The address is the page.
+  .contact-hero
+    @include layout.container
+    @include layout.sheet
+
+    display: grid
+    gap: var(--space-l)
+    padding-block: var(--space-masthead) var(--space-chapter)
+
+  .contact-lead
+    @include typography.lead
+
+    font-size: var(--text-contact-lead)
+    max-width: 30rem
+
+  .contact-address
+    @include typography.display
+
+    font-size: clamp(var(--text-3xl), 11.5cqi, 10rem)
+    overflow-wrap: anywhere
+
+    a
+      border-radius: var(--radius-s)
+      color: var(--ink)
+      text-decoration: none
+      transition: color var(--transition-base) var(--ease-out)
+
+      &[data-hovered],
+      &[data-pressed]
+        color: var(--violet)
+
+  .contact-act
+    display: grid
+    gap: var(--space-2xs)
+    justify-items: start
+
+  .contact-actions
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-xs)
+
+  .copy-status
+    @include typography.semibold
+
+    align-items: center
+    color: var(--ink-soft)
+    display: inline-flex
+    gap: var(--space-2xs)
+    min-height: 1.6em
+
+    .copy-status-icon
+      color: var(--violet)
+      height: var(--icon-s)
+      width: var(--icon-s)
+
+  .contact-standing
+    display: grid
+    gap: var(--space-xs)
+    margin-top: var(--space-l)
+
+    p
+      color: var(--ink-soft)
+      max-width: var(--measure-lead)
+
+    b
+      @include typography.semibold
+
+      color: var(--ink)
+
+    .site-link
+      color: var(--ink)
+      text-underline-offset: var(--underline-offset)
+
+      &[data-hovered],
+      &[data-pressed]
+        color: var(--violet)
+
+    .contact-open
+      @include typography.bold
+
+      align-items: center
+      color: var(--ink)
+      display: flex
+      gap: var(--space-2xs)
+
+  .contact-open-dot
+    background: var(--violet)
+    border-radius: 50%
+    flex: none
+    height: 0.55rem
+    animation: contact-open-pulse var(--transition-pulse) var(--ease-out) infinite
+    width: 0.55rem
+
+  @keyframes contact-open-pulse
+    0%
+      box-shadow: 0 0 0 0 color-mix(in oklab, var(--violet) 55%, transparent)
+
+    80%,
+    100%
+      box-shadow: 0 0 0 0.6rem transparent
+
+  // Elsewhere: each address on its own soft surface.
+  .contact-elsewhere
+    @include layout.sheet
+
+    display: grid
+    gap: var(--space-l)
+    padding-block: var(--space-chapter)
+
+    @include layout.two-columns
+      align-items: start
+      column-gap: var(--space-columns)
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr)
+
+  .elsewhere-list
+    display: grid
+    gap: var(--space-2xs)
+    list-style: none
+    margin: 0
+    max-width: var(--measure-form)
+    padding: 0
+
+  .elsewhere-link
+    align-items: center
+    background: var(--surface)
+    border-radius: var(--radius-m)
+    display: grid
+    gap: var(--space-3xs) var(--space-s)
+    grid-template-columns: minmax(0, 1fr) auto
+    min-height: var(--control-height)
+    padding: var(--space-s) var(--space-m)
+    text-decoration: none
+    transition: background-color var(--transition-fast) var(--ease-out), scale var(--transition-fast) var(--ease-out)
+
+    @include layout.container-wide(45rem)
+      grid-template-columns: 9.5rem minmax(0, 1fr) auto
+
+    .site-link-icon
+      color: var(--ink-soft)
+      grid-column: 2
+      grid-row: 1 / span 2
+      height: var(--icon-s)
+      transition: translate var(--transition-base) var(--ease-out), color var(--transition-fast) var(--ease-out)
+      width: var(--icon-s)
+
+      @include layout.container-wide(45rem)
+        grid-column: 3
+        grid-row: 1
+
+    &[data-pressed]
+      scale: var(--pressed-scale-wide)
+
+    &[data-hovered],
+    &[data-pressed]
+      background: var(--surface-strong)
+
+      .elsewhere-label,
+      .site-link-icon
+        color: var(--violet)
+
+      .site-link-icon
+        translate: var(--space-4xs) calc(-1 * var(--space-4xs))
+
+  .elsewhere-label
+    @include typography.bold
+
+    align-items: center
+    display: inline-flex
+    font-family: var(--font-letter)
+    font-size: var(--text-l)
+    gap: var(--space-2xs)
+    transition: color var(--transition-fast) var(--ease-out)
+
+  .elsewhere-line
+    @include typography.leading-snug
+
+    overflow-wrap: anywhere
+
+    small
+      color: var(--ink-soft)
+      display: block
+      font-size: var(--text-xs)

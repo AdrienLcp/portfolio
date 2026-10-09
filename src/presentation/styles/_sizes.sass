@@ -1,0 +1,9 @@
+@use '@adrienlcp/styles/sizes' as shared
+
+/// The widest phone. A fluid size holds its minimum up to it, so a phone lays
+/// the page out at the sizes it was drawn at.
+$phone: 26rem
+
+/// `sizes.fluid` from `$phone` up to `$to`.
+@function fluid($min, $max, $to: 80rem)
+  @return shared.fluid($min, $max, $phone, $to)

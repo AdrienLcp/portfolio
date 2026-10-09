@@ -1,0 +1,57 @@
+<!doctype html>
+<!--
+  You, reading the source. Curious: that is a good sign.
+  Every line of this site is open: https://github.com/AdrienLcp/portfolio
+  The people behind it: /humans.txt
+  And if you are hiring: /en/contact
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
+    <meta content="#f7f8fa" data-scheme="light" data-token="--paper" media="(prefers-color-scheme: light)" name="theme-color" />
+    <meta content="#101115" data-scheme="dark" data-token="--paper" media="(prefers-color-scheme: dark)" name="theme-color" />
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png" />
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="/humans.txt" rel="author" type="text/plain" />
+    <title></title>
+    <meta content="" name="description" />
+    <link href="https://adrienlcp.com/" rel="canonical" />
+    <meta content="website" property="og:type" />
+    <meta content="Adrien Lacourpaille" property="og:site_name" />
+    <meta content="" property="og:title" />
+    <meta content="" property="og:description" />
+    <meta content="https://adrienlcp.com/" property="og:url" />
+    <meta content="https://adrienlcp.com/og.png" property="og:image" />
+    <meta content="" property="og:image:width" />
+    <meta content="" property="og:image:height" />
+    <meta content="" property="og:image:alt" />
+    <meta content="en_US" property="og:locale" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <style>
+      @layer reset, tokens, base, components;
+    </style>
+    <!-- react-aria adds this sheet on the first press handler unless it finds it, restyling the whole page as it lands -->
+    <style id="react-aria-pressable-style">
+      @layer {
+        [data-react-aria-pressable] {
+          touch-action: pan-x pan-y pinch-zoom;
+        }
+      }
+    </style>
+    <script data-site="portfolio" defer src="https://analytics.adrienlcp.com/tracker.js"></script>
+  </head>
+  <body>
+    <!-- DIRECTION CONTRACT
+    THESIS: The site is an index of names: each project set as large as the name above it, its picture following the pointer, unfolding in place. Refuses the card grid and the register of dated rows.
+    OWN-WORLD: Cool paper and ink, one violet (#4b2fd6 / night #8d79ff) for whatever is pointed at, open or current. Sofia Sans Condensed for names, Sofia Sans for prose. No rules: space and soft surfaces separate, pills act, pictures float on a lifted shadow.
+    STORY: The visitor reads who this is in one sentence, points at the names and sees each app working, opens one for the mechanism, finds the packages underneath, and writes.
+    FIRST VIEWPORT: Name and role huge at left, the day-and-night lead, a face with the open-to-work dot; the project index starts on the next scroll.
+    FORM: The Index (direction D of four full-page proposals, picked by Adrien on 2026-10-06), user-pinned.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+    -->
+    <div id="root"></div>
+    <script src="/src/main.tsx" type="module"></script>
+  </body>
+</html>

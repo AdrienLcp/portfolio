@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+
+concurrency:
+  # Each push runs in a group of its own: GitHub cancels a run left waiting
+  # behind another of its group, and mails every cancelled run.
+  group: ci-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          cache: pnpm
+          node-version: 26
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Drop Google's Chrome apt source, unused here and prone to hash mismatches mid-publish
+        run: sudo rm -f /etc/apt/sources.list.d/*google*
+
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Validate, linting read-only so drift fails instead of being repaired
+        run: pnpm validate
+
+      - name: Coverage summary
+        run: |
+          node -p "'Line coverage: ' + require('./coverage/coverage-summary.json').total.lines.pct + '%'" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Lighthouse
+        run: pnpm lighthouse
+
+      - if: failure()
+        uses: actions/upload-artifact@v5
+        with:
+          name: lighthouse-reports
+          path: lighthouse-reports
+          if-no-files-found: ignore
+
+  # Workflows break at run time: a typo in an expression or a context passes
+  # as plain YAML and only fails when the step is reached.
+  actionlint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Lint the workflows
+        uses: docker://rhysd/actionlint:1.7.12
+        with:
+          args: -color

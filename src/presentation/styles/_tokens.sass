@@ -1,0 +1,135 @@
+@use '@adrienlcp/styles/tokens'
+@use './sizes'
+
+@layer tokens
+  \:root
+    @include tokens.defaults
+
+    --paper: light-dark(oklch(0.979 0.003 264.5), oklch(0.178 0.008 274.4))
+    --surface: light-dark(oklch(0.949 0.007 268.5), oklch(0.224 0.012 277.9))
+    --surface-strong: light-dark(oklch(0.922 0.01 267.4), oklch(0.27 0.013 272.9))
+    --paper-sunk: var(--surface)
+    --ink: light-dark(oklch(0.201 0.008 274.5), oklch(0.949 0.007 268.5))
+    --ink-soft: light-dark(oklch(0.433 0.019 273.5), oklch(0.732 0.018 271.2))
+    --ink-faded: light-dark(oklch(0.651 0.018 271.1), oklch(0.546 0.019 271))
+    --rule: light-dark(oklch(0.846 0.014 272.7), oklch(0.306 0.017 270.8))
+    --rule-strong: var(--ink-soft)
+    --screen: light-dark(oklch(1 0 0), oklch(0.228 0.012 278))
+
+    --violet: light-dark(oklch(0.463 0.235 279.6), oklch(0.659 0.192 286.7))
+    --on-violet: light-dark(oklch(0.979 0.003 264.5), oklch(0.178 0.008 274.4))
+    --on-violet-soft: light-dark(oklch(0.894 0.056 291.9), oklch(0.262 0.11 281.3))
+    --selection: light-dark(oklch(0.894 0.056 291.9), oklch(0.32 0.11 281.3))
+
+    --outline: var(--ink)
+    --focus: var(--violet)
+    --shadow-ink-faint: light-dark(oklch(0.201 0.008 274.5 / 0.08), oklch(0 0 0 / 0.4))
+    --shadow-ink-soft: light-dark(oklch(0.201 0.008 274.5 / 0.16), oklch(0 0 0 / 0.5))
+    --shadow-ink: light-dark(oklch(0.201 0.008 274.5 / 0.28), oklch(0 0 0 / 0.7))
+    --shadow-lifted: 0 1px 2px var(--shadow-ink-faint), 0 18px 40px -12px var(--shadow-ink)
+    --shadow-raised: 0 2px 6px var(--shadow-ink-soft)
+    --shadow-resting: 0 1px 2px var(--shadow-ink-soft)
+
+    // Each '… fallback' is a local face fontaine scales to the real one's metrics
+    --font-letter: 'Sofia Sans Condensed', 'Sofia Sans Condensed fallback', system-ui, sans-serif
+    --font-prose: 'Sofia Sans', 'Sofia Sans fallback', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif
+    --font-code: ui-monospace, 'Cascadia Code', Consolas, monospace
+
+    --tracking-tighter: -0.025em
+    --tracking-tight: -0.01em
+    --tracking-open: 0.01em
+    --tracking-wide: 0.04em
+    --tracking-wider: 0.06em
+    --tracking-caps-diagram: 0.08em
+    --tracking-caps-term: 0.09em
+    --tracking-caps: 0.1em
+    --underline-offset: 0.22em
+
+    --text-4xs: 0.75rem
+    --text-3xs: 0.8125rem
+    --text-2xs: 0.875rem
+    --text-xs: 0.9375rem
+    --text-s: 1rem
+    --text-m: 1.0625rem
+    --text-l: 1.1875rem
+    --text-xl: 1.5rem
+    --text-2xl: 1.75rem
+    --text-3xl: 2rem
+    --text-code: 0.9em
+
+    --text-display: #{sizes.fluid(3rem, 6rem, $to: 60rem)}
+    --text-cv-title: #{sizes.fluid(3rem, 6.5rem, $to: 65rem)}
+    --text-project-title: #{sizes.fluid(3.25rem, 6rem, $to: 54.5rem)}
+    --text-error-title: #{sizes.fluid(2.5rem, 5.25rem, $to: 65.5rem)}
+    --text-index: #{sizes.fluid(2.75rem, 6rem, $to: 85.5rem)}
+    --text-neighbour: #{sizes.fluid(2.5rem, 4.5rem, $to: 75rem)}
+    --text-step: #{sizes.fluid(2rem, 3.25rem, $to: 72rem)}
+    --text-figure: #{sizes.fluid(2rem, 2.75rem, $to: 68.75rem)}
+    --text-heading: #{sizes.fluid(1.75rem, 2.25rem, $to: 75rem)}
+    --text-shelf: #{sizes.fluid(1.5rem, 2.25rem, $to: 75rem)}
+    --text-about-role: #{sizes.fluid(1.5rem, 2.5rem, $to: 62.5rem)}
+    --text-contact-lead: #{sizes.fluid(1.25rem, 1.75rem, $to: 73rem)}
+    --text-lead: #{sizes.fluid(1.2rem, 1.5rem, $to: 68rem)}
+    --text-note-sent: #{sizes.fluid(1.1875rem, 1.4rem, $to: 70rem)}
+
+    --space-4xs: 0.125rem
+    --space-3xs: 0.25rem
+    --space-2xs: 0.5rem
+    --space-xs: 0.75rem
+    --space-s: 1rem
+    --space-m: 1.25rem
+    --space-l: 1.5rem
+    --space-xl: 2rem
+    --space-2xl: 2.5rem
+    --space-3xl: 3rem
+    --space-4xl: 4.5rem
+    --space-5xl: 7rem
+    --space-chapter: #{sizes.fluid(3rem, 6rem, $to: 85.5rem)}
+    --space-section: #{sizes.fluid(2.5rem, 4.5rem, $to: 75rem)}
+    --space-masthead: #{sizes.fluid(3rem, 7rem, $to: 78rem)}
+    --space-columns: #{sizes.fluid(2rem, 5rem, $to: 100rem)}
+    --space-card: #{sizes.fluid(2rem, 5rem, $to: 83.5rem)}
+    --space-opening: #{sizes.fluid(1.5rem, 3rem, $to: 75rem)}
+    --space-lead: #{sizes.fluid(1.5rem, 2.25rem, $to: 75rem)}
+    --space-step: #{sizes.fluid(1.25rem, 2.5rem, $to: 83.5rem)}
+    --space-title: #{sizes.fluid(1.25rem, 2rem, $to: 66.5rem)}
+    --frame: 84rem
+    --scroll-offset: max(clamp(1rem, 4vw, 3rem), (100vw - var(--frame)) / 2, var(--space-xl))
+    --measure-lead: 34rem
+    --measure-text: 36rem
+    --measure-wide: 40rem
+    --measure-form: 46rem
+    // In em, never ch: ch reads the "0" of whichever face paints, and the
+    // fallback's is 8 % narrower than Sofia Sans's tabular one, so a ch
+    // measure widened when the web font swapped in and moved every line
+    // below it. Each is the count of Sofia Sans zeros it was set as (0.58em at
+    // 400, 0.584em at 500, 0.49em for the condensed face at 800).
+    --measure-error-title: 7.84em
+    --measure-tagline: 20.88em
+    --measure-sentence: 23.36em
+    --measure-apology: 25.7em
+    --measure-notes: 26.68em
+    --measure-invite: 27.84em
+    --measure-intro: 30.16em
+    --measure-prose: 34.8em
+    --measure-summary: 35.96em
+
+    --radius-s: 6px
+    --radius-m: 14px
+    --radius-l: clamp(20px, 3vw, 32px)
+    --radius-full: 999px
+    --pressed-scale: 0.97
+    --pressed-scale-wide: 0.985
+
+    --transition-fast: 120ms
+    --transition-base: 280ms
+    --transition-slow: 560ms
+    --transition-pulse: calc(var(--transition-slow) * 4)
+
+  @media (width >= 45rem)
+    \:root
+      --gutter: 2rem
+
+  @media (width >= 75rem)
+    \:root
+      --gutter: 3rem

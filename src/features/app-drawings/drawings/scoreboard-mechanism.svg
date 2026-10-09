@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300">
+  <g fill="none" stroke="currentColor" stroke-width="1.6">
+    <rect class="draw" height="64" pathLength="1" style="--d:0" width="124" x="24" y="40"/>
+    <rect class="draw" height="64" pathLength="1" style="--d:0" width="124" x="24" y="196"/>
+    <rect class="draw" height="252" pathLength="1" style="--d:1" width="168" x="196" y="24"/>
+    <rect class="draw" height="24" pathLength="1" style="--d:2" width="128" x="216" y="86"/>
+    <rect class="draw" height="24" pathLength="1" style="--d:2.5" width="128" x="216" y="116"/>
+    <rect class="draw" height="24" pathLength="1" style="--d:3" width="128" x="216" y="146"/>
+    <rect class="draw" height="24" pathLength="1" style="--d:3.5" width="128" x="216" y="176"/>
+    <rect class="draw" height="24" pathLength="1" style="--d:4" width="128" x="216" y="206"/>
+    <path class="draw" d="M148 72 H 196 M 189 65 l 7 7 l -7 7" pathLength="1" style="--d:2"/>
+    <path class="draw" d="M148 228 H 196 M 189 221 l 7 7 l -7 7" pathLength="1" style="--d:2"/>
+    <path class="draw" d="M364 72 H 412 M 405 65 l 7 7 l -7 7" pathLength="1" style="--d:5"/>
+    <path class="draw" d="M364 228 H 412 M 405 221 l 7 7 l -7 7" pathLength="1" style="--d:5"/>
+    <rect class="draw" height="64" pathLength="1" style="--d:6" width="124" x="412" y="40"/>
+    <rect class="draw" height="64" pathLength="1" style="--d:6" width="124" x="412" y="196"/>
+    <path class="draw" d="M236 158 H 324" pathLength="1" stroke="var(--violet)" stroke-width="2" style="--d:4"/>
+  </g>
+  <text class="fade" style="--d:2.5" text-anchor="middle" x="280" y="103">+1 Roche</text>
+  <text class="fade" style="--d:3" text-anchor="middle" x="280" y="133">+1 Vidal</text>
+  <text class="fade" style="--d:3.5" text-anchor="middle" x="280" y="163">+1 Vidal</text>
+  <text class="fade" style="--d:4.5" text-anchor="middle" x="280" y="223">+1 Roche</text>
+</svg>

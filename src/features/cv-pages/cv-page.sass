@@ -1,0 +1,365 @@
+@use '@adrienlcp/styles/accessibility'
+@use '../../presentation/styles/layout'
+@use '../../presentation/styles/sizes'
+@use '../../presentation/styles/typography'
+
+// The sheet's type is set in em, so one font size scales the whole CV: the
+// phone reflow, the A4 sheet on a wide screen, and the printed page.
+$a4-ratio: calc(297 / 210)
+$a4-points: 595.3
+$body-points: 8.7
+
+@layer components
+  .cv-page
+    @include layout.page
+
+  // ---------- the page head ----------
+
+  .cv-head
+    @include layout.sheet
+
+    display: grid
+    gap: var(--space-m)
+    padding-block: sizes.fluid(1.75rem, 3rem, $to: 75rem) var(--space-lead)
+
+    @include layout.two-columns
+      align-items: end
+      column-gap: var(--space-m)
+      grid-template-columns: minmax(0, 1fr) auto
+
+      .cv-tools
+        justify-items: end
+        text-align: right
+
+  .cv-title
+    @include typography.display
+
+    font-size: var(--text-cv-title)
+
+  .cv-tools
+    display: grid
+    gap: var(--space-xs)
+
+  .cv-downloads
+    display: flex
+    flex-wrap: wrap
+    gap: var(--space-xs)
+
+  .cv-tools-note
+    color: var(--ink-soft)
+    max-width: var(--measure-lead)
+
+  // ---------- the sheet: phone reflow first ----------
+
+  .cv-desk
+    flex: 1
+
+  .cv-sheet
+    padding-left: var(--gutter-left)
+    padding-right: var(--gutter-right)
+    @include typography.leading-item
+
+    --radius-photo: 0.9em
+    --text-sheet-name: 2.5em
+    --text-sheet-heading: 1.35em
+    --text-sheet-entry: 1.2em
+    --text-sheet-subentry: 1.1em
+    --text-sheet-link: 0.95em
+    --text-sheet-term: 0.82em
+
+    background: var(--paper)
+    font-size: var(--text-s)
+    padding-block: var(--space-l) var(--space-2xl)
+
+    ul
+      list-style: none
+      margin: 0
+      padding: 0
+
+    a
+      color: var(--violet)
+      overflow-wrap: anywhere
+      text-decoration: none
+
+      &[data-hovered],
+      &[data-pressed]
+        text-decoration: underline
+
+  .cv-top
+    display: grid
+    gap: 0.35em
+    padding-bottom: 0.6em
+
+    .cv-role > span,
+    .cv-open > span
+      @include typography.baseline-bottom
+
+  .cv-name
+    @include typography.heading
+
+    font-size: var(--text-sheet-name)
+
+  .cv-role
+    @include typography.semibold
+
+    align-items: baseline
+    display: flex
+    flex-wrap: wrap
+    font-family: var(--font-letter)
+    font-size: var(--text-sheet-entry)
+    gap: 0 0.5em
+
+    .dot
+      color: var(--ink-faded)
+
+  .cv-stack
+    @include typography.medium
+
+    color: var(--ink-soft)
+
+  .cv-open
+    @include typography.bold
+
+    align-items: center
+    color: var(--ink)
+    display: inline-flex
+    font-family: var(--font-letter)
+    font-size: 1em
+    gap: 0.5em
+
+  .cv-open-dot
+    background: var(--violet)
+    border-radius: 50%
+    height: 0.55em
+    width: 0.55em
+
+  .cv-columns
+    display: grid
+    gap: 1.4em
+    margin-top: 1.2em
+
+  .cv-aside,
+  .cv-main
+    align-content: start
+    display: grid
+    gap: 1.2em
+
+  .cv-photo
+    aspect-ratio: 1
+    border-radius: var(--radius-photo)
+    display: block
+    height: auto
+    object-fit: cover
+    width: 8rem
+
+  .cv-heading
+    @include typography.heading
+
+    color: var(--ink)
+    font-size: var(--text-sheet-heading)
+    margin-bottom: 0.5em
+
+  .cv-list
+    display: grid
+    gap: 0.3em
+    margin: 0
+
+    dt
+      @include typography.term-label
+
+      color: var(--ink-soft)
+      font-size: var(--text-sheet-term)
+
+    dd
+      margin: 0
+
+  .cv-contact
+    gap: 0.1em
+
+    dt
+      @include accessibility.visually-hidden
+
+    @media screen
+      a
+        display: inline-block
+        padding-block: var(--space-3xs)
+
+  .cv-inline
+    dt,
+    dd
+      display: inline
+
+    dt::after
+      content: ' '
+
+  .cv-plain-list li + li
+    margin-top: 0.25em
+
+  .cv-soft
+    color: var(--ink-soft)
+
+  .cv-summary
+    text-wrap: pretty
+
+  .cv-entry-head
+    align-items: baseline
+    display: flex
+    flex-wrap: wrap
+    gap: 0 1em
+    justify-content: space-between
+
+  .cv-job-title,
+  .cv-project-name
+    @include typography.heavy
+    @include typography.leading-entry
+
+    font-family: var(--font-letter)
+    font-size: var(--text-sheet-entry)
+
+    span
+      @include typography.semibold
+
+      color: var(--ink-soft)
+
+  .cv-project-name
+    font-size: var(--text-sheet-subentry)
+
+  .cv-when
+    @include typography.bold
+    @include typography.figures
+
+    color: var(--ink-soft)
+    white-space: nowrap
+
+  .cv-mission
+    margin-top: 0.8em
+
+  .cv-mission-title
+    @include typography.bold
+    @include typography.leading-entry
+
+    font-family: var(--font-letter)
+    font-size: var(--text-sheet-subentry)
+
+  .cv-points
+    margin-top: 0.2em
+
+    li
+      padding-left: 0.95em
+      position: relative
+
+      &::before
+        background: var(--violet)
+        border-radius: 50%
+        content: ''
+        height: 0.35em
+        left: 0.1em
+        position: absolute
+        top: 0.55em
+        width: 0.35em
+
+  .cv-projects
+    display: grid
+    gap: 0.7em
+
+  .cv-project-link
+    font-family: var(--font-letter)
+    font-size: var(--text-sheet-link)
+
+  // ---------- the sheet at A4: wide screens and print ----------
+
+  @mixin a4-sheet
+    .cv-desk
+      background: var(--surface)
+      padding-left: var(--gutter-left)
+      padding-right: var(--gutter-right)
+
+      padding-block: var(--space-3xl) 4rem
+
+    .cv-sheet
+      --sheet-width: 210mm
+      --text-sheet-name: 3.6em
+
+      @include typography.leading-dense
+
+      border-radius: var(--radius-m)
+      box-shadow: var(--shadow-lifted)
+      font-size: calc(var(--sheet-width) * #{$body-points} / #{$a4-points})
+      margin-inline: auto
+      min-height: calc(var(--sheet-width) * #{$a4-ratio})
+      padding: 3.5em 3.9em
+      width: var(--sheet-width)
+
+    .cv-top
+      align-items: end
+      column-gap: 2em
+      grid-template-columns: minmax(0, 1fr) auto
+
+      .cv-name,
+      .cv-role
+        grid-column: 1
+
+      .cv-role,
+      .cv-open
+        align-self: last baseline
+
+      .cv-open
+        grid-column: 2
+        grid-row: 2
+
+    .cv-columns
+      column-gap: 2.4em
+      grid-template-columns: 15.5em minmax(0, 1fr)
+
+    .cv-photo
+      width: 9.6em
+
+    .cv-aside,
+    .cv-main
+      gap: 1.05em
+
+  @media screen
+    @include layout.two-columns
+      @include a4-sheet
+
+    @include layout.container-wide(80rem)
+      .cv-sheet
+        --sheet-width: 240mm
+
+  @media print
+    @include a4-sheet
+
+  // ---------- print: one A4 page, light inks, no site chrome ----------
+
+  @media print
+    @page
+      margin: 0
+      size: A4
+
+    \:root,
+    \:root[data-theme]
+      --paper: oklch(1 0 0)
+      color-scheme: light
+
+    *
+      print-color-adjust: exact
+
+    .site-header,
+    .site-footer,
+    .skip-link,
+    .cv-head
+      display: none
+
+    .cv-desk
+      background: none
+      border: 0
+      padding: 0
+
+    .cv-sheet
+      border-radius: 0
+      box-shadow: none
+      break-inside: avoid
+      height: 297mm
+      min-height: 0
+      overflow: hidden
+      width: 210mm

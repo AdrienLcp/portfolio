@@ -1,0 +1,92 @@
+@use '../../../presentation/styles/layout'
+@use '../../../presentation/styles/typography'
+
+@layer components
+  .screen
+    display: block
+    height: auto
+    width: 100%
+
+  .diagram
+    display: block
+    height: auto
+    overflow: visible
+    width: 100%
+
+    text
+      @include typography.diagram-text
+
+      fill: currentColor
+      font-size: var(--text-3xs)
+
+    .lbl-strong
+      @include typography.diagram-label
+
+      font-size: var(--text-2xs)
+
+    .soft
+      opacity: 0.72
+
+    .struck tspan
+      fill: currentColor
+
+  .mechanism-key
+    display: none
+
+    @include layout.small-diagram
+      display: grid
+      gap: var(--space-s)
+      margin-top: var(--space-l)
+
+      dl
+        display: grid
+        gap: var(--space-xs)
+
+      dt
+        @include typography.bold
+
+        font-family: var(--font-letter)
+        font-size: var(--text-m)
+
+      dd,
+      p
+        @include typography.leading-note
+
+        color: var(--ink-soft)
+        font-size: var(--text-xs)
+
+  @include layout.small-diagram
+    .diagram text.soft
+      display: none
+
+  .struck
+    fill: var(--violet)
+    text-decoration: line-through
+    text-decoration-thickness: var(--stroke-thin)
+
+  .screen .struck
+    text-decoration-thickness: var(--stroke-bold)
+
+    tspan
+      fill: var(--ink)
+
+  // A mechanism draws its lines in, once, the first time it is seen.
+  .mechanism-figure
+    .diagram .draw
+      stroke-dasharray: 1
+      stroke-dashoffset: 1
+
+    .diagram .fade
+      opacity: 0
+
+    &.drawn
+      .diagram .draw
+        stroke-dashoffset: 0
+        transition: stroke-dashoffset calc(2 * var(--transition-slow)) var(--ease-out) calc(var(--d, 0) * var(--transition-fast))
+
+      .diagram .fade
+        opacity: 1
+        transition: opacity var(--transition-slow) var(--ease-out) calc(var(--transition-base) + var(--d, 0) * var(--transition-fast))
+
+      .diagram .fade.soft
+        opacity: 0.72

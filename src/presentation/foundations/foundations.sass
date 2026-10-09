@@ -1,0 +1,89 @@
+@use '../styles/layout'
+@use '../styles/typography'
+
+@layer components
+  .foundation
+    display: grid
+    gap: var(--space-3xl)
+
+    .foundation-group
+      display: grid
+      gap: var(--space-xs)
+
+    .foundation-title
+      @include typography.label
+
+      font-size: var(--text-l)
+
+    .foundation-note
+      color: var(--ink-soft)
+      max-width: var(--measure)
+
+    .specimen-row
+      align-items: center
+      border-top: var(--stroke-hair) solid color-mix(in oklab, var(--ink) 20%, transparent)
+      display: grid
+      gap: var(--space-2xs) var(--space-m)
+      padding-top: var(--space-xs)
+
+      > *
+        min-width: 0
+
+      @include layout.wide
+        grid-template-columns: 14rem 1fr
+
+    .specimen-name
+      @include typography.label
+
+      display: grid
+      gap: var(--space-3xs)
+
+      code
+        color: var(--ink-soft)
+        font-size: var(--text-code)
+        overflow-wrap: anywhere
+
+    .swatch
+      aspect-ratio: 3 / 1
+      background: var(--swatch)
+      border: var(--stroke-bold) solid var(--outline)
+      max-width: 16rem
+
+    .bar
+      background: var(--ink)
+      height: 1rem
+      width: var(--bar)
+
+    .motion-track
+      background: color-mix(in oklab, var(--ink) 12%, transparent)
+      border-radius: var(--radius-full)
+      height: 1rem
+      max-width: 24rem
+      position: relative
+
+    .motion-dot
+      animation: motion-run var(--duration) var(--ease-out) infinite alternate
+      background: var(--violet)
+      border-radius: var(--radius-full)
+      height: 1rem
+      left: 0
+      position: absolute
+      width: 1rem
+
+    .type-label
+      @include typography.label
+
+    .type-figures
+      @include typography.figures
+
+    .type-body
+      @include typography.body
+
+      max-width: var(--measure)
+
+    .type-code
+      @include typography.code
+
+  @keyframes motion-run
+    to
+      left: calc(100% - 1rem)

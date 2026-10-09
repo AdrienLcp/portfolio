@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300">
+  <g fill="none" stroke="currentColor" stroke-width="1.6">
+    <rect class="draw" height="76" pathLength="1" style="--d:0" width="148" x="206" y="112"/>
+    <rect class="draw" height="84" pathLength="1" style="--d:1" width="140" x="20" y="20"/>
+    <path class="draw" d="M206 138 C 170 138, 160 90, 160 72" pathLength="1" stroke-dasharray="1" style="--d:2"/>
+    <path class="draw" d="M354 132 C 400 132, 410 38, 452 38" pathLength="1" style="--d:3"/>
+    <path class="draw" d="M354 144 C 410 144, 420 108, 452 108" pathLength="1" style="--d:4"/>
+    <path class="draw" d="M354 156 C 410 156, 420 178, 452 178" pathLength="1" style="--d:5"/>
+    <path class="draw" d="M354 168 C 400 168, 410 248, 452 248" pathLength="1" style="--d:6"/>
+    <rect class="draw" height="44" pathLength="1" rx="5" style="--d:4" width="28" x="452" y="18"/>
+    <rect class="draw" height="44" pathLength="1" rx="5" style="--d:5" width="28" x="452" y="88"/>
+    <rect class="draw" height="44" pathLength="1" rx="5" style="--d:6" width="28" x="452" y="158"/>
+    <rect class="draw" height="44" pathLength="1" rx="5" style="--d:7" width="28" x="452" y="228"/>
+  </g>
+  <rect class="fade" fill="currentColor" height="44" rx="5" style="--d:8" width="28" x="452" y="18"/>
+  <text class="fade soft" style="--d:8" x="492" y="255">—</text>
+</svg>

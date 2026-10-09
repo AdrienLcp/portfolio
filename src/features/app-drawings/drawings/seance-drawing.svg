@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 380">
+  <g transform="translate(200 20)">
+    <rect fill="var(--ink)" height="340" rx="26" width="180" x="0" y="0"/>
+    <rect fill="var(--screen)" height="314" rx="17" width="160" x="10" y="13"/>
+    <rect fill="var(--ink)" height="8" rx="4" width="48" x="66" y="20"/>
+    <g fill="var(--ink)">
+      <rect fill="none" height="120" stroke="var(--rule)" width="132" x="24" y="92"/>
+      <g fill="none" stroke="var(--ink)" stroke-linecap="round" stroke-width="3.2">
+        <circle cx="126" cy="146" fill="var(--ink)" r="8" stroke="none"/>
+        <path d="M117 152 L 66 172"/>
+        <path d="M66 172 L 42 186"/>
+        <path d="M112 154 L 116 172 L 118 190"/>
+        <path d="M108 156 L 104 176 L 108 190" stroke-opacity="0.45"/>
+        <line stroke="var(--rule)" stroke-width="1" x1="32" x2="148" y1="191" y2="191"/>
+      </g>
+      <circle cx="117" cy="152" fill="var(--violet)" r="2.6"/>
+      <circle cx="66" cy="172" fill="var(--violet)" r="2.6"/>
+      <circle cx="116" cy="172" fill="var(--violet)" r="2.6"/>
+      <rect fill="var(--paper-sunk)" height="6" width="132" x="24" y="244"/>
+      <rect fill="var(--violet)" height="6" width="84" x="24" y="244"/>
+      <rect fill="var(--ink)" height="34" rx="3" width="132" x="24" y="266"/>
+    </g>
+  </g>
+  <g fill="var(--ink)">
+    <path d="M384 96 H 432" stroke="var(--ink)" stroke-width="1"/>
+    <circle cx="384" cy="96" fill="var(--ink)" r="3"/>
+    <path d="M384 254 H 432" stroke="var(--ink)" stroke-width="1"/>
+    <circle cx="384" cy="254" fill="var(--ink)" r="3"/>
+    <path d="M196 170 H 150" stroke="var(--ink)" stroke-width="1"/>
+    <circle cx="196" cy="170" fill="var(--ink)" r="3"/>
+  </g>
+</svg>

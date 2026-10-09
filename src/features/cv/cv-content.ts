@@ -1,0 +1,266 @@
+import type { CvContent } from '@/features/cv/cv'
+
+export const CV: CvContent = {
+  contact: {
+    email: 'adrienlcp@gmail.com',
+    location: { en: 'Nantes', fr: 'Nantes' },
+    phone: '+33650234020',
+    website: 'https://adrienlcp.com'
+  },
+  education: [
+    {
+      detail: {
+        en: 'Intensive remote course, 798 hours',
+        fr: 'Formation intensive à distance, 798 heures'
+      },
+      school: 'O’Clock',
+      title: { en: 'Web developer', fr: 'Développeur web' },
+      year: '2021'
+    }
+  ],
+  extras: [
+    {
+      en: 'Technical English: I read documentation fluently',
+      fr: 'Anglais technique : lecture courante de documentation'
+    },
+    { en: 'Cinema, table tennis', fr: 'Cinéma, tennis de table' }
+  ],
+  headline: 'TypeScript · React · Node.js',
+  jobs: [
+    {
+      employer: 'Ucaya',
+      missions: [
+        {
+          period: { from: '2023' },
+          points: [
+            {
+              en: 'React 19 / Express 5 / MongoDB monorepo: touch app, back office, OpenAPI-first API, realtime over Socket.IO.',
+              fr: 'Monorepo React 19 / Express 5 / MongoDB : application tactile, back-office, API OpenAPI, temps réel Socket.IO.'
+            },
+            {
+              en: 'Set up OpenTelemetry observability; maintain and evolve the GCP infrastructure (Cloud Run, Firebase, Terraform) and the GitLab CI/CD; fix what the security scans report.',
+              fr: 'Mise en place de l’observabilité OpenTelemetry ; maintenance et évolution de l’infra GCP (Cloud Run, Firebase, Terraform) et de la CI/CD GitLab ; traitement des alertes des scans de sécurité.'
+            },
+            {
+              en: 'MCP server to drive the platform from an AI assistant; Gemini integration.',
+              fr: 'Serveur MCP pour piloter la plateforme depuis un assistant IA ; intégration de Gemini.'
+            },
+            {
+              en: 'Tested with Vitest, Playwright and Testcontainers; accessible design system in Storybook.',
+              fr: 'Tests Vitest, Playwright et Testcontainers ; design system accessible dans Storybook.'
+            },
+            {
+              en: 'Major upgrades (React 19, Express 5, TypeScript 6, Vite 8), adopting the new APIs.',
+              fr: 'Montées de version (React 19, Express 5, TypeScript 6, Vite 8) en adoptant les nouvelles API.'
+            }
+          ],
+          summary: {
+            en: 'Synchronised touch screens for client demonstrations. About 80% of the commits; sole developer since January 2026.',
+            fr: 'Écrans tactiles synchronisés pour des démonstrations clients. Environ 80 % des commits ; seul développeur depuis janvier 2026.'
+          },
+          title: {
+            en: 'Interactive multi-screen presentation platform',
+            fr: 'Plateforme de présentation interactive multi-écrans'
+          }
+        },
+        {
+          period: { from: '2024', to: '2026' },
+          points: [],
+          summary: {
+            en: 'Lead developer on the React/TypeScript web app (dashboards, metrics), the landing page and the React Native mobile app.',
+            fr: 'Principal développeur de la webapp React/TypeScript (tableaux de bord, métriques), de la landing et de l’app mobile React Native.'
+          },
+          title: {
+            en: 'Music data analytics application',
+            fr: 'Application d’analyse de données musicales'
+          }
+        }
+      ],
+      period: { from: '2023-03' },
+      place: 'Nantes',
+      points: [
+        {
+          en: 'Mentoring junior developers and apprentices; code reviews across the team.',
+          fr: 'Tutorat de développeurs juniors et d’alternants ; code reviews de l’équipe.'
+        },
+        {
+          en: 'Internal tooling: Claude Code plugins shared by the team, n8n workflows (GitLab, team chat).',
+          fr: 'Outillage interne : plugins Claude Code partagés par l’équipe, workflows n8n (GitLab, messagerie).'
+        }
+      ],
+      title: { en: 'Full-stack developer', fr: 'Développeur full-stack' }
+    }
+  ],
+  projects: [
+    {
+      link: 'https://taverla.adrienlcp.com/',
+      name: 'Taverla',
+      summary: {
+        en: 'Party games: players join by QR code and play on their phones. React / Hono / WebSocket monorepo, Docker, GitHub Actions, Playwright end-to-end tests, Lighthouse CI.',
+        fr: 'Jeux de soirée : les joueurs rejoignent par QR code et jouent avec leur téléphone. Monorepo React / Hono / WebSocket, Docker, GitHub Actions, e2e Playwright, Lighthouse CI.'
+      },
+      year: '2026'
+    },
+    {
+      link: 'https://on-record.adrienlcp.com',
+      name: 'on-record',
+      summary: {
+        en: 'French deputies’ public votes, explained and sourced, with no server: nightly open-data ingest in GitHub Actions, ~750 prerendered pages on Cloudflare Pages.',
+        fr: 'Les votes publics des députés, expliqués et sourcés, sans serveur : ingestion nocturne de l’open data en GitHub Actions, ~750 pages prérendues sur Cloudflare Pages.'
+      },
+      year: '2026'
+    },
+    {
+      link: 'https://pastime.adrienlcp.com',
+      name: 'Pastime',
+      summary: {
+        en: 'Solo puzzle and card games, installable and offline: every level generated on the device and proved solvable by a solver first, the daily puzzle seeded the same everywhere with no server.',
+        fr: 'Jeux de réflexion et de cartes en solo, installables et hors ligne : chaque niveau généré sur l’appareil et prouvé faisable par un solveur, le puzzle du jour identique partout sans serveur.'
+      },
+      year: '2026'
+    },
+    {
+      link: 'https://arbor.adrienlcp.com',
+      name: 'Arbor',
+      summary: {
+        en: 'A family tree the whole family edits from a shared link, no account: a Durable Object with its own SQLite per family, undoable history, vector PDF export.',
+        fr: 'Un arbre que toute la famille modifie à partir d’un lien, sans compte : un Durable Object avec sa propre SQLite par famille, historique annulable, export PDF vectoriel.'
+      },
+      year: '2026'
+    },
+    {
+      link: 'https://analytics.adrienlcp.com',
+      name: 'Analytics',
+      summary: {
+        en: 'Cookie-free analytics: Cloudflare Workers, D1, Core Web Vitals.',
+        fr: 'Audience sans cookie : Cloudflare Workers, D1, Core Web Vitals.'
+      },
+      year: '2026'
+    },
+    {
+      link: 'https://scoreboard.adrienlcp.com',
+      name: 'Scoreboard',
+      summary: {
+        en: 'Live scoring for clubs playing several tables: umpires score from their phones, the big screen shows every match, spectators follow by QR code. Durable Objects, WebSocket.',
+        fr: 'Scores en direct pour clubs à plusieurs tables : arbitrage au téléphone, tous les matchs sur grand écran, public par QR code. Durable Objects, WebSocket.'
+      },
+      year: '2026'
+    },
+    {
+      link: 'https://sport.adrienlcp.com/specimen',
+      name: 'Séance',
+      summary: {
+        en: 'Offline training PWA, no server: Workbox, IndexedDB, SVG charts.',
+        fr: 'PWA sport hors ligne, sans serveur : Workbox, IndexedDB, SVG.'
+      },
+      year: '2026'
+    },
+    {
+      link: 'https://adrienlcp.com',
+      name: 'Portfolio',
+      summary: {
+        en: 'Accessible design system (React Aria) in Storybook, in-browser component tests, a Lighthouse CI gate at 100/100 on every page.',
+        fr: 'Design system accessible (React Aria) dans Storybook, tests de composants en navigateur, CI Lighthouse bloquante à 100/100 sur chaque page.'
+      },
+      year: '2026'
+    },
+    {
+      link: {
+        en: 'https://packages.adrienlcp.com/en',
+        fr: 'https://packages.adrienlcp.com/fr'
+      },
+      name: '@adrienlcp/*',
+      summary: {
+        en: 'Eleven tested TypeScript packages on npm, released from GitHub Actions with provenance, used by six apps.',
+        fr: 'Onze paquets TypeScript testés, publiés sur npm par la CI avec provenance, dans six apps.'
+      },
+      year: '2026'
+    }
+  ],
+  skills: [
+    {
+      group: { en: 'Front end', fr: 'Front' },
+      terms: [
+        'React',
+        'TypeScript',
+        'React Router',
+        'React Aria',
+        'Vite',
+        'Sass',
+        'Storybook',
+        { en: 'accessibility', fr: 'accessibilité' }
+      ]
+    },
+    {
+      group: { en: 'Back end', fr: 'Back' },
+      terms: [
+        'Node.js',
+        'Express',
+        'Hono',
+        'REST / OpenAPI',
+        'WebSocket',
+        'Socket.IO'
+      ]
+    },
+    {
+      group: { en: 'Data', fr: 'Données' },
+      terms: ['MongoDB (Mongoose)', 'PostgreSQL (Drizzle, Prisma)']
+    },
+    {
+      group: { en: 'Quality', fr: 'Qualité' },
+      terms: [
+        'Vitest',
+        'Playwright',
+        'Testcontainers',
+        'Biome',
+        'Lighthouse CI'
+      ]
+    },
+    {
+      group: { en: 'DevOps', fr: 'DevOps' },
+      terms: [
+        'Docker',
+        { en: 'GitLab CI/CD', fr: 'CI/CD GitLab' },
+        'GitHub Actions',
+        'GCP',
+        'OpenTelemetry'
+      ]
+    },
+    {
+      group: { en: 'AI', fr: 'IA' },
+      terms: [
+        'Claude Code (skills, plugins)',
+        { en: 'MCP servers', fr: 'serveurs MCP' },
+        'n8n',
+        { en: 'Gemini API', fr: 'API Gemini' }
+      ]
+    },
+    {
+      group: { en: 'Also', fr: 'Autres' },
+      terms: [
+        'Next.js',
+        'React Native',
+        'pnpm workspaces',
+        { en: 'C# / .NET (basics)', fr: 'C# / .NET (notions)' }
+      ]
+    }
+  ],
+  specs: [
+    {
+      label: { en: 'Developer since', fr: 'Développeur depuis' },
+      value: { en: '2023', fr: '2023' }
+    },
+    {
+      label: { en: 'Open to', fr: 'Mobilité' },
+      value: {
+        en: 'Nantes, Angers, Vendée (licence B, own car)',
+        fr: 'Nantes, Angers, Vendée (permis B, véhiculé)'
+      }
+    }
+  ],
+  summary: {
+    en: 'Full-stack developer since 2023, sole developer of a multi-screen platform in production. I care about sound architecture (monorepos, clean architecture, APIs typed end to end), accessibility and tests. I follow release notes and keep my projects on the latest versions of their ecosystem. I use AI agents every day, down to building their tooling.',
+    fr: 'Développeur full-stack depuis 2023, seul développeur d’une plateforme multi-écrans en production. J’aime les architectures propres (monorepos, clean architecture, API typées de bout en bout), l’accessibilité et les tests. Je suis les release notes et garde mes projets à jour. J’utilise les agents IA au quotidien, jusqu’à construire leur outillage.'
+  },
+  title: { en: 'Full-stack developer', fr: 'Développeur full-stack' }
+}

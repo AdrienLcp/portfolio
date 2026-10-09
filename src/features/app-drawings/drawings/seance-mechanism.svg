@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300">
+  <g fill="none" stroke="currentColor" stroke-width="1.6">
+    <rect class="draw" height="268" pathLength="1" rx="18" style="--d:0" width="360" x="16" y="16"/>
+    <rect class="draw" height="64" pathLength="1" style="--d:1" width="136" x="44" y="52"/>
+    <rect class="draw" height="64" pathLength="1" style="--d:2" width="136" x="212" y="52"/>
+    <rect class="draw" height="64" pathLength="1" style="--d:3" width="136" x="128" y="176"/>
+    <path class="draw" d="M180 84 H 212" pathLength="1" style="--d:2"/>
+    <path class="draw" d="M280 116 L 230 176" pathLength="1" style="--d:3"/>
+    <path class="draw" d="M112 116 L 162 176" pathLength="1" style="--d:3"/>
+    <path class="draw" d="M376 150 H 420" pathLength="1" style="--d:4"/>
+    <path class="draw" d="M448 150 H 480" pathLength="1" stroke-dasharray="4 5" style="--d:5"/>
+    <path class="draw" d="M426 140 l 16 20 M 442 140 l -16 20" pathLength="1" stroke-width="2.4" style="--d:6"/>
+    <rect class="draw" height="56" pathLength="1" stroke-dasharray="4 4" style="--d:5" width="72" x="480" y="122"/>
+    <path class="draw" d="M264 208 C 330 208, 360 250, 420 262" pathLength="1" style="--d:6"/>
+  </g>
+  <text class="lbl-strong fade" style="--d:3" text-anchor="middle" x="196" y="206">IndexedDB</text>
+</svg>

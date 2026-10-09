@@ -1,0 +1,42 @@
+@use '@adrienlcp/styles/reduced-motion.css'
+@use '@adrienlcp/styles/reset.css'
+@use '@adrienlcp/theme-preference/color-scheme.css'
+@use './focus'
+@use './fonts'
+@use './layout'
+@use './tokens'
+@use './typography'
+
+@layer base
+  html
+    background: var(--paper)
+    scrollbar-color: var(--rule-strong) var(--paper)
+    scrollbar-gutter: stable
+
+  body
+    @include layout.container
+    @include typography.body
+
+    background: var(--paper)
+    caret-color: var(--focus)
+    color: var(--ink)
+    font-synthesis: none
+
+  #root
+    display: flex
+    flex-direction: column
+    min-block-size: 100dvh
+    overflow-x: clip
+
+  a
+    text-decoration-thickness: var(--stroke-hair)
+    text-underline-offset: var(--underline-offset)
+
+  code
+    @include typography.code
+
+  @include focus.ring-focusables
+
+  ::selection
+    background: var(--selection)
+    color: var(--ink)

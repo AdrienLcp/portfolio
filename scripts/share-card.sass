@@ -1,0 +1,63 @@
+@use '../src/presentation/styles/fonts'
+@use '../src/presentation/styles/tokens'
+
+\:root
+  color-scheme: light
+
+body
+  margin: 0
+  background: var(--paper)
+  color: var(--violet)
+
+.share-card
+  position: relative
+  box-sizing: border-box
+  display: flex
+  align-items: center
+  height: 100vh
+  padding: 0 72px
+  overflow: hidden
+
+.share-card-name
+  margin: 0
+  font-family: var(--font-letter)
+  font-size: 168px
+  font-weight: 800
+  line-height: 0.86
+  letter-spacing: -0.025em
+
+  span
+    display: block
+
+// The cursor resting on the given name, the way a visitor points at a link
+.share-card-pointer
+  position: absolute
+  top: 252px
+  left: 400px
+  width: 54px
+  height: 54px
+  fill: var(--ink)
+  stroke: var(--paper)
+  stroke-width: 1.4
+  stroke-linejoin: round
+  filter: drop-shadow(0 2px 3px oklch(0.201 0.008 274.5 / 0.25))
+
+// The link preview that follows the pointer, tilted, the favicon inside
+.share-card-preview
+  position: absolute
+  top: 92px
+  right: 64px
+  display: grid
+  place-items: center
+  width: 330px
+  aspect-ratio: 16 / 10
+  overflow: hidden
+  border-radius: var(--radius-m)
+  background: #15161a
+  box-shadow: var(--shadow-lifted)
+  rotate: -2deg
+
+.share-card-mark
+  display: block
+  width: 206px
+  height: 206px
