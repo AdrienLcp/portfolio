@@ -8,7 +8,6 @@ import {
   appendStructuredData,
   htmlFileForPath,
   inlinePageStylesheets,
-  noindexShell,
   originOfCanonical,
   parseDocument,
   readBuildManifest,
@@ -20,6 +19,7 @@ import {
 import { SitemapStream, streamToPromise } from 'sitemap'
 
 import type { PrerenderedPage } from '../src/entry-server'
+import { noindexShell } from './noindex-shell'
 
 type EntryServer = typeof import('../src/entry-server')
 
