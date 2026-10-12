@@ -66,10 +66,11 @@ const documentFor = async (page: PrerenderedPage): Promise<string> => {
     modules: [page.module]
   })
 
-  // The plain CV, set in Arial, paints no web face: a preload would sit unused.
-  if (page.page !== PLAIN_CV_PAGE) {
-    addFontPreloads({ css, document })
-  }
+  addFontPreloads({
+    css,
+    document,
+    include: page.page === PLAIN_CV_PAGE ? 'none' : undefined
+  })
 
   appendStructuredData({
     data: await structuredDataFor({ origin, page }),

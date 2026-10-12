@@ -16,7 +16,7 @@ export const OnRecordDrawing: React.FC = () => {
       role='img'
     >
       <title id={titleId}>{text.title}</title>
-      <g fontFamily='var(--font-letter)'>
+      <g className='drawing-letter'>
         <text
           fill='var(--ink-soft)'
           fontSize='10.5'
@@ -38,7 +38,7 @@ export const OnRecordDrawing: React.FC = () => {
           {text.publicVotes}
         </text>
       </g>
-      <g fontFamily='var(--font-letter)'>
+      <g className='drawing-letter'>
         <text
           fill='var(--ink-soft)'
           fontSize='10.5'
@@ -63,7 +63,7 @@ export const OnRecordDrawing: React.FC = () => {
           {text.withGroup}
         </text>
       </g>
-      <g fill='currentColor' fontFamily='var(--font-letter)' fontSize='13'>
+      <g className='drawing-letter' fill='currentColor' fontSize='13'>
         <text fontWeight='700' letterSpacing='1' x='24' y='58'>
           {text.officialRecord}
         </text>

@@ -126,6 +126,10 @@
     --transition-slow: 560ms
     --transition-pulse: calc(var(--transition-slow) * 4)
 
+    --page-padding: var(--space-l)
+    --page-padding-block-start: max(var(--page-padding), var(--safe-area-top))
+    --page-padding-block-end: max(var(--page-padding), var(--safe-area-bottom))
+
   @media (width >= 45rem)
     \:root
       --gutter: 2rem

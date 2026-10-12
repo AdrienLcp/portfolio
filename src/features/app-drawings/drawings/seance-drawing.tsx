@@ -17,7 +17,7 @@ export const SeanceDrawing: React.FC = () => {
     >
       <title id={titleId}>{text.title}</title>
       <g transform='translate(200 20)'>
-        <g fill='var(--ink)' fontFamily='var(--font-letter)'>
+        <g className='drawing-letter' fill='var(--ink)'>
           <text
             fill='var(--ink-soft)'
             fontSize='10.5'
@@ -56,7 +56,7 @@ export const SeanceDrawing: React.FC = () => {
           </text>
         </g>
       </g>
-      <g fill='var(--ink)' fontFamily='var(--font-letter)' fontSize='13'>
+      <g className='drawing-letter' fill='var(--ink)' fontSize='13'>
         <text fontWeight='700' letterSpacing='1' x='440' y='92'>
           {text.offline}
         </text>

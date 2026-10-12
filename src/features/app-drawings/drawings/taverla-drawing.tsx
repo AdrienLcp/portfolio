@@ -17,8 +17,8 @@ export const TaverlaDrawing: React.FC = () => {
     >
       <title id={titleId}>{text.title}</title>
       <text
+        className='drawing-letter'
         fill='var(--ink)'
-        fontFamily='var(--font-letter)'
         fontSize='20'
         fontWeight='800'
         letterSpacing='1'
@@ -28,8 +28,8 @@ export const TaverlaDrawing: React.FC = () => {
         {text.buzzer}
       </text>
       <text
+        className='drawing-prose'
         fill='var(--ink-soft)'
-        fontFamily='var(--font-prose)'
         fontSize='11'
         x='38'
         y='80'
@@ -37,8 +37,8 @@ export const TaverlaDrawing: React.FC = () => {
         {text.scanToJoin}
       </text>
       <text
+        className='drawing-letter'
         fill='var(--ink-soft)'
-        fontFamily='var(--font-letter)'
         fontSize='11'
         fontWeight='700'
         letterSpacing='1.5'
@@ -47,7 +47,7 @@ export const TaverlaDrawing: React.FC = () => {
       >
         {text.seated}
       </text>
-      <g fill='var(--ink)' fontFamily='var(--font-letter)' fontSize='15'>
+      <g className='drawing-letter' fill='var(--ink)' fontSize='15'>
         <text
           fill='var(--on-violet)'
           fontWeight='700'
@@ -63,8 +63,8 @@ export const TaverlaDrawing: React.FC = () => {
       </g>
       <g transform='translate(378 70)'>
         <text
+          className='drawing-letter'
           fill='var(--ink-soft)'
-          fontFamily='var(--font-letter)'
           fontSize='11'
           fontWeight='700'
           letterSpacing='1.3'
@@ -74,8 +74,8 @@ export const TaverlaDrawing: React.FC = () => {
           {text.roomBuzzer}
         </text>
         <text
+          className='drawing-letter'
           fill='var(--on-violet)'
-          fontFamily='var(--font-letter)'
           fontSize='24'
           fontWeight='900'
           letterSpacing='2'
@@ -86,8 +86,8 @@ export const TaverlaDrawing: React.FC = () => {
           {text.buzz}
         </text>
         <text
+          className='drawing-prose'
           fill='var(--ink-soft)'
-          fontFamily='var(--font-prose)'
           fontSize='10.5'
           textAnchor='middle'
           x='80'

@@ -16,7 +16,7 @@ export const ScoreboardDrawing: React.FC = () => {
       role='img'
     >
       <title id={titleId}>{text.title}</title>
-      <g fill='var(--ink)' fontFamily='var(--font-letter)'>
+      <g className='drawing-letter' fill='var(--ink)'>
         <g transform='translate(16 28)'>
           <text
             fontSize='10.5'
@@ -29,7 +29,7 @@ export const ScoreboardDrawing: React.FC = () => {
           </text>
         </g>
       </g>
-      <g fill='var(--ink)' fontFamily='var(--font-letter)'>
+      <g className='drawing-letter' fill='var(--ink)'>
         <g transform='translate(16 28)'>
           <g transform='translate(22 42)'>
             <text
@@ -43,7 +43,7 @@ export const ScoreboardDrawing: React.FC = () => {
           </g>
         </g>
       </g>
-      <g fill='var(--ink)' fontFamily='var(--font-letter)'>
+      <g className='drawing-letter' fill='var(--ink)'>
         <g transform='translate(16 28)'>
           <g transform='translate(184 42)'>
             <text
@@ -57,7 +57,7 @@ export const ScoreboardDrawing: React.FC = () => {
           </g>
         </g>
       </g>
-      <g fill='var(--ink)' fontFamily='var(--font-letter)'>
+      <g className='drawing-letter' fill='var(--ink)'>
         <g transform='translate(16 28)'>
           <g fontSize='11'>
             <text
@@ -96,7 +96,7 @@ export const ScoreboardDrawing: React.FC = () => {
           </g>
         </g>
       </g>
-      <g fill='var(--ink)' fontFamily='var(--font-letter)'>
+      <g className='drawing-letter' fill='var(--ink)'>
         <g transform='translate(394 88)'>
           <g fontSize='10.5' fontWeight='700' letterSpacing='1.3'>
             <text
@@ -110,7 +110,7 @@ export const ScoreboardDrawing: React.FC = () => {
           </g>
         </g>
       </g>
-      <g fill='var(--ink)' fontFamily='var(--font-letter)'>
+      <g className='drawing-letter' fill='var(--ink)'>
         <g transform='translate(394 88)'>
           <text
             fontSize='11'
@@ -124,7 +124,7 @@ export const ScoreboardDrawing: React.FC = () => {
           </text>
         </g>
       </g>
-      <g fill='var(--ink)' fontFamily='var(--font-letter)'>
+      <g className='drawing-letter' fill='var(--ink)'>
         <g fontSize='13'>
           <text fontWeight='700' letterSpacing='1' x='394' y='56'>
             {text.samePoint}

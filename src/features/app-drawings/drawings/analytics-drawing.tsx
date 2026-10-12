@@ -17,8 +17,8 @@ export const AnalyticsDrawing: React.FC = () => {
     >
       <title id={titleId}>{text.title}</title>
       <text
+        className='drawing-letter'
         fill='var(--ink)'
-        fontFamily='var(--font-letter)'
         fontSize='20'
         fontWeight='800'
         letterSpacing='1'
@@ -28,15 +28,15 @@ export const AnalyticsDrawing: React.FC = () => {
         {text.pageViews}
       </text>
       <text
+        className='drawing-prose'
         fill='var(--ink-soft)'
-        fontFamily='var(--font-prose)'
         fontSize='11'
         x='38'
         y='80'
       >
         {text.publicDashboard}
       </text>
-      <g fill='var(--ink)' fontFamily='var(--font-letter)'>
+      <g className='drawing-letter' fill='var(--ink)'>
         <g
           fill='var(--ink-soft)'
           fontSize='10'
@@ -60,7 +60,7 @@ export const AnalyticsDrawing: React.FC = () => {
           </text>
         </g>
       </g>
-      <g fill='var(--ink)' fontFamily='var(--font-letter)'>
+      <g className='drawing-letter' fill='var(--ink)'>
         <g fontSize='13'>
           <text x='262' y='222'>
             {text.dark}
@@ -76,12 +76,12 @@ export const AnalyticsDrawing: React.FC = () => {
           </text>
         </g>
       </g>
-      <g fill='var(--ink)' fontFamily='var(--font-letter)'>
+      <g className='drawing-letter' fill='var(--ink)'>
         <text fontSize='12' fontWeight='800' letterSpacing='1.4' x='436' y='88'>
           {text.neverStoredSlip}
         </text>
       </g>
-      <g fill='var(--ink)' fontFamily='var(--font-letter)'>
+      <g className='drawing-letter' fill='var(--ink)'>
         <g fontSize='14'>
           <text className='struck' x='436' y='128'>
             <tspan>{text.cookie}</tspan>
@@ -100,7 +100,7 @@ export const AnalyticsDrawing: React.FC = () => {
           </text>
         </g>
       </g>
-      <g fill='var(--ink)' fontFamily='var(--font-letter)' fontSize='13'>
+      <g className='drawing-letter' fill='var(--ink)' fontSize='13'>
         <text fill='var(--ink-soft)' x='420' y='312'>
           {text.trackerSize}
         </text>

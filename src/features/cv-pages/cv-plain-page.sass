@@ -2,6 +2,9 @@
 
 @layer components
   \:root:has(.cv-plain-page)
+    --gutter: 14mm
+    --page-padding: 8mm
+
     background: oklch(1 0 0)
     color-scheme: light
 
@@ -10,7 +13,7 @@
       color: oklch(0 0 0)
 
   .cv-plain-page
-    padding: max(8mm, var(--safe-area-top)) max(14mm, var(--safe-area-right)) max(8mm, var(--safe-area-bottom)) max(14mm, var(--safe-area-left))
+    padding: var(--page-padding-block-start) var(--gutter-right) var(--page-padding-block-end) var(--gutter-left)
 
   .cv-plain
     --text-plain-body: 9.5pt

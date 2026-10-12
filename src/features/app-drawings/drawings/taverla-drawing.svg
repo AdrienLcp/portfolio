@@ -150,7 +150,7 @@
       </g>
     </g>
     <line stroke="var(--rule)" x1="206" x2="206" y1="50" y2="236"/>
-    <g fill="var(--ink)" font-family="var(--font-letter)" font-size="15">
+    <g fill="var(--ink)" class="drawing-letter" font-size="15">
       <rect fill="var(--violet)" height="30" width="148" x="224" y="74"/>
       <text fill="var(--on-violet)" font-weight="700" x="234" y="94">Ada</text>
       <line stroke="var(--rule)" x1="224" x2="372" y1="112" y2="112"/>
@@ -166,7 +166,7 @@
     <rect fill="var(--ink)" height="300" rx="24" width="160" x="0" y="0"/>
     <rect fill="var(--screen)" height="276" rx="16" width="142" x="9" y="12"/>
     <rect fill="var(--ink)" height="8" rx="4" width="44" x="58" y="18"/>
-    <text fill="var(--ink)" font-family="var(--font-letter)" font-size="20" font-weight="800" x="22" y="74">Ada</text>
+    <text fill="var(--ink)" class="drawing-letter" font-size="20" font-weight="800" x="22" y="74">Ada</text>
     <circle cx="80" cy="166" fill="var(--violet)" r="56"/>
     <circle cx="80" cy="166" fill="none" r="56" stroke="var(--ink)" stroke-width="3"/>
     <circle cx="80" cy="166" fill="none" r="66" stroke="var(--violet)" stroke-dasharray="3 5" stroke-width="1.5"/>

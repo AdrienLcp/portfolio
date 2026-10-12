@@ -1,5 +1,6 @@
 import { type ChildProcess, spawn, spawnSync } from 'node:child_process'
 import { mkdir, writeFile } from 'node:fs/promises'
+import { createServer } from 'node:net'
 import { join } from 'node:path'
 
 import lighthouse, {
@@ -22,12 +23,13 @@ import { chromium } from 'playwright'
  *
  * `LIGHTHOUSE_BASE_URL` audits a deployment; otherwise the built `dist` is
  * served by Pages' own runtime, the same one the end-to-end journeys use.
+ * `LIGHTHOUSE_DEBUGGING_PORT` pins the browser's debugging port; otherwise the
+ * system hands out a free one, so two projects' runs never meet on it.
  */
 
 const ROOT = join(import.meta.dirname, '..')
 const REPORT_DIR = join(ROOT, 'lighthouse-reports')
 const PAGES_RUNTIME_PORT = 8795
-const PLAYWRIGHT_CHROMIUM_DEBUGGING_PORT = 9223
 
 const CATEGORIES = ['performance', 'accessibility', 'best-practices', 'seo']
 
@@ -45,17 +47,18 @@ const QUICK_FLAG = '--quick'
 const QUICK_LOCALE_PREFIX = '/en'
 
 /**
- * Headroom over what the pages measure today, so a regression shows before the
- * score moves. The mobile LCP is Lantern's simulation at slow-4G rates, not a
- * visitor's.
+ * Lighthouse CI's assertion names, so a budget reads the same here as in any
+ * Lighthouse documentation. Headroom over what the pages measure today, so a
+ * regression shows before the score moves. The mobile LCP is Lantern's
+ * simulation at slow-4G rates, not a visitor's.
  *
  * The script budget sits over a project page, the heaviest: it draws the app's
  * screens and its mechanism in SVG, with words no other page downloads.
  */
 const BUDGETS_WITH_HEADROOM = {
-  cumulativeLayoutShift: 0.01,
-  largestContentfulPaintMs: { desktop: 1050, mobile: 2800 },
-  scriptTransferBytes: 235_000
+  'cumulative-layout-shift': 0.01,
+  'largest-contentful-paint': { desktop: 1050, mobile: 2800 },
+  'resource-summary:script:size': 235_000
 }
 
 /**
@@ -89,16 +92,36 @@ const BLINK_PREFERRED_COLOR_SCHEME: Record<Scheme, number> = {
 
 type Measure = {
   cls: number
+  fcpMs: number
   lcpMs: number
   report: string
   scores: Record<string, number>
   scriptBytes: number
+  tbtMs: number
 }
 
 const configFor: Record<FormFactor, Config | undefined> = {
   desktop: desktopConfig,
   mobile: undefined
 }
+
+/** A port nothing listens on, as the system hands it out. */
+const freePort = (): Promise<number> =>
+  new Promise((resolvePort, reject) => {
+    const server = createServer()
+    server.once('error', reject)
+    server.listen(0, '127.0.0.1', () => {
+      const address = server.address()
+      server.close(() =>
+        typeof address === 'object' && address !== null
+          ? resolvePort(address.port)
+          : reject(new Error('The system handed out no port'))
+      )
+    })
+  })
+
+const DEBUGGING_PORT =
+  Number(process.env.LIGHTHOUSE_DEBUGGING_PORT) || (await freePort())
 
 const startLocalServer = async (): Promise<{
   origin: string
@@ -157,6 +180,9 @@ const pathsFrom = async (origin: string): Promise<string[]> => {
   return locations.map(([, location]) => new URL(location ?? '').pathname)
 }
 
+const numericValueOf = (result: RunnerResult, audit: string): number =>
+  result.lhr.audits[audit]?.numericValue ?? 0
+
 const scriptBytesIn = (result: RunnerResult): number => {
   const details = result.lhr.audits['resource-summary']?.details
   const rows = details?.type === 'table' ? details.items : []
@@ -165,6 +191,7 @@ const scriptBytesIn = (result: RunnerResult): number => {
   return typeof scripts?.transferSize === 'number' ? scripts.transferSize : 0
 }
 
+/** Throws on a run that measured nothing: a page that never painted is no score of 0. */
 const measure = async (
   url: string,
   formFactor: FormFactor,
@@ -174,33 +201,44 @@ const measure = async (
     logLevel: 'error',
     onlyCategories: categories,
     output: 'html',
-    port: PLAYWRIGHT_CHROMIUM_DEBUGGING_PORT
+    port: DEBUGGING_PORT
   }
   const result = await lighthouse(url, flags, configFor[formFactor])
 
   if (result === undefined) {
-    throw new Error(`Lighthouse returned nothing for ${url}`)
+    throw new Error(`Lighthouse returned nothing for ${url} (${formFactor})`)
   }
 
-  const runtimeError = result.lhr.runtimeError
+  const { runtimeError } = result.lhr
 
   if (runtimeError !== undefined) {
-    throw new Error(`${url}: ${runtimeError.code} ${runtimeError.message}`)
+    throw new Error(
+      `${url} (${formFactor}): ${runtimeError.code} ${runtimeError.message}`
+    )
   }
 
   const scores = Object.fromEntries(
-    categories.map((id) => [
-      id,
-      Math.round((result.lhr.categories[id]?.score ?? 0) * 100)
-    ])
+    categories.map((id) => {
+      const score = result.lhr.categories[id]?.score
+
+      if (typeof score !== 'number') {
+        throw new Error(
+          `${url} (${formFactor}): Lighthouse could not score ${id}`
+        )
+      }
+
+      return [id, Math.round(score * 100)]
+    })
   )
 
   return {
-    cls: result.lhr.audits['cumulative-layout-shift']?.numericValue ?? 0,
-    lcpMs: result.lhr.audits['largest-contentful-paint']?.numericValue ?? 0,
+    cls: numericValueOf(result, 'cumulative-layout-shift'),
+    fcpMs: numericValueOf(result, 'first-contentful-paint'),
+    lcpMs: numericValueOf(result, 'largest-contentful-paint'),
     report: String(result.report),
     scores,
-    scriptBytes: scriptBytesIn(result)
+    scriptBytes: scriptBytesIn(result),
+    tbtMs: numericValueOf(result, 'total-blocking-time')
   }
 }
 
@@ -208,22 +246,30 @@ const failuresOf = (reading: Measure, formFactor: FormFactor): string[] => [
   ...Object.entries(reading.scores)
     .filter(([id, score]) => score < minScoreFor(id, formFactor))
     .map(([id, score]) => `${id} ${score}`),
-  ...(reading.lcpMs > BUDGETS_WITH_HEADROOM.largestContentfulPaintMs[formFactor]
-    ? [`LCP ${Math.round(reading.lcpMs)} ms`]
+  ...(reading.lcpMs >
+  BUDGETS_WITH_HEADROOM['largest-contentful-paint'][formFactor]
+    ? [`largest-contentful-paint ${Math.round(reading.lcpMs)} ms`]
     : []),
-  ...(reading.cls > BUDGETS_WITH_HEADROOM.cumulativeLayoutShift
-    ? [`CLS ${reading.cls.toFixed(3)}`]
+  ...(reading.cls > BUDGETS_WITH_HEADROOM['cumulative-layout-shift']
+    ? [`cumulative-layout-shift ${reading.cls.toFixed(3)}`]
     : []),
-  ...(reading.scriptBytes > BUDGETS_WITH_HEADROOM.scriptTransferBytes
-    ? [`JS ${Math.round(reading.scriptBytes / 1000)} kB`]
+  ...(reading.scriptBytes >
+  BUDGETS_WITH_HEADROOM['resource-summary:script:size']
+    ? [
+        `resource-summary:script:size ${Math.round(reading.scriptBytes / 1000)} kB`
+      ]
     : [])
 ]
+
+const timingsOf = ({ fcpMs, lcpMs, tbtMs }: Measure): string =>
+  `FCP ${Math.round(fcpMs)} ms · LCP ${Math.round(lcpMs)} ms · TBT ${Math.round(tbtMs)} ms`
 
 const median = (values: number[]): number =>
   [...values].sort((a, b) => a - b)[Math.floor(values.length / 2)] ?? 0
 
 const medianOf = (readings: Measure[]): Measure => ({
   cls: median(readings.map(({ cls }) => cls)),
+  fcpMs: median(readings.map(({ fcpMs }) => fcpMs)),
   lcpMs: median(readings.map(({ lcpMs }) => lcpMs)),
   report: readings.at(-1)?.report ?? '',
   scores: Object.fromEntries(
@@ -232,7 +278,8 @@ const medianOf = (readings: Measure[]): Measure => ({
       median(readings.map(({ scores }) => scores[id] ?? 0))
     ])
   ),
-  scriptBytes: median(readings.map(({ scriptBytes }) => scriptBytes))
+  scriptBytes: median(readings.map(({ scriptBytes }) => scriptBytes)),
+  tbtMs: median(readings.map(({ tbtMs }) => tbtMs))
 })
 
 const reportNameFor = (path: string, formFactor: FormFactor, scheme: Scheme) =>
@@ -278,7 +325,8 @@ try {
   for (const scheme of schemes) {
     const browser = await chromium.launch({
       args: [
-        `--remote-debugging-port=${PLAYWRIGHT_CHROMIUM_DEBUGGING_PORT}`,
+        '--mute-audio',
+        `--remote-debugging-port=${DEBUGGING_PORT}`,
         `--blink-settings=preferredColorScheme=${BLINK_PREFERRED_COLOR_SCHEME[scheme]}`
       ]
     })
@@ -290,18 +338,22 @@ try {
             ? CATEGORIES.filter((id) => id !== 'seo')
             : CATEGORIES
           const url = `${origin}${path}`
-          const readings = [await measure(url, formFactor, categories)]
+          const label = `${path} ${formFactor} ${scheme}`
+          const readings: Measure[] = []
 
-          while (
+          do {
+            const reading = await measure(url, formFactor, categories)
+            readings.push(reading)
+            console.info(
+              `     ${label.padEnd(36)} run ${readings.length}: ${timingsOf(reading)}`
+            )
+          } while (
             readings.length < RUNS_BEFORE_JUDGING_THE_MEDIAN &&
             failuresOf(medianOf(readings), formFactor).length > 0
-          ) {
-            readings.push(await measure(url, formFactor, categories))
-          }
+          )
 
           const reading = medianOf(readings)
           const broken = failuresOf(reading, formFactor)
-          const label = `${path} ${formFactor} ${scheme}`
 
           console.info(
             `${broken.length === 0 ? 'ok  ' : 'FAIL'} ${label.padEnd(36)} LCP ${Math.round(reading.lcpMs)} ms · CLS ${reading.cls.toFixed(3)} · JS ${Math.round(reading.scriptBytes / 1000)} kB${broken.length === 0 ? '' : ` · ${broken.join(', ')}`}`
@@ -320,19 +372,22 @@ try {
       await browser.close()
     }
   }
+
+  if (failures.length > 0) {
+    console.error(
+      `\n${failures.length} audit(s) under the bar, reports in lighthouse-reports/:\n${failures.join('\n')}`
+    )
+    process.exitCode = 1
+  } else {
+    console.info(
+      '\nEvery page meets its scores and budgets, on both screens and in both themes.'
+    )
+  }
+} catch (error) {
+  console.error('\nThe Lighthouse gate could not measure:', error)
+  process.exitCode = 1
 } finally {
   if (local !== undefined) {
     stopServerProcessTree(local.server)
   }
 }
-
-if (failures.length > 0) {
-  console.error(
-    `\n${failures.length} audit(s) under the bar, reports in lighthouse-reports/:\n${failures.join('\n')}`
-  )
-  process.exit(1)
-}
-
-console.info(
-  '\nEvery page meets its scores and budgets, on both screens and in both themes.'
-)

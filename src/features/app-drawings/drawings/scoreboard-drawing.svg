@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 380">
-  <g fill="var(--ink)" font-family="var(--font-letter)">
+  <g fill="var(--ink)" class="drawing-letter">
     <g transform="translate(16 28)">
       <rect height="224" rx="8" width="356" x="0" y="0"/>
       <rect fill="var(--screen)" height="208" rx="3" width="340" x="8" y="8"/>
