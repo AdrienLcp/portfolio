@@ -20,7 +20,19 @@ const SCREENSHOT_SIZES = '(width > 48rem) 50vw, 100vw'
 const screenshotSourcesFor = (slug: string): string =>
   `${screenshotPathFor(slug, 640)} 640w, ${screenshotPathFor(slug, 1280)} 1280w`
 
-const ProjectDetails: React.FC<{ project: Project }> = ({ project }) => {
+type ProjectDetailsProps = {
+  /**
+   * Whether the row has ever been unfolded. A folded panel still lays out its
+   * screenshot, so the browser would fetch every one with the first paint.
+   */
+  hasUnfolded: boolean
+  project: Project
+}
+
+const ProjectDetails: React.FC<ProjectDetailsProps> = ({
+  hasUnfolded,
+  project
+}) => {
   const { locale, translate } = useI18n()
   const { live, repository } = project.links
 
@@ -58,16 +70,17 @@ const ProjectDetails: React.FC<{ project: Project }> = ({ project }) => {
         </div>
       </div>
       <figure className='project-screenshot'>
-        <img
-          alt={project.screenshotAlt}
-          decoding='async'
-          height={800}
-          loading='lazy'
-          sizes={SCREENSHOT_SIZES}
-          src={screenshotPathFor(project.slug, 640)}
-          srcSet={screenshotSourcesFor(project.slug)}
-          width={1280}
-        />
+        {hasUnfolded && (
+          <img
+            alt={project.screenshotAlt}
+            decoding='async'
+            height={800}
+            sizes={SCREENSHOT_SIZES}
+            src={screenshotPathFor(project.slug, 640)}
+            srcSet={screenshotSourcesFor(project.slug)}
+            width={1280}
+          />
+        )}
       </figure>
     </>
   )
@@ -85,6 +98,9 @@ export const ProjectIndex: React.FC<ProjectIndexProps> = ({ projects }) => {
   const { translate } = useI18n()
   const isGiftFound = useKonamiCode()
   const [openSlugs, setOpenSlugs] = useState<ReadonlySet<string>>(new Set())
+  const [unfoldedSlugs, setUnfoldedSlugs] = useState<ReadonlySet<string>>(
+    new Set()
+  )
   const [isPreviewLoaded, setIsPreviewLoaded] = useState(false)
   const { activeSlug, hide, previewRef, show } = useFollowingPreview()
 
@@ -114,6 +130,7 @@ export const ProjectIndex: React.FC<ProjectIndexProps> = ({ projects }) => {
 
       return next
     })
+    setUnfoldedSlugs((slugs) => new Set(slugs).add(slug))
     hide()
   }
 
@@ -149,7 +166,10 @@ export const ProjectIndex: React.FC<ProjectIndexProps> = ({ projects }) => {
             onToggle={() => toggle(project.slug)}
             tagline={project.tagline}
           >
-            <ProjectDetails project={project} />
+            <ProjectDetails
+              hasUnfolded={unfoldedSlugs.has(project.slug)}
+              project={project}
+            />
           </ProjectRow>
         ))}
       </ul>

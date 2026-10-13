@@ -7,6 +7,15 @@ const MAIL_ENDPOINT = 'https://api.web3forms.com/submit'
 const mainNavigation = (page: Page) =>
   page.getByRole('navigation', { name: 'Main' })
 
+/** A link inside a panel that is still unfolding moves under the pointer. */
+const waitForUnfoldedPanel = async (page: Page): Promise<void> => {
+  await page
+    .locator('.project-panel[data-open]')
+    .evaluate((panel) =>
+      Promise.all(panel.getAnimations().map(({ finished }) => finished))
+    )
+}
+
 test('[e2e] a project of the index unfolds in place and folds back', async ({
   page
 }) => {
@@ -30,6 +39,7 @@ test('[e2e] from the index to a project page and back', async ({ page }) => {
   const details = page.getByRole('link', { name: 'Full details' }).first()
   await taverla.click()
   await expect(details).toBeVisible()
+  await waitForUnfoldedPanel(page)
   await details.click()
   await expect(page).toHaveURL('/en/projects/taverla')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Taverla')

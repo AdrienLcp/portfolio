@@ -77,10 +77,11 @@ const minScoreFor = (category: string, formFactor: FormFactor): number =>
     : MIN_SCORE
 
 /**
- * A score under 100 is measured twice more and judged on the median, the way
- * `lhci` does.
+ * Every page is measured three times and judged on the median, the way `lhci`
+ * does: one simulated run swings by a second between two runs of one build, so
+ * a single run that passes proves as little as one that fails.
  */
-const RUNS_BEFORE_JUDGING_THE_MEDIAN = 3
+const RUNS_PER_AUDIT = 3
 
 type FormFactor = 'desktop' | 'mobile'
 type Scheme = 'dark' | 'light'
@@ -341,16 +342,13 @@ try {
           const label = `${path} ${formFactor} ${scheme}`
           const readings: Measure[] = []
 
-          do {
+          while (readings.length < RUNS_PER_AUDIT) {
             const reading = await measure(url, formFactor, categories)
             readings.push(reading)
             console.info(
               `     ${label.padEnd(36)} run ${readings.length}: ${timingsOf(reading)}`
             )
-          } while (
-            readings.length < RUNS_BEFORE_JUDGING_THE_MEDIAN &&
-            failuresOf(medianOf(readings), formFactor).length > 0
-          )
+          }
 
           const reading = medianOf(readings)
           const broken = failuresOf(reading, formFactor)
