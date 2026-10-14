@@ -1,6 +1,7 @@
 import type React from 'react'
 
 import type { Profile } from '@/features/profile/profile'
+import { legalPathFor } from '@/infrastructure/router/navigation'
 import { SiteLink } from '@/presentation/components/site-link/site-link'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
 import { ThemeSwitch } from '@/presentation/theme/theme-switch'
@@ -38,11 +39,12 @@ const NetworkLinks: React.FC<{ profile: Profile }> = ({
 }
 
 /**
- * Who made the site, where else to find him, and how the site is made. On a
- * phone the theme switch lives here, the header having no room left for it.
+ * Who made the site, where else to find him, how the site is made, and the
+ * legal notice the law asks every page to link to. On a phone the theme switch
+ * lives here, the header having no room left for it.
  */
 export const SiteFooter: React.FC<SiteFooterProps> = ({ profile, year }) => {
-  const { translate } = useI18n()
+  const { locale, translate } = useI18n()
 
   return (
     <footer className='site-footer'>
@@ -59,6 +61,11 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({ profile, year }) => {
           <SiteLink href={SITE_SOURCE_URL} target='_blank'>
             {translate('footer.source')}
           </SiteLink>
+          <span className='colophon-legal'>
+            <SiteLink href={legalPathFor(locale)}>
+              {translate('footer.legal')}
+            </SiteLink>
+          </span>
         </p>
       </div>
     </footer>

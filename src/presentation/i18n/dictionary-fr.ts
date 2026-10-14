@@ -48,6 +48,8 @@ export const FR_DICTIONARY = defineDictionary({
       messageMissing: 'Le message est encore vide.',
       name: 'Nom',
       nameMissing: 'Dites-moi qui écrit.',
+      relay:
+        'Le mot passe par Web3Forms, qui me l’envoie par e-mail. Ce qu’il reçoit, et vos droits : <legal>mentions légales et confidentialité</legal>.',
       send: 'Envoyer le mot',
       sending: 'Envoi du mot',
       sent: 'Merci d’avoir écrit. Je lis tout, et je réponds depuis ma propre boîte.',
@@ -124,6 +126,7 @@ export const FR_DICTIONARY = defineDictionary({
   footer: {
     colophon: 'Prérendu, en français et en anglais, clair et sombre.',
     keeper: '© {year} Adrien Lacourpaille, à Nantes.',
+    legal: 'Mentions légales et confidentialité',
     source: 'Code source du site'
   },
   header: {
@@ -184,6 +187,65 @@ export const FR_DICTIONARY = defineDictionary({
     titleAccent: 'peut-être ?',
     titleBefore: 'Votre équipe,',
     write: 'M’écrire'
+  },
+  legal: {
+    host: {
+      body: 'Le site, comme mon compteur de visites, est hébergé par :',
+      heading: 'Hébergeur'
+    },
+    intro:
+      'Qui édite ce site, ce qu’il conserve de vous, et comment le changer. En bref : aucun cookie, aucun compte, et rien qui distingue un visiteur d’un autre.',
+    measurement: {
+      body: 'Les visites sont comptées par un outil que j’ai construit, sur analytics.adrienlcp.com, sans cookie. Une page vue enregistre l’adresse de la page, le site d’où vous venez, la langue de votre navigateur, le thème qu’il affiche, la largeur de sa fenêtre, et le pays où Cloudflare situe votre connexion. Votre adresse IP n’est jamais conservée, et rien n’est enregistré qui distingue un visiteur d’un autre. La vitesse de chargement de chaque page est comptée aussi, en totaux anonymes.',
+      counted: 'Vos visites sont comptées, anonymement.',
+      exemption:
+        'Cette mesure est dispensée de consentement selon les lignes directrices de la CNIL, et vous pouvez tout de même la refuser pour ce navigateur.',
+      heading: 'Mesure d’audience',
+      refused: 'Vos visites ne sont pas comptées dans ce navigateur.',
+      refusedByBrowser:
+        'Votre navigateur envoie le signal Global Privacy Control : vos visites ne sont jamais comptées.',
+      retention: defineTranslation(
+        'Chaque enregistrement est conservé {months:plural} au plus.',
+        { plural: { months: { one: '{?} mois', other: '{?} mois' } } }
+      ),
+      saveFailed:
+        'Votre navigateur n’a pas conservé ce choix. Réessayez, ou activez Global Privacy Control.',
+      storageBlocked:
+        'Ce navigateur bloque le stockage des sites : un refus ne peut pas y être conservé. Activer Global Privacy Control dans votre navigateur refuse la mesure sur tous les sites.',
+      switch: 'Compter mes visites'
+    },
+    publisher: {
+      address:
+        'Éditeur non professionnel, je donne l’identité de l’hébergeur à la place d’une adresse postale (LCEN, article 6-III-2).',
+      body: 'Ce site est édité par {name}, à titre de particulier et non de professionnel. Vous pouvez m’écrire depuis <contact>la page de contact</contact>.',
+      heading: 'Éditeur'
+    },
+    rights: {
+      body: 'Le RGPD vous permet d’accéder à ce qui vous concerne, de le rectifier ou de l’effacer, et de vous opposer à son utilisation. Demandez-le depuis <contact>la page de contact</contact> ; je réponds sous un mois.',
+      complaint:
+        'Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la <authority>CNIL</authority>.',
+      heading: 'Vos droits'
+    },
+    storage: {
+      analyticsOptOut:
+        'Votre refus de la mesure d’audience, si vous la désactivez plus bas.',
+      device:
+        'Ce site ne dépose aucun cookie. Ce qu’il retient reste dans votre navigateur, pour ce seul site, jusqu’à ce que vous l’effaciez :',
+      heading: 'Ce que ce site conserve',
+      locale: 'La langue choisie, français ou anglais.',
+      server:
+        'Un mot envoyé depuis le formulaire de contact arrive dans ma boîte mail. Je le garde le temps de nos échanges et l’efface au plus tard trois ans après le dernier, ou dès que vous le demandez. Rien d’autre vous concernant n’est conservé sur un serveur.',
+      theme: 'Le thème choisi : clair, sombre, ou celui de votre système.'
+    },
+    thirdParties: {
+      body: 'Votre navigateur communique avec ce site, avec mon compteur de visites et, seulement quand vous envoyez le formulaire de contact, avec le service qui le relaie.',
+      cloudflare:
+        'Héberge le site et le compteur de visites. Il reçoit votre adresse IP à chaque requête, pour servir la page et protéger le site des abus.',
+      heading: 'Qui d’autre reçoit vos données',
+      web3forms:
+        'Relaie le formulaire de contact. Quand vous l’envoyez, Web3Forms reçoit votre nom, votre adresse e-mail, votre mot et votre adresse IP, et me les transmet par e-mail. <policy>Sa politique de confidentialité</policy> couvre ce qu’il conserve.'
+    },
+    title: 'Mentions légales et confidentialité'
   },
   locale: {
     label: 'Langue'

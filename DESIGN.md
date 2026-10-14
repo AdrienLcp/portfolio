@@ -317,6 +317,10 @@ Quiet, round-ended and confident: one solid pill per group, the rest softer.
 - **Style:** a Soft Surface pill with 3px padding holding label slots (language codes, theme icons), each 2rem tall and at least 2.25rem wide.
 - **State:** unselected slots in Soft Ink, Ink on hover; the selected slot sits on a Paper pawn with the pawn shadow, which slides between slots over 280ms.
 
+### Switch
+- **Style:** an on/off setting that applies at once (the legal page's "count my visits"), set in a Soft Surface block with 14px corners: a 2.75rem by 1.5rem Paper track holding a round Soft Ink thumb with the pawn shadow, then its label in prose 600, the whole row at least `--control-height` tall.
+- **State:** on, the track fills with Ink and the Paper thumb slides right over 280ms; hovered while off, the thumb turns Ink; pressed, the track sinks to 97%; disabled, the track fades to half and the label to Soft Ink. A status line under it says what holds now, in Soft Ink, bold Ink when saving failed.
+
 ### Inputs / Fields
 - **Style:** Soft Surface fill, a transparent 1px border, 6px corners, body text, 3.1rem minimum height (11rem for the message); hover lifts to Pressed Surface.
 - **Focus:** the border turns violet; the caret is violet.

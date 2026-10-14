@@ -57,6 +57,12 @@ const pageFor = {
     }),
     module: 'src/features/home/home-page.tsx'
   },
+  [localizedPaths.legal]: {
+    lazy: async () => ({
+      Component: (await import('@/features/legal/legal-page')).LegalPage
+    }),
+    module: 'src/features/legal/legal-page.tsx'
+  },
   [localizedPaths.project]: {
     lazy: async () => ({
       Component: (await import('@/features/project-pages/project-page'))
@@ -103,6 +109,7 @@ const loaderFor = {
     (await import('@/features/home/home-loader')).homeLoader({
       locale: localeParam(params)
     }),
+  [localizedPaths.legal]: () => null,
   [localizedPaths.project]: async ({ params }) =>
     (await import('@/features/project-pages/project-loader')).projectLoader({
       locale: localeParam(params),
