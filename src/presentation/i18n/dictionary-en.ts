@@ -49,6 +49,8 @@ export const EN_DICTIONARY = defineDictionary({
       messageMissing: 'The message is still blank.',
       name: 'Name',
       nameMissing: 'Tell me who is writing.',
+      relay:
+        'Your note goes through Web3Forms, which emails it to me. What it receives, and your rights: <legal>legal notice and privacy</legal>.',
       send: 'Send the note',
       sending: 'Sending the note',
       sent: 'Thanks for writing. I read everything, and I reply from my own inbox.',
@@ -125,6 +127,7 @@ export const EN_DICTIONARY = defineDictionary({
   footer: {
     colophon: 'Prerendered, in English and French, light and dark.',
     keeper: '© {year} Adrien Lacourpaille, in Nantes.',
+    legal: 'Legal notice and privacy',
     source: 'The site’s source'
   },
   header: {
@@ -185,6 +188,67 @@ export const EN_DICTIONARY = defineDictionary({
     titleAccent: 'perhaps?',
     titleBefore: 'Your team,',
     write: 'Write to me'
+  },
+  legal: {
+    host: {
+      body: 'The site, like my visit counter, is hosted by:',
+      heading: 'Host'
+    },
+    intro:
+      'Who publishes this site, what it keeps about you, and how to change that. In short: no cookies, no account, and nothing that tells one visitor from another.',
+    measurement: {
+      body: 'Visits are counted by a tool I built, at analytics.adrienlcp.com, without cookies. A page view records the page’s address, the site you came from, your browser’s language, the theme it shows, the width of its window, and the country Cloudflare places your connection in. Your IP address is never kept, and nothing is recorded that tells one visitor from another. How fast each page loaded is counted too, as anonymous totals.',
+      counted: 'Your visits are counted, anonymously.',
+      exemption:
+        'This measurement needs no consent under the CNIL’s guidelines, and you can still refuse it for this browser.',
+      heading: 'Audience measurement',
+      refused: 'Your visits are not counted in this browser.',
+      refusedByBrowser:
+        'Your browser sends Global Privacy Control, so your visits are never counted.',
+      retention: defineTranslation(
+        'Each record is kept {months:plural} at most.',
+        {
+          plural: { months: { one: '{?} month', other: '{?} months' } }
+        }
+      ),
+      saveFailed:
+        'Your browser did not keep this choice. Try again, or turn on Global Privacy Control.',
+      storageBlocked:
+        'This browser blocks site storage, so a refusal cannot be kept here. Turning on Global Privacy Control in your browser refuses measurement on every site.',
+      switch: 'Count my visits'
+    },
+    publisher: {
+      address:
+        'As a non-professional publisher, I give the host’s identity in place of a postal address (LCEN, article 6-III-2).',
+      body: 'This site is published by {name}, a private individual, not a business. You can write to me through <contact>the contact page</contact>.',
+      heading: 'Publisher'
+    },
+    rights: {
+      body: 'Under the GDPR, you may access, correct or erase what concerns you, or object to its use. Ask through <contact>the contact page</contact>; I answer within a month.',
+      complaint:
+        'If you believe your rights are not respected, you may lodge a complaint with the <authority>CNIL</authority>.',
+      heading: 'Your rights'
+    },
+    storage: {
+      analyticsOptOut:
+        'Your refusal of audience measurement, if you turn it off below.',
+      device:
+        'This site sets no cookies. What it remembers stays in your browser, for this site only, until you clear it:',
+      heading: 'What this site keeps',
+      locale: 'The language you picked, English or French.',
+      server:
+        'A note sent through the contact form reaches my mailbox. I keep it while we are in touch and delete it three years after our last exchange at the latest, or as soon as you ask. Nothing else about you is kept on a server.',
+      theme: 'The theme you picked: light, dark, or your system’s.'
+    },
+    thirdParties: {
+      body: 'Your browser talks to this site, to my visit counter and, only when you send the contact form, to the service that relays it.',
+      cloudflare:
+        'Hosts the site and the visit counter. It receives your IP address with each request, to deliver the page and protect the site from abuse.',
+      heading: 'Who else receives your data',
+      web3forms:
+        'Relays the contact form. When you send it, Web3Forms receives your name, your email address, your note and your IP address, and emails them to me. <policy>Its privacy policy</policy> covers what it keeps.'
+    },
+    title: 'Legal notice and privacy'
   },
   locale: {
     label: 'Language'

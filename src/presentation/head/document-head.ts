@@ -52,6 +52,11 @@ export const PAGE_HEADS: Record<Locale, Record<IndexedPage, PageHead>> = {
       description:
         'Adrien Lacourpaille, full-stack developer in Nantes: websites, APIs and party games. Taverla, realtime party games on every phone in the room; on-record, every public vote of French deputies, explained and sourced; Séance, a training app that works offline with no server; and eleven TypeScript packages published on npm.',
       title: `${SITE_NAME} — Full-stack developer`
+    },
+    legal: {
+      description:
+        'Who publishes adrienlcp.com, who hosts it, what it keeps about you (no cookies, two preferences in your browser, an anonymous visit count you can refuse), who else receives your data, and your rights under the GDPR.',
+      title: titled('Legal notice and privacy')
     }
   },
   fr: {
@@ -74,6 +79,11 @@ export const PAGE_HEADS: Record<Locale, Record<IndexedPage, PageHead>> = {
       description:
         'Adrien Lacourpaille, développeur full-stack à Nantes : sites, API et jeux de soirée. Taverla, des jeux de soirée en temps réel sur tous les téléphones de la pièce ; on-record, chaque vote public des députés, expliqué et sourcé ; Séance, une app d’entraînement qui marche hors ligne sans serveur ; et onze paquets TypeScript publiés sur npm.',
       title: `${SITE_NAME} — Développeur full-stack`
+    },
+    legal: {
+      description:
+        'Qui édite adrienlcp.com, qui l’héberge, ce qu’il conserve de vous (aucun cookie, deux préférences dans votre navigateur, un comptage anonyme des visites que vous pouvez refuser), qui d’autre reçoit vos données, et vos droits selon le RGPD.',
+      title: titled('Mentions légales et confidentialité')
     }
   }
 }

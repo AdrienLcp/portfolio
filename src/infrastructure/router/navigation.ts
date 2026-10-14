@@ -19,6 +19,7 @@ export const localizedPaths = {
   cv: '/:locale/cv',
   cvPlain: '/:locale/cv/plain',
   home: '/:locale',
+  legal: '/:locale/legal',
   project: '/:locale/projects/:slug'
 } as const
 
@@ -56,6 +57,9 @@ export const contactPathFor = (locale: Locale): string =>
 
 export const cvPathFor = (locale: Locale): string =>
   pathFor(paths.cv, { locale })
+
+export const legalPathFor = (locale: Locale): string =>
+  pathFor(paths.legal, { locale })
 
 /** Anchors the project index on the home page. */
 export const PROJECTS_ANCHOR = 'projects'

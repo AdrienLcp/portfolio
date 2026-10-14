@@ -1,0 +1,87 @@
+@use '../../presentation/styles/layout'
+@use '../../presentation/styles/typography'
+
+@layer components
+  .legal-page
+    @include layout.page
+
+    padding-bottom: var(--space-chapter)
+
+  .legal-masthead,
+  .legal-section
+    @include layout.sheet
+
+  .legal-masthead
+    padding-block: var(--space-masthead) var(--space-section)
+
+  .legal-title
+    @include typography.display
+
+    font-size: var(--text-display)
+    max-width: 12em
+
+  .legal-intro
+    @include typography.lead
+
+    color: var(--ink-soft)
+    margin-top: var(--space-lead)
+    max-width: var(--measure-sentence)
+
+  // Heading in the narrow column, text in the wide one, as every two-part
+  // section of the site sets them.
+  .legal-section
+    display: grid
+    gap: var(--space-s)
+    padding-block: var(--space-xl)
+
+    @include layout.two-columns
+      align-items: start
+      column-gap: var(--space-columns)
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr)
+
+  .legal-heading
+    @include typography.heading
+
+    font-size: var(--text-heading)
+
+  .legal-text
+    display: grid
+    gap: var(--space-s)
+    max-width: var(--measure-prose)
+
+    p
+      text-wrap: pretty
+
+  .legal-aside
+    color: var(--ink-soft)
+    font-size: var(--text-xs)
+
+  .host-address
+    display: grid
+    font-style: normal
+
+    span:first-child
+      @include typography.semibold
+
+  .legal-terms
+    display: grid
+    gap: var(--space-xs)
+    margin: 0
+
+    > div
+      display: grid
+      gap: var(--space-4xs)
+
+    dt code
+      background: var(--surface)
+      border-radius: var(--radius-s)
+      padding: var(--space-4xs) var(--space-2xs)
+
+    dd
+      color: var(--ink-soft)
+      margin: 0
+
+    &.named dt
+      @include typography.label-large
+
+      font-size: var(--text-l)

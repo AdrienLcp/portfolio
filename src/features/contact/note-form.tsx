@@ -2,12 +2,14 @@ import type React from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { z } from 'zod/mini'
 
+import { legalPathFor } from '@/infrastructure/router/navigation'
 import {
   type MessageError,
   sendMessage
 } from '@/infrastructure/web3forms/web3forms-client'
 import { Icon } from '@/presentation/components/icon'
 import { SiteButton } from '@/presentation/components/site-link/site-button'
+import { SiteLink } from '@/presentation/components/site-link/site-link'
 import { Form } from '@/presentation/components/ui/form'
 import {
   FieldError,
@@ -18,6 +20,7 @@ import {
   TextField
 } from '@/presentation/components/ui/text-field'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
+import { RichText } from '@/presentation/i18n/rich-text'
 
 import './note-form.sass'
 
@@ -50,7 +53,7 @@ const NoteError: React.FC = () => (
 
 /** A plain form that lands in the same inbox as the address above it. */
 export const NoteForm: React.FC = () => {
-  const { translate } = useI18n()
+  const { locale, translate } = useI18n()
   const [delivery, setDelivery] = useState<Delivery>({ status: 'writing' })
   const sentRef = useRef<HTMLParagraphElement>(null)
 
@@ -197,6 +200,15 @@ export const NoteForm: React.FC = () => {
             >
               {translate('contact.form.send')}
             </SiteButton>
+            <p className='note-relay'>
+              <RichText
+                parts={translate.rich('contact.form.relay', {
+                  legal: (children) => (
+                    <SiteLink href={legalPathFor(locale)}>{children}</SiteLink>
+                  )
+                })}
+              />
+            </p>
           </div>
         </Form>
       )}

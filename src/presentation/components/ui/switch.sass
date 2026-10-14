@@ -1,0 +1,66 @@
+@use '../../styles/focus'
+@use '../../styles/typography'
+
+$track-width: 2.75rem
+$track-height: 1.5rem
+$track-padding: 0.1875rem
+$thumb-size: $track-height - 2 * $track-padding
+
+@layer components
+  // Set on a Soft Surface block, its track sits on Paper as a pill there does.
+  .switch
+    @include focus.ring('.switch-track')
+
+    align-items: center
+    cursor: pointer
+    display: inline-flex
+    gap: var(--space-xs)
+    min-height: var(--control-height)
+    -webkit-tap-highlight-color: transparent
+
+    .switch-track
+      align-items: center
+      background: var(--paper)
+      border-radius: var(--radius-full)
+      display: flex
+      flex: none
+      height: $track-height
+      padding-inline: $track-padding
+      transition: background-color var(--transition-fast) var(--ease-out), scale var(--transition-fast) var(--ease-out)
+      width: $track-width
+
+    .switch-thumb
+      background: var(--ink-soft)
+      border-radius: var(--radius-full)
+      box-shadow: var(--shadow-resting)
+      height: $thumb-size
+      transition: translate var(--transition-base) var(--ease-out), background-color var(--transition-fast) var(--ease-out)
+      width: $thumb-size
+
+    .switch-label
+      @include typography.semibold
+
+      color: var(--ink)
+
+    &[data-hovered]:not([data-disabled], [data-selected]) .switch-thumb
+      background: var(--ink)
+
+    &[data-pressed]:not([data-disabled]) .switch-track
+      scale: var(--pressed-scale)
+
+    &[data-selected]
+      .switch-track
+        background: var(--ink)
+
+      .switch-thumb
+        background: var(--paper)
+        translate: $track-width - 2 * $track-padding - $thumb-size 0
+
+    &[data-disabled]
+      cursor: default
+
+      .switch-label
+        color: var(--ink-soft)
+
+      .switch-track
+        opacity: 0.5

@@ -188,3 +188,49 @@ test('[e2e] a theme picked on the rail survives a reload', async ({ page }) => {
   await expect(root).toHaveAttribute('data-theme', 'dark')
   await expect(page.getByRole('radio', { name: 'Dark' })).toBeChecked()
 })
+
+test('[e2e] the footer leads to the legal page, whose switch refuses measurement across reloads', async ({
+  page
+}) => {
+  await openHydrated(page, '/en')
+
+  await page
+    .locator('footer')
+    .getByRole('link', { name: 'Legal notice and privacy' })
+    .click()
+  await expect(page).toHaveURL('/en/legal')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    'Legal notice and privacy'
+  )
+
+  const countMyVisits = page.getByRole('switch', { name: 'Count my visits' })
+  const switchLabel = page.getByText('Count my visits')
+  await expect(countMyVisits).toBeChecked()
+  await switchLabel.click()
+  await expect(countMyVisits).not.toBeChecked()
+  expect(
+    await page.evaluate(() => localStorage.getItem('analytics:ignore'))
+  ).toBe('true')
+
+  await openHydrated(page, '/en/legal')
+  await expect(countMyVisits).not.toBeChecked()
+  await switchLabel.click()
+  await expect(countMyVisits).toBeChecked()
+  expect(
+    await page.evaluate(() => localStorage.getItem('analytics:ignore'))
+  ).toBeNull()
+})
+
+test('[e2e] the contact form names the service that relays it', async ({
+  page
+}) => {
+  await openHydrated(page, '/fr/contact')
+
+  await expect(page.getByText(/Le mot passe par Web3Forms/)).toBeVisible()
+  await expect(
+    page.getByRole('link', {
+      exact: true,
+      name: 'mentions légales et confidentialité'
+    })
+  ).toHaveAttribute('href', '/fr/legal')
+})

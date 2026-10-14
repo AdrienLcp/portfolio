@@ -1,0 +1,22 @@
+@use '../../presentation/styles/typography'
+
+@layer components
+  .measurement-switch
+    background: var(--surface)
+    border-radius: var(--radius-m)
+    display: grid
+    gap: var(--space-3xs)
+    justify-items: start
+    margin-top: var(--space-xs)
+    padding: var(--space-xs) var(--space-l) var(--space-m)
+
+    .measurement-note
+      @include typography.leading-note
+
+      color: var(--ink-soft)
+      font-size: var(--text-xs)
+
+      &.failed
+        @include typography.bold
+
+        color: var(--ink)

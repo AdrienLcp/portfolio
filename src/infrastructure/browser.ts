@@ -37,3 +37,7 @@ export const scrollToTop = (): void => {
 export const scrollToElement = (element: HTMLElement): void => {
   element.scrollIntoView({ behavior: scrollBehavior(), block: 'start' })
 }
+
+/** The browser asks every site not to sell or share its visitor's data. */
+export const sendsGlobalPrivacyControl = (): boolean =>
+  'globalPrivacyControl' in navigator && navigator.globalPrivacyControl === true
