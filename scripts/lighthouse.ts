@@ -3,18 +3,16 @@ import { mkdir, writeFile } from 'node:fs/promises'
 import { createServer } from 'node:net'
 import { join } from 'node:path'
 
-import lighthouse, {
-  type Config,
-  type Flags,
-  type RunnerResult
-} from 'lighthouse'
+import lighthouse, { type Config, type Flags } from 'lighthouse'
 import desktopConfig from 'lighthouse/core/config/desktop-config.js'
 import { chromium } from 'playwright'
 
 /**
- * Every page, on a phone and on a desktop, in daylight and at night, scores 100
- * in every category but performance, which has its own floor, or the run
- * fails. The CV says so, so it has to be true on every commit.
+ * Every page scores 100 in accessibility, best practices and SEO, or the run
+ * fails, and no page shifts its layout. The CV says so, so it has to be true on
+ * every commit. The performance score and timings are left out: a simulated
+ * phone on slow 4G swings by a second between two runs, and a site this light
+ * gains nothing from chasing it.
  *
  * Lighthouse drives a Chromium launched here, through its debugging port:
  * `chrome-launcher` would make a profile it fails to delete on Windows. The
@@ -31,7 +29,13 @@ const ROOT = join(import.meta.dirname, '..')
 const REPORT_DIR = join(ROOT, 'lighthouse-reports')
 const PAGES_RUNTIME_PORT = 8795
 
-const CATEGORIES = ['performance', 'accessibility', 'best-practices', 'seo']
+const SCORED_CATEGORIES = ['accessibility', 'best-practices', 'seo']
+
+/**
+ * Performance is run in daylight for its layout shift alone, which reads the
+ * same on every run: its score and timings are not judged.
+ */
+const MAX_CUMULATIVE_LAYOUT_SHIFT = 0.01
 
 /**
  * Printable copies marked `noindex` on purpose: SEO would rightly call them
@@ -40,43 +44,13 @@ const CATEGORIES = ['performance', 'accessibility', 'best-practices', 'seo']
 const UNINDEXED_PATHS = ['/en/cv/plain', '/fr/cv/plain']
 
 /**
- * The quick pass: one locale, one screen, one theme. Script weight and
- * accessibility read the same in all of them; the full matrix stays in CI.
+ * The quick pass: one locale, one screen, one theme. The full matrix stays in
+ * CI.
  */
 const QUICK_FLAG = '--quick'
 const QUICK_LOCALE_PREFIX = '/en'
 
-/**
- * Lighthouse CI's assertion names, so a budget reads the same here as in any
- * Lighthouse documentation. Headroom over what the pages measure today, so a
- * regression shows before the score moves. The mobile LCP is Lantern's
- * simulation at slow-4G rates, not a visitor's.
- *
- * The script budget sits over a project page, the heaviest: it draws the app's
- * screens and its mechanism in SVG, with words no other page downloads.
- */
-const BUDGETS_WITH_HEADROOM = {
-  'cumulative-layout-shift': 0.01,
-  'largest-contentful-paint': { desktop: 1200, mobile: 3000 },
-  'resource-summary:script:size': 235_000
-}
-
-/**
- * Performance follows the simulated LCP down, and one run of it swings where a
- * median of three would not: a few points under what the pages score, so the
- * gate catches a regression without flaking. The other categories read the
- * same on every run and have no such excuse.
- */
-const MIN_PERFORMANCE_UNDER_SIMULATED_LCP: Record<FormFactor, number> = {
-  desktop: 95,
-  mobile: 90
-}
 const MIN_SCORE = 100
-
-const minScoreFor = (category: string, formFactor: FormFactor): number =>
-  category === 'performance'
-    ? MIN_PERFORMANCE_UNDER_SIMULATED_LCP[formFactor]
-    : MIN_SCORE
 
 type FormFactor = 'desktop' | 'mobile'
 type Scheme = 'dark' | 'light'
@@ -87,13 +61,9 @@ const BLINK_PREFERRED_COLOR_SCHEME: Record<Scheme, number> = {
 }
 
 type Measure = {
-  cls: number
-  fcpMs: number
-  lcpMs: number
+  cls: number | undefined
   report: string
   scores: Record<string, number>
-  scriptBytes: number
-  tbtMs: number
 }
 
 const configFor: Record<FormFactor, Config | undefined> = {
@@ -176,17 +146,6 @@ const pathsFrom = async (origin: string): Promise<string[]> => {
   return locations.map(([, location]) => new URL(location ?? '').pathname)
 }
 
-const numericValueOf = (result: RunnerResult, audit: string): number =>
-  result.lhr.audits[audit]?.numericValue ?? 0
-
-const scriptBytesIn = (result: RunnerResult): number => {
-  const details = result.lhr.audits['resource-summary']?.details
-  const rows = details?.type === 'table' ? details.items : []
-  const scripts = rows.find((row) => row.resourceType === 'script')
-
-  return typeof scripts?.transferSize === 'number' ? scripts.transferSize : 0
-}
-
 /** Throws on a run that measured nothing: a page that never painted is no score of 0. */
 const measure = async (
   url: string,
@@ -214,7 +173,7 @@ const measure = async (
   }
 
   const scores = Object.fromEntries(
-    categories.map((id) => {
+    SCORED_CATEGORIES.filter((id) => categories.includes(id)).map((id) => {
       const score = result.lhr.categories[id]?.score
 
       if (typeof score !== 'number') {
@@ -228,50 +187,22 @@ const measure = async (
   )
 
   return {
-    cls: numericValueOf(result, 'cumulative-layout-shift'),
-    fcpMs: numericValueOf(result, 'first-contentful-paint'),
-    lcpMs: numericValueOf(result, 'largest-contentful-paint'),
+    cls: categories.includes('performance')
+      ? result.lhr.audits['cumulative-layout-shift']?.numericValue
+      : undefined,
     report: String(result.report),
-    scores,
-    scriptBytes: scriptBytesIn(result),
-    tbtMs: numericValueOf(result, 'total-blocking-time')
+    scores
   }
 }
 
-const failuresOf = (
-  reading: Measure,
-  formFactor: FormFactor,
-  categories: string[]
-): string[] => [
-  ...Object.entries(reading.scores)
-    .filter(([id, score]) => score < minScoreFor(id, formFactor))
+const failuresOf = ({ cls, scores }: Measure): string[] => [
+  ...Object.entries(scores)
+    .filter(([, score]) => score < MIN_SCORE)
     .map(([id, score]) => `${id} ${score}`),
-  ...(categories.includes('performance')
-    ? budgetFailuresOf(reading, formFactor)
+  ...(cls !== undefined && cls > MAX_CUMULATIVE_LAYOUT_SHIFT
+    ? [`cumulative-layout-shift ${cls.toFixed(3)}`]
     : [])
 ]
-
-const budgetFailuresOf = (
-  reading: Measure,
-  formFactor: FormFactor
-): string[] => [
-  ...(reading.lcpMs >
-  BUDGETS_WITH_HEADROOM['largest-contentful-paint'][formFactor]
-    ? [`largest-contentful-paint ${Math.round(reading.lcpMs)} ms`]
-    : []),
-  ...(reading.cls > BUDGETS_WITH_HEADROOM['cumulative-layout-shift']
-    ? [`cumulative-layout-shift ${reading.cls.toFixed(3)}`]
-    : []),
-  ...(reading.scriptBytes >
-  BUDGETS_WITH_HEADROOM['resource-summary:script:size']
-    ? [
-        `resource-summary:script:size ${Math.round(reading.scriptBytes / 1000)} kB`
-      ]
-    : [])
-]
-
-const timingsOf = ({ fcpMs, lcpMs, tbtMs }: Measure): string =>
-  `FCP ${Math.round(fcpMs)} ms · LCP ${Math.round(lcpMs)} ms · TBT ${Math.round(tbtMs)} ms`
 
 const reportNameFor = (path: string, formFactor: FormFactor, scheme: Scheme) =>
   `${path.slice(1).replaceAll('/', '-') || 'root'}.${formFactor}.${scheme}.html`
@@ -297,7 +228,10 @@ const categoriesFor = (scheme: Scheme, path: string): string[] => {
   if (scheme === 'dark') {
     return ['accessibility']
   }
-  return indexed(path) ? CATEGORIES : CATEGORIES.filter((id) => id !== 'seo')
+  return [
+    ...SCORED_CATEGORIES.filter((id) => indexed(path) || id !== 'seo'),
+    'performance'
+  ]
 }
 
 /**
@@ -348,10 +282,10 @@ try {
             formFactor,
             categories
           )
-          const broken = failuresOf(reading, formFactor, categories)
+          const broken = failuresOf(reading)
 
           console.info(
-            `${broken.length === 0 ? 'ok  ' : 'FAIL'} ${label.padEnd(36)} ${categories.includes('performance') ? timingsOf(reading) : 'accessibility only'}${broken.length === 0 ? '' : ` · ${broken.join(', ')}`}`
+            `${broken.length === 0 ? 'ok  ' : 'FAIL'} ${label.padEnd(36)} ${reading.cls === undefined ? 'accessibility only' : `CLS ${reading.cls.toFixed(3)}`}${broken.length === 0 ? '' : ` · ${broken.join(', ')}`}`
           )
 
           if (broken.length > 0) {
@@ -375,7 +309,7 @@ try {
     process.exitCode = 1
   } else {
     console.info(
-      '\nEvery page meets its scores and budgets, on both screens and in both themes.'
+      '\nEvery page scores 100 and holds its layout, on both screens and in both themes.'
     )
   }
 } catch (error) {

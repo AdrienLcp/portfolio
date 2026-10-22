@@ -159,8 +159,8 @@ export const CV: CvContent = {
       link: 'https://adrienlcp.com',
       name: 'Portfolio',
       summary: {
-        en: 'Accessible design system (React Aria) in Storybook, in-browser component tests, a Lighthouse CI gate at 100/100 on every page.',
-        fr: 'Design system accessible (React Aria) dans Storybook, tests de composants en navigateur, CI Lighthouse bloquante à 100/100 sur chaque page.'
+        en: 'Accessible design system (React Aria) in Storybook, in-browser component tests, a Lighthouse CI gate at 100 in accessibility and SEO on every page.',
+        fr: 'Design system accessible (React Aria) dans Storybook, tests de composants en navigateur, CI Lighthouse bloquante à 100 en accessibilité et SEO sur chaque page.'
       },
       year: '2026'
     },
