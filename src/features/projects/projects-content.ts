@@ -14,14 +14,14 @@ import themePreferenceExcerpt from './excerpts/theme-preference.excerpt.ts?highl
  */
 export const PROJECTS: ProjectFacts[] = [
   {
-    coverage: TEST_COVERAGE_FIGURES.taverla,
-    icon: '/images/icons/taverla.svg',
+    coverage: TEST_COVERAGE_FIGURES.melee,
+    icon: '/images/icons/melee.svg',
     kind: 'game',
     links: {
-      live: 'https://taverla.adrienlcp.com/',
-      repository: 'https://github.com/AdrienLcp/taverla'
+      live: 'https://melee.adrienlcp.com/',
+      repository: 'https://github.com/AdrienLcp/melee'
     },
-    name: 'Taverla',
+    name: 'Mêlée',
     release: {
       countedBy: 'analytics',
       entered: '2026-09-29',
@@ -38,10 +38,10 @@ export const PROJECTS: ProjectFacts[] = [
         'theme-preference',
         'tsconfig'
       ],
-      shortName: 'Tav.',
+      shortName: 'Mêlée',
       state: 'shipped'
     },
-    slug: 'taverla',
+    slug: 'melee',
     stack: ['TypeScript', 'React', 'Hono', 'WebSocket', 'Zod', 'Playwright']
   },
   {

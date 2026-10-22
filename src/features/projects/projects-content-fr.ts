@@ -75,6 +75,29 @@ export const PROJECTS_TEXT_FR: Record<
     tagline:
       'Une liste, tout le monde écrit dessus, une personne y va, tout le monde suit.'
   },
+  melee: {
+    coverageScope: 'les tests du serveur et des règles du jeu',
+    highlights: [
+      'Dix jeux sur la même étagère, du blind test et du quiz à la carte du monde, aux allumettes et à la frise chronologique.',
+      'Des équipes tirées au sort ou choisies, et un tableau au mur qui tient les scores toute la soirée.',
+      'Une salle, un QR code : chacun rejoint depuis le téléphone qu’il a en main.',
+      'Le serveur horodate chaque buzz : c’est la main la plus rapide qui gagne, pas l’horloge la plus en avance.',
+      'Testé de bout en bout : de vrais sockets contre un vrai serveur, des parcours Playwright sur deux écrans.',
+      'En anglais et en français, clair et sombre, sur un téléphone ou un portable.'
+    ],
+    keyFacts: [
+      'Un serveur, un WebSocket vers chaque écran.',
+      'Le serveur horodate chaque buzz : la main la plus rapide gagne, pas l’horloge la plus en avance.',
+      'Testé de bout en bout : de vrais sockets, des parcours Playwright sur deux écrans.'
+    ],
+    releaseCategory: 'jeux de soirée · en ligne',
+    screenshotAlt:
+      'Accueil de Mêlée : ouvrir une salle, et l’étagère de jeux où choisir',
+    summary:
+      'Une étagère de jeux de soirée qui devient une soirée en équipes. Un écran mène la partie, les autres jouent sur ce qu’ils ont sous la main ; la salle se partage en équipes, un tableau au mur tient les scores d’un jeu à l’autre, et une carte du monde demande où sont les choses.',
+    tagline:
+      'Une soirée de jeux en équipes : un tableau au mur, tous les téléphones de la pièce.'
+  },
   'on-record': {
     coverageScope: 'les tests de l’ingestion, du site et du protocole',
     highlights: [
@@ -104,7 +127,7 @@ export const PROJECTS_TEXT_FR: Record<
       'Chaque règle qu’elle impose est une erreur de compilation : ces tests-là s’écrivent en types et c’est tsc qui les vérifie.',
       'browser copie dans le presse-papiers même en HTTP simple, où l’API Clipboard n’existe pas.',
       'Versionnés avec Changesets et publiés depuis GitHub Actions avec la provenance npm, jamais depuis un portable.',
-      'Ce site, Taverla, Séance et on-record les installent depuis npm, jusqu’à leurs configs TypeScript et Biome.'
+      'Ce site, Mêlée, Séance et on-record les installent depuis npm, jusqu’à leurs configs TypeScript et Biome.'
     ],
     keyFacts: [
       'Aucune dépendance tierce à l’exécution.',
@@ -129,7 +152,7 @@ export const PROJECTS_TEXT_FR: Record<
     summary:
       'Des petits paquets TypeScript sans dépendance tierce à l’exécution, publiés sur npm, chacun sorti d’un projet dès qu’un deuxième en avait besoin. L’un traduit, et sait dès la compilation ce que chaque message attend ; un autre dit si quelque chose a marché, sans exception et sans null ; les suivants gardent le thème choisi sans flash, ôtent les exceptions de localStorage et du presse-papiers, et partagent le reset, l’anneau de focus et les réglages du compilateur et du linter dont part chaque projet.',
     tagline:
-      'Les paquets npm sous ce site, sous Taverla, sous Séance et sous on-record, typés aussi loin que va le compilateur.'
+      'Les paquets npm sous ce site, sous Mêlée, sous Séance et sous on-record, typés aussi loin que va le compilateur.'
   },
   pastime: {
     coverageScope: 'les tests unitaires des moteurs et de l’app',
@@ -193,27 +216,5 @@ export const PROJECTS_TEXT_FR: Record<
       'Un programme au poids du corps dessiné comme un manuel de gymnastique, une planche par mouvement. Il guide une séance de trente minutes, tient un journal et trace les courbes de progrès — installable, hors ligne, avec des rappels, et chaque chiffre gardé sur l’appareil.',
     tagline:
       'Un manuel d’entraînement qui marche hors ligne et se souvient de tout, sur l’appareil seul.'
-  },
-  taverla: {
-    coverageScope: 'les tests du serveur et des règles du jeu',
-    highlights: [
-      'Cinq jeux sur la même étagère : blind test, quiz, L’Ardoise, Réflexe et buzzer.',
-      'Une salle, un QR code : chacun rejoint depuis le téléphone qu’il a en main.',
-      'Le serveur horodate chaque buzz : c’est la main la plus rapide qui gagne, pas l’horloge la plus en avance.',
-      'Testé de bout en bout : de vrais sockets contre un vrai serveur, des parcours Playwright sur deux écrans.',
-      'En anglais et en français, clair et sombre, sur un téléphone ou un portable.'
-    ],
-    keyFacts: [
-      'Un serveur, un WebSocket vers chaque écran.',
-      'Le serveur horodate chaque buzz : la main la plus rapide gagne, pas l’horloge la plus en avance.',
-      'Testé de bout en bout : de vrais sockets, des parcours Playwright sur deux écrans.'
-    ],
-    releaseCategory: 'jeux de soirée · en ligne',
-    screenshotAlt:
-      'Accueil de Taverla : ouvrir une table, et cinq jeux à choisir',
-    summary:
-      'Une étagère de jeux de soirée qui partagent une salle, un QR code et des écrans. Un écran mène la partie, les autres jouent sur ce qu’ils ont sous la main, et le premier qui sait remporte la manche.',
-    tagline:
-      'Des jeux de soirée sur tous les téléphones de la pièce, au même instant.'
   }
 }

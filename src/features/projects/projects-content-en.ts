@@ -68,6 +68,29 @@ export const PROJECTS_TEXT_EN = {
     tagline:
       'One list, everyone writes on it, one person goes, everyone watches.'
   },
+  melee: {
+    coverageScope: 'the server and game-rule tests',
+    highlights: [
+      'Ten games on one shelf, from blind test and quiz to a world map, matchsticks and a timeline.',
+      'Teams drawn or chosen, and a board on the wall that keeps the score across the evening.',
+      'One room, one QR code: everyone joins from the phone they already hold.',
+      'The server stamps every buzz, so the fastest hand wins, not the fastest clock.',
+      'Tested end to end: real sockets against a real server, Playwright journeys across two screens.',
+      'English and French, light and dark, on a phone or a laptop.'
+    ],
+    keyFacts: [
+      'One server, one WebSocket to every screen.',
+      'The server stamps every buzz: the fastest hand wins, not the fastest clock.',
+      'Tested end to end: real sockets, Playwright journeys across two screens.'
+    ],
+    releaseCategory: 'party games · live',
+    screenshotAlt:
+      'Mêlée’s home: open a room, and the shelf of games to pick from',
+    summary:
+      'A shelf of party games turning into a team evening. One screen runs the game and everyone else plays on whatever they have to hand; the room splits into teams, a board on the wall keeps the score from one game to the next, and a world map asks where things are.',
+    tagline:
+      'A team evening of party games: one board on the wall, every phone in the room.'
+  },
   'on-record': {
     coverageScope: 'the ingest, web and protocol tests',
     highlights: [
@@ -97,7 +120,7 @@ export const PROJECTS_TEXT_EN = {
       'Every rule it enforces is a compile error, so those tests are written as types and checked by tsc.',
       'browser copies to the clipboard even over plain HTTP, where the Clipboard API does not exist.',
       'Released with Changesets and published from GitHub Actions with npm provenance, never from a laptop.',
-      'This site, Taverla, Séance and on-record install them from npm, down to their TypeScript and Biome configs.'
+      'This site, Mêlée, Séance and on-record install them from npm, down to their TypeScript and Biome configs.'
     ],
     keyFacts: [
       'No third-party dependency at runtime.',
@@ -122,7 +145,7 @@ export const PROJECTS_TEXT_EN = {
     summary:
       'Small TypeScript packages with no third-party runtime dependency, published on npm, each lifted out of a project once a second one needed it. One translates, and knows at compile time what each message asks for; one says whether something worked, without throwing and without null; the others keep the chosen theme from flashing, take the throw out of localStorage and the clipboard, and share the reset, the focus ring and the compiler and linter settings every project starts from.',
     tagline:
-      'The npm packages under this site, Taverla, Séance and on-record, typed as far as the compiler goes.'
+      'The npm packages under this site, Mêlée, Séance and on-record, typed as far as the compiler goes.'
   },
   pastime: {
     coverageScope: 'the engines’ and the app’s unit tests',
@@ -186,25 +209,5 @@ export const PROJECTS_TEXT_EN = {
       'A bodyweight training programme drawn as a gymnastics manual, one plate per movement. It guides a thirty-minute session, keeps a journal and draws the progress curves — installable, offline, with reminders, and with every number kept on the device.',
     tagline:
       'A training manual that works offline and remembers everything, on the device alone.'
-  },
-  taverla: {
-    coverageScope: 'the server and game-rule tests',
-    highlights: [
-      'Five games on one shelf: blind test, quiz, L’Ardoise, Réflexe and buzzer.',
-      'One room, one QR code: everyone joins from the phone they already hold.',
-      'The server stamps every buzz, so the fastest hand wins, not the fastest clock.',
-      'Tested end to end: real sockets against a real server, Playwright journeys across two screens.',
-      'English and French, light and dark, on a phone or a laptop.'
-    ],
-    keyFacts: [
-      'One server, one WebSocket to every screen.',
-      'The server stamps every buzz: the fastest hand wins, not the fastest clock.',
-      'Tested end to end: real sockets, Playwright journeys across two screens.'
-    ],
-    releaseCategory: 'party games · live',
-    screenshotAlt: 'Taverla’s home: open a table, and five games to pick from',
-    summary:
-      'A shelf of party games sharing one room, one QR code and one set of screens. One screen runs the game, everyone else plays on whatever they have to hand, and the first to know it takes the round.',
-    tagline: 'Party games on every phone in the room, on the same instant.'
   }
 } satisfies Record<string, ProjectText>

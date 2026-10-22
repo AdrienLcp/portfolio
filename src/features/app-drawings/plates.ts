@@ -37,6 +37,13 @@ const PLATE_LOADERS: Record<string, PlateLoaders> = {
       (await import('./drawings/list-mechanism')).ListMechanism,
     mechanismTitle: (translate) => translate('home.mechanisms.list')
   },
+  melee: {
+    loadDrawing: async () =>
+      (await import('./drawings/melee-drawing')).MeleeDrawing,
+    loadMechanism: async () =>
+      (await import('./drawings/melee-mechanism')).MeleeMechanism,
+    mechanismTitle: (translate) => translate('home.mechanisms.melee')
+  },
   'on-record': {
     loadDrawing: async () =>
       (await import('./drawings/on-record-drawing')).OnRecordDrawing,
@@ -57,13 +64,6 @@ const PLATE_LOADERS: Record<string, PlateLoaders> = {
     loadMechanism: async () =>
       (await import('./drawings/seance-mechanism')).SeanceMechanism,
     mechanismTitle: (translate) => translate('home.mechanisms.seance')
-  },
-  taverla: {
-    loadDrawing: async () =>
-      (await import('./drawings/taverla-drawing')).TaverlaDrawing,
-    loadMechanism: async () =>
-      (await import('./drawings/taverla-mechanism')).TaverlaMechanism,
-    mechanismTitle: (translate) => translate('home.mechanisms.taverla')
   }
 }
 

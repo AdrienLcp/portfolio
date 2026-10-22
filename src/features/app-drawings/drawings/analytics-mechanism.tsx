@@ -89,7 +89,7 @@ export const AnalyticsMechanism: React.FC = () => {
         parts={[
           {
             detail: 'tracker.js',
-            name: `${text.thisSite} · Taverla · on-record · Scoreboard`
+            name: `${text.thisSite} · Mêlée · on-record · Scoreboard`
           },
           { detail: 'Hono · Cloudflare', name: text.oneWorker },
           {

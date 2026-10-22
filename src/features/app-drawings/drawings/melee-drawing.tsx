@@ -2,15 +2,15 @@ import type React from 'react'
 import { useId } from 'react'
 
 import { useDrawingText } from './drawing-text'
-import TaverlaDrawingArtwork from './taverla-drawing.svg?react'
+import MeleeDrawingArtwork from './melee-drawing.svg?react'
 
-/** Hand-drawn Taverla screen: the host screen with the room QR code and a phone buzzer. */
-export const TaverlaDrawing: React.FC = () => {
-  const text = useDrawingText('taverla')
+/** Hand-drawn Mêlée screen: the host screen with the room QR code and a phone buzzer. */
+export const MeleeDrawing: React.FC = () => {
+  const text = useDrawingText('melee')
   const titleId = useId()
 
   return (
-    <TaverlaDrawingArtwork
+    <MeleeDrawingArtwork
       aria-labelledby={titleId}
       className='screen'
       role='img'
@@ -96,6 +96,6 @@ export const TaverlaDrawing: React.FC = () => {
           {text.firstTakesRound}
         </text>
       </g>
-    </TaverlaDrawingArtwork>
+    </MeleeDrawingArtwork>
   )
 }

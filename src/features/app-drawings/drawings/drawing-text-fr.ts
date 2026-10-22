@@ -10,14 +10,14 @@ export const DRAWING_TEXT_FR = {
     desktop: 'ordinateur',
     deviceColumn: 'APPAREIL',
     deviceField: 'type d’appareil',
-    fedBy: 'ALIMENTÉ PAR CE SITE, TAVERLA, ON-RECORD ET SCOREBOARD',
+    fedBy: 'ALIMENTÉ PAR CE SITE, MÊLÉE, ON-RECORD ET SCOREBOARD',
     fingerprint: 'empreinte',
     hash: 'hash',
     ip: 'IP',
     light: 'clair',
     localeField: 'langue',
     mechanismTitle:
-      'Schéma : ce site, Taverla, on-record et Scoreboard exécutent chacun tracker.js, qui envoie les pages vues à un Worker Hono sur Cloudflare ; il écrit dans D1 une ligne de six champs et ne stocke jamais de cookie, d’IP, de user agent, d’empreinte ni de hash ; le tableau de bord public lit D1',
+      'Schéma : ce site, Mêlée, on-record et Scoreboard exécutent chacun tracker.js, qui envoie les pages vues à un Worker Hono sur Cloudflare ; il écrit dans D1 une ligne de six champs et ne stocke jamais de cookie, d’IP, de user agent, d’empreinte ni de hash ; le tableau de bord public lit D1',
     mobile: 'mobile',
     neverStored: 'Jamais stocké',
     neverStoredLine1: 'cookie · IP · user agent',
@@ -75,6 +75,31 @@ export const DRAWING_TEXT_FR = {
     wholeList:
       'Chaque changement envoie la liste entière, telle que chacun peut la voir.',
     withTheLink: 'Avec le lien'
+  },
+  melee: {
+    buzz: 'BUZZ',
+    buzzer: 'BUZZER',
+    first: 'PREMIER',
+    firstBuzz: '1er · gagne',
+    firstTakesRound: 'Le plus vif gagne la manche',
+    host: 'Écran hôte',
+    hostDetail: 'mène la partie',
+    mechanismTitle:
+      'Schéma : un serveur tient un WebSocket vers l’écran hôte et vers chaque téléphone, et horodate chaque buzz à son arrivée',
+    orderLine1: 'L’ordre se décide à l’arrivée',
+    orderLine2: 'sur le serveur, pas selon',
+    orderLine3: 'l’horloge des téléphones.',
+    roomBuzzer: 'SALLE · BUZZER',
+    scanToJoin: 'Scannez pour rejoindre',
+    seated: 'INSTALLÉS',
+    secondBuzz: '2e',
+    server: 'Un serveur',
+    serverDetail: 'Hono · date chaque buzz',
+    socketToPhones: 'WebSocket vers chaque téléphone',
+    thirdBuzz: '3e',
+    title:
+      'Dessin : un écran hôte affichant le QR code de la salle et les joueurs installés, et un téléphone affichant le buzzer',
+    waiting: 'Prochaine manche bientôt'
   },
   onRecord: {
     anythingChanged: 'du nouveau ?',
@@ -164,30 +189,5 @@ export const DRAWING_TEXT_FR = {
     title:
       'Dessin : un téléphone affichant une planche de mouvement d’une séance, marquée hors ligne et enregistrée sur cet appareil',
     workerDetail: 'Workbox · rappels'
-  },
-  taverla: {
-    buzz: 'BUZZ',
-    buzzer: 'BUZZER',
-    first: 'PREMIER',
-    firstBuzz: '1er · gagne',
-    firstTakesRound: 'Le plus vif gagne la manche',
-    host: 'Écran hôte',
-    hostDetail: 'mène la partie',
-    mechanismTitle:
-      'Schéma : un serveur tient un WebSocket vers l’écran hôte et vers chaque téléphone, et horodate chaque buzz à son arrivée',
-    orderLine1: 'L’ordre se décide à l’arrivée',
-    orderLine2: 'sur le serveur, pas selon',
-    orderLine3: 'l’horloge des téléphones.',
-    roomBuzzer: 'SALLE · BUZZER',
-    scanToJoin: 'Scannez pour rejoindre',
-    seated: 'INSTALLÉS',
-    secondBuzz: '2e',
-    server: 'Un serveur',
-    serverDetail: 'Hono · date chaque buzz',
-    socketToPhones: 'WebSocket vers chaque téléphone',
-    thirdBuzz: '3e',
-    title:
-      'Dessin : un écran hôte affichant le QR code de la salle et les joueurs installés, et un téléphone affichant le buzzer',
-    waiting: 'Prochaine manche bientôt'
   }
 } as const

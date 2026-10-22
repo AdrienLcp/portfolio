@@ -167,10 +167,10 @@ export const FR_DICTIONARY = defineDictionary({
     mechanisms: {
       analytics: 'quatre apps envoient, un Worker écrit une ligne',
       list: 'un objet par liste, toute la liste à chaque changement',
+      melee: 'un serveur, un socket vers chaque écran',
       onRecord: 'pas de serveur, un job de nuit demande ce qui a changé',
       scoreboard: 'un journal par événement, chaque écran le rejoue',
-      seance: 'zéro serveur, tout en cache sur l’appareil',
-      taverla: 'un serveur, un socket vers chaque écran'
+      seance: 'zéro serveur, tout en cache sur l’appareil'
     },
     shelf: {
       documentation: 'La documentation',

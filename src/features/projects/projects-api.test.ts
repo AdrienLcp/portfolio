@@ -9,7 +9,7 @@ describe('projects api', () => {
     expect(projects.status).toBe('success')
     if (projects.status === 'success') {
       expect(projects.data.map((project) => project.slug)).toEqual([
-        'taverla',
+        'melee',
         'on-record',
         'scoreboard',
         'analytics',
@@ -20,7 +20,7 @@ describe('projects api', () => {
         'packages'
       ])
       expect(projects.data[0]?.tagline).toBe(
-        'Des jeux de soirée sur tous les téléphones de la pièce, au même instant.'
+        'Une soirée de jeux en équipes : un tableau au mur, tous les téléphones de la pièce.'
       )
     }
   })
@@ -29,10 +29,10 @@ describe('projects api', () => {
     const project = await fetchProject({
       locale: 'en',
 
-      slug: 'taverla'
+      slug: 'melee'
     })
 
-    expect(project.status === 'success' && project.data.name).toBe('Taverla')
+    expect(project.status === 'success' && project.data.name).toBe('Mêlée')
   })
 
   it('[api] answers an unknown slug with a not_found failure', async () => {

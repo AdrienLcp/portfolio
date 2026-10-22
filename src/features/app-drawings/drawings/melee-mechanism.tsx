@@ -3,16 +3,16 @@ import { useId } from 'react'
 
 import { useDrawingText } from './drawing-text'
 import { MechanismKey } from './mechanism-key'
-import TaverlaMechanismArtwork from './taverla-mechanism.svg?react'
+import MeleeMechanismArtwork from './melee-mechanism.svg?react'
 
-/** Taverla mechanism: one server holds a socket to every screen and stamps each buzz. */
-export const TaverlaMechanism: React.FC = () => {
-  const text = useDrawingText('taverla')
+/** Mêlée mechanism: one server holds a socket to every screen and stamps each buzz. */
+export const MeleeMechanism: React.FC = () => {
+  const text = useDrawingText('melee')
   const titleId = useId()
 
   return (
     <>
-      <TaverlaMechanismArtwork
+      <MeleeMechanismArtwork
         aria-labelledby={titleId}
         className='diagram'
         role='img'
@@ -81,7 +81,7 @@ export const TaverlaMechanism: React.FC = () => {
         <text className='fade soft' style={{ '--d': 6 }} x='20' y='268'>
           {text.orderLine3}
         </text>
-      </TaverlaMechanismArtwork>
+      </MeleeMechanismArtwork>
       <MechanismKey
         note={[text.orderLine1, text.orderLine2, text.orderLine3].join(' ')}
         parts={[

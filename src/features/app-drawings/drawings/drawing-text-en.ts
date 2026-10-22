@@ -10,14 +10,14 @@ export const DRAWING_TEXT_EN = {
     desktop: 'desktop',
     deviceColumn: 'DEVICE',
     deviceField: 'device class',
-    fedBy: 'FED BY THIS SITE, TAVERLA, ON-RECORD AND SCOREBOARD',
+    fedBy: 'FED BY THIS SITE, MÊLÉE, ON-RECORD AND SCOREBOARD',
     fingerprint: 'fingerprint',
     hash: 'hash',
     ip: 'IP',
     light: 'light',
     localeField: 'locale',
     mechanismTitle:
-      'Diagram: this site, Taverla, on-record and Scoreboard each run tracker.js, which sends page views to one Hono Worker on Cloudflare; it writes a row of six fields to D1 and never stores a cookie, an IP, a user agent, a fingerprint or a hash; the public dashboard reads D1',
+      'Diagram: this site, Mêlée, on-record and Scoreboard each run tracker.js, which sends page views to one Hono Worker on Cloudflare; it writes a row of six fields to D1 and never stores a cookie, an IP, a user agent, a fingerprint or a hash; the public dashboard reads D1',
     mobile: 'mobile',
     neverStored: 'Never stored',
     neverStoredLine1: 'cookie · IP · user agent',
@@ -74,6 +74,31 @@ export const DRAWING_TEXT_EN = {
       'Drawing: the office laptop showing the Friday shopping list while someone writes a new line, and the shopper’s phone ticking lemons, struck out on both screens',
     wholeList: 'Each change sends the whole list, as each viewer may see it.',
     withTheLink: 'With the link'
+  },
+  melee: {
+    buzz: 'BUZZ',
+    buzzer: 'BUZZER',
+    first: 'FIRST',
+    firstBuzz: '1st · takes it',
+    firstTakesRound: 'First to know takes the round',
+    host: 'Host screen',
+    hostDetail: 'runs the game',
+    mechanismTitle:
+      'Diagram: one server holds a WebSocket to the host screen and to every phone, and stamps each buzz as it arrives',
+    orderLine1: 'Order is decided on arrival',
+    orderLine2: 'at the server, not by the',
+    orderLine3: 'phones’ own clocks.',
+    roomBuzzer: 'ROOM · BUZZER',
+    scanToJoin: 'Scan to join the room',
+    seated: 'SEATED',
+    secondBuzz: '2nd',
+    server: 'One server',
+    serverDetail: 'Hono · stamps every buzz',
+    socketToPhones: 'WebSocket to each phone',
+    thirdBuzz: '3rd',
+    title:
+      'Drawing: a host screen showing the room’s QR code and seated players, and a phone showing the buzzer',
+    waiting: 'Waiting for the next round'
   },
   onRecord: {
     anythingChanged: 'anything changed?',
@@ -163,30 +188,5 @@ export const DRAWING_TEXT_EN = {
     title:
       'Drawing: a phone showing one movement plate of a session, marked offline and saved on this device',
     workerDetail: 'Workbox · reminders'
-  },
-  taverla: {
-    buzz: 'BUZZ',
-    buzzer: 'BUZZER',
-    first: 'FIRST',
-    firstBuzz: '1st · takes it',
-    firstTakesRound: 'First to know takes the round',
-    host: 'Host screen',
-    hostDetail: 'runs the game',
-    mechanismTitle:
-      'Diagram: one server holds a WebSocket to the host screen and to every phone, and stamps each buzz as it arrives',
-    orderLine1: 'Order is decided on arrival',
-    orderLine2: 'at the server, not by the',
-    orderLine3: 'phones’ own clocks.',
-    roomBuzzer: 'ROOM · BUZZER',
-    scanToJoin: 'Scan to join the room',
-    seated: 'SEATED',
-    secondBuzz: '2nd',
-    server: 'One server',
-    serverDetail: 'Hono · stamps every buzz',
-    socketToPhones: 'WebSocket to each phone',
-    thirdBuzz: '3rd',
-    title:
-      'Drawing: a host screen showing the room’s QR code and seated players, and a phone showing the buzzer',
-    waiting: 'Waiting for the next round'
   }
 } as const
