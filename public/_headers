@@ -5,6 +5,11 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Content-Type-Options: nosniff
 
+# The root only picks a language and redirects in the browser. Indexed, it holds
+# the same page as /en, and Google took it as that page's canonical.
+/
+  X-Robots-Tag: noindex
+
 https://portfolio-9qi.pages.dev/*
   X-Robots-Tag: noindex
 
