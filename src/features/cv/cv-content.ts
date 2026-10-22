@@ -96,8 +96,8 @@ export const CV: CvContent = {
       link: 'https://melee.adrienlcp.com/',
       name: 'Mêlée',
       summary: {
-        en: 'Party games played in teams: players join by QR code, play on their phones and score on a board on the wall. React / Hono / WebSocket monorepo, Docker, GitHub Actions, Playwright end-to-end tests, Lighthouse CI.',
-        fr: 'Jeux de soirée en équipes : les joueurs rejoignent par QR code, jouent avec leur téléphone et marquent sur un tableau au mur. Monorepo React / Hono / WebSocket, Docker, GitHub Actions, e2e Playwright, Lighthouse CI.'
+        en: 'Team party games: players join by QR code and play on their phones. React / Hono / WebSocket monorepo, Docker, GitHub Actions, Playwright end-to-end tests, Lighthouse CI.',
+        fr: 'Jeux de soirée en équipes : les joueurs rejoignent par QR code et jouent avec leur téléphone. Monorepo React / Hono / WebSocket, Docker, GitHub Actions, e2e Playwright, Lighthouse CI.'
       },
       year: '2026'
     },
