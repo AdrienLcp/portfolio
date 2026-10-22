@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300">
+  <g fill="none" stroke="currentColor" stroke-width="1.6">
+    <rect class="draw" height="64" pathLength="1" style="--d:0" width="124" x="24" y="40"/>
+    <rect class="draw" height="64" pathLength="1" style="--d:0" width="124" x="24" y="196"/>
+    <rect class="draw" height="252" pathLength="1" style="--d:1" width="168" x="196" y="24"/>
+    <path class="draw" d="M148 72 H 196 M 189 65 l 7 7 l -7 7" pathLength="1" style="--d:2"/>
+    <path class="draw" d="M148 228 H 196 M 189 221 l 7 7 l -7 7" pathLength="1" style="--d:2"/>
+    <rect class="draw" height="22" pathLength="1" style="--d:2" width="128" x="216" y="86"/>
+    <rect class="draw" height="22" pathLength="1" style="--d:2.5" width="128" x="216" y="114"/>
+    <rect class="draw" height="22" pathLength="1" style="--d:3" width="128" x="216" y="142"/>
+    <rect class="draw" height="22" pathLength="1" style="--d:3.5" width="128" x="216" y="170"/>
+    <rect class="draw" height="22" pathLength="1" style="--d:4" width="128" x="216" y="198"/>
+    <g stroke-width="1.2">
+      <path class="draw" d="M226 93 h 8 v 8 h -8 Z M 242 97 H 322" pathLength="1" style="--d:2.5"/>
+      <path class="draw" d="M226 121 h 8 v 8 h -8 Z M 242 125 H 306" pathLength="1" style="--d:3"/>
+      <path class="draw" d="M226 149 h 8 v 8 h -8 Z M 242 153 H 314" pathLength="1" style="--d:3.5"/>
+      <path class="draw" d="M226 177 h 8 v 8 h -8 Z M 242 181 H 300" pathLength="1" style="--d:4"/>
+      <path class="draw" d="M226 205 h 8 v 8 h -8 Z M 242 209 H 318" pathLength="1" style="--d:4.5"/>
+      <path class="draw" d="M227.5 124.5 l 2 2 l 3.5 -4" pathLength="1" style="--d:3.5"/>
+    </g>
+    <path class="draw" d="M364 80 H 412 M 405 73 l 7 7 l -7 7" pathLength="1" style="--d:5"/>
+    <path class="draw" d="M364 220 H 412 M 405 213 l 7 7 l -7 7" pathLength="1" style="--d:5"/>
+    <rect class="draw" height="112" pathLength="1" style="--d:6" width="124" x="412" y="24"/>
+    <rect class="draw" height="112" pathLength="1" style="--d:6" width="124" x="412" y="164"/>
+    <g stroke-width="1.2">
+      <path class="draw" d="M424 75 h 6 v 6 h -6 Z M 436 78 H 500" pathLength="1" style="--d:6.5"/>
+      <path class="draw" d="M424 91 h 6 v 6 h -6 Z M 436 94 H 486" pathLength="1" style="--d:7"/>
+      <path class="draw" d="M424 107 h 6 v 6 h -6 Z M 436 110 H 494" pathLength="1" style="--d:7.5"/>
+      <path class="draw" d="M424 215 h 6 v 6 h -6 Z M 436 218 H 500" pathLength="1" style="--d:6.5"/>
+      <path class="draw" d="M424 231 h 6 v 6 h -6 Z M 436 234 H 486" pathLength="1" style="--d:7"/>
+      <path class="draw" d="M424 247 h 6 v 6 h -6 Z M 436 250 H 494" pathLength="1" style="--d:7.5"/>
+    </g>
+  </g>
+  <circle class="fade" cx="334" cy="181" fill="var(--violet)" r="3.5" style="--d:4"/>
+  <circle class="fade" cx="520" cy="94" fill="var(--violet)" r="3.5" style="--d:8"/>
+</svg>

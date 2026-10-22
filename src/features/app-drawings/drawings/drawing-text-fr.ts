@@ -40,6 +40,42 @@ export const DRAWING_TEXT_FR = {
     trackerSize: 'moins d’1 ko gzippé',
     userAgent: 'user agent'
   },
+  list: {
+    addsTicks: 'ajoute, coche, réécrit',
+    batteries: 'Piles AA',
+    binBags: 'Sacs poubelle',
+    cake: 'Gâteau pour Léa',
+    coffeeBeans: 'Café en grains',
+    durableObject: 'Durable Object',
+    everyGuest: 'Chaque invité',
+    guest: 'Un invité',
+    hibernate: 'SQLite, sockets en veille',
+    kebab: 'Kebab, sauce blanche',
+    lemons: 'Citrons verts',
+    lineAndName: 'UNE LIGNE, UN NOM',
+    linkIsKey: 'le lien sert de clé',
+    listTitleBottom: 'VENDREDI',
+    listTitleTop: 'COURSES',
+    mechanismTitle:
+      'Schéma : un Durable Object par liste garde ses lignes en SQLite ; quiconque a le lien les ajoute, les coche et les réécrit, un invité réserve un souhait, et à chaque changement chaque socket reçoit la liste entière telle que son lecteur peut la voir : les invités voient le souhait réservé, son propriétaire jamais',
+    nameAskedOnce: 'le prénom, demandé une fois',
+    neverSees: 'ne voit pas par qui',
+    noAccount: 'SANS COMPTE',
+    oatMilk: 'Lait d’avoine',
+    owner: 'Le propriétaire',
+    paperTowels: 'Essuie-tout',
+    perList: 'un par liste',
+    reservesWish: 'réserve un souhait',
+    seesReserved: 'le voit réservé',
+    socketEach: 'un socket chacun',
+    struckEverywhere: 'barré sur chaque écran',
+    tickedInShop: 'COCHÉ AU MAGASIN',
+    title:
+      'Dessin : l’ordinateur du bureau affiche les courses du vendredi pendant qu’on écrit une ligne, et le téléphone de celui qui fait les courses coche les citrons verts, barrés sur les deux écrans',
+    wholeList:
+      'Chaque changement envoie la liste entière, telle que chacun peut la voir.',
+    withTheLink: 'Avec le lien'
+  },
   onRecord: {
     anythingChanged: 'du nouveau ?',
     assembly: 'ASSEMBLÉE NATIONALE',

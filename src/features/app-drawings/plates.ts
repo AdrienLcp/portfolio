@@ -30,6 +30,13 @@ const PLATE_LOADERS: Record<string, PlateLoaders> = {
       (await import('./drawings/analytics-mechanism')).AnalyticsMechanism,
     mechanismTitle: (translate) => translate('home.mechanisms.analytics')
   },
+  list: {
+    loadDrawing: async () =>
+      (await import('./drawings/list-drawing')).ListDrawing,
+    loadMechanism: async () =>
+      (await import('./drawings/list-mechanism')).ListMechanism,
+    mechanismTitle: (translate) => translate('home.mechanisms.list')
+  },
   'on-record': {
     loadDrawing: async () =>
       (await import('./drawings/on-record-drawing')).OnRecordDrawing,

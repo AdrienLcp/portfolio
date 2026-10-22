@@ -167,6 +167,7 @@ export const EN_DICTIONARY = defineDictionary({
     },
     mechanisms: {
       analytics: 'four apps report, one Worker writes a row',
+      list: 'one object per list, the whole list on each change',
       onRecord: 'no server, a nightly job asks what changed',
       scoreboard: 'one log per event, every screen replays it',
       seance: 'zero server, everything cached on the device',
