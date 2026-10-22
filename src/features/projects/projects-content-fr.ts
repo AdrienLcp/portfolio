@@ -52,6 +52,29 @@ export const PROJECTS_TEXT_FR: Record<
     tagline:
       'L’arbre de famille que toute la famille tient à jour, à partir d’un lien.'
   },
+  list: {
+    coverageScope: 'les tests lancés hors du Worker',
+    highlights: [
+      'Quelqu’un crée une liste et envoie son lien ; chacun y ajoute des lignes d’où il est, et celui qui y va les coche pendant que les autres les voient changer. Sans compte : le lien fait office de clé.',
+      'Chaque ligne porte le nom de qui l’a écrite, dans une craie de couleur à lui, distribuée pareil sur chaque écran : plus personne n’a à demander « tu as pris mon truc ? ».',
+      'Une liste d’envies appartient à qui l’a créée : les invités réservent une envie ou glissent des idées surprises, et le serveur envoie à chaque socket la liste telle que son lecteur a le droit de la voir, si bien que le propriétaire ne sait jamais qui a réservé quoi.',
+      'Un Durable Object adossé à SQLite par liste garde ses lignes et ses sockets via l’API d’hibernation ; chaque modification est diffusée sous forme de liste complète, si bien qu’un socket qui se reconnecte n’a rien manqué.',
+      'Une liste que personne n’ouvre pendant quatre-vingt-dix jours s’efface d’elle-même, par une alarme que chaque visite repousse.',
+      'Installable, en français et en anglais, clair et sombre, lue et cochée d’une main sur un téléphone.'
+    ],
+    keyFacts: [
+      'Un lien, pas un compte : qui l’a ajoute, coche et réécrit.',
+      'Un Durable Object par liste, chaque modification sur chaque écran ouvert à la fois.',
+      'Une liste d’envies cache à son propriétaire qui a réservé quoi, côté serveur.'
+    ],
+    releaseCategory: 'liste partagée · par lien, en direct',
+    screenshotAlt:
+      'List affichant les courses du vendredi sur son ardoise : neuf lignes, dont trois barrées, chacune signée à la craie de son auteur',
+    summary:
+      'Une liste qu’un groupe remplit ensemble et qu’une seule personne exécute. Les collègues y ajoutent leur commande du midi, un foyer ses courses ; celui qui y va coche les lignes sur son téléphone pendant que les autres les voient partir, en direct. Elle s’écrit sur une ardoise de marché, chaque ligne signée à la craie de son auteur, et une seconde sorte de liste cache à son propriétaire les réservations d’une liste d’envies.',
+    tagline:
+      'Une liste, tout le monde écrit dessus, une personne y va, tout le monde suit.'
+  },
   'on-record': {
     coverageScope: 'les tests de l’ingestion, du site et du protocole',
     highlights: [

@@ -22,6 +22,7 @@ language: it negotiates from the browser's and redirects, which is what
 - [Séance](https://adrienlcp.com/en/projects/seance): a training manual that works offline and remembers everything, on the device alone.
 - [Pastime](https://adrienlcp.com/en/projects/pastime): a puzzle book with no ads, every level proved solvable.
 - [Arbor](https://adrienlcp.com/en/projects/arbor): the family tree the whole family keeps up to date, from a link.
+- [List](https://adrienlcp.com/en/projects/list): one list, everyone writes on it, one person goes, everyone watches.
 - [Analytics](https://adrienlcp.com/en/projects/analytics): cookie-free analytics that cannot tell two visitors apart.
 - [Scoreboard](https://adrienlcp.com/en/projects/scoreboard): every table's score on one big screen, live, scored from any phone.
 - [About](https://adrienlcp.com/en/about): the path into development, and the toolbox.

@@ -16,6 +16,7 @@ describe('projects api', () => {
         'seance',
         'pastime',
         'arbor',
+        'list',
         'packages'
       ])
       expect(projects.data[0]?.tagline).toBe(

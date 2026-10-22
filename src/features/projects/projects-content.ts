@@ -252,6 +252,41 @@ export const PROJECTS: ProjectFacts[] = [
     ]
   },
   {
+    coverage: TEST_COVERAGE_FIGURES.list,
+    icon: '/images/icons/list.svg',
+    kind: 'app',
+    links: {
+      live: 'https://list.adrienlcp.com',
+      repository: 'https://github.com/AdrienLcp/list'
+    },
+    name: 'List',
+    release: {
+      entered: '2026-10-09',
+      installs: [
+        'biome-config',
+        'i18n',
+        'react',
+        'react-aria',
+        'result',
+        'safe-storage',
+        'styles',
+        'theme-preference',
+        'tsconfig'
+      ],
+      shortName: 'List',
+      state: 'live'
+    },
+    slug: 'list',
+    stack: [
+      'TypeScript',
+      'React',
+      'Hono',
+      'Cloudflare Workers',
+      'Durable Objects',
+      'WebSocket'
+    ]
+  },
+  {
     coverage: TEST_COVERAGE_FIGURES.packages,
     icon: '/images/icons/packages.svg',
     kind: 'library',

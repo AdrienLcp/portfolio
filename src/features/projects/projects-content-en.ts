@@ -45,6 +45,29 @@ export const PROJECTS_TEXT_EN = {
       'A family tree the whole family keeps up to date together, made for a father who kept his in an old desktop program and reprinted it after every birth or separation. A shared link replaces the reprint: relatives fix the tree from their phones, every change can be undone, and the paper version prints with a QR code back to the live one.',
     tagline: 'The family tree the whole family keeps up to date, from a link.'
   },
+  list: {
+    coverageScope: 'the tests run outside the Worker',
+    highlights: [
+      'Someone creates a list and sends its link; everyone adds lines from wherever they are, and whoever goes ticks them off while the others watch it change. No account: the link is the key.',
+      'Each line carries the name of whoever wrote it, in a chalk colour of their own, dealt the same on every screen, so nobody has to ask “did you get my thing?”.',
+      'A wishlist belongs to whoever made it: guests reserve a wish or add surprise ideas, and the server sends each socket the list as its viewer may see it, so the owner never learns who reserved what.',
+      'One SQLite-backed Durable Object per list holds its lines and its sockets through the hibernation API; every change is broadcast as the whole list, so a socket that reconnects has missed nothing.',
+      'A list nobody opens for ninety days deletes itself, by an alarm each visit pushes back.',
+      'Installable, French and English, light and dark, read and ticked with one hand on a phone.'
+    ],
+    keyFacts: [
+      'A link, not an account: whoever has it adds, ticks and rewrites.',
+      'One Durable Object per list, every change on every open screen at once.',
+      'A wishlist hides from its owner who reserved what, on the server.'
+    ],
+    releaseCategory: 'shared list · link-based, live',
+    screenshotAlt:
+      'List showing a Friday shopping list on its slate: nine lines, three struck through, each signed in its author’s chalk',
+    summary:
+      'A list a group fills together and one person carries out. Colleagues add their lunch order, a household its groceries; whoever goes ticks the lines off on a phone while the others watch them go, live. It is written on a market-stall slate, each line signed in its author’s chalk, and a second kind of list keeps a wishlist’s reservations from its owner.',
+    tagline:
+      'One list, everyone writes on it, one person goes, everyone watches.'
+  },
   'on-record': {
     coverageScope: 'the ingest, web and protocol tests',
     highlights: [
