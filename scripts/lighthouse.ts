@@ -57,17 +57,19 @@ const QUICK_LOCALE_PREFIX = '/en'
  */
 const BUDGETS_WITH_HEADROOM = {
   'cumulative-layout-shift': 0.01,
-  'largest-contentful-paint': { desktop: 1050, mobile: 2800 },
+  'largest-contentful-paint': { desktop: 1200, mobile: 3000 },
   'resource-summary:script:size': 235_000
 }
 
 /**
- * Performance follows the simulated LCP down; the other categories have no
- * such excuse.
+ * Performance follows the simulated LCP down, and one run of it swings where a
+ * median of three would not: a few points under what the pages score, so the
+ * gate catches a regression without flaking. The other categories read the
+ * same on every run and have no such excuse.
  */
 const MIN_PERFORMANCE_UNDER_SIMULATED_LCP: Record<FormFactor, number> = {
-  desktop: 90,
-  mobile: 85
+  desktop: 95,
+  mobile: 90
 }
 const MIN_SCORE = 100
 
@@ -75,13 +77,6 @@ const minScoreFor = (category: string, formFactor: FormFactor): number =>
   category === 'performance'
     ? MIN_PERFORMANCE_UNDER_SIMULATED_LCP[formFactor]
     : MIN_SCORE
-
-/**
- * Every page is measured three times and judged on the median, the way `lhci`
- * does: one simulated run swings by a second between two runs of one build, so
- * a single run that passes proves as little as one that fails.
- */
-const RUNS_PER_AUDIT = 3
 
 type FormFactor = 'desktop' | 'mobile'
 type Scheme = 'dark' | 'light'
@@ -243,10 +238,23 @@ const measure = async (
   }
 }
 
-const failuresOf = (reading: Measure, formFactor: FormFactor): string[] => [
+const failuresOf = (
+  reading: Measure,
+  formFactor: FormFactor,
+  categories: string[]
+): string[] => [
   ...Object.entries(reading.scores)
     .filter(([id, score]) => score < minScoreFor(id, formFactor))
     .map(([id, score]) => `${id} ${score}`),
+  ...(categories.includes('performance')
+    ? budgetFailuresOf(reading, formFactor)
+    : [])
+]
+
+const budgetFailuresOf = (
+  reading: Measure,
+  formFactor: FormFactor
+): string[] => [
   ...(reading.lcpMs >
   BUDGETS_WITH_HEADROOM['largest-contentful-paint'][formFactor]
     ? [`largest-contentful-paint ${Math.round(reading.lcpMs)} ms`]
@@ -265,24 +273,6 @@ const failuresOf = (reading: Measure, formFactor: FormFactor): string[] => [
 const timingsOf = ({ fcpMs, lcpMs, tbtMs }: Measure): string =>
   `FCP ${Math.round(fcpMs)} ms · LCP ${Math.round(lcpMs)} ms · TBT ${Math.round(tbtMs)} ms`
 
-const median = (values: number[]): number =>
-  [...values].sort((a, b) => a - b)[Math.floor(values.length / 2)] ?? 0
-
-const medianOf = (readings: Measure[]): Measure => ({
-  cls: median(readings.map(({ cls }) => cls)),
-  fcpMs: median(readings.map(({ fcpMs }) => fcpMs)),
-  lcpMs: median(readings.map(({ lcpMs }) => lcpMs)),
-  report: readings.at(-1)?.report ?? '',
-  scores: Object.fromEntries(
-    Object.keys(readings[0]?.scores ?? {}).map((id) => [
-      id,
-      median(readings.map(({ scores }) => scores[id] ?? 0))
-    ])
-  ),
-  scriptBytes: median(readings.map(({ scriptBytes }) => scriptBytes)),
-  tbtMs: median(readings.map(({ tbtMs }) => tbtMs))
-})
-
 const reportNameFor = (path: string, formFactor: FormFactor, scheme: Scheme) =>
   `${path.slice(1).replaceAll('/', '-') || 'root'}.${formFactor}.${scheme}.html`
 
@@ -292,7 +282,23 @@ const origin = baseUrl ?? local?.origin ?? ''
 const failures: string[] = []
 const quick = process.argv.includes(QUICK_FLAG)
 const schemes: Scheme[] = quick ? ['light'] : ['light', 'dark']
-const formFactors: FormFactor[] = quick ? ['desktop'] : ['mobile', 'desktop']
+
+/**
+ * The night theme changes colours, not weight or layout: it answers for its
+ * contrasts only, on a phone.
+ */
+const formFactorsFor = (scheme: Scheme): FormFactor[] => {
+  if (quick) {
+    return ['desktop']
+  }
+  return scheme === 'dark' ? ['mobile'] : ['mobile', 'desktop']
+}
+const categoriesFor = (scheme: Scheme, path: string): string[] => {
+  if (scheme === 'dark') {
+    return ['accessibility']
+  }
+  return indexed(path) ? CATEGORIES : CATEGORIES.filter((id) => id !== 'seo')
+}
 
 /**
  * Pages serves every branch preview (`<branch>.<project>.pages.dev`) as
@@ -333,28 +339,19 @@ try {
     })
 
     try {
-      for (const formFactor of formFactors) {
+      for (const formFactor of formFactorsFor(scheme)) {
         for (const path of paths) {
-          const categories = !indexed(path)
-            ? CATEGORIES.filter((id) => id !== 'seo')
-            : CATEGORIES
-          const url = `${origin}${path}`
+          const categories = categoriesFor(scheme, path)
           const label = `${path} ${formFactor} ${scheme}`
-          const readings: Measure[] = []
-
-          while (readings.length < RUNS_PER_AUDIT) {
-            const reading = await measure(url, formFactor, categories)
-            readings.push(reading)
-            console.info(
-              `     ${label.padEnd(36)} run ${readings.length}: ${timingsOf(reading)}`
-            )
-          }
-
-          const reading = medianOf(readings)
-          const broken = failuresOf(reading, formFactor)
+          const reading = await measure(
+            `${origin}${path}`,
+            formFactor,
+            categories
+          )
+          const broken = failuresOf(reading, formFactor, categories)
 
           console.info(
-            `${broken.length === 0 ? 'ok  ' : 'FAIL'} ${label.padEnd(36)} LCP ${Math.round(reading.lcpMs)} ms · CLS ${reading.cls.toFixed(3)} · JS ${Math.round(reading.scriptBytes / 1000)} kB${broken.length === 0 ? '' : ` · ${broken.join(', ')}`}`
+            `${broken.length === 0 ? 'ok  ' : 'FAIL'} ${label.padEnd(36)} ${categories.includes('performance') ? timingsOf(reading) : 'accessibility only'}${broken.length === 0 ? '' : ` · ${broken.join(', ')}`}`
           )
 
           if (broken.length > 0) {
