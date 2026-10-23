@@ -5,7 +5,7 @@ import { useDrawingText } from './drawing-text'
 import { MechanismKey } from './mechanism-key'
 import MeleeMechanismArtwork from './melee-mechanism.svg?react'
 
-/** Mêlée mechanism: one server holds a socket to every screen and stamps each buzz. */
+/** Mêlée mechanism: one server holds a socket to every screen and banks a team's first answer for all of it. */
 export const MeleeMechanism: React.FC = () => {
   const text = useDrawingText('melee')
   const titleId = useId()
@@ -41,53 +41,53 @@ export const MeleeMechanism: React.FC = () => {
           style={{ '--d': 2 }}
           textAnchor='middle'
           x='90'
-          y='58'
+          y='52'
         >
-          {text.host}
+          {text.wall}
         </text>
         <text
           className='fade soft'
           style={{ '--d': 2 }}
           textAnchor='middle'
           x='90'
-          y='78'
+          y='72'
         >
-          {text.hostDetail}
+          {text.wallDetail}
         </text>
-        <text className='fade' style={{ '--d': 8 }} x='492' y='45'>
-          {text.firstBuzz}
+        <text className='fade soft' style={{ '--d': 8 }} x='502' y='48'>
+          {text.owls}
         </text>
-        <text className='fade soft' style={{ '--d': 8 }} x='492' y='115'>
-          {text.secondBuzz}
+        <text className='fade soft' style={{ '--d': 8 }} x='502' y='144'>
+          {text.wolves}
         </text>
-        <text className='fade soft' style={{ '--d': 8 }} x='492' y='185'>
-          {text.thirdBuzz}
+        <text className='fade soft' style={{ '--d': 8 }} x='502' y='240'>
+          {text.bears}
         </text>
         <text
           className='fade soft'
           style={{ '--d': 5 }}
           textAnchor='middle'
-          x='390'
-          y='292'
+          x='456'
+          y='286'
         >
           {text.socketToPhones}
         </text>
         <text className='fade soft' style={{ '--d': 6 }} x='20' y='232'>
-          {text.orderLine1}
+          {text.teamLine1}
         </text>
         <text className='fade soft' style={{ '--d': 6 }} x='20' y='250'>
-          {text.orderLine2}
+          {text.teamLine2}
         </text>
         <text className='fade soft' style={{ '--d': 6 }} x='20' y='268'>
-          {text.orderLine3}
+          {text.teamLine3}
         </text>
       </MeleeMechanismArtwork>
       <MechanismKey
-        note={[text.orderLine1, text.orderLine2, text.orderLine3].join(' ')}
+        note={[text.teamLine1, text.teamLine2, text.teamLine3].join(' ')}
         parts={[
-          { detail: text.hostDetail, name: text.host },
+          { detail: text.wallDetail, name: text.wall },
           { detail: text.serverDetail, name: text.server },
-          { detail: text.firstBuzz, name: text.socketToPhones }
+          { detail: text.socketToPhones, name: text.teamPhones }
         ]}
       />
     </>

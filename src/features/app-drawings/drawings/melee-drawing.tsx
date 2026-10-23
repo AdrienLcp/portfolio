@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useDrawingText } from './drawing-text'
 import MeleeDrawingArtwork from './melee-drawing.svg?react'
 
-/** Hand-drawn Mêlée screen: the host screen with the room QR code and a phone buzzer. */
+/** Hand-drawn Mêlée evening: the wall's track and standings, and a team's phone on its turn. */
 export const MeleeDrawing: React.FC = () => {
   const text = useDrawingText('melee')
   const titleId = useId()
@@ -22,68 +22,53 @@ export const MeleeDrawing: React.FC = () => {
         fontSize='20'
         fontWeight='800'
         letterSpacing='1'
-        x='38'
-        y='62'
+        x='70'
+        y='100'
       >
-        {text.buzzer}
+        {text.evening}
       </text>
       <text
         className='drawing-prose'
         fill='var(--ink-soft)'
         fontSize='11'
-        x='38'
-        y='80'
+        x='70'
+        y='118'
       >
-        {text.scanToJoin}
-      </text>
-      <text
-        className='drawing-letter'
-        fill='var(--ink-soft)'
-        fontSize='11'
-        fontWeight='700'
-        letterSpacing='1.5'
-        x='224'
-        y='62'
-      >
-        {text.seated}
+        {text.roundLine}
       </text>
       <g className='drawing-letter' fill='var(--ink)' fontSize='15'>
-        <text
-          fill='var(--on-violet)'
-          fontWeight='700'
-          textAnchor='end'
-          x='362'
-          y='94'
-        >
-          {text.first}
+        <text fill='var(--on-violet)' fontWeight='700' x='98' y='152'>
+          {text.owls}
         </text>
-        <text fill='var(--ink-soft)' fontSize='12' x='234' y='228'>
-          {text.waiting}
+        <text x='98' y='184'>
+          {text.wolves}
+        </text>
+        <text x='98' y='216'>
+          {text.bears}
         </text>
       </g>
-      <g transform='translate(378 70)'>
+      <g transform='translate(392 70)'>
         <text
           className='drawing-letter'
-          fill='var(--ink-soft)'
-          fontSize='11'
-          fontWeight='700'
-          letterSpacing='1.3'
-          x='22'
-          y='52'
+          fill='var(--ink)'
+          fontSize='20'
+          fontWeight='800'
+          x='46'
+          y='73'
         >
-          {text.roomBuzzer}
+          {text.owls}
         </text>
         <text
           className='drawing-letter'
           fill='var(--on-violet)'
-          fontSize='24'
+          fontSize='18'
           fontWeight='900'
-          letterSpacing='2'
+          letterSpacing='1.5'
           textAnchor='middle'
           x='80'
-          y='174'
+          y='205'
         >
-          {text.buzz}
+          {text.yourTurn}
         </text>
         <text
           className='drawing-prose'
@@ -93,7 +78,7 @@ export const MeleeDrawing: React.FC = () => {
           x='80'
           y='262'
         >
-          {text.firstTakesRound}
+          {text.oneAnswer}
         </text>
       </g>
     </MeleeDrawingArtwork>
