@@ -1,3 +1,6 @@
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
+
 import { describe, expect, it } from 'vitest'
 import type { z } from 'zod/mini'
 
@@ -9,7 +12,11 @@ import { housePackagesSchema } from '@/features/packages/house-package-schema'
 import { HOUSE_PACKAGES } from '@/features/packages/house-packages-content'
 import { PROFILE } from '@/features/profile/profile-content'
 import { profileSchema } from '@/features/profile/profile-schema'
-import { type ProjectText, projectInLocale } from '@/features/projects/project'
+import {
+  type ProjectText,
+  projectInLocale,
+  screenshotPathFor
+} from '@/features/projects/project'
 import {
   projectsSchema,
   projectTextSchema
@@ -76,6 +83,16 @@ describe('site content', () => {
           expect.arrayContaining(Object.keys(text[slug]?.sampleNotes ?? {}))
         )
       }
+    })
+
+    it('[content] finds every project’s screenshot for this locale', () => {
+      const missing = PROJECTS.flatMap((project) =>
+        ([640, 1280] as const)
+          .map((width) => screenshotPathFor(project, locale, width))
+          .filter((path) => !existsSync(join('public', path)))
+      )
+
+      expect(missing).toEqual([])
     })
 
     it('[content] serves every project as its schema reads it', () => {

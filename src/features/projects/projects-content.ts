@@ -21,6 +21,7 @@ export const PROJECTS: ProjectFacts[] = [
       live: 'https://melee.adrienlcp.com/',
       repository: 'https://github.com/AdrienLcp/melee'
     },
+    locales: ['fr', 'en'],
     name: 'Mêlée',
     release: {
       countedBy: 'analytics',
@@ -52,6 +53,7 @@ export const PROJECTS: ProjectFacts[] = [
       live: 'https://on-record.adrienlcp.com',
       repository: 'https://github.com/AdrienLcp/on-record'
     },
+    locales: ['fr'],
     name: 'on-record',
     release: {
       countedBy: 'analytics',
@@ -96,6 +98,7 @@ export const PROJECTS: ProjectFacts[] = [
       live: 'https://scoreboard.adrienlcp.com',
       repository: 'https://github.com/AdrienLcp/scoreboard'
     },
+    locales: ['fr'],
     name: 'Scoreboard',
     release: {
       countedBy: 'analytics',
@@ -130,6 +133,7 @@ export const PROJECTS: ProjectFacts[] = [
       live: 'https://analytics.adrienlcp.com',
       repository: 'https://github.com/AdrienLcp/analytics'
     },
+    locales: ['fr', 'en'],
     name: 'Analytics',
     release: {
       entered: '2026-09-30',
@@ -157,6 +161,7 @@ export const PROJECTS: ProjectFacts[] = [
       live: 'https://sport.adrienlcp.com/specimen',
       repository: 'https://github.com/AdrienLcp/sport'
     },
+    locales: ['fr', 'en'],
     name: 'Séance',
     release: {
       entered: '2026-09-29',
@@ -192,6 +197,7 @@ export const PROJECTS: ProjectFacts[] = [
       live: 'https://pastime.adrienlcp.com',
       repository: 'https://github.com/AdrienLcp/pastime'
     },
+    locales: ['fr', 'en'],
     name: 'Pastime',
     release: {
       entered: '2026-10-07',
@@ -222,6 +228,7 @@ export const PROJECTS: ProjectFacts[] = [
       live: 'https://arbor.adrienlcp.com',
       repository: 'https://github.com/AdrienLcp/arbor'
     },
+    locales: ['fr', 'en'],
     name: 'Arbor',
     release: {
       entered: '2026-10-07',
@@ -259,6 +266,7 @@ export const PROJECTS: ProjectFacts[] = [
       live: 'https://list.adrienlcp.com',
       repository: 'https://github.com/AdrienLcp/list'
     },
+    locales: ['fr', 'en'],
     name: 'List',
     release: {
       entered: '2026-10-09',
@@ -310,6 +318,7 @@ export const PROJECTS: ProjectFacts[] = [
       ],
       repository: 'https://github.com/AdrienLcp/packages'
     },
+    locales: ['fr', 'en'],
     name: 'Packages',
     samples: [
       {

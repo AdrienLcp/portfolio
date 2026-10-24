@@ -30,6 +30,7 @@ const facts: ProjectFacts = {
   icon: '/images/icons/example-project.svg',
   kind: 'game',
   links: { repository: 'https://example.com/repository' },
+  locales: ['fr'],
   name: 'Example',
   slug: 'example-project',
   stack: ['TypeScript']
@@ -51,6 +52,7 @@ const project: Project = {
   keyFacts: text.keyFacts,
   kind: facts.kind,
   links: facts.links,
+  locales: facts.locales,
   name: facts.name,
   screenshotAlt: text.screenshotAlt,
   slug: facts.slug,
@@ -154,6 +156,7 @@ describe('projectInLocale', () => {
       keyFacts: ['Un fait'],
       kind: 'game',
       links: { repository: 'https://example.com/repository' },
+      locales: ['fr'],
       name: 'Example',
       screenshotAlt: 'Une capture',
       slug: 'example-project',

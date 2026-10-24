@@ -6,6 +6,7 @@ import {
 } from '@/features/content/content-schemas'
 import { housePackageNameSchema } from '@/features/packages/house-package-schema'
 import type { Project, ProjectText } from '@/features/projects/project'
+import { LOCALES } from '@/presentation/i18n/locale'
 
 const projectSlugSchema = z
   .string()
@@ -76,6 +77,7 @@ const projectSchema = z.strictObject({
     packages: z.optional(z.array(npmPackageNameSchema).check(z.minLength(1))),
     repository: z.url()
   }),
+  locales: z.array(z.enum(LOCALES)).check(z.minLength(1)),
   name: textSchema,
   release: z.optional(appReleaseSchema),
   samples: z.optional(z.array(codeSampleSchema).check(z.minLength(1))),

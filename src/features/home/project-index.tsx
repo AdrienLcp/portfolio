@@ -11,14 +11,15 @@ import {
 } from '@/infrastructure/router/navigation'
 import { SiteLink } from '@/presentation/components/site-link/site-link'
 import { useI18n } from '@/presentation/i18n/i18n-provider'
+import type { Locale } from '@/presentation/i18n/locale'
 
 import { ProjectRow } from './project-row'
 import { useFollowingPreview } from './use-following-preview'
 
 const SCREENSHOT_SIZES = '(width > 48rem) 50vw, 100vw'
 
-const screenshotSourcesFor = (slug: string): string =>
-  `${screenshotPathFor(slug, 640)} 640w, ${screenshotPathFor(slug, 1280)} 1280w`
+const screenshotSourcesFor = (project: Project, locale: Locale): string =>
+  `${screenshotPathFor(project, locale, 640)} 640w, ${screenshotPathFor(project, locale, 1280)} 1280w`
 
 type ProjectDetailsProps = {
   /**
@@ -76,8 +77,8 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
             decoding='async'
             height={800}
             sizes={SCREENSHOT_SIZES}
-            src={screenshotPathFor(project.slug, 640)}
-            srcSet={screenshotSourcesFor(project.slug)}
+            src={screenshotPathFor(project, locale, 640)}
+            srcSet={screenshotSourcesFor(project, locale)}
             width={1280}
           />
         )}
@@ -95,7 +96,7 @@ type ProjectIndexProps = {
  * screenshot beside the pointer; pressing it unfolds the project in place.
  */
 export const ProjectIndex: React.FC<ProjectIndexProps> = ({ projects }) => {
-  const { translate } = useI18n()
+  const { locale, translate } = useI18n()
   const isGiftFound = useKonamiCode()
   const [openSlugs, setOpenSlugs] = useState<ReadonlySet<string>>(new Set())
   const [unfoldedSlugs, setUnfoldedSlugs] = useState<ReadonlySet<string>>(
@@ -188,8 +189,8 @@ export const ProjectIndex: React.FC<ProjectIndexProps> = ({ projects }) => {
               decoding='async'
               key={project.slug}
               sizes='24rem'
-              src={screenshotPathFor(project.slug, 640)}
-              srcSet={screenshotSourcesFor(project.slug)}
+              src={screenshotPathFor(project, locale, 640)}
+              srcSet={screenshotSourcesFor(project, locale)}
             />
           ))}
       </div>

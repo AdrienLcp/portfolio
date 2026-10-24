@@ -1,6 +1,7 @@
 import type { LocalizedText } from '@/features/content/localized-text'
 import type { HousePackageName } from '@/features/packages/house-package'
 import type { HighlightedExcerpt } from '@/features/projects/code-excerpt'
+import type { Locale } from '@/presentation/i18n/locale'
 
 /** An ISO date, `YYYY-MM-DD`. */
 type IsoDate = string
@@ -65,6 +66,11 @@ export type Project = {
     packages?: string[]
     repository: string
   }
+  /**
+   * The languages the project's own interface speaks, its screenshot taken in
+   * each; a reader in any other sees it in the first.
+   */
+  locales: Locale[]
   name: string
   release?: AppRelease
   samples?: CodeSample[]
@@ -149,9 +155,16 @@ export const projectInLocale = (
   }
 }
 
-/** The project's screenshot at a given width. */
-export const screenshotPathFor = (slug: string, width: 640 | 1280): string =>
-  `/images/projects/${slug}-${width}.webp`
+/** The project's screenshot at a given width, as close to `locale` as it gets. */
+export const screenshotPathFor = (
+  { locales, slug }: Pick<Project, 'locales' | 'slug'>,
+  locale: Locale,
+  width: 640 | 1280
+): string => {
+  const shownLocale = locales.includes(locale) ? locale : locales[0]
+
+  return `/images/projects/${shownLocale}/${slug}-${width}.webp`
+}
 
 export const npmPageFor = (packageName: string): string =>
   `https://www.npmjs.com/package/${packageName}`
