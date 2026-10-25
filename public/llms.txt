@@ -16,7 +16,7 @@ language: it negotiates from the browser's and redirects, which is what
 `hreflang="x-default"` points at.
 
 - [Home](https://adrienlcp.com/en): who he is, and what is in the box.
-- [Mêlée](https://adrienlcp.com/en/projects/melee): a team evening of party games, one board on the wall, every phone in the room.
+- [Mêlée](https://adrienlcp.com/en/projects/melee): a made-to-measure games night, a console, a wall, every phone in the room.
 - [on-record](https://adrienlcp.com/en/projects/on-record): what French deputies actually do, on the record, not what they say.
 - [Packages](https://adrienlcp.com/en/projects/packages): the npm packages under this site, Mêlée, Séance and on-record, typed as far as the compiler goes.
 - [Séance](https://adrienlcp.com/en/projects/seance): a training manual that works offline and remembers everything, on the device alone.

@@ -20,7 +20,7 @@ describe('projects api', () => {
         'packages'
       ])
       expect(projects.data[0]?.tagline).toBe(
-        'Une soirée de jeux en équipes : un tableau au mur, tous les téléphones de la pièce.'
+        'Une soirée de jeux sur mesure : une console, un mur, tous les téléphones de la pièce.'
       )
     }
   })

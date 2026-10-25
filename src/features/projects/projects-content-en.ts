@@ -71,9 +71,9 @@ export const PROJECTS_TEXT_EN = {
   melee: {
     coverageScope: 'the server and game-rule tests',
     highlights: [
-      'Ten games on one shelf, from blind test and quiz to a world map, matchsticks and a timeline.',
-      'Teams drawn or chosen, and a board on the wall that keeps the score across the evening.',
-      'One room, one QR code: everyone joins from the phone they already hold.',
+      'Twelve games on one shelf, from blind test and quiz to a world map, Petit Bac and a timeline.',
+      'An evening is planned round by round: a different game each time, each with its own settings, in teams or alone, with or without a board the pawns race along.',
+      'Three kinds of screen, none of them required: a console for the host, who sets up, runs and referees when needed; a wall on the TV that sums the evening up; and the players’ phones, joining by QR code. One device can do it all.',
       'The server stamps every buzz, so the fastest hand wins, not the fastest clock.',
       'Tested end to end: real sockets against a real server, Playwright journeys across two screens.',
       'English and French, light and dark, on a phone or a laptop.'
@@ -85,11 +85,11 @@ export const PROJECTS_TEXT_EN = {
     ],
     releaseCategory: 'party games · live',
     screenshotAlt:
-      'Mêlée’s home: open a room, and the shelf of games to pick from',
+      'Mêlée’s console: the board around the table, three drawn teams, the code to join and the evening’s running order',
     summary:
-      'A shelf of party games turning into a team evening. One screen runs the game and everyone else plays on whatever they have to hand; the room splits into teams, a board on the wall keeps the score from one game to the next, and a world map asks where things are.',
+      'A shelf of party games turned into a made-to-measure evening. The host lines it up game after game from a console, everyone plays on their phone, and a wall on the TV keeps the board, the teams and the score from one game to the next.',
     tagline:
-      'A team evening of party games: one board on the wall, every phone in the room.'
+      'A made-to-measure games night: a console, a wall, every phone in the room.'
   },
   'on-record': {
     coverageScope: 'the ingest, web and protocol tests',

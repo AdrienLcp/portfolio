@@ -50,7 +50,7 @@ export const PAGE_HEADS: Record<Locale, Record<IndexedPage, PageHead>> = {
     },
     home: {
       description:
-        'Adrien Lacourpaille, full-stack developer in Nantes: websites, APIs and party games. Mêlée, a team evening of party games with a board on the wall and every phone in the room; on-record, every public vote of French deputies, explained and sourced; Séance, a training app that works offline with no server; and eleven TypeScript packages published on npm.',
+        'Adrien Lacourpaille, full-stack developer in Nantes: websites, APIs and party games. Mêlée, a made-to-measure games night run from a console, with a wall on the TV and every phone in the room; on-record, every public vote of French deputies, explained and sourced; Séance, a training app that works offline with no server; and eleven TypeScript packages published on npm.',
       title: `${SITE_NAME} — Full-stack developer`
     },
     legal: {
@@ -77,7 +77,7 @@ export const PAGE_HEADS: Record<Locale, Record<IndexedPage, PageHead>> = {
     },
     home: {
       description:
-        'Adrien Lacourpaille, développeur full-stack à Nantes : sites, API et jeux de soirée. Mêlée, une soirée de jeux en équipes avec un tableau au mur et tous les téléphones de la pièce ; on-record, chaque vote public des députés, expliqué et sourcé ; Séance, une app d’entraînement qui marche hors ligne sans serveur ; et onze paquets TypeScript publiés sur npm.',
+        'Adrien Lacourpaille, développeur full-stack à Nantes : sites, API et jeux de soirée. Mêlée, une soirée de jeux sur mesure menée depuis une console, avec un mur sur la télé et tous les téléphones de la pièce ; on-record, chaque vote public des députés, expliqué et sourcé ; Séance, une app d’entraînement qui marche hors ligne sans serveur ; et onze paquets TypeScript publiés sur npm.',
       title: `${SITE_NAME} — Développeur full-stack`
     },
     legal: {

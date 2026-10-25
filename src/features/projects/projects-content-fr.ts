@@ -78,9 +78,9 @@ export const PROJECTS_TEXT_FR: Record<
   melee: {
     coverageScope: 'les tests du serveur et des règles du jeu',
     highlights: [
-      'Dix jeux sur la même étagère, du blind test et du quiz à la carte du monde, aux allumettes et à la frise chronologique.',
-      'Des équipes tirées au sort ou choisies, et un tableau au mur qui tient les scores toute la soirée.',
-      'Une salle, un QR code : chacun rejoint depuis le téléphone qu’il a en main.',
+      'Douze jeux sur la même étagère, du blind test et du quiz à la carte du monde, au petit bac et à la frise chronologique.',
+      'La soirée se prépare manche par manche : un jeu différent à chaque fois, chacun avec ses réglages, en équipes ou chacun pour soi, avec ou sans plateau où avancent les pions.',
+      'Trois sortes d’écran, aucune obligatoire : une console pour l’animateur, qui règle, lance et arbitre au besoin ; un mur sur la télé qui résume la soirée ; et les téléphones des joueurs, qui rejoignent par QR code. Un seul appareil peut tout faire.',
       'Le serveur horodate chaque buzz : c’est la main la plus rapide qui gagne, pas l’horloge la plus en avance.',
       'Testé de bout en bout : de vrais sockets contre un vrai serveur, des parcours Playwright sur deux écrans.',
       'En anglais et en français, clair et sombre, sur un téléphone ou un portable.'
@@ -92,11 +92,11 @@ export const PROJECTS_TEXT_FR: Record<
     ],
     releaseCategory: 'jeux de soirée · en ligne',
     screenshotAlt:
-      'Accueil de Mêlée : ouvrir une salle, et l’étagère de jeux où choisir',
+      'Console de Mêlée : le plateau autour de la table, trois équipes tirées, le code pour rejoindre et l’ordre des jeux de la soirée',
     summary:
-      'Une étagère de jeux de soirée qui devient une soirée en équipes. Un écran mène la partie, les autres jouent sur ce qu’ils ont sous la main ; la salle se partage en équipes, un tableau au mur tient les scores d’un jeu à l’autre, et une carte du monde demande où sont les choses.',
+      'Une étagère de jeux de soirée qui devient une soirée sur mesure. L’animateur l’enchaîne jeu après jeu depuis une console, chacun joue sur son téléphone, et un mur sur la télé tient le plateau, les équipes et les scores d’un jeu à l’autre.',
     tagline:
-      'Une soirée de jeux en équipes : un tableau au mur, tous les téléphones de la pièce.'
+      'Une soirée de jeux sur mesure : une console, un mur, tous les téléphones de la pièce.'
   },
   'on-record': {
     coverageScope: 'les tests de l’ingestion, du site et du protocole',
