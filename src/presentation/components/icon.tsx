@@ -16,7 +16,7 @@ import {
   Send,
   Sun,
   TextAlignStart,
-  TriangleAlert
+  TriangleExclamationPoint
 } from 'lucide-react'
 import type React from 'react'
 
@@ -47,7 +47,7 @@ const ICON_GLYPHS = {
   refused: CircleX,
   send: Send,
   sun: Sun,
-  warning: TriangleAlert
+  warning: TriangleExclamationPoint
 } as const satisfies Record<string, IconGlyph>
 
 export type IconName = keyof typeof ICON_GLYPHS
