@@ -58,3 +58,9 @@ pnpm validate    # everything CI runs, lighthouse aside
   `act()` as a test boundary with that flag set, and warns on every mount
   otherwise.
 - `pnpm test:e2e`: Playwright against the built site.
+
+## Known upstream issues
+
+- Storybook 10.6 calls `module.register()`, so every Vitest run prints Node 26's
+  `DEP0205` warning: [Storybook issue 35336](https://github.com/storybookjs/storybook/issues/35336),
+  fixed in Storybook 11.0.

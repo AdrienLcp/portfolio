@@ -1,8 +1,3 @@
-import {
-  identifier,
-  jsxExpressionContainer,
-  memberExpression
-} from '@babel/types'
 import type { Plugin } from 'vite'
 import svgr from 'vite-plugin-svgr'
 
@@ -16,11 +11,15 @@ type SvgrTemplate = NonNullable<
  * when both lived in one component.
  */
 const childrenAfterArtwork: SvgrTemplate = (variables, { tpl }) => {
-  variables.jsx.children.push(
-    jsxExpressionContainer(
-      memberExpression(identifier('props'), identifier('children'))
-    )
-  )
+  variables.jsx.children.push({
+    expression: {
+      computed: false,
+      object: { name: 'props', type: 'Identifier' },
+      property: { name: 'children', type: 'Identifier' },
+      type: 'MemberExpression'
+    },
+    type: 'JSXExpressionContainer'
+  })
 
   return tpl`
 ${variables.imports};

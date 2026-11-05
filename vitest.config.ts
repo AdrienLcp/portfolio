@@ -14,19 +14,11 @@ const WITHOUT_INDEX_HTML_FALLBACK = 'custom'
  */
 const BROWSER_SESSION_CONNECT_TIMEOUT_MS = 300_000
 
-/**
- * The port the story pages reach Vitest on. Vitest's default, 63315, sits in
- * the dynamic range Windows hands out to Hyper-V, which reserves it at random
- * and fails the run with EACCES; a port below 49152 is never reserved that way.
- */
-const BROWSER_API_PORT = 46_315
-
 export default mergeConfig(
   viteConfig,
   defineConfig({
     test: {
       browser: {
-        api: { port: BROWSER_API_PORT },
         connectTimeout: BROWSER_SESSION_CONNECT_TIMEOUT_MS
       },
       coverage: {
@@ -41,7 +33,6 @@ export default mergeConfig(
       },
       projects: [
         {
-          extends: true,
           test: {
             exclude: [PLAYWRIGHT_SPECS, 'node_modules/**'],
             name: 'unit'
@@ -49,7 +40,6 @@ export default mergeConfig(
         },
         {
           appType: WITHOUT_INDEX_HTML_FALLBACK,
-          extends: true,
           plugins: [storybookTest({ configDir: '.storybook' })],
           test: {
             browser: {

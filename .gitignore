@@ -9,3 +9,4 @@ storybook-static
 e2e/test-results
 playwright-report
 lighthouse-reports
+.vitest

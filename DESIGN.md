@@ -224,9 +224,11 @@ The frame never borrows a project's domain. A party game, a training app and a p
 A cool, near-monochrome paper-and-ink palette with a single saturated violet; every colour is a `light-dark()` pair, and the night values (the `-night` keys) play the same roles.
 
 ### Primary
+
 - **Pointer Violet** (violet / violet-night): the colour of attention. A pointed or open project name, a pointed package, the hovered ink pill, a hovered caps link or footer link, the current step of the path, the open-to-work dot and its pulse, list bullets, the stack separators, code keywords and the wavy squiggle, the focus ring (`--focus`), the caret and the text selection. Text set on it is **Violet Paper** (on-violet), which turns dark on the night violet; quieter text on it is **Pale Violet** (on-violet-soft), used by the refused verdict pill.
 
 ### Neutral
+
 - **Cool Paper** (paper / paper-night): the page, and the inside of a pill or a code that sits on a surface (the line pill inside the contact invite, the verdict pill, inline code on the 404).
 - **Soft Surface** (surface / surface-night): the separating block. Line pills, rails, the index's plus disc, picture backgrounds while they load, code specimens, address tiles, form fields, the contact invite, the current path step, the project scene, the CV desk.
 - **Pressed Surface** (surface-strong / surface-strong-night): the hover state of anything set on a surface: line pill, address tile, field.
@@ -237,6 +239,7 @@ A cool, near-monochrome paper-and-ink palette with a single saturated violet; ev
 - **Table Grey** (rule / rule-night): the 1px line between rows of a true table (a project's history and its package list). Nowhere else.
 
 ### Named Rules
+
 **The One Violet Rule.** Violet means pointed, open or current. It is never a section background, never a heading colour at rest, never decoration. If nothing on screen is pointed at, open or current, only the hero's emphasised words and the small marks (dots, bullets) carry it.
 
 **The Dim the Rest Rule.** When a name in the index is pointed at, it turns violet and every other name and tagline fades to Faded Ink, so the pointed one is the only lit word on the page.
@@ -250,6 +253,7 @@ A cool, near-monochrome paper-and-ink palette with a single saturated violet; ev
 **Character:** Tall condensed letters name things in mixed case, the way a book's index sets its entries; an open, calm sans carries every sentence. The condensed face does the shouting so the prose never has to.
 
 ### Hierarchy
+
 - **Display** (800, 3rem to 6rem on the hero and about page, 6.5rem for the CV, the contact address fitted to its block (11.5cqi, from 2rem up to 10rem), line-height 0.88, -0.025em, mixed case, balanced wrap, top trimmed to the capitals): the page's title.
 - **Index name** (800, 2.75rem to 6rem, 0.95, -0.025em): a project's name in the index; the neighbour links at the foot of a project page use the same voice at 2.5rem to 4.5rem.
 - **Heading** (800, 1.75rem to 2.25rem, 1, -0.01em): a section's title. A path step's name takes it larger (up to 3.25rem).
@@ -263,6 +267,7 @@ A cool, near-monochrome paper-and-ink palette with a single saturated violet; ev
 Fixed sizes come from one step scale: 0.75, 0.8125, 0.875, 0.9375, 1, 1.0625, 1.1875 and 2rem (`--text-4xs` to `--text-xl`, the body on `--text-m`; `--text-xl` is the floor of the contact address fitted to its box). Fluid sizes belong to display, index names, headings, role and lead, each a role token (`--text-display`, `--text-index`, `--text-heading`, `--text-lead`…) written with `sizes.fluid`: its minimum holds up to a 26rem phone, its maximum is reached where the old viewport-only size reached it, and the middle carries a rem part so zoom still enlarges it.
 
 ### Named Rules
+
 **The Names Are Condensed Rule.** Anything that names (a person, a project, a package, a section, a step) is set in Sofia Sans Condensed, mixed case. Anything that explains is Sofia Sans. A sentence is never condensed, and a title is never uppercase.
 
 **The Name Is the Picture's Peer Rule.** A project's name in the index is set at the hero's size. It is the thing you point at; it must be big enough to aim for.
@@ -280,6 +285,7 @@ The index has two modes. Where a fine pointer can hover and the window is wider 
 Spacing comes from one rem scale (`--space-4xs` 2px to `--space-5xl` 112px), plus fluid role tokens: **chapter**, **section**, **masthead**, **columns**, **card**, **opening**, **lead**, **step** and **title**. Every control — a pill, a link, a rail slot, a field, an address tile — stands at least `--control-height` (the shared 2.75rem, never below the 44px touch target); a verdict badge is 2rem and a specimen's bar 3.25rem. Reading measures are 34, 36, 40 and 46rem (`--measure-lead`, `-text`, `-wide`, `-form`), and in characters 16 to 62ch, each a role (`--measure-sentence` 40ch for a lead, `--measure-intro` 52ch, `--measure-prose` 60ch, `--measure-summary` 62ch…); no component writes a raw `ch`.
 
 ### Named Rules
+
 **The Space Separates Rule.** Two things are told apart by the space between them or by putting one on a Soft Surface. If you reach for a border to separate sections, add space instead.
 
 ## Elevation & Depth
@@ -287,11 +293,13 @@ Spacing comes from one rem scale (`--space-4xs` 2px to `--space-5xl` 112px), plu
 The page is flat; pictures float. Depth comes from two places only: the Soft Surface tone, which sets a block slightly below the paper, and a lifted shadow under every picture (the index's preview, an unfolded screenshot, the about portrait, the CV sheet on its desk). The rail's sliding pawn carries a tiny contact shadow so it reads as a piece on the track, and an app's icon beside its name on the project page sits on a short soft shadow, like on a home screen. Nothing else casts a shadow: pills, tiles, fields and surface blocks are flat.
 
 ### Shadow Vocabulary
+
 - **Lifted** (`box-shadow: 0 1px 2px light-dark(rgb(21 22 26 / 0.08), rgb(0 0 0 / 0.4)), 0 18px 40px -12px light-dark(rgb(21 22 26 / 0.28), rgb(0 0 0 / 0.7))`): under a picture, so it sits above the page.
 - **Pawn** (`box-shadow: 0 1px 2px light-dark(rgb(0 0 0 / 0.12), rgb(0 0 0 / 0.5))`): under a rail's selected pawn only.
 - **Icon** (`box-shadow: 0 2px 6px light-dark(rgb(21 22 26 / 0.18), rgb(0 0 0 / 0.5))`): under an app's icon, beside the project page's title only.
 
 ### Named Rules
+
 **The Only Pictures Float Rule.** A shadow means "this is a picture of the work". Do not lift a pill, a card or a section.
 
 ## Shapes
@@ -303,6 +311,7 @@ Strokes are rare. Icons are drawn at 1.75 with round caps and joins. A field has
 ## Components
 
 ### Buttons (pills)
+
 Quiet, round-ended and confident: one solid pill per group, the rest softer.
 - **Shape:** fully rounded (999px), 2.75rem tall, 1.1rem side padding, label-large lettering trimmed to its capitals so it centres optically; an optional icon sits before the label at 1.15em.
 - **Ink:** Ink fill, Paper text; on hover it turns Pointer Violet. For the one action a group is for (play, see it live, send).
@@ -314,35 +323,42 @@ Quiet, round-ended and confident: one solid pill per group, the rest softer.
 - **Pending:** a form's submit goes to 75% opacity with a progress cursor and three square dots that blink in steps (static with reduced motion).
 
 ### Rails (segmented switches)
+
 - **Style:** a Soft Surface pill with 3px padding holding label slots (language codes, theme icons), each 2rem tall and at least 2.25rem wide.
 - **State:** unselected slots in Soft Ink, Ink on hover; the selected slot sits on a Paper pawn with the pawn shadow, which slides between slots over 280ms.
 
 ### Switch
+
 - **Style:** an on/off setting that applies at once (the legal page's "count my visits"), set in a Soft Surface block with 14px corners: a 2.75rem by 1.5rem Paper track holding a round Soft Ink thumb with the pawn shadow, then its label in prose 600, the whole row at least `--control-height` tall.
 - **State:** on, the track fills with Ink and the Paper thumb slides right over 280ms; hovered while off, the thumb turns Ink; pressed, the track sinks to 97%; disabled, the track fades to half and the label to Soft Ink. A status line under it says what holds now, in Soft Ink, bold Ink when saving failed.
 
 ### Inputs / Fields
+
 - **Style:** Soft Surface fill, a transparent 1px border, 6px corners, body text, 3.1rem minimum height (11rem for the message); hover lifts to Pressed Surface.
 - **Focus:** the border turns violet; the caret is violet.
 - **Error:** a 2px ink edge and a bold message with an icon beside the field, never colour alone.
 
 ### Navigation
+
 - **Style:** the brand name in condensed 800 at 1.25rem (violet on hover), page links in prose 600 at Soft Ink, Ink on hover and for the current page (no underline, no bar), then the language and theme rails. The header has no rule under it.
 - **Footer:** Soft Ink text at 0.9375rem, links in Ink 600 that turn violet on hover, the colophon pushed right from 900px.
 - **Mobile:** two lines below 40rem, the theme rail moved to the footer.
 
 ### Soft blocks
+
 - **Corner Style:** the large radius.
 - **Background:** Soft Surface; pills inside them sit on Paper.
 - **Shadow Strategy:** none.
 - **Border:** none.
 - **Internal Padding:** 2rem to 5rem (`--space-card`) for an invitation or the 404, 1.25rem to 2.5rem (`--space-step`) for a path step.
-Used for the contact invitation at the foot of each page (a display title with a violet word, a note, a row of pills), the 404, the current step of the path, a project's scene and a sent note.
+  Used for the contact invitation at the foot of each page (a display title with a violet word, a note, a row of pills), the 404, the current step of the path, a project's scene and a sent note.
 
 ### Address tiles
+
 Each other address (GitHub, LinkedIn, npm, the CV) is its own Soft Surface tile with 14px corners: a condensed label, the address, and an arrow icon. On hover the tile presses to Pressed Surface, the label and arrow turn violet, and the arrow nudges 2px up and right.
 
 ### Project Index (signature)
+
 The home page's centre. Each project is a toggle button: its name at index size, its tagline in Soft Ink beside it on the baseline (36ch), and a 2.5rem Soft Surface plus disc at the far right.
 - **Pointing:** the pointed name turns violet over 280ms (`--transition-base`) and every other name and tagline fades to Faded Ink.
 - **Following preview:** a 16:10 screenshot, clamp(18rem, 26vw, 24rem) wide, 14px corners, lifted shadow, fixed over the page. It fades in from 90% scale (280ms opacity, 560ms scale), keeps 48px right of the pointer and 40px clear of the text, stays 16px inside the viewport, and closes 16% of the gap to the pointer each frame. It leans into its motion up to 8 degrees either way around a resting -2 degrees. Moving between names crossfades the image (280ms). Keyboard focus snaps the preview to the row instead of gliding.
@@ -351,20 +367,25 @@ The home page's centre. Each project is a toggle button: its name at index size,
 - **Reduced motion:** the preview jumps to place without lag or tilt; every duration is one of the three `--transition-*` tokens, which `reduced-motion.css` collapses, and it ends the looping pulse and blink too.
 
 ### Package shelf
+
 One lead sentence, then every package name as a single wrapping run in condensed 700 (up to 2.25rem), the `@adrienlcp/` scope in Faded Ink 500, commas between names. Pointing a name turns it (scope included) violet and writes its job in the line below. On touch or narrow screens the run becomes a column with each job under its name.
 
 ### Open-to-work mark
+
 A 0.55rem violet dot beside a bold "open to work" line, next to a round 3.5rem portrait in the hero. Without reduced motion it pulses a violet ring outward every 2.4s. The same dot appears on the about page, the contact page and the CV.
 
 ### Project page
+
 A display title up to 6rem with the app's home-screen icon on its left (0.7 of the title's size, iOS 22.5% corners, the icon shadow, centred on the title, 0.9rem apart), the kind line, a lead, a summary, the stack as condensed words separated by violet middle dots, and the action pills; then the app's drawn screens on a large Soft Surface scene; key figures in tabular 800 numerals; sections with a heading and violet-dotted lists; code excerpts on 14px Soft Surface specimens with a title bar and a verdict pill (Paper, or violet when the excerpt is the refused version), keywords in violet and errors under a violet wavy squiggle; a history and a package list as true tables with 1px Table Grey lines between rows (dates in tabular figures, a "first" mark as a small violet-on-surface pill); and the previous and next projects as two huge names whose arrows nudge 0.25rem outward on hover.
 
 ### CV sheet
+
 On phones the CV reflows on Paper. From a 60rem page, and in print, it becomes an A4 sheet (210mm, 240mm from 80rem) with 14px corners and the lifted shadow on a Soft Surface desk; its type is set in em so one size scales the whole sheet. Print drops the site chrome, the shadow and the corners, and forces light inks on white.
 
 ## Do's and Don'ts
 
 ### Do:
+
 - **Do** use violet only for what is pointed at, open or current, plus the small marks (dots, bullets, the hero's emphasised words).
 - **Do** set every name and title in Sofia Sans Condensed, mixed case; every sentence in Sofia Sans.
 - **Do** separate with space or a Soft Surface block; draw a 1px Table Grey line only between the rows of a true table.
@@ -375,6 +396,7 @@ On phones the CV reflows on Paper. From a 60rem page, and in print, it becomes a
 - **Do** pick margins from `--space-*`, fixed text sizes from `--text-*`, radii from `--radius-*`.
 
 ### Don't:
+
 - **Don't** bring back rubber stamps, ink-bleed filters or tilted labels; the only tilt is the following preview's lean.
 - **Don't** draw heavy rules, ruled headers, ruled sections or hairlines between list items outside a true table.
 - **Don't** set display titles or names in uppercase.
