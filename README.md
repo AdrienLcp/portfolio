@@ -35,10 +35,15 @@ pnpm validate    # everything CI runs, lighthouse aside
 - **Fonts swap without moving anything.** fontaine gives each face a fallback
   face over local Arial scaled to the same metrics, so text paints at once and
   keeps its place when Sofia Sans arrives.
-- **The cascade layer order is declared in `index.html`**, and again in
-  `.storybook/preview-head.html`. A layer's position is fixed where its name
-  first appears, and Vite injects stylesheets in module-graph order: declared in
-  a stylesheet, the order would depend on which component was imported first.
+- **The cascade layers are flattened at build time.** Stylesheets are written
+  in `@layer reset, tokens, base, components`, and the `flattened-cascade-layers`
+  PostCSS plugin turns each layer's rank into id specificity (`:not(#\#)`), so
+  the order holds in browsers that drop every `@layer` block. The order lives
+  in that plugin, the same for every stylesheet whichever is imported first.
+- **It runs on five-year-old browsers** (Chromium 87, Safari 14: Smart TVs, old
+  phones). `build.target` lowers the syntax and the colours,
+  `installMissingFeatures` loads the polyfills a browser lacks — Temporal, the
+  few newer APIs the bundle calls — before the first render.
 
 ## Tooling
 

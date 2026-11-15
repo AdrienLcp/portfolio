@@ -8,6 +8,7 @@ import react from '@vitejs/plugin-react'
 import fontaine from 'fontaine/postcss'
 import { defineConfig } from 'vite'
 
+import { flattenedCascadeLayers } from './scripts/flattened-cascade-layers.ts'
 import { highlightedExcerpts } from './scripts/highlighted-excerpts.ts'
 import { svgArtwork } from './scripts/svg-artwork.ts'
 import {
@@ -44,6 +45,12 @@ const CONTACT_ONLY_MODULES = new RegExp(
     .join('|')
 )
 
+/**
+ * Fetched only by a browser that lacks what they fill in, so they stay out of
+ * the shell every page loads: see `installMissingFeatures`.
+ */
+const POLYFILLS = /node_modules[/](?:core-js|temporal-polyfill)[/]/
+
 /** Fetched by the pages in that language only; English is the reference. */
 const SECOND_LANGUAGE_DICTIONARIES =
   /src[/]presentation[/]i18n[/]dictionary-fr\.ts/
@@ -51,7 +58,8 @@ const SECOND_LANGUAGE_DICTIONARIES =
 const isShellModule = (id: string): boolean =>
   SHELL_MODULES.test(id) &&
   !CONTACT_ONLY_MODULES.test(id) &&
-  !SECOND_LANGUAGE_DICTIONARIES.test(id)
+  !SECOND_LANGUAGE_DICTIONARIES.test(id) &&
+  !POLYFILLS.test(id)
 
 /**
  * Written per weight band in `_fonts.sass`: fontaine writes one fallback face
@@ -96,6 +104,21 @@ const metricMatchedFallbackFaces = fontaine({
  */
 const ENGLISH_HOME_HEAD = PAGE_HEADS.en.home
 
+/**
+ * The oldest browsers the site works in, about five years back, where Smart
+ * TVs and old phones stay — Vite's default stops at 2023. The JavaScript syntax
+ * is lowered to them, and the stylesheets lose the colour spaces and range
+ * media queries they cannot read. What neither covers: the cascade layers
+ * (`flattenedCascadeLayers`) and the APIs (`installMissingFeatures`).
+ */
+const OLDEST_SUPPORTED_BROWSERS = [
+  'chrome87',
+  'edge88',
+  'firefox78',
+  'ios14',
+  'safari14'
+]
+
 export default defineConfig({
   build: {
     manifest: true,
@@ -106,13 +129,15 @@ export default defineConfig({
         }
       }
     },
-    sourcemap: true
+    sourcemap: true,
+    target: OLDEST_SUPPORTED_BROWSERS
   },
   css: {
     postcss: {
       plugins: [
         metricMatchedFallbackFaces,
-        metricTwins({ twins: ARIAL_BOLD_TWINS })
+        metricTwins({ twins: ARIAL_BOLD_TWINS }),
+        flattenedCascadeLayers()
       ]
     }
   },

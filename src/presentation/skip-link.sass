@@ -23,3 +23,9 @@
 
     &:active
       scale: var(--pressed-scale)
+
+  // Chromium before 104 and Safari before 14.1 ignore `translate`, which
+  // parks the link above the page, and would show it over the header
+  @supports not (translate: 0)
+    .skip-link:not(:focus-visible)
+      transform: translateY(-200%)
