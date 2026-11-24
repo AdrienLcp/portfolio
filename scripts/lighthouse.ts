@@ -106,7 +106,7 @@ const startLocalServer = async (): Promise<{
   }
 
   const server = spawn(
-    `npx -y wrangler@4 pages dev dist --ip 127.0.0.1 --port ${PAGES_RUNTIME_PORT}`,
+    `pnpm exec wrangler pages dev dist --ip 127.0.0.1 --port ${PAGES_RUNTIME_PORT}`,
     {
       cwd: ROOT,
       detached: process.platform !== 'win32',

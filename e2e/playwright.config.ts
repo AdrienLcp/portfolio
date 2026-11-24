@@ -34,7 +34,7 @@ export default defineConfig({
   webServer:
     deploymentUrl === undefined
       ? {
-          command: `npx -y wrangler@4 pages dev ../dist --ip 127.0.0.1 --port ${PAGES_RUNTIME_PORT}`,
+          command: `pnpm exec wrangler pages dev ../dist --ip 127.0.0.1 --port ${PAGES_RUNTIME_PORT}`,
           reuseExistingServer: false,
           timeout: 120_000,
           url: PAGES_RUNTIME_URL
