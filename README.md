@@ -10,6 +10,11 @@ pnpm dev         # http://localhost:5373
 pnpm validate    # everything CI runs, lighthouse aside
 ```
 
+## Operations
+
+Cloudflare Pages builds and deploys every push to `main`. Shipping, hosting,
+secrets and what to do when a step breaks: [`docs/operations/`](docs/operations/README.md).
+
 ## Build
 
 `pnpm build` type-checks, builds the client and the server entry, then runs
